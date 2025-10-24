@@ -1,0 +1,9 @@
+CTS ZIP Deep Check & Repairs
+Timestamp: 2025-10-24T08:48:21.833776
+
+Key notes:
+- Enforced Preview Mode (frontend runs without backend).
+- Added backend start script (npm start) for health server.
+- Restored .agent/scripts/git-auto-backup.ps1 watcher.
+- Produced CLEAN zip (no node_modules, no .data/mysql, no .git, etc.).
+

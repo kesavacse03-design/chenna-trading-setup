@@ -1,0 +1,25 @@
+﻿# IDE/OS
+.vscode/
+.history/
+*.log
+
+# Node
+node_modules/
+dist/
+
+# Temp/Build
+*.tmp
+*.cache/
+
+# Project data we do NOT commit
+.data/
+backups/
+.agent/logs/
+
+# MySQL runtime (safety)
+.data/mysql/
+*.sock
+*.pid
+*.ibd
+*.ib_logfile*
+*.frm
