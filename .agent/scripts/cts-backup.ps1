@@ -1,10 +1,17 @@
-# Wrapper launcher: forwards to the real cts-backup.ps1 inside the chenna-CTS folder (if present)
-# This allows calling: PowerShell -ExecutionPolicy Bypass -File ".agent\scripts\cts-backup.ps1"
+# Launcher: forwards to the real cts-backup.ps1 inside the chenna-CTS folder (if present)
+# Usage: PowerShell -ExecutionPolicy Bypass -File ".agent\scripts\cts-backup.ps1" @args
 
+$ErrorActionPreference = 'Stop'
+
+$scriptPath = $MyInvocation.MyCommand.Path
+$scriptDir  = Split-Path -Parent $scriptPath
+
+# Build candidate paths (as strings) relative to the launcher directory
 $scriptCandidates = @(
-    Join-Path $PSScriptRoot '..\chenna-CTS\.agent\scripts\cts-backup.ps1',
-    Join-Path $PSScriptRoot '..\..\chenna-CTS\.agent\scripts\cts-backup.ps1',
-    Join-Path $PSScriptRoot '.\chenna-CTS\.agent\scripts\cts-backup.ps1'
+    "$scriptDir\..\chenna-CTS\.agent\scripts\cts-backup.ps1",
+    "$scriptDir\..\..\chenna-CTS\.agent\scripts\cts-backup.ps1",
+    "$scriptDir\chenna-CTS\.agent\scripts\cts-backup.ps1",
+    "$scriptDir\cts-backup.ps1"
 )
 
 $target = $null
@@ -14,7 +21,7 @@ foreach ($c in $scriptCandidates) {
 }
 
 if (-not $target) {
-    Write-Host "cts-backup.ps1 not found in expected locations. Checked: $($scriptCandidates -join ', ')"
+    Write-Host "cts-backup.ps1 not found in expected locations. Checked:`n$($scriptCandidates -join "`n")"
     exit 1
 }
 
