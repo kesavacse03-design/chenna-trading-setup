@@ -1,10 +1,8 @@
-# .agent/scripts/git-restore-helper.ps1
-
 param(
   [string]$Timestamp
 )
 
-$repoRoot = Resolve-Path "$PSScriptRoot\..\.."
+$repoRoot = "D:\chenna-trading-system-dashboard"
 $tag = "snapshot-$Timestamp"
 
 Set-Location $repoRoot
@@ -16,10 +14,8 @@ if (-not $tagExists) {
   exit 1
 }
 
-# Checkout backup branch and reset to snapshot
 git checkout backup/$env:COMPUTERNAME
 git reset --hard $tag
 Write-Host "✅ Restored to snapshot: $tag"
 
-# Optional: open in VS Code
 code .
