@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Header from './components/Header';
 import ActiveTradesDashboard from './components/ActiveTradesDashboard';
 import AnalysisHub from './components/AnalysisHub';
-import { Trade, TradeStatus, Notification, SystemHealthState, GroupedWatchlist, StrategyState, StrategyLogic, ImportWatchlistPayload } from './types';
+import { Trade, Notification, SystemHealthState, GroupedWatchlist, StrategyState, StrategyLogic, ImportWatchlistPayload } from './types';
 import CredentialsManager from './components/CredentialsManager';
 import PortfolioStats from './components/PortfolioStats';
 import DailySummary from './components/DailySummary';
@@ -13,7 +13,6 @@ import StrategyWorkbenchModal from './components/StrategyWorkbenchModal';
 import IntelligencePanel from './components/StrategyReportsPanel';
 import TradesDashboard from './components/TradesDashboard';
 import * as api from './api';
-import * as storage from './utils/storage';
 import { startTicker, stopTicker } from './utils/ticker';
 import { PREPOPULATED_WATCHLIST, DEFAULT_STRATEGY_LOGIC } from './constants';
 

@@ -2,7 +2,8 @@ import React, { useState, useMemo } from 'react';
 import DashboardCard from './DashboardCard';
 import { GroupedWatchlist, StockData, ImportWatchlistPayload } from '../types';
 import { UploadIcon } from './icons/UploadIcon';
-import WatchlistImporter from './WatchlistImporter';
+import ManualImport from './ManualImport';
+
 import { SearchIcon } from './icons/SearchIcon';
 import { WrenchScrewdriverIcon } from './icons/WrenchScrewdriverIcon';
 import { ArrowUpIcon } from './icons/ArrowUpIcon';
@@ -142,11 +143,11 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
             </div>
         </div>
       </DashboardCard>
-      <WatchlistImporter 
-        isOpen={isImportModalOpen}
-        onClose={() => setIsImportModalOpen(false)}
-        onImport={onWatchlistUpdate}
-      />
+            <ManualImport
+                isOpen={isImportModalOpen}
+                onClose={() => setIsImportModalOpen(false)}
+                onImport={(rows: any[]) => onWatchlistUpdate({ category: activePage, rows })}
+            />
     </>
   );
 };

@@ -1,4 +1,18 @@
 ﻿# Clean one-shot Git backup — no watcher, no loop
+# Load manifest
+$manifestPath = ".agent/manifest.json"
+$manifest = Get-Content $manifestPath | ConvertFrom-Json
+
+# Filter files to include in backup
+$filesToBackup = $manifest.files | Where-Object { $_.includeInBackup } | ForEach-Object { $_.path }
+
+# Stage only those files
+foreach ($file in $filesToBackup) {
+    if (Test-Path $file) {
+        git add $file
+    }
+}
+
 
 $repoRoot = Resolve-Path "$PSScriptRoot\..\.."
 $branchName = "backup/$env:COMPUTERNAME"
