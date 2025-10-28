@@ -186,10 +186,11 @@ if ($Watch -and -not $Test) {
     }
 
     $script:pending = $false
+    # Use approved verb (Test-ShouldIgnore) and avoid automatic variable names in the event handler
     $action = {
-        param($eventSource, $eventArgs)
+        param($src, $args)
         try {
-            if (Test-ShouldIgnore $eventArgs.FullPath) { return }
+            if (Test-ShouldIgnore $args.FullPath) { return }
             if ($script:pending) { return }
             $script:pending = $true
             Start-Sleep -Seconds $DebounceSeconds
