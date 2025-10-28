@@ -217,7 +217,14 @@ while ($true) {
         if ($res.acted) {
             $failureCount = 0
         } else {
-            if ($res.pushOutput -and $res.pushOutput -ne '') { $failureCount++ }
+            # Safely obtain pushOutput; $res may not be a hashtable/psobject in all paths
+            $pushOut = ''
+            try {
+                if ($res -is [System.Collections.IDictionary]) { $pushOut = $res['pushOutput'] }
+                else { $pushOut = $res.pushOutput 2>$null }
+            } catch { $pushOut = '' }
+
+            if ($pushOut -and $pushOut -ne '') { $failureCount++ }
         }
 
         if ($failureCount -ge $maxFailures) {
