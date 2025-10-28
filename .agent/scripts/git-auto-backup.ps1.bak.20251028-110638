@@ -54,7 +54,7 @@ function Get-ChangedFiles {
     return $paths
 }
 
-function Stage-Files-Safely {
+function Add-FilesSafely {
     param([string[]]$Paths)
     $maxBytes = 50MB
     $staged = @()
@@ -77,7 +77,7 @@ function Stage-Files-Safely {
     return @{ staged = $staged; skipped = $skipped }
 }
 
-function Run-OneCycle {
+function Invoke-OneCycle {
     # Discover changed files
     $changed = Get-ChangedFiles
     if (-not $changed -or $changed.Count -eq 0) {
@@ -85,7 +85,7 @@ function Run-OneCycle {
     }
 
     # Stage safely (skip large files)
-    $result = Stage-Files-Safely -Paths $changed
+    $result = Add-FilesSafely -Paths $changed
     $staged = $result.staged
     $skipped = $result.skipped
 
@@ -130,13 +130,13 @@ $failureCount = 0
 $maxFailures = 3
 
 if ($Test) {
-    $res = Run-OneCycle
+    $res = Invoke-OneCycle
     if ($res.acted) { Write-Host "Test run: pushed $($res.branch) commit $($res.commit)"; exit 0 } else { Write-Host "Test run: nothing pushed or push failed."; exit 1 }
 }
 
 while ($true) {
     try {
-        $res = Run-OneCycle
+    $res = Invoke-OneCycle
         if ($res.acted) {
             $failureCount = 0
         } else {
