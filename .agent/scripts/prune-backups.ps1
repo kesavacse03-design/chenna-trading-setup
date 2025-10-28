@@ -48,14 +48,14 @@ foreach ($b in $branches) {
     # b like auto-backup/PCNAME/timestamp
     $parts = $b -split '/'
     if ($parts.Count -lt 3) { continue }
-    $pcName = $parts[1]
-    if (-not $groups.ContainsKey($pcName)) { $groups[$pcName] = @() }
-    $groups[$pcName] += $b
+    $computerName = $parts[1]
+    if (-not $groups.ContainsKey($computerName)) { $groups[$computerName] = @() }
+    $groups[$computerName] += $b
 }
 
 $toDelete = @()
-foreach ($pcName in $groups.Keys) {
-    $list = $groups[$pcName] | Sort-Object -Descending
+foreach ($computerName in $groups.Keys) {
+    $list = $groups[$computerName] | Sort-Object -Descending
     if ($list.Count -le $KeepLatestPerHost) { continue }
     $old = $list[$KeepLatestPerHost..($list.Count - 1)]
     $toDelete += $old
