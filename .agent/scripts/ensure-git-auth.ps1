@@ -36,8 +36,8 @@ try {
     } elseif ($remoteUrl -match '^[^:]+@') {
         Write-Info "Detected SSH remote: $remoteUrl"
         # Check ssh-agent
-        $agentRes = & ssh-add -l 2>&1
-        if ($LASTEXITCODE -eq 0) {
+        $sshList = & ssh-add -l 2>&1
+        if ($LASTEXITCODE -eq 0 -and -not [string]::IsNullOrWhiteSpace($sshList)) {
             Write-Info "ssh-agent has keys loaded. Trying an SSH push to test..."
             git push origin HEAD 2>&1 | Out-Host
             if ($LASTEXITCODE -eq 0) { Write-Info "SSH auth test succeeded."; exit 0 } else { Write-Err "SSH push failed. Ensure your key is added to SSH agent and GitHub."; exit 3 }

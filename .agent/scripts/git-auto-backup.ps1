@@ -133,13 +133,13 @@ $failureCount = 0
 $maxFailures = 3
 
 if ($Test) {
-    $res = Run-OneCycle
+    $res = Invoke-OneCycle
     if ($res.acted) { Write-Host "Test run: pushed $($res.branch) commit $($res.commit)"; exit 0 } else { Write-Host "Test run: nothing pushed or push failed."; exit 1 }
 }
 
 while ($true) {
     try {
-        $res = Run-OneCycle
+    $res = Invoke-OneCycle
         if ($res.acted) {
             $failureCount = 0
         } else {
