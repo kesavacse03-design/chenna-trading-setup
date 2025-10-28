@@ -1,7 +1,7 @@
 ﻿param(
     [int]$PollIntervalSeconds = 20,
     [switch]$Test,
-    [switch]$Watch,
+    [object]$Watch = $false,
     [int]$DebounceSeconds = 3
 )
 
@@ -42,6 +42,21 @@ try {
 } catch {
     # fallback: keep current location
 }
+
+# Normalize Watch parameter so callers can pass -Watch:$false or -Watch true/false strings
+function Convert-ToBool {
+    param($v)
+    if ($v -is [System.Management.Automation.SwitchParameter]) { return [bool]$v.IsPresent }
+    if ($v -is [bool]) { return $v }
+    if ($null -eq $v) { return $false }
+    try {
+        $s = $v.ToString().ToLower()
+        if ($s -in @('1','true','t','yes','y')) { return $true }
+        return $false
+    } catch { return $false }
+}
+
+$Watch = Convert-ToBool $Watch
 
 function Write-Log {
     param($Level, $Action, $Branch, $Commit, $Message)
