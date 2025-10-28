@@ -64,7 +64,9 @@ foreach ($pcName in $groups.Keys) {
 Write-Host "Prune summary: Found $($branches.Count) backup branches; $($toDelete.Count) candidate(s) for deletion."
 if ($toDelete.Count -eq 0) { exit 0 }
 
-    foreach ($d in $toDelete) { Write-Host ("  DRY RUN: would delete {0}" -f $d) }
+foreach ($d in $toDelete) {
+    Write-Host ("  DRY RUN: would delete {0}" -f $d)
+}
 
 if ($Confirm) {
     foreach ($d in $toDelete) {
