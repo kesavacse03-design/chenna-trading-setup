@@ -35,6 +35,14 @@ Set-StrictMode -Version Latest
 $LogFile = Join-Path -Path $PSScriptRoot -ChildPath "..\git-auto-backup.log" | Resolve-Path -ErrorAction SilentlyContinue
 if (-not $LogFile) { $LogFile = (Join-Path -Path $PSScriptRoot -ChildPath "..\git-auto-backup.log") }
 
+# Ensure we run from the repository root so git commands use the correct working directory
+try {
+    $RepoRoot = (Resolve-Path -Path (Join-Path $PSScriptRoot '..\..')).Path
+    Push-Location -LiteralPath $RepoRoot
+} catch {
+    # fallback: keep current location
+}
+
 function Write-Log {
     param($Level, $Action, $Branch, $Commit, $Message)
     $ts = (Get-Date).ToString('o')
@@ -151,16 +159,22 @@ if ($Watch -and -not $Test) {
 
     Write-Host "Starting watch mode on: $repoRoot (debounce=${DebounceSeconds}s)"
 
+
     $fsw = New-Object System.IO.FileSystemWatcher $repoRoot -Property @{ IncludeSubdirectories = $true; NotifyFilter = [System.IO.NotifyFilters]'FileName, LastWrite, DirectoryName' }
 
-    # Helper to ignore events under .git or .agent
-    $shouldIgnore = { param($path) return ($path -match '\\.git\\' -or $path -match '\\.agent\\') }
+    # Helper function to ignore events under .git or .agent (use absolute repoRoot)
+    function Should-Ignore {
+        param([string]$path)
+        if (-not $path) { return $true }
+        $p = $path.ToString()
+        return ($p -like "$repoRoot\\.git\\*" -or $p -like "$repoRoot\\.agent\\*" -or $p -match '\\.git\\' -or $p -match '\\.agent\\')
+    }
 
     $script:pending = $false
     $action = {
         param($sender, $e)
         try {
-            if (& $shouldIgnore $e.FullPath) { return }
+            if (Should-Ignore $e.FullPath) { return }
             if ($script:pending) { return }
             $script:pending = $true
             Start-Sleep -Seconds $DebounceSeconds
