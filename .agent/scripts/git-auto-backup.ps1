@@ -117,7 +117,8 @@ function Invoke-OneCycle {
     if ($LASTEXITCODE -ne 0) { Write-Log 'ERROR' 'branch-create' $branch $commitHash "Failed to create local branch $branch."; return @{ acted = $false } }
 
     # Push branch to origin (safe push without force)
-    $pushOutput = git push -u origin "refs/heads/$branch:refs/heads/$branch" 2>&1 | Out-String
+    # Use HEAD:refs/heads/<branch> to avoid constructing malformed refspecs
+    $pushOutput = git push -u origin "HEAD:refs/heads/$branch" 2>&1 | Out-String
     $pushExit = $LASTEXITCODE
     if ($pushExit -eq 0) {
         Write-Log 'INFO' 'push' $branch $commitHash "Push success."
