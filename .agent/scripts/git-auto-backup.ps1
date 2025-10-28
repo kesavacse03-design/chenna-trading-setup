@@ -108,7 +108,7 @@ function Invoke-OneCycle {
     # Force array to avoid scalar/string outputs that break .Count checks
     $changed = @(Get-ChangedFiles)
     if ($changed.Count -eq 0) {
-        return @{ acted = $false }
+        return @{ acted = $false; pushOutput = '' }
     }
 
     # Stage safely (skip large files)
@@ -119,7 +119,7 @@ function Invoke-OneCycle {
     # If nothing staged after skipping, log and continue
     if (-not $staged -or $staged.Count -eq 0) {
         Write-Log 'INFO' 'no-staged' '' '' "Files changed but none staged (maybe all were large or deleted). Skipped: $($skipped -join ',')"
-        return @{ acted = $false }
+    return @{ acted = $false; pushOutput = '' }
     }
 
     $timestamp = (Get-Date).ToString('yyyy-MM-dd_HH-mm-ss')
@@ -132,7 +132,7 @@ function Invoke-OneCycle {
     if ($commitExit -ne 0) {
         # Could be nothing to commit if index unchanged
         Write-Log 'ERROR' 'commit' $branch '' "Commit failed or nothing to commit. Output: $commitOutput"
-        return @{ acted = $false }
+    return @{ acted = $false; pushOutput = '' }
     }
 
     $commitHash = (git rev-parse --short HEAD) -join ''
