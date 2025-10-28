@@ -1,4 +1,9 @@
-﻿<#
+﻿param(
+    [int]$PollIntervalSeconds = 20,
+    [switch]$Test
+)
+
+<#
 .agent/scripts/git-auto-backup.ps1
 
 Main automatic Git watcher.
@@ -22,10 +27,6 @@ Usage examples:
 Note: This script does NOT modify other repo files; it only stages/commits changes already in the workspace.
 #>
 
-param(
-    [int]$PollIntervalSeconds = 20,
-    [switch]$Test
-)
 
 Set-StrictMode -Version Latest
 
@@ -217,3 +218,4 @@ while ($true) {
 
   Start-Sleep -Seconds $pollSeconds
 }
+
