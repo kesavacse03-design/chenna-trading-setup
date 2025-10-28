@@ -55,7 +55,7 @@ function Get-ChangedFiles {
     return $paths
 }
 
-function Stage-Files-Safely {
+function Add-FilesSafely {
     param([string[]]$Paths)
     $maxBytes = 50MB
     $staged = @()
@@ -78,7 +78,7 @@ function Stage-Files-Safely {
     return @{ staged = $staged; skipped = $skipped }
 }
 
-function Run-OneCycle {
+function Invoke-OneCycle {
     # Discover changed files
     # Force array to avoid scalar/string outputs that break .Count checks
     $changed = @(Get-ChangedFiles)
@@ -87,7 +87,7 @@ function Run-OneCycle {
     }
 
     # Stage safely (skip large files)
-    $result = Stage-Files-Safely -Paths $changed
+    $result = Add-FilesSafely -Paths $changed
     $staged = $result.staged
     $skipped = $result.skipped
 
@@ -121,7 +121,7 @@ function Run-OneCycle {
     $pushExit = $LASTEXITCODE
     if ($pushExit -eq 0) {
         Write-Log 'INFO' 'push' $branch $commitHash "Push success."
-        return @{ acted = $true; branch = $branch; commit = $commitHash; pushOutput = $pushOutput }
+    return @{ acted = $true; branch = $branch; commit = $commitHash; pushOutput = $pushOutput }
     } else {
         Write-Log 'ERROR' 'push' $branch $commitHash "Push failed: $pushOutput"
         return @{ acted = $false; branch = $branch; commit = $commitHash; pushOutput = $pushOutput }
