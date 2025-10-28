@@ -1,6 +1,8 @@
 ﻿param(
     [int]$PollIntervalSeconds = 20,
-    [switch]$Test
+    [switch]$Test,
+    [switch]$Watch,
+    [int]$DebounceSeconds = 3
 )
 
 <#
@@ -136,6 +138,47 @@ $maxFailures = 3
 if ($Test) {
     $res = Invoke-OneCycle
     if ($res.acted) { Write-Host "Test run: pushed $($res.branch) commit $($res.commit)"; exit 0 } else { Write-Host "Test run: nothing pushed or push failed."; exit 1 }
+}
+
+# Watch mode: use FileSystemWatcher to trigger backups on filesystem changes (debounced)
+if ($Watch -and -not $Test) {
+    try {
+        # Repo root is two levels up from scripts folder (.agent\scripts)
+        $repoRoot = (Resolve-Path -Path (Join-Path $PSScriptRoot '..\..')).Path
+    } catch {
+        $repoRoot = (Get-Location).Path
+    }
+
+    Write-Host "Starting watch mode on: $repoRoot (debounce=${DebounceSeconds}s)"
+
+    $fsw = New-Object System.IO.FileSystemWatcher $repoRoot -Property @{ IncludeSubdirectories = $true; NotifyFilter = [System.IO.NotifyFilters]'FileName, LastWrite, DirectoryName' }
+
+    # Helper to ignore events under .git or .agent
+    $shouldIgnore = { param($path) return ($path -match '\\.git\\' -or $path -match '\\.agent\\') }
+
+    $script:pending = $false
+    $action = {
+        param($sender, $e)
+        try {
+            if (& $shouldIgnore $e.FullPath) { return }
+            if ($script:pending) { return }
+            $script:pending = $true
+            Start-Sleep -Seconds $DebounceSeconds
+            Invoke-OneCycle | Out-Null
+        } finally {
+            $script:pending = $false
+        }
+    }
+
+    Register-ObjectEvent -InputObject $fsw -EventName Created -Action $action | Out-Null
+    Register-ObjectEvent -InputObject $fsw -EventName Changed -Action $action | Out-Null
+    Register-ObjectEvent -InputObject $fsw -EventName Renamed -Action $action | Out-Null
+    Register-ObjectEvent -InputObject $fsw -EventName Deleted -Action $action | Out-Null
+
+    $fsw.EnableRaisingEvents = $true
+
+    Write-Host "Watching for file changes. Press Ctrl+C to exit."
+    while ($true) { Start-Sleep -Seconds 3600 }
 }
 
 while ($true) {
