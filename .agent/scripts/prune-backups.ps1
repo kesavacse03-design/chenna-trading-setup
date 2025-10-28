@@ -42,20 +42,20 @@ foreach ($r in $refs) {
 
 if (-not $branches) { Write-Host "No auto-backup/* branches found on $Remote"; exit 0 }
 
-# Group by PCNAME
+# Group by PCNAME (avoid using automatic $host variable)
 $groups = @{}
 foreach ($b in $branches) {
     # b like auto-backup/PCNAME/timestamp
     $parts = $b -split '/'
     if ($parts.Count -lt 3) { continue }
-    $host = $parts[1]
-    if (-not $groups.ContainsKey($host)) { $groups[$host] = @() }
-    $groups[$host] += $b
+    $pcName = $parts[1]
+    if (-not $groups.ContainsKey($pcName)) { $groups[$pcName] = @() }
+    $groups[$pcName] += $b
 }
 
 $toDelete = @()
-foreach ($host in $groups.Keys) {
-    $list = $groups[$host] | Sort-Object -Descending
+foreach ($pcName in $groups.Keys) {
+    $list = $groups[$pcName] | Sort-Object -Descending
     if ($list.Count -le $KeepLatestPerHost) { continue }
     $old = $list[$KeepLatestPerHost..($list.Count - 1)]
     $toDelete += $old
@@ -64,18 +64,18 @@ foreach ($host in $groups.Keys) {
 Write-Host "Prune summary: Found $($branches.Count) backup branches; $($toDelete.Count) candidate(s) for deletion."
 if ($toDelete.Count -eq 0) { exit 0 }
 
-foreach ($d in $toDelete) { Write-Host "  DRY RUN: would delete $d" }
+    foreach ($d in $toDelete) { Write-Host ("  DRY RUN: would delete {0}" -f $d) }
 
 if ($Confirm) {
     foreach ($d in $toDelete) {
         Write-Host "Deleting $d on $Remote..."
         $out = git push $Remote --delete $d 2>&1 | Out-String
         if ($LASTEXITCODE -eq 0) {
-            Write-Host "Deleted $d"
-            Write-Log "Deleted $d"
+            Write-Host ("Deleted {0}" -f $d)
+            Write-Log ("Deleted {0}" -f $d)
         } else {
-            Write-Host "Failed to delete $d: $out"
-            Write-Log "Failed to delete $d: $out"
+            Write-Host ("Failed to delete {0}: {1}" -f $d, $out)
+            Write-Log ("Failed to delete {0}: {1}" -f $d, $out)
         }
     }
 }
