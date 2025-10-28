@@ -80,8 +80,9 @@ function Stage-Files-Safely {
 
 function Run-OneCycle {
     # Discover changed files
-    $changed = Get-ChangedFiles
-    if (-not $changed -or $changed.Count -eq 0) {
+    # Force array to avoid scalar/string outputs that break .Count checks
+    $changed = @(Get-ChangedFiles)
+    if ($changed.Count -eq 0) {
         return @{ acted = $false }
     }
 
@@ -101,10 +102,11 @@ function Run-OneCycle {
 
     # Commit
     $commitMsg = "Auto-backup $timestamp"
-    git commit -m "$commitMsg" 2>&1 | Out-String
-    if ($LASTEXITCODE -ne 0) {
+    $commitOutput = git commit -m "$commitMsg" 2>&1 | Out-String
+    $commitExit = $LASTEXITCODE
+    if ($commitExit -ne 0) {
         # Could be nothing to commit if index unchanged
-        Write-Log 'ERROR' 'commit' $branch '' "Commit failed or nothing to commit."
+        Write-Log 'ERROR' 'commit' $branch '' "Commit failed or nothing to commit. Output: $commitOutput"
         return @{ acted = $false }
     }
 
