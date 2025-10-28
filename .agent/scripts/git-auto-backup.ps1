@@ -139,7 +139,7 @@ function Invoke-OneCycle {
 
     # Create or move local branch to HEAD (force-update local branch only)
     git branch -f "$branch" HEAD 2>$null
-    if ($LASTEXITCODE -ne 0) { Write-Log 'ERROR' 'branch-create' $branch $commitHash "Failed to create local branch $branch."; return @{ acted = $false } }
+    if ($LASTEXITCODE -ne 0) { Write-Log 'ERROR' 'branch-create' $branch $commitHash "Failed to create local branch $branch."; return @{ acted = $false; pushOutput = '' } }
 
     # Push branch to origin (safe push without force)
     # Use HEAD:refs/heads/<branch> to avoid constructing malformed refspecs
