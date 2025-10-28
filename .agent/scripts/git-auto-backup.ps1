@@ -178,7 +178,7 @@ if ($Watch -and -not $Test) {
     $fsw = New-Object System.IO.FileSystemWatcher $repoRoot -Property @{ IncludeSubdirectories = $true; NotifyFilter = [System.IO.NotifyFilters]'FileName, LastWrite, DirectoryName' }
 
     # Helper function to ignore events under .git or .agent (use absolute repoRoot)
-    function Should-Ignore {
+    function Test-ShouldIgnore {
         param([string]$path)
         if (-not $path) { return $true }
         $p = $path.ToString()
@@ -187,9 +187,9 @@ if ($Watch -and -not $Test) {
 
     $script:pending = $false
     $action = {
-        param($sender, $e)
+        param($eventSource, $eventArgs)
         try {
-            if (Should-Ignore $e.FullPath) { return }
+            if (Test-ShouldIgnore $eventArgs.FullPath) { return }
             if ($script:pending) { return }
             $script:pending = $true
             Start-Sleep -Seconds $DebounceSeconds
