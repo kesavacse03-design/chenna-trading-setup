@@ -1,0 +1,6 @@
+resources:
+  - ../run-worker-job-configmap.yaml
+images:
+  - name: cts-run-worker:latest
+    newName: cts-run-worker
+    newTag: latest

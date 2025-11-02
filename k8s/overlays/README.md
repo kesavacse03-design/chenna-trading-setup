@@ -1,0 +1,13 @@
+Kustomize overlay notes
+
+You can override the image used by the Job via kustomize. Example:
+
+# Build with environment variables (PowerShell example)
+
+$env:IMAGE_NAME="myregistry/myrepo/cts-run-worker"
+$env:IMAGE_TAG="v1.0.0"
+kustomize build k8s/overlays --load_restrictor=LoadRestrictionsNone | kubectl apply -f -
+
+Or set image via kustomize directly:
+kustomize edit set image cts-run-worker=myregistry/myrepo/cts-run-worker:v1.0.0
+kustomize build k8s/overlays | kubectl apply -f -

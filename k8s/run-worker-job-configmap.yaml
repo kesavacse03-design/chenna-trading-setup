@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: run-worker-payload
+data:
+  payload.json: |
+    {}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: cts-run-worker-canary-cm
+spec:
+  template:
+    metadata:
+      labels:
+        app: cts-run-worker
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: run-worker
+          image: cts-run-worker:latest
+          command:
+            [
+              "/bin/bash",
+              "/app/backend/strategy/docker/entrypoint.sh",
+              "/run/payload.json",
+            ]
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+          securityContext:
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+          volumeMounts:
+            - name: run-payload
+              mountPath: /run
+      volumes:
+        - name: run-payload
+          configMap:
+            name: run-worker-payload
+  backoffLimit: 1

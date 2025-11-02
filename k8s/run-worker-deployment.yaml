@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cts-run-worker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cts-run-worker
+  template:
+    metadata:
+      labels:
+        app: cts-run-worker
+    spec:
+      containers:
+        - name: run-worker
+          image: cts-run-worker:latest
+          command:
+            [
+              "/bin/bash",
+              "/app/backend/strategy/docker/entrypoint.sh",
+              "/run/payload.json",
+            ]
+          resources:
+            limits:
+              memory: "1Gi"
+              cpu: "1"
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+          securityContext:
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+          volumeMounts:
+            - name: run-payload
+              mountPath: /run
+      volumes:
+        - name: run-payload
+          hostPath:
+            path: /var/cts/run-payload
+            type: DirectoryOrCreate
