@@ -38,7 +38,12 @@ class HealthMonitor {
     this.fallbackSince = null;
     this.executionMode = 'LIVE';
     this.timer = null;
+    this.alertsLog = path.join(this.jobsDir, 'alerts.log');
     try { fs.mkdirSync(this.jobsDir, { recursive: true }); } catch(_){ }
+  }
+  alert(line){
+    const entry = `[${new Date().toISOString()}] ${line}`;
+    try { fs.appendFileSync(this.alertsLog, entry + "\n", 'utf8'); } catch(_){ }
   }
   startSnapshots(){
     if (this.timer) return;

@@ -25,6 +25,7 @@ class MarketDataAdapter {
       this.health.activeProvider = to; this.health.fallbackProvider = to; this.health.fallbackSince = new Date().toISOString();
       if (this.config.execution && this.config.execution.fallbackSetsPaper) { this.health.executionMode = 'PAPER'; console.log('EXECUTION_MODE PAPER due to fallback'); }
       console.log(`ALERT: FALLBACK_SWITCH runId=NA from=${from} to=${to} reason="circuitTrip"`);
+      try { this.health.alert(`FALLBACK_SWITCH runId=NA from=${from} to=${to} reason="circuitTrip"`); } catch(_){}
       this.health.writeStatus('fallback-switch');
     }
   }
@@ -54,7 +55,8 @@ class MarketDataAdapter {
       const fromTs = this.health.fallbackSince;
       const toTs = new Date().toISOString();
       // reconciliation stub: we would fetch missing candles; here we just log
-      console.log(`INFO: RECOVERY_COMPLETE runId=NA provider=${this.primaryName} reconciledFrom=${fromTs} to=${toTs}`);
+  console.log(`INFO: RECOVERY_COMPLETE runId=NA provider=${this.primaryName} reconciledFrom=${fromTs} to=${toTs}`);
+  try { this.health.alert(`RECOVERY_COMPLETE provider=${this.primaryName} reconciledFrom=${fromTs} to=${toTs}`); } catch(_){}
       this.health.activeProvider = this.primaryName;
       this.health.executionMode = 'LIVE';
       this.health.writeStatus('recovered');
