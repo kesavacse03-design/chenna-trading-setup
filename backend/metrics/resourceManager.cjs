@@ -69,13 +69,13 @@ function sampleUsage(){
 function startMonitor({ intervalMs=1000, cpuLimit=80, onThrottle, onSample }){
   const envLimit = process.env.CPU_LIMIT ? Number(process.env.CPU_LIMIT) : null;
   if (envLimit && envLimit > 10) cpuLimit = envLimit; // sanity: ignore tiny values
-  const handle = setInterval(()=>{
+  let handle = setInterval(()=>{
     const usage = (module && module.exports && typeof module.exports.sampleUsage==='function') ? module.exports.sampleUsage() : sampleUsage();
     try { onSample && onSample(usage); } catch(_){ }
     try { if (usage.cpuPercent > cpuLimit) onThrottle && onThrottle(usage); } catch(_){ }
   }, intervalMs);
-  try { if (handle && typeof handle.unref === 'function') handle.unref(); } catch(_){}
-  return { stop(){ try { clearInterval(handle); } catch(_){} } };
+  try { if (handle && typeof handle.unref === 'function') handle.unref(); } catch(_){ }
+  return { stop(){ try { if (handle) { clearInterval(handle); if (typeof handle.unref === 'function') { try { handle.unref && handle.unref(); } catch(_){} } handle = null; } } catch(_){} } };
 }
 
 module.exports = { detectResources, planConcurrency, sampleUsage, startMonitor };
