@@ -1,0 +1,64 @@
+name: Backtest CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm ci
+      - name: Run contract harness (local runner)
+        env:
+          CI: true
+        run: |
+          node backend/__tests__/contract-harness.cjs
+
+  docker-build-push:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    if: github.event_name != 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to registry
+        if: ${{ secrets.DOCKER_REGISTRY }}
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ secrets.DOCKER_REGISTRY }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build and push image
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags: ${{ secrets.DOCKER_REGISTRY }}/myrepo/cts-run-worker:latest
+
+  deploy-kustomize:
+    runs-on: ubuntu-latest
+    needs: docker-build-push
+    if: github.event_name != 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'v1.33.0'
+      - name: Install kustomize
+        run: sudo apt-get update && sudo apt-get install -y kustomize
+      - name: Deploy with kustomize
+        env:
+          IMAGE_NAME: ${{ secrets.DOCKER_REGISTRY }}/myrepo/cts-run-worker
+          IMAGE_TAG: latest
+        run: |
+          kustomize build k8s/overlays --load_restrictor=LoadRestrictionsNone | kubectl apply -f -

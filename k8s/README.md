@@ -1,0 +1,18 @@
+Kubernetes manifests for CTS run-worker
+
+Files:
+
+- `run-worker-job.yaml` - Job manifest suitable for single-run canary/test. Mount payload via hostPath at `/var/cts/run-payload`.
+- `run-worker-deployment.yaml` - Example Deployment for longer-running run-worker pool with resource limits.
+
+Usage:
+
+- Ensure the `cts-run-worker:latest` image is available in the cluster (push to registry or use local builder for kind/minikube).
+- Place the payload file(s) on the node at `/var/cts/run-payload` or update the manifest to use a ConfigMap or PVC.
+- Apply the job:
+  kubectl apply -f k8s/run-worker-job.yaml
+
+Security notes:
+
+- The Pod runs as non-root (runAsUser:1000) and disallows privilege escalation.
+- Prefer using an image registry with least-privilege access and appropriate imagePullSecrets.
