@@ -50,6 +50,7 @@ class HealthMonitor {
     this.timer = setInterval(()=>{
       this.writeSnapshotNow();
     }, this.snapIntervalMs);
+    try { if (this.timer && typeof this.timer.unref === 'function') this.timer.unref(); } catch(_){}
   }
   stopSnapshots(){ if (this.timer) { clearInterval(this.timer); this.timer = null; } }
   writeSnapshotNow(){

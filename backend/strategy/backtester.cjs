@@ -50,6 +50,7 @@ async function runBacktest(params, hooks){
         perfSamples.push({ ts: Date.now(), mem: process.memoryUsage(), cpu: process.cpuUsage() });
       } catch (_) {}
     }, 500);
+  try { if (perfInterval && typeof perfInterval.unref === 'function') perfInterval.unref(); } catch(_){}
   }
   // Optional runtime resource telemetry (CPU/mem) to run log
   let resMonStop = null;

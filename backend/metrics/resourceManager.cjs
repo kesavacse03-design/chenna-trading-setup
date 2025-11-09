@@ -74,6 +74,7 @@ function startMonitor({ intervalMs=1000, cpuLimit=80, onThrottle, onSample }){
     try { onSample && onSample(usage); } catch(_){ }
     try { if (usage.cpuPercent > cpuLimit) onThrottle && onThrottle(usage); } catch(_){ }
   }, intervalMs);
+  try { if (handle && typeof handle.unref === 'function') handle.unref(); } catch(_){}
   return { stop(){ try { clearInterval(handle); } catch(_){} } };
 }
 
