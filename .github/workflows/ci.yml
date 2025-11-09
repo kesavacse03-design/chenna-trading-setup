@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ feature/marketdata-fallback ]
+    branches: [feature/marketdata-fallback]
   pull_request:
-    branches: [ feature/marketdata-fallback ]
+    branches: [main]
 
 jobs:
   build-and-test:
@@ -16,10 +16,10 @@ jobs:
           node-version: 20
       - name: Install
         run: npm ci
-      - name: Unit tests
-        run: npm test -- --runInBand
+      - name: Unit tests (coverage)
+        run: npm run test:coverage -- --runInBand
       - name: Fast integration (mock)
         env:
-          CTS_UPSTOX_MOCK: '1'
-          MARKETDATA_DISABLE_SNAPSHOTS: '1'
+          CTS_UPSTOX_MOCK: "1"
+          MARKETDATA_DISABLE_SNAPSHOTS: "1"
         run: node backend/strategy/optimizer.cjs --symbols AAPL,MSFT,GOOG --from 2025-10-01 --to 2025-10-03 --interval day --mode upstox --grid "ema_short:8,13;ema_long:55,89;atr_mult:1.2,1.5;volumeFactor:0.9,1.0" --parallel 2 --timeout 20 --out backend/jobs/ci_report.json --csv backend/jobs/ci_top.csv
