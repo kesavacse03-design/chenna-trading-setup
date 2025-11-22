@@ -128,3 +128,31 @@ model OhlcvCache {
   @@index([symbol, interval])
   @@map("ohlcv_cache")
 }
+
+model Trade {
+  id                Int       @id @default(autoincrement())
+  stockSymbol       String    @map("stock_symbol") @db.VarChar(50)
+  category          String    @db.VarChar(100)
+  strategyVersion   String    @default("V1") @map("strategy_version") @db.VarChar(20)
+  direction         String    @db.VarChar(10) // BUY, SELL
+  entryPrice        Decimal?  @map("entry_price") @db.Decimal(10, 2)
+  targetPrice       Decimal   @map("target_price") @db.Decimal(10, 2)
+  stopLoss          Decimal   @map("stop_loss") @db.Decimal(10, 2)
+  trailingStop      Decimal   @map("trailing_stop") @db.Decimal(10, 2)
+  currentTrail      Decimal?  @map("current_trail") @db.Decimal(10, 2)
+  status            String    @db.VarChar(20) // WAITING, ACTIVE, TARGET_HIT, SL_HIT, SIDEWAYS, EXPIRED
+  entryDate         DateTime? @map("entry_date")
+  exitDate          DateTime? @map("exit_date")
+  exitPrice         Decimal?  @map("exit_price") @db.Decimal(10, 2)
+  pnl               Decimal?  @db.Decimal(10, 2)
+  pnlPercent        Decimal?  @map("pnl_percent") @db.Decimal(10, 4)
+  trackingDays      Int       @default(0) @map("tracking_days")
+  maxTrackingDays   Int       @default(10) @map("max_tracking_days")
+  signalData        Json?     @map("signal_data") // Technical indicators at signal time
+  createdAt         DateTime  @default(now()) @map("created_at")
+  updatedAt         DateTime  @default(now()) @updatedAt @map("updated_at")
+
+  @@index([status, category])
+  @@index([stockSymbol, status])
+  @@map("trades")
+}

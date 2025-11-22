@@ -1,0 +1,56 @@
+{
+    "pilot": {
+        "enabled": true,
+        "category": "DOWNSIDE_LOM_SWING",
+        "trackingDays": 10,
+        "checkInterval": 15
+    },
+    "swing": {
+        "categories": [
+            "DOWNSIDE_LOM_SWING",
+            "UPSIDE_LOM_SWING",
+            "MULTI_RESISTANCE_BO",
+            "MULTI_SUPPORT_BO",
+            "SHORT_TERM_SWING_BO_UP",
+            "SHORT_TERM_SWING_BO_DOWN",
+            "LONG_TERM_SWING_BO_UP",
+            "LONG_TERM_SWING_BO_DOWN"
+        ],
+        "trackingDays": 10
+    },
+    "intraday": {
+        "categories": [
+            "INTRADAY_BOOST",
+            "UPSIDE_LOM_INTRA",
+            "DOWNSIDE_LOM_INTRA",
+            "HIGH_POWERED_STOCKS",
+            "PRE_MARKET",
+            "DAILY_CONTRACTION"
+        ],
+        "trackingDays": 1
+    },
+    "upstox": {
+        "rateLimit": {
+            "requestsPerSecond": 1,
+            "requestsPerMinute": 60
+        },
+        "retry": {
+            "maxAttempts": 3,
+            "backoffMs": [
+                500,
+                1000,
+                2000
+            ]
+        }
+    },
+    "strategy": {
+        "targetAccuracy": 0.70,
+        "minSampleSize": 20,
+        "riskRewardRatio": 2.0
+    },
+    "telegram": {
+        "enabled": false,
+        "botToken": "",
+        "chatId": ""
+    }
+}
