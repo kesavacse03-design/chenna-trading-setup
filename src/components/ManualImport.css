@@ -1,0 +1,28 @@
+/* Styles for ManualImport component moved from inline <style> blocks */
+.manual-import-select {
+  background-color: #0f1724; /* dark slate */
+  color: #e6eef8; /* light text */
+}
+.manual-import-select option {
+  background-color: #0f1724;
+  color: #e6eef8;
+}
+.manual-import-select optgroup { color: #cbd5e1; }
+.manual-import-select option:checked,
+.manual-import-select option:hover {
+  background-color: #1f2937;
+  color: #ffffff;
+}
+.dark-option { background-color: #0f1724; color: #e6eef8 }
+.dark-option:hover { background-color: #1f2937; color: #fff }
+
+/* Preview container styles */
+.manual-import-preview {
+  overflow-y: auto;
+  padding-right: 8px;
+  min-height: 120px;
+  max-height: 520px; /* conservative default */
+}
+.manual-import-preview::-webkit-scrollbar { width: 12px; }
+.manual-import-preview::-webkit-scrollbar-track { background: transparent; }
+.manual-import-preview::-webkit-scrollbar-thumb { background-color: rgba(148,163,184,0.32); border-radius: 6px; border: 3px solid transparent; background-clip: padding-box; }

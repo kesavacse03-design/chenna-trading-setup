@@ -1,0 +1,27 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.cjs",
+  "scripts": {
+    "start": "node server.cjs",
+    "dev": "node server.cjs",
+    "test": "node ../../backend/strategy/tests/metrics.test.cjs",
+    "strategy:run": "node ../../backend/strategy/runner.cjs",
+    "strategy:test": "node ../../backend/strategy/__tests__/run-tests.cjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "5.10.2",
+    "bullmq": "^5.64.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^5.1.0",
+    "ioredis": "^5.8.2",
+    "node-fetch": "^2.7.0",
+    "prisma": "5.10.2",
+    "technicalindicators": "^3.1.0"
+  }
+}

@@ -1,0 +1,27 @@
+/* Local Tailwind build entry */
+/* stylelint-disable at-rule-no-unknown */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+/* stylelint-enable at-rule-no-unknown */
+
+/* App custom utilities (migrated from inline <style>) */
+@layer utilities {
+  .animate-fade-in-down { animation: fade-in-down 0.5s ease-out forwards; }
+  .animate-highlight { animation: highlight-fade 1.5s ease-out forwards; }
+  .animate-pulse-glow { animation: pulse-glow 2.5s infinite; }
+  .animate-price-up { animation: price-flash-up 1s ease-out; }
+  .animate-price-down { animation: price-flash-down 1s ease-out; }
+}
+
+@keyframes fade-in-down { 0% { opacity:0; transform:translateY(-10px);} 100% { opacity:1; transform:translateY(0);} }
+@keyframes highlight-fade { 0% { background-color: rgba(34,211,238,0.2);} 100% { background-color: transparent;} }
+@keyframes pulse-glow { 0%,100% { transform:scale(1); box-shadow:0 0 0 0 rgba(22,163,74,0.7);} 50% { transform:scale(1.02); box-shadow:0 0 10px 5px rgba(22,163,74,0),0 0 20px 10px rgba(34,197,94,0.4);} }
+@keyframes price-flash-up { 0% { background-color: rgba(74,222,128,0.3);} 100% { background-color: transparent;} }
+@keyframes price-flash-down { 0% { background-color: rgba(248,113,113,0.3);} 100% { background-color: transparent;} }
+
+/* Neon text reused */
+.neon-text { text-shadow:0 0 5px rgba(0,255,255,.6),0 0 10px rgba(0,255,255,.6),0 0 20px rgba(0,255,255,.6),0 0 40px rgba(7,98,234,.4),0 0 80px rgba(7,98,234,.4),0 0 90px rgba(7,98,234,.4),0 0 100px rgba(7,98,234,.4),0 0 150px rgba(7,98,234,.4); animation: neon-flicker 3s infinite alternate; }
+@keyframes neon-flicker { 0%,18%,22%,25%,53%,57%,100% { text-shadow:0 0 4px rgba(0,255,255,.5),0 0 11px rgba(0,255,255,.5),0 0 19px rgba(0,255,255,.5),0 0 40px rgba(7,98,234,.3),0 0 80px rgba(7,98,234,.3),0 0 90px rgba(7,98,234,.3),0 0 100px rgba(7,98,234,.3),0 0 140px rgba(7,98,234,.3);} 20%,24%,55% { text-shadow:none; } }
+
+.notification-bar { position:sticky; top:0; z-index:50; transition:all .5s ease-in-out; }

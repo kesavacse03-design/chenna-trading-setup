@@ -1,0 +1,74 @@
+﻿# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Data directories
+.data/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+*.env
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+prisma/migrations/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Misc
+.cache/
+*.pid
+*.seed
+*.pid.lock
+
+# Backup files
+*.bak
+*.backup
+*_backup_*
+
+# Large data files (optional - uncomment if needed)
+# *.csv
+# *.json
+# NSE.json
+
+# Local configuration
+chenna-CTS/backend/auth/tokens.json
+
+# Prisma Studio
+.prisma/

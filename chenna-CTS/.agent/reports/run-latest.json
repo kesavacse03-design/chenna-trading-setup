@@ -1,0 +1,31 @@
+{
+    "flags":  {
+                  "hybrid_mode_enabled":  true,
+                  "live_trading_enabled":  false
+              },
+    "decisions":  [
+                      {
+                          "confidence":  0.95,
+                          "reason":  "Mock signal for RELIANCE",
+                          "symbol":  "RELIANCE",
+                          "action":  "BUY"
+                      },
+                      {
+                          "confidence":  0.88,
+                          "reason":  "Mock signal for TCS",
+                          "symbol":  "TCS",
+                          "action":  "SELL"
+                      }
+                  ],
+    "timestamp":  "2025-10-23T13:50:06",
+    "alerts":  [
+
+               ],
+    "probes":  {
+                   "upstox_ok":  true,
+                   "backend_ok":  true,
+                   "all_ok":  true,
+                   "quotes_ok":  true
+               },
+    "mode":  "LIVE"
+}

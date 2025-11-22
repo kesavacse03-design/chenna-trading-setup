@@ -1,0 +1,100 @@
+# Backend operational notes (Upstox tokens)
+
+This file documents safe operational steps for token encryption, rotation, and running the backend.
+
+1. Move secrets out of repository
+
+- Do NOT keep `TOKENS_ENCRYPTION_KEY` or `ADMIN_API_TOKEN` in repo-checked `.env` for production.
+- On Windows (PowerShell) set them for current user:
+
+```powershell
+# Replace <value> with your secret
+[Environment]::SetEnvironmentVariable('TOKENS_ENCRYPTION_KEY','<value>','User')
+[Environment]::SetEnvironmentVariable('ADMIN_API_TOKEN','<value>','User')
+```
+
+2. Restart backend
+
+- Stop any running process and start foreground to verify logs:
+
+```powershell
+# stop by PID if needed
+# Stop-Process -Id <pid>
+node .\server.cjs 2>&1 | Tee-Object -FilePath .\server.log
+```
+
+3. Enable pm2 (optional, recommended)
+
+```powershell
+npm install -g pm2
+pm2 start server.cjs --name chenna-backend --watch
+pm2 save
+pm2 startup
+# Follow pm2 printed command to enable startup on Windows
+```
+
+4. Migrate tokens (rotate encryption key)
+
+- Use `POST /auth/upstox/migrate` with admin token. Example body: `{ "key": "<newKey>", "oldKey": "<oldKey>" }`.
+
+5. Clear tokens (force re-auth)
+
+- Admin-only: `POST /auth/upstox/clear` with `X-Admin-Token` header or `?token=` query param.
+
+6. Force-refresh test (safe)
+
+- There's an admin endpoint POST `/auth/upstox/force-refresh` you can call to exercise the refresh logic and verify `tokens.json` is updated. Supply `X-Admin-Token` header.
+
+7. Troubleshooting
+
+- If port binding issues occur, check for stray node processes (use Task Manager or `Get-Process node`).
+- Use `/auth/upstox/diag` and `/auth/upstox/status?debug=1` to inspect token state without leaking secrets.
+
+---
+
+Keep this document minimal and copy out secrets to a secure secret manager in production.
+
+# CTS Backend (Upstox Auth + Price Proxy)
+
+This minimal backend handles Upstox OAuth and proxies price requests to avoid exposing secrets in the client.
+
+## Setup
+
+1. Copy `.env.example` to `.env` and fill values:
+
+```
+UPSTOX_CLIENT_ID=...
+UPSTOX_CLIENT_SECRET=...
+UPSTOX_REDIRECT_URI=http://localhost:3001/auth/upstox/callback
+SESSION_SECRET=change_me
+BACKEND_PORT=3001
+```
+
+2. Install deps and start:
+
+```
+npm install
+npm run start
+
+Alternatively on Windows, you can run `backend_run.cmd` which loads `.env` then starts the server.
+```
+
+3. In the frontend, set API base (one of):
+
+- Add `window.__CTS_API_BASE = 'http://localhost:3001'` early (e.g., in `index.html`).
+- Or use Vite env: `VITE_API_BASE=http://localhost:3001`.
+
+## OAuth Flow
+
+- Visit `GET /auth/upstox/url` to get the login URL, open it in a browser.
+- After login, Upstox redirects to `/auth/upstox/callback?code=...` where tokens are stored in `auth/tokens.json` (dev only).
+- Check token status via `GET /auth/upstox/status`.
+
+## Price Proxy
+
+- `POST /api/upstox/prices` with JSON `{ symbols: ["RELIANCE","TCS"] }` returns `{ "RELIANCE": { "price": 123.45, "timestamp": "..." }, ... }`.
+
+Notes:
+
+- File storage is for development. For production, use a secure secret store and a database.
+- Endpoint paths may need adjustments to match Upstox API versions.

@@ -1,0 +1,30 @@
+name: CD Production Promote
+
+on:
+  push:
+    tags:
+      - 'v1.*'
+      - 'v2-shadow.*'
+
+jobs:
+  deploy-production:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://yourdomain.com
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Smoke test
+        run: echo "🧪 Running smoke tests..."
+
+      - name: Deploy to production
+        run: echo "🚀 Deploying to production..."
+
+  rollback-on-failure:
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rollback
+        run: echo "🔁 Rolling back to last known good state..."
