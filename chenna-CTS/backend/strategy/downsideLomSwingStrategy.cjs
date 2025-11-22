@@ -174,7 +174,7 @@ class DownsideLomSwingStrategy {
     isSideways(candles, entryIdx, currentIdx, maxDays = 10) {
         if (currentIdx - entryIdx >= maxDays) {
             // Max days reached - check if it moved anywhere
-            const candle At entry = candles[entryIdx];
+            const candleAtEntry = candles[entryIdx];
             const currentCandle = candles[currentIdx];
 
             const movePercent = Math.abs(currentCandle.close - candleAtEntry.close) / candleAtEntry.close;
