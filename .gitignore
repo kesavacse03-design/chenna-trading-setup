@@ -1,6 +1,7 @@
 ﻿# Dependencies
 node_modules/
 package-lock.json
+yarn.lock
 
 # Build outputs
 dist/
@@ -10,14 +11,17 @@ out/
 
 # Data directories
 .data/
+data/
+archive/
 
 # Environment variables
 .env
 .env.local
 .env.*.local
 *.env
+.env.*
 
-# Database
+# Database files
 *.db
 *.sqlite
 *.sqlite3
@@ -29,6 +33,7 @@ logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 
 # OS files
 .DS_Store
@@ -41,34 +46,68 @@ desktop.ini
 *.swp
 *.swo
 *~
+.history/
 
 # Temporary files
 tmp/
 temp/
 *.tmp
+.temp/
 
 # Test coverage
 coverage/
 .nyc_output/
 
-# Misc
+# Cache
 .cache/
 *.pid
 *.seed
 *.pid.lock
+.eslintcache
 
-# Backup files
+# Backup files (older than 1 week)
 *.bak
 *.backup
 *_backup_*
+backup/
+old/
 
-# Large data files (optional - uncomment if needed)
-# *.csv
-# *.json
-# NSE.json
+# Large data files
+*.csv
+NSE.json
+instruments.json
 
-# Local configuration
+# Job checkpoints and old runs
+backend/jobs/checkpoints/
+backend/jobs/runs/
+backend/jobs/old/
+
+# Strategy engine cache and results (82K+ JSON files)
+backend/strategy/results/
+backend/strategy/cache/
+backend/strategy/output/
+backend/strategy/**/*.json
+!backend/strategy/config.json
+!backend/strategy/promoted_*.json
+
+# Root-level temp files
+tmp_*.json
+tmp_*.cjs
+tmp_*.txt
+tmp_*.js
+test_*.cjs
+run_*.cjs
+
+# Local configuration & tokens
 chenna-CTS/backend/auth/tokens.json
+chenna-CTS/backend/auth/*.json
 
 # Prisma Studio
 .prisma/
+
+# Old promotion records
+promotion_records/
+archive/promotion_records/
+
+# Git backup files
+*.orig
