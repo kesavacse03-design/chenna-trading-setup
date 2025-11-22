@@ -1,0 +1,6482 @@
+{
+  "runId": "run-1762574107017",
+  "summary": {
+    "runId": "run-1762574107017",
+    "totalTrades": 231,
+    "tradesCount": 231,
+    "totalPnL": -1960818,
+    "avgReturn": 0.16965326913279663,
+    "winRate": 16.45,
+    "profitFactor": 0.24,
+    "maxDrawdown": 1960818,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-29",
+    "to": "2025-10-30",
+    "interval": "day",
+    "mode": "upstox",
+    "strategyConfig": {
+      "kind": "composite",
+      "ema_short": 8,
+      "ema_long": 50,
+      "rsi_period": 14,
+      "rsi_min": 25,
+      "rsi_max": 80,
+      "atr_mult": 1.2,
+      "volumeFactor": 1.2,
+      "targetR": 1.2,
+      "qty": 100,
+      "usePatterns": {
+        "engulfing": false,
+        "hammer": false,
+        "doji": false
+      },
+      "enableVWAP": false,
+      "adx_min": 0,
+      "adx_period": 14,
+      "regime": "none",
+      "bb_period": 20,
+      "bb_k": 2,
+      "bb_width": 0.03,
+      "stoch_mode": "none",
+      "stoch_k": 14,
+      "stoch_d": 3,
+      "stoch_kMin": 0,
+      "stoch_kMax": 100,
+      "enableSupertrend": false,
+      "supertrend_period": 10,
+      "supertrend_mult": 3
+    },
+    "swing10": {
+      "successWithin10Days": 87,
+      "failWithin10Days": 105,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 45.31
+    },
+    "equityCurve": [
+      -17816,
+      -41018,
+      -58834,
+      -82036,
+      -89026,
+      -96106,
+      -124554,
+      -171020,
+      -221450,
+      -264509,
+      -265609,
+      -269567,
+      -273929,
+      -279398,
+      -278928,
+      -369527,
+      -378934,
+      -387720,
+      -387885,
+      -388863,
+      -391472,
+      -391996,
+      -395806,
+      -408189,
+      -418799,
+      -430957,
+      -430787,
+      -360815,
+      -361634,
+      -361133,
+      -361734,
+      -393288,
+      -417282,
+      -449253,
+      -466813,
+      -466864,
+      -467002,
+      -467263,
+      -465875,
+      -469345,
+      -475537,
+      -475413,
+      -477478,
+      -478726,
+      -479941,
+      -481366,
+      -481255,
+      -481969,
+      -482426,
+      -544482,
+      -622687,
+      -671405,
+      -758549,
+      -835188,
+      -916443,
+      -939573,
+      -954173,
+      -954519,
+      -957476,
+      -961295,
+      -965669,
+      -967948,
+      -971952,
+      -975482,
+      -974919,
+      -978950,
+      -980007,
+      -980003,
+      -981661,
+      -982393,
+      -982533,
+      -982698,
+      -983676,
+      -986285,
+      -986809,
+      -990619,
+      -990149,
+      -1091808,
+      -1101215,
+      -1110001,
+      -1111895,
+      -1112490,
+      -1114914,
+      -1116573,
+      -1116510,
+      -1119237,
+      -1119492,
+      -1126110,
+      -1121774,
+      -1130885,
+      -1136015,
+      -1010533,
+      -1011247,
+      -1011704,
+      -1012126,
+      -1015083,
+      -1018902,
+      -1023276,
+      -1025555,
+      -1029559,
+      -1033089,
+      -1031701,
+      -1035171,
+      -1041363,
+      -1041239,
+      -1043304,
+      -1053415,
+      -1055309,
+      -1055904,
+      -1055434,
+      -1196783,
+      -1197630,
+      -1201469,
+      -1201248,
+      -1209498,
+      -1210518,
+      -1214401,
+      -1213393,
+      -1217263,
+      -1221221,
+      -1225583,
+      -1231052,
+      -1231977,
+      -1232262,
+      -1230241,
+      -1233351,
+      -1233697,
+      -1236495,
+      -1236546,
+      -1236684,
+      -1236945,
+      -1236382,
+      -1240413,
+      -1241470,
+      -1241000,
+      -1225675,
+      -1231049,
+      -1234161,
+      -1239453,
+      -1239618,
+      -1240596,
+      -1243205,
+      -1243729,
+      -1247539,
+      -1259202,
+      -1269313,
+      -1270793,
+      -1171240,
+      -1175123,
+      -1174115,
+      -1177985,
+      -1187392,
+      -1196178,
+      -1196122,
+      -1342442,
+      -1354825,
+      -1365435,
+      -1375099,
+      -1381864,
+      -1380476,
+      -1383946,
+      -1390138,
+      -1390014,
+      -1392079,
+      -1400329,
+      -1401349,
+      -1401695,
+      -1402542,
+      -1406381,
+      -1406160,
+      -1407085,
+      -1407370,
+      -1413988,
+      -1409652,
+      -1418763,
+      -1423893,
+      -1471650,
+      -1472599,
+      -1474299,
+      -1474350,
+      -1474488,
+      -1474749,
+      -1472728,
+      -1475838,
+      -1478262,
+      -1479921,
+      -1479858,
+      -1482585,
+      -1482840,
+      -1483940,
+      -1500160,
+      -1510157,
+      -1519317,
+      -1521741,
+      -1523400,
+      -1523337,
+      -1526064,
+      -1526319,
+      -1527033,
+      -1527490,
+      -1528176,
+      -1528568,
+      -1530048,
+      -1242571,
+      -1245896,
+      -1251239,
+      -1253781,
+      -1259155,
+      -1262267,
+      -1267559,
+      -1266996,
+      -1271027,
+      -1272084,
+      -1272135,
+      -1272273,
+      -1272534,
+      -1276417,
+      -1275409,
+      -1279279,
+      -1277258,
+      -1280368,
+      -1279898,
+      -1917227,
+      -1925477,
+      -1926497,
+      -1938160,
+      -1939007,
+      -1942846,
+      -1942625,
+      -1952032,
+      -1960818
+    ]
+  },
+  "perSymbol": {
+    "CGPOWER": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "DALBHARAT": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "DMART": {
+      "trades": [
+        {
+          "symbol": "DMART",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 4685.2,
+          "exitTs": "2025-08-18T00:00:00+05:30",
+          "exitPrice": 4507.04,
+          "pnl": -17816,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=671842 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=671842 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 4637.4,
+          "exitTs": "2025-08-14T00:00:00+05:30",
+          "exitPrice": 4405.38,
+          "pnl": -23202,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=752856 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=752856 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 4685.2,
+          "exitTs": "2025-08-18T00:00:00+05:30",
+          "exitPrice": 4507.04,
+          "pnl": -17816,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=671842 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=671842 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 4637.4,
+          "exitTs": "2025-08-14T00:00:00+05:30",
+          "exitPrice": 4405.38,
+          "pnl": -23202,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=752856 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=752856 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -82036,
+        "winRate": 0,
+        "maxDrawdown": 82036,
+        "trades": 4,
+        "avgReturn": -0.044029235264768124,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "EXIDEIND": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "HAL": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "HAVELLS": {
+      "trades": [
+        {
+          "symbol": "HAVELLS",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 1582.4,
+          "exitTs": "2025-08-14T00:00:00+05:30",
+          "exitPrice": 1512.5,
+          "pnl": -6990,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1099183 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1099183 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -6990,
+        "winRate": 0,
+        "maxDrawdown": 6990,
+        "trades": 1,
+        "avgReturn": -0.044173407482305416,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "HINDZINC": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "KAYNES": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "MUTHOOTFIN": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "NUVAMA": {
+      "trades": [
+        {
+          "symbol": "NUVAMA",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 7350,
+          "exitTs": "2025-07-31T00:00:00+05:30",
+          "exitPrice": 7279.2,
+          "pnl": -7080,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=183376 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=183376 gates:"
+          }
+        },
+        {
+          "symbol": "NUVAMA",
+          "entryTs": "2025-07-31T00:00:00+05:30",
+          "entryPrice": 7616.5,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 7332.02,
+          "pnl": -28448,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=169227 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=169227 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -35528,
+        "winRate": 0,
+        "maxDrawdown": 35528,
+        "trades": 2,
+        "avgReturn": -0.023491571065503584,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "RVNL": {
+      "trades": [
+        {
+          "symbol": "RVNL",
+          "entryTs": "2025-10-30T00:00:00+05:30",
+          "entryPrice": 339.75,
+          "exitTs": "2025-10-29T00:00:00+05:30",
+          "exitPrice": 1039.47,
+          "pnl": 69972,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1204316 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1204316 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 69972,
+        "winRate": 100,
+        "maxDrawdown": 0,
+        "trades": 1,
+        "avgReturn": 2.0595143487858723,
+        "profitFactor": null,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "SAIL": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "ULTRACEMCO": {
+      "trades": [
+        {
+          "symbol": "ULTRACEMCO",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 13038,
+          "exitTs": "2025-08-18T00:00:00+05:30",
+          "exitPrice": 12573.34,
+          "pnl": -46466,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=251965 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=251965 gates:"
+          }
+        },
+        {
+          "symbol": "ULTRACEMCO",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 12976,
+          "exitTs": "2025-08-14T00:00:00+05:30",
+          "exitPrice": 12471.7,
+          "pnl": -50430,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=289131 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=289131 gates:"
+          }
+        },
+        {
+          "symbol": "ULTRACEMCO",
+          "entryTs": "2025-08-12T00:00:00+05:30",
+          "entryPrice": 12580,
+          "exitTs": "2025-08-08T00:00:00+05:30",
+          "exitPrice": 12149.41,
+          "pnl": -43059,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=307847 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=307847 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -139955,
+        "winRate": 0,
+        "maxDrawdown": 139955,
+        "trades": 3,
+        "avgReturn": -0.03624369943224822,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "NTPC": {
+      "trades": [
+        {
+          "symbol": "NTPC",
+          "entryTs": "2025-08-11T00:00:00+05:30",
+          "entryPrice": 340.15,
+          "exitTs": "2025-08-07T00:00:00+05:30",
+          "exitPrice": 329.15,
+          "pnl": -1100,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=10541210 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=10541210 gates:"
+          }
+        },
+        {
+          "symbol": "NTPC",
+          "entryTs": "2025-08-11T00:00:00+05:30",
+          "entryPrice": 340.15,
+          "exitTs": "2025-08-07T00:00:00+05:30",
+          "exitPrice": 329.15,
+          "pnl": -1100,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=10541210 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=10541210 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -2200,
+        "winRate": 0,
+        "maxDrawdown": 2200,
+        "trades": 2,
+        "avgReturn": -0.03233867411436131,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "PIDILITIND": {
+      "trades": [
+        {
+          "symbol": "PIDILITIND",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 1549.6,
+          "exitTs": "2025-08-06T00:00:00+05:30",
+          "exitPrice": 1510.02,
+          "pnl": -3958,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=620745 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=620745 gates:"
+          }
+        },
+        {
+          "symbol": "PIDILITIND",
+          "entryTs": "2025-08-06T00:00:00+05:30",
+          "entryPrice": 1555.4,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 1511.78,
+          "pnl": -4362,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=703838 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=703838 gates:"
+          }
+        },
+        {
+          "symbol": "PIDILITIND",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 1521.5,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 1466.81,
+          "pnl": -5469,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=934531 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=934531 gates:"
+          }
+        },
+        {
+          "symbol": "PIDILITIND",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 1549.6,
+          "exitTs": "2025-08-06T00:00:00+05:30",
+          "exitPrice": 1510.02,
+          "pnl": -3958,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=620745 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=620745 gates:"
+          }
+        },
+        {
+          "symbol": "PIDILITIND",
+          "entryTs": "2025-08-06T00:00:00+05:30",
+          "entryPrice": 1555.4,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 1511.78,
+          "pnl": -4362,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=703838 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=703838 gates:"
+          }
+        },
+        {
+          "symbol": "PIDILITIND",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 1521.5,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 1466.81,
+          "pnl": -5469,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=934531 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=934531 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -27578,
+        "winRate": 0,
+        "maxDrawdown": 27578,
+        "trades": 6,
+        "avgReturn": -0.029843699897789743,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "IOC": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "UNITDSPR": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "BLUESTARCO": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "CROMPTON": {
+      "trades": [
+        {
+          "symbol": "CROMPTON",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 323,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 327.7,
+          "pnl": 470,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2363642 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2363642 gates:"
+          }
+        },
+        {
+          "symbol": "CROMPTON",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 323,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 327.7,
+          "pnl": 470,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2363642 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2363642 gates:"
+          }
+        },
+        {
+          "symbol": "CROMPTON",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 323,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 327.7,
+          "pnl": 470,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2363642 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2363642 gates:"
+          }
+        },
+        {
+          "symbol": "CROMPTON",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 323,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 327.7,
+          "pnl": 470,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2363642 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2363642 gates:"
+          }
+        },
+        {
+          "symbol": "CROMPTON",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 323,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 327.7,
+          "pnl": 470,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2363642 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2363642 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 2350,
+        "winRate": 100,
+        "maxDrawdown": 0,
+        "trades": 5,
+        "avgReturn": 0.014551083591331232,
+        "profitFactor": null,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "UNOMINDA": {
+      "trades": [
+        {
+          "symbol": "UNOMINDA",
+          "entryTs": "2025-10-30T00:00:00+05:30",
+          "entryPrice": 1236.2,
+          "exitTs": "2025-10-29T00:00:00+05:30",
+          "exitPrice": 330.21,
+          "pnl": -90599,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2497274 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2497274 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -90599,
+        "winRate": 0,
+        "maxDrawdown": 90599,
+        "trades": 1,
+        "avgReturn": -0.732883028636143,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "MFSL": {
+      "trades": [
+        {
+          "symbol": "MFSL",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 1686.5,
+          "exitTs": "2025-08-14T00:00:00+05:30",
+          "exitPrice": 1592.43,
+          "pnl": -9407,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=656392 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=656392 gates:"
+          }
+        },
+        {
+          "symbol": "MFSL",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 1589,
+          "exitTs": "2025-08-07T00:00:00+05:30",
+          "exitPrice": 1501.14,
+          "pnl": -8786,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=725696 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=725696 gates:"
+          }
+        },
+        {
+          "symbol": "MFSL",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 1686.5,
+          "exitTs": "2025-08-14T00:00:00+05:30",
+          "exitPrice": 1592.43,
+          "pnl": -9407,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=656392 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=656392 gates:"
+          }
+        },
+        {
+          "symbol": "MFSL",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 1589,
+          "exitTs": "2025-08-07T00:00:00+05:30",
+          "exitPrice": 1501.14,
+          "pnl": -8786,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=725696 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=725696 gates:"
+          }
+        },
+        {
+          "symbol": "MFSL",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 1686.5,
+          "exitTs": "2025-08-14T00:00:00+05:30",
+          "exitPrice": 1592.43,
+          "pnl": -9407,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=656392 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=656392 gates:"
+          }
+        },
+        {
+          "symbol": "MFSL",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 1589,
+          "exitTs": "2025-08-07T00:00:00+05:30",
+          "exitPrice": 1501.14,
+          "pnl": -8786,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=725696 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=725696 gates:"
+          }
+        },
+        {
+          "symbol": "MFSL",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 1686.5,
+          "exitTs": "2025-08-14T00:00:00+05:30",
+          "exitPrice": 1592.43,
+          "pnl": -9407,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=656392 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=656392 gates:"
+          }
+        },
+        {
+          "symbol": "MFSL",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 1589,
+          "exitTs": "2025-08-07T00:00:00+05:30",
+          "exitPrice": 1501.14,
+          "pnl": -8786,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=725696 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=725696 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -72772,
+        "winRate": 0,
+        "maxDrawdown": 72772,
+        "trades": 8,
+        "avgReturn": -0.055535437917479245,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "CAMS": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "CONCOR": {
+      "trades": [
+        {
+          "symbol": "CONCOR",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 552.45,
+          "exitTs": "2025-08-11T00:00:00+05:30",
+          "exitPrice": 550.8,
+          "pnl": -165,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1104816 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1104816 gates:"
+          }
+        },
+        {
+          "symbol": "CONCOR",
+          "entryTs": "2025-08-11T00:00:00+05:30",
+          "entryPrice": 569.95,
+          "exitTs": "2025-08-08T00:00:00+05:30",
+          "exitPrice": 560.17,
+          "pnl": -978,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1022925 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1022925 gates:"
+          }
+        },
+        {
+          "symbol": "CONCOR",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 567.4,
+          "exitTs": "2025-08-07T00:00:00+05:30",
+          "exitPrice": 541.31,
+          "pnl": -2609,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1130926 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1130926 gates:"
+          }
+        },
+        {
+          "symbol": "CONCOR",
+          "entryTs": "2025-08-07T00:00:00+05:30",
+          "entryPrice": 578,
+          "exitTs": "2025-08-06T00:00:00+05:30",
+          "exitPrice": 572.76,
+          "pnl": -524,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1421863 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1421863 gates:"
+          }
+        },
+        {
+          "symbol": "CONCOR",
+          "entryTs": "2025-08-06T00:00:00+05:30",
+          "entryPrice": 613,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 574.9,
+          "pnl": -3810,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1554863 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1554863 gates:"
+          }
+        },
+        {
+          "symbol": "CONCOR",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 552.45,
+          "exitTs": "2025-08-11T00:00:00+05:30",
+          "exitPrice": 550.8,
+          "pnl": -165,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1104816 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1104816 gates:"
+          }
+        },
+        {
+          "symbol": "CONCOR",
+          "entryTs": "2025-08-11T00:00:00+05:30",
+          "entryPrice": 569.95,
+          "exitTs": "2025-08-08T00:00:00+05:30",
+          "exitPrice": 560.17,
+          "pnl": -978,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1022925 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1022925 gates:"
+          }
+        },
+        {
+          "symbol": "CONCOR",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 567.4,
+          "exitTs": "2025-08-07T00:00:00+05:30",
+          "exitPrice": 541.31,
+          "pnl": -2609,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1130926 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1130926 gates:"
+          }
+        },
+        {
+          "symbol": "CONCOR",
+          "entryTs": "2025-08-07T00:00:00+05:30",
+          "entryPrice": 578,
+          "exitTs": "2025-08-06T00:00:00+05:30",
+          "exitPrice": 572.76,
+          "pnl": -524,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1421863 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1421863 gates:"
+          }
+        },
+        {
+          "symbol": "CONCOR",
+          "entryTs": "2025-08-06T00:00:00+05:30",
+          "entryPrice": 613,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 574.9,
+          "pnl": -3810,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1554863 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1554863 gates:"
+          }
+        },
+        {
+          "symbol": "CONCOR",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 552.45,
+          "exitTs": "2025-08-11T00:00:00+05:30",
+          "exitPrice": 550.8,
+          "pnl": -165,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1104816 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1104816 gates:"
+          }
+        },
+        {
+          "symbol": "CONCOR",
+          "entryTs": "2025-08-11T00:00:00+05:30",
+          "entryPrice": 569.95,
+          "exitTs": "2025-08-08T00:00:00+05:30",
+          "exitPrice": 560.17,
+          "pnl": -978,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1022925 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1022925 gates:"
+          }
+        },
+        {
+          "symbol": "CONCOR",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 567.4,
+          "exitTs": "2025-08-07T00:00:00+05:30",
+          "exitPrice": 541.31,
+          "pnl": -2609,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1130926 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1130926 gates:"
+          }
+        },
+        {
+          "symbol": "CONCOR",
+          "entryTs": "2025-08-07T00:00:00+05:30",
+          "entryPrice": 578,
+          "exitTs": "2025-08-06T00:00:00+05:30",
+          "exitPrice": 572.76,
+          "pnl": -524,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1421863 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1421863 gates:"
+          }
+        },
+        {
+          "symbol": "CONCOR",
+          "entryTs": "2025-08-06T00:00:00+05:30",
+          "entryPrice": 613,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 574.9,
+          "pnl": -3810,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1554863 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1554863 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -24258,
+        "winRate": 0,
+        "maxDrawdown": 24258,
+        "trades": 15,
+        "avgReturn": -0.02746937090167312,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "BDL": {
+      "trades": [
+        {
+          "symbol": "BDL",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 1632.8,
+          "exitTs": "2025-08-13T00:00:00+05:30",
+          "exitPrice": 1508.97,
+          "pnl": -12383,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1987152 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1987152 gates:"
+          }
+        },
+        {
+          "symbol": "BDL",
+          "entryTs": "2025-08-13T00:00:00+05:30",
+          "entryPrice": 1628.2,
+          "exitTs": "2025-08-12T00:00:00+05:30",
+          "exitPrice": 1522.1,
+          "pnl": -10610,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2019777 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2019777 gates:"
+          }
+        },
+        {
+          "symbol": "BDL",
+          "entryTs": "2025-10-30T00:00:00+05:30",
+          "entryPrice": 1545.5,
+          "exitTs": "2025-10-29T00:00:00+05:30",
+          "exitPrice": 82.3,
+          "pnl": -146320,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=8907233 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=8907233 gates:"
+          }
+        },
+        {
+          "symbol": "BDL",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 1632.8,
+          "exitTs": "2025-08-13T00:00:00+05:30",
+          "exitPrice": 1508.97,
+          "pnl": -12383,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1987152 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1987152 gates:"
+          }
+        },
+        {
+          "symbol": "BDL",
+          "entryTs": "2025-08-13T00:00:00+05:30",
+          "entryPrice": 1628.2,
+          "exitTs": "2025-08-12T00:00:00+05:30",
+          "exitPrice": 1522.1,
+          "pnl": -10610,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2019777 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2019777 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -192306,
+        "winRate": 0,
+        "maxDrawdown": 192306,
+        "trades": 5,
+        "avgReturn": -0.24575093870968892,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "360ONE": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "ANGELONE": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "MANAPPURAM": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "KFINTECH": {
+      "trades": [
+        {
+          "symbol": "KFINTECH",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 1192.5,
+          "exitTs": "2025-08-11T00:00:00+05:30",
+          "exitPrice": 1070.92,
+          "pnl": -12158,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=926304 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=926304 gates:"
+          }
+        },
+        {
+          "symbol": "KFINTECH",
+          "entryTs": "2025-08-01T00:00:00+05:30",
+          "entryPrice": 1124.6,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 1126.3,
+          "pnl": 170,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1172137 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1172137 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -11988,
+        "winRate": 50,
+        "maxDrawdown": 12158,
+        "trades": 2,
+        "avgReturn": -0.050221114910272265,
+        "profitFactor": 0.01,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "OBEROIRLTY": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "HUDCO": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "BANDHANBNK": {
+      "trades": [
+        {
+          "symbol": "BANDHANBNK",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 176.2,
+          "exitTs": "2025-08-18T00:00:00+05:30",
+          "exitPrice": 168.01,
+          "pnl": -819,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=4492185 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=4492185 gates:"
+          }
+        },
+        {
+          "symbol": "BANDHANBNK",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 169.44,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 174.45,
+          "pnl": 501,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=4362607 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=4362607 gates:"
+          }
+        },
+        {
+          "symbol": "BANDHANBNK",
+          "entryTs": "2025-07-29T00:00:00+05:30",
+          "entryPrice": 179.45,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 173.44,
+          "pnl": -601,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=4716184 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=4716184 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -919,
+        "winRate": 33.33,
+        "maxDrawdown": 919,
+        "trades": 3,
+        "avgReturn": -0.01680150193200765,
+        "profitFactor": 0.35,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "TRENT": {
+      "trades": [
+        {
+          "symbol": "TRENT",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 5652,
+          "exitTs": "2025-08-11T00:00:00+05:30",
+          "exitPrice": 5336.46,
+          "pnl": -31554,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1003620 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1003620 gates:"
+          }
+        },
+        {
+          "symbol": "TRENT",
+          "entryTs": "2025-08-11T00:00:00+05:30",
+          "entryPrice": 5510.5,
+          "exitTs": "2025-08-08T00:00:00+05:30",
+          "exitPrice": 5270.56,
+          "pnl": -23994,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=991653 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=991653 gates:"
+          }
+        },
+        {
+          "symbol": "TRENT",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 5465.5,
+          "exitTs": "2025-08-01T00:00:00+05:30",
+          "exitPrice": 5145.79,
+          "pnl": -31971,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1002359 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1002359 gates:"
+          }
+        },
+        {
+          "symbol": "TRENT",
+          "entryTs": "2025-08-01T00:00:00+05:30",
+          "entryPrice": 5304.5,
+          "exitTs": "2025-07-31T00:00:00+05:30",
+          "exitPrice": 5128.9,
+          "pnl": -17560,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1087384 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1087384 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -105079,
+        "winRate": 0,
+        "maxDrawdown": 105079,
+        "trades": 4,
+        "avgReturn": -0.04774258564525817,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "NBCC": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "COLPAL": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "BHEL": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "ASTRAL": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "POONAWALLA": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "IRFC": {
+      "trades": [
+        {
+          "symbol": "IRFC",
+          "entryTs": "2025-08-12T00:00:00+05:30",
+          "entryPrice": 129.8,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 129.29,
+          "pnl": -51,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=10121787 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=10121787 gates:"
+          }
+        },
+        {
+          "symbol": "IRFC",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 132.44,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 131.06,
+          "pnl": -138,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=10291837 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=10291837 gates:"
+          }
+        },
+        {
+          "symbol": "IRFC",
+          "entryTs": "2025-07-30T00:00:00+05:30",
+          "entryPrice": 135.37,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 132.76,
+          "pnl": -261,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=9834048 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=9834048 gates:"
+          }
+        },
+        {
+          "symbol": "IRFC",
+          "entryTs": "2025-08-12T00:00:00+05:30",
+          "entryPrice": 129.8,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 129.29,
+          "pnl": -51,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=10121787 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=10121787 gates:"
+          }
+        },
+        {
+          "symbol": "IRFC",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 132.44,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 131.06,
+          "pnl": -138,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=10291837 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=10291837 gates:"
+          }
+        },
+        {
+          "symbol": "IRFC",
+          "entryTs": "2025-07-30T00:00:00+05:30",
+          "entryPrice": 135.37,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 132.76,
+          "pnl": -261,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=9834048 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=9834048 gates:"
+          }
+        },
+        {
+          "symbol": "IRFC",
+          "entryTs": "2025-08-12T00:00:00+05:30",
+          "entryPrice": 129.8,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 129.29,
+          "pnl": -51,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=10121787 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=10121787 gates:"
+          }
+        },
+        {
+          "symbol": "IRFC",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 132.44,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 131.06,
+          "pnl": -138,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=10291837 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=10291837 gates:"
+          }
+        },
+        {
+          "symbol": "IRFC",
+          "entryTs": "2025-07-30T00:00:00+05:30",
+          "entryPrice": 135.37,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 132.76,
+          "pnl": -261,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=9834048 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=9834048 gates:"
+          }
+        },
+        {
+          "symbol": "IRFC",
+          "entryTs": "2025-08-12T00:00:00+05:30",
+          "entryPrice": 129.8,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 129.29,
+          "pnl": -51,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=10121787 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=10121787 gates:"
+          }
+        },
+        {
+          "symbol": "IRFC",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 132.44,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 131.06,
+          "pnl": -138,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=10291837 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=10291837 gates:"
+          }
+        },
+        {
+          "symbol": "IRFC",
+          "entryTs": "2025-07-30T00:00:00+05:30",
+          "entryPrice": 135.37,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 132.76,
+          "pnl": -261,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=9834048 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=9834048 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -1800,
+        "winRate": 0,
+        "maxDrawdown": 1800,
+        "trades": 12,
+        "avgReturn": -0.011209808326208071,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "BEL": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "INDUSINDBK": {
+      "trades": [
+        {
+          "symbol": "INDUSINDBK",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 797.1,
+          "exitTs": "2025-08-06T00:00:00+05:30",
+          "exitPrice": 810.98,
+          "pnl": 1388,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2633574 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2633574 gates:"
+          }
+        },
+        {
+          "symbol": "INDUSINDBK",
+          "entryTs": "2025-08-06T00:00:00+05:30",
+          "entryPrice": 848.6,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 813.9,
+          "pnl": -3470,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2641796 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2641796 gates:"
+          }
+        },
+        {
+          "symbol": "INDUSINDBK",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 858.65,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 796.73,
+          "pnl": -6192,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=4124450 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=4124450 gates:"
+          }
+        },
+        {
+          "symbol": "INDUSINDBK",
+          "entryTs": "2025-08-01T00:00:00+05:30",
+          "entryPrice": 811.45,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 812.69,
+          "pnl": 124,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=4391820 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=4391820 gates:"
+          }
+        },
+        {
+          "symbol": "INDUSINDBK",
+          "entryTs": "2025-07-29T00:00:00+05:30",
+          "entryPrice": 828.85,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 808.2,
+          "pnl": -2065,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=5436147 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=5436147 gates:"
+          }
+        },
+        {
+          "symbol": "INDUSINDBK",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 797.1,
+          "exitTs": "2025-08-06T00:00:00+05:30",
+          "exitPrice": 810.98,
+          "pnl": 1388,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2633574 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2633574 gates:"
+          }
+        },
+        {
+          "symbol": "INDUSINDBK",
+          "entryTs": "2025-08-06T00:00:00+05:30",
+          "entryPrice": 848.6,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 813.9,
+          "pnl": -3470,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2641796 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2641796 gates:"
+          }
+        },
+        {
+          "symbol": "INDUSINDBK",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 858.65,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 796.73,
+          "pnl": -6192,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=4124450 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=4124450 gates:"
+          }
+        },
+        {
+          "symbol": "INDUSINDBK",
+          "entryTs": "2025-08-01T00:00:00+05:30",
+          "entryPrice": 811.45,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 812.69,
+          "pnl": 124,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=4391820 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=4391820 gates:"
+          }
+        },
+        {
+          "symbol": "INDUSINDBK",
+          "entryTs": "2025-07-29T00:00:00+05:30",
+          "entryPrice": 828.85,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 808.2,
+          "pnl": -2065,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=5436147 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=5436147 gates:"
+          }
+        },
+        {
+          "symbol": "INDUSINDBK",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 797.1,
+          "exitTs": "2025-08-06T00:00:00+05:30",
+          "exitPrice": 810.98,
+          "pnl": 1388,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2633574 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2633574 gates:"
+          }
+        },
+        {
+          "symbol": "INDUSINDBK",
+          "entryTs": "2025-08-06T00:00:00+05:30",
+          "entryPrice": 848.6,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 813.9,
+          "pnl": -3470,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2641796 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2641796 gates:"
+          }
+        },
+        {
+          "symbol": "INDUSINDBK",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 858.65,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 796.73,
+          "pnl": -6192,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=4124450 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=4124450 gates:"
+          }
+        },
+        {
+          "symbol": "INDUSINDBK",
+          "entryTs": "2025-08-01T00:00:00+05:30",
+          "entryPrice": 811.45,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 812.69,
+          "pnl": 124,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=4391820 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=4391820 gates:"
+          }
+        },
+        {
+          "symbol": "INDUSINDBK",
+          "entryTs": "2025-07-29T00:00:00+05:30",
+          "entryPrice": 828.85,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 808.2,
+          "pnl": -2065,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=5436147 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=5436147 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -30645,
+        "winRate": 40,
+        "maxDrawdown": 32033,
+        "trades": 15,
+        "avgReturn": -0.023795373268789433,
+        "profitFactor": 0.13,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "NCC": {
+      "trades": [
+        {
+          "symbol": "NCC",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 228.11,
+          "exitTs": "2025-08-07T00:00:00+05:30",
+          "exitPrice": 215.63,
+          "pnl": -1248,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2597916 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2597916 gates:"
+          }
+        },
+        {
+          "symbol": "NCC",
+          "entryTs": "2025-08-07T00:00:00+05:30",
+          "entryPrice": 227.61,
+          "exitTs": "2025-08-06T00:00:00+05:30",
+          "exitPrice": 215.46,
+          "pnl": -1215,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2774947 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2774947 gates:"
+          }
+        },
+        {
+          "symbol": "NCC",
+          "entryTs": "2025-08-06T00:00:00+05:30",
+          "entryPrice": 221.8,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 207.55,
+          "pnl": -1425,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=3817675 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=3817675 gates:"
+          }
+        },
+        {
+          "symbol": "NCC",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 218.98,
+          "exitTs": "2025-08-01T00:00:00+05:30",
+          "exitPrice": 220.09,
+          "pnl": 111,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=3957140 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=3957140 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -3777,
+        "winRate": 25,
+        "maxDrawdown": 3888,
+        "trades": 4,
+        "avgReturn": -0.041817335748831806,
+        "profitFactor": 0.03,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "SJVN": {
+      "trades": [
+        {
+          "symbol": "SJVN",
+          "entryTs": "2025-08-13T00:00:00+05:30",
+          "entryPrice": 104.27,
+          "exitTs": "2025-08-12T00:00:00+05:30",
+          "exitPrice": 97.13,
+          "pnl": -714,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=6918594 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=6918594 gates:"
+          }
+        },
+        {
+          "symbol": "SJVN",
+          "entryTs": "2025-08-12T00:00:00+05:30",
+          "entryPrice": 99.29,
+          "exitTs": "2025-08-11T00:00:00+05:30",
+          "exitPrice": 94.72,
+          "pnl": -457,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=9136962 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=9136962 gates:"
+          }
+        },
+        {
+          "symbol": "SJVN",
+          "entryTs": "2025-08-13T00:00:00+05:30",
+          "entryPrice": 104.27,
+          "exitTs": "2025-08-12T00:00:00+05:30",
+          "exitPrice": 97.13,
+          "pnl": -714,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=6918594 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=6918594 gates:"
+          }
+        },
+        {
+          "symbol": "SJVN",
+          "entryTs": "2025-08-12T00:00:00+05:30",
+          "entryPrice": 99.29,
+          "exitTs": "2025-08-11T00:00:00+05:30",
+          "exitPrice": 94.72,
+          "pnl": -457,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=9136962 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=9136962 gates:"
+          }
+        },
+        {
+          "symbol": "SJVN",
+          "entryTs": "2025-08-13T00:00:00+05:30",
+          "entryPrice": 104.27,
+          "exitTs": "2025-08-12T00:00:00+05:30",
+          "exitPrice": 97.13,
+          "pnl": -714,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=6918594 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=6918594 gates:"
+          }
+        },
+        {
+          "symbol": "SJVN",
+          "entryTs": "2025-08-12T00:00:00+05:30",
+          "entryPrice": 99.29,
+          "exitTs": "2025-08-11T00:00:00+05:30",
+          "exitPrice": 94.72,
+          "pnl": -457,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=9136962 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=9136962 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -3513,
+        "winRate": 0,
+        "maxDrawdown": 3513,
+        "trades": 6,
+        "avgReturn": -0.05725143097366583,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "SOLARINDS": {
+      "trades": [
+        {
+          "symbol": "SOLARINDS",
+          "entryTs": "2025-08-13T00:00:00+05:30",
+          "entryPrice": 15152,
+          "exitTs": "2025-08-12T00:00:00+05:30",
+          "exitPrice": 14531.44,
+          "pnl": -62056,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=118186 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=118186 gates:"
+          }
+        },
+        {
+          "symbol": "SOLARINDS",
+          "entryTs": "2025-08-11T00:00:00+05:30",
+          "entryPrice": 15146,
+          "exitTs": "2025-08-08T00:00:00+05:30",
+          "exitPrice": 14363.95,
+          "pnl": -78205,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=117370 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=117370 gates:"
+          }
+        },
+        {
+          "symbol": "SOLARINDS",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 15587,
+          "exitTs": "2025-08-06T00:00:00+05:30",
+          "exitPrice": 15099.82,
+          "pnl": -48718,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=124704 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=124704 gates:"
+          }
+        },
+        {
+          "symbol": "SOLARINDS",
+          "entryTs": "2025-08-06T00:00:00+05:30",
+          "entryPrice": 15337,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 14465.56,
+          "pnl": -87144,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=136680 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=136680 gates:"
+          }
+        },
+        {
+          "symbol": "SOLARINDS",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 15119,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 14352.61,
+          "pnl": -76639,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=140819 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=140819 gates:"
+          }
+        },
+        {
+          "symbol": "SOLARINDS",
+          "entryTs": "2025-08-04T00:00:00+05:30",
+          "entryPrice": 14580,
+          "exitTs": "2025-08-01T00:00:00+05:30",
+          "exitPrice": 13767.45,
+          "pnl": -81255,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=146025 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=146025 gates:"
+          }
+        },
+        {
+          "symbol": "SOLARINDS",
+          "entryTs": "2025-08-01T00:00:00+05:30",
+          "entryPrice": 14773,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 14541.7,
+          "pnl": -23130,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=154433 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=154433 gates:"
+          }
+        },
+        {
+          "symbol": "SOLARINDS",
+          "entryTs": "2025-07-30T00:00:00+05:30",
+          "entryPrice": 14617,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 14471,
+          "pnl": -14600,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=160202 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=160202 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -471747,
+        "winRate": 0,
+        "maxDrawdown": 471747,
+        "trades": 8,
+        "avgReturn": -0.039091377482925384,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "DIVISLAB": {
+      "trades": [
+        {
+          "symbol": "DIVISLAB",
+          "entryTs": "2025-10-30T00:00:00+05:30",
+          "entryPrice": 6703.5,
+          "exitTs": "2025-10-29T00:00:00+05:30",
+          "exitPrice": 330.21,
+          "pnl": -637329,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2497274 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2497274 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -637329,
+        "winRate": 0,
+        "maxDrawdown": 637329,
+        "trades": 1,
+        "avgReturn": -0.9507406578652943,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "GAIL": {
+      "trades": [
+        {
+          "symbol": "GAIL",
+          "entryTs": "2025-07-29T00:00:00+05:30",
+          "entryPrice": 186.44,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 182.98,
+          "pnl": -346,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=11806894 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=11806894 gates:"
+          }
+        },
+        {
+          "symbol": "GAIL",
+          "entryTs": "2025-07-29T00:00:00+05:30",
+          "entryPrice": 186.44,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 182.98,
+          "pnl": -346,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=11806894 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=11806894 gates:"
+          }
+        },
+        {
+          "symbol": "GAIL",
+          "entryTs": "2025-07-29T00:00:00+05:30",
+          "entryPrice": 186.44,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 182.98,
+          "pnl": -346,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=11806894 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=11806894 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -1038,
+        "winRate": 0,
+        "maxDrawdown": 1038,
+        "trades": 3,
+        "avgReturn": -0.01855824930272478,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "CHAMBLFERT": {
+      "trades": [
+        {
+          "symbol": "CHAMBLFERT",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 559.7,
+          "exitTs": "2025-08-18T00:00:00+05:30",
+          "exitPrice": 530.13,
+          "pnl": -2957,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1463776 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1463776 gates:"
+          }
+        },
+        {
+          "symbol": "CHAMBLFERT",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 594.45,
+          "exitTs": "2025-08-07T00:00:00+05:30",
+          "exitPrice": 556.26,
+          "pnl": -3819,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1641599 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1641599 gates:"
+          }
+        },
+        {
+          "symbol": "CHAMBLFERT",
+          "entryTs": "2025-08-07T00:00:00+05:30",
+          "entryPrice": 582.75,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 539.01,
+          "pnl": -4374,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1695712 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1695712 gates:"
+          }
+        },
+        {
+          "symbol": "CHAMBLFERT",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 569.8,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 547.01,
+          "pnl": -2279,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1842732 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1842732 gates:"
+          }
+        },
+        {
+          "symbol": "CHAMBLFERT",
+          "entryTs": "2025-08-04T00:00:00+05:30",
+          "entryPrice": 547.05,
+          "exitTs": "2025-07-31T00:00:00+05:30",
+          "exitPrice": 507.01,
+          "pnl": -4004,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2365425 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2365425 gates:"
+          }
+        },
+        {
+          "symbol": "CHAMBLFERT",
+          "entryTs": "2025-07-31T00:00:00+05:30",
+          "entryPrice": 568,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 532.7,
+          "pnl": -3530,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=3101873 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=3101873 gates:"
+          }
+        },
+        {
+          "symbol": "CHAMBLFERT",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 559.7,
+          "exitTs": "2025-08-18T00:00:00+05:30",
+          "exitPrice": 530.13,
+          "pnl": -2957,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1463776 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1463776 gates:"
+          }
+        },
+        {
+          "symbol": "CHAMBLFERT",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 594.45,
+          "exitTs": "2025-08-07T00:00:00+05:30",
+          "exitPrice": 556.26,
+          "pnl": -3819,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1641599 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1641599 gates:"
+          }
+        },
+        {
+          "symbol": "CHAMBLFERT",
+          "entryTs": "2025-08-07T00:00:00+05:30",
+          "entryPrice": 582.75,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 539.01,
+          "pnl": -4374,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1695712 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1695712 gates:"
+          }
+        },
+        {
+          "symbol": "CHAMBLFERT",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 569.8,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 547.01,
+          "pnl": -2279,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1842732 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1842732 gates:"
+          }
+        },
+        {
+          "symbol": "CHAMBLFERT",
+          "entryTs": "2025-08-04T00:00:00+05:30",
+          "entryPrice": 547.05,
+          "exitTs": "2025-07-31T00:00:00+05:30",
+          "exitPrice": 507.01,
+          "pnl": -4004,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2365425 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2365425 gates:"
+          }
+        },
+        {
+          "symbol": "CHAMBLFERT",
+          "entryTs": "2025-07-31T00:00:00+05:30",
+          "entryPrice": 568,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 532.7,
+          "pnl": -3530,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=3101873 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=3101873 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -41926,
+        "winRate": 0,
+        "maxDrawdown": 41926,
+        "trades": 12,
+        "avgReturn": -0.061245167395174153,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "EICHERMOT": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "BHARATFORG": {
+      "trades": [
+        {
+          "symbol": "BHARATFORG",
+          "entryTs": "2025-10-30T00:00:00+05:30",
+          "entryPrice": 1346.8,
+          "exitTs": "2025-10-29T00:00:00+05:30",
+          "exitPrice": 330.21,
+          "pnl": -101659,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2497274 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2497274 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -101659,
+        "winRate": 0,
+        "maxDrawdown": 101659,
+        "trades": 1,
+        "avgReturn": -0.7548188298188298,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "NHPC": {
+      "trades": [
+        {
+          "symbol": "NHPC",
+          "entryTs": "2025-10-30T00:00:00+05:30",
+          "entryPrice": 88.66,
+          "exitTs": "2025-10-29T00:00:00+05:30",
+          "exitPrice": 2963.43,
+          "pnl": 287477,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=3317422 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=3317422 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 287477,
+        "winRate": 100,
+        "maxDrawdown": 0,
+        "trades": 1,
+        "avgReturn": 32.424655989172116,
+        "profitFactor": null,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "LTIM": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "ATGL": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "GRANULES": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "JUBLFOOD": {
+      "trades": [
+        {
+          "symbol": "JUBLFOOD",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 652.2,
+          "exitTs": "2025-08-14T00:00:00+05:30",
+          "exitPrice": 657.83,
+          "pnl": 563,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1567197 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1567197 gates:"
+          }
+        },
+        {
+          "symbol": "JUBLFOOD",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 699.4,
+          "exitTs": "2025-07-31T00:00:00+05:30",
+          "exitPrice": 659.09,
+          "pnl": -4031,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1588351 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1588351 gates:"
+          }
+        },
+        {
+          "symbol": "JUBLFOOD",
+          "entryTs": "2025-07-31T00:00:00+05:30",
+          "entryPrice": 667.25,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 656.68,
+          "pnl": -1057,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2011639 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2011639 gates:"
+          }
+        },
+        {
+          "symbol": "JUBLFOOD",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 652.2,
+          "exitTs": "2025-08-14T00:00:00+05:30",
+          "exitPrice": 657.83,
+          "pnl": 563,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1567197 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1567197 gates:"
+          }
+        },
+        {
+          "symbol": "JUBLFOOD",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 699.4,
+          "exitTs": "2025-07-31T00:00:00+05:30",
+          "exitPrice": 659.09,
+          "pnl": -4031,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1588351 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1588351 gates:"
+          }
+        },
+        {
+          "symbol": "JUBLFOOD",
+          "entryTs": "2025-07-31T00:00:00+05:30",
+          "entryPrice": 667.25,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 656.68,
+          "pnl": -1057,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2011639 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2011639 gates:"
+          }
+        },
+        {
+          "symbol": "JUBLFOOD",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 652.2,
+          "exitTs": "2025-08-14T00:00:00+05:30",
+          "exitPrice": 657.83,
+          "pnl": 563,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1567197 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1567197 gates:"
+          }
+        },
+        {
+          "symbol": "JUBLFOOD",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 699.4,
+          "exitTs": "2025-07-31T00:00:00+05:30",
+          "exitPrice": 659.09,
+          "pnl": -4031,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1588351 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1588351 gates:"
+          }
+        },
+        {
+          "symbol": "JUBLFOOD",
+          "entryTs": "2025-07-31T00:00:00+05:30",
+          "entryPrice": 667.25,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 656.68,
+          "pnl": -1057,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2011639 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2011639 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -13575,
+        "winRate": 33.33,
+        "maxDrawdown": 14138,
+        "trades": 9,
+        "avgReturn": -0.021614644481038274,
+        "profitFactor": 0.11,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "ABFRL": {
+      "trades": [
+        {
+          "symbol": "ABFRL",
+          "entryTs": "2025-10-30T00:00:00+05:30",
+          "entryPrice": 85.92,
+          "exitTs": "2025-10-29T00:00:00+05:30",
+          "exitPrice": 1340.74,
+          "pnl": 125482,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=348103 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=348103 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 125482,
+        "winRate": 100,
+        "maxDrawdown": 0,
+        "trades": 1,
+        "avgReturn": 14.604515828677838,
+        "profitFactor": null,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "JIOFIN": {
+      "trades": [
+        {
+          "symbol": "JIOFIN",
+          "entryTs": "2025-08-07T00:00:00+05:30",
+          "entryPrice": 334.2,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 334.24,
+          "pnl": 4,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=13411698 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=13411698 gates:"
+          }
+        },
+        {
+          "symbol": "JIOFIN",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 341.55,
+          "exitTs": "2025-07-31T00:00:00+05:30",
+          "exitPrice": 324.97,
+          "pnl": -1658,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=13931120 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=13931120 gates:"
+          }
+        },
+        {
+          "symbol": "JIOFIN",
+          "entryTs": "2025-07-31T00:00:00+05:30",
+          "entryPrice": 333.2,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 325.88,
+          "pnl": -732,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=14440522 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=14440522 gates:"
+          }
+        },
+        {
+          "symbol": "JIOFIN",
+          "entryTs": "2025-07-29T00:00:00+05:30",
+          "entryPrice": 322.5,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 321.1,
+          "pnl": -140,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=17691541 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=17691541 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -2526,
+        "winRate": 25,
+        "maxDrawdown": 2530,
+        "trades": 4,
+        "avgReturn": -0.018683397260592868,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "PNB": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "INOXWIND": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "PNBHOUSING": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "ACC": {
+      "trades": [
+        {
+          "symbol": "ACC",
+          "entryTs": "2025-10-30T00:00:00+05:30",
+          "entryPrice": 1924.7,
+          "exitTs": "2025-10-29T00:00:00+05:30",
+          "exitPrice": 1447.13,
+          "pnl": -47757,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=348103 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=348103 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -47757,
+        "winRate": 0,
+        "maxDrawdown": 47757,
+        "trades": 1,
+        "avgReturn": -0.24812698082818097,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "FEDERALBNK": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "TATAMOTORS": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "ITC": {
+      "trades": [
+        {
+          "symbol": "ITC",
+          "entryTs": "2025-08-04T00:00:00+05:30",
+          "entryPrice": 427.6,
+          "exitTs": "2025-07-31T00:00:00+05:30",
+          "exitPrice": 408.66,
+          "pnl": -1894,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=17265518 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=17265518 gates:"
+          }
+        },
+        {
+          "symbol": "ITC",
+          "entryTs": "2025-07-31T00:00:00+05:30",
+          "entryPrice": 414.4,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 408.45,
+          "pnl": -595,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=17362232 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=17362232 gates:"
+          }
+        },
+        {
+          "symbol": "ITC",
+          "entryTs": "2025-08-04T00:00:00+05:30",
+          "entryPrice": 427.6,
+          "exitTs": "2025-07-31T00:00:00+05:30",
+          "exitPrice": 408.66,
+          "pnl": -1894,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=17265518 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=17265518 gates:"
+          }
+        },
+        {
+          "symbol": "ITC",
+          "entryTs": "2025-07-31T00:00:00+05:30",
+          "entryPrice": 414.4,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 408.45,
+          "pnl": -595,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=17362232 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=17362232 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -4978,
+        "winRate": 0,
+        "maxDrawdown": 4978,
+        "trades": 4,
+        "avgReturn": -0.029325920284175647,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "AARTIIND": {
+      "trades": [
+        {
+          "symbol": "AARTIIND",
+          "entryTs": "2025-08-13T00:00:00+05:30",
+          "entryPrice": 394.55,
+          "exitTs": "2025-08-12T00:00:00+05:30",
+          "exitPrice": 370.31,
+          "pnl": -2424,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=812718 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=812718 gates:"
+          }
+        },
+        {
+          "symbol": "AARTIIND",
+          "entryTs": "2025-08-04T00:00:00+05:30",
+          "entryPrice": 428.8,
+          "exitTs": "2025-08-01T00:00:00+05:30",
+          "exitPrice": 412.21,
+          "pnl": -1659,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1242511 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1242511 gates:"
+          }
+        },
+        {
+          "symbol": "AARTIIND",
+          "entryTs": "2025-08-01T00:00:00+05:30",
+          "entryPrice": 423.55,
+          "exitTs": "2025-07-31T00:00:00+05:30",
+          "exitPrice": 424.18,
+          "pnl": 63,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1383112 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1383112 gates:"
+          }
+        },
+        {
+          "symbol": "AARTIIND",
+          "entryTs": "2025-07-31T00:00:00+05:30",
+          "entryPrice": 466.35,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 439.08,
+          "pnl": -2727,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1794366 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1794366 gates:"
+          }
+        },
+        {
+          "symbol": "AARTIIND",
+          "entryTs": "2025-07-29T00:00:00+05:30",
+          "entryPrice": 444.65,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 442.1,
+          "pnl": -255,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1962599 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1962599 gates:"
+          }
+        },
+        {
+          "symbol": "AARTIIND",
+          "entryTs": "2025-08-13T00:00:00+05:30",
+          "entryPrice": 394.55,
+          "exitTs": "2025-08-12T00:00:00+05:30",
+          "exitPrice": 370.31,
+          "pnl": -2424,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=812718 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=812718 gates:"
+          }
+        },
+        {
+          "symbol": "AARTIIND",
+          "entryTs": "2025-08-04T00:00:00+05:30",
+          "entryPrice": 428.8,
+          "exitTs": "2025-08-01T00:00:00+05:30",
+          "exitPrice": 412.21,
+          "pnl": -1659,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1242511 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1242511 gates:"
+          }
+        },
+        {
+          "symbol": "AARTIIND",
+          "entryTs": "2025-08-01T00:00:00+05:30",
+          "entryPrice": 423.55,
+          "exitTs": "2025-07-31T00:00:00+05:30",
+          "exitPrice": 424.18,
+          "pnl": 63,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1383112 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1383112 gates:"
+          }
+        },
+        {
+          "symbol": "AARTIIND",
+          "entryTs": "2025-07-31T00:00:00+05:30",
+          "entryPrice": 466.35,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 439.08,
+          "pnl": -2727,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1794366 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1794366 gates:"
+          }
+        },
+        {
+          "symbol": "AARTIIND",
+          "entryTs": "2025-07-29T00:00:00+05:30",
+          "entryPrice": 444.65,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 442.1,
+          "pnl": -255,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1962599 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1962599 gates:"
+          }
+        },
+        {
+          "symbol": "AARTIIND",
+          "entryTs": "2025-08-13T00:00:00+05:30",
+          "entryPrice": 394.55,
+          "exitTs": "2025-08-12T00:00:00+05:30",
+          "exitPrice": 370.31,
+          "pnl": -2424,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=812718 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=812718 gates:"
+          }
+        },
+        {
+          "symbol": "AARTIIND",
+          "entryTs": "2025-08-04T00:00:00+05:30",
+          "entryPrice": 428.8,
+          "exitTs": "2025-08-01T00:00:00+05:30",
+          "exitPrice": 412.21,
+          "pnl": -1659,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1242511 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1242511 gates:"
+          }
+        },
+        {
+          "symbol": "AARTIIND",
+          "entryTs": "2025-08-01T00:00:00+05:30",
+          "entryPrice": 423.55,
+          "exitTs": "2025-07-31T00:00:00+05:30",
+          "exitPrice": 424.18,
+          "pnl": 63,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1383112 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1383112 gates:"
+          }
+        },
+        {
+          "symbol": "AARTIIND",
+          "entryTs": "2025-07-31T00:00:00+05:30",
+          "entryPrice": 466.35,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 439.08,
+          "pnl": -2727,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1794366 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1794366 gates:"
+          }
+        },
+        {
+          "symbol": "AARTIIND",
+          "entryTs": "2025-07-29T00:00:00+05:30",
+          "entryPrice": 444.65,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 442.1,
+          "pnl": -255,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1962599 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1962599 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -21006,
+        "winRate": 20,
+        "maxDrawdown": 21006,
+        "trades": 15,
+        "avgReturn": -0.032569851969092664,
+        "profitFactor": 0.01,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "ADANIPORTS": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "MGL": {
+      "trades": [
+        {
+          "symbol": "MGL",
+          "entryTs": "2025-08-11T00:00:00+05:30",
+          "entryPrice": 1358.3,
+          "exitTs": "2025-08-08T00:00:00+05:30",
+          "exitPrice": 1292.12,
+          "pnl": -6618,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=327042 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=327042 gates:"
+          }
+        },
+        {
+          "symbol": "MGL",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 1331.2,
+          "exitTs": "2025-07-31T00:00:00+05:30",
+          "exitPrice": 1374.56,
+          "pnl": 4336,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=352868 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=352868 gates:"
+          }
+        },
+        {
+          "symbol": "MGL",
+          "entryTs": "2025-07-31T00:00:00+05:30",
+          "entryPrice": 1445.9,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 1354.79,
+          "pnl": -9111,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=361152 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=361152 gates:"
+          }
+        },
+        {
+          "symbol": "MGL",
+          "entryTs": "2025-07-30T00:00:00+05:30",
+          "entryPrice": 1440.4,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 1389.1,
+          "pnl": -5130,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=373085 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=373085 gates:"
+          }
+        },
+        {
+          "symbol": "MGL",
+          "entryTs": "2025-08-11T00:00:00+05:30",
+          "entryPrice": 1358.3,
+          "exitTs": "2025-08-08T00:00:00+05:30",
+          "exitPrice": 1292.12,
+          "pnl": -6618,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=327042 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=327042 gates:"
+          }
+        },
+        {
+          "symbol": "MGL",
+          "entryTs": "2025-08-08T00:00:00+05:30",
+          "entryPrice": 1331.2,
+          "exitTs": "2025-07-31T00:00:00+05:30",
+          "exitPrice": 1374.56,
+          "pnl": 4336,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=352868 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=352868 gates:"
+          }
+        },
+        {
+          "symbol": "MGL",
+          "entryTs": "2025-07-31T00:00:00+05:30",
+          "entryPrice": 1445.9,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 1354.79,
+          "pnl": -9111,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=361152 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=361152 gates:"
+          }
+        },
+        {
+          "symbol": "MGL",
+          "entryTs": "2025-07-30T00:00:00+05:30",
+          "entryPrice": 1440.4,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 1389.1,
+          "pnl": -5130,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=373085 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=373085 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -33046,
+        "winRate": 25,
+        "maxDrawdown": 33046,
+        "trades": 8,
+        "avgReturn": -0.02869457901199979,
+        "profitFactor": 0.21,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "CESC": {
+      "trades": [
+        {
+          "symbol": "CESC",
+          "entryTs": "2025-07-30T00:00:00+05:30",
+          "entryPrice": 181.25,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 177.03,
+          "pnl": -422,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=4962648 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=4962648 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -422,
+        "winRate": 0,
+        "maxDrawdown": 422,
+        "trades": 1,
+        "avgReturn": -0.02328275862068965,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "CANBK": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "HINDCOPPER": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "VEDL": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "IDFCFIRSTB": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "IIFL": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "ABCAPITAL": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "TITAN": {
+      "trades": [
+        {
+          "symbol": "TITAN",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 3577.3,
+          "exitTs": "2025-08-14T00:00:00+05:30",
+          "exitPrice": 3476.19,
+          "pnl": -10111,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=733129 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=733129 gates:"
+          }
+        },
+        {
+          "symbol": "TITAN",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 3577.3,
+          "exitTs": "2025-08-14T00:00:00+05:30",
+          "exitPrice": 3476.19,
+          "pnl": -10111,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=733129 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=733129 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -20222,
+        "winRate": 0,
+        "maxDrawdown": 20222,
+        "trades": 2,
+        "avgReturn": -0.028264333435831526,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "CHOLAFIN": {
+      "trades": [
+        {
+          "symbol": "CHOLAFIN",
+          "entryTs": "2025-10-30T00:00:00+05:30",
+          "entryPrice": 1743.7,
+          "exitTs": "2025-10-29T00:00:00+05:30",
+          "exitPrice": 330.21,
+          "pnl": -141349,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2497274 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2497274 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -141349,
+        "winRate": 0,
+        "maxDrawdown": 141349,
+        "trades": 1,
+        "avgReturn": -0.8106268280094052,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "IRCTC": {
+      "trades": [
+        {
+          "symbol": "IRCTC",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 749.45,
+          "exitTs": "2025-08-06T00:00:00+05:30",
+          "exitPrice": 740.98,
+          "pnl": -847,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=867980 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=867980 gates:"
+          }
+        },
+        {
+          "symbol": "IRCTC",
+          "entryTs": "2025-08-06T00:00:00+05:30",
+          "entryPrice": 754.7,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 716.31,
+          "pnl": -3839,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=893473 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=893473 gates:"
+          }
+        },
+        {
+          "symbol": "IRCTC",
+          "entryTs": "2025-08-01T00:00:00+05:30",
+          "entryPrice": 734,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 736.21,
+          "pnl": 221,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=915751 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=915751 gates:"
+          }
+        },
+        {
+          "symbol": "IRCTC",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 749.45,
+          "exitTs": "2025-08-06T00:00:00+05:30",
+          "exitPrice": 740.98,
+          "pnl": -847,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=867980 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=867980 gates:"
+          }
+        },
+        {
+          "symbol": "IRCTC",
+          "entryTs": "2025-08-06T00:00:00+05:30",
+          "entryPrice": 754.7,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 716.31,
+          "pnl": -3839,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=893473 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=893473 gates:"
+          }
+        },
+        {
+          "symbol": "IRCTC",
+          "entryTs": "2025-08-01T00:00:00+05:30",
+          "entryPrice": 734,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 736.21,
+          "pnl": 221,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=915751 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=915751 gates:"
+          }
+        },
+        {
+          "symbol": "IRCTC",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 749.45,
+          "exitTs": "2025-08-06T00:00:00+05:30",
+          "exitPrice": 740.98,
+          "pnl": -847,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=867980 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=867980 gates:"
+          }
+        },
+        {
+          "symbol": "IRCTC",
+          "entryTs": "2025-08-06T00:00:00+05:30",
+          "entryPrice": 754.7,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 716.31,
+          "pnl": -3839,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=893473 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=893473 gates:"
+          }
+        },
+        {
+          "symbol": "IRCTC",
+          "entryTs": "2025-08-01T00:00:00+05:30",
+          "entryPrice": 734,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 736.21,
+          "pnl": 221,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=915751 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=915751 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -13395,
+        "winRate": 33.33,
+        "maxDrawdown": 13616,
+        "trades": 9,
+        "avgReturn": -0.019719538844645838,
+        "profitFactor": 0.05,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "HCLTECH": {
+      "trades": [
+        {
+          "symbol": "HCLTECH",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 1531.4,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 1448.9,
+          "pnl": -8250,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=3826304 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=3826304 gates:"
+          }
+        },
+        {
+          "symbol": "HCLTECH",
+          "entryTs": "2025-07-29T00:00:00+05:30",
+          "entryPrice": 1482.6,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 1472.4,
+          "pnl": -1020,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=3819579 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=3819579 gates:"
+          }
+        },
+        {
+          "symbol": "HCLTECH",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 1531.4,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 1448.9,
+          "pnl": -8250,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=3826304 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=3826304 gates:"
+          }
+        },
+        {
+          "symbol": "HCLTECH",
+          "entryTs": "2025-07-29T00:00:00+05:30",
+          "entryPrice": 1482.6,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 1472.4,
+          "pnl": -1020,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=3819579 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=3819579 gates:"
+          }
+        },
+        {
+          "symbol": "HCLTECH",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 1531.4,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 1448.9,
+          "pnl": -8250,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=3826304 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=3826304 gates:"
+          }
+        },
+        {
+          "symbol": "HCLTECH",
+          "entryTs": "2025-07-29T00:00:00+05:30",
+          "entryPrice": 1482.6,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 1472.4,
+          "pnl": -1020,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=3819579 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=3819579 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -27810,
+        "winRate": 0,
+        "maxDrawdown": 27810,
+        "trades": 6,
+        "avgReturn": -0.030376039741555727,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "SBIN": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "IGL": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "DLF": {
+      "trades": [
+        {
+          "symbol": "DLF",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 784.85,
+          "exitTs": "2025-08-11T00:00:00+05:30",
+          "exitPrice": 746.02,
+          "pnl": -3883,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2466516 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2466516 gates:"
+          }
+        },
+        {
+          "symbol": "DLF",
+          "entryTs": "2025-08-11T00:00:00+05:30",
+          "entryPrice": 773.6,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 783.68,
+          "pnl": 1008,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2395369 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2395369 gates:"
+          }
+        },
+        {
+          "symbol": "DLF",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 823.7,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 785,
+          "pnl": -3870,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2583446 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2583446 gates:"
+          }
+        },
+        {
+          "symbol": "DLF",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 784.85,
+          "exitTs": "2025-08-11T00:00:00+05:30",
+          "exitPrice": 746.02,
+          "pnl": -3883,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2466516 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2466516 gates:"
+          }
+        },
+        {
+          "symbol": "DLF",
+          "entryTs": "2025-08-11T00:00:00+05:30",
+          "entryPrice": 773.6,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 783.68,
+          "pnl": 1008,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2395369 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2395369 gates:"
+          }
+        },
+        {
+          "symbol": "DLF",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 823.7,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 785,
+          "pnl": -3870,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2583446 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2583446 gates:"
+          }
+        },
+        {
+          "symbol": "DLF",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 784.85,
+          "exitTs": "2025-08-11T00:00:00+05:30",
+          "exitPrice": 746.02,
+          "pnl": -3883,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2466516 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2466516 gates:"
+          }
+        },
+        {
+          "symbol": "DLF",
+          "entryTs": "2025-08-11T00:00:00+05:30",
+          "entryPrice": 773.6,
+          "exitTs": "2025-08-05T00:00:00+05:30",
+          "exitPrice": 783.68,
+          "pnl": 1008,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2395369 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2395369 gates:"
+          }
+        },
+        {
+          "symbol": "DLF",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 823.7,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 785,
+          "pnl": -3870,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2583446 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2583446 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -20235,
+        "winRate": 33.33,
+        "maxDrawdown": 20235,
+        "trades": 9,
+        "avgReturn": -0.027809185709811717,
+        "profitFactor": 0.13,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "WIPRO": {
+      "trades": [
+        {
+          "symbol": "WIPRO",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 249.12,
+          "exitTs": "2025-08-11T00:00:00+05:30",
+          "exitPrice": 239.87,
+          "pnl": -925,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=10286587 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=10286587 gates:"
+          }
+        },
+        {
+          "symbol": "WIPRO",
+          "entryTs": "2025-07-29T00:00:00+05:30",
+          "entryPrice": 254.65,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 251.8,
+          "pnl": -285,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=10341798 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=10341798 gates:"
+          }
+        },
+        {
+          "symbol": "WIPRO",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 249.12,
+          "exitTs": "2025-08-11T00:00:00+05:30",
+          "exitPrice": 239.87,
+          "pnl": -925,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=10286587 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=10286587 gates:"
+          }
+        },
+        {
+          "symbol": "WIPRO",
+          "entryTs": "2025-07-29T00:00:00+05:30",
+          "entryPrice": 254.65,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 251.8,
+          "pnl": -285,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=10341798 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=10341798 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -2420,
+        "winRate": 0,
+        "maxDrawdown": 2420,
+        "trades": 4,
+        "avgReturn": -0.02416126599519962,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "NATIONALUM": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "PERSISTENT": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "OFSS": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "SIEMENS": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "IREDA": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "TORNTPOWER": {
+      "trades": [
+        {
+          "symbol": "TORNTPOWER",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 1323.4,
+          "exitTs": "2025-08-18T00:00:00+05:30",
+          "exitPrice": 1343.61,
+          "pnl": 2021,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=768932 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=768932 gates:"
+          }
+        },
+        {
+          "symbol": "TORNTPOWER",
+          "entryTs": "2025-08-06T00:00:00+05:30",
+          "entryPrice": 1356,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 1324.9,
+          "pnl": -3110,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=835568 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=835568 gates:"
+          }
+        },
+        {
+          "symbol": "TORNTPOWER",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 1323.4,
+          "exitTs": "2025-08-18T00:00:00+05:30",
+          "exitPrice": 1343.61,
+          "pnl": 2021,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=768932 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=768932 gates:"
+          }
+        },
+        {
+          "symbol": "TORNTPOWER",
+          "entryTs": "2025-08-06T00:00:00+05:30",
+          "entryPrice": 1356,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 1324.9,
+          "pnl": -3110,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=835568 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=835568 gates:"
+          }
+        },
+        {
+          "symbol": "TORNTPOWER",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 1323.4,
+          "exitTs": "2025-08-18T00:00:00+05:30",
+          "exitPrice": 1343.61,
+          "pnl": 2021,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=768932 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=768932 gates:"
+          }
+        },
+        {
+          "symbol": "TORNTPOWER",
+          "entryTs": "2025-08-06T00:00:00+05:30",
+          "entryPrice": 1356,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 1324.9,
+          "pnl": -3110,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=835568 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=835568 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -3267,
+        "winRate": 50,
+        "maxDrawdown": 5288,
+        "trades": 6,
+        "avgReturn": -0.0038319161380604475,
+        "profitFactor": 0.65,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "RELIANCE": {
+      "trades": [
+        {
+          "symbol": "RELIANCE",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 1421.9,
+          "exitTs": "2025-08-18T00:00:00+05:30",
+          "exitPrice": 1393.92,
+          "pnl": -2798,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=11722711 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=11722711 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -2798,
+        "winRate": 0,
+        "maxDrawdown": 2798,
+        "trades": 1,
+        "avgReturn": -0.01967789577326114,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "UNIONBANK": {
+      "trades": [
+        {
+          "symbol": "UNIONBANK",
+          "entryTs": "2025-10-30T00:00:00+05:30",
+          "entryPrice": 156.4,
+          "exitTs": "2025-10-29T00:00:00+05:30",
+          "exitPrice": 309.65,
+          "pnl": 15325,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2497274 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2497274 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 15325,
+        "winRate": 100,
+        "maxDrawdown": 0,
+        "trades": 1,
+        "avgReturn": 0.979859335038363,
+        "profitFactor": null,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "ADANIGREEN": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "BHARTIARTL": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "BAJAJFINSV": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "ADANIENSOL": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "TECHM": {
+      "trades": [
+        {
+          "symbol": "TECHM",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 1507.2,
+          "exitTs": "2025-08-07T00:00:00+05:30",
+          "exitPrice": 1453.46,
+          "pnl": -5374,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1695356 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1695356 gates:"
+          }
+        },
+        {
+          "symbol": "TECHM",
+          "entryTs": "2025-08-07T00:00:00+05:30",
+          "entryPrice": 1497,
+          "exitTs": "2025-08-06T00:00:00+05:30",
+          "exitPrice": 1465.88,
+          "pnl": -3112,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1923854 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1923854 gates:"
+          }
+        },
+        {
+          "symbol": "TECHM",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 1496.7,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 1443.78,
+          "pnl": -5292,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1934884 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1934884 gates:"
+          }
+        },
+        {
+          "symbol": "TECHM",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 1507.2,
+          "exitTs": "2025-08-07T00:00:00+05:30",
+          "exitPrice": 1453.46,
+          "pnl": -5374,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1695356 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1695356 gates:"
+          }
+        },
+        {
+          "symbol": "TECHM",
+          "entryTs": "2025-08-07T00:00:00+05:30",
+          "entryPrice": 1497,
+          "exitTs": "2025-08-06T00:00:00+05:30",
+          "exitPrice": 1465.88,
+          "pnl": -3112,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1923854 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1923854 gates:"
+          }
+        },
+        {
+          "symbol": "TECHM",
+          "entryTs": "2025-08-05T00:00:00+05:30",
+          "entryPrice": 1496.7,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 1443.78,
+          "pnl": -5292,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1934884 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1934884 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -27556,
+        "winRate": 0,
+        "maxDrawdown": 27556,
+        "trades": 6,
+        "avgReturn": -0.03060051681817123,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "ICICIGI": {
+      "trades": [
+        {
+          "symbol": "ICICIGI",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 2006,
+          "exitTs": "2025-08-12T00:00:00+05:30",
+          "exitPrice": 1889.37,
+          "pnl": -11663,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=686097 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=686097 gates:"
+          }
+        },
+        {
+          "symbol": "ICICIGI",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 2006,
+          "exitTs": "2025-08-12T00:00:00+05:30",
+          "exitPrice": 1889.37,
+          "pnl": -11663,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=686097 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=686097 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -23326,
+        "winRate": 0,
+        "maxDrawdown": 23326,
+        "trades": 2,
+        "avgReturn": -0.05814057826520444,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "TCS": {
+      "trades": [
+        {
+          "symbol": "TCS",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 3070.8,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 3056,
+          "pnl": -1480,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=3209675 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=3209675 gates:"
+          }
+        },
+        {
+          "symbol": "TCS",
+          "entryTs": "2025-08-14T00:00:00+05:30",
+          "entryPrice": 3070.8,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 3056,
+          "pnl": -1480,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=3209675 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=3209675 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -2960,
+        "winRate": 0,
+        "maxDrawdown": 2960,
+        "trades": 2,
+        "avgReturn": -0.004819590986062323,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "TATACOMM": {
+      "trades": [
+        {
+          "symbol": "TATACOMM",
+          "entryTs": "2025-10-30T00:00:00+05:30",
+          "entryPrice": 1967.9,
+          "exitTs": "2025-10-29T00:00:00+05:30",
+          "exitPrice": 2963.43,
+          "pnl": 99553,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=3317422 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=3317422 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 99553,
+        "winRate": 100,
+        "maxDrawdown": 0,
+        "trades": 1,
+        "avgReturn": 0.5058844453478326,
+        "profitFactor": null,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "GODREJPROP": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "HFCL": {
+      "trades": [
+        {
+          "symbol": "HFCL",
+          "entryTs": "2025-07-31T00:00:00+05:30",
+          "entryPrice": 78.11,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 78.67,
+          "pnl": 56,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=9946258 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=9946258 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 56,
+        "winRate": 100,
+        "maxDrawdown": 0,
+        "trades": 1,
+        "avgReturn": 0.007169376520291925,
+        "profitFactor": null,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "CDSL": {
+      "trades": [
+        {
+          "symbol": "CDSL",
+          "entryTs": "2025-08-11T00:00:00+05:30",
+          "entryPrice": 1609.9,
+          "exitTs": "2025-08-04T00:00:00+05:30",
+          "exitPrice": 1513.26,
+          "pnl": -9664,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2180377 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2180377 gates:"
+          }
+        },
+        {
+          "symbol": "CDSL",
+          "entryTs": "2025-08-04T00:00:00+05:30",
+          "entryPrice": 1582.4,
+          "exitTs": "2025-08-01T00:00:00+05:30",
+          "exitPrice": 1514.75,
+          "pnl": -6765,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2466292 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2466292 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -16429,
+        "winRate": 0,
+        "maxDrawdown": 16429,
+        "trades": 2,
+        "avgReturn": -0.051390044943411685,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "ABB": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "INFY": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "PETRONET": {
+      "trades": [
+        {
+          "symbol": "PETRONET",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 285.25,
+          "exitTs": "2025-08-18T00:00:00+05:30",
+          "exitPrice": 275.76,
+          "pnl": -949,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1991553 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1991553 gates:"
+          }
+        },
+        {
+          "symbol": "PETRONET",
+          "entryTs": "2025-07-29T00:00:00+05:30",
+          "entryPrice": 309.85,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 292.85,
+          "pnl": -1700,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=2016504 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=2016504 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -2649,
+        "winRate": 0,
+        "maxDrawdown": 2649,
+        "trades": 2,
+        "avgReturn": -0.044067159804360975,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "TATAELXSI": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "POLICYBZR": {
+      "trades": [
+        {
+          "symbol": "POLICYBZR",
+          "entryTs": "2025-08-18T00:00:00+05:30",
+          "entryPrice": 1953.7,
+          "exitTs": "2025-08-11T00:00:00+05:30",
+          "exitPrice": 1791.5,
+          "pnl": -16220,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1237936 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1237936 gates:"
+          }
+        },
+        {
+          "symbol": "POLICYBZR",
+          "entryTs": "2025-08-11T00:00:00+05:30",
+          "entryPrice": 1879.9,
+          "exitTs": "2025-08-08T00:00:00+05:30",
+          "exitPrice": 1779.93,
+          "pnl": -9997,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1287763 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1287763 gates:"
+          }
+        },
+        {
+          "symbol": "POLICYBZR",
+          "entryTs": "2025-08-01T00:00:00+05:30",
+          "entryPrice": 1881.7,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 1790.1,
+          "pnl": -9160,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1363973 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1363973 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -35377,
+        "winRate": 0,
+        "maxDrawdown": 35377,
+        "trades": 3,
+        "avgReturn": -0.06162656818282026,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "IEX": {
+      "trades": [
+        {
+          "symbol": "IEX",
+          "entryTs": "2025-08-19T00:00:00+05:30",
+          "entryPrice": 144.1,
+          "exitTs": "2025-08-12T00:00:00+05:30",
+          "exitPrice": 137.24,
+          "pnl": -686,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=6448428 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=6448428 gates:"
+          }
+        },
+        {
+          "symbol": "IEX",
+          "entryTs": "2025-08-12T00:00:00+05:30",
+          "entryPrice": 140.6,
+          "exitTs": "2025-08-11T00:00:00+05:30",
+          "exitPrice": 136.68,
+          "pnl": -392,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=6619870 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=6619870 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -1078,
+        "winRate": 0,
+        "maxDrawdown": 1078,
+        "trades": 2,
+        "avgReturn": -0.03774317068812841,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "MOTHERSON": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "LICI": {
+      "trades": [
+        {
+          "symbol": "LICI",
+          "entryTs": "2025-08-12T00:00:00+05:30",
+          "entryPrice": 929.1,
+          "exitTs": "2025-08-11T00:00:00+05:30",
+          "exitPrice": 895.85,
+          "pnl": -3325,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1188549 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1188549 gates:"
+          }
+        },
+        {
+          "symbol": "LICI",
+          "entryTs": "2025-08-11T00:00:00+05:30",
+          "entryPrice": 938.7,
+          "exitTs": "2025-08-07T00:00:00+05:30",
+          "exitPrice": 885.27,
+          "pnl": -5343,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1235012 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1235012 gates:"
+          }
+        },
+        {
+          "symbol": "LICI",
+          "entryTs": "2025-08-07T00:00:00+05:30",
+          "entryPrice": 917.2,
+          "exitTs": "2025-08-06T00:00:00+05:30",
+          "exitPrice": 891.78,
+          "pnl": -2542,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[25..80] vol>=1471938 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[25..80] vol>=1471938 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -11210,
+        "winRate": 0,
+        "maxDrawdown": 11210,
+        "trades": 3,
+        "avgReturn": -0.04014041622843973,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -17816
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -23202
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -17816
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -23202
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "HAVELLS",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -6990
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "NUVAMA",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -7080
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "NUVAMA",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -28448
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "ULTRACEMCO",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -46466
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "ULTRACEMCO",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -50430
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "ULTRACEMCO",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -43059
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "NTPC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1100
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "NTPC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1100
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "PIDILITIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3958
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "PIDILITIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -4362
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "PIDILITIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -5469
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "PIDILITIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3958
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "PIDILITIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -4362
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "PIDILITIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -5469
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "UNOMINDA",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -90599
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "MFSL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -9407
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "MFSL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -8786
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "MFSL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -9407
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "MFSL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -8786
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "MFSL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -9407
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "MFSL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -8786
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "MFSL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -9407
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "MFSL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -8786
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CONCOR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -165
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CONCOR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -978
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CONCOR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2609
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CONCOR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -524
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CONCOR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3810
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CONCOR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -165
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CONCOR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -978
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CONCOR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2609
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CONCOR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -524
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CONCOR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3810
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CONCOR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -165
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CONCOR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -978
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CONCOR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2609
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CONCOR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -524
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CONCOR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3810
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "BDL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -12383
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "BDL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -10610
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "BDL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -146320
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "BDL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -12383
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "BDL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -10610
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "KFINTECH",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -12158
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "BANDHANBNK",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -819
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "BANDHANBNK",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -601
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "TRENT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -31554
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "TRENT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -23994
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "TRENT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -31971
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "TRENT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -17560
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IRFC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -51
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IRFC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -138
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IRFC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -261
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IRFC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -51
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IRFC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -138
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IRFC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -261
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IRFC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -51
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IRFC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -138
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IRFC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -261
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IRFC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -51
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IRFC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -138
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IRFC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -261
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "INDUSINDBK",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3470
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "INDUSINDBK",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -6192
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "INDUSINDBK",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2065
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "INDUSINDBK",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3470
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "INDUSINDBK",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -6192
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "INDUSINDBK",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2065
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "INDUSINDBK",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3470
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "INDUSINDBK",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -6192
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "INDUSINDBK",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2065
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "NCC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1248
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "NCC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1215
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "NCC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1425
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SJVN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -714
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SJVN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -457
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SJVN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -714
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SJVN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -457
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SJVN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -714
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SJVN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -457
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SOLARINDS",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -62056
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SOLARINDS",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -78205
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SOLARINDS",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -48718
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SOLARINDS",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -87144
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SOLARINDS",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -76639
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SOLARINDS",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -81255
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SOLARINDS",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -23130
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SOLARINDS",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -14600
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DIVISLAB",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -637329
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "GAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -346
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "GAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -346
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "GAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -346
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CHAMBLFERT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2957
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CHAMBLFERT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3819
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CHAMBLFERT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -4374
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CHAMBLFERT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2279
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CHAMBLFERT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -4004
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CHAMBLFERT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3530
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CHAMBLFERT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2957
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CHAMBLFERT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3819
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CHAMBLFERT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -4374
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CHAMBLFERT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2279
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CHAMBLFERT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -4004
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CHAMBLFERT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3530
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "BHARATFORG",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -101659
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "JUBLFOOD",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -4031
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "JUBLFOOD",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1057
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "JUBLFOOD",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -4031
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "JUBLFOOD",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1057
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "JUBLFOOD",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -4031
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "JUBLFOOD",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1057
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "JIOFIN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1658
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "JIOFIN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -732
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "JIOFIN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -140
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "ACC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -47757
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "ITC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1894
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "ITC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -595
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "ITC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1894
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "ITC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -595
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "AARTIIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2424
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "AARTIIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1659
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "AARTIIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2727
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "AARTIIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -255
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "AARTIIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2424
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "AARTIIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1659
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "AARTIIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2727
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "AARTIIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -255
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "AARTIIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2424
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "AARTIIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1659
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "AARTIIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2727
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "AARTIIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -255
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "MGL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -6618
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "MGL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -9111
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "MGL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -5130
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "MGL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -6618
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "MGL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -9111
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "MGL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -5130
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CESC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -422
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "TITAN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -10111
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "TITAN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -10111
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CHOLAFIN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -141349
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IRCTC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -847
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IRCTC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3839
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IRCTC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -847
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IRCTC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3839
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IRCTC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -847
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IRCTC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3839
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "HCLTECH",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -8250
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "HCLTECH",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1020
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "HCLTECH",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -8250
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "HCLTECH",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1020
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "HCLTECH",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -8250
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "HCLTECH",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1020
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DLF",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3883
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DLF",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3870
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DLF",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3883
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DLF",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3870
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DLF",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3883
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DLF",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3870
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "WIPRO",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -925
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "WIPRO",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -285
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "WIPRO",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -925
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "WIPRO",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -285
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "TORNTPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3110
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "TORNTPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3110
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "TORNTPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3110
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "RELIANCE",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2798
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "TECHM",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -5374
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "TECHM",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3112
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "TECHM",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -5292
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "TECHM",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -5374
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "TECHM",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3112
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "TECHM",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -5292
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "ICICIGI",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -11663
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "ICICIGI",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -11663
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "TCS",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1480
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "TCS",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1480
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CDSL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -9664
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CDSL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -6765
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "PETRONET",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -949
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "PETRONET",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1700
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "POLICYBZR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -16220
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "POLICYBZR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -9997
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "POLICYBZR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -9160
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IEX",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -686
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "IEX",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -392
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "LICI",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3325
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "LICI",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -5343
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "LICI",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2542
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-08T03:55:11.046Z",
+  "completedAt": "2025-11-08T03:55:11.046Z",
+  "error": null,
+  "insightsStatus": "done"
+}

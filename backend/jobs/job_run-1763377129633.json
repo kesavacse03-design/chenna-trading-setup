@@ -1,0 +1,110 @@
+{
+  "runId": "run-1763377129633",
+  "summary": {
+    "runId": "run-1763377129633",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -803,
+    "avgReturn": -0.004618658690900709,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 803,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-10-01",
+    "to": "2025-10-15",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "N": 1,
+      "volumeFactor": 0.5,
+      "atrStop": 0.4,
+      "targetR": 0.8,
+      "qty": 100,
+      "minRisk": 0.05,
+      "permissive": true
+    },
+    "swing10": {
+      "successWithin10Days": 0,
+      "failWithin10Days": 1,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 0
+    },
+    "equityCurve": [
+      -803
+    ]
+  },
+  "perSymbol": {
+    "CGPOWER": {
+      "trades": [
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2025-10-02T14:45:00.000Z",
+          "entryPrice": 1738.6,
+          "exitTs": "2025-10-02T18:45:00.000Z",
+          "exitPrice": 1730.57,
+          "pnl": -803,
+          "direction": "LONG",
+          "reason": "breakout N=1 hh=1731.51 vol>=2378 patterns=none adxOk=true squeezeOk=true",
+          "trace": {
+            "reason": "breakout N=1 hh=1731.51 vol>=2378 patterns=none adxOk=true squeezeOk=true"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -803,
+        "winRate": 0,
+        "maxDrawdown": 803,
+        "trades": 1,
+        "avgReturn": -0.004618658690900709,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 1
+      }
+    },
+    "DMART": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -803
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-17T10:58:49.732Z",
+  "completedAt": "2025-11-17T10:58:49.732Z",
+  "error": null,
+  "accuracy": 0,
+  "winRate": 0,
+  "expectancy": -0.004618658690900709,
+  "totalPnL": -803,
+  "maxDrawdown": 803,
+  "trades": [
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2025-10-02T14:45:00.000Z",
+      "entryPrice": 1738.6,
+      "exitTs": "2025-10-02T18:45:00.000Z",
+      "exitPrice": 1730.57,
+      "pnl": -803
+    }
+  ],
+  "insightsStatus": "done"
+}

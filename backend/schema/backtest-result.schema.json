@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BacktestResult",
+  "type": "object",
+  "required": ["runId","status","summary","perSymbol","insights","createdAt","completedAt","error"],
+  "properties": {
+    "runId": { "type": "string" },
+    "status": { "type": "string", "enum": ["queued","processing","done","failed"] },
+    "summary": {
+      "type": "object",
+      "required": ["totalPnL","winRate","tradesCount","avgReturn","maxDrawdown"],
+      "properties": {
+        "totalPnL": { "type": "number" },
+        "winRate": { "type": "number" },
+        "tradesCount": { "type": "number" },
+        "avgReturn": { "type": "number" },
+        "maxDrawdown": { "type": "number" }
+      },
+      "additionalProperties": true
+    },
+    "perSymbol": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["metrics","trades"],
+        "properties": {
+          "metrics": {
+            "type": "object",
+            "required": ["netPnl","wins","losses"],
+            "properties": {
+              "netPnl": { "type": "number" },
+              "wins": { "type": "number" },
+              "losses": { "type": "number" }
+            },
+            "additionalProperties": true
+          },
+          "trades": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["symbol","entryTs","entryPrice","exitTs","exitPrice","pnl"],
+              "properties": {
+                "symbol": { "type": "string" },
+                "entryTs": { "type": "string", "format": "date-time" },
+                "entryPrice": { "type": "number" },
+                "exitTs": { "type": ["string","null"], "format": "date-time" },
+                "exitPrice": { "type": ["number","null"] },
+                "pnl": { "type": "number" }
+              },
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "insights": { "type": "array" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "completedAt": { "oneOf": [ { "type": "string", "format": "date-time" }, { "type": "null" } ] },
+    "error": { "oneOf": [ { "type": "string" }, { "type": "null" } ] }
+  },
+  "additionalProperties": true
+}

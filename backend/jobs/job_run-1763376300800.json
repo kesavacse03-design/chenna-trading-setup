@@ -1,0 +1,92 @@
+{
+  "runId": "run-1763376300800",
+  "summary": {
+    "runId": "run-1763376300800",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -550,
+    "avgReturn": -0.0031634648567813186,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 550,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-10-01",
+    "to": "2025-10-15",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null,
+    "swing10": {
+      "successWithin10Days": 0,
+      "failWithin10Days": 1,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 0
+    },
+    "equityCurve": [
+      -550
+    ]
+  },
+  "perSymbol": {
+    "CGPOWER": {
+      "trades": [
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2025-10-02T14:45:00.000Z",
+          "entryPrice": 1738.6,
+          "exitTs": "2025-10-02T16:45:00.000Z",
+          "exitPrice": 1733.1,
+          "pnl": -550,
+          "direction": "LONG",
+          "reason": "breakout N=1 hh=1731.51 vol>=2378 patterns=none adxOk=true squeezeOk=true",
+          "trace": {
+            "reason": "breakout N=1 hh=1731.51 vol>=2378 patterns=none adxOk=true squeezeOk=true"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -550,
+        "winRate": 0,
+        "maxDrawdown": 550,
+        "trades": 1,
+        "avgReturn": -0.0031634648567813186,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 1
+      }
+    },
+    "DMART": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [],
+  "status": "done",
+  "createdAt": "2025-11-17T10:45:00.978Z",
+  "completedAt": "2025-11-17T10:45:00.978Z",
+  "error": null,
+  "accuracy": 0,
+  "winRate": 0,
+  "expectancy": -0.0031634648567813186,
+  "totalPnL": -550,
+  "maxDrawdown": 550,
+  "trades": [
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2025-10-02T14:45:00.000Z",
+      "entryPrice": 1738.6,
+      "exitTs": "2025-10-02T16:45:00.000Z",
+      "exitPrice": 1733.1,
+      "pnl": -550
+    }
+  ],
+  "insightsStatus": "pending"
+}

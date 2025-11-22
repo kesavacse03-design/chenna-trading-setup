@@ -1,0 +1,98 @@
+{
+  "runId": "run-1763299797684",
+  "summary": {
+    "runId": "run-1763299797684",
+    "totalTrades": 0,
+    "tradesCount": 0,
+    "totalPnL": 0,
+    "avgReturn": 0,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 0,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-11-01",
+    "to": "2025-11-15",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "kind": "composite",
+      "ema_short": 5,
+      "ema_long": 50,
+      "rsi_period": 14,
+      "rsi_min": 20,
+      "rsi_max": 80,
+      "atr_mult": 1.2,
+      "volumeFactor": 1,
+      "targetR": 1.2,
+      "qty": 100,
+      "usePatterns": {
+        "engulfing": false,
+        "hammer": false,
+        "doji": false
+      },
+      "enableVWAP": false,
+      "adx_min": 0,
+      "adx_period": 14,
+      "regime": "none",
+      "bb_period": 20,
+      "bb_k": 2,
+      "bb_width": 0.03,
+      "stoch_mode": "none",
+      "stoch_k": 14,
+      "stoch_d": 3,
+      "stoch_kMin": 0,
+      "stoch_kMax": 100,
+      "enableSupertrend": false,
+      "supertrend_period": 10,
+      "supertrend_mult": 3
+    },
+    "swing10": {
+      "successWithin10Days": 0,
+      "failWithin10Days": 0,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 0
+    },
+    "equityCurve": []
+  },
+  "perSymbol": {
+    "MOCK_A": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "MOCK_B": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [],
+  "status": "done",
+  "createdAt": "2025-11-16T13:29:57.957Z",
+  "completedAt": "2025-11-16T13:29:57.958Z",
+  "error": null,
+  "accuracy": 0,
+  "winRate": 0,
+  "expectancy": 0,
+  "totalPnL": 0,
+  "maxDrawdown": 0,
+  "trades": [],
+  "insightsStatus": "done"
+}

@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532023012",
+  "summary": {
+    "runId": "run-1762532023012",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -694,
+    "avgReturn": -0.002530611649565003,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 694,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-09",
+    "to": "2025-07-29",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "COLPAL": {
+      "trades": [
+        {
+          "symbol": "COLPAL",
+          "entryTs": "2025-07-09T13:45:00.000Z",
+          "entryPrice": 2742.42,
+          "exitTs": "2025-07-09T14:45:00.000Z",
+          "exitPrice": 2735.48,
+          "pnl": -694,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2737.23 vol>=1415",
+          "trace": {
+            "reason": "breakout N=1 close>=2737.23 vol>=1415"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -694,
+        "winRate": 0,
+        "maxDrawdown": 694,
+        "trades": 1,
+        "avgReturn": -0.002530611649565003,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "COLPAL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -694
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:13:43.017Z",
+  "completedAt": "2025-11-07T16:13:43.017Z",
+  "error": null,
+  "insightsStatus": "done"
+}

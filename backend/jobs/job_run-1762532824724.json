@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532824724",
+  "summary": {
+    "runId": "run-1762532824724",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -21850,
+    "avgReturn": -0.017630920681029612,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 21850,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-10-08",
+    "to": "2025-10-28",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "ULTRACEMCO": {
+      "trades": [
+        {
+          "symbol": "ULTRACEMCO",
+          "entryTs": "2025-10-10T00:00:00+05:30",
+          "entryPrice": 12393,
+          "exitTs": "2025-10-09T00:00:00+05:30",
+          "exitPrice": 12174.5,
+          "pnl": -21850,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=12249.00 vol>=99232",
+          "trace": {
+            "reason": "breakout N=1 close>=12249.00 vol>=99232"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -21850,
+        "winRate": 0,
+        "maxDrawdown": 21850,
+        "trades": 1,
+        "avgReturn": -0.017630920681029612,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "ULTRACEMCO",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -21850
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:27:04.727Z",
+  "completedAt": "2025-11-07T16:27:04.727Z",
+  "error": null,
+  "insightsStatus": "done"
+}

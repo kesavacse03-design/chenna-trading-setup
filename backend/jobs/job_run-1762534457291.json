@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762534457291",
+  "summary": {
+    "runId": "run-1762534457291",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -3525,
+    "avgReturn": -0.04164943581260708,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 3525,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "ADANIENSOL": {
+      "trades": [
+        {
+          "symbol": "ADANIENSOL",
+          "entryTs": "2025-07-30T00:00:00+05:30",
+          "entryPrice": 846.35,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 811.1,
+          "pnl": -3525,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=821.45 vol>=219467",
+          "trace": {
+            "reason": "breakout N=1 close>=821.45 vol>=219467"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -3525,
+        "winRate": 0,
+        "maxDrawdown": 3525,
+        "trades": 1,
+        "avgReturn": -0.04164943581260708,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "ADANIENSOL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3525
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:54:17.295Z",
+  "completedAt": "2025-11-07T16:54:17.295Z",
+  "error": null,
+  "insightsStatus": "done"
+}

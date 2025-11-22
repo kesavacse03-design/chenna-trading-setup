@@ -1,0 +1,125 @@
+{
+  "runId": "run-1762352837502",
+  "summary": {
+    "runId": "run-1762352837502",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -939,
+    "avgReturn": 0.0016093455156847478,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 939,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2015-01-01",
+    "to": "2025-10-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "ema_short": 13,
+      "ema_long": 50,
+      "rsi_period": 7,
+      "atr_mult": 1,
+      "bb_dev": 2,
+      "macd_fast": 12,
+      "supertrend_mult": 3
+    }
+  },
+  "perSymbol": {
+    "CGPOWER": {
+      "trades": [
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2016-09-30T06:45:00.000Z",
+          "entryPrice": -5834.67,
+          "exitTs": "2016-09-30T09:45:00.000Z",
+          "exitPrice": -5844.06,
+          "pnl": -939,
+          "direction": "LONG",
+          "reason": "breakout N=20 close>=-5837.38 vol>=8753",
+          "trace": {
+            "reason": "breakout N=20 close>=-5837.38 vol>=8753"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "DALBHARAT": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "DMART": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "HAL": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "EXIDEIND": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -939
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-05T14:27:19.013Z",
+  "completedAt": "2025-11-05T14:27:19.013Z",
+  "error": null,
+  "insightsStatus": "done"
+}

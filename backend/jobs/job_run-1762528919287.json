@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762528919287",
+  "summary": {
+    "runId": "run-1762528919287",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -744,
+    "avgReturn": -0.003652716953712529,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 744,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-09",
+    "to": "2025-07-29",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "BHEL": {
+      "trades": [
+        {
+          "symbol": "BHEL",
+          "entryTs": "2025-07-09T09:45:00.000Z",
+          "entryPrice": 2036.84,
+          "exitTs": "2025-07-09T10:45:00.000Z",
+          "exitPrice": 2029.4,
+          "pnl": -744,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2030.71 vol>=521",
+          "trace": {
+            "reason": "breakout N=1 close>=2030.71 vol>=521"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -744,
+        "winRate": 0,
+        "maxDrawdown": 744,
+        "trades": 1,
+        "avgReturn": -0.003652716953712529,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "BHEL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -744
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:21:59.293Z",
+  "completedAt": "2025-11-07T15:21:59.293Z",
+  "error": null,
+  "insightsStatus": "done"
+}

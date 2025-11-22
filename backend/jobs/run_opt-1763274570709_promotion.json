@@ -1,0 +1,77 @@
+{
+  "strategy": {
+    "ema_short": 8,
+    "ema_long": 55,
+    "atr_mult": 1.2
+  },
+  "runId": "mp-h5ml4r",
+  "optimizerRunId": "opt-1763274570709",
+  "expectancy": 0.02,
+  "drawdown": -10,
+  "trades": 30,
+  "kfold": {
+    "K": 3,
+    "folds": [
+      {
+        "index": 0,
+        "symbols": [
+          "A"
+        ],
+        "metrics": {
+          "netPnl": 20,
+          "winRate": 55,
+          "maxDrawdown": -10,
+          "trades": 10,
+          "avgReturn": 0.02,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "index": 1,
+        "symbols": [
+          "B"
+        ],
+        "metrics": {
+          "netPnl": 20,
+          "winRate": 55,
+          "maxDrawdown": -10,
+          "trades": 10,
+          "avgReturn": 0.02,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "index": 2,
+        "symbols": [
+          "C"
+        ],
+        "metrics": {
+          "netPnl": 20,
+          "winRate": 55,
+          "maxDrawdown": -10,
+          "trades": 10,
+          "avgReturn": 0.02,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      }
+    ],
+    "validatedFolds": 3,
+    "validationTrades": 30
+  },
+  "promoted": true,
+  "thresholds": {
+    "minTrades": 30,
+    "maxNegativeDrawdown": -50000,
+    "expectancyPositive": true
+  },
+  "summaryText": "Top candidate expectancy=0.0200 trades=30 drawdown=-10 promoted=true cpuAvg=NA%",
+  "avgCpuPercent": null,
+  "gitCommit": null,
+  "seed": 54321
+}

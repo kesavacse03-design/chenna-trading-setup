@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532949196",
+  "summary": {
+    "runId": "run-1762532949196",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -325,
+    "avgReturn": -0.010893246187363833,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 325,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "PETRONET": {
+      "trades": [
+        {
+          "symbol": "PETRONET",
+          "entryTs": "2025-07-30T00:00:00+05:30",
+          "entryPrice": 298.35,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 295.1,
+          "pnl": -325,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=291.40 vol>=791498",
+          "trace": {
+            "reason": "breakout N=1 close>=291.40 vol>=791498"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -325,
+        "winRate": 0,
+        "maxDrawdown": 325,
+        "trades": 1,
+        "avgReturn": -0.010893246187363833,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "PETRONET",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -325
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:29:09.198Z",
+  "completedAt": "2025-11-07T16:29:09.198Z",
+  "error": null,
+  "insightsStatus": "done"
+}

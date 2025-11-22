@@ -1,0 +1,39 @@
+Get Expiries 
+API to retrieve all the expiries for a given underlying instrument. This API is useful for traders and analysts who need to know all available expiry dates for a specific instrument to plan their trading strategies accordingly.
+
+Expiries is currently not available for the MCX. The API will retrieve the complete list of expiry dates (including weekly and monthly) for the instrument, covering up to six months of historical expiries.
+
+Request
+curl --location 'https://api.upstox.com/v2/expired-instruments/expiries?instrument_key=NSE_INDEX%7CNifty%2050' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {your_access_token}' \
+--header 'Accept: application/json'
+
+
+For additional samples in various languages, please refer to the Sample code section on this page.
+
+Path Parameters
+Name	Required	Type	Description
+instrument_key	true	string	Key of an underlying symbol. For the regex pattern applicable to this field, see the Field Pattern Appendix.
+Responses
+200
+4XX
+Response Body
+Name	Type	Description
+status	string	A string indicating the outcome of the request. Typically success for successful operations.
+data	array	List of all available expiry dates in format YYYY-MM-dd
+
+Sample Code
+Get Expiries for given instrument
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v2/expired-instruments/expiries?instrument_key=NSE_INDEX%7CNifty%2050' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {your_access_token}' \
+--header 'Accept: application/json'

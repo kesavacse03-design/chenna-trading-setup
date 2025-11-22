@@ -1,0 +1,108 @@
+{
+  "runId": "run-1763533511940",
+  "symbols": [
+    "CGPOWER",
+    "DALBHARAT",
+    "DMART"
+  ],
+  "metrics": {
+    "netPnl": 0,
+    "winRate": 0,
+    "maxDrawdown": 0,
+    "trades": 0,
+    "avgReturn": 0,
+    "profitFactor": 0,
+    "wins": 0,
+    "losses": 0
+  },
+  "perCategory": {},
+  "perSymbol": {
+    "CGPOWER": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "DALBHARAT": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "DMART": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0,
+      "wins": 0,
+      "losses": 0
+    }
+  },
+  "swing10": {
+    "successWithin10Days": 0,
+    "failWithin10Days": 0,
+    "expiredTrades": 0,
+    "successRateWithin10Days": 0
+  },
+  "resume": false,
+  "equityCurve": [],
+  "strategyConfig": {
+    "kind": "composite",
+    "ema_short": 5,
+    "ema_long": 21,
+    "rsi_period": 14,
+    "rsi_min": 20,
+    "rsi_max": 60,
+    "atr_mult": 1,
+    "volumeFactor": 1,
+    "targetR": 1.5,
+    "qty": 100,
+    "usePatterns": {
+      "engulfing": false,
+      "hammer": false,
+      "doji": false
+    },
+    "enableVWAP": false,
+    "adx_min": 0,
+    "adx_period": 14,
+    "regime": "none",
+    "bb_period": 20,
+    "bb_k": 2,
+    "bb_width": 0.03,
+    "stoch_mode": "none",
+    "stoch_k": 14,
+    "stoch_d": 3,
+    "stoch_kMin": 0,
+    "stoch_kMax": 100,
+    "enableSupertrend": false,
+    "supertrend_period": 10,
+    "supertrend_mult": 3,
+    "minBreakoutVolumeMult": 0,
+    "requiredAdxMin": 0,
+    "atrStop": 1
+  },
+  "missing": [
+    {
+      "symbol": "CGPOWER",
+      "reason": "no-cache-found"
+    },
+    {
+      "symbol": "DALBHARAT",
+      "reason": "no-cache-found"
+    },
+    {
+      "symbol": "DMART",
+      "reason": "no-cache-found"
+    }
+  ]
+}

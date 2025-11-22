@@ -1,0 +1,21 @@
+name: CI Backtest
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  contract-and-perf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+      - name: Install deps
+        run: npm ci
+      - name: Run contract test
+        run: npm run test:backend
+      - name: Perf smoke (50-symbol)
+        run: node backend/strategy/perf-run-50.cjs
+        timeout-minutes: 20

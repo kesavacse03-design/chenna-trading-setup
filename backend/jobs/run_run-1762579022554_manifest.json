@@ -1,0 +1,41 @@
+{
+  "runId": "run-1762579022554",
+  "from": "2025-07-29",
+  "to": "2025-10-30",
+  "interval": "day",
+  "mode": "upstox",
+  "symbolsCount": 233,
+  "createdAt": "2025-11-08T05:17:04.420Z",
+  "strategyConfig": {
+    "kind": "composite",
+    "ema_short": 5,
+    "ema_long": 34,
+    "rsi_period": 14,
+    "rsi_min": 15,
+    "rsi_max": 70,
+    "atr_mult": 0.8,
+    "volumeFactor": 0.8,
+    "targetR": 1.2,
+    "qty": 100,
+    "usePatterns": {
+      "engulfing": true,
+      "hammer": false,
+      "doji": false
+    },
+    "enableVWAP": false,
+    "adx_min": 0,
+    "adx_period": 14,
+    "regime": "none",
+    "bb_period": 20,
+    "bb_k": 2,
+    "bb_width": 0.03,
+    "stoch_mode": "none",
+    "stoch_k": 14,
+    "stoch_d": 3,
+    "stoch_kMin": 0,
+    "stoch_kMax": 100,
+    "enableSupertrend": false,
+    "supertrend_period": 10,
+    "supertrend_mult": 3
+  }
+}

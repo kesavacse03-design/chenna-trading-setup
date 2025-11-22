@@ -1,0 +1,1 @@
+const http = require('http'); const runId = process.argv[2]||'run-1762067541728'; http.get({ hostname:'localhost', port: 3001, path: '/api/backtest/result/' + runId }, res => { let b=''; res.on('data', c=>b+=c); res.on('end', ()=>{ console.log('status',res.statusCode); console.log(b); }); }).on('error', e=>{ console.error('err', e && e.message); process.exit(2); });

@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762529033634",
+  "summary": {
+    "runId": "run-1762529033634",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -141,
+    "avgReturn": -0.0013900116327214339,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 141,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "BHARATFORG": {
+      "trades": [
+        {
+          "symbol": "BHARATFORG",
+          "entryTs": "2025-07-12T08:45:00.000Z",
+          "entryPrice": 1014.38,
+          "exitTs": "2025-07-12T09:45:00.000Z",
+          "exitPrice": 1012.97,
+          "pnl": -141,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1013.23 vol>=1576",
+          "trace": {
+            "reason": "breakout N=1 close>=1013.23 vol>=1576"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -141,
+        "winRate": 0,
+        "maxDrawdown": 141,
+        "trades": 1,
+        "avgReturn": -0.0013900116327214339,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "BHARATFORG",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -141
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:23:53.640Z",
+  "completedAt": "2025-11-07T15:23:53.640Z",
+  "error": null,
+  "insightsStatus": "done"
+}

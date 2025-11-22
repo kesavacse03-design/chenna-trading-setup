@@ -1,0 +1,91 @@
+{
+  "runId": "run-1762862469415",
+  "summary": {
+    "runId": "run-1762862469415",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -1157,
+    "avgReturn": 0.0043549285595988,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 1157,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2024-01-01",
+    "to": "2025-10-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "volumeFactor": 0.85
+    },
+    "swing10": {
+      "successWithin10Days": 0,
+      "failWithin10Days": 1,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 0
+    },
+    "equityCurve": [
+      -1157
+    ]
+  },
+  "perSymbol": {
+    "HDFCBANK": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "SBIN": {
+      "trades": [
+        {
+          "symbol": "SBIN",
+          "entryTs": "2025-03-11T20:45:00.000Z",
+          "entryPrice": -2656.76,
+          "exitTs": "2025-03-12T00:45:00.000Z",
+          "exitPrice": -2668.33,
+          "pnl": -1157,
+          "direction": "LONG",
+          "reason": "breakout N=20 hh=-2660.87 vol>=7173 patterns=wrb adxOk=true squeezeOk=true",
+          "trace": {
+            "reason": "breakout N=20 hh=-2660.87 vol>=7173 patterns=wrb adxOk=true squeezeOk=true"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -1157,
+        "winRate": 0,
+        "maxDrawdown": 1157,
+        "trades": 1,
+        "avgReturn": 0.0043549285595988,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "ITC": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [],
+  "status": "done",
+  "createdAt": "2025-11-11T12:01:30.362Z",
+  "completedAt": "2025-11-11T12:01:30.362Z",
+  "error": null
+}

@@ -1,0 +1,371 @@
+{
+  "runId": "opt-1762749260794",
+  "searchMode": "hybrid",
+  "combosTried": 4,
+  "results": 50,
+  "timedOut": false,
+  "topN": [
+    {
+      "rank": 1,
+      "score": 10.215,
+      "metrics": {
+        "trades": 5,
+        "netPnl": 99,
+        "avgReturn": 0.02,
+        "winRate": 55,
+        "maxDrawdown": -10
+      },
+      "config": {
+        "ema_short": 13,
+        "ema_long": 55,
+        "atr_mult": 1.2
+      },
+      "runId": "bh-9uuj8e",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "A",
+              "D"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 82,
+              "avgReturn": 0.02,
+              "winRate": 55,
+              "maxDrawdown": -10
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "B",
+              "E"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 82,
+              "avgReturn": 0.02,
+              "winRate": 55,
+              "maxDrawdown": -10
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "C",
+              "F"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 33,
+              "avgReturn": 0.02,
+              "winRate": 55,
+              "maxDrawdown": -10
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 15,
+          "netPnl": 197,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": -10,
+          "avgReturn": 0.02
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "score": 10.115,
+      "metrics": {
+        "trades": 5,
+        "netPnl": 98,
+        "avgReturn": 0.02,
+        "winRate": 55,
+        "maxDrawdown": -10
+      },
+      "config": {
+        "ema_short": 9,
+        "ema_long": 90,
+        "atr_mult": 1.25
+      },
+      "runId": "bh-3z7uj2",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "A",
+              "D"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 58,
+              "avgReturn": 0.02,
+              "winRate": 55,
+              "maxDrawdown": -10
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "B",
+              "E"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 27,
+              "avgReturn": 0.02,
+              "winRate": 55,
+              "maxDrawdown": -10
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "C",
+              "F"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 18,
+              "avgReturn": 0.02,
+              "winRate": 55,
+              "maxDrawdown": -10
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 15,
+          "netPnl": 103,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": -10,
+          "avgReturn": 0.02
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "score": 10.015,
+      "metrics": {
+        "trades": 5,
+        "netPnl": 97,
+        "avgReturn": 0.02,
+        "winRate": 55,
+        "maxDrawdown": -10
+      },
+      "config": {
+        "ema_short": 13,
+        "ema_long": 89,
+        "atr_mult": 1.2
+      },
+      "runId": "bh-ezl3oy",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "A",
+              "D"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 44,
+              "avgReturn": 0.02,
+              "winRate": 55,
+              "maxDrawdown": -10
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "B",
+              "E"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 72,
+              "avgReturn": 0.02,
+              "winRate": 55,
+              "maxDrawdown": -10
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "C",
+              "F"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 32,
+              "avgReturn": 0.02,
+              "winRate": 55,
+              "maxDrawdown": -10
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 15,
+          "netPnl": 148,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": -10,
+          "avgReturn": 0.02
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "score": 10.015,
+      "metrics": {
+        "trades": 5,
+        "netPnl": 97,
+        "avgReturn": 0.02,
+        "winRate": 55,
+        "maxDrawdown": -10
+      },
+      "config": {
+        "ema_short": 7,
+        "ema_long": 60,
+        "atr_mult": 1.25
+      },
+      "runId": "bh-2rsld2",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "A",
+              "D"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 12,
+              "avgReturn": 0.02,
+              "winRate": 55,
+              "maxDrawdown": -10
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "B",
+              "E"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 61,
+              "avgReturn": 0.02,
+              "winRate": 55,
+              "maxDrawdown": -10
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "C",
+              "F"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 9,
+              "avgReturn": 0.02,
+              "winRate": 55,
+              "maxDrawdown": -10
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 15,
+          "netPnl": 82,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": -10,
+          "avgReturn": 0.02
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "score": 10.015,
+      "metrics": {
+        "trades": 5,
+        "netPnl": 97,
+        "avgReturn": 0.02,
+        "winRate": 55,
+        "maxDrawdown": -10
+      },
+      "config": {
+        "ema_short": 3,
+        "ema_long": 90,
+        "atr_mult": 0.65
+      },
+      "runId": "bh-hk7qg5",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "A",
+              "D"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 10,
+              "avgReturn": 0.02,
+              "winRate": 55,
+              "maxDrawdown": -10
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "B",
+              "E"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 38,
+              "avgReturn": 0.02,
+              "winRate": 55,
+              "maxDrawdown": -10
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "C",
+              "F"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 98,
+              "avgReturn": 0.02,
+              "winRate": 55,
+              "maxDrawdown": -10
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 15,
+          "netPnl": 146,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": -10,
+          "avgReturn": 0.02
+        }
+      }
+    }
+  ],
+  "summaryText": "Run completed cpuAvg=NA% combos=4 mode=hybrid topExpectancy=0.0200",
+  "avgCpuPercent": null
+}

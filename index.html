@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  <!-- Tiny data URL favicon to avoid dev 404s -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>📈</text></svg>"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 'theme-color' is not supported by some browsers; provide cross-platform fallbacks -->
+    <meta name="color-scheme" content="dark light" />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>Chenna Trading System</title>
+  <!-- Tailwind now built locally via PostCSS; CDN removed for speed and reliability -->
+    <script>
+      // Optional: set an explicit backend base only when you actually have it running.
+      // Leaving this unset enables Preview Mode (mock data) so the UI loads instantly.
+      // Example to enable live mode locally:
+      //   window.__CTS_API_BASE = 'http://127.0.0.1:3001';
+      // or if you port-forward the k8s service:
+      //   window.__CTS_API_BASE = 'http://127.0.0.1:18080';
+  // Enable live backend mode locally for watchlist debugging.
+  // Set explicit API base so frontend uses real stocks endpoints.
+  window.__CTS_API_BASE = 'http://127.0.0.1:3001';
+
+      // Lightweight fetch logger for automated evidence capture
+      (function(){
+        try {
+          if (!window.__networkLog) window.__networkLog = [];
+          const origFetch = window.fetch.bind(window);
+          window.fetch = async function(input, init){
+            const url = (typeof input === 'string') ? input : (input && input.url) || String(input);
+            const method = (init && init.method) || (typeof input === 'object' && input && input.method) || 'GET';
+            const started = Date.now();
+            try {
+              const res = await origFetch(input, init);
+              const elapsed = Date.now() - started;
+              let bodyPreview = null;
+              try {
+                if (res && res.clone) {
+                  const clone = res.clone();
+                  const text = await clone.text();
+                  bodyPreview = text.slice(0, 2000);
+                }
+              } catch(_){}
+              window.__networkLog.push({ t: new Date().toISOString(), url, method, status: res.status, ms: elapsed, body: bodyPreview });
+              return res;
+            } catch (e) {
+              const elapsed = Date.now() - started;
+              window.__networkLog.push({ t: new Date().toISOString(), url, method, error: String(e && e.message || e), ms: elapsed });
+              throw e;
+            }
+          };
+        } catch(_){}
+      })();
+    </script>
+<style>
+  @keyframes fade-in-down {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in-down {
+    animation: fade-in-down 0.5s ease-out forwards;
+  }
+  @keyframes highlight-fade {
+    0% { background-color: rgba(34, 211, 238, 0.2); } /* bg-cyan-400/20 */
+    100% { background-color: transparent; }
+  }
+  .animate-highlight {
+    animation: highlight-fade 1.5s ease-out forwards;
+  }
+  @keyframes pulse-glow {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 10px 5px rgba(22, 163, 74, 0), 0 0 20px 10px rgba(34, 197, 94, 0.4);
+    }
+  }
+  .animate-pulse-glow {
+      animation: pulse-glow 2.5s infinite;
+  }
+
+  @keyframes price-flash-up {
+    0% { background-color: rgba(74, 222, 128, 0.3); } /* bg-green-400/30 */
+    100% { background-color: transparent; }
+  }
+  .animate-price-up {
+      animation: price-flash-up 1s ease-out;
+  }
+
+  @keyframes price-flash-down {
+      0% { background-color: rgba(248, 113, 113, 0.3); } /* bg-red-400/30 */
+      100% { background-color: transparent; }
+  }
+  .animate-price-down {
+      animation: price-flash-down 1s ease-out;
+  }
+  
+  .neon-text {
+    text-shadow:
+      0 0 5px rgba(0, 255, 255, 0.6),
+      0 0 10px rgba(0, 255, 255, 0.6),
+      0 0 20px rgba(0, 255, 255, 0.6),
+      0 0 40px rgba(7, 98, 234, 0.4),
+      0 0 80px rgba(7, 98, 234, 0.4),
+      0 0 90px rgba(7, 98, 234, 0.4),
+      0 0 100px rgba(7, 98, 234, 0.4),
+      0 0 150px rgba(7, 98, 234, 0.4);
+    animation: neon-flicker 3s infinite alternate;
+  }
+
+  @keyframes neon-flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+      text-shadow:
+        0 0 4px rgba(0, 255, 255, 0.5),
+        0 0 11px rgba(0, 255, 255, 0.5),
+        0 0 19px rgba(0, 255, 255, 0.5),
+        0 0 40px rgba(7, 98, 234, 0.3),
+        0 0 80px rgba(7, 98, 234, 0.3),
+        0 0 90px rgba(7, 98, 234, 0.3),
+        0 0 100px rgba(7, 98, 234, 0.3),
+        0 0 140px rgba(7, 98, 234, 0.3);
+    }
+    20%, 24%, 55% {        
+      text-shadow: none;
+    }
+  }
+
+  /* For Notification Bar */
+  .notification-bar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    transition: all 0.5s ease-in-out;
+  }
+</style>
+<!-- import map removed; Vite will handle module resolution locally -->
+<!-- Local Tailwind output is bundled from src/index.css via Vite -->
+</head>
+  <body class="bg-slate-950 text-gray-200">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

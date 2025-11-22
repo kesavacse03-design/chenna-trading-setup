@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762531985241",
+  "summary": {
+    "runId": "run-1762531985241",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -494,
+    "avgReturn": -0.002130164246874848,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 494,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-10-09",
+    "to": "2025-10-29",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "NUVAMA": {
+      "trades": [
+        {
+          "symbol": "NUVAMA",
+          "entryTs": "2025-10-09T04:45:00.000Z",
+          "entryPrice": 2319.07,
+          "exitTs": "2025-10-09T05:45:00.000Z",
+          "exitPrice": 2314.13,
+          "pnl": -494,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2316.28 vol>=4308",
+          "trace": {
+            "reason": "breakout N=1 close>=2316.28 vol>=4308"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -494,
+        "winRate": 0,
+        "maxDrawdown": 494,
+        "trades": 1,
+        "avgReturn": -0.002130164246874848,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "NUVAMA",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -494
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:13:05.247Z",
+  "completedAt": "2025-11-07T16:13:05.247Z",
+  "error": null,
+  "insightsStatus": "done"
+}

@@ -1,0 +1,30 @@
+{
+  "runId": "run-1763534202533",
+  "from": "2023-11-19",
+  "to": "2025-11-19",
+  "interval": "day",
+  "mode": "mock",
+  "symbolsCount": 3,
+  "createdAt": "2025-11-19T06:36:49.782Z",
+  "strategyConfig": {
+    "kind": "composite",
+    "ema_short": 8,
+    "ema_long": 21,
+    "rsi_period": 14,
+    "rsi_min": 30,
+    "rsi_max": 70,
+    "atr_mult": 1.5,
+    "volumeFactor": 1,
+    "targetR": 2,
+    "qty": 100,
+    "atrStop": 1
+  },
+  "resume": false,
+  "seed": null,
+  "gitCommit": "ref: refs/heads/fix/backtest-accuracy-1763381024",
+  "paramGridFile": null,
+  "thresholds": {
+    "promoMinTrades": 30,
+    "promoMaxDrawdown": 50000
+  }
+}

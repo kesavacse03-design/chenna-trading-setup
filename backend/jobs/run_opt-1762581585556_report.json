@@ -1,0 +1,143 @@
+{
+  "runId": "opt-1762581585556",
+  "searchMode": "grid",
+  "combosTried": 2,
+  "results": 3,
+  "timedOut": true,
+  "topN": [
+    {
+      "rank": 1,
+      "score": 0,
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0
+      },
+      "config": {
+        "ema_short": 8,
+        "ema_long": 55,
+        "atr_mult": 1.2,
+        "volumeFactor": 1
+      },
+      "runId": "run-1762581585572",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "AAPL"
+            ],
+            "metrics": null
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "MSFT"
+            ],
+            "metrics": null
+          },
+          {
+            "index": 2,
+            "symbols": [],
+            "metrics": null
+          }
+        ],
+        "aggregated": null
+      }
+    },
+    {
+      "rank": 2,
+      "score": 0,
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0
+      },
+      "config": {
+        "ema_short": 13,
+        "ema_long": 55,
+        "atr_mult": 1.2,
+        "volumeFactor": 1
+      },
+      "runId": "run-1762581630279",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "AAPL"
+            ],
+            "metrics": null
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "MSFT"
+            ],
+            "metrics": null
+          },
+          {
+            "index": 2,
+            "symbols": [],
+            "metrics": null
+          }
+        ],
+        "aggregated": null
+      }
+    },
+    {
+      "rank": 3,
+      "score": 0,
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0
+      },
+      "config": {
+        "ema_short": 28,
+        "ema_long": 55,
+        "atr_mult": 1.2,
+        "volumeFactor": 1
+      },
+      "runId": "run-1762581643782",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "AAPL"
+            ],
+            "metrics": null
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "MSFT"
+            ],
+            "metrics": null
+          },
+          {
+            "index": 2,
+            "symbols": [],
+            "metrics": null
+          }
+        ],
+        "aggregated": null
+      }
+    }
+  ],
+  "summaryText": "Run completed cpuAvg=0.6% combos=2 mode=grid topExpectancy=0.0000",
+  "avgCpuPercent": 0.6
+}

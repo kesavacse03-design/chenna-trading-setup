@@ -1,0 +1,107 @@
+{
+  "runId": "run-1762083538179",
+  "summary": {
+    "runId": "run-1762083538179",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -317,
+    "avgReturn": -0.0018523604448001528,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 317,
+    "avgHoldingDays": 0,
+    "missingCount": 0
+  },
+  "perSymbol": {
+    "MOCKD": {
+      "trades": [
+        {
+          "symbol": "MOCKD",
+          "time": "2025-01-01T12:45:00.000Z",
+          "entryTime": "2025-01-01T11:45:00.000Z",
+          "entry": 1711.33,
+          "exit": 1708.16,
+          "exitReason": "stop",
+          "qty": 100,
+          "stop": 1708.16,
+          "target": 1713.12,
+          "pnl": -317,
+          "category": "BREAKOUT",
+          "direction": "LONG",
+          "holdingDays": 0,
+          "reason": "breakout N=1 close>=1708.48 vol>=4543",
+          "trace": {
+            "reason": "breakout N=1 close>=1708.48 vol>=4543"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -317,
+        "winRate": 0,
+        "maxDrawdown": 317,
+        "trades": 1,
+        "avgReturn": -0.0018523604448001528,
+        "profitFactor": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "MOCKD",
+      "failure": "false_breakout",
+      "suggest": "require volume > 1.5x avg or add retest confirmation",
+      "trade": {
+        "entry": 1711.33,
+        "exit": 1708.16,
+        "pnl": -317,
+        "entryTime": "2025-01-01T11:45:00.000Z",
+        "exitTime": "2025-01-01T12:45:00.000Z"
+      },
+      "samplePrior": [
+        {
+          "date": "2025-01-01T06:45:00.000Z",
+          "open": 1711.02,
+          "high": 1714.44,
+          "low": 1707.54,
+          "close": 1711.3,
+          "volume": 1902
+        },
+        {
+          "date": "2025-01-01T07:45:00.000Z",
+          "open": 1710.55,
+          "high": 1714.4,
+          "low": 1709.67,
+          "close": 1714.08,
+          "volume": 7646
+        },
+        {
+          "date": "2025-01-01T08:45:00.000Z",
+          "open": 1709.73,
+          "high": 1710.14,
+          "low": 1709.05,
+          "close": 1709.89,
+          "volume": 5802
+        },
+        {
+          "date": "2025-01-01T09:45:00.000Z",
+          "open": 1709.83,
+          "high": 1710.77,
+          "low": 1707.4,
+          "close": 1708.98,
+          "volume": 6994
+        },
+        {
+          "date": "2025-01-01T10:45:00.000Z",
+          "open": 1707.34,
+          "high": 1708.48,
+          "low": 1703.52,
+          "close": 1704.21,
+          "volume": 9086
+        }
+      ]
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-02T11:38:58.182Z",
+  "completedAt": "2025-11-02T11:38:58.182Z"
+}

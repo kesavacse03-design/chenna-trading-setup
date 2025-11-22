@@ -1,0 +1,77 @@
+{
+  "runId": "opt-1762701137573",
+  "searchMode": "grid",
+  "combosTried": 1,
+  "results": 1,
+  "timedOut": false,
+  "topN": [
+    {
+      "rank": 1,
+      "score": 1.252,
+      "metrics": {
+        "trades": 5,
+        "netPnl": 1,
+        "avgReturn": 0.001,
+        "winRate": 50
+      },
+      "config": {
+        "ema_short": 13,
+        "ema_long": 55,
+        "atr_mult": 1.2
+      },
+      "runId": "rr-34ytfe",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "X",
+              "W"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 1,
+              "avgReturn": 0.001,
+              "winRate": 50
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "Y"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 1,
+              "avgReturn": 0.001,
+              "winRate": 50
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "Z"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 1,
+              "avgReturn": 0.001,
+              "winRate": 50
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 15,
+          "netPnl": 3,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": 0,
+          "avgReturn": 0.001
+        }
+      }
+    }
+  ],
+  "summaryText": "Run completed cpuAvg=NA% combos=1 mode=grid topExpectancy=0.0010",
+  "avgCpuPercent": null
+}

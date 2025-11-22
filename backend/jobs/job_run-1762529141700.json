@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762529141700",
+  "summary": {
+    "runId": "run-1762529141700",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -410,
+    "avgReturn": -0.0016330562448468747,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 410,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-15",
+    "to": "2025-08-04",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "DIVISLAB": {
+      "trades": [
+        {
+          "symbol": "DIVISLAB",
+          "entryTs": "2025-07-15T06:45:00.000Z",
+          "entryPrice": 2510.63,
+          "exitTs": "2025-07-15T07:45:00.000Z",
+          "exitPrice": 2506.53,
+          "pnl": -410,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2507.99 vol>=2479",
+          "trace": {
+            "reason": "breakout N=1 close>=2507.99 vol>=2479"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -410,
+        "winRate": 0,
+        "maxDrawdown": 410,
+        "trades": 1,
+        "avgReturn": -0.0016330562448468747,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "DIVISLAB",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -410
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:25:41.705Z",
+  "completedAt": "2025-11-07T15:25:41.705Z",
+  "error": null,
+  "insightsStatus": "done"
+}

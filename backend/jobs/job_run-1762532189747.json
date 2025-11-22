@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532189747",
+  "summary": {
+    "runId": "run-1762532189747",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -147,
+    "avgReturn": -0.000806358714433836,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 147,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "BLUESTARCO": {
+      "trades": [
+        {
+          "symbol": "BLUESTARCO",
+          "entryTs": "2025-07-12T06:45:00.000Z",
+          "entryPrice": 1823.01,
+          "exitTs": "2025-07-12T07:45:00.000Z",
+          "exitPrice": 1821.54,
+          "pnl": -147,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1818.76 vol>=4466",
+          "trace": {
+            "reason": "breakout N=1 close>=1818.76 vol>=4466"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -147,
+        "winRate": 0,
+        "maxDrawdown": 147,
+        "trades": 1,
+        "avgReturn": -0.000806358714433836,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "BLUESTARCO",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -147
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:16:29.751Z",
+  "completedAt": "2025-11-07T16:16:29.751Z",
+  "error": null,
+  "insightsStatus": "done"
+}

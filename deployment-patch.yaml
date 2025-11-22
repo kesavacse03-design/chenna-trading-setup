@@ -1,0 +1,17 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chenna-live-runner
+spec:
+  template:
+    spec:
+      volumes:
+      - name: upstox-token
+        secret:
+          secretName: upstox-token
+      containers:
+      - name: live-runner
+        volumeMounts:
+        - name: upstox-token
+          mountPath: /app/.data/secrets
+          readOnly: true

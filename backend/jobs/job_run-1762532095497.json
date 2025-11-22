@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532095497",
+  "summary": {
+    "runId": "run-1762532095497",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -811,
+    "avgReturn": -0.0032187521084612804,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 811,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-11",
+    "to": "2025-07-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "MANAPPURAM": {
+      "trades": [
+        {
+          "symbol": "MANAPPURAM",
+          "entryTs": "2025-07-11T11:45:00.000Z",
+          "entryPrice": 2519.61,
+          "exitTs": "2025-07-11T12:45:00.000Z",
+          "exitPrice": 2511.5,
+          "pnl": -811,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2514.71 vol>=1049",
+          "trace": {
+            "reason": "breakout N=1 close>=2514.71 vol>=1049"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -811,
+        "winRate": 0,
+        "maxDrawdown": 811,
+        "trades": 1,
+        "avgReturn": -0.0032187521084612804,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "MANAPPURAM",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -811
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:14:55.502Z",
+  "completedAt": "2025-11-07T16:14:55.502Z",
+  "error": null,
+  "insightsStatus": "done"
+}

@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532026789",
+  "summary": {
+    "runId": "run-1762532026789",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -953,
+    "avgReturn": -0.004191885424730892,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 953,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-09",
+    "to": "2025-07-29",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "POONAWALLA": {
+      "trades": [
+        {
+          "symbol": "POONAWALLA",
+          "entryTs": "2025-07-09T17:45:00.000Z",
+          "entryPrice": 2273.44,
+          "exitTs": "2025-07-09T19:45:00.000Z",
+          "exitPrice": 2263.91,
+          "pnl": -953,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2266.42 vol>=5081",
+          "trace": {
+            "reason": "breakout N=1 close>=2266.42 vol>=5081"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -953,
+        "winRate": 0,
+        "maxDrawdown": 953,
+        "trades": 1,
+        "avgReturn": -0.004191885424730892,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "POONAWALLA",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -953
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:13:46.794Z",
+  "completedAt": "2025-11-07T16:13:46.794Z",
+  "error": null,
+  "insightsStatus": "done"
+}

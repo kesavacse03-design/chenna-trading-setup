@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762528986888",
+  "summary": {
+    "runId": "run-1762528986888",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -709,
+    "avgReturn": -0.0034622014522689474,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 709,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-11",
+    "to": "2025-07-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "IDFCFIRSTB": {
+      "trades": [
+        {
+          "symbol": "IDFCFIRSTB",
+          "entryTs": "2025-07-11T06:45:00.000Z",
+          "entryPrice": 2047.83,
+          "exitTs": "2025-07-11T07:45:00.000Z",
+          "exitPrice": 2040.74,
+          "pnl": -709,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2042.01 vol>=3627",
+          "trace": {
+            "reason": "breakout N=1 close>=2042.01 vol>=3627"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -709,
+        "winRate": 0,
+        "maxDrawdown": 709,
+        "trades": 1,
+        "avgReturn": -0.0034622014522689474,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "IDFCFIRSTB",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -709
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:23:06.894Z",
+  "completedAt": "2025-11-07T15:23:06.894Z",
+  "error": null,
+  "insightsStatus": "done"
+}

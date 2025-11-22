@@ -1,0 +1,113 @@
+{
+  "runId": "run-1763379644091",
+  "summary": {
+    "runId": "run-1763379644091",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": 50,
+    "avgReturn": 0.00020529665366454526,
+    "winRate": 100,
+    "profitFactor": 0,
+    "maxDrawdown": 0,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-10-01",
+    "to": "2025-10-15",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "N": 1,
+      "volumeFactor": 0.5,
+      "atrStop": 0.4,
+      "targetR": 0.8,
+      "qty": 100,
+      "minRisk": 0.05,
+      "permissive": true
+    },
+    "swing10": {
+      "successWithin10Days": 1,
+      "failWithin10Days": 0,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 100
+    },
+    "equityCurve": [
+      50
+    ]
+  },
+  "perSymbol": {
+    "JSWENERGY": {
+      "trades": [
+        {
+          "symbol": "JSWENERGY",
+          "entryTs": "2025-10-01T06:45:00.000Z",
+          "entryPrice": 2435.5,
+          "exitTs": "2025-10-01T07:45:00.000Z",
+          "exitPrice": 2436,
+          "pnl": 50,
+          "direction": "LONG",
+          "reason": "breakout N=1 hh=2436.58 vol>=4979 patterns=engulfing adxOk=true squeezeOk=true",
+          "trace": {
+            "reason": "breakout N=1 hh=2436.58 vol>=4979 patterns=engulfing adxOk=true squeezeOk=true"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 50,
+        "winRate": 100,
+        "maxDrawdown": 0,
+        "trades": 1,
+        "avgReturn": 0.00020529665366454526,
+        "profitFactor": 0,
+        "wins": 1,
+        "losses": 0
+      }
+    },
+    "GRASIM": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "NCC": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [],
+  "status": "done",
+  "createdAt": "2025-11-17T11:40:44.250Z",
+  "completedAt": "2025-11-17T11:40:44.250Z",
+  "error": null,
+  "accuracy": 100,
+  "winRate": 100,
+  "expectancy": 0.00020529665366454526,
+  "totalPnL": 50,
+  "maxDrawdown": 0,
+  "trades": [
+    {
+      "symbol": "JSWENERGY",
+      "entryTs": "2025-10-01T06:45:00.000Z",
+      "entryPrice": 2435.5,
+      "exitTs": "2025-10-01T07:45:00.000Z",
+      "exitPrice": 2436,
+      "pnl": 50
+    }
+  ],
+  "insightsStatus": "done"
+}

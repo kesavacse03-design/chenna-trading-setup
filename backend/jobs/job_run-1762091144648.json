@@ -1,0 +1,104 @@
+{
+  "runId": "run-1762091144648",
+  "summary": {
+    "runId": "run-1762091144648",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -609,
+    "avgReturn": -0.0022556140344378154,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 609,
+    "avgHoldingDays": 0,
+    "missingCount": 0
+  },
+  "perSymbol": {
+    "SYM000": {
+      "trades": [
+        {
+          "symbol": "SYM000",
+          "entryTs": "2020-01-01T08:45:00.000Z",
+          "entryPrice": 2699.93,
+          "exitTs": "2020-01-01T09:45:00.000Z",
+          "exitPrice": 2693.84,
+          "pnl": -609,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2694.96 vol>=4247",
+          "trace": {
+            "reason": "breakout N=1 close>=2694.96 vol>=4247"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -609,
+        "winRate": 0,
+        "maxDrawdown": 609,
+        "trades": 1,
+        "avgReturn": -0.0022556140344378154,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "SYM000",
+      "failure": "false_breakout",
+      "suggest": "require volume > 1.5x avg or add retest confirmation",
+      "trade": {
+        "entry": 2699.93,
+        "exit": 2693.84,
+        "pnl": -609,
+        "entryTime": "2020-01-01T08:45:00.000Z",
+        "exitTime": "2020-01-01T09:45:00.000Z"
+      },
+      "samplePrior": [
+        {
+          "date": "2020-01-01T03:45:00.000Z",
+          "open": 2696.67,
+          "high": 2699.73,
+          "low": 2692.83,
+          "close": 2693.15,
+          "volume": 5995
+        },
+        {
+          "date": "2020-01-01T04:45:00.000Z",
+          "open": 2695.94,
+          "high": 2698.5,
+          "low": 2695.52,
+          "close": 2696.52,
+          "volume": 10187
+        },
+        {
+          "date": "2020-01-01T05:45:00.000Z",
+          "open": 2694.12,
+          "high": 2694.84,
+          "low": 2691.75,
+          "close": 2692.52,
+          "volume": 8278
+        },
+        {
+          "date": "2020-01-01T06:45:00.000Z",
+          "open": 2694.43,
+          "high": 2696.39,
+          "low": 2693.39,
+          "close": 2694.81,
+          "volume": 1385
+        },
+        {
+          "date": "2020-01-01T07:45:00.000Z",
+          "open": 2694.86,
+          "high": 2694.96,
+          "low": 2691.73,
+          "close": 2693.26,
+          "volume": 2598
+        }
+      ]
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-02T13:45:48.273Z",
+  "completedAt": "2025-11-02T13:45:48.273Z",
+  "error": null
+}

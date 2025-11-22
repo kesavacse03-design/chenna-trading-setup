@@ -1,0 +1,55 @@
+{
+  "runId": "run-1762534457664",
+  "summary": {
+    "runId": "run-1762534457664",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": 1280,
+    "avgReturn": 0.0078020236498843,
+    "winRate": 100,
+    "profitFactor": null,
+    "maxDrawdown": 0,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "BDL": {
+      "trades": [
+        {
+          "symbol": "BDL",
+          "entryTs": "2025-07-31T00:00:00+05:30",
+          "entryPrice": 1640.6,
+          "exitTs": "2025-07-28T00:00:00+05:30",
+          "exitPrice": 1653.4,
+          "pnl": 1280,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1616.00 vol>=409292",
+          "trace": {
+            "reason": "breakout N=1 close>=1616.00 vol>=409292"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 1280,
+        "winRate": 100,
+        "maxDrawdown": 0,
+        "trades": 1,
+        "avgReturn": 0.0078020236498843,
+        "profitFactor": null,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [],
+  "status": "done",
+  "createdAt": "2025-11-07T16:54:17.668Z",
+  "completedAt": "2025-11-07T16:54:17.668Z",
+  "error": null,
+  "insightsStatus": "done"
+}

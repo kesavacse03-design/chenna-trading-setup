@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532192148",
+  "summary": {
+    "runId": "run-1762532192148",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -857,
+    "avgReturn": -0.0049220908260728165,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 857,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "TECHM": {
+      "trades": [
+        {
+          "symbol": "TECHM",
+          "entryTs": "2025-07-12T05:45:00.000Z",
+          "entryPrice": 1741.13,
+          "exitTs": "2025-07-12T06:45:00.000Z",
+          "exitPrice": 1732.56,
+          "pnl": -857,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1732.21 vol>=3918",
+          "trace": {
+            "reason": "breakout N=1 close>=1732.21 vol>=3918"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -857,
+        "winRate": 0,
+        "maxDrawdown": 857,
+        "trades": 1,
+        "avgReturn": -0.0049220908260728165,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "TECHM",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -857
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:16:32.153Z",
+  "completedAt": "2025-11-07T16:16:32.153Z",
+  "error": null,
+  "insightsStatus": "done"
+}

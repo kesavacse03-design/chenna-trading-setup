@@ -1,0 +1,178 @@
+Intraday Candle Data V3
+This API is an extended version of standard Intraday Candle Data API, which allows you to retrieve Open, High, Low, and Close (OHLC) values for the current trading day. It supports customizable time intervals across various units such as minutes, hours, days.
+
+This API is particularly useful for traders and analysts who require detailed intraday data for technical analysis, backtesting, or algorithmic trading strategies. This V3 API provides additional custom interval options that are not available in the standard Intraday Candle Data API.
+
+This API provides the following unit and interval options for intraday data:
+
+Unit	Interval Options
+minutes	1, 2, 3, ... 300
+hours	1, 2, ... 5
+days	1
+Request
+curl --location 'https://api.upstox.com/v3/historical-candle/intraday/NSE_EQ%7CINE848E01016/minutes/1' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Additional samples in various languages are available in the Sample Code section on this page.
+
+Path Parameters
+Name	Required	Type	Description
+instrument_key	true	string	The unique identifier for the financial instrument for which historical data is being queried. For the regex pattern applicable to this field, see the Field Pattern Appendix.
+unit	true	string	Specifies the unit for the candles.
+Possible values: minutes, hours, days.
+interval	true	string	Specifies the interval for the candles.
+Possible values:
+1, 2, 3, ..., 300 for minutes.
+1, 2, ..., 5 for hours.
+1 for days.
+Responses
+200
+4XX
+Response Body
+Name	Type	Description
+status	string	A string indicating the outcome of the request. Typically success for successful operations.
+data	object	Contains OHLC values for all instruments across various timeframes.
+data.candles	array[]	Array of candle data, each presented as an array with sequential elements representing trading activity.
+data.candle[0]	number	Timestamp: Indicating the start time of the candle's timeframe.
+data.candle[1]	number	Open: The opening price of the asset for the given timeframe.
+data.candle[2]	number	High: The highest price at which the asset traded during the timeframe.
+data.candle[3]	number	Low: The lowest price at which the asset traded during the timeframe.
+data.candle[4]	number	Close: The closing price of the asset for the given timeframe.
+data.candle[5]	number	Volume: The total amount of the asset that was traded during the timeframe.
+data.candle[6]	number	Open Interest: The total number of outstanding derivative contracts, such as options or futures.
+
+Sample Code
+Get data with a 1-minute interval
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/historical-candle/intraday/NSE_EQ%7CINE848E01016/minutes/1' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get data with a 3-minute interval
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/historical-candle/intraday/NSE_EQ%7CINE848E01016/minutes/3' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get data with a 5-minute interval
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/historical-candle/intraday/NSE_EQ%7CINE848E01016/minutes/5' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get data with a 15-minute interval
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/historical-candle/intraday/NSE_EQ%7CINE848E01016/minutes/15' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get data with a 30-minute interval
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/historical-candle/intraday/NSE_EQ%7CINE848E01016/minutes/30' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get data with a 1-hour interval
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/historical-candle/intraday/NSE_EQ%7CINE848E01016/hours/1' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get data with a 2-hour interval
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/historical-candle/intraday/NSE_EQ%7CINE848E01016/hours/2' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get current day data
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/historical-candle/intraday/NSE_EQ%7CINE848E01016/days/1' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+
+GET /historical-candle/intraday/:instrument_key/:unit/:interval
+Request
+Live URL
+https://api.upstox.com/v3
+instrument_key — path required
+instrument_key
+unit — path required
+unit
+interval — path required
+interval

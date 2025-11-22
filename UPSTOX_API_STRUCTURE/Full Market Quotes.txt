@@ -1,0 +1,174 @@
+Full Market Quotes
+API to retrieve the full market quotes for one or more instruments. Provides the complete market data snapshot of up to 500 instruments in one go. These snapshots are obtained directly from the exchanges at the time of request.
+
+Request
+curl --location 'https://api.upstox.com/v2/market-quote/quotes?instrument_key=NSE_EQ%7CINE848E01016' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+For additional samples in various languages, please refer to the Sample code section on this page.
+
+Query Parameters
+Name	Required	Type	Description
+instrument_key	true	string	Comma separated list of instrument keys. For the regex pattern applicable to this field, see the Field Pattern Appendix.
+Responses
+200
+4XX
+Response Body
+{
+  "status": "success",
+  "data": {
+    "NSE_EQ:NHPC": {
+      "ohlc": {
+        "open": 53.4,
+        "high": 53.8,
+        "low": 51.75,
+        "close": 52.05
+      },
+      "depth": {
+        "buy": [
+          {
+            "quantity": 6917,
+            "price": 52.05,
+            "orders": 20
+          },
+          {
+            "quantity": 0,
+            "price": 0,
+            "orders": 0
+          },
+          {
+            "quantity": 0,
+            "price": 0,
+            "orders": 0
+          },
+          {
+            "quantity": 0,
+            "price": 0,
+            "orders": 0
+          },
+          {
+            "quantity": 0,
+            "price": 0,
+            "orders": 0
+          }
+        ],
+        "sell": [
+          {
+            "quantity": 0,
+            "price": 0,
+            "orders": 0
+          },
+          {
+            "quantity": 0,
+            "price": 0,
+            "orders": 0
+          },
+          {
+            "quantity": 0,
+            "price": 0,
+            "orders": 0
+          },
+          {
+            "quantity": 0,
+            "price": 0,
+            "orders": 0
+          },
+          {
+            "quantity": 0,
+            "price": 0,
+            "orders": 0
+          }
+        ]
+      },
+      "timestamp": "2023-10-19T05:21:51.099+05:30",
+      "instrument_token": "NSE_EQ|INE848E01016",
+      "symbol": "NHPC",
+      "last_price": 52.04999923706055,
+      "volume": 24123697,
+      "average_price": 52.56,
+      "oi": 0,
+      "net_change": -1.0500000000000043,
+      "total_buy_quantity": 6917,
+      "total_sell_quantity": 0,
+      "lower_circuit_limit": 42.5,
+      "upper_circuit_limit": 63.7,
+      "last_trade_time": "1697624972130",
+      "oi_day_high": 0,
+      "oi_day_low": 0
+    }
+  }
+}
+
+Name	Type	Description
+status	string	A string indicating the outcome of the request. Typically success for successful operations.
+data	object	Data object holding full market quote information
+data.ohlc	object	Data object with OHLC information
+data.ohlc.open	number	The open price of the trading session
+data.ohlc.high	number	The high price of the trading session
+data.ohlc.low	number	The low price of the trading session
+data.ohlc.close	number	The most recent closing price of the symbol
+data.depth	object	Data object with top 5 buy and sell depth information
+data.depth.buy	object[]	Bids
+data.depth.buy[].quantity	integer	quantity
+data.depth.buy[].price	number	price
+data.depth.buy[].orders	integer	orders
+data.depth.sell	object[]	Asks
+data.depth.sell[].quantity	integer	quantity
+data.depth.sell[].price	number	price
+data.depth.sell[].orders	integer	orders
+data.timestamp	string	Time in milliseconds at which the feeds was updated
+data.instrument_token	string	Key of the instrument. For the regex pattern applicable to this field, see the Field Pattern Appendix.
+data.symbol	string	Shows the trading symbol of the instrument
+data.last_price	number	The last traded price of symbol
+data.volume	integer	The volume traded today on symbol
+data.average_price	number	Average price
+data.oi	number	Total number of outstanding contracts held by market participants exchange-wide (only F&O)
+data.net_change	number	The absolute change from yesterday's close to last traded price
+data.total_buy_quantity	number	The total number of bid quantity available for trading
+data.total_sell_quantity	number	The total number of ask quantity available for trading
+data.lower_circuit_limit	number	The lower circuit of symbol
+data.upper_circuit_limit	number	The upper circuit of symbol
+data.last_trade_time	string	Time in milliseconds at which last trade happened
+data.oi_day_high	number	Open interest day high
+data.oi_day_low	number	Open interest day low
+
+Sample Code
+Get full market quote
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v2/market-quote/quotes?instrument_key=NSE_EQ%7CINE848E01016' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get full market quote for multiple instrument keys
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v2/market-quote/quotes?instrument_key=NSE_EQ%7CINE848E01016,NSE_EQ|INE669E01016' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+GET /market-quote/quotes
+Request
+Live URL
+https://api.upstox.com/v2
+instrument_key — query required
+Comma separated list of instrument keys

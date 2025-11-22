@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762529117397",
+  "summary": {
+    "runId": "run-1762529117397",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -182,
+    "avgReturn": -0.0009676321721748137,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 182,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-15",
+    "to": "2025-08-04",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "LICI": {
+      "trades": [
+        {
+          "symbol": "LICI",
+          "entryTs": "2025-07-15T10:45:00.000Z",
+          "entryPrice": 1880.88,
+          "exitTs": "2025-07-15T11:45:00.000Z",
+          "exitPrice": 1879.06,
+          "pnl": -182,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1876.16 vol>=1630",
+          "trace": {
+            "reason": "breakout N=1 close>=1876.16 vol>=1630"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -182,
+        "winRate": 0,
+        "maxDrawdown": 182,
+        "trades": 1,
+        "avgReturn": -0.0009676321721748137,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "LICI",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -182
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:25:17.403Z",
+  "completedAt": "2025-11-07T15:25:17.403Z",
+  "error": null,
+  "insightsStatus": "done"
+}

@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762529101850",
+  "summary": {
+    "runId": "run-1762529101850",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -759,
+    "avgReturn": -0.0045165666952298855,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 759,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-15",
+    "to": "2025-08-04",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "SJVN": {
+      "trades": [
+        {
+          "symbol": "SJVN",
+          "entryTs": "2025-07-15T18:45:00.000Z",
+          "entryPrice": 1680.48,
+          "exitTs": "2025-07-15T19:45:00.000Z",
+          "exitPrice": 1672.89,
+          "pnl": -759,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1675.57 vol>=4841",
+          "trace": {
+            "reason": "breakout N=1 close>=1675.57 vol>=4841"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -759,
+        "winRate": 0,
+        "maxDrawdown": 759,
+        "trades": 1,
+        "avgReturn": -0.0045165666952298855,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "SJVN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -759
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:25:01.856Z",
+  "completedAt": "2025-11-07T15:25:01.856Z",
+  "error": null,
+  "insightsStatus": "done"
+}

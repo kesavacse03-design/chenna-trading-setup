@@ -1,0 +1,174 @@
+{
+  "runId": "run-1763467210926",
+  "summary": {
+    "runId": "run-1763467210926",
+    "totalTrades": 3,
+    "tradesCount": 3,
+    "totalPnL": -1045,
+    "avgReturn": -0.0012610946369042688,
+    "winRate": 33.33,
+    "profitFactor": 0.14,
+    "maxDrawdown": 1048,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2024-10-01",
+    "to": "2024-10-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "kind": "composite",
+      "ema_short": 8,
+      "ema_long": 50,
+      "rsi_period": 14,
+      "rsi_min": 20,
+      "rsi_max": 80,
+      "atr_mult": 1.2,
+      "volumeFactor": 2,
+      "targetR": 1.2,
+      "qty": 100,
+      "usePatterns": {
+        "engulfing": false,
+        "hammer": false,
+        "doji": false
+      },
+      "enableVWAP": false,
+      "adx_min": 0,
+      "adx_period": 14,
+      "regime": "none",
+      "bb_period": 20,
+      "bb_k": 2,
+      "bb_width": 0.03,
+      "stoch_mode": "none",
+      "stoch_k": 14,
+      "stoch_d": 3,
+      "stoch_kMin": 0,
+      "stoch_kMax": 100,
+      "enableSupertrend": false,
+      "supertrend_period": 10,
+      "supertrend_mult": 3,
+      "atrStop": 1
+    },
+    "swing10": {
+      "successWithin10Days": 2,
+      "failWithin10Days": 1,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 66.67
+    },
+    "equityCurve": [
+      -1048,
+      -877,
+      -1045
+    ]
+  },
+  "perSymbol": {
+    "SAIL": {
+      "trades": [
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-10T19:45:00.000Z",
+          "entryPrice": 2723.39,
+          "exitTs": "2024-10-10T20:45:00.000Z",
+          "exitPrice": 2712.91,
+          "pnl": -1048,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8329 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8329 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-10T21:45:00.000Z",
+          "entryPrice": 2720.95,
+          "exitTs": "2024-10-11T03:45:00.000Z",
+          "exitPrice": 2722.66,
+          "pnl": 171,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8534 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8534 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-27T13:45:00.000Z",
+          "entryPrice": 2980.86,
+          "exitTs": "2024-10-27T18:45:00.000Z",
+          "exitPrice": 2979.18,
+          "pnl": -168,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=10609 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=10609 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -1045,
+        "winRate": 33.33,
+        "maxDrawdown": 1048,
+        "trades": 3,
+        "avgReturn": -0.0012610946369042688,
+        "profitFactor": 0.14,
+        "wins": 1,
+        "losses": 2
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1048
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -168
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-18T12:00:14.341Z",
+  "completedAt": "2025-11-18T12:00:14.341Z",
+  "error": null,
+  "accuracy": 33.33,
+  "winRate": 33.33,
+  "expectancy": -0.0012610946369042688,
+  "totalPnL": -1045,
+  "maxDrawdown": 1048,
+  "trades": [
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-10T19:45:00.000Z",
+      "entryPrice": 2723.39,
+      "exitTs": "2024-10-10T20:45:00.000Z",
+      "exitPrice": 2712.91,
+      "pnl": -1048
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-10T21:45:00.000Z",
+      "entryPrice": 2720.95,
+      "exitTs": "2024-10-11T03:45:00.000Z",
+      "exitPrice": 2722.66,
+      "pnl": 171
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-27T13:45:00.000Z",
+      "entryPrice": 2980.86,
+      "exitTs": "2024-10-27T18:45:00.000Z",
+      "exitPrice": 2979.18,
+      "pnl": -168
+    }
+  ],
+  "insightsStatus": "done"
+}

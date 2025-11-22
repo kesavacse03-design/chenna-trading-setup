@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532858547",
+  "summary": {
+    "runId": "run-1762532858547",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -857,
+    "avgReturn": -0.026701978501324174,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 857,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-09",
+    "to": "2025-07-29",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "JIOFIN": {
+      "trades": [
+        {
+          "symbol": "JIOFIN",
+          "entryTs": "2025-07-24T00:00:00+05:30",
+          "entryPrice": 320.95,
+          "exitTs": "2025-07-23T00:00:00+05:30",
+          "exitPrice": 312.38,
+          "pnl": -857,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=315.55 vol>=5674036",
+          "trace": {
+            "reason": "breakout N=1 close>=315.55 vol>=5674036"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -857,
+        "winRate": 0,
+        "maxDrawdown": 857,
+        "trades": 1,
+        "avgReturn": -0.026701978501324174,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "JIOFIN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -857
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:27:38.549Z",
+  "completedAt": "2025-11-07T16:27:38.549Z",
+  "error": null,
+  "insightsStatus": "done"
+}

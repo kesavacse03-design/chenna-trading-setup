@@ -1,0 +1,83 @@
+function normalizeMetrics(raw){
+  const m = raw && typeof raw === 'object' ? { ...raw } : {};
+
+  // netPnl / trades / maxDrawdown / profitFactor / avgReturn
+  const num = (v, def = 0) => {
+    const n = Number(v);
+    return Number.isFinite(n) ? n : def;
+  };
+
+  let netPnl = num(m.netPnl, 0);
+  let trades = Math.max(0, Math.trunc(num(m.trades, 0)));
+  let maxDrawdown = num(m.maxDrawdown, 0);
+  let avgReturn = num(m.avgReturn, 0);
+  let profitFactor = num(m.profitFactor, 0);
+
+  // wins / losses are optional but some aggregators expect them
+  let wins = Math.max(0, Math.trunc(num(m.wins, 0)));
+  let losses = Math.max(0, Math.trunc(num(m.losses, 0)));
+
+  // Derive winRate (0-100). Prefer explicit numeric winRate; clamp to [0,100].
+  let winRate = num(m.winRate, NaN);
+  if (!Number.isFinite(winRate)) {
+    if (trades > 0 && wins >= 0) {
+      winRate = (wins * 100) / trades;
+    } else {
+      winRate = 0;
+    }
+  } else {
+    // Some callers may have stored 0-1; auto-upscale safely.
+    if (winRate <= 1 && winRate >= 0) {
+      winRate = winRate * 100;
+    }
+  }
+  if (!Number.isFinite(winRate)) winRate = 0;
+  winRate = +Math.min(100, Math.max(0, winRate)).toFixed(2);
+
+  // If expectancy-like fields were missing, derive avgReturn from pnl/trades if possible
+  if (!avgReturn && trades > 0) {
+    const r = netPnl / trades;
+    if (Number.isFinite(r)) avgReturn = r;
+  }
+
+  // Fallbacks as per spec: never NaN / undefined
+  if (!Number.isFinite(netPnl)) netPnl = 0;
+  if (!Number.isFinite(maxDrawdown)) maxDrawdown = 0;
+  if (!Number.isFinite(avgReturn)) avgReturn = 0;
+  if (!Number.isFinite(profitFactor)) profitFactor = 0;
+
+  return {
+    netPnl: +netPnl.toFixed(2),
+    winRate,
+    maxDrawdown: +maxDrawdown.toFixed(2),
+    trades,
+    avgReturn: +avgReturn,
+    profitFactor,
+    wins,
+    losses,
+  };
+}
+
+function computeMetrics(trades){
+  const t = Array.isArray(trades)? trades: [];
+  const netPnl = t.reduce((a,x)=> a + Number(x.pnl||0), 0);
+  const wins = t.filter(x=> Number(x.pnl||0) > 0).length;
+  const tradesCount = t.length;
+  const winRate = tradesCount ? +(wins*100/tradesCount).toFixed(2) : 0;
+  // avgReturn: mean percentage return per trade (exit-entry)/entry
+  const returns = t.map(tr => {
+    const e = Number(tr.entry || 0); const x = Number(tr.exit || 0);
+    if (!e) return 0; return (x - e) / e;
+  }).filter(r => Number.isFinite(r));
+  const avgReturn = returns.length ? +((returns.reduce((a,b)=>a+b,0)/returns.length)) : 0;
+  // profit factor = grossProfit / grossLoss (absolute)
+  const grossProfit = t.filter(x=>Number(x.pnl||0) > 0).reduce((a,x)=>a + Number(x.pnl||0), 0);
+  const grossLoss = Math.abs(t.filter(x=>Number(x.pnl||0) < 0).reduce((a,x)=>a + Number(x.pnl||0), 0));
+  const profitFactor = grossLoss > 0 ? +(grossProfit / grossLoss).toFixed(2) : (grossProfit > 0 ? Number.POSITIVE_INFINITY : 0);
+  // max drawdown from equity curve
+  let peak = 0, dd = 0, eq = 0;
+  for (const tr of t){ eq += Number(tr.pnl||0); if (eq > peak) peak = eq; const curDD = peak - eq; if (curDD > dd) dd = curDD; }
+  const maxDrawdown = +dd.toFixed(2);
+  return normalizeMetrics({ netPnl, winRate, maxDrawdown, trades: tradesCount, avgReturn, profitFactor, wins, losses: tradesCount - wins });
+}
+module.exports = { computeMetrics, normalizeMetrics };

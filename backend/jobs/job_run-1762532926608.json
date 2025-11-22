@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532926608",
+  "summary": {
+    "runId": "run-1762532926608",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -1135,
+    "avgReturn": -0.006408084914182552,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 1135,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "TATACOMM": {
+      "trades": [
+        {
+          "symbol": "TATACOMM",
+          "entryTs": "2025-07-23T00:00:00+05:30",
+          "entryPrice": 1771.2,
+          "exitTs": "2025-07-22T00:00:00+05:30",
+          "exitPrice": 1759.85,
+          "pnl": -1135,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1740.00 vol>=139467",
+          "trace": {
+            "reason": "breakout N=1 close>=1740.00 vol>=139467"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -1135,
+        "winRate": 0,
+        "maxDrawdown": 1135,
+        "trades": 1,
+        "avgReturn": -0.006408084914182552,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "TATACOMM",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1135
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:28:46.611Z",
+  "completedAt": "2025-11-07T16:28:46.611Z",
+  "error": null,
+  "insightsStatus": "done"
+}

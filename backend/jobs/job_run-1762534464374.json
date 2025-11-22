@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762534464374",
+  "summary": {
+    "runId": "run-1762534464374",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -574,
+    "avgReturn": -0.002806928320635329,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 574,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-15",
+    "to": "2025-08-04",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "TATAMOTORS": {
+      "trades": [
+        {
+          "symbol": "TATAMOTORS",
+          "entryTs": "2025-07-15T07:45:00.000Z",
+          "entryPrice": 2044.94,
+          "exitTs": "2025-07-15T08:45:00.000Z",
+          "exitPrice": 2039.2,
+          "pnl": -574,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2040.24 vol>=3825",
+          "trace": {
+            "reason": "breakout N=1 close>=2040.24 vol>=3825"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -574,
+        "winRate": 0,
+        "maxDrawdown": 574,
+        "trades": 1,
+        "avgReturn": -0.002806928320635329,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "TATAMOTORS",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -574
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:54:24.377Z",
+  "completedAt": "2025-11-07T16:54:24.377Z",
+  "error": null,
+  "insightsStatus": "done"
+}

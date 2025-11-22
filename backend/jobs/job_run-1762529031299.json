@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762529031299",
+  "summary": {
+    "runId": "run-1762529031299",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -215,
+    "avgReturn": -0.001168027554584965,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 215,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "BHARTIARTL": {
+      "trades": [
+        {
+          "symbol": "BHARTIARTL",
+          "entryTs": "2025-07-12T08:45:00.000Z",
+          "entryPrice": 1840.71,
+          "exitTs": "2025-07-12T09:45:00.000Z",
+          "exitPrice": 1838.56,
+          "pnl": -215,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1839.64 vol>=2649",
+          "trace": {
+            "reason": "breakout N=1 close>=1839.64 vol>=2649"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -215,
+        "winRate": 0,
+        "maxDrawdown": 215,
+        "trades": 1,
+        "avgReturn": -0.001168027554584965,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "BHARTIARTL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -215
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:23:51.306Z",
+  "completedAt": "2025-11-07T15:23:51.306Z",
+  "error": null,
+  "insightsStatus": "done"
+}

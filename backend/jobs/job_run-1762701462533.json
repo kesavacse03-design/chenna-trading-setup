@@ -1,0 +1,118 @@
+{
+  "runId": "run-1762701462533",
+  "summary": {
+    "runId": "run-1762701462533",
+    "totalTrades": 3,
+    "tradesCount": 3,
+    "totalPnL": -145.5,
+    "avgReturn": 0.006126674627878606,
+    "winRate": 66.67,
+    "profitFactor": 0.12,
+    "maxDrawdown": 165.5,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-10-01",
+    "to": "2025-10-15",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "N": 1,
+      "volumeFactor": 0,
+      "atrStop": 0.3,
+      "targetR": 0.6,
+      "qty": 50
+    },
+    "swing10": {
+      "successWithin10Days": 1,
+      "failWithin10Days": 0,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 100
+    },
+    "equityCurve": [
+      10,
+      -155.5,
+      -145.5
+    ]
+  },
+  "perSymbol": {
+    "SYM_A": {
+      "trades": [
+        {
+          "symbol": "SYM_A",
+          "entryTs": "2025-11-09T15:17:43.630Z",
+          "entryPrice": 100,
+          "exitTs": "2025-11-09T15:17:43.630Z",
+          "exitPrice": 101,
+          "pnl": 10,
+          "direction": "LONG",
+          "reason": "test-force",
+          "trace": []
+        },
+        {
+          "symbol": "SYM_A",
+          "entryTs": "2025-10-06T14:45:00.000Z",
+          "entryPrice": 2043.24,
+          "exitTs": "2025-10-06T15:45:00.000Z",
+          "exitPrice": 2039.93,
+          "pnl": -165.5,
+          "direction": "LONG",
+          "reason": "breakout N=1 hh=2040.62 vol>=3758 patterns=engulfing adxOk=true squeezeOk=true",
+          "trace": []
+        }
+      ],
+      "metrics": {
+        "netPnl": -155.5,
+        "winRate": 50,
+        "maxDrawdown": 165.5,
+        "trades": 2,
+        "avgReturn": 0.0041900119418179105,
+        "profitFactor": 0.06,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "SYM_B": {
+      "trades": [
+        {
+          "symbol": "SYM_B",
+          "entryTs": "2025-11-09T15:17:45.956Z",
+          "entryPrice": 100,
+          "exitTs": "2025-11-09T15:17:45.956Z",
+          "exitPrice": 101,
+          "pnl": 10,
+          "direction": "LONG",
+          "reason": "test-force",
+          "trace": {
+            "reason": "test-force"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 10,
+        "winRate": 100,
+        "maxDrawdown": 0,
+        "trades": 1,
+        "avgReturn": 0.01,
+        "profitFactor": null,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "SYM_A",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -165.5
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-09T15:17:46.150Z",
+  "completedAt": "2025-11-09T15:17:46.150Z",
+  "error": null,
+  "insightsStatus": "done"
+}

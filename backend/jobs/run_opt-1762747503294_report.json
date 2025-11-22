@@ -1,0 +1,391 @@
+{
+  "runId": "opt-1762747503294",
+  "searchMode": "grid",
+  "combosTried": 120,
+  "results": 120,
+  "timedOut": false,
+  "topN": [
+    {
+      "rank": 1,
+      "score": 0.47,
+      "metrics": {
+        "trades": 5,
+        "netPnl": 1,
+        "avgReturn": 0.01,
+        "winRate": 50,
+        "maxDrawdown": -5
+      },
+      "config": {
+        "ema_short": 5,
+        "ema_long": 65,
+        "atr_mult": 1.2
+      },
+      "runId": "lg-ohdby1",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "S0",
+              "S3",
+              "S6",
+              "S9"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 1,
+              "avgReturn": 0.01,
+              "winRate": 50,
+              "maxDrawdown": -5
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "S1",
+              "S4",
+              "S7"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 1,
+              "avgReturn": 0.01,
+              "winRate": 50,
+              "maxDrawdown": -5
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "S2",
+              "S5",
+              "S8"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 1,
+              "avgReturn": 0.01,
+              "winRate": 50,
+              "maxDrawdown": -5
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 15,
+          "netPnl": 3,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": -5,
+          "avgReturn": 0.01
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "score": 0.47,
+      "metrics": {
+        "trades": 5,
+        "netPnl": 1,
+        "avgReturn": 0.01,
+        "winRate": 50,
+        "maxDrawdown": -5
+      },
+      "config": {
+        "ema_short": 5,
+        "ema_long": 65,
+        "atr_mult": 1
+      },
+      "runId": "lg-hsjrfh",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "S0",
+              "S3",
+              "S6",
+              "S9"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 1,
+              "avgReturn": 0.01,
+              "winRate": 50,
+              "maxDrawdown": -5
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "S1",
+              "S4",
+              "S7"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 1,
+              "avgReturn": 0.01,
+              "winRate": 50,
+              "maxDrawdown": -5
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "S2",
+              "S5",
+              "S8"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 1,
+              "avgReturn": 0.01,
+              "winRate": 50,
+              "maxDrawdown": -5
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 15,
+          "netPnl": 3,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": -5,
+          "avgReturn": 0.01
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "score": 0.47,
+      "metrics": {
+        "trades": 5,
+        "netPnl": 1,
+        "avgReturn": 0.01,
+        "winRate": 50,
+        "maxDrawdown": -5
+      },
+      "config": {
+        "ema_short": 5,
+        "ema_long": 60,
+        "atr_mult": 1.2
+      },
+      "runId": "lg-1mjt1c",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "S0",
+              "S3",
+              "S6",
+              "S9"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 1,
+              "avgReturn": 0.01,
+              "winRate": 50,
+              "maxDrawdown": -5
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "S1",
+              "S4",
+              "S7"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 1,
+              "avgReturn": 0.01,
+              "winRate": 50,
+              "maxDrawdown": -5
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "S2",
+              "S5",
+              "S8"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 1,
+              "avgReturn": 0.01,
+              "winRate": 50,
+              "maxDrawdown": -5
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 15,
+          "netPnl": 3,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": -5,
+          "avgReturn": 0.01
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "score": 0.47,
+      "metrics": {
+        "trades": 5,
+        "netPnl": 1,
+        "avgReturn": 0.01,
+        "winRate": 50,
+        "maxDrawdown": -5
+      },
+      "config": {
+        "ema_short": 5,
+        "ema_long": 60,
+        "atr_mult": 1
+      },
+      "runId": "lg-xp7t0l",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "S0",
+              "S3",
+              "S6",
+              "S9"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 1,
+              "avgReturn": 0.01,
+              "winRate": 50,
+              "maxDrawdown": -5
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "S1",
+              "S4",
+              "S7"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 1,
+              "avgReturn": 0.01,
+              "winRate": 50,
+              "maxDrawdown": -5
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "S2",
+              "S5",
+              "S8"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 1,
+              "avgReturn": 0.01,
+              "winRate": 50,
+              "maxDrawdown": -5
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 15,
+          "netPnl": 3,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": -5,
+          "avgReturn": 0.01
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "score": 0.47,
+      "metrics": {
+        "trades": 5,
+        "netPnl": 1,
+        "avgReturn": 0.01,
+        "winRate": 50,
+        "maxDrawdown": -5
+      },
+      "config": {
+        "ema_short": 5,
+        "ema_long": 55,
+        "atr_mult": 1.2
+      },
+      "runId": "lg-9mupwb",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "S0",
+              "S3",
+              "S6",
+              "S9"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 1,
+              "avgReturn": 0.01,
+              "winRate": 50,
+              "maxDrawdown": -5
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "S1",
+              "S4",
+              "S7"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 1,
+              "avgReturn": 0.01,
+              "winRate": 50,
+              "maxDrawdown": -5
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "S2",
+              "S5",
+              "S8"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 1,
+              "avgReturn": 0.01,
+              "winRate": 50,
+              "maxDrawdown": -5
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 15,
+          "netPnl": 3,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": -5,
+          "avgReturn": 0.01
+        }
+      }
+    }
+  ],
+  "summaryText": "Run completed cpuAvg=NA% combos=120 mode=grid topExpectancy=0.0100",
+  "avgCpuPercent": null
+}

@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762529046856",
+  "summary": {
+    "runId": "run-1762529046856",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -685,
+    "avgReturn": -0.002413646085489006,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 685,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "ICICIGI": {
+      "trades": [
+        {
+          "symbol": "ICICIGI",
+          "entryTs": "2025-07-12T12:45:00.000Z",
+          "entryPrice": 2838.03,
+          "exitTs": "2025-07-12T13:45:00.000Z",
+          "exitPrice": 2831.18,
+          "pnl": -685,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2832.59 vol>=2725",
+          "trace": {
+            "reason": "breakout N=1 close>=2832.59 vol>=2725"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -685,
+        "winRate": 0,
+        "maxDrawdown": 685,
+        "trades": 1,
+        "avgReturn": -0.002413646085489006,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "ICICIGI",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -685
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:24:06.861Z",
+  "completedAt": "2025-11-07T15:24:06.861Z",
+  "error": null,
+  "insightsStatus": "done"
+}

@@ -1,0 +1,101 @@
+{
+  "strategy": {
+    "ema_short": 8,
+    "ema_long": 55,
+    "atr_mult": 1.5
+  },
+  "runId": null,
+  "optimizerRunId": "opt-1763274573399",
+  "expectancy": 0.005,
+  "drawdown": 0,
+  "trades": 50,
+  "kfold": {
+    "K": 10,
+    "folds": [
+      {
+        "index": 0,
+        "symbols": [
+          "A"
+        ],
+        "metrics": {
+          "netPnl": 200,
+          "winRate": 60,
+          "maxDrawdown": 0,
+          "trades": 50,
+          "avgReturn": 0.02,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "index": 1,
+        "symbols": [
+          "B"
+        ],
+        "metrics": {
+          "netPnl": -10,
+          "winRate": 30,
+          "maxDrawdown": 0,
+          "trades": 0,
+          "avgReturn": -0.01,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "index": 2,
+        "symbols": [],
+        "metrics": null
+      },
+      {
+        "index": 3,
+        "symbols": [],
+        "metrics": null
+      },
+      {
+        "index": 4,
+        "symbols": [],
+        "metrics": null
+      },
+      {
+        "index": 5,
+        "symbols": [],
+        "metrics": null
+      },
+      {
+        "index": 6,
+        "symbols": [],
+        "metrics": null
+      },
+      {
+        "index": 7,
+        "symbols": [],
+        "metrics": null
+      },
+      {
+        "index": 8,
+        "symbols": [],
+        "metrics": null
+      },
+      {
+        "index": 9,
+        "symbols": [],
+        "metrics": null
+      }
+    ],
+    "validatedFolds": 2,
+    "validationTrades": 50
+  },
+  "promoted": true,
+  "thresholds": {
+    "minTrades": 30,
+    "maxNegativeDrawdown": -50000,
+    "expectancyPositive": true
+  },
+  "summaryText": "Top candidate expectancy=0.0050 trades=50 drawdown=0 promoted=true cpuAvg=NA%",
+  "avgCpuPercent": null,
+  "gitCommit": "ref: refs/heads/fix/watchlist-hydration",
+  "seed": 54321
+}

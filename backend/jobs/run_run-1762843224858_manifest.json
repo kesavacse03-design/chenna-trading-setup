@@ -1,0 +1,23 @@
+{
+  "runId": "run-1762843224858",
+  "from": "2025-10-01",
+  "to": "2025-10-05",
+  "interval": "day",
+  "mode": "upstox",
+  "symbolsCount": 17,
+  "createdAt": "2025-11-11T06:40:43.139Z",
+  "strategyConfig": {
+    "ema_short": 8,
+    "ema_long": 55,
+    "atr_mult": 1.5,
+    "volumeFactor": 0.9
+  },
+  "resume": false,
+  "seed": null,
+  "gitCommit": "ref: refs/heads/feature/marketdata-fallback",
+  "paramGridFile": null,
+  "thresholds": {
+    "promoMinTrades": 30,
+    "promoMaxDrawdown": 50000
+  }
+}

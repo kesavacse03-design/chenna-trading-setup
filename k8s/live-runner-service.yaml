@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: chenna-live-runner-svc
+  labels:
+    app: chenna-live-runner
+spec:
+  selector:
+    app: chenna-live-runner
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+  type: ClusterIP

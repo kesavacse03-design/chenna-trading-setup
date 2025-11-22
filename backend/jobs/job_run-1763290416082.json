@@ -1,0 +1,89 @@
+{
+  "runId": "run-1763290416082",
+  "summary": {
+    "runId": "run-1763290416082",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -481,
+    "avgReturn": -0.002870836242964628,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 481,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-01-01",
+    "to": "2025-10-01",
+    "interval": "1d",
+    "mode": "mock",
+    "strategyConfig": null,
+    "swing10": {
+      "successWithin10Days": 0,
+      "failWithin10Days": 1,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 0
+    },
+    "equityCurve": [
+      -481
+    ]
+  },
+  "perSymbol": {
+    "MOCKD": {
+      "trades": [
+        {
+          "symbol": "MOCKD",
+          "entryTs": "2025-01-04T06:45:00.000Z",
+          "entryPrice": 1675.47,
+          "exitTs": "2025-01-04T07:45:00.000Z",
+          "exitPrice": 1670.66,
+          "pnl": -481,
+          "direction": "LONG",
+          "reason": "breakout N=1 hh=1672.28 vol>=1280 patterns=engulfing adxOk=true squeezeOk=true",
+          "trace": {
+            "reason": "breakout N=1 hh=1672.28 vol>=1280 patterns=engulfing adxOk=true squeezeOk=true"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -481,
+        "winRate": 0,
+        "maxDrawdown": 481,
+        "trades": 1,
+        "avgReturn": -0.002870836242964628,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 1
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "MOCKD",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -481
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-16T10:53:37.116Z",
+  "completedAt": "2025-11-16T10:53:37.116Z",
+  "error": null,
+  "accuracy": 0,
+  "winRate": 0,
+  "expectancy": -0.002870836242964628,
+  "totalPnL": -481,
+  "maxDrawdown": 481,
+  "trades": [
+    {
+      "symbol": "MOCKD",
+      "entryTs": "2025-01-04T06:45:00.000Z",
+      "entryPrice": 1675.47,
+      "exitTs": "2025-01-04T07:45:00.000Z",
+      "exitPrice": 1670.66,
+      "pnl": -481
+    }
+  ],
+  "insightsStatus": "done"
+}

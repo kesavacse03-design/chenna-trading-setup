@@ -1,0 +1,5 @@
+// Inject a test candle into live-runner from inside the pod
+const http=require('http');
+function post(path, body){return new Promise((resolve,reject)=>{const data=JSON.stringify(body);const req=http.request({hostname:'127.0.0.1',port:8080,path,method:'POST',headers:{'Content-Type':'application/json','Content-Length':Buffer.byteLength(data)}},res=>{let d='';res.on('data',c=>d+=c);res.on('end',()=>resolve({status:res.statusCode,body:d}));});req.on('error',reject);req.write(data);req.end();});}
+function get(path){return new Promise((resolve,reject)=>{http.get({hostname:'127.0.0.1',port:8080,path},res=>{let d='';res.on('data',c=>d+=c);res.on('end',()=>resolve({status:res.statusCode,body:d}));}).on('error',reject);});}
+(async()=>{try{const candle={symbol:'TEST',date:new Date().toISOString(),open:100,high:101,low:99,close:100.5,volume:1234};const r=await post('/ingest/candle',candle);console.log('INGEST',r.status,r.body.slice(0,200));const h=await get('/health');console.log('HEALTH',h.status,h.body);}catch(e){console.log('ERR',e.message);process.exit(1);}})();

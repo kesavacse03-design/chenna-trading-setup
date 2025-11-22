@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762529013305",
+  "summary": {
+    "runId": "run-1762529013305",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -467,
+    "avgReturn": -0.0036669153154566727,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 467,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-11",
+    "to": "2025-07-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "SIEMENS": {
+      "trades": [
+        {
+          "symbol": "SIEMENS",
+          "entryTs": "2025-07-11T08:45:00.000Z",
+          "entryPrice": 1273.55,
+          "exitTs": "2025-07-11T09:45:00.000Z",
+          "exitPrice": 1268.88,
+          "pnl": -467,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1269.52 vol>=2521",
+          "trace": {
+            "reason": "breakout N=1 close>=1269.52 vol>=2521"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -467,
+        "winRate": 0,
+        "maxDrawdown": 467,
+        "trades": 1,
+        "avgReturn": -0.0036669153154566727,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "SIEMENS",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -467
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:23:33.310Z",
+  "completedAt": "2025-11-07T15:23:33.310Z",
+  "error": null,
+  "insightsStatus": "done"
+}

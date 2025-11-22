@@ -1,0 +1,44 @@
+{
+  "runId": "run-1763182689967",
+  "symbols": [
+    "A"
+  ],
+  "metrics": {
+    "netPnl": 0,
+    "winRate": 0,
+    "maxDrawdown": 0,
+    "trades": 0,
+    "avgReturn": 0,
+    "profitFactor": 0
+  },
+  "perCategory": {},
+  "perSymbol": {
+    "A": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0
+    }
+  },
+  "swing10": {
+    "successWithin10Days": 0,
+    "failWithin10Days": 0,
+    "expiredTrades": 0,
+    "successRateWithin10Days": 0
+  },
+  "resume": false,
+  "equityCurve": [],
+  "strategyConfig": {
+    "ema_short": 8,
+    "ema_long": 50,
+    "atr_mult": 1.5
+  },
+  "missing": [
+    {
+      "symbol": "A",
+      "reason": "mock-generate-failed"
+    }
+  ]
+}

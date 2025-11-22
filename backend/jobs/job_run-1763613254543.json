@@ -1,0 +1,1889 @@
+{
+  "runId": "run-1763613254543",
+  "summary": {
+    "runId": "run-1763613254543",
+    "totalTrades": 62,
+    "tradesCount": 62,
+    "totalPnL": -576098,
+    "avgReturn": -0.03887349842338466,
+    "winRate": 27.42,
+    "profitFactor": 0.12,
+    "maxDrawdown": 578778,
+    "avgHoldingDays": 11.44,
+    "missingCount": 0,
+    "from": "2023-11-20",
+    "to": "2025-11-20",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "kind": "composite",
+      "ema_short": 8,
+      "ema_long": 50,
+      "rsi_period": 14,
+      "rsi_min": 20,
+      "rsi_max": 60,
+      "atr_mult": 2,
+      "volumeFactor": 1,
+      "targetR": 2,
+      "qty": 100,
+      "usePatterns": {
+        "engulfing": false,
+        "hammer": false,
+        "doji": false
+      },
+      "enableVWAP": false,
+      "adx_min": 0,
+      "adx_period": 14,
+      "regime": "none",
+      "bb_period": 20,
+      "bb_k": 2,
+      "bb_width": 0.03,
+      "stoch_mode": "none",
+      "stoch_k": 14,
+      "stoch_d": 3,
+      "stoch_kMin": 0,
+      "stoch_kMax": 100,
+      "enableSupertrend": false,
+      "supertrend_period": 10,
+      "supertrend_mult": 3,
+      "minBreakoutVolumeMult": 0,
+      "requiredAdxMin": 0,
+      "atrStop": 1
+    },
+    "swing10": {
+      "successWithin10Days": 5,
+      "failWithin10Days": 16,
+      "expiredTrades": 40,
+      "successRateWithin10Days": 23.81
+    },
+    "equityCurve": [
+      2680,
+      -22645,
+      -28925,
+      -26055,
+      -32580,
+      -32280,
+      -37445,
+      -43220,
+      -47904,
+      -43944,
+      -38503,
+      -33739,
+      -54333,
+      -60058,
+      -59608,
+      -66414,
+      -74216,
+      -74668,
+      -77168,
+      -77543,
+      -79193,
+      -80648,
+      -87958,
+      -91092,
+      -87116,
+      -85830,
+      -89793,
+      -97700,
+      -98995,
+      -101155,
+      -129780,
+      -130675,
+      -150649,
+      -156079,
+      -155239,
+      -154629,
+      -148559,
+      -156229,
+      -158069,
+      -167199,
+      -162209,
+      -161329,
+      -172654,
+      -197145,
+      -203755,
+      -240720,
+      -228160,
+      -255750,
+      -264440,
+      -259475,
+      -271975,
+      -331603,
+      -379361,
+      -419662,
+      -438992,
+      -461132,
+      -469532,
+      -451072,
+      -482672,
+      -518007,
+      -550140,
+      -576098
+    ]
+  },
+  "perSymbol": {
+    "CGPOWER": {
+      "trades": [
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2024-04-15T18:30:00.000Z",
+          "entryPrice": 522.25,
+          "exitTs": "2024-05-01T18:30:00.000Z",
+          "exitPrice": 549.05,
+          "pnl": 2680,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=5468251 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=5468251 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2024-06-03T18:30:00.000Z",
+          "entryPrice": 823.5,
+          "exitTs": "2024-06-04T18:30:00.000Z",
+          "exitPrice": 570.25,
+          "pnl": -25325,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=4632202 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=4632202 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2024-06-04T18:30:00.000Z",
+          "entryPrice": 742.75,
+          "exitTs": "2024-06-19T18:30:00.000Z",
+          "exitPrice": 679.95,
+          "pnl": -6280,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=4907921 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=4907921 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2024-06-19T18:30:00.000Z",
+          "entryPrice": 693.85,
+          "exitTs": "2024-07-03T18:30:00.000Z",
+          "exitPrice": 722.55,
+          "pnl": 2870,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=4038487 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=4038487 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2024-07-03T18:30:00.000Z",
+          "entryPrice": 740.9,
+          "exitTs": "2024-07-18T18:30:00.000Z",
+          "exitPrice": 675.65,
+          "pnl": -6525,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=3918923 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=3918923 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2024-07-18T18:30:00.000Z",
+          "entryPrice": 728.65,
+          "exitTs": "2024-08-01T18:30:00.000Z",
+          "exitPrice": 731.65,
+          "pnl": 300,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=2961747 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=2961747 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2024-08-01T18:30:00.000Z",
+          "entryPrice": 762.2,
+          "exitTs": "2024-08-18T18:30:00.000Z",
+          "exitPrice": 710.55,
+          "pnl": -5165,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=2926472 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=2926472 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2024-08-18T18:30:00.000Z",
+          "entryPrice": 741.35,
+          "exitTs": "2024-09-01T18:30:00.000Z",
+          "exitPrice": 683.6,
+          "pnl": -5775,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=3060351 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=3060351 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2024-09-01T18:30:00.000Z",
+          "entryPrice": 724,
+          "exitTs": "2024-09-05T18:30:00.000Z",
+          "exitPrice": 677.16,
+          "pnl": -4684,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=2690141 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=2690141 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2024-09-05T18:30:00.000Z",
+          "entryPrice": 706.9,
+          "exitTs": "2024-09-19T18:30:00.000Z",
+          "exitPrice": 746.5,
+          "pnl": 3960,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=1943878 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=1943878 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2024-09-19T18:30:00.000Z",
+          "entryPrice": 757.9,
+          "exitTs": "2024-09-24T18:30:00.000Z",
+          "exitPrice": 812.31,
+          "pnl": 5441,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=2358957 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=2358957 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2024-10-03T18:30:00.000Z",
+          "entryPrice": 765.25,
+          "exitTs": "2024-10-09T18:30:00.000Z",
+          "exitPrice": 812.89,
+          "pnl": 4764,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=2926820 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=2926820 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2024-10-20T18:30:00.000Z",
+          "entryPrice": 919.85,
+          "exitTs": "2024-10-27T18:30:00.000Z",
+          "exitPrice": 713.91,
+          "pnl": -20594,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=4072054 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=4072054 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2024-10-27T18:30:00.000Z",
+          "entryPrice": 784.75,
+          "exitTs": "2024-11-10T18:30:00.000Z",
+          "exitPrice": 727.5,
+          "pnl": -5725,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=4459295 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=4459295 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2024-12-01T18:30:00.000Z",
+          "entryPrice": 766.45,
+          "exitTs": "2024-12-15T18:30:00.000Z",
+          "exitPrice": 770.95,
+          "pnl": 450,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=2186740 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=2186740 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2025-03-25T18:30:00.000Z",
+          "entryPrice": 648.85,
+          "exitTs": "2025-04-03T18:30:00.000Z",
+          "exitPrice": 580.79,
+          "pnl": -6806,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=3968949 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=3968949 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2025-04-03T18:30:00.000Z",
+          "entryPrice": 660.95,
+          "exitTs": "2025-04-06T18:30:00.000Z",
+          "exitPrice": 582.93,
+          "pnl": -7802,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=4493999 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=4493999 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2025-05-05T18:30:00.000Z",
+          "entryPrice": 703.5,
+          "exitTs": "2025-05-15T18:30:00.000Z",
+          "exitPrice": 698.98,
+          "pnl": -452,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=2807114 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=2807114 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2025-05-15T18:30:00.000Z",
+          "entryPrice": 711.7,
+          "exitTs": "2025-05-29T18:30:00.000Z",
+          "exitPrice": 686.7,
+          "pnl": -2500,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=2964899 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=2964899 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2025-06-05T18:30:00.000Z",
+          "entryPrice": 692,
+          "exitTs": "2025-06-19T18:30:00.000Z",
+          "exitPrice": 688.25,
+          "pnl": -375,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=2369524 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=2369524 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2025-06-19T18:30:00.000Z",
+          "entryPrice": 693.1,
+          "exitTs": "2025-07-03T18:30:00.000Z",
+          "exitPrice": 676.6,
+          "pnl": -1650,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=2359259 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=2359259 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2025-07-03T18:30:00.000Z",
+          "entryPrice": 682.15,
+          "exitTs": "2025-07-17T18:30:00.000Z",
+          "exitPrice": 667.6,
+          "pnl": -1455,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=2257118 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=2257118 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2025-07-17T18:30:00.000Z",
+          "entryPrice": 724.4,
+          "exitTs": "2025-07-31T18:30:00.000Z",
+          "exitPrice": 651.3,
+          "pnl": -7310,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=2562784 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=2562784 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2025-07-31T18:30:00.000Z",
+          "entryPrice": 678.4,
+          "exitTs": "2025-08-03T18:30:00.000Z",
+          "exitPrice": 647.06,
+          "pnl": -3134,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=3194483 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=3194483 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2025-08-25T18:30:00.000Z",
+          "entryPrice": 693.65,
+          "exitTs": "2025-09-01T18:30:00.000Z",
+          "exitPrice": 733.41,
+          "pnl": 3976,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=2612311 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=2612311 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2025-09-01T18:30:00.000Z",
+          "entryPrice": 747.5,
+          "exitTs": "2025-09-09T18:30:00.000Z",
+          "exitPrice": 760.36,
+          "pnl": 1286,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=3196655 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=3196655 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2025-10-08T18:30:00.000Z",
+          "entryPrice": 765.55,
+          "exitTs": "2025-10-19T18:30:00.000Z",
+          "exitPrice": 725.92,
+          "pnl": -3963,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=2233368 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=2233368 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2025-10-19T18:30:00.000Z",
+          "entryPrice": 798.55,
+          "exitTs": "2025-10-23T18:30:00.000Z",
+          "exitPrice": 719.48,
+          "pnl": -7907,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=2046642 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=2046642 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2025-10-23T18:30:00.000Z",
+          "entryPrice": 751.1,
+          "exitTs": "2025-11-09T18:30:00.000Z",
+          "exitPrice": 738.15,
+          "pnl": -1295,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=1750974 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=1750974 gates:"
+          }
+        },
+        {
+          "symbol": "CGPOWER",
+          "entryTs": "2025-11-09T18:30:00.000Z",
+          "entryPrice": 745.7,
+          "exitTs": "2025-11-18T18:30:00.000Z",
+          "exitPrice": 724.1,
+          "pnl": -2160,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=1883719 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=1883719 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -101155,
+        "winRate": 30,
+        "maxDrawdown": 103835,
+        "trades": 30,
+        "avgReturn": -0.04264099903767629,
+        "profitFactor": 0.2,
+        "wins": 9,
+        "losses": 21
+      }
+    },
+    "DALBHARAT": {
+      "trades": [
+        {
+          "symbol": "DALBHARAT",
+          "entryTs": "2024-07-18T18:30:00.000Z",
+          "entryPrice": 2084.95,
+          "exitTs": "2024-08-01T18:30:00.000Z",
+          "exitPrice": 1798.7,
+          "pnl": -28625,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=641958 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=641958 gates:"
+          }
+        },
+        {
+          "symbol": "DALBHARAT",
+          "entryTs": "2024-09-19T18:30:00.000Z",
+          "entryPrice": 1862.65,
+          "exitTs": "2024-10-06T18:30:00.000Z",
+          "exitPrice": 1853.7,
+          "pnl": -895,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=339573 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=339573 gates:"
+          }
+        },
+        {
+          "symbol": "DALBHARAT",
+          "entryTs": "2024-10-06T18:30:00.000Z",
+          "entryPrice": 2050.8,
+          "exitTs": "2024-10-08T18:30:00.000Z",
+          "exitPrice": 1851.06,
+          "pnl": -19974,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=360983 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=360983 gates:"
+          }
+        },
+        {
+          "symbol": "DALBHARAT",
+          "entryTs": "2024-12-22T18:30:00.000Z",
+          "entryPrice": 1853.55,
+          "exitTs": "2025-01-06T18:30:00.000Z",
+          "exitPrice": 1799.25,
+          "pnl": -5430,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=356211 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=356211 gates:"
+          }
+        },
+        {
+          "symbol": "DALBHARAT",
+          "entryTs": "2025-04-22T18:30:00.000Z",
+          "entryPrice": 1956,
+          "exitTs": "2025-05-07T18:30:00.000Z",
+          "exitPrice": 1964.4,
+          "pnl": 840,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=312515 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=312515 gates:"
+          }
+        },
+        {
+          "symbol": "DALBHARAT",
+          "entryTs": "2025-06-01T18:30:00.000Z",
+          "entryPrice": 2089.6,
+          "exitTs": "2025-06-15T18:30:00.000Z",
+          "exitPrice": 2095.7,
+          "pnl": 610,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=408801 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=408801 gates:"
+          }
+        },
+        {
+          "symbol": "DALBHARAT",
+          "entryTs": "2025-06-15T18:30:00.000Z",
+          "entryPrice": 2146.9,
+          "exitTs": "2025-06-29T18:30:00.000Z",
+          "exitPrice": 2207.6,
+          "pnl": 6070,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=395423 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=395423 gates:"
+          }
+        },
+        {
+          "symbol": "DALBHARAT",
+          "entryTs": "2025-06-29T18:30:00.000Z",
+          "entryPrice": 2235.8,
+          "exitTs": "2025-07-13T18:30:00.000Z",
+          "exitPrice": 2159.1,
+          "pnl": -7670,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=263381 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=263381 gates:"
+          }
+        },
+        {
+          "symbol": "DALBHARAT",
+          "entryTs": "2025-07-13T18:30:00.000Z",
+          "entryPrice": 2223.7,
+          "exitTs": "2025-07-27T18:30:00.000Z",
+          "exitPrice": 2205.3,
+          "pnl": -1840,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=269169 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=269169 gates:"
+          }
+        },
+        {
+          "symbol": "DALBHARAT",
+          "entryTs": "2025-07-27T18:30:00.000Z",
+          "entryPrice": 2315.9,
+          "exitTs": "2025-08-10T18:30:00.000Z",
+          "exitPrice": 2224.6,
+          "pnl": -9130,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=313083 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=313083 gates:"
+          }
+        },
+        {
+          "symbol": "DALBHARAT",
+          "entryTs": "2025-08-10T18:30:00.000Z",
+          "entryPrice": 2308.3,
+          "exitTs": "2025-08-25T18:30:00.000Z",
+          "exitPrice": 2358.2,
+          "pnl": 4990,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=390137 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=390137 gates:"
+          }
+        },
+        {
+          "symbol": "DALBHARAT",
+          "entryTs": "2025-08-25T18:30:00.000Z",
+          "entryPrice": 2392.7,
+          "exitTs": "2025-09-09T18:30:00.000Z",
+          "exitPrice": 2401.5,
+          "pnl": 880,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=424244 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=424244 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -60174,
+        "winRate": 41.67,
+        "maxDrawdown": 66044,
+        "trades": 12,
+        "avgReturn": -0.024167517568006266,
+        "profitFactor": 0.18,
+        "wins": 5,
+        "losses": 7
+      }
+    },
+    "DMART": {
+      "trades": [
+        {
+          "symbol": "DMART",
+          "entryTs": "2024-05-05T18:30:00.000Z",
+          "entryPrice": 4783.9,
+          "exitTs": "2024-05-17T18:30:00.000Z",
+          "exitPrice": 4670.65,
+          "pnl": -11325,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=496301 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=496301 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2024-05-17T18:30:00.000Z",
+          "entryPrice": 4769.95,
+          "exitTs": "2024-05-26T18:30:00.000Z",
+          "exitPrice": 4525.04,
+          "pnl": -24491,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=460215 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=460215 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2024-06-04T18:30:00.000Z",
+          "entryPrice": 4927.8,
+          "exitTs": "2024-06-19T18:30:00.000Z",
+          "exitPrice": 4861.7,
+          "pnl": -6610,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=429917 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=429917 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2024-06-19T18:30:00.000Z",
+          "entryPrice": 5137.75,
+          "exitTs": "2024-07-03T18:30:00.000Z",
+          "exitPrice": 4768.1,
+          "pnl": -36965,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=432231 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=432231 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2024-07-03T18:30:00.000Z",
+          "entryPrice": 4885.1,
+          "exitTs": "2024-07-18T18:30:00.000Z",
+          "exitPrice": 5010.7,
+          "pnl": 12560,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=680737 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=680737 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2024-07-18T18:30:00.000Z",
+          "entryPrice": 5185.6,
+          "exitTs": "2024-08-01T18:30:00.000Z",
+          "exitPrice": 4909.7,
+          "pnl": -27590,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=602380 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=602380 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2024-08-01T18:30:00.000Z",
+          "entryPrice": 5089.6,
+          "exitTs": "2024-08-18T18:30:00.000Z",
+          "exitPrice": 5002.7,
+          "pnl": -8690,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=573720 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=573720 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2024-08-22T18:30:00.000Z",
+          "entryPrice": 5253.8,
+          "exitTs": "2024-09-05T18:30:00.000Z",
+          "exitPrice": 5303.45,
+          "pnl": 4965,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=392768 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=392768 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2024-09-05T18:30:00.000Z",
+          "entryPrice": 5445.55,
+          "exitTs": "2024-09-19T18:30:00.000Z",
+          "exitPrice": 5320.55,
+          "pnl": -12500,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=404801 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=404801 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2024-09-24T18:30:00.000Z",
+          "entryPrice": 5585.5,
+          "exitTs": "2024-09-30T18:30:00.000Z",
+          "exitPrice": 4989.22,
+          "pnl": -59628,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=477170 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=477170 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2024-09-30T18:30:00.000Z",
+          "entryPrice": 5296.9,
+          "exitTs": "2024-10-03T18:30:00.000Z",
+          "exitPrice": 4819.32,
+          "pnl": -47758,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=448943 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=448943 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2024-10-03T18:30:00.000Z",
+          "entryPrice": 5053.9,
+          "exitTs": "2024-10-06T18:30:00.000Z",
+          "exitPrice": 4650.89,
+          "pnl": -40301,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=488077 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=488077 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2025-05-01T18:30:00.000Z",
+          "entryPrice": 4383,
+          "exitTs": "2025-05-15T18:30:00.000Z",
+          "exitPrice": 4189.7,
+          "pnl": -19330,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=693609 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=693609 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2025-05-15T18:30:00.000Z",
+          "entryPrice": 4223.5,
+          "exitTs": "2025-05-29T18:30:00.000Z",
+          "exitPrice": 4002.1,
+          "pnl": -22140,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=743819 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=743819 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2025-05-29T18:30:00.000Z",
+          "entryPrice": 4135.9,
+          "exitTs": "2025-06-12T18:30:00.000Z",
+          "exitPrice": 4051.9,
+          "pnl": -8400,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=389487 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=389487 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2025-06-12T18:30:00.000Z",
+          "entryPrice": 4128.9,
+          "exitTs": "2025-06-26T18:30:00.000Z",
+          "exitPrice": 4313.5,
+          "pnl": 18460,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=332339 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=332339 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2025-07-10T18:30:00.000Z",
+          "entryPrice": 4313,
+          "exitTs": "2025-07-24T18:30:00.000Z",
+          "exitPrice": 3997,
+          "pnl": -31600,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=662995 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=662995 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2025-09-23T18:30:00.000Z",
+          "entryPrice": 4778.2,
+          "exitTs": "2025-09-29T18:30:00.000Z",
+          "exitPrice": 4424.85,
+          "pnl": -35335,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=414853 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=414853 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2025-09-29T18:30:00.000Z",
+          "entryPrice": 4677,
+          "exitTs": "2025-10-05T18:30:00.000Z",
+          "exitPrice": 4355.67,
+          "pnl": -32133,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=405123 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=405123 gates:"
+          }
+        },
+        {
+          "symbol": "DMART",
+          "entryTs": "2025-10-05T18:30:00.000Z",
+          "entryPrice": 4494.1,
+          "exitTs": "2025-10-12T18:30:00.000Z",
+          "exitPrice": 4234.52,
+          "pnl": -25958,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..60] vol>=416033 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..60] vol>=416033 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -414769,
+        "winRate": 15,
+        "maxDrawdown": 414769,
+        "trades": 20,
+        "avgReturn": -0.042045836015174254,
+        "profitFactor": 0.08,
+        "wins": 3,
+        "losses": 17
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -25325
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -6280
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -6525
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -5165
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -5775
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -4684
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -20594
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -5725
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -6806
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -7802
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -452
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2500
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -375
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1650
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1455
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -7310
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3134
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3963
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -7907
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1295
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "CGPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2160
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DALBHARAT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -28625
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DALBHARAT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -895
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DALBHARAT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -19974
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DALBHARAT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -5430
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DALBHARAT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -7670
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DALBHARAT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1840
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DALBHARAT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -9130
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -11325
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -24491
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -6610
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -36965
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -27590
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -8690
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -12500
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -59628
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -47758
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -40301
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -19330
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -22140
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -8400
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -31600
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -35335
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -32133
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -25958
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-20T04:34:14.590Z",
+  "completedAt": "2025-11-20T04:34:14.590Z",
+  "error": null,
+  "accuracy": 27.42,
+  "winRate": 27.42,
+  "expectancy": -0.03887349842338466,
+  "totalPnL": -576098,
+  "maxDrawdown": 578778,
+  "trades": [
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2024-04-15T18:30:00.000Z",
+      "entryPrice": 522.25,
+      "exitTs": "2024-05-01T18:30:00.000Z",
+      "exitPrice": 549.05,
+      "pnl": 2680
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2024-06-03T18:30:00.000Z",
+      "entryPrice": 823.5,
+      "exitTs": "2024-06-04T18:30:00.000Z",
+      "exitPrice": 570.25,
+      "pnl": -25325
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2024-06-04T18:30:00.000Z",
+      "entryPrice": 742.75,
+      "exitTs": "2024-06-19T18:30:00.000Z",
+      "exitPrice": 679.95,
+      "pnl": -6280
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2024-06-19T18:30:00.000Z",
+      "entryPrice": 693.85,
+      "exitTs": "2024-07-03T18:30:00.000Z",
+      "exitPrice": 722.55,
+      "pnl": 2870
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2024-07-03T18:30:00.000Z",
+      "entryPrice": 740.9,
+      "exitTs": "2024-07-18T18:30:00.000Z",
+      "exitPrice": 675.65,
+      "pnl": -6525
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2024-07-18T18:30:00.000Z",
+      "entryPrice": 728.65,
+      "exitTs": "2024-08-01T18:30:00.000Z",
+      "exitPrice": 731.65,
+      "pnl": 300
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2024-08-01T18:30:00.000Z",
+      "entryPrice": 762.2,
+      "exitTs": "2024-08-18T18:30:00.000Z",
+      "exitPrice": 710.55,
+      "pnl": -5165
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2024-08-18T18:30:00.000Z",
+      "entryPrice": 741.35,
+      "exitTs": "2024-09-01T18:30:00.000Z",
+      "exitPrice": 683.6,
+      "pnl": -5775
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2024-09-01T18:30:00.000Z",
+      "entryPrice": 724,
+      "exitTs": "2024-09-05T18:30:00.000Z",
+      "exitPrice": 677.16,
+      "pnl": -4684
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2024-09-05T18:30:00.000Z",
+      "entryPrice": 706.9,
+      "exitTs": "2024-09-19T18:30:00.000Z",
+      "exitPrice": 746.5,
+      "pnl": 3960
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2024-09-19T18:30:00.000Z",
+      "entryPrice": 757.9,
+      "exitTs": "2024-09-24T18:30:00.000Z",
+      "exitPrice": 812.31,
+      "pnl": 5441
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2024-10-03T18:30:00.000Z",
+      "entryPrice": 765.25,
+      "exitTs": "2024-10-09T18:30:00.000Z",
+      "exitPrice": 812.89,
+      "pnl": 4764
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2024-10-20T18:30:00.000Z",
+      "entryPrice": 919.85,
+      "exitTs": "2024-10-27T18:30:00.000Z",
+      "exitPrice": 713.91,
+      "pnl": -20594
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2024-10-27T18:30:00.000Z",
+      "entryPrice": 784.75,
+      "exitTs": "2024-11-10T18:30:00.000Z",
+      "exitPrice": 727.5,
+      "pnl": -5725
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2024-12-01T18:30:00.000Z",
+      "entryPrice": 766.45,
+      "exitTs": "2024-12-15T18:30:00.000Z",
+      "exitPrice": 770.95,
+      "pnl": 450
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2025-03-25T18:30:00.000Z",
+      "entryPrice": 648.85,
+      "exitTs": "2025-04-03T18:30:00.000Z",
+      "exitPrice": 580.79,
+      "pnl": -6806
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2025-04-03T18:30:00.000Z",
+      "entryPrice": 660.95,
+      "exitTs": "2025-04-06T18:30:00.000Z",
+      "exitPrice": 582.93,
+      "pnl": -7802
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2025-05-05T18:30:00.000Z",
+      "entryPrice": 703.5,
+      "exitTs": "2025-05-15T18:30:00.000Z",
+      "exitPrice": 698.98,
+      "pnl": -452
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2025-05-15T18:30:00.000Z",
+      "entryPrice": 711.7,
+      "exitTs": "2025-05-29T18:30:00.000Z",
+      "exitPrice": 686.7,
+      "pnl": -2500
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2025-06-05T18:30:00.000Z",
+      "entryPrice": 692,
+      "exitTs": "2025-06-19T18:30:00.000Z",
+      "exitPrice": 688.25,
+      "pnl": -375
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2025-06-19T18:30:00.000Z",
+      "entryPrice": 693.1,
+      "exitTs": "2025-07-03T18:30:00.000Z",
+      "exitPrice": 676.6,
+      "pnl": -1650
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2025-07-03T18:30:00.000Z",
+      "entryPrice": 682.15,
+      "exitTs": "2025-07-17T18:30:00.000Z",
+      "exitPrice": 667.6,
+      "pnl": -1455
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2025-07-17T18:30:00.000Z",
+      "entryPrice": 724.4,
+      "exitTs": "2025-07-31T18:30:00.000Z",
+      "exitPrice": 651.3,
+      "pnl": -7310
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2025-07-31T18:30:00.000Z",
+      "entryPrice": 678.4,
+      "exitTs": "2025-08-03T18:30:00.000Z",
+      "exitPrice": 647.06,
+      "pnl": -3134
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2025-08-25T18:30:00.000Z",
+      "entryPrice": 693.65,
+      "exitTs": "2025-09-01T18:30:00.000Z",
+      "exitPrice": 733.41,
+      "pnl": 3976
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2025-09-01T18:30:00.000Z",
+      "entryPrice": 747.5,
+      "exitTs": "2025-09-09T18:30:00.000Z",
+      "exitPrice": 760.36,
+      "pnl": 1286
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2025-10-08T18:30:00.000Z",
+      "entryPrice": 765.55,
+      "exitTs": "2025-10-19T18:30:00.000Z",
+      "exitPrice": 725.92,
+      "pnl": -3963
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2025-10-19T18:30:00.000Z",
+      "entryPrice": 798.55,
+      "exitTs": "2025-10-23T18:30:00.000Z",
+      "exitPrice": 719.48,
+      "pnl": -7907
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2025-10-23T18:30:00.000Z",
+      "entryPrice": 751.1,
+      "exitTs": "2025-11-09T18:30:00.000Z",
+      "exitPrice": 738.15,
+      "pnl": -1295
+    },
+    {
+      "symbol": "CGPOWER",
+      "entryTs": "2025-11-09T18:30:00.000Z",
+      "entryPrice": 745.7,
+      "exitTs": "2025-11-18T18:30:00.000Z",
+      "exitPrice": 724.1,
+      "pnl": -2160
+    },
+    {
+      "symbol": "DALBHARAT",
+      "entryTs": "2024-07-18T18:30:00.000Z",
+      "entryPrice": 2084.95,
+      "exitTs": "2024-08-01T18:30:00.000Z",
+      "exitPrice": 1798.7,
+      "pnl": -28625
+    },
+    {
+      "symbol": "DALBHARAT",
+      "entryTs": "2024-09-19T18:30:00.000Z",
+      "entryPrice": 1862.65,
+      "exitTs": "2024-10-06T18:30:00.000Z",
+      "exitPrice": 1853.7,
+      "pnl": -895
+    },
+    {
+      "symbol": "DALBHARAT",
+      "entryTs": "2024-10-06T18:30:00.000Z",
+      "entryPrice": 2050.8,
+      "exitTs": "2024-10-08T18:30:00.000Z",
+      "exitPrice": 1851.06,
+      "pnl": -19974
+    },
+    {
+      "symbol": "DALBHARAT",
+      "entryTs": "2024-12-22T18:30:00.000Z",
+      "entryPrice": 1853.55,
+      "exitTs": "2025-01-06T18:30:00.000Z",
+      "exitPrice": 1799.25,
+      "pnl": -5430
+    },
+    {
+      "symbol": "DALBHARAT",
+      "entryTs": "2025-04-22T18:30:00.000Z",
+      "entryPrice": 1956,
+      "exitTs": "2025-05-07T18:30:00.000Z",
+      "exitPrice": 1964.4,
+      "pnl": 840
+    },
+    {
+      "symbol": "DALBHARAT",
+      "entryTs": "2025-06-01T18:30:00.000Z",
+      "entryPrice": 2089.6,
+      "exitTs": "2025-06-15T18:30:00.000Z",
+      "exitPrice": 2095.7,
+      "pnl": 610
+    },
+    {
+      "symbol": "DALBHARAT",
+      "entryTs": "2025-06-15T18:30:00.000Z",
+      "entryPrice": 2146.9,
+      "exitTs": "2025-06-29T18:30:00.000Z",
+      "exitPrice": 2207.6,
+      "pnl": 6070
+    },
+    {
+      "symbol": "DALBHARAT",
+      "entryTs": "2025-06-29T18:30:00.000Z",
+      "entryPrice": 2235.8,
+      "exitTs": "2025-07-13T18:30:00.000Z",
+      "exitPrice": 2159.1,
+      "pnl": -7670
+    },
+    {
+      "symbol": "DALBHARAT",
+      "entryTs": "2025-07-13T18:30:00.000Z",
+      "entryPrice": 2223.7,
+      "exitTs": "2025-07-27T18:30:00.000Z",
+      "exitPrice": 2205.3,
+      "pnl": -1840
+    },
+    {
+      "symbol": "DALBHARAT",
+      "entryTs": "2025-07-27T18:30:00.000Z",
+      "entryPrice": 2315.9,
+      "exitTs": "2025-08-10T18:30:00.000Z",
+      "exitPrice": 2224.6,
+      "pnl": -9130
+    },
+    {
+      "symbol": "DALBHARAT",
+      "entryTs": "2025-08-10T18:30:00.000Z",
+      "entryPrice": 2308.3,
+      "exitTs": "2025-08-25T18:30:00.000Z",
+      "exitPrice": 2358.2,
+      "pnl": 4990
+    },
+    {
+      "symbol": "DALBHARAT",
+      "entryTs": "2025-08-25T18:30:00.000Z",
+      "entryPrice": 2392.7,
+      "exitTs": "2025-09-09T18:30:00.000Z",
+      "exitPrice": 2401.5,
+      "pnl": 880
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2024-05-05T18:30:00.000Z",
+      "entryPrice": 4783.9,
+      "exitTs": "2024-05-17T18:30:00.000Z",
+      "exitPrice": 4670.65,
+      "pnl": -11325
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2024-05-17T18:30:00.000Z",
+      "entryPrice": 4769.95,
+      "exitTs": "2024-05-26T18:30:00.000Z",
+      "exitPrice": 4525.04,
+      "pnl": -24491
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2024-06-04T18:30:00.000Z",
+      "entryPrice": 4927.8,
+      "exitTs": "2024-06-19T18:30:00.000Z",
+      "exitPrice": 4861.7,
+      "pnl": -6610
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2024-06-19T18:30:00.000Z",
+      "entryPrice": 5137.75,
+      "exitTs": "2024-07-03T18:30:00.000Z",
+      "exitPrice": 4768.1,
+      "pnl": -36965
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2024-07-03T18:30:00.000Z",
+      "entryPrice": 4885.1,
+      "exitTs": "2024-07-18T18:30:00.000Z",
+      "exitPrice": 5010.7,
+      "pnl": 12560
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2024-07-18T18:30:00.000Z",
+      "entryPrice": 5185.6,
+      "exitTs": "2024-08-01T18:30:00.000Z",
+      "exitPrice": 4909.7,
+      "pnl": -27590
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2024-08-01T18:30:00.000Z",
+      "entryPrice": 5089.6,
+      "exitTs": "2024-08-18T18:30:00.000Z",
+      "exitPrice": 5002.7,
+      "pnl": -8690
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2024-08-22T18:30:00.000Z",
+      "entryPrice": 5253.8,
+      "exitTs": "2024-09-05T18:30:00.000Z",
+      "exitPrice": 5303.45,
+      "pnl": 4965
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2024-09-05T18:30:00.000Z",
+      "entryPrice": 5445.55,
+      "exitTs": "2024-09-19T18:30:00.000Z",
+      "exitPrice": 5320.55,
+      "pnl": -12500
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2024-09-24T18:30:00.000Z",
+      "entryPrice": 5585.5,
+      "exitTs": "2024-09-30T18:30:00.000Z",
+      "exitPrice": 4989.22,
+      "pnl": -59628
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2024-09-30T18:30:00.000Z",
+      "entryPrice": 5296.9,
+      "exitTs": "2024-10-03T18:30:00.000Z",
+      "exitPrice": 4819.32,
+      "pnl": -47758
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2024-10-03T18:30:00.000Z",
+      "entryPrice": 5053.9,
+      "exitTs": "2024-10-06T18:30:00.000Z",
+      "exitPrice": 4650.89,
+      "pnl": -40301
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2025-05-01T18:30:00.000Z",
+      "entryPrice": 4383,
+      "exitTs": "2025-05-15T18:30:00.000Z",
+      "exitPrice": 4189.7,
+      "pnl": -19330
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2025-05-15T18:30:00.000Z",
+      "entryPrice": 4223.5,
+      "exitTs": "2025-05-29T18:30:00.000Z",
+      "exitPrice": 4002.1,
+      "pnl": -22140
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2025-05-29T18:30:00.000Z",
+      "entryPrice": 4135.9,
+      "exitTs": "2025-06-12T18:30:00.000Z",
+      "exitPrice": 4051.9,
+      "pnl": -8400
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2025-06-12T18:30:00.000Z",
+      "entryPrice": 4128.9,
+      "exitTs": "2025-06-26T18:30:00.000Z",
+      "exitPrice": 4313.5,
+      "pnl": 18460
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2025-07-10T18:30:00.000Z",
+      "entryPrice": 4313,
+      "exitTs": "2025-07-24T18:30:00.000Z",
+      "exitPrice": 3997,
+      "pnl": -31600
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2025-09-23T18:30:00.000Z",
+      "entryPrice": 4778.2,
+      "exitTs": "2025-09-29T18:30:00.000Z",
+      "exitPrice": 4424.85,
+      "pnl": -35335
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2025-09-29T18:30:00.000Z",
+      "entryPrice": 4677,
+      "exitTs": "2025-10-05T18:30:00.000Z",
+      "exitPrice": 4355.67,
+      "pnl": -32133
+    },
+    {
+      "symbol": "DMART",
+      "entryTs": "2025-10-05T18:30:00.000Z",
+      "entryPrice": 4494.1,
+      "exitTs": "2025-10-12T18:30:00.000Z",
+      "exitPrice": 4234.52,
+      "pnl": -25958
+    }
+  ],
+  "insightsStatus": "done"
+}

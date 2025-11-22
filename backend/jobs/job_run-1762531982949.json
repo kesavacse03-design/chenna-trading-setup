@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762531982949",
+  "summary": {
+    "runId": "run-1762531982949",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -867,
+    "avgReturn": -0.005159086716690612,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 867,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-10-08",
+    "to": "2025-10-28",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "MUTHOOTFIN": {
+      "trades": [
+        {
+          "symbol": "MUTHOOTFIN",
+          "entryTs": "2025-10-08T08:45:00.000Z",
+          "entryPrice": 1680.53,
+          "exitTs": "2025-10-08T09:45:00.000Z",
+          "exitPrice": 1671.86,
+          "pnl": -867,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1672.63 vol>=856",
+          "trace": {
+            "reason": "breakout N=1 close>=1672.63 vol>=856"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -867,
+        "winRate": 0,
+        "maxDrawdown": 867,
+        "trades": 1,
+        "avgReturn": -0.005159086716690612,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "MUTHOOTFIN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -867
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:13:02.956Z",
+  "completedAt": "2025-11-07T16:13:02.956Z",
+  "error": null,
+  "insightsStatus": "done"
+}

@@ -1,0 +1,113 @@
+{
+  "perSymbol": {
+    "AAPL": {
+      "trades": [
+        {
+          "id": "AAPL-1735689600000",
+          "symbol": "AAPL",
+          "entryTs": 1735689600000,
+          "entryPrice": 150.5,
+          "exitTs": 1735776000000,
+          "exitPrice": 151.8,
+          "pnl": 1.3000000000000114,
+          "direction": "LONG",
+          "reason": "test-entry",
+          "trace": []
+        }
+      ],
+      "metrics": {
+        "trades": [
+          {
+            "id": "AAPL-1735689600000",
+            "symbol": "AAPL",
+            "entryTs": 1735689600000,
+            "entryPrice": 150.5,
+            "exitTs": 1735776000000,
+            "exitPrice": 151.8,
+            "pnl": 1.3000000000000114,
+            "direction": "LONG",
+            "reason": "test-entry",
+            "trace": []
+          }
+        ],
+        "wins": 1,
+        "losses": 0,
+        "netPnl": 1.3000000000000114,
+        "accuracy": 100,
+        "total": 1
+      }
+    },
+    "MSFT": {
+      "trades": [
+        {
+          "id": "MSFT-1735689600000",
+          "symbol": "MSFT",
+          "entryTs": 1735689600000,
+          "entryPrice": 321,
+          "exitTs": 1735776000000,
+          "exitPrice": 322.5,
+          "pnl": 1.5,
+          "direction": "LONG",
+          "reason": "test-entry",
+          "trace": []
+        }
+      ],
+      "metrics": {
+        "trades": [
+          {
+            "id": "MSFT-1735689600000",
+            "symbol": "MSFT",
+            "entryTs": 1735689600000,
+            "entryPrice": 321,
+            "exitTs": 1735776000000,
+            "exitPrice": 322.5,
+            "pnl": 1.5,
+            "direction": "LONG",
+            "reason": "test-entry",
+            "trace": []
+          }
+        ],
+        "wins": 1,
+        "losses": 0,
+        "netPnl": 1.5,
+        "accuracy": 100,
+        "total": 1
+      }
+    }
+  },
+  "trades": [
+    {
+      "id": "AAPL-1735689600000",
+      "symbol": "AAPL",
+      "entryTs": 1735689600000,
+      "entryPrice": 150.5,
+      "exitTs": 1735776000000,
+      "exitPrice": 151.8,
+      "pnl": 1.3000000000000114,
+      "direction": "LONG",
+      "reason": "test-entry",
+      "trace": []
+    },
+    {
+      "id": "MSFT-1735689600000",
+      "symbol": "MSFT",
+      "entryTs": 1735689600000,
+      "entryPrice": 321,
+      "exitTs": 1735776000000,
+      "exitPrice": 322.5,
+      "pnl": 1.5,
+      "direction": "LONG",
+      "reason": "test-entry",
+      "trace": []
+    }
+  ],
+  "metrics": {
+    "agg": {
+      "wins": 2,
+      "losses": 0,
+      "netPnl": 2.8000000000000114,
+      "total": 2,
+      "accuracy": 100
+    }
+  }
+}

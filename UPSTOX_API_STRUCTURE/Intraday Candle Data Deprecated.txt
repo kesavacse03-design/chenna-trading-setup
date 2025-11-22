@@ -1,0 +1,101 @@
+Intraday Candle Data Deprecated
+API to retrieve OHLC (Open, High, Low, Close) values for instruments during the current trading day. Data is accessible for 1-minute and 30-minute intervals from the beginning of the market session. For real-time candlestick updates, it is advisable to utilize the Market Update Stream.
+
+Request
+curl --location 'https://api.upstox.com/v2/historical-candle/intraday/NSE_EQ%7CINE848E01016/1minute' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+For additional samples in various languages, please refer to the Sample code section on this page.
+
+Path Parameters
+Name	Required	Type	Description
+instrument_key	true	string	The unique identifier for the financial instrument for which historical data is being queried. For the regex pattern applicable to this field, see the Field Pattern Appendix.
+interval	true	string	Specifies the time frame of the candles.
+Possible values: 1minute, 30minute.
+Responses
+200
+4XX
+Response Body
+{
+  "status": "success",
+  "data": {
+    "candles": [
+      [
+        "2023-10-19T15:15:00+05:30",
+        2305.3,
+        2307.05,
+        2301,
+        2304.65,
+        559982,
+        0
+      ],
+      [
+        "2023-10-19T14:45:00+05:30",
+        2309.1,
+        2310.75,
+        2305.25,
+        2305.3,
+        740124,
+        0
+      ]
+    ]
+  }
+}
+
+Name	Type	Description
+status	string	A string indicating the outcome of the request. Typically success for successful operations.
+data	object	Contains OHLC values for all instruments across various timeframes.
+data.candles	array[]	Array of candle data, each presented as an array with sequential elements representing trading activity.
+data.candle[0]	number	Timestamp: Indicating the start time of the candle's timeframe.
+data.candle[1]	number	Open: The opening price of the asset for the given timeframe.
+data.candle[2]	number	High: The highest price at which the asset traded during the timeframe.
+data.candle[3]	number	Low: The lowest price at which the asset traded during the timeframe.
+data.candle[4]	number	Close: The closing price of the asset for the given timeframe.
+data.candle[5]	number	Volume: The total amount of the asset that was traded during the timeframe.
+data.candle[6]	number	Open Interest: The total number of outstanding derivative contracts, such as options or futures.
+
+Sample Code
+Get intraday candle data with a 1-minute interval
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v2/historical-candle/intraday/NSE_EQ%7CINE848E01016/1minute' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get intraday candle data with a 30-minute interval
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v2/historical-candle/intraday/NSE_EQ%7CINE848E01016/30minute' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+GET /historical-candle/intraday/:instrument_key/:interval
+Request
+Live URL
+https://api.upstox.com/v2
+instrument_key — path required
+instrument_key
+interval — path required
+interval
+NOTE
+It's important to note that instrument_key parameter accepts only a single identifier per request; comma-separated values or multiple identifiers are not supported.
+A minor delay may be experienced in the delivery of the most recent candle data, attributable to CDN caching. For immediate access to the latest data, it is advisable to connect to the websocket endpoints.

@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762528881722",
+  "summary": {
+    "runId": "run-1762528881722",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -352,
+    "avgReturn": -0.0023095748938710852,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 352,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-10-07",
+    "to": "2025-10-27",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "KAYNES": {
+      "trades": [
+        {
+          "symbol": "KAYNES",
+          "entryTs": "2025-10-07T07:45:00.000Z",
+          "entryPrice": 1524.09,
+          "exitTs": "2025-10-07T08:45:00.000Z",
+          "exitPrice": 1520.57,
+          "pnl": -352,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1521.21 vol>=3699",
+          "trace": {
+            "reason": "breakout N=1 close>=1521.21 vol>=3699"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -352,
+        "winRate": 0,
+        "maxDrawdown": 352,
+        "trades": 1,
+        "avgReturn": -0.0023095748938710852,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "KAYNES",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -352
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:21:21.728Z",
+  "completedAt": "2025-11-07T15:21:21.728Z",
+  "error": null,
+  "insightsStatus": "done"
+}

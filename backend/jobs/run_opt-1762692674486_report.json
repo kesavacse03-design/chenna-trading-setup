@@ -1,0 +1,84 @@
+{
+  "runId": "opt-1762692674486",
+  "searchMode": "grid",
+  "combosTried": 1,
+  "results": 1,
+  "timedOut": false,
+  "topN": [
+    {
+      "rank": 1,
+      "score": 2.4,
+      "metrics": {
+        "netPnl": 100,
+        "winRate": 60,
+        "maxDrawdown": -50,
+        "trades": 5,
+        "avgReturn": 0.05,
+        "profitFactor": 2
+      },
+      "config": {
+        "ema_short": 8,
+        "ema_long": 55,
+        "atr_mult": 1.2
+      },
+      "runId": "promo-mock-run-2",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "AAPL"
+            ],
+            "metrics": {
+              "netPnl": 100,
+              "winRate": 60,
+              "maxDrawdown": -50,
+              "trades": 5,
+              "avgReturn": 0.05,
+              "profitFactor": 2
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "MSFT"
+            ],
+            "metrics": {
+              "netPnl": 100,
+              "winRate": 60,
+              "maxDrawdown": -50,
+              "trades": 5,
+              "avgReturn": 0.05,
+              "profitFactor": 2
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "GOOG"
+            ],
+            "metrics": {
+              "netPnl": 100,
+              "winRate": 60,
+              "maxDrawdown": -50,
+              "trades": 5,
+              "avgReturn": 0.05,
+              "profitFactor": 2
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 15,
+          "netPnl": 300,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": -50,
+          "avgReturn": 0.05
+        }
+      }
+    }
+  ],
+  "summaryText": "Run completed cpuAvg=NA% combos=1 mode=grid topExpectancy=0.0500",
+  "avgCpuPercent": null
+}

@@ -1,0 +1,225 @@
+{
+  "runId": "run-1763353235628",
+  "symbols": [
+    "ASTRAL",
+    "AUROPHARMA",
+    "BANKNIFTY",
+    "BANKNIFTY",
+    "DELHIVERY",
+    "DIXON",
+    "IRCTC",
+    "JIOFIN",
+    "JIOFIN",
+    "KPITTECH",
+    "NIFTY",
+    "NIFTY",
+    "NYKAA",
+    "ONGC",
+    "ONGC",
+    "TATASTEEL",
+    "TATASTEEL",
+    "TVSMOTOR",
+    "TVSMOTOR"
+  ],
+  "metrics": {
+    "netPnl": 0,
+    "winRate": 0,
+    "maxDrawdown": 0,
+    "trades": 0,
+    "avgReturn": 0,
+    "profitFactor": 0,
+    "wins": 0,
+    "losses": 0
+  },
+  "perCategory": {},
+  "perSymbol": {
+    "ASTRAL": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "AUROPHARMA": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "BANKNIFTY": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "DELHIVERY": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "DIXON": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "IRCTC": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "JIOFIN": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "KPITTECH": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "NIFTY": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "NYKAA": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "ONGC": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "TATASTEEL": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0,
+      "wins": 0,
+      "losses": 0
+    },
+    "TVSMOTOR": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0,
+      "wins": 0,
+      "losses": 0
+    }
+  },
+  "swing10": {
+    "successWithin10Days": 0,
+    "failWithin10Days": 0,
+    "expiredTrades": 0,
+    "successRateWithin10Days": 0
+  },
+  "resume": false,
+  "equityCurve": [],
+  "strategyConfig": {
+    "kind": "composite",
+    "ema_short": 5,
+    "ema_long": 34,
+    "rsi_period": 14,
+    "rsi_min": 15,
+    "rsi_max": 70,
+    "atr_mult": 0.8,
+    "volumeFactor": 0.8,
+    "targetR": 1.2,
+    "qty": 100,
+    "usePatterns": {
+      "engulfing": false,
+      "hammer": false,
+      "doji": false
+    },
+    "enableVWAP": false,
+    "adx_min": 0,
+    "adx_period": 14,
+    "regime": "none",
+    "bb_period": 20,
+    "bb_k": 2,
+    "bb_width": 0.03,
+    "stoch_mode": "none",
+    "stoch_k": 14,
+    "stoch_d": 3,
+    "stoch_kMin": 0,
+    "stoch_kMax": 100,
+    "enableSupertrend": false,
+    "supertrend_period": 10,
+    "supertrend_mult": 3
+  },
+  "missing": [
+    {
+      "symbol": "BANKNIFTY",
+      "reason": "upstox-failed: no-data"
+    },
+    {
+      "symbol": "BANKNIFTY",
+      "reason": "upstox-failed: no-data"
+    },
+    {
+      "symbol": "NIFTY",
+      "reason": "upstox-failed: no-data"
+    },
+    {
+      "symbol": "NIFTY",
+      "reason": "upstox-failed: no-data"
+    }
+  ]
+}

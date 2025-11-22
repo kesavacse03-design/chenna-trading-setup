@@ -1,0 +1,68 @@
+{
+  "runId": "run-1762583253958",
+  "summary": {
+    "runId": "run-1762583253958",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": 10,
+    "avgReturn": 0.01,
+    "winRate": 100,
+    "profitFactor": null,
+    "maxDrawdown": 0,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-09-01",
+    "to": "2025-09-05",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "ema_short": 8,
+      "ema_long": 55,
+      "atr_mult": 1.2,
+      "volumeFactor": 1
+    },
+    "swing10": {
+      "successWithin10Days": 1,
+      "failWithin10Days": 0,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 100
+    },
+    "equityCurve": [
+      10
+    ]
+  },
+  "perSymbol": {
+    "MSFT": {
+      "trades": [
+        {
+          "symbol": "MSFT",
+          "entryTs": "2025-11-08T06:27:33.964Z",
+          "entryPrice": 100,
+          "exitTs": "2025-11-08T06:27:33.964Z",
+          "exitPrice": 101,
+          "pnl": 10,
+          "direction": "LONG",
+          "reason": "test-force",
+          "trace": {
+            "reason": "test-force"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 10,
+        "winRate": 100,
+        "maxDrawdown": 0,
+        "trades": 1,
+        "avgReturn": 0.01,
+        "profitFactor": null,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [],
+  "status": "done",
+  "createdAt": "2025-11-08T06:27:33.971Z",
+  "completedAt": "2025-11-08T06:27:33.971Z",
+  "error": null
+}

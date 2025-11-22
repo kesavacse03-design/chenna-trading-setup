@@ -1,0 +1,77 @@
+{
+  "strategy": {
+    "ema_short": 30,
+    "ema_long": 59,
+    "atr_mult": 1.4
+  },
+  "runId": "mock-run-121",
+  "optimizerRunId": "opt-1763274572007",
+  "expectancy": 0,
+  "drawdown": 0,
+  "trades": 15,
+  "kfold": {
+    "K": 3,
+    "folds": [
+      {
+        "index": 0,
+        "symbols": [
+          "AAPL"
+        ],
+        "metrics": {
+          "netPnl": 0,
+          "winRate": 0,
+          "maxDrawdown": 0,
+          "trades": 5,
+          "avgReturn": 0,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "index": 1,
+        "symbols": [
+          "MSFT"
+        ],
+        "metrics": {
+          "netPnl": 0,
+          "winRate": 0,
+          "maxDrawdown": 0,
+          "trades": 5,
+          "avgReturn": 0,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "index": 2,
+        "symbols": [
+          "GOOG"
+        ],
+        "metrics": {
+          "netPnl": 0,
+          "winRate": 0,
+          "maxDrawdown": 0,
+          "trades": 5,
+          "avgReturn": 0,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      }
+    ],
+    "validatedFolds": 3,
+    "validationTrades": 15
+  },
+  "promoted": false,
+  "thresholds": {
+    "minTrades": 30,
+    "maxNegativeDrawdown": -50000,
+    "expectancyPositive": true
+  },
+  "summaryText": "Top candidate expectancy=0.0000 trades=15 drawdown=0 promoted=false cpuAvg=NA%",
+  "avgCpuPercent": null,
+  "gitCommit": "ref: refs/heads/fix/watchlist-hydration",
+  "seed": 54321
+}

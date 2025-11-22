@@ -1,0 +1,93 @@
+{
+  "runId": "run-1762701133057",
+  "summary": {
+    "runId": "run-1762701133057",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -38.3,
+    "avgReturn": -0.003691495103708774,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 38.3,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-10-01",
+    "to": "2025-10-20",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "N": 2,
+      "volumeFactor": 0.1,
+      "atrStop": 0.2,
+      "targetR": 0.4,
+      "qty": 10
+    },
+    "swing10": {
+      "successWithin10Days": 0,
+      "failWithin10Days": 1,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 0
+    },
+    "equityCurve": [
+      -38.3
+    ]
+  },
+  "perSymbol": {
+    "MOCK_A": {
+      "trades": [
+        {
+          "symbol": "MOCK_A",
+          "entryTs": "2025-10-05T17:45:00.000Z",
+          "entryPrice": 1037.52,
+          "exitTs": "2025-10-05T18:45:00.000Z",
+          "exitPrice": 1033.69,
+          "pnl": -38.3,
+          "direction": "LONG",
+          "reason": "breakout N=2 hh=1033.52 vol>=8081 patterns=wrb adxOk=true squeezeOk=true",
+          "trace": {
+            "reason": "breakout N=2 hh=1033.52 vol>=8081 patterns=wrb adxOk=true squeezeOk=true"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -38.3,
+        "winRate": 0,
+        "maxDrawdown": 38.3,
+        "trades": 1,
+        "avgReturn": -0.003691495103708774,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "MOCK_B": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "MOCK_A",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -38.3
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-09T15:12:13.187Z",
+  "completedAt": "2025-11-09T15:12:13.187Z",
+  "error": null,
+  "insightsStatus": "done"
+}

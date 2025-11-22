@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762531970975",
+  "summary": {
+    "runId": "run-1762531970975",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -323,
+    "avgReturn": -0.0017117026406855385,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 323,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-10-08",
+    "to": "2025-10-28",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "DMART": {
+      "trades": [
+        {
+          "symbol": "DMART",
+          "entryTs": "2025-10-08T08:45:00.000Z",
+          "entryPrice": 1887.01,
+          "exitTs": "2025-10-08T09:45:00.000Z",
+          "exitPrice": 1883.78,
+          "pnl": -323,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1883.65 vol>=1206",
+          "trace": {
+            "reason": "breakout N=1 close>=1883.65 vol>=1206"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -323,
+        "winRate": 0,
+        "maxDrawdown": 323,
+        "trades": 1,
+        "avgReturn": -0.0017117026406855385,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "DMART",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -323
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:12:50.980Z",
+  "completedAt": "2025-11-07T16:12:50.980Z",
+  "error": null,
+  "insightsStatus": "done"
+}

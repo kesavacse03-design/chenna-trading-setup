@@ -1,0 +1,61 @@
+Response Structure
+Success response
+Single Object Response Structure
+Used for endpoints that return a single object, like /order/place and /user/profile.
+
+{
+    "status": "success",
+    "data": {
+      "key1": "value1",
+      "key2": "value2",
+      ...
+    }
+}
+
+Multiple Object Response Structure
+Used for endpoints that return a multiple object, like /user/get-funds-and-margin
+
+{
+    "status": "success",
+    "data": [
+      {
+        "key1": "value1",
+        "key2": "value2",
+        ...
+      },
+      {
+        "key1": "value1",
+        "key2": "value2",
+        ...
+      }
+    ]
+}  
+
+Properties:
+
+Property	Description
+status	A string indicating the outcome of the request. Typically success for successful operations.
+data	Single An object holding the response content with various key-value pairs.
+Multiple An array containing the main content of the response. Each element of the array is an object with various key-value pairs.
+Error response
+{
+  "status": "error",
+  "errors": [
+    {
+      "error_code": "string",
+      "message": "string",
+      "property_path": null,
+      "invalid_value": null
+    }
+  ]
+}
+
+Properties:
+
+Property	Description
+status	A string indicating the outcome of the request. In this context, the term error represents a failure in the operation.
+errors	An array containing the main content of the error response.
+error_code	A specific error. Refer to the "Error Code" section for explanations.
+message	Descriptive error message.
+property_path	Indicates which part of the request triggered the error. It can be null.
+invalid_value	Shows the value causing the error. It can be null.

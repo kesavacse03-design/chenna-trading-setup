@@ -1,0 +1,1576 @@
+{
+  "createdAt": "2025-11-05T14:38:42.358Z",
+  "parameters": {
+    "symbols": [
+      "CGPOWER",
+      "DALBHARAT",
+      "DMART",
+      "HAL",
+      "EXIDEIND"
+    ],
+    "from": "2015-01-01",
+    "to": "2025-10-31",
+    "interval": "day",
+    "mode": "mock",
+    "grid": {
+      "ema_short": [
+        8,
+        13,
+        21
+      ],
+      "ema_long": [
+        50,
+        89
+      ],
+      "rsi_period": [
+        7,
+        14
+      ],
+      "atr_mult": [
+        1,
+        1.5,
+        2
+      ],
+      "bb_dev": [
+        2
+      ],
+      "macd_fast": [
+        12,
+        "macd_slow"
+      ],
+      "supertrend_mult": [
+        3
+      ]
+    },
+    "metric": "netPnl",
+    "aggregate": "category"
+  },
+  "combos": 72,
+  "ranked": [
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 50,
+        "rsi_period": 7,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352402222",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352402222-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 50,
+        "rsi_period": 7,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352406189",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352406189-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 50,
+        "rsi_period": 7,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352407685",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352407685-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 50,
+        "rsi_period": 7,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352409284",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352409284-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 50,
+        "rsi_period": 7,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352466809",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352466809-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 50,
+        "rsi_period": 7,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352472363",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352472363-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 50,
+        "rsi_period": 14,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352479554",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352479554-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 50,
+        "rsi_period": 14,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352480995",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352480995-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 50,
+        "rsi_period": 14,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352545265",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352545265-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 50,
+        "rsi_period": 14,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352548086",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352548086-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 50,
+        "rsi_period": 14,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352555860",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352555860-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 50,
+        "rsi_period": 14,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352602698",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352602698-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 89,
+        "rsi_period": 7,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352642727",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352642727-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 89,
+        "rsi_period": 7,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352669279",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352669279-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 89,
+        "rsi_period": 7,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352676606",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352676606-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 89,
+        "rsi_period": 7,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352691008",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352691008-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 89,
+        "rsi_period": 7,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352722779",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352722779-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 89,
+        "rsi_period": 7,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352761865",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352761865-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 89,
+        "rsi_period": 14,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352775400",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352775400-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 89,
+        "rsi_period": 14,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352777058",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352777058-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 89,
+        "rsi_period": 14,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352789782",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352789782-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 89,
+        "rsi_period": 14,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352812811",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352812811-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 50,
+        "rsi_period": 7,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352837502",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352837502-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 89,
+        "rsi_period": 14,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352841291",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352841291-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 89,
+        "rsi_period": 14,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352845209",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352845209-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 50,
+        "rsi_period": 7,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352871847",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352871847-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 50,
+        "rsi_period": 7,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352912910",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352912910-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 50,
+        "rsi_period": 7,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352914365",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352914365-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 50,
+        "rsi_period": 7,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352920098",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352920098-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 50,
+        "rsi_period": 7,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352946917",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352946917-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 50,
+        "rsi_period": 14,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352975837",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352975837-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 50,
+        "rsi_period": 14,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352977292",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352977292-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 50,
+        "rsi_period": 14,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352993942",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352993942-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 50,
+        "rsi_period": 14,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762352999861",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762352999861-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 50,
+        "rsi_period": 14,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353030124",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353030124-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 50,
+        "rsi_period": 14,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353035072",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353035072-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 89,
+        "rsi_period": 7,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353068597",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353068597-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 89,
+        "rsi_period": 7,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353070731",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353070731-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 89,
+        "rsi_period": 7,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353079461",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353079461-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 89,
+        "rsi_period": 7,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353135007",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353135007-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 89,
+        "rsi_period": 7,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353195556",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353195556-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 89,
+        "rsi_period": 7,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353199908",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353199908-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 89,
+        "rsi_period": 14,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353227797",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353227797-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 89,
+        "rsi_period": 14,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353289389",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353289389-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 89,
+        "rsi_period": 14,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353299717",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353299717-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 89,
+        "rsi_period": 14,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353323583",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353323583-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 89,
+        "rsi_period": 14,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353345385",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353345385-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 13,
+        "ema_long": 89,
+        "rsi_period": 14,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353352151",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353352151-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 50,
+        "rsi_period": 7,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353370612",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353370612-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 50,
+        "rsi_period": 7,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353466153",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353466153-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 50,
+        "rsi_period": 7,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353467617",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353467617-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 50,
+        "rsi_period": 7,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353471125",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353471125-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 50,
+        "rsi_period": 7,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353472506",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353472506-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 50,
+        "rsi_period": 7,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353474137",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353474137-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 50,
+        "rsi_period": 14,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353475583",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353475583-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 50,
+        "rsi_period": 14,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353481101",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353481101-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 50,
+        "rsi_period": 14,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353482699",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353482699-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 50,
+        "rsi_period": 14,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353484264",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353484264-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 50,
+        "rsi_period": 14,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353485769",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353485769-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 89,
+        "rsi_period": 7,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353491307",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353491307-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 50,
+        "rsi_period": 14,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353492663",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353492663-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 89,
+        "rsi_period": 7,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353494121",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353494121-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 89,
+        "rsi_period": 7,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353495815",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353495815-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 89,
+        "rsi_period": 7,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353501292",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353501292-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 89,
+        "rsi_period": 7,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353502666",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353502666-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 89,
+        "rsi_period": 7,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353504085",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353504085-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 89,
+        "rsi_period": 14,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353505575",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353505575-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 89,
+        "rsi_period": 14,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353511099",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353511099-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 89,
+        "rsi_period": 14,
+        "atr_mult": 1.5,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353512520",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353512520-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 89,
+        "rsi_period": 14,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": 12,
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353513853",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353513853-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 89,
+        "rsi_period": 14,
+        "atr_mult": 1,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353515364",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353515364-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 21,
+        "ema_long": 89,
+        "rsi_period": 14,
+        "atr_mult": 2,
+        "bb_dev": 2,
+        "macd_fast": "macd_slow",
+        "supertrend_mult": 3
+      },
+      "runId": "run-1762353520975",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1762353520975-results.json",
+      "metrics": {
+        "netPnl": -939,
+        "winRate": 0,
+        "maxDrawdown": 939,
+        "trades": 1,
+        "avgReturn": 0.0016093455156847478,
+        "profitFactor": 0
+      }
+    }
+  ],
+  "status": "done",
+  "error": null,
+  "summary": {
+    "totalPnL": 0,
+    "winRate": 0,
+    "tradesCount": 0,
+    "avgReturn": 0,
+    "maxDrawdown": 0
+  },
+  "perSymbol": {},
+  "insights": [],
+  "completedAt": "2025-11-05T14:39:05.569Z",
+  "runId": "run-1762353545570"
+}

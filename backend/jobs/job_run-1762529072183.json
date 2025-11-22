@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762529072183",
+  "summary": {
+    "runId": "run-1762529072183",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -412,
+    "avgReturn": -0.0028246069888454703,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 412,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "ABB": {
+      "trades": [
+        {
+          "symbol": "ABB",
+          "entryTs": "2025-07-12T05:45:00.000Z",
+          "entryPrice": 1458.61,
+          "exitTs": "2025-07-12T06:45:00.000Z",
+          "exitPrice": 1454.49,
+          "pnl": -412,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1455.85 vol>=4212",
+          "trace": {
+            "reason": "breakout N=1 close>=1455.85 vol>=4212"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -412,
+        "winRate": 0,
+        "maxDrawdown": 412,
+        "trades": 1,
+        "avgReturn": -0.0028246069888454703,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "ABB",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -412
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:24:32.189Z",
+  "completedAt": "2025-11-07T15:24:32.189Z",
+  "error": null,
+  "insightsStatus": "done"
+}

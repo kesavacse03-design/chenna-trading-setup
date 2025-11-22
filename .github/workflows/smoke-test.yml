@@ -1,0 +1,49 @@
+name: Smoke Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18.x"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Start backend server
+        run: |
+          nohup node chenna-CTS/backend/server.cjs > server.log 2>&1 &
+          echo $! > server.pid
+
+      - name: Wait for backend health
+        run: |
+          SECONDS=0
+          until curl -sSf http://localhost:3001/health >/dev/null 2>&1; do
+            if [ $SECONDS -ge 60 ]; then
+              echo "Server did not become healthy in 60s"; exit 1;
+            fi
+            sleep 2
+          done
+
+      - name: Run smoke test
+        run: timeout 120s npm run smoke:test
+
+      - name: Upload debug artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-debug-artifacts
+          path: |
+            backend/jobs/*.json
+            backend/strategy/output/*.csv
+            server.log

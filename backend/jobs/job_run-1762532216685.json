@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532216685",
+  "summary": {
+    "runId": "run-1762532216685",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -545,
+    "avgReturn": -0.004562272932746085,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 545,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "CDSL": {
+      "trades": [
+        {
+          "symbol": "CDSL",
+          "entryTs": "2025-07-12T05:45:00.000Z",
+          "entryPrice": 1194.58,
+          "exitTs": "2025-07-12T06:45:00.000Z",
+          "exitPrice": 1189.13,
+          "pnl": -545,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1188.59 vol>=5279",
+          "trace": {
+            "reason": "breakout N=1 close>=1188.59 vol>=5279"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -545,
+        "winRate": 0,
+        "maxDrawdown": 545,
+        "trades": 1,
+        "avgReturn": -0.004562272932746085,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "CDSL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -545
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:16:56.689Z",
+  "completedAt": "2025-11-07T16:16:56.689Z",
+  "error": null,
+  "insightsStatus": "done"
+}

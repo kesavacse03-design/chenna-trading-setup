@@ -1,0 +1,93 @@
+{
+  "runId": "opt-1763274574710",
+  "searchMode": "grid",
+  "combosTried": 1,
+  "results": 1,
+  "timedOut": false,
+  "topN": [
+    {
+      "rank": 1,
+      "score": 1.252,
+      "metrics": {
+        "netPnl": 1,
+        "winRate": 50,
+        "maxDrawdown": 0,
+        "trades": 5,
+        "avgReturn": 0.001,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      },
+      "config": {
+        "ema_short": 13,
+        "ema_long": 55,
+        "atr_mult": 1.2
+      },
+      "runId": "rr-j7q6kp",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "X",
+              "W"
+            ],
+            "metrics": {
+              "netPnl": 1,
+              "winRate": 50,
+              "maxDrawdown": 0,
+              "trades": 5,
+              "avgReturn": 0.001,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "Y"
+            ],
+            "metrics": {
+              "netPnl": 1,
+              "winRate": 50,
+              "maxDrawdown": 0,
+              "trades": 5,
+              "avgReturn": 0.001,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "Z"
+            ],
+            "metrics": {
+              "netPnl": 1,
+              "winRate": 50,
+              "maxDrawdown": 0,
+              "trades": 5,
+              "avgReturn": 0.001,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 15,
+          "netPnl": 3,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": 0,
+          "avgReturn": 0.001
+        }
+      }
+    }
+  ],
+  "summaryText": "Run completed cpuAvg=NA% combos=1 mode=grid topExpectancy=0.0010",
+  "avgCpuPercent": null
+}

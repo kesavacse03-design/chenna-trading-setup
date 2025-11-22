@@ -1,0 +1,113 @@
+{
+  "strategy": {
+    "ema_short": 21,
+    "ema_long": 55,
+    "atr_mult": 1.2
+  },
+  "runId": "stg-9",
+  "optimizerRunId": "opt-1763274572264",
+  "expectancy": 0.03,
+  "drawdown": 0,
+  "trades": 300,
+  "kfold": {
+    "K": 5,
+    "folds": [
+      {
+        "index": 0,
+        "symbols": [
+          "S1",
+          "S6"
+        ],
+        "metrics": {
+          "netPnl": 300,
+          "winRate": 70,
+          "maxDrawdown": 0,
+          "trades": 60,
+          "avgReturn": 0.03,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "index": 1,
+        "symbols": [
+          "S2",
+          "S7"
+        ],
+        "metrics": {
+          "netPnl": 300,
+          "winRate": 70,
+          "maxDrawdown": 0,
+          "trades": 60,
+          "avgReturn": 0.03,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "index": 2,
+        "symbols": [
+          "S3",
+          "S8"
+        ],
+        "metrics": {
+          "netPnl": 300,
+          "winRate": 70,
+          "maxDrawdown": 0,
+          "trades": 60,
+          "avgReturn": 0.03,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "index": 3,
+        "symbols": [
+          "S4",
+          "S9"
+        ],
+        "metrics": {
+          "netPnl": 300,
+          "winRate": 70,
+          "maxDrawdown": 0,
+          "trades": 60,
+          "avgReturn": 0.03,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "index": 4,
+        "symbols": [
+          "S5"
+        ],
+        "metrics": {
+          "netPnl": 300,
+          "winRate": 70,
+          "maxDrawdown": 0,
+          "trades": 60,
+          "avgReturn": 0.03,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      }
+    ],
+    "validatedFolds": 5,
+    "validationTrades": 300
+  },
+  "promoted": true,
+  "thresholds": {
+    "minTrades": 30,
+    "maxNegativeDrawdown": -50000,
+    "expectancyPositive": true
+  },
+  "summaryText": "Top candidate expectancy=0.0300 trades=300 drawdown=0 promoted=true cpuAvg=NA%",
+  "avgCpuPercent": null,
+  "gitCommit": "ref: refs/heads/fix/watchlist-hydration",
+  "seed": 54321
+}

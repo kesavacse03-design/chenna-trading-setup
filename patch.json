@@ -1,0 +1,1 @@
+[{"op":"add","path":"/spec/template/spec/volumes/-","value":{"name":"upstox-token","secret":{"secretName":"upstox-token"}}},{"op":"add","path":"/spec/template/spec/containers/0/volumeMounts/-","value":{"name":"upstox-token","mountPath":"/app/.data/secrets","readOnly":true}}]

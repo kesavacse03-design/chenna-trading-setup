@@ -1,0 +1,2483 @@
+{
+  "runId": "run-1763466139379",
+  "summary": {
+    "runId": "run-1763466139379",
+    "totalTrades": 92,
+    "tradesCount": 92,
+    "totalPnL": -274,
+    "avgReturn": 6.642606609999123e-7,
+    "winRate": 55.43,
+    "profitFactor": 0.98,
+    "maxDrawdown": 6024,
+    "avgHoldingDays": 0.03,
+    "missingCount": 0,
+    "from": "2024-10-01",
+    "to": "2024-10-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "kind": "composite",
+      "ema_short": 8,
+      "ema_long": 50,
+      "rsi_period": 14,
+      "rsi_min": 20,
+      "rsi_max": 80,
+      "atr_mult": 1.2,
+      "volumeFactor": 1.5,
+      "targetR": 1.2,
+      "qty": 100,
+      "usePatterns": {
+        "engulfing": false,
+        "hammer": false,
+        "doji": false
+      },
+      "enableVWAP": false,
+      "adx_min": 0,
+      "adx_period": 14,
+      "regime": "none",
+      "bb_period": 20,
+      "bb_k": 2,
+      "bb_width": 0.03,
+      "stoch_mode": "none",
+      "stoch_k": 14,
+      "stoch_d": 3,
+      "stoch_kMin": 0,
+      "stoch_kMax": 100,
+      "enableSupertrend": false,
+      "supertrend_period": 10,
+      "supertrend_mult": 3,
+      "atrStop": 1
+    },
+    "swing10": {
+      "successWithin10Days": 80,
+      "failWithin10Days": 9,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 89.89
+    },
+    "equityCurve": [
+      431,
+      -429,
+      69,
+      -193,
+      -168,
+      209,
+      135,
+      535,
+      686,
+      -209,
+      -81,
+      -258,
+      175,
+      920,
+      1410,
+      1241,
+      1535,
+      1974,
+      1934,
+      2455,
+      1588,
+      1843,
+      1920,
+      2616,
+      2406,
+      2876,
+      2494,
+      2432,
+      2677,
+      2427,
+      2139,
+      2290,
+      2404,
+      2401,
+      2031,
+      1891,
+      2358,
+      2854,
+      2456,
+      2936,
+      3116,
+      3180,
+      3701,
+      3691,
+      4171,
+      4232,
+      3740,
+      3945,
+      4476,
+      4665,
+      4624,
+      5019,
+      4548,
+      4336,
+      3982,
+      3658,
+      3887,
+      3715,
+      3072,
+      3620,
+      2981,
+      1997,
+      1132,
+      1332,
+      1178,
+      1181,
+      959,
+      761,
+      999,
+      1139,
+      1010,
+      381,
+      538,
+      -519,
+      -429,
+      -30,
+      -676,
+      -516,
+      -400,
+      -1005,
+      -604,
+      -148,
+      -651,
+      -544,
+      -327,
+      -536,
+      -279,
+      8,
+      -372,
+      195,
+      279,
+      -274
+    ]
+  },
+  "perSymbol": {
+    "SAIL": {
+      "trades": [
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-03T04:45:00.000Z",
+          "entryPrice": 2580.84,
+          "exitTs": "2024-10-03T11:45:00.000Z",
+          "exitPrice": 2585.15,
+          "pnl": 431,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9158 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9158 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-03T13:45:00.000Z",
+          "entryPrice": 2590.96,
+          "exitTs": "2024-10-03T15:45:00.000Z",
+          "exitPrice": 2582.36,
+          "pnl": -860,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8502 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8502 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-03T15:45:00.000Z",
+          "entryPrice": 2590.06,
+          "exitTs": "2024-10-04T00:45:00.000Z",
+          "exitPrice": 2595.04,
+          "pnl": 498,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9213 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9213 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-04T00:45:00.000Z",
+          "entryPrice": 2597.11,
+          "exitTs": "2024-10-04T01:45:00.000Z",
+          "exitPrice": 2594.49,
+          "pnl": -262,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9508 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9508 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-04T01:45:00.000Z",
+          "entryPrice": 2601.09,
+          "exitTs": "2024-10-04T07:45:00.000Z",
+          "exitPrice": 2601.34,
+          "pnl": 25,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9487 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9487 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-04T07:45:00.000Z",
+          "entryPrice": 2605.85,
+          "exitTs": "2024-10-04T15:45:00.000Z",
+          "exitPrice": 2609.62,
+          "pnl": 377,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9591 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9591 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-04T15:45:00.000Z",
+          "entryPrice": 2610.55,
+          "exitTs": "2024-10-04T17:45:00.000Z",
+          "exitPrice": 2609.81,
+          "pnl": -74,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8821 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8821 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-04T17:45:00.000Z",
+          "entryPrice": 2611.17,
+          "exitTs": "2024-10-04T23:45:00.000Z",
+          "exitPrice": 2615.17,
+          "pnl": 400,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8621 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8621 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-05T03:45:00.000Z",
+          "entryPrice": 2620.5,
+          "exitTs": "2024-10-05T06:45:00.000Z",
+          "exitPrice": 2622.01,
+          "pnl": 151,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9459 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9459 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-05T08:45:00.000Z",
+          "entryPrice": 2624.29,
+          "exitTs": "2024-10-05T10:45:00.000Z",
+          "exitPrice": 2615.34,
+          "pnl": -895,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9080 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9080 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-05T10:45:00.000Z",
+          "entryPrice": 2625.12,
+          "exitTs": "2024-10-05T13:45:00.000Z",
+          "exitPrice": 2626.4,
+          "pnl": 128,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9269 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9269 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-05T13:45:00.000Z",
+          "entryPrice": 2631.28,
+          "exitTs": "2024-10-05T17:45:00.000Z",
+          "exitPrice": 2629.51,
+          "pnl": -177,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9255 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9255 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-06T05:45:00.000Z",
+          "entryPrice": 2638.38,
+          "exitTs": "2024-10-06T10:45:00.000Z",
+          "exitPrice": 2642.71,
+          "pnl": 433,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8986 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8986 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-06T12:45:00.000Z",
+          "entryPrice": 2640.88,
+          "exitTs": "2024-10-06T16:45:00.000Z",
+          "exitPrice": 2648.33,
+          "pnl": 745,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8568 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8568 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-06T16:45:00.000Z",
+          "entryPrice": 2649.58,
+          "exitTs": "2024-10-07T01:45:00.000Z",
+          "exitPrice": 2654.48,
+          "pnl": 490,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=7915 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=7915 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-07T01:45:00.000Z",
+          "entryPrice": 2657.39,
+          "exitTs": "2024-10-07T03:45:00.000Z",
+          "exitPrice": 2655.7,
+          "pnl": -169,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8759 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8759 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-07T08:45:00.000Z",
+          "entryPrice": 2657.39,
+          "exitTs": "2024-10-07T09:45:00.000Z",
+          "exitPrice": 2660.33,
+          "pnl": 294,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8746 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8746 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-07T17:45:00.000Z",
+          "entryPrice": 2661.2,
+          "exitTs": "2024-10-08T02:45:00.000Z",
+          "exitPrice": 2665.59,
+          "pnl": 439,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=7688 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=7688 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-08T02:45:00.000Z",
+          "entryPrice": 2668.96,
+          "exitTs": "2024-10-08T03:45:00.000Z",
+          "exitPrice": 2668.56,
+          "pnl": -40,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8529 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8529 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-08T03:45:00.000Z",
+          "entryPrice": 2670.82,
+          "exitTs": "2024-10-08T12:45:00.000Z",
+          "exitPrice": 2676.03,
+          "pnl": 521,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9210 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9210 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-08T14:45:00.000Z",
+          "entryPrice": 2683.13,
+          "exitTs": "2024-10-08T18:45:00.000Z",
+          "exitPrice": 2674.46,
+          "pnl": -867,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8540 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8540 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-08T18:45:00.000Z",
+          "entryPrice": 2683.44,
+          "exitTs": "2024-10-08T22:45:00.000Z",
+          "exitPrice": 2685.99,
+          "pnl": 255,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8756 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8756 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-08T23:45:00.000Z",
+          "entryPrice": 2687.28,
+          "exitTs": "2024-10-09T01:45:00.000Z",
+          "exitPrice": 2688.05,
+          "pnl": 77,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=7882 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=7882 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-09T02:45:00.000Z",
+          "entryPrice": 2689,
+          "exitTs": "2024-10-09T14:45:00.000Z",
+          "exitPrice": 2695.96,
+          "pnl": 696,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8906 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8906 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-09T14:45:00.000Z",
+          "entryPrice": 2701.54,
+          "exitTs": "2024-10-09T18:45:00.000Z",
+          "exitPrice": 2699.44,
+          "pnl": -210,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9486 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9486 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-09T22:45:00.000Z",
+          "entryPrice": 2702.65,
+          "exitTs": "2024-10-10T01:45:00.000Z",
+          "exitPrice": 2707.35,
+          "pnl": 470,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=7999 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=7999 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-10T01:45:00.000Z",
+          "entryPrice": 2712.44,
+          "exitTs": "2024-10-10T03:45:00.000Z",
+          "exitPrice": 2708.62,
+          "pnl": -382,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8033 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8033 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-10T05:45:00.000Z",
+          "entryPrice": 2714.47,
+          "exitTs": "2024-10-10T09:45:00.000Z",
+          "exitPrice": 2713.85,
+          "pnl": -62,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8009 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8009 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-10T10:45:00.000Z",
+          "entryPrice": 2716.38,
+          "exitTs": "2024-10-10T19:45:00.000Z",
+          "exitPrice": 2718.83,
+          "pnl": 245,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=7100 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=7100 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-10T19:45:00.000Z",
+          "entryPrice": 2723.39,
+          "exitTs": "2024-10-11T01:45:00.000Z",
+          "exitPrice": 2720.89,
+          "pnl": -250,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=6697 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=6697 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-11T01:45:00.000Z",
+          "entryPrice": 2725.54,
+          "exitTs": "2024-10-11T03:45:00.000Z",
+          "exitPrice": 2722.66,
+          "pnl": -288,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=6400 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=6400 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-11T04:45:00.000Z",
+          "entryPrice": 2727.79,
+          "exitTs": "2024-10-11T09:45:00.000Z",
+          "exitPrice": 2729.3,
+          "pnl": 151,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=7298 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=7298 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-11T09:45:00.000Z",
+          "entryPrice": 2731.49,
+          "exitTs": "2024-10-11T19:45:00.000Z",
+          "exitPrice": 2732.63,
+          "pnl": 114,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=7878 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=7878 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-11T19:45:00.000Z",
+          "entryPrice": 2736.99,
+          "exitTs": "2024-10-12T01:45:00.000Z",
+          "exitPrice": 2736.96,
+          "pnl": -3,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8666 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8666 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-12T01:45:00.000Z",
+          "entryPrice": 2741.17,
+          "exitTs": "2024-10-12T05:45:00.000Z",
+          "exitPrice": 2737.47,
+          "pnl": -370,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9345 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9345 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-12T05:45:00.000Z",
+          "entryPrice": 2740.42,
+          "exitTs": "2024-10-12T06:45:00.000Z",
+          "exitPrice": 2739.02,
+          "pnl": -140,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9673 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9673 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-12T06:45:00.000Z",
+          "entryPrice": 2740.88,
+          "exitTs": "2024-10-12T16:45:00.000Z",
+          "exitPrice": 2745.55,
+          "pnl": 467,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=10118 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=10118 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-12T19:45:00.000Z",
+          "entryPrice": 2746.5,
+          "exitTs": "2024-10-13T01:45:00.000Z",
+          "exitPrice": 2751.46,
+          "pnl": 496,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9779 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9779 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-13T01:45:00.000Z",
+          "entryPrice": 2758.16,
+          "exitTs": "2024-10-13T05:45:00.000Z",
+          "exitPrice": 2754.18,
+          "pnl": -398,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9360 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9360 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-13T05:45:00.000Z",
+          "entryPrice": 2754.53,
+          "exitTs": "2024-10-13T11:45:00.000Z",
+          "exitPrice": 2759.33,
+          "pnl": 480,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8369 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8369 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-13T14:45:00.000Z",
+          "entryPrice": 2764.42,
+          "exitTs": "2024-10-13T17:45:00.000Z",
+          "exitPrice": 2766.22,
+          "pnl": 180,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9685 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9685 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-14T02:45:00.000Z",
+          "entryPrice": 2771.56,
+          "exitTs": "2024-10-14T03:45:00.000Z",
+          "exitPrice": 2772.2,
+          "pnl": 64,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8189 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8189 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-14T03:45:00.000Z",
+          "entryPrice": 2772.94,
+          "exitTs": "2024-10-14T10:45:00.000Z",
+          "exitPrice": 2778.15,
+          "pnl": 521,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8191 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8191 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-14T10:45:00.000Z",
+          "entryPrice": 2779.55,
+          "exitTs": "2024-10-14T11:45:00.000Z",
+          "exitPrice": 2779.45,
+          "pnl": -10,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=7866 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=7866 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-14T12:45:00.000Z",
+          "entryPrice": 2778.26,
+          "exitTs": "2024-10-14T17:45:00.000Z",
+          "exitPrice": 2783.06,
+          "pnl": 480,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=7940 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=7940 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-14T19:45:00.000Z",
+          "entryPrice": 2786.3,
+          "exitTs": "2024-10-15T05:45:00.000Z",
+          "exitPrice": 2786.91,
+          "pnl": 61,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8749 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8749 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-15T05:45:00.000Z",
+          "entryPrice": 2791.71,
+          "exitTs": "2024-10-15T06:45:00.000Z",
+          "exitPrice": 2786.79,
+          "pnl": -492,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9073 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9073 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-15T07:45:00.000Z",
+          "entryPrice": 2792.29,
+          "exitTs": "2024-10-15T11:45:00.000Z",
+          "exitPrice": 2794.34,
+          "pnl": 205,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9335 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9335 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-16T04:45:00.000Z",
+          "entryPrice": 2799.44,
+          "exitTs": "2024-10-16T11:45:00.000Z",
+          "exitPrice": 2804.75,
+          "pnl": 531,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9701 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9701 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-16T11:45:00.000Z",
+          "entryPrice": 2809.48,
+          "exitTs": "2024-10-16T18:45:00.000Z",
+          "exitPrice": 2811.37,
+          "pnl": 189,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=10173 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=10173 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-16T18:45:00.000Z",
+          "entryPrice": 2814.77,
+          "exitTs": "2024-10-16T22:45:00.000Z",
+          "exitPrice": 2814.36,
+          "pnl": -41,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9370 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9370 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-17T08:45:00.000Z",
+          "entryPrice": 2821.13,
+          "exitTs": "2024-10-17T17:45:00.000Z",
+          "exitPrice": 2825.08,
+          "pnl": 395,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9268 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9268 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-17T17:45:00.000Z",
+          "entryPrice": 2829.2,
+          "exitTs": "2024-10-17T18:45:00.000Z",
+          "exitPrice": 2824.49,
+          "pnl": -471,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8482 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8482 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-17T21:45:00.000Z",
+          "entryPrice": 2834.13,
+          "exitTs": "2024-10-18T05:45:00.000Z",
+          "exitPrice": 2832.01,
+          "pnl": -212,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9127 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9127 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-18T05:45:00.000Z",
+          "entryPrice": 2838.21,
+          "exitTs": "2024-10-18T07:45:00.000Z",
+          "exitPrice": 2834.67,
+          "pnl": -354,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8364 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8364 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-18T07:45:00.000Z",
+          "entryPrice": 2838.45,
+          "exitTs": "2024-10-18T10:45:00.000Z",
+          "exitPrice": 2835.21,
+          "pnl": -324,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8730 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8730 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-18T13:45:00.000Z",
+          "entryPrice": 2838.74,
+          "exitTs": "2024-10-18T23:45:00.000Z",
+          "exitPrice": 2841.03,
+          "pnl": 229,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9395 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9395 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-18T23:45:00.000Z",
+          "entryPrice": 2841.41,
+          "exitTs": "2024-10-19T00:45:00.000Z",
+          "exitPrice": 2839.69,
+          "pnl": -172,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=10048 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=10048 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-19T18:45:00.000Z",
+          "entryPrice": 2856.06,
+          "exitTs": "2024-10-19T21:45:00.000Z",
+          "exitPrice": 2849.63,
+          "pnl": -643,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9480 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9480 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-20T12:45:00.000Z",
+          "entryPrice": 2862.68,
+          "exitTs": "2024-10-20T15:45:00.000Z",
+          "exitPrice": 2868.16,
+          "pnl": 548,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8928 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8928 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-20T16:45:00.000Z",
+          "entryPrice": 2872.16,
+          "exitTs": "2024-10-20T17:45:00.000Z",
+          "exitPrice": 2865.77,
+          "pnl": -639,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9257 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9257 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-20T19:45:00.000Z",
+          "entryPrice": 2874.26,
+          "exitTs": "2024-10-20T22:45:00.000Z",
+          "exitPrice": 2864.42,
+          "pnl": -984,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9645 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9645 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-20T22:45:00.000Z",
+          "entryPrice": 2873.68,
+          "exitTs": "2024-10-20T23:45:00.000Z",
+          "exitPrice": 2865.03,
+          "pnl": -865,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9744 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9744 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-21T02:45:00.000Z",
+          "entryPrice": 2875.49,
+          "exitTs": "2024-10-21T04:45:00.000Z",
+          "exitPrice": 2877.49,
+          "pnl": 200,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8711 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8711 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-21T04:45:00.000Z",
+          "entryPrice": 2881.66,
+          "exitTs": "2024-10-21T08:45:00.000Z",
+          "exitPrice": 2880.12,
+          "pnl": -154,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8935 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8935 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-21T13:45:00.000Z",
+          "entryPrice": 2885.05,
+          "exitTs": "2024-10-21T17:45:00.000Z",
+          "exitPrice": 2885.08,
+          "pnl": 3,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8432 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8432 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-21T17:45:00.000Z",
+          "entryPrice": 2891.83,
+          "exitTs": "2024-10-22T00:45:00.000Z",
+          "exitPrice": 2889.61,
+          "pnl": -222,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8521 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8521 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-22T00:45:00.000Z",
+          "entryPrice": 2892.64,
+          "exitTs": "2024-10-22T02:45:00.000Z",
+          "exitPrice": 2890.66,
+          "pnl": -198,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9146 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9146 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-22T03:45:00.000Z",
+          "entryPrice": 2894.6,
+          "exitTs": "2024-10-22T08:45:00.000Z",
+          "exitPrice": 2896.98,
+          "pnl": 238,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9119 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9119 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-22T08:45:00.000Z",
+          "entryPrice": 2899.76,
+          "exitTs": "2024-10-22T17:45:00.000Z",
+          "exitPrice": 2901.16,
+          "pnl": 140,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9526 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9526 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-22T17:45:00.000Z",
+          "entryPrice": 2903.55,
+          "exitTs": "2024-10-22T18:45:00.000Z",
+          "exitPrice": 2902.26,
+          "pnl": -129,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9761 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9761 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-22T20:45:00.000Z",
+          "entryPrice": 2905.04,
+          "exitTs": "2024-10-22T21:45:00.000Z",
+          "exitPrice": 2898.75,
+          "pnl": -629,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8968 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8968 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-23T03:45:00.000Z",
+          "entryPrice": 2912.56,
+          "exitTs": "2024-10-23T12:45:00.000Z",
+          "exitPrice": 2914.13,
+          "pnl": 157,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8329 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8329 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-23T12:45:00.000Z",
+          "entryPrice": 2920.97,
+          "exitTs": "2024-10-23T13:45:00.000Z",
+          "exitPrice": 2910.4,
+          "pnl": -1057,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8342 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8342 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-23T20:45:00.000Z",
+          "entryPrice": 2924.89,
+          "exitTs": "2024-10-24T02:45:00.000Z",
+          "exitPrice": 2925.79,
+          "pnl": 90,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8406 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8406 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-24T02:45:00.000Z",
+          "entryPrice": 2927.61,
+          "exitTs": "2024-10-24T16:45:00.000Z",
+          "exitPrice": 2931.6,
+          "pnl": 399,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8753 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8753 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-24T16:45:00.000Z",
+          "entryPrice": 2934.59,
+          "exitTs": "2024-10-24T17:45:00.000Z",
+          "exitPrice": 2928.13,
+          "pnl": -646,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8543 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8543 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-24T23:45:00.000Z",
+          "entryPrice": 2933.73,
+          "exitTs": "2024-10-25T02:45:00.000Z",
+          "exitPrice": 2935.33,
+          "pnl": 160,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=10269 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=10269 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-25T07:45:00.000Z",
+          "entryPrice": 2942.16,
+          "exitTs": "2024-10-25T15:45:00.000Z",
+          "exitPrice": 2943.32,
+          "pnl": 116,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8869 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8869 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-25T15:45:00.000Z",
+          "entryPrice": 2951,
+          "exitTs": "2024-10-25T16:45:00.000Z",
+          "exitPrice": 2944.95,
+          "pnl": -605,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8214 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8214 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-25T17:45:00.000Z",
+          "entryPrice": 2948.3,
+          "exitTs": "2024-10-25T22:45:00.000Z",
+          "exitPrice": 2952.31,
+          "pnl": 401,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8775 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8775 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-27T01:45:00.000Z",
+          "entryPrice": 2973.58,
+          "exitTs": "2024-10-27T18:45:00.000Z",
+          "exitPrice": 2978.14,
+          "pnl": 456,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8235 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8235 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-27T18:45:00.000Z",
+          "entryPrice": 2981.33,
+          "exitTs": "2024-10-27T19:45:00.000Z",
+          "exitPrice": 2976.3,
+          "pnl": -503,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8562 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8562 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-28T04:45:00.000Z",
+          "entryPrice": 2991.06,
+          "exitTs": "2024-10-28T09:45:00.000Z",
+          "exitPrice": 2992.13,
+          "pnl": 107,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8393 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8393 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-28T22:45:00.000Z",
+          "entryPrice": 3004.28,
+          "exitTs": "2024-10-29T00:45:00.000Z",
+          "exitPrice": 3006.45,
+          "pnl": 217,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=7173 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=7173 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-29T00:45:00.000Z",
+          "entryPrice": 3009.34,
+          "exitTs": "2024-10-29T03:45:00.000Z",
+          "exitPrice": 3007.25,
+          "pnl": -209,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=7409 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=7409 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-29T06:45:00.000Z",
+          "entryPrice": 3009.22,
+          "exitTs": "2024-10-29T09:45:00.000Z",
+          "exitPrice": 3011.79,
+          "pnl": 257,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9610 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9610 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-30T05:45:00.000Z",
+          "entryPrice": 3026.42,
+          "exitTs": "2024-10-30T08:45:00.000Z",
+          "exitPrice": 3029.29,
+          "pnl": 287,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=10247 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=10247 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-30T08:45:00.000Z",
+          "entryPrice": 3034.04,
+          "exitTs": "2024-10-30T09:45:00.000Z",
+          "exitPrice": 3030.24,
+          "pnl": -380,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=10385 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=10385 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-30T13:45:00.000Z",
+          "entryPrice": 3028.86,
+          "exitTs": "2024-10-30T18:45:00.000Z",
+          "exitPrice": 3034.53,
+          "pnl": 567,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8655 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8655 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-30T18:45:00.000Z",
+          "entryPrice": 3035.25,
+          "exitTs": "2024-10-30T19:45:00.000Z",
+          "exitPrice": 3036.09,
+          "pnl": 84,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=9003 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=9003 gates:"
+          }
+        },
+        {
+          "symbol": "SAIL",
+          "entryTs": "2024-10-31T01:45:00.000Z",
+          "entryPrice": 3039.96,
+          "exitTs": "2024-10-31T02:45:00.000Z",
+          "exitPrice": 3034.43,
+          "pnl": -553,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=8471 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=8471 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -274,
+        "winRate": 55.43,
+        "maxDrawdown": 6024,
+        "trades": 92,
+        "avgReturn": 6.642606609999123e-7,
+        "profitFactor": 0.98,
+        "wins": 51,
+        "losses": 41
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -860
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -262
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -74
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -895
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -177
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -169
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -40
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -867
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -210
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -382
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -62
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -250
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -288
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -370
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -140
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -398
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -10
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -492
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -41
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -471
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -212
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -354
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -324
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -172
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -643
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -639
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -984
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -865
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -154
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -222
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -198
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -129
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -629
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1057
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -646
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -605
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -503
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -209
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -380
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "SAIL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -553
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-18T11:42:22.082Z",
+  "completedAt": "2025-11-18T11:42:22.082Z",
+  "error": null,
+  "accuracy": 55.43,
+  "winRate": 55.43,
+  "expectancy": 6.642606609999123e-7,
+  "totalPnL": -274,
+  "maxDrawdown": 6024,
+  "trades": [
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-03T04:45:00.000Z",
+      "entryPrice": 2580.84,
+      "exitTs": "2024-10-03T11:45:00.000Z",
+      "exitPrice": 2585.15,
+      "pnl": 431
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-03T13:45:00.000Z",
+      "entryPrice": 2590.96,
+      "exitTs": "2024-10-03T15:45:00.000Z",
+      "exitPrice": 2582.36,
+      "pnl": -860
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-03T15:45:00.000Z",
+      "entryPrice": 2590.06,
+      "exitTs": "2024-10-04T00:45:00.000Z",
+      "exitPrice": 2595.04,
+      "pnl": 498
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-04T00:45:00.000Z",
+      "entryPrice": 2597.11,
+      "exitTs": "2024-10-04T01:45:00.000Z",
+      "exitPrice": 2594.49,
+      "pnl": -262
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-04T01:45:00.000Z",
+      "entryPrice": 2601.09,
+      "exitTs": "2024-10-04T07:45:00.000Z",
+      "exitPrice": 2601.34,
+      "pnl": 25
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-04T07:45:00.000Z",
+      "entryPrice": 2605.85,
+      "exitTs": "2024-10-04T15:45:00.000Z",
+      "exitPrice": 2609.62,
+      "pnl": 377
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-04T15:45:00.000Z",
+      "entryPrice": 2610.55,
+      "exitTs": "2024-10-04T17:45:00.000Z",
+      "exitPrice": 2609.81,
+      "pnl": -74
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-04T17:45:00.000Z",
+      "entryPrice": 2611.17,
+      "exitTs": "2024-10-04T23:45:00.000Z",
+      "exitPrice": 2615.17,
+      "pnl": 400
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-05T03:45:00.000Z",
+      "entryPrice": 2620.5,
+      "exitTs": "2024-10-05T06:45:00.000Z",
+      "exitPrice": 2622.01,
+      "pnl": 151
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-05T08:45:00.000Z",
+      "entryPrice": 2624.29,
+      "exitTs": "2024-10-05T10:45:00.000Z",
+      "exitPrice": 2615.34,
+      "pnl": -895
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-05T10:45:00.000Z",
+      "entryPrice": 2625.12,
+      "exitTs": "2024-10-05T13:45:00.000Z",
+      "exitPrice": 2626.4,
+      "pnl": 128
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-05T13:45:00.000Z",
+      "entryPrice": 2631.28,
+      "exitTs": "2024-10-05T17:45:00.000Z",
+      "exitPrice": 2629.51,
+      "pnl": -177
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-06T05:45:00.000Z",
+      "entryPrice": 2638.38,
+      "exitTs": "2024-10-06T10:45:00.000Z",
+      "exitPrice": 2642.71,
+      "pnl": 433
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-06T12:45:00.000Z",
+      "entryPrice": 2640.88,
+      "exitTs": "2024-10-06T16:45:00.000Z",
+      "exitPrice": 2648.33,
+      "pnl": 745
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-06T16:45:00.000Z",
+      "entryPrice": 2649.58,
+      "exitTs": "2024-10-07T01:45:00.000Z",
+      "exitPrice": 2654.48,
+      "pnl": 490
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-07T01:45:00.000Z",
+      "entryPrice": 2657.39,
+      "exitTs": "2024-10-07T03:45:00.000Z",
+      "exitPrice": 2655.7,
+      "pnl": -169
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-07T08:45:00.000Z",
+      "entryPrice": 2657.39,
+      "exitTs": "2024-10-07T09:45:00.000Z",
+      "exitPrice": 2660.33,
+      "pnl": 294
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-07T17:45:00.000Z",
+      "entryPrice": 2661.2,
+      "exitTs": "2024-10-08T02:45:00.000Z",
+      "exitPrice": 2665.59,
+      "pnl": 439
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-08T02:45:00.000Z",
+      "entryPrice": 2668.96,
+      "exitTs": "2024-10-08T03:45:00.000Z",
+      "exitPrice": 2668.56,
+      "pnl": -40
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-08T03:45:00.000Z",
+      "entryPrice": 2670.82,
+      "exitTs": "2024-10-08T12:45:00.000Z",
+      "exitPrice": 2676.03,
+      "pnl": 521
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-08T14:45:00.000Z",
+      "entryPrice": 2683.13,
+      "exitTs": "2024-10-08T18:45:00.000Z",
+      "exitPrice": 2674.46,
+      "pnl": -867
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-08T18:45:00.000Z",
+      "entryPrice": 2683.44,
+      "exitTs": "2024-10-08T22:45:00.000Z",
+      "exitPrice": 2685.99,
+      "pnl": 255
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-08T23:45:00.000Z",
+      "entryPrice": 2687.28,
+      "exitTs": "2024-10-09T01:45:00.000Z",
+      "exitPrice": 2688.05,
+      "pnl": 77
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-09T02:45:00.000Z",
+      "entryPrice": 2689,
+      "exitTs": "2024-10-09T14:45:00.000Z",
+      "exitPrice": 2695.96,
+      "pnl": 696
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-09T14:45:00.000Z",
+      "entryPrice": 2701.54,
+      "exitTs": "2024-10-09T18:45:00.000Z",
+      "exitPrice": 2699.44,
+      "pnl": -210
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-09T22:45:00.000Z",
+      "entryPrice": 2702.65,
+      "exitTs": "2024-10-10T01:45:00.000Z",
+      "exitPrice": 2707.35,
+      "pnl": 470
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-10T01:45:00.000Z",
+      "entryPrice": 2712.44,
+      "exitTs": "2024-10-10T03:45:00.000Z",
+      "exitPrice": 2708.62,
+      "pnl": -382
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-10T05:45:00.000Z",
+      "entryPrice": 2714.47,
+      "exitTs": "2024-10-10T09:45:00.000Z",
+      "exitPrice": 2713.85,
+      "pnl": -62
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-10T10:45:00.000Z",
+      "entryPrice": 2716.38,
+      "exitTs": "2024-10-10T19:45:00.000Z",
+      "exitPrice": 2718.83,
+      "pnl": 245
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-10T19:45:00.000Z",
+      "entryPrice": 2723.39,
+      "exitTs": "2024-10-11T01:45:00.000Z",
+      "exitPrice": 2720.89,
+      "pnl": -250
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-11T01:45:00.000Z",
+      "entryPrice": 2725.54,
+      "exitTs": "2024-10-11T03:45:00.000Z",
+      "exitPrice": 2722.66,
+      "pnl": -288
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-11T04:45:00.000Z",
+      "entryPrice": 2727.79,
+      "exitTs": "2024-10-11T09:45:00.000Z",
+      "exitPrice": 2729.3,
+      "pnl": 151
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-11T09:45:00.000Z",
+      "entryPrice": 2731.49,
+      "exitTs": "2024-10-11T19:45:00.000Z",
+      "exitPrice": 2732.63,
+      "pnl": 114
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-11T19:45:00.000Z",
+      "entryPrice": 2736.99,
+      "exitTs": "2024-10-12T01:45:00.000Z",
+      "exitPrice": 2736.96,
+      "pnl": -3
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-12T01:45:00.000Z",
+      "entryPrice": 2741.17,
+      "exitTs": "2024-10-12T05:45:00.000Z",
+      "exitPrice": 2737.47,
+      "pnl": -370
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-12T05:45:00.000Z",
+      "entryPrice": 2740.42,
+      "exitTs": "2024-10-12T06:45:00.000Z",
+      "exitPrice": 2739.02,
+      "pnl": -140
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-12T06:45:00.000Z",
+      "entryPrice": 2740.88,
+      "exitTs": "2024-10-12T16:45:00.000Z",
+      "exitPrice": 2745.55,
+      "pnl": 467
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-12T19:45:00.000Z",
+      "entryPrice": 2746.5,
+      "exitTs": "2024-10-13T01:45:00.000Z",
+      "exitPrice": 2751.46,
+      "pnl": 496
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-13T01:45:00.000Z",
+      "entryPrice": 2758.16,
+      "exitTs": "2024-10-13T05:45:00.000Z",
+      "exitPrice": 2754.18,
+      "pnl": -398
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-13T05:45:00.000Z",
+      "entryPrice": 2754.53,
+      "exitTs": "2024-10-13T11:45:00.000Z",
+      "exitPrice": 2759.33,
+      "pnl": 480
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-13T14:45:00.000Z",
+      "entryPrice": 2764.42,
+      "exitTs": "2024-10-13T17:45:00.000Z",
+      "exitPrice": 2766.22,
+      "pnl": 180
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-14T02:45:00.000Z",
+      "entryPrice": 2771.56,
+      "exitTs": "2024-10-14T03:45:00.000Z",
+      "exitPrice": 2772.2,
+      "pnl": 64
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-14T03:45:00.000Z",
+      "entryPrice": 2772.94,
+      "exitTs": "2024-10-14T10:45:00.000Z",
+      "exitPrice": 2778.15,
+      "pnl": 521
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-14T10:45:00.000Z",
+      "entryPrice": 2779.55,
+      "exitTs": "2024-10-14T11:45:00.000Z",
+      "exitPrice": 2779.45,
+      "pnl": -10
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-14T12:45:00.000Z",
+      "entryPrice": 2778.26,
+      "exitTs": "2024-10-14T17:45:00.000Z",
+      "exitPrice": 2783.06,
+      "pnl": 480
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-14T19:45:00.000Z",
+      "entryPrice": 2786.3,
+      "exitTs": "2024-10-15T05:45:00.000Z",
+      "exitPrice": 2786.91,
+      "pnl": 61
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-15T05:45:00.000Z",
+      "entryPrice": 2791.71,
+      "exitTs": "2024-10-15T06:45:00.000Z",
+      "exitPrice": 2786.79,
+      "pnl": -492
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-15T07:45:00.000Z",
+      "entryPrice": 2792.29,
+      "exitTs": "2024-10-15T11:45:00.000Z",
+      "exitPrice": 2794.34,
+      "pnl": 205
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-16T04:45:00.000Z",
+      "entryPrice": 2799.44,
+      "exitTs": "2024-10-16T11:45:00.000Z",
+      "exitPrice": 2804.75,
+      "pnl": 531
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-16T11:45:00.000Z",
+      "entryPrice": 2809.48,
+      "exitTs": "2024-10-16T18:45:00.000Z",
+      "exitPrice": 2811.37,
+      "pnl": 189
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-16T18:45:00.000Z",
+      "entryPrice": 2814.77,
+      "exitTs": "2024-10-16T22:45:00.000Z",
+      "exitPrice": 2814.36,
+      "pnl": -41
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-17T08:45:00.000Z",
+      "entryPrice": 2821.13,
+      "exitTs": "2024-10-17T17:45:00.000Z",
+      "exitPrice": 2825.08,
+      "pnl": 395
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-17T17:45:00.000Z",
+      "entryPrice": 2829.2,
+      "exitTs": "2024-10-17T18:45:00.000Z",
+      "exitPrice": 2824.49,
+      "pnl": -471
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-17T21:45:00.000Z",
+      "entryPrice": 2834.13,
+      "exitTs": "2024-10-18T05:45:00.000Z",
+      "exitPrice": 2832.01,
+      "pnl": -212
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-18T05:45:00.000Z",
+      "entryPrice": 2838.21,
+      "exitTs": "2024-10-18T07:45:00.000Z",
+      "exitPrice": 2834.67,
+      "pnl": -354
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-18T07:45:00.000Z",
+      "entryPrice": 2838.45,
+      "exitTs": "2024-10-18T10:45:00.000Z",
+      "exitPrice": 2835.21,
+      "pnl": -324
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-18T13:45:00.000Z",
+      "entryPrice": 2838.74,
+      "exitTs": "2024-10-18T23:45:00.000Z",
+      "exitPrice": 2841.03,
+      "pnl": 229
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-18T23:45:00.000Z",
+      "entryPrice": 2841.41,
+      "exitTs": "2024-10-19T00:45:00.000Z",
+      "exitPrice": 2839.69,
+      "pnl": -172
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-19T18:45:00.000Z",
+      "entryPrice": 2856.06,
+      "exitTs": "2024-10-19T21:45:00.000Z",
+      "exitPrice": 2849.63,
+      "pnl": -643
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-20T12:45:00.000Z",
+      "entryPrice": 2862.68,
+      "exitTs": "2024-10-20T15:45:00.000Z",
+      "exitPrice": 2868.16,
+      "pnl": 548
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-20T16:45:00.000Z",
+      "entryPrice": 2872.16,
+      "exitTs": "2024-10-20T17:45:00.000Z",
+      "exitPrice": 2865.77,
+      "pnl": -639
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-20T19:45:00.000Z",
+      "entryPrice": 2874.26,
+      "exitTs": "2024-10-20T22:45:00.000Z",
+      "exitPrice": 2864.42,
+      "pnl": -984
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-20T22:45:00.000Z",
+      "entryPrice": 2873.68,
+      "exitTs": "2024-10-20T23:45:00.000Z",
+      "exitPrice": 2865.03,
+      "pnl": -865
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-21T02:45:00.000Z",
+      "entryPrice": 2875.49,
+      "exitTs": "2024-10-21T04:45:00.000Z",
+      "exitPrice": 2877.49,
+      "pnl": 200
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-21T04:45:00.000Z",
+      "entryPrice": 2881.66,
+      "exitTs": "2024-10-21T08:45:00.000Z",
+      "exitPrice": 2880.12,
+      "pnl": -154
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-21T13:45:00.000Z",
+      "entryPrice": 2885.05,
+      "exitTs": "2024-10-21T17:45:00.000Z",
+      "exitPrice": 2885.08,
+      "pnl": 3
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-21T17:45:00.000Z",
+      "entryPrice": 2891.83,
+      "exitTs": "2024-10-22T00:45:00.000Z",
+      "exitPrice": 2889.61,
+      "pnl": -222
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-22T00:45:00.000Z",
+      "entryPrice": 2892.64,
+      "exitTs": "2024-10-22T02:45:00.000Z",
+      "exitPrice": 2890.66,
+      "pnl": -198
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-22T03:45:00.000Z",
+      "entryPrice": 2894.6,
+      "exitTs": "2024-10-22T08:45:00.000Z",
+      "exitPrice": 2896.98,
+      "pnl": 238
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-22T08:45:00.000Z",
+      "entryPrice": 2899.76,
+      "exitTs": "2024-10-22T17:45:00.000Z",
+      "exitPrice": 2901.16,
+      "pnl": 140
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-22T17:45:00.000Z",
+      "entryPrice": 2903.55,
+      "exitTs": "2024-10-22T18:45:00.000Z",
+      "exitPrice": 2902.26,
+      "pnl": -129
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-22T20:45:00.000Z",
+      "entryPrice": 2905.04,
+      "exitTs": "2024-10-22T21:45:00.000Z",
+      "exitPrice": 2898.75,
+      "pnl": -629
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-23T03:45:00.000Z",
+      "entryPrice": 2912.56,
+      "exitTs": "2024-10-23T12:45:00.000Z",
+      "exitPrice": 2914.13,
+      "pnl": 157
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-23T12:45:00.000Z",
+      "entryPrice": 2920.97,
+      "exitTs": "2024-10-23T13:45:00.000Z",
+      "exitPrice": 2910.4,
+      "pnl": -1057
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-23T20:45:00.000Z",
+      "entryPrice": 2924.89,
+      "exitTs": "2024-10-24T02:45:00.000Z",
+      "exitPrice": 2925.79,
+      "pnl": 90
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-24T02:45:00.000Z",
+      "entryPrice": 2927.61,
+      "exitTs": "2024-10-24T16:45:00.000Z",
+      "exitPrice": 2931.6,
+      "pnl": 399
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-24T16:45:00.000Z",
+      "entryPrice": 2934.59,
+      "exitTs": "2024-10-24T17:45:00.000Z",
+      "exitPrice": 2928.13,
+      "pnl": -646
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-24T23:45:00.000Z",
+      "entryPrice": 2933.73,
+      "exitTs": "2024-10-25T02:45:00.000Z",
+      "exitPrice": 2935.33,
+      "pnl": 160
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-25T07:45:00.000Z",
+      "entryPrice": 2942.16,
+      "exitTs": "2024-10-25T15:45:00.000Z",
+      "exitPrice": 2943.32,
+      "pnl": 116
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-25T15:45:00.000Z",
+      "entryPrice": 2951,
+      "exitTs": "2024-10-25T16:45:00.000Z",
+      "exitPrice": 2944.95,
+      "pnl": -605
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-25T17:45:00.000Z",
+      "entryPrice": 2948.3,
+      "exitTs": "2024-10-25T22:45:00.000Z",
+      "exitPrice": 2952.31,
+      "pnl": 401
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-27T01:45:00.000Z",
+      "entryPrice": 2973.58,
+      "exitTs": "2024-10-27T18:45:00.000Z",
+      "exitPrice": 2978.14,
+      "pnl": 456
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-27T18:45:00.000Z",
+      "entryPrice": 2981.33,
+      "exitTs": "2024-10-27T19:45:00.000Z",
+      "exitPrice": 2976.3,
+      "pnl": -503
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-28T04:45:00.000Z",
+      "entryPrice": 2991.06,
+      "exitTs": "2024-10-28T09:45:00.000Z",
+      "exitPrice": 2992.13,
+      "pnl": 107
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-28T22:45:00.000Z",
+      "entryPrice": 3004.28,
+      "exitTs": "2024-10-29T00:45:00.000Z",
+      "exitPrice": 3006.45,
+      "pnl": 217
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-29T00:45:00.000Z",
+      "entryPrice": 3009.34,
+      "exitTs": "2024-10-29T03:45:00.000Z",
+      "exitPrice": 3007.25,
+      "pnl": -209
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-29T06:45:00.000Z",
+      "entryPrice": 3009.22,
+      "exitTs": "2024-10-29T09:45:00.000Z",
+      "exitPrice": 3011.79,
+      "pnl": 257
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-30T05:45:00.000Z",
+      "entryPrice": 3026.42,
+      "exitTs": "2024-10-30T08:45:00.000Z",
+      "exitPrice": 3029.29,
+      "pnl": 287
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-30T08:45:00.000Z",
+      "entryPrice": 3034.04,
+      "exitTs": "2024-10-30T09:45:00.000Z",
+      "exitPrice": 3030.24,
+      "pnl": -380
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-30T13:45:00.000Z",
+      "entryPrice": 3028.86,
+      "exitTs": "2024-10-30T18:45:00.000Z",
+      "exitPrice": 3034.53,
+      "pnl": 567
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-30T18:45:00.000Z",
+      "entryPrice": 3035.25,
+      "exitTs": "2024-10-30T19:45:00.000Z",
+      "exitPrice": 3036.09,
+      "pnl": 84
+    },
+    {
+      "symbol": "SAIL",
+      "entryTs": "2024-10-31T01:45:00.000Z",
+      "entryPrice": 3039.96,
+      "exitTs": "2024-10-31T02:45:00.000Z",
+      "exitPrice": 3034.43,
+      "pnl": -553
+    }
+  ],
+  "insightsStatus": "done"
+}

@@ -1,0 +1,72 @@
+Option Greek Fields
+This API endpoint provides option Greek data for specified instruments. The response contains all fields required to construct an option chain, as well as the current day's total trading volume. This API supports a maximum of 50 instrument keys in a single request.
+
+Request
+curl --location 'https://api.upstox.com/v3/market-quote/option-greek?instrument_key=NSE_FO%7C43885' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+For additional samples in various languages, please refer to the Sample code section on this page.
+
+
+Query Parameters
+Name	Required	Description
+instrument_key	true	Comma separated list of instrument keys. For the regex pattern applicable to this field, see the Field Pattern Appendix.
+Responses
+200
+4XX
+Response body
+Name	Type	Description
+status	string	A string indicating the outcome of the request. Typically success for successful operations.
+data	object	Data object holding option greek information
+data.last_price	number	The last traded price of symbol
+data.instrument_token	string	Key of the instrument. For the regex pattern applicable to this field, see the Field Pattern Appendix.
+data.ltq	number	Last traded quantity
+data.volume	number	Volume traded today till current time
+data.cp	number	Previous day's closing price
+data.iv	number	Implied Volatility
+data.vega	number	Sensitivity of the option's price to changes in volatility.
+data.gamma	number	Rate of change of delta with respect to changes in the underlying asset's price.
+data.theta	number	Rate of decline in the option's value due to the passage of time.
+data.delta	number	Sensitivity of the option's price to changes in the underlying asset's price.
+data.oi	number	Open interest for the instrument.
+
+Sample Code
+Get Option Greek fields
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/market-quote/option-greek?instrument_key=NSE_FO%7C43885' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get Option Greek fields for multiple instruments keys
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/market-quote/option-greek?instrument_key=NSE_FO%7C43885,NSE_FO|43886' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+GET /market-quote/option-greek
+Request
+Live URL
+https://api.upstox.com/v3
+instrument_key — query required
+Comma separated list of instrument keys

@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762528879330",
+  "summary": {
+    "runId": "run-1762528879330",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -185,
+    "avgReturn": -0.0010418015846646294,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 185,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-10-08",
+    "to": "2025-10-28",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "HINDZINC": {
+      "trades": [
+        {
+          "symbol": "HINDZINC",
+          "entryTs": "2025-10-08T05:45:00.000Z",
+          "entryPrice": 1775.77,
+          "exitTs": "2025-10-08T06:45:00.000Z",
+          "exitPrice": 1773.92,
+          "pnl": -185,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1774.84 vol>=1336",
+          "trace": {
+            "reason": "breakout N=1 close>=1774.84 vol>=1336"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -185,
+        "winRate": 0,
+        "maxDrawdown": 185,
+        "trades": 1,
+        "avgReturn": -0.0010418015846646294,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "HINDZINC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -185
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:21:19.338Z",
+  "completedAt": "2025-11-07T15:21:19.338Z",
+  "error": null,
+  "insightsStatus": "done"
+}

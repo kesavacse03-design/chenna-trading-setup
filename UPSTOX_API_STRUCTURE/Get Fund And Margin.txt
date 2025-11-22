@@ -1,0 +1,42 @@
+Get Fund And Margin
+API to retrieve user funds data for both the equity and commodity markets, including data such as the margin utilized by the user, the available margin for trading, and the total payin amount during the day.
+
+Request
+curl --location 'https://api.upstox.com/v2/user/get-funds-and-margin' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+Additional samples in various languages are available in the Sample Code section on this page.
+
+
+Query Parameters
+Name	Required	Type	Description
+segment	false	string	Determines the market segment related to the transaction. Without a specified segment in the request, the response will encompass results for both commodities and equities.
+Possible values: for Equity use SEC, for Commodity use COM
+Responses
+200
+4XX
+
+Sample Code
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+import requests
+
+url = 'https://api.upstox.com/v2/user/get-funds-and-margin'
+
+headers = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Authorization': 'Bearer {your_access_token}'
+}
+
+response = requests.get(url, headers=headers)
+
+print(response.status_code)
+print(response.json())

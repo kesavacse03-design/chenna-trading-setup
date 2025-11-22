@@ -1,0 +1,82 @@
+LTP Quotes V3
+API provides LTP quotes for specified instruments. In V3, the response has been enhanced to include:
+
+ltq: The quantity of the last traded transaction.
+volume: The cumulative trading volume for the current day.
+cp: The closing price from the previous trading day.
+Request
+curl --location 'https://api.upstox.com/v3/market-quote/ltp?instrument_key=NSE_EQ%7CINE848E01016' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Additional samples in various languages are available in the Sample Code section on this page.
+
+
+Query Parameters
+Name	Required	Description
+instrument_key	true	Comma separated list of instrument keys. For the regex pattern applicable to this field, see the Field Pattern Appendix.
+Responses
+200
+4XX
+Response body
+{
+  "status": "success",
+  "data": {
+    "NSE_FO:NIFTY2543021600PE": {
+      "last_price": 303.9,
+      "instrument_token": "NSE_FO|51834",
+      "ltq": 75,
+      "volume": 170325,
+      "cp": 29.0
+    }
+  }
+}
+
+Name	Type	Description
+status	string	A string indicating the outcome of the request. Typically success for successful operations.
+data	object	Data object holding LTP information
+data.last_price	number	The last traded price of symbol
+data.instrument_token	string	Key of the instrument. For the regex pattern applicable to this field, see the Field Pattern Appendix.
+data.ltq	number	Last traded quantity
+data.volume	number	Volume traded today till current time
+data.cp	number	Previous day's closing price
+
+Sample Code
+Get ltp (last traded price) market quotes
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/market-quote/ltp?instrument_key=NSE_EQ%7CINE848E01016' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get ltp (last traded price) market quotes for multiple instruments keys
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/market-quote/ltp?instrument_key=NSE_EQ%7CINE848E01016,NSE_EQ|INE669E01016' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+GET /market-quote/ltp
+Request
+Live URL
+https://api.upstox.com/v3
+instrument_key — query required
+Comma separated list of instrument keys

@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532961012",
+  "summary": {
+    "runId": "run-1762532961012",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -514,
+    "avgReturn": -0.025113597498412014,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 514,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-15",
+    "to": "2025-08-04",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "NATIONALUM": {
+      "trades": [
+        {
+          "symbol": "NATIONALUM",
+          "entryTs": "2025-07-25T00:00:00+05:30",
+          "entryPrice": 204.67,
+          "exitTs": "2025-07-24T00:00:00+05:30",
+          "exitPrice": 199.53,
+          "pnl": -514,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=193.64 vol>=2825281",
+          "trace": {
+            "reason": "breakout N=1 close>=193.64 vol>=2825281"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -514,
+        "winRate": 0,
+        "maxDrawdown": 514,
+        "trades": 1,
+        "avgReturn": -0.025113597498412014,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "NATIONALUM",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -514
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:29:21.014Z",
+  "completedAt": "2025-11-07T16:29:21.014Z",
+  "error": null,
+  "insightsStatus": "done"
+}

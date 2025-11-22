@@ -1,0 +1,70 @@
+{
+  "runId": "opt-1762749380829",
+  "searchMode": "grid",
+  "combosTried": 1,
+  "results": 1,
+  "timedOut": false,
+  "topN": [
+    {
+      "rank": 1,
+      "score": 3.335,
+      "metrics": {
+        "trades": 20,
+        "netPnl": 30,
+        "avgReturn": 0.03,
+        "winRate": 55,
+        "maxDrawdown": -10
+      },
+      "config": {
+        "ema_short": 8,
+        "ema_long": 55,
+        "atr_mult": 1.2
+      },
+      "runId": "kf-4eguld",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "F1",
+              "Z4"
+            ],
+            "metrics": {
+              "trades": 20,
+              "netPnl": 30,
+              "avgReturn": 0.03,
+              "winRate": 55,
+              "maxDrawdown": -10
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "X2",
+              "F5"
+            ],
+            "metrics": null
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "Y3"
+            ],
+            "metrics": null
+          }
+        ],
+        "aggregated": {
+          "trades": 20,
+          "netPnl": 30,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": -10,
+          "avgReturn": 0.03
+        }
+      }
+    }
+  ],
+  "summaryText": "Run completed cpuAvg=NA% combos=1 mode=grid topExpectancy=0.0300",
+  "avgCpuPercent": null
+}

@@ -1,0 +1,4 @@
+[
+  { "op": "add", "path": "/spec/template/spec/volumes/-", "value": { "name": "secrets-override", "emptyDir": {} } },
+  { "op": "add", "path": "/spec/template/spec/containers/0/volumeMounts/-", "value": { "name": "secrets-override", "mountPath": "/app/.data/secrets-override" } }
+]

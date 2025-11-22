@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762529095849",
+  "summary": {
+    "runId": "run-1762529095849",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -283,
+    "avgReturn": -0.001165299601409859,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 283,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-15",
+    "to": "2025-08-04",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "TATAELXSI": {
+      "trades": [
+        {
+          "symbol": "TATAELXSI",
+          "entryTs": "2025-07-15T09:45:00.000Z",
+          "entryPrice": 2428.56,
+          "exitTs": "2025-07-15T10:45:00.000Z",
+          "exitPrice": 2425.73,
+          "pnl": -283,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2426.64 vol>=3434",
+          "trace": {
+            "reason": "breakout N=1 close>=2426.64 vol>=3434"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -283,
+        "winRate": 0,
+        "maxDrawdown": 283,
+        "trades": 1,
+        "avgReturn": -0.001165299601409859,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "TATAELXSI",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -283
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:24:55.855Z",
+  "completedAt": "2025-11-07T15:24:55.855Z",
+  "error": null,
+  "insightsStatus": "done"
+}

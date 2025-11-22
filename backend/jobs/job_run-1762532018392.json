@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532018392",
+  "summary": {
+    "runId": "run-1762532018392",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -661,
+    "avgReturn": -0.0054905348495295474,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 661,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-09",
+    "to": "2025-07-29",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "BANDHANBNK": {
+      "trades": [
+        {
+          "symbol": "BANDHANBNK",
+          "entryTs": "2025-07-09T09:45:00.000Z",
+          "entryPrice": 1203.89,
+          "exitTs": "2025-07-09T10:45:00.000Z",
+          "exitPrice": 1197.28,
+          "pnl": -661,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1198.99 vol>=3265",
+          "trace": {
+            "reason": "breakout N=1 close>=1198.99 vol>=3265"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -661,
+        "winRate": 0,
+        "maxDrawdown": 661,
+        "trades": 1,
+        "avgReturn": -0.0054905348495295474,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "BANDHANBNK",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -661
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:13:38.398Z",
+  "completedAt": "2025-11-07T16:13:38.398Z",
+  "error": null,
+  "insightsStatus": "done"
+}

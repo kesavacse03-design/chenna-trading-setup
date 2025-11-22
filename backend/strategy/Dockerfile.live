@@ -1,0 +1,20 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Minimal runtime packages
+RUN apk add --no-cache bash ca-certificates
+
+# Copy only backend code to keep build context small
+COPY backend ./backend
+COPY package.json ./package.json
+
+RUN npm ci --only=production --no-audit --no-fund || true
+
+RUN addgroup -S cts && adduser -S -G cts cts && chown -R cts:cts /app
+USER cts
+
+ENV NODE_ENV=production
+
+EXPOSE 8080
+ENTRYPOINT ["node", "backend/strategy/liveRunner.cjs"]

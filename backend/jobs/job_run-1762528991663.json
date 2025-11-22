@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762528991663",
+  "summary": {
+    "runId": "run-1762528991663",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -664,
+    "avgReturn": -0.0023048592959765187,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 664,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-11",
+    "to": "2025-07-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "ABCAPITAL": {
+      "trades": [
+        {
+          "symbol": "ABCAPITAL",
+          "entryTs": "2025-07-11T09:45:00.000Z",
+          "entryPrice": 2880.87,
+          "exitTs": "2025-07-11T10:45:00.000Z",
+          "exitPrice": 2874.23,
+          "pnl": -664,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2876.03 vol>=2617",
+          "trace": {
+            "reason": "breakout N=1 close>=2876.03 vol>=2617"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -664,
+        "winRate": 0,
+        "maxDrawdown": 664,
+        "trades": 1,
+        "avgReturn": -0.0023048592959765187,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "ABCAPITAL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -664
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:23:11.669Z",
+  "completedAt": "2025-11-07T15:23:11.669Z",
+  "error": null,
+  "insightsStatus": "done"
+}

@@ -1,0 +1,99 @@
+{
+  "runId": "opt-1763274572721",
+  "searchMode": "grid",
+  "combosTried": 1,
+  "results": 1,
+  "timedOut": false,
+  "topN": [
+    {
+      "rank": 1,
+      "score": 10.32,
+      "metrics": {
+        "netPnl": 1000,
+        "winRate": 60,
+        "maxDrawdown": -100,
+        "trades": 40,
+        "avgReturn": 0.01,
+        "profitFactor": 0,
+        "wins": 30,
+        "losses": 10
+      },
+      "config": {
+        "ema_short": 8,
+        "ema_long": 55,
+        "atr_mult": 1.5
+      },
+      "runId": "mockprom-1763274572723-128",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "A",
+              "D",
+              "G",
+              "J"
+            ],
+            "metrics": {
+              "netPnl": 1000,
+              "winRate": 60,
+              "maxDrawdown": -100,
+              "trades": 40,
+              "avgReturn": 0.01,
+              "profitFactor": 0,
+              "wins": 30,
+              "losses": 10
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "B",
+              "E",
+              "H"
+            ],
+            "metrics": {
+              "netPnl": 1000,
+              "winRate": 60,
+              "maxDrawdown": -100,
+              "trades": 40,
+              "avgReturn": 0.01,
+              "profitFactor": 0,
+              "wins": 30,
+              "losses": 10
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "C",
+              "F",
+              "I"
+            ],
+            "metrics": {
+              "netPnl": 1000,
+              "winRate": 60,
+              "maxDrawdown": -100,
+              "trades": 40,
+              "avgReturn": 0.01,
+              "profitFactor": 0,
+              "wins": 30,
+              "losses": 10
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 120,
+          "netPnl": 3000,
+          "wins": 90,
+          "losses": 30,
+          "maxDrawdown": -100,
+          "avgReturn": 0.01
+        }
+      }
+    }
+  ],
+  "summaryText": "Run completed cpuAvg=NA% combos=1 mode=grid topExpectancy=0.0100",
+  "avgCpuPercent": null
+}

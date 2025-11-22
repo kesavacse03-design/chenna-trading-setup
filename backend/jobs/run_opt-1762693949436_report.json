@@ -1,0 +1,89 @@
+{
+  "runId": "opt-1762693949436",
+  "searchMode": "grid",
+  "combosTried": 1,
+  "results": 1,
+  "timedOut": false,
+  "topN": [
+    {
+      "rank": 1,
+      "score": 25.425,
+      "metrics": {
+        "trades": 100,
+        "netPnl": 500,
+        "avgReturn": 0.05,
+        "winRate": 65,
+        "maxDrawdown": -20
+      },
+      "config": {
+        "ema_short": 8,
+        "ema_long": 55,
+        "atr_mult": 1.2
+      },
+      "runId": "rb2-bcd5qs",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "S0",
+              "S3",
+              "S6",
+              "S9"
+            ],
+            "metrics": {
+              "trades": 100,
+              "netPnl": 500,
+              "avgReturn": 0.05,
+              "winRate": 65,
+              "maxDrawdown": -20
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "S1",
+              "S4",
+              "S7",
+              "S10"
+            ],
+            "metrics": {
+              "trades": 100,
+              "netPnl": 500,
+              "avgReturn": 0.05,
+              "winRate": 65,
+              "maxDrawdown": -20
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "S2",
+              "S5",
+              "S8",
+              "S11"
+            ],
+            "metrics": {
+              "trades": 100,
+              "netPnl": 500,
+              "avgReturn": 0.05,
+              "winRate": 65,
+              "maxDrawdown": -20
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 300,
+          "netPnl": 1500,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": -20,
+          "avgReturn": 0.05
+        }
+      }
+    }
+  ],
+  "summaryText": "Run completed cpuAvg=NA% combos=1 mode=grid topExpectancy=0.0500",
+  "avgCpuPercent": null
+}

@@ -1,0 +1,59 @@
+{
+  "runId": "run-1762091355524",
+  "summary": {
+    "runId": "run-1762091355524",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -751,
+    "avgReturn": -0.0038024546338301965,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 751,
+    "avgHoldingDays": 0,
+    "missingCount": 0
+  },
+  "perSymbol": {
+    "SYM001": {
+      "trades": [
+        {
+          "symbol": "SYM001",
+          "entryTs": "2020-01-01T04:10:00.000Z",
+          "entryPrice": 1975.04,
+          "exitTs": "2020-01-01T04:15:00.000Z",
+          "exitPrice": 1967.53,
+          "pnl": -751,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1969.66 vol>=4563",
+          "trace": {
+            "reason": "breakout N=1 close>=1969.66 vol>=4563"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -751,
+        "winRate": 0,
+        "maxDrawdown": 751,
+        "trades": 1,
+        "avgReturn": -0.0038024546338301965,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "SYM001",
+      "failure": "late_exit",
+      "suggest": "avoid holding into EOD without profit (add time stop)",
+      "trade": {
+        "pnl": -751
+      }
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-02T13:49:15.567Z",
+  "completedAt": "2025-11-02T13:49:15.568Z",
+  "error": null,
+  "insightsStatus": "done"
+}

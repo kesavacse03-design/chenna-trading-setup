@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762529104380",
+  "summary": {
+    "runId": "run-1762529104380",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -126,
+    "avgReturn": -0.0009581093309203104,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 126,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-15",
+    "to": "2025-08-04",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "HINDCOPPER": {
+      "trades": [
+        {
+          "symbol": "HINDCOPPER",
+          "entryTs": "2025-07-15T07:45:00.000Z",
+          "entryPrice": 1315.09,
+          "exitTs": "2025-07-15T08:45:00.000Z",
+          "exitPrice": 1313.83,
+          "pnl": -126,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1314.21 vol>=5022",
+          "trace": {
+            "reason": "breakout N=1 close>=1314.21 vol>=5022"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -126,
+        "winRate": 0,
+        "maxDrawdown": 126,
+        "trades": 1,
+        "avgReturn": -0.0009581093309203104,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "HINDCOPPER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -126
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:25:04.386Z",
+  "completedAt": "2025-11-07T15:25:04.386Z",
+  "error": null,
+  "insightsStatus": "done"
+}

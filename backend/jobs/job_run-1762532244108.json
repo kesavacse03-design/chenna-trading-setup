@@ -1,0 +1,55 @@
+{
+  "runId": "run-1762532244108",
+  "summary": {
+    "runId": "run-1762532244108",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": 138,
+    "avgReturn": 0.0006922116161135373,
+    "winRate": 100,
+    "profitFactor": null,
+    "maxDrawdown": 0,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "AARTIIND": {
+      "trades": [
+        {
+          "symbol": "AARTIIND",
+          "entryTs": "2025-07-12T05:45:00.000Z",
+          "entryPrice": 1993.61,
+          "exitTs": "2025-07-12T06:45:00.000Z",
+          "exitPrice": 1994.99,
+          "pnl": 138,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1991.82 vol>=4276",
+          "trace": {
+            "reason": "breakout N=1 close>=1991.82 vol>=4276"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 138,
+        "winRate": 100,
+        "maxDrawdown": 0,
+        "trades": 1,
+        "avgReturn": 0.0006922116161135373,
+        "profitFactor": null,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [],
+  "status": "done",
+  "createdAt": "2025-11-07T16:17:24.114Z",
+  "completedAt": "2025-11-07T16:17:24.114Z",
+  "error": null,
+  "insightsStatus": "done"
+}

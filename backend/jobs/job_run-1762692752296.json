@@ -1,0 +1,66 @@
+{
+  "runId": "run-1762692752296",
+  "summary": {
+    "runId": "run-1762692752296",
+    "totalTrades": 0,
+    "tradesCount": 0,
+    "totalPnL": 0,
+    "avgReturn": 0,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 0,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-09-01",
+    "to": "2025-09-05",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "ema_short": 8,
+      "ema_long": 55,
+      "atr_mult": 1.2,
+      "volumeFactor": 1.15
+    },
+    "swing10": {
+      "successWithin10Days": 0,
+      "failWithin10Days": 0,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 0
+    },
+    "equityCurve": []
+  },
+  "perSymbol": {
+    "AAPL": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "MSFT": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [],
+  "status": "done",
+  "createdAt": "2025-11-09T12:52:34.739Z",
+  "completedAt": "2025-11-09T12:52:34.739Z",
+  "error": null,
+  "insightsStatus": "done"
+}

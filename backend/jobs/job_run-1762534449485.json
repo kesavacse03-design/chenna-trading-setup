@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762534449485",
+  "summary": {
+    "runId": "run-1762534449485",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -2560,
+    "avgReturn": -0.023304506144742748,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 2560,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-09",
+    "to": "2025-07-29",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "UNOMINDA": {
+      "trades": [
+        {
+          "symbol": "UNOMINDA",
+          "entryTs": "2025-07-25T00:00:00+05:30",
+          "entryPrice": 1098.5,
+          "exitTs": "2025-07-24T00:00:00+05:30",
+          "exitPrice": 1072.9,
+          "pnl": -2560,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1085.10 vol>=279234",
+          "trace": {
+            "reason": "breakout N=1 close>=1085.10 vol>=279234"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -2560,
+        "winRate": 0,
+        "maxDrawdown": 2560,
+        "trades": 1,
+        "avgReturn": -0.023304506144742748,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "UNOMINDA",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2560
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:54:09.490Z",
+  "completedAt": "2025-11-07T16:54:09.490Z",
+  "error": null,
+  "insightsStatus": "done"
+}

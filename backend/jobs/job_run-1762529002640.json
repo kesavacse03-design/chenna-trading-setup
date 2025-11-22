@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762529002640",
+  "summary": {
+    "runId": "run-1762529002640",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -533,
+    "avgReturn": -0.0026022087039732035,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 533,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-11",
+    "to": "2025-07-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "SBIN": {
+      "trades": [
+        {
+          "symbol": "SBIN",
+          "entryTs": "2025-07-11T04:45:00.000Z",
+          "entryPrice": 2048.26,
+          "exitTs": "2025-07-11T05:45:00.000Z",
+          "exitPrice": 2042.93,
+          "pnl": -533,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2043.98 vol>=4267",
+          "trace": {
+            "reason": "breakout N=1 close>=2043.98 vol>=4267"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -533,
+        "winRate": 0,
+        "maxDrawdown": 533,
+        "trades": 1,
+        "avgReturn": -0.0026022087039732035,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "SBIN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -533
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:23:22.646Z",
+  "completedAt": "2025-11-07T15:23:22.646Z",
+  "error": null,
+  "insightsStatus": "done"
+}

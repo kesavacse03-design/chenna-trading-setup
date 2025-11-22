@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762534464516",
+  "summary": {
+    "runId": "run-1762534464516",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -4770,
+    "avgReturn": -0.04597590361445787,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 4770,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-15",
+    "to": "2025-08-04",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "ADANIGREEN": {
+      "trades": [
+        {
+          "symbol": "ADANIGREEN",
+          "entryTs": "2025-07-30T00:00:00+05:30",
+          "entryPrice": 1037.5,
+          "exitTs": "2025-07-28T00:00:00+05:30",
+          "exitPrice": 989.8,
+          "pnl": -4770,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1007.50 vol>=682719",
+          "trace": {
+            "reason": "breakout N=1 close>=1007.50 vol>=682719"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -4770,
+        "winRate": 0,
+        "maxDrawdown": 4770,
+        "trades": 1,
+        "avgReturn": -0.04597590361445787,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "ADANIGREEN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -4770
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:54:24.519Z",
+  "completedAt": "2025-11-07T16:54:24.519Z",
+  "error": null,
+  "insightsStatus": "done"
+}

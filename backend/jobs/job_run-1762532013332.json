@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532013332",
+  "summary": {
+    "runId": "run-1762532013332",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -625,
+    "avgReturn": -0.005945755681764129,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 625,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-09",
+    "to": "2025-07-29",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "KFINTECH": {
+      "trades": [
+        {
+          "symbol": "KFINTECH",
+          "entryTs": "2025-07-09T06:45:00.000Z",
+          "entryPrice": 1051.17,
+          "exitTs": "2025-07-09T07:45:00.000Z",
+          "exitPrice": 1044.92,
+          "pnl": -625,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1045.99 vol>=2027",
+          "trace": {
+            "reason": "breakout N=1 close>=1045.99 vol>=2027"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -625,
+        "winRate": 0,
+        "maxDrawdown": 625,
+        "trades": 1,
+        "avgReturn": -0.005945755681764129,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "KFINTECH",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -625
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:13:33.339Z",
+  "completedAt": "2025-11-07T16:13:33.339Z",
+  "error": null,
+  "insightsStatus": "done"
+}

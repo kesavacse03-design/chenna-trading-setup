@@ -1,0 +1,112 @@
+{
+  "runId": "run-1762583294634",
+  "summary": {
+    "runId": "run-1762583294634",
+    "totalTrades": 3,
+    "tradesCount": 3,
+    "totalPnL": 16.4,
+    "avgReturn": 0.006610126367568465,
+    "winRate": 66.67,
+    "profitFactor": 5.56,
+    "maxDrawdown": 3.6,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-10-01",
+    "to": "2025-10-03",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "N": 1,
+      "volumeFactor": 0.5,
+      "atrStop": 0.5,
+      "targetR": 1,
+      "qty": 10
+    },
+    "swing10": {
+      "successWithin10Days": 3,
+      "failWithin10Days": 0,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 100
+    },
+    "equityCurve": [
+      10,
+      6.4,
+      16.4
+    ]
+  },
+  "perSymbol": {
+    "SYM_X": {
+      "trades": [
+        {
+          "symbol": "SYM_X",
+          "entryTs": "2025-11-08T06:28:14.671Z",
+          "entryPrice": 100,
+          "exitTs": "2025-11-08T06:28:14.671Z",
+          "exitPrice": 101,
+          "pnl": 10,
+          "direction": "LONG",
+          "reason": "test-force",
+          "trace": {
+            "reason": "test-force"
+          }
+        },
+        {
+          "symbol": "SYM_X",
+          "entryTs": "2025-10-02T16:45:00.000Z",
+          "entryPrice": 2122.38,
+          "exitTs": "2025-10-02T17:45:00.000Z",
+          "exitPrice": 2122.02,
+          "pnl": -3.6,
+          "direction": "LONG",
+          "reason": "breakout N=1 hh=2120.60 vol>=4021 patterns=engulfing adxOk=true squeezeOk=true",
+          "trace": {
+            "reason": "breakout N=1 hh=2120.60 vol>=4021 patterns=engulfing adxOk=true squeezeOk=true"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 6.4,
+        "winRate": 50,
+        "maxDrawdown": 3.6,
+        "trades": 2,
+        "avgReturn": 0.0049151895513526965,
+        "profitFactor": 2.78,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "SYM_Y": {
+      "trades": [
+        {
+          "symbol": "SYM_Y",
+          "entryTs": "2025-11-08T06:28:14.700Z",
+          "entryPrice": 100,
+          "exitTs": "2025-11-08T06:28:14.700Z",
+          "exitPrice": 101,
+          "pnl": 10,
+          "direction": "LONG",
+          "reason": "test-force",
+          "trace": {
+            "reason": "test-force"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 10,
+        "winRate": 100,
+        "maxDrawdown": 0,
+        "trades": 1,
+        "avgReturn": 0.01,
+        "profitFactor": null,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [],
+  "status": "done",
+  "createdAt": "2025-11-08T06:28:14.715Z",
+  "completedAt": "2025-11-08T06:28:14.715Z",
+  "error": null,
+  "insightsStatus": "pending"
+}

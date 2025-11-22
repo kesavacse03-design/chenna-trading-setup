@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532167589",
+  "summary": {
+    "runId": "run-1762532167589",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -599,
+    "avgReturn": -0.004170234688833505,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 599,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-11",
+    "to": "2025-07-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "IOC": {
+      "trades": [
+        {
+          "symbol": "IOC",
+          "entryTs": "2025-07-11T04:45:00.000Z",
+          "entryPrice": 1436.37,
+          "exitTs": "2025-07-11T05:45:00.000Z",
+          "exitPrice": 1430.38,
+          "pnl": -599,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1431.04 vol>=5048",
+          "trace": {
+            "reason": "breakout N=1 close>=1431.04 vol>=5048"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -599,
+        "winRate": 0,
+        "maxDrawdown": 599,
+        "trades": 1,
+        "avgReturn": -0.004170234688833505,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "IOC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -599
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:16:07.592Z",
+  "completedAt": "2025-11-07T16:16:07.592Z",
+  "error": null,
+  "insightsStatus": "done"
+}

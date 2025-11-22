@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532156013",
+  "summary": {
+    "runId": "run-1762532156013",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -634,
+    "avgReturn": -0.0034741439303856876,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 634,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-11",
+    "to": "2025-07-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "IREDA": {
+      "trades": [
+        {
+          "symbol": "IREDA",
+          "entryTs": "2025-07-11T04:45:00.000Z",
+          "entryPrice": 1824.91,
+          "exitTs": "2025-07-11T05:45:00.000Z",
+          "exitPrice": 1818.57,
+          "pnl": -634,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1819.82 vol>=3525",
+          "trace": {
+            "reason": "breakout N=1 close>=1819.82 vol>=3525"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -634,
+        "winRate": 0,
+        "maxDrawdown": 634,
+        "trades": 1,
+        "avgReturn": -0.0034741439303856876,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "IREDA",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -634
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:15:56.017Z",
+  "completedAt": "2025-11-07T16:15:56.017Z",
+  "error": null,
+  "insightsStatus": "done"
+}

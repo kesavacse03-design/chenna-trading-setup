@@ -1,0 +1,109 @@
+OHLC Quotes V3
+This API retrieves Open, High, Low, Close (OHLC) quotes for one or more instruments. V3 introduces the following enhancements:
+
+live_ohlc: Provides the current OHLC candle.
+prev_ohlc: Delivers the previous minute's OHLC candle.
+volume: Includes trading volume data.
+ts: Returns the OHLC candle's start time.
+Request
+curl --location 'https://api.upstox.com/v3/market-quote/ohlc?instrument_key=NSE_EQ%7CINE669E01016&interval=1d' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+For additional samples in various languages, please refer to the Sample code section on this page.
+
+Query Parameters
+Name	Required	Type	Description
+instrument_key	true	string	Comma separated list of instrument keys. For the regex pattern applicable to this field, see the Field Pattern Appendix.
+interval	true	string	Interval to get ohlc data.
+Possible values: 1d, I1, I30.
+Here 1d is 1 day, I1 and I30 are 1-minute and 30-minute intervals respectively.
+Responses
+200
+4XX
+Response Body
+{
+  "status": "success",
+  "data": {
+    "NSE_FO:NIFTY2543021600PE": {
+      "last_price": 303.9,
+      "instrument_token": "NSE_FO|51834",
+      "prev_ohlc": {
+        "open": 303.9,
+        "high": 304.3,
+        "low": 303.85,
+        "close": 304.3,
+        "volume": 300,
+        "ts": 1744019880000
+      },
+      "live_ohlc": {
+        "open": 304.45,
+        "high": 304.45,
+        "low": 302.75,
+        "close": 303.9,
+        "volume": 2250,
+        "ts": 1744019940000
+      }
+    }
+  }
+}
+
+Name	Type	Description
+status	string	A string indicating the outcome of the request. Typically success for successful operations.
+data	object	Data object holding OHLC information
+data.last_price	number	The last traded price of symbol
+data.instrument_token	string	Key of the instrument. For the regex pattern applicable to this field, see the Field Pattern Appendix.
+data.prev_ohlc.open	number	Previous trading session open price
+data.prev_ohlc.high	number	Previous trading session high price
+data.prev_ohlc.low	number	Previous trading session low price
+data.prev_ohlc.close	number	Previous trading session close price
+data.prev_ohlc.volume	number	Total volume traded in previous trading session
+data.prev_ohlc.ts	number	Start time of previous trading session
+data.live_ohlc.open	number	Current trading session open price
+data.live_ohlc.high	number	Current trading session high price
+data.live_ohlc.low	number	Current trading session low price
+data.live_ohlc.close	number	Current trading session close price
+data.live_ohlc.volume	number	Total volume traded in current trading session
+data.live_ohlc.ts	number	Start time of current trading session
+
+Sample Code
+Get ohlc (open, high, low, close) market quotes
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/market-quote/ohlc?instrument_key=NSE_EQ%7CINE669E01016&interval=1d' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get ohlc (open, high, low, close) market quotes for multiple instrument keys
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/market-quote/ohlc?instrument_key=NSE_EQ%7CINE669E01016%2CNSE_EQ%7CINE848E01016&interval=1d' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+GET /market-quote/ohlc
+Request
+Live URL
+https://api.upstox.com/v3
+instrument_key — query required
+Comma separated list of instrument keys
+interval — query required
+Interval to get ohlc data

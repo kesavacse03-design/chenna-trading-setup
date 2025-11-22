@@ -1,0 +1,59 @@
+Get Profile
+API to retrieve user profile data, which encompasses details such as supported exchanges, enabled product offerings, and permitted order types. If you're business and developing an application for multi-client API usage, you can utilize this data to display in the user's profile section.
+
+Request
+curl --location 'https://api.upstox.com/v2/user/profile' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+Additional samples in various languages are available in the Sample Code section on this page.
+
+Responses
+200
+4XX
+Response Body
+Name	Type	Description
+status	string	A string indicating the outcome of the request. Typically success for successful operations.
+data	object	Response data for user profile
+data.email	string	E-mail address of the user
+data.exchanges	string[]	List of exchanges enabled for the user. Valid exchanges can be found in the Exchange Appendix
+data.products	string[]	Lists the types of products enabled for the user.
+Possible values: I, D, CO, MTF
+data.broker	string	The broker ID
+data.user_id	string	Uniquely identifies the user (commonly referred as UCC)
+data.user_name	string	Name of the user
+data.order_types	string[]	Order types enabled for the user.
+Possible values: MARKET, LIMIT, SL, SL-M
+data.user_type	string	Identifies the user's registered role at the broker. This will be individual for all retail users
+data.poa	boolean	Indicates whether the user has authorized power of attorney for transactions.
+data.ddpi	boolean	Indicates whether the user has authorized DDPI (Demat Debit and Pledge Instruction) for transactions.
+data.is_active	boolean	Indicates if the account status is active.
+
+Sample Code
+Get user profile information using access token
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+import requests
+
+url = 'https://api.upstox.com/v2/user/profile'
+headers = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Authorization': 'Bearer {your_access_token}'
+}
+response = requests.get(url, headers=headers)
+
+print(response.status_code)
+print(response.json())
+
+
+GET /user/profile
+Request
+Live URL
+http

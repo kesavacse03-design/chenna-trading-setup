@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532963745",
+  "summary": {
+    "runId": "run-1762532963745",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -531,
+    "avgReturn": -0.04960762331838567,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 531,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-15",
+    "to": "2025-08-04",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "MOTHERSON": {
+      "trades": [
+        {
+          "symbol": "MOTHERSON",
+          "entryTs": "2025-07-30T00:00:00+05:30",
+          "entryPrice": 107.04,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 101.73,
+          "pnl": -531,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=98.50 vol>=8035148",
+          "trace": {
+            "reason": "breakout N=1 close>=98.50 vol>=8035148"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -531,
+        "winRate": 0,
+        "maxDrawdown": 531,
+        "trades": 1,
+        "avgReturn": -0.04960762331838567,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "MOTHERSON",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -531
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:29:23.747Z",
+  "completedAt": "2025-11-07T16:29:23.747Z",
+  "error": null,
+  "insightsStatus": "done"
+}

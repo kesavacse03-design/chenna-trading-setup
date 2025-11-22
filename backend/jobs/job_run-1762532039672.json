@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532039672",
+  "summary": {
+    "runId": "run-1762532039672",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -333,
+    "avgReturn": -0.001975405314018216,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 333,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-09",
+    "to": "2025-07-29",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "CHAMBLFERT": {
+      "trades": [
+        {
+          "symbol": "CHAMBLFERT",
+          "entryTs": "2025-07-09T06:45:00.000Z",
+          "entryPrice": 1685.73,
+          "exitTs": "2025-07-09T07:45:00.000Z",
+          "exitPrice": 1682.4,
+          "pnl": -333,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1683.43 vol>=4556",
+          "trace": {
+            "reason": "breakout N=1 close>=1683.43 vol>=4556"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -333,
+        "winRate": 0,
+        "maxDrawdown": 333,
+        "trades": 1,
+        "avgReturn": -0.001975405314018216,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "CHAMBLFERT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -333
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:13:59.678Z",
+  "completedAt": "2025-11-07T16:13:59.678Z",
+  "error": null,
+  "insightsStatus": "done"
+}

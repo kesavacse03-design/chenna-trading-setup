@@ -1,0 +1,23 @@
+{
+  "runId": "run-1762749132568",
+  "from": "2025-01-01",
+  "to": "2025-01-02",
+  "interval": "day",
+  "mode": "mock",
+  "symbolsCount": 6,
+  "createdAt": "2025-11-10T04:32:12.583Z",
+  "strategyConfig": {
+    "ema_short": 13,
+    "ema_long": 60,
+    "atr_mult": 1.15,
+    "volumeFactor": 0.95
+  },
+  "resume": false,
+  "seed": null,
+  "gitCommit": "ref: refs/heads/feature/marketdata-fallback",
+  "paramGridFile": null,
+  "thresholds": {
+    "promoMinTrades": 1,
+    "promoMaxDrawdown": 1000
+  }
+}

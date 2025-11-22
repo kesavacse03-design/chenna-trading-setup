@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532241809",
+  "summary": {
+    "runId": "run-1762532241809",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -332,
+    "avgReturn": -0.0011661152206136028,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 332,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "TORNTPOWER": {
+      "trades": [
+        {
+          "symbol": "TORNTPOWER",
+          "entryTs": "2025-07-12T08:45:00.000Z",
+          "entryPrice": 2847.06,
+          "exitTs": "2025-07-12T09:45:00.000Z",
+          "exitPrice": 2843.74,
+          "pnl": -332,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2843.69 vol>=1436",
+          "trace": {
+            "reason": "breakout N=1 close>=2843.69 vol>=1436"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -332,
+        "winRate": 0,
+        "maxDrawdown": 332,
+        "trades": 1,
+        "avgReturn": -0.0011661152206136028,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "TORNTPOWER",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -332
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:17:21.813Z",
+  "completedAt": "2025-11-07T16:17:21.813Z",
+  "error": null,
+  "insightsStatus": "done"
+}

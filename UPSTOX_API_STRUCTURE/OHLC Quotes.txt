@@ -1,0 +1,27 @@
+OHLC Quotes
+Get ohlc (open, high, low, close) market quotes
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v2/market-quote/ohlc?instrument_key=NSE_EQ%7CINE669E01016&interval=1d' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get ohlc (open, high, low, close) market quotes for multiple instrument keys
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v2/market-quote/ohlc?instrument_key=NSE_EQ%7CINE669E01016%2CNSE_EQ%7CINE848E01016&interval=1d' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'

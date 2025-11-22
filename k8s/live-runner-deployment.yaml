@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chenna-live-runner
+  labels:
+    app: chenna-live-runner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chenna-live-runner
+  template:
+    metadata:
+      labels:
+        app: chenna-live-runner
+    spec:
+      volumes:
+        - name: upstox-token
+          secret:
+            secretName: upstox-token
+      containers:
+        - name: live-runner
+          image: chenna-live-runner:latest
+          imagePullPolicy: IfNotPresent
+          command: ["node", "backend/strategy/liveRunner.cjs"]
+          ports:
+            - containerPort: 8080
+              name: http
+          volumeMounts:
+            - name: upstox-token
+              mountPath: /app/.data/secrets
+              readOnly: true
+          env:
+            - name: TOKENS_ENCRYPTION_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: cts-secrets
+                  key: tokens-encryption-key
+            - name: ADMIN_SHARED_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: cts-secrets
+                  key: admin-shared-secret
+            - name: UPSTOX_ENV
+              value: "prod"
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "200m"
+            limits:
+              memory: "1Gi"
+              cpu: "1"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+      restartPolicy: Always

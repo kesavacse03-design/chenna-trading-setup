@@ -1,0 +1,22 @@
+[Unit]
+Description=CTS Live Runner (dry-run)
+After=network.target
+
+[Service]
+Type=simple
+Environment=NODE_ENV=production
+Environment=DRY_RUN=1
+Environment=ALLOW_LIVE=0
+Environment=WS_PORT=8080
+Environment=CANARY_MODE=1
+# Environment=TOKENS_ENCRYPTION_KEY=base64-32B-key
+# Environment=ADMIN_SHARED_SECRET=strong-admin-secret
+WorkingDirectory=/opt/chenna-trading-system-dashboard
+ExecStart=/usr/bin/node backend/strategy/liveRunner.cjs
+Restart=always
+RestartSec=5
+User=cts
+Group=cts
+
+[Install]
+WantedBy=multi-user.target

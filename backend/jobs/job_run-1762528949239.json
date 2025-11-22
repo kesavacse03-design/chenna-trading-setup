@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762528949239",
+  "summary": {
+    "runId": "run-1762528949239",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -183,
+    "avgReturn": -0.0008048449024290163,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 183,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-09",
+    "to": "2025-07-29",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "INOXWIND": {
+      "trades": [
+        {
+          "symbol": "INOXWIND",
+          "entryTs": "2025-07-09T10:45:00.000Z",
+          "entryPrice": 2273.73,
+          "exitTs": "2025-07-09T11:45:00.000Z",
+          "exitPrice": 2271.9,
+          "pnl": -183,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2273.14 vol>=4074",
+          "trace": {
+            "reason": "breakout N=1 close>=2273.14 vol>=4074"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -183,
+        "winRate": 0,
+        "maxDrawdown": 183,
+        "trades": 1,
+        "avgReturn": -0.0008048449024290163,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "INOXWIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -183
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:22:29.245Z",
+  "completedAt": "2025-11-07T15:22:29.245Z",
+  "error": null,
+  "insightsStatus": "done"
+}

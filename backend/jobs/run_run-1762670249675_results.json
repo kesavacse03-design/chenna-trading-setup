@@ -1,0 +1,60 @@
+{
+  "runId": "run-1762670249675",
+  "symbols": [
+    "SYM_A",
+    "SYM_B"
+  ],
+  "metrics": {
+    "netPnl": -165.5,
+    "winRate": 0,
+    "maxDrawdown": 165.5,
+    "trades": 1,
+    "avgReturn": -0.0016199761163641791,
+    "profitFactor": 0
+  },
+  "perCategory": {
+    "BREAKOUT": {
+      "netPnl": -165.5,
+      "winRate": 0,
+      "maxDrawdown": 165.5,
+      "trades": 1,
+      "avgReturn": -0.0016199761163641791,
+      "profitFactor": 0
+    }
+  },
+  "perSymbol": {
+    "SYM_A": {
+      "netPnl": -165.5,
+      "winRate": 0,
+      "maxDrawdown": 165.5,
+      "trades": 1,
+      "avgReturn": -0.0016199761163641791,
+      "profitFactor": 0
+    },
+    "SYM_B": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0
+    }
+  },
+  "swing10": {
+    "successWithin10Days": 0,
+    "failWithin10Days": 0,
+    "expiredTrades": 0,
+    "successRateWithin10Days": 0
+  },
+  "resume": true,
+  "equityCurve": [
+    -165.5
+  ],
+  "strategyConfig": {
+    "N": 1,
+    "volumeFactor": 0,
+    "atrStop": 0.3,
+    "targetR": 0.6,
+    "qty": 50
+  }
+}

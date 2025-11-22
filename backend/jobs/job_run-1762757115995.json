@@ -1,0 +1,79 @@
+{
+  "runId": "run-1762757115995",
+  "summary": {
+    "runId": "run-1762757115995",
+    "totalTrades": 0,
+    "tradesCount": 0,
+    "totalPnL": 0,
+    "avgReturn": 0,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 0,
+    "avgHoldingDays": 0,
+    "missingCount": 3,
+    "from": "2025-01-01",
+    "to": "2025-06-30",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "ema_short": 8,
+      "ema_long": 50,
+      "atr_mult": 1.2,
+      "volumeFactor": 0.85
+    },
+    "swing10": {
+      "successWithin10Days": 0,
+      "failWithin10Days": 0,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 0
+    },
+    "equityCurve": []
+  },
+  "perSymbol": {
+    "MOCK_A": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "MOCK_B": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "MOCK_C": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [],
+  "status": "done",
+  "createdAt": "2025-11-10T06:45:16.034Z",
+  "completedAt": "2025-11-10T06:45:16.034Z",
+  "error": null,
+  "insightsStatus": "done"
+}

@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532219286",
+  "summary": {
+    "runId": "run-1762532219286",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -634,
+    "avgReturn": -0.004927218608410403,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 634,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "ANGELONE": {
+      "trades": [
+        {
+          "symbol": "ANGELONE",
+          "entryTs": "2025-07-12T06:45:00.000Z",
+          "entryPrice": 1286.73,
+          "exitTs": "2025-07-12T13:45:00.000Z",
+          "exitPrice": 1280.39,
+          "pnl": -634,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1281.85 vol>=641",
+          "trace": {
+            "reason": "breakout N=1 close>=1281.85 vol>=641"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -634,
+        "winRate": 0,
+        "maxDrawdown": 634,
+        "trades": 1,
+        "avgReturn": -0.004927218608410403,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "ANGELONE",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -634
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:16:59.290Z",
+  "completedAt": "2025-11-07T16:16:59.290Z",
+  "error": null,
+  "insightsStatus": "done"
+}

@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532815614",
+  "summary": {
+    "runId": "run-1762532815614",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -4855,
+    "avgReturn": -0.03191978961209727,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 4855,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-09-30",
+    "to": "2025-10-20",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "HAVELLS": {
+      "trades": [
+        {
+          "symbol": "HAVELLS",
+          "entryTs": "2025-10-10T00:00:00+05:30",
+          "entryPrice": 1521,
+          "exitTs": "2025-10-03T00:00:00+05:30",
+          "exitPrice": 1472.45,
+          "pnl": -4855,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1495.90 vol>=408538",
+          "trace": {
+            "reason": "breakout N=1 close>=1495.90 vol>=408538"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -4855,
+        "winRate": 0,
+        "maxDrawdown": 4855,
+        "trades": 1,
+        "avgReturn": -0.03191978961209727,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "HAVELLS",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -4855
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:26:55.617Z",
+  "completedAt": "2025-11-07T16:26:55.617Z",
+  "error": null,
+  "insightsStatus": "done"
+}

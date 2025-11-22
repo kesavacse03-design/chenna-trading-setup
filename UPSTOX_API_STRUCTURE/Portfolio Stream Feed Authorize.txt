@@ -1,0 +1,42 @@
+Portfolio Stream Feed Authorize
+API to retrieve the designated socket endpoint URI for Portfolio updates. This endpoint is intended for use with a WebSocket client. If automatic redirection is not configured through the Portfolio Stream Feed API, this API serves as an alternative method to acquire the necessary wss:// URL for establishing a connection via a WebSocket client.
+
+info
+The order update WebSocket ensures that you receive updates on your order regardless of the platform used to place it. Whether you place an order through the Upstox mobile app or via the web application, you will still receive the order updates through the API WebSocket, and the same applies in reverse.
+
+Header Parameters
+Name	Required	Type	Description
+Authorization	true	string	Requires the format Bearer access_token where access_token is obtained from the Token API.
+Accept	true	string	Defines the content format the client expects, which should be set to application/json.
+Query Parameters
+Name	Required	Type	Description
+update_types	false	string	Identifiers, separated by commas, specify the types of updates to receive. By default, updates on orders are transmitted via the socket. To subscribe to updates on orders, holdings, and positions, use this parameter by entering the desired values, separated by commas.
+Possible values: order, gtt_order, position, holding
+
+Sample URL with update_types: https://api.upstox.com/v2/feed/portfolio-stream-feed/authorize?update_types=order%2Cposition%2Cholding
+Responses
+200
+Response Body
+{
+  "status": "success",
+  "data": {
+    "authorized_redirect_uri": "wss://xyz.upstox.com/upstox-developer-api/order-updates/feed?requestId=2f646f57-a097-4402-bb36-c44085c5f8e7&code=9355b100-25cf-4fa7-b038-06d27ddb4823",
+    "authorizedRedirectUri": "wss://xyz.upstox.com/upstox-developer-api/order-updates/feed?requestId=2f646f57-a097-4402-bb36-c44085c5f8e7&code=9355b100-25cf-4fa7-b038-06d27ddb4823"
+  }
+}
+
+
+Name	Type	Description
+status	string	A string indicating the outcome of the request. Typically success for successful operations.
+data	object	Response data for WebsocketAuthRedirectResponse
+data.authorized_redirect_uri	string	The verified URL used for secure WebSocket connections, allowing real-time portfolio updates. This URL is valid for one-time use because the code present as the req parameter is a single-use authentication token for the WebSocket connection.
+Heartbeat
+If there is no data to stream over an open WebSocket connection, the API automatically sends a standard ping frame periodically to maintain the connection's aliveness. Most standard WebSocket client libraries across various programming languages handle this automatically by responding with a pong frame, requiring no manual intervention.
+
+Notice of Deprecation
+The camelCase field (authorizedRedirectUri) is deprecated and will be removed in future versions. Use the snake_case versions for consistency.
+
+GET /feed/portfolio-stream-feed/authorize
+Request
+Live URL
+https://api.upstox.com/v2

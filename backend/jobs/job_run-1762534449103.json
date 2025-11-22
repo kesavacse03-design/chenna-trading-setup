@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762534449103",
+  "summary": {
+    "runId": "run-1762534449103",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -833,
+    "avgReturn": -0.020636690201907556,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 833,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-10-08",
+    "to": "2025-10-28",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "EXIDEIND": {
+      "trades": [
+        {
+          "symbol": "EXIDEIND",
+          "entryTs": "2025-10-10T00:00:00+05:30",
+          "entryPrice": 403.65,
+          "exitTs": "2025-10-09T00:00:00+05:30",
+          "exitPrice": 395.32,
+          "pnl": -833,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=400.35 vol>=903439",
+          "trace": {
+            "reason": "breakout N=1 close>=400.35 vol>=903439"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -833,
+        "winRate": 0,
+        "maxDrawdown": 833,
+        "trades": 1,
+        "avgReturn": -0.020636690201907556,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "EXIDEIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -833
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:54:09.110Z",
+  "completedAt": "2025-11-07T16:54:09.110Z",
+  "error": null,
+  "insightsStatus": "done"
+}

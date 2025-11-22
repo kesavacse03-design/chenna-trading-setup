@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762528951550",
+  "summary": {
+    "runId": "run-1762528951550",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -592,
+    "avgReturn": -0.002063810798750583,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 592,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-10",
+    "to": "2025-07-30",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "PNBHOUSING": {
+      "trades": [
+        {
+          "symbol": "PNBHOUSING",
+          "entryTs": "2025-07-10T07:45:00.000Z",
+          "entryPrice": 2868.48,
+          "exitTs": "2025-07-10T08:45:00.000Z",
+          "exitPrice": 2862.56,
+          "pnl": -592,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2862.93 vol>=3221",
+          "trace": {
+            "reason": "breakout N=1 close>=2862.93 vol>=3221"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -592,
+        "winRate": 0,
+        "maxDrawdown": 592,
+        "trades": 1,
+        "avgReturn": -0.002063810798750583,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "PNBHOUSING",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -592
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:22:31.556Z",
+  "completedAt": "2025-11-07T15:22:31.556Z",
+  "error": null,
+  "insightsStatus": "done"
+}

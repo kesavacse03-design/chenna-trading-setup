@@ -1,0 +1,192 @@
+Historical Candle Data V3
+Compared to the standard Historical Candle Data API, API V3 allows users to retrieve data in custom time intervals for each unit (minutes, hours, days, weeks, and months), enabling more granular data control and improved flexibility for analysis. The response structure maintains consistency with the standard Historical Candle Data API format, facilitating seamless integration with existing applications and systems.
+
+The API is designed to handle large volumes of data efficiently, ensuring quick response times even for extensive historical queries.
+
+This API is particularly useful for traders and analysts who need to analyze historical price movements and trends in the financial markets.
+
+The API offers OHLC (Open, High, Low, Close) data for instruments across multiple timeframes, with different historical availability and retrieval constraints based on the selected unit and interval as per the below table:
+
+Unit	Interval Options	Historical Availability	Max retrieval record limit
+minutes	1, 2, ... 300	Available from January, 2022	1 month - Applicable for intervals ranging from 1 to 15 minutes.
+
+1 quarter - Used for intervals greater than 15 minutes, up to the specified to_date.
+hours	1, 2, ... 5	Available from January, 2022	1 quarter leading up to the to_date.
+days	1	Available from January, 2000	1 decade leading up to the to_date.
+weeks	1	Available from January, 2000	No limit.
+months	1	Available from January, 2000	No limit.
+Request
+curl --location 'https://api.upstox.com/v3/historical-candle/NSE_EQ%7CINE848E01016/minutes/1/2025-01-02/2025-01-01' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Additional samples in various languages are available in the Sample Code section on this page.
+
+
+Path Parameters
+Name	Required	Type	Description
+instrument_key	true	string	The unique identifier for the financial instrument for which historical data is being queried. For the regex pattern applicable to this field, see the Field Pattern Appendix.
+unit	true	string	Specifies the unit for the candles.
+Possible values: minutes, hours, days, weeks, months.
+interval	true	string	Specifies the interval for the candles.
+Possible values:
+1, 2, 3, ..., 300 for minutes.
+1, 2, ..., 5 for hours.
+1 for days, weeks, and months.
+to_date	true	string	The ending date (inclusive) for the historical data range. Format: 'YYYY-MM-DD'.
+from_date	false	string	The starting date for the historical data range. Format: 'YYYY-MM-DD'.
+Responses
+200
+4XX
+Name	Type	Description
+status	string	A string indicating the outcome of the request. Typically success for successful operations.
+data	object	Contains OHLC values for all instruments across various timeframes.
+data.candles	array[]	Array of candle data, each presented as an array with sequential elements representing trading activity.
+data.candle[0]	number	Timestamp: Indicating the start time of the candle's timeframe.
+data.candle[1]	number	Open: The opening price of the asset for the given timeframe.
+data.candle[2]	number	High: The highest price at which the asset traded during the timeframe.
+data.candle[3]	number	Low: The lowest price at which the asset traded during the timeframe.
+data.candle[4]	number	Close: The closing price of the asset for the given timeframe.
+data.candle[5]	number	Volume: The total amount of the asset that was traded during the timeframe.
+data.candle[6]	number	Open Interest: The total number of outstanding derivative contracts, such as options or futures.
+
+Sample Code
+Get data with a 1-minute interval
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/historical-candle/NSE_EQ%7CINE848E01016/minutes/1/2025-01-02/2025-01-01' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get data with a 3-minute interval
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/historical-candle/NSE_EQ%7CINE848E01016/minutes/3/2025-01-02/2025-01-01' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get data with a 15-minute interval
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/historical-candle/NSE_EQ%7CINE848E01016/minutes/15/2025-01-04/2025-01-01' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get data with a 1-hour interval
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/historical-candle/NSE_EQ%7CINE848E01016/hours/1/2025-02-01/2025-01-01' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get data with a 4-hour interval
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/historical-candle/NSE_EQ%7CINE848E01016/hours/4/2025-02-01/2025-01-01' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get data with a daily interval
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/historical-candle/NSE_EQ%7CINE848E01016/days/1/2025-03-01/2025-01-01' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get data with a weekly interval
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/historical-candle/NSE_EQ%7CINE848E01016/weeks/1/2025-01-01/2024-01-01' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get data with a monthly interval
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v3/historical-candle/NSE_EQ%7CINE848E01016/months/1/2025-01-01/2010-01-01' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+
+GET /historical-candle/:instrument_key/:unit/:interval/:to_date/:from_date
+Request
+Live URL
+https://api.upstox.com/v3
+instrument_key — path required
+instrument_key
+unit — path required
+unit
+interval — path required
+interval
+to_date — path required
+to_date
+NOTE
+Use the Intraday Candle Data API V3 to retrieve data specific to the current trading day with the wide range of units and intervals
+It's important to note that if the retrieval record limit is exceeded, then the API will throw an error indicating that the request is invalid.
+This V3 API provides additional custom interval options that are not available in the standard Historical Candle Data API

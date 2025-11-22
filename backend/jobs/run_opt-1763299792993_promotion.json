@@ -1,0 +1,51 @@
+{
+  "strategy": {
+    "ema_short": 25,
+    "ema_long": 50,
+    "atr_mult": 1,
+    "volumeFactor": 0.9
+  },
+  "runId": "run-1763299797200",
+  "optimizerRunId": "opt-1763299792993",
+  "expectancy": 0,
+  "drawdown": 0,
+  "trades": 0,
+  "kfold": {
+    "K": 2,
+    "folds": [
+      {
+        "index": 0,
+        "symbols": [
+          "TEST"
+        ],
+        "metrics": {
+          "netPnl": 0,
+          "winRate": 0,
+          "maxDrawdown": 0,
+          "trades": 0,
+          "avgReturn": 0,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "index": 1,
+        "symbols": [],
+        "metrics": null
+      }
+    ],
+    "validatedFolds": 1,
+    "validationTrades": 0
+  },
+  "promoted": false,
+  "thresholds": {
+    "minTrades": 30,
+    "maxNegativeDrawdown": -50000,
+    "expectancyPositive": true
+  },
+  "summaryText": "Top candidate expectancy=0.0000 trades=0 drawdown=0 promoted=false cpuAvg=0.7%",
+  "avgCpuPercent": 0.7,
+  "gitCommit": "ref: refs/heads/fix/watchlist-hydration",
+  "seed": null
+}

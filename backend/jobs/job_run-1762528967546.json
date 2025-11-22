@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762528967546",
+  "summary": {
+    "runId": "run-1762528967546",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -771,
+    "avgReturn": -0.0034026515084647183,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 771,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-11",
+    "to": "2025-07-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "ADANIPORTS": {
+      "trades": [
+        {
+          "symbol": "ADANIPORTS",
+          "entryTs": "2025-07-11T15:45:00.000Z",
+          "entryPrice": 2265.88,
+          "exitTs": "2025-07-11T16:45:00.000Z",
+          "exitPrice": 2258.17,
+          "pnl": -771,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2258.36 vol>=4808",
+          "trace": {
+            "reason": "breakout N=1 close>=2258.36 vol>=4808"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -771,
+        "winRate": 0,
+        "maxDrawdown": 771,
+        "trades": 1,
+        "avgReturn": -0.0034026515084647183,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "ADANIPORTS",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -771
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:22:47.552Z",
+  "completedAt": "2025-11-07T15:22:47.552Z",
+  "error": null,
+  "insightsStatus": "done"
+}

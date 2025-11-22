@@ -1,0 +1,76 @@
+OHLC Quotes Deprecated
+API to retrieve the OHLC (Open, High, Low, Close) quotes for one or more instruments. Provides OHLC snapshots of up to 500 instruments in one go.
+This API supports a maximum of 500 instrument keys in a single request. For a time interval of 1d, the API returns only the live_ohlc. Previous day OHLC data is available in Historical Candle Data.
+
+Request
+curl --location 'https://api.upstox.com/v2/market-quote/ohlc?instrument_key=NSE_EQ%7CINE669E01016&interval=1d' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Additional samples in various languages are available in the Sample Code section on this page.
+
+Query Parameters
+Name	Required	Type	Description
+instrument_key	true	string	Comma separated list of instrument keys. For the regex pattern applicable to this field, see the Field Pattern Appendix.
+interval	true	string	Interval to get ohlc data.
+Possible values: 1d, I1, I30.
+Here 1d is 1 day, I1 and I30 are 1-minute and 30-minute intervals respectively.
+Responses
+200
+4XX
+Response Body
+Name	Type	Description
+status	string	A string indicating the outcome of the request. Typically success for successful operations.
+data	object	Data object holding OHLC information
+data.ohlc	object	Data object with OHLC information
+data.ohlc.open	number	The open price of the trading session
+data.ohlc.high	number	The high price of the trading session
+data.ohlc.low	number	The low price of the trading session
+data.ohlc.close	number	The most recent closing price of the symbol
+data.last_price	number	The last traded price of symbol
+data.instrument_token	string	Key of the instrument. For the regex pattern applicable to this field, see the Field Pattern Appendix.
+
+Sample Code
+Get ohlc (open, high, low, close) market quotes
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v2/market-quote/ohlc?instrument_key=NSE_EQ%7CINE669E01016&interval=1d' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+Get ohlc (open, high, low, close) market quotes for multiple instrument keys
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v2/market-quote/ohlc?instrument_key=NSE_EQ%7CINE669E01016%2CNSE_EQ%7CINE848E01016&interval=1d' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+
+GET /market-quote/ohlc
+Request
+Live URL
+https://api.upstox.com/v2
+instrument_key — query required
+Comma separated list of instrument keys
+interval — query required
+Interval to get ohlc data
+Previous
+Option Greeks
+Next

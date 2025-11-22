@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762534457331",
+  "summary": {
+    "runId": "run-1762534457331",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -1293,
+    "avgReturn": -0.02125246548323463,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 1293,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "CONCOR": {
+      "trades": [
+        {
+          "symbol": "CONCOR",
+          "entryTs": "2025-07-30T00:00:00+05:30",
+          "entryPrice": 608.4,
+          "exitTs": "2025-07-28T00:00:00+05:30",
+          "exitPrice": 595.47,
+          "pnl": -1293,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=584.10 vol>=646072",
+          "trace": {
+            "reason": "breakout N=1 close>=584.10 vol>=646072"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -1293,
+        "winRate": 0,
+        "maxDrawdown": 1293,
+        "trades": 1,
+        "avgReturn": -0.02125246548323463,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "CONCOR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1293
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:54:17.335Z",
+  "completedAt": "2025-11-07T16:54:17.335Z",
+  "error": null,
+  "insightsStatus": "done"
+}

@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532091889",
+  "summary": {
+    "runId": "run-1762532091889",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -343,
+    "avgReturn": -0.0012821279586129979,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 343,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-11",
+    "to": "2025-07-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "CANBK": {
+      "trades": [
+        {
+          "symbol": "CANBK",
+          "entryTs": "2025-07-11T12:45:00.000Z",
+          "entryPrice": 2675.24,
+          "exitTs": "2025-07-11T13:45:00.000Z",
+          "exitPrice": 2671.81,
+          "pnl": -343,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2672.46 vol>=4724",
+          "trace": {
+            "reason": "breakout N=1 close>=2672.46 vol>=4724"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -343,
+        "winRate": 0,
+        "maxDrawdown": 343,
+        "trades": 1,
+        "avgReturn": -0.0012821279586129979,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "CANBK",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -343
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:14:51.894Z",
+  "completedAt": "2025-11-07T16:14:51.894Z",
+  "error": null,
+  "insightsStatus": "done"
+}

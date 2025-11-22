@@ -1,0 +1,55 @@
+{
+  "runId": "run-1762534464595",
+  "summary": {
+    "runId": "run-1762534464595",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": 201,
+    "avgReturn": 0.013620654604594561,
+    "winRate": 100,
+    "profitFactor": null,
+    "maxDrawdown": 0,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-15",
+    "to": "2025-08-04",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "UNIONBANK": {
+      "trades": [
+        {
+          "symbol": "UNIONBANK",
+          "entryTs": "2025-07-24T00:00:00+05:30",
+          "entryPrice": 147.57,
+          "exitTs": "2025-07-16T00:00:00+05:30",
+          "exitPrice": 149.58,
+          "pnl": 201,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=141.85 vol>=6135432",
+          "trace": {
+            "reason": "breakout N=1 close>=141.85 vol>=6135432"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 201,
+        "winRate": 100,
+        "maxDrawdown": 0,
+        "trades": 1,
+        "avgReturn": 0.013620654604594561,
+        "profitFactor": null,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [],
+  "status": "done",
+  "createdAt": "2025-11-07T16:54:24.599Z",
+  "completedAt": "2025-11-07T16:54:24.599Z",
+  "error": null,
+  "insightsStatus": "done"
+}

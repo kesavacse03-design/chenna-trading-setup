@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532942912",
+  "summary": {
+    "runId": "run-1762532942912",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -1950,
+    "avgReturn": -0.012782694198623401,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 1950,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "CHOLAFIN": {
+      "trades": [
+        {
+          "symbol": "CHOLAFIN",
+          "entryTs": "2025-07-30T00:00:00+05:30",
+          "entryPrice": 1525.5,
+          "exitTs": "2025-07-28T00:00:00+05:30",
+          "exitPrice": 1506,
+          "pnl": -1950,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1469.00 vol>=369400",
+          "trace": {
+            "reason": "breakout N=1 close>=1469.00 vol>=369400"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -1950,
+        "winRate": 0,
+        "maxDrawdown": 1950,
+        "trades": 1,
+        "avgReturn": -0.012782694198623401,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "CHOLAFIN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1950
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:29:02.915Z",
+  "completedAt": "2025-11-07T16:29:02.915Z",
+  "error": null,
+  "insightsStatus": "done"
+}

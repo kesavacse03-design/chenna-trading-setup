@@ -1,0 +1,55 @@
+{
+  "runId": "run-1762532041005",
+  "summary": {
+    "runId": "run-1762532041005",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": 20,
+    "avgReturn": 0.00008632000552440185,
+    "winRate": 100,
+    "profitFactor": null,
+    "maxDrawdown": 0,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-09",
+    "to": "2025-07-29",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "EICHERMOT": {
+      "trades": [
+        {
+          "symbol": "EICHERMOT",
+          "entryTs": "2025-07-09T06:45:00.000Z",
+          "entryPrice": 2316.96,
+          "exitTs": "2025-07-09T07:45:00.000Z",
+          "exitPrice": 2317.16,
+          "pnl": 20,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2313.21 vol>=4688",
+          "trace": {
+            "reason": "breakout N=1 close>=2313.21 vol>=4688"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 20,
+        "winRate": 100,
+        "maxDrawdown": 0,
+        "trades": 1,
+        "avgReturn": 0.00008632000552440185,
+        "profitFactor": null,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [],
+  "status": "done",
+  "createdAt": "2025-11-07T16:14:01.010Z",
+  "completedAt": "2025-11-07T16:14:01.010Z",
+  "error": null,
+  "insightsStatus": "done"
+}

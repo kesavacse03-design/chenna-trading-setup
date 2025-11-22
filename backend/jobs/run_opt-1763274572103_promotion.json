@@ -1,0 +1,108 @@
+{
+  "strategy": {
+    "ema_short": 28,
+    "ema_long": 55
+  },
+  "runId": "mock-run-148",
+  "optimizerRunId": "opt-1763274572103",
+  "expectancy": 0,
+  "drawdown": 0,
+  "trades": 25,
+  "kfold": {
+    "K": 5,
+    "folds": [
+      {
+        "index": 0,
+        "symbols": [
+          "AAPL"
+        ],
+        "metrics": {
+          "netPnl": 0,
+          "winRate": 0,
+          "maxDrawdown": 0,
+          "trades": 5,
+          "avgReturn": 0,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "index": 1,
+        "symbols": [
+          "MSFT"
+        ],
+        "metrics": {
+          "netPnl": 0,
+          "winRate": 0,
+          "maxDrawdown": 0,
+          "trades": 5,
+          "avgReturn": 0,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "index": 2,
+        "symbols": [
+          "GOOG"
+        ],
+        "metrics": {
+          "netPnl": 0,
+          "winRate": 0,
+          "maxDrawdown": 0,
+          "trades": 5,
+          "avgReturn": 0,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "index": 3,
+        "symbols": [
+          "AMZN"
+        ],
+        "metrics": {
+          "netPnl": 0,
+          "winRate": 0,
+          "maxDrawdown": 0,
+          "trades": 5,
+          "avgReturn": 0,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      },
+      {
+        "index": 4,
+        "symbols": [
+          "META"
+        ],
+        "metrics": {
+          "netPnl": 0,
+          "winRate": 0,
+          "maxDrawdown": 0,
+          "trades": 5,
+          "avgReturn": 0,
+          "profitFactor": 0,
+          "wins": 0,
+          "losses": 0
+        }
+      }
+    ],
+    "validatedFolds": 5,
+    "validationTrades": 25
+  },
+  "promoted": false,
+  "thresholds": {
+    "minTrades": 30,
+    "maxNegativeDrawdown": -50000,
+    "expectancyPositive": true
+  },
+  "summaryText": "Top candidate expectancy=0.0000 trades=25 drawdown=0 promoted=false cpuAvg=NA%",
+  "avgCpuPercent": null,
+  "gitCommit": "ref: refs/heads/fix/watchlist-hydration",
+  "seed": 54321
+}

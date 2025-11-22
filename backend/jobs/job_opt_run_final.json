@@ -1,0 +1,85 @@
+{
+  "createdAt": "2025-11-16T05:56:51.727Z",
+  "parameters": {
+    "symbols": [
+      "SMOKE"
+    ],
+    "from": "2025-10-01",
+    "to": "2025-10-15",
+    "interval": "day",
+    "mode": "mock",
+    "grid": {
+      "ema_short": [
+        8
+      ],
+      "ema_long": [
+        55
+      ],
+      "atr_mult": [
+        1.2
+      ],
+      "volumeFactor": [
+        1
+      ]
+    },
+    "metric": "netPnl",
+    "aggregate": "category"
+  },
+  "combos": 1,
+  "ranked": [
+    {
+      "config": {
+        "ema_short": 10,
+        "ema_long": 53,
+        "atr_mult": 0.95,
+        "volumeFactor": 1.1
+      },
+      "runId": "run-1763272584005",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763272584005-results.json",
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 0,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      },
+      "note": "FALLBACK_ZERO_TRADES"
+    }
+  ],
+  "insights": [
+    {
+      "rank": 1,
+      "config": {
+        "ema_short": 10,
+        "ema_long": 53,
+        "atr_mult": 0.95,
+        "volumeFactor": 1.1
+      },
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      },
+      "runId": "run-1763272584005",
+      "note": "FALLBACK_ZERO_TRADES"
+    }
+  ],
+  "timedOut": false,
+  "notes": [
+    "optimizer: no candidates had trades; returning single fallback candidate"
+  ]
+}

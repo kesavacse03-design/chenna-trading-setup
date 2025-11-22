@@ -1,0 +1,72 @@
+{
+  "runId": "opt-1763274573399",
+  "searchMode": "grid",
+  "combosTried": 1,
+  "results": 1,
+  "timedOut": false,
+  "topN": [
+    {
+      "rank": 1,
+      "score": null,
+      "metrics": null,
+      "config": {
+        "ema_short": 8,
+        "ema_long": 55,
+        "atr_mult": 1.5
+      },
+      "runId": null,
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "A"
+            ],
+            "metrics": {
+              "netPnl": -10,
+              "winRate": 30,
+              "maxDrawdown": 0,
+              "trades": 0,
+              "avgReturn": -0.01,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "B"
+            ],
+            "metrics": {
+              "netPnl": 200,
+              "winRate": 60,
+              "maxDrawdown": 0,
+              "trades": 50,
+              "avgReturn": 0.02,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [],
+            "metrics": null
+          }
+        ],
+        "aggregated": {
+          "trades": 50,
+          "netPnl": 190,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": 0,
+          "avgReturn": 0.005
+        }
+      }
+    }
+  ],
+  "summaryText": "Run completed cpuAvg=NA% combos=1 mode=grid topExpectancy=0.0000",
+  "avgCpuPercent": null
+}

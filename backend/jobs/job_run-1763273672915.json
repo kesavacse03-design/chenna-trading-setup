@@ -1,0 +1,242 @@
+{
+  "runId": "run-1763273672915",
+  "summary": {
+    "runId": "run-1763273672915",
+    "totalTrades": 2,
+    "tradesCount": 2,
+    "totalPnL": -1891,
+    "avgReturn": -0.01884901179867788,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 1891,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-01-01",
+    "to": "2025-11-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "ema_short": 6,
+      "ema_long": 52,
+      "atr_mult": 1.25,
+      "volumeFactor": 0.9
+    },
+    "swing10": {
+      "successWithin10Days": 0,
+      "failWithin10Days": 2,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 0
+    },
+    "equityCurve": [
+      -1121,
+      -1891
+    ]
+  },
+  "perSymbol": {
+    "RELIANCE": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "TCS": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "INFY": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "HDFCBANK": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "ICICIBANK": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "HINDUNILVR": {
+      "trades": [
+        {
+          "symbol": "HINDUNILVR",
+          "entryTs": "2025-03-09T18:45:00.000Z",
+          "entryPrice": 503.74,
+          "exitTs": "2025-03-09T20:45:00.000Z",
+          "exitPrice": 492.53,
+          "pnl": -1121,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=4815 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=4815 gates:"
+          }
+        },
+        {
+          "symbol": "HINDUNILVR",
+          "entryTs": "2025-03-09T20:45:00.000Z",
+          "entryPrice": 498.56,
+          "exitTs": "2025-03-09T23:45:00.000Z",
+          "exitPrice": 490.86,
+          "pnl": -770,
+          "direction": "LONG",
+          "reason": "comp: emaS>=emaL rsi[20..80] vol>=5019 gates:",
+          "trace": {
+            "reason": "comp: emaS>=emaL rsi[20..80] vol>=5019 gates:"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -1891,
+        "winRate": 0,
+        "maxDrawdown": 1891,
+        "trades": 2,
+        "avgReturn": -0.01884901179867788,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 2
+      }
+    },
+    "SBIN": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "BAJFINANCE": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "LT": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "ASIANPAINT": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "HINDUNILVR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1121
+      },
+      "samplePrior": []
+    },
+    {
+      "symbol": "HINDUNILVR",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -770
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-16T06:14:44.691Z",
+  "completedAt": "2025-11-16T06:14:44.691Z",
+  "error": null,
+  "accuracy": 0,
+  "winRate": 0,
+  "expectancy": -0.01884901179867788,
+  "totalPnL": -1891,
+  "maxDrawdown": 1891,
+  "trades": [
+    {
+      "symbol": "HINDUNILVR",
+      "entryTs": "2025-03-09T18:45:00.000Z",
+      "entryPrice": 503.74,
+      "exitTs": "2025-03-09T20:45:00.000Z",
+      "exitPrice": 492.53,
+      "pnl": -1121
+    },
+    {
+      "symbol": "HINDUNILVR",
+      "entryTs": "2025-03-09T20:45:00.000Z",
+      "entryPrice": 498.56,
+      "exitTs": "2025-03-09T23:45:00.000Z",
+      "exitPrice": 490.86,
+      "pnl": -770
+    }
+  ],
+  "insightsStatus": "done"
+}

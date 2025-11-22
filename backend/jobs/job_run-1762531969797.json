@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762531969797",
+  "summary": {
+    "runId": "run-1762531969797",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -397,
+    "avgReturn": -0.0013867736030964016,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 397,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-10-08",
+    "to": "2025-10-28",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "DALBHARAT": {
+      "trades": [
+        {
+          "symbol": "DALBHARAT",
+          "entryTs": "2025-10-08T07:45:00.000Z",
+          "entryPrice": 2862.76,
+          "exitTs": "2025-10-08T08:45:00.000Z",
+          "exitPrice": 2858.79,
+          "pnl": -397,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2859.39 vol>=3391",
+          "trace": {
+            "reason": "breakout N=1 close>=2859.39 vol>=3391"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -397,
+        "winRate": 0,
+        "maxDrawdown": 397,
+        "trades": 1,
+        "avgReturn": -0.0013867736030964016,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "DALBHARAT",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -397
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:12:49.805Z",
+  "completedAt": "2025-11-07T16:12:49.805Z",
+  "error": null,
+  "insightsStatus": "done"
+}

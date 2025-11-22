@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532892430",
+  "summary": {
+    "runId": "run-1762532892430",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -2760,
+    "avgReturn": -0.008050872177819237,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 2760,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-11",
+    "to": "2025-07-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "TITAN": {
+      "trades": [
+        {
+          "symbol": "TITAN",
+          "entryTs": "2025-07-30T00:00:00+05:30",
+          "entryPrice": 3428.2,
+          "exitTs": "2025-07-28T00:00:00+05:30",
+          "exitPrice": 3400.6,
+          "pnl": -2760,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=3364.50 vol>=221868",
+          "trace": {
+            "reason": "breakout N=1 close>=3364.50 vol>=221868"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -2760,
+        "winRate": 0,
+        "maxDrawdown": 2760,
+        "trades": 1,
+        "avgReturn": -0.008050872177819237,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "TITAN",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -2760
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:28:12.432Z",
+  "completedAt": "2025-11-07T16:28:12.432Z",
+  "error": null,
+  "insightsStatus": "done"
+}

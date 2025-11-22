@@ -1,0 +1,83 @@
+{
+  "runId": "opt-1762689791682",
+  "searchMode": "grid",
+  "combosTried": 1,
+  "results": 1,
+  "timedOut": false,
+  "topN": [
+    {
+      "rank": 1,
+      "score": 4.3,
+      "metrics": {
+        "trades": 5,
+        "netPnl": 20,
+        "avgReturn": 0.02,
+        "winRate": 52,
+        "maxDrawdown": -5
+      },
+      "config": {
+        "ema_short": 8,
+        "ema_long": 55,
+        "atr_mult": 1.5
+      },
+      "runId": "mock-run-2",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "S1",
+              "S4"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 30,
+              "avgReturn": 0.03,
+              "winRate": 53,
+              "maxDrawdown": -5
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "S2",
+              "S5"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 40,
+              "avgReturn": 0.04,
+              "winRate": 54,
+              "maxDrawdown": -5
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "S3",
+              "S6"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 50,
+              "avgReturn": 0.05,
+              "winRate": 55,
+              "maxDrawdown": -5
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 15,
+          "netPnl": 120,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": -5,
+          "avgReturn": 0.04
+        }
+      }
+    }
+  ],
+  "summaryText": "Run completed cpuAvg=NA% combos=1 mode=grid topExpectancy=0.0200",
+  "avgCpuPercent": null
+}

@@ -1,0 +1,55 @@
+{
+  "runId": "run-1762534458556",
+  "summary": {
+    "runId": "run-1762534458556",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": 1065,
+    "avgReturn": 0.0026756104914079214,
+    "winRate": 100,
+    "profitFactor": null,
+    "maxDrawdown": 0,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-15",
+    "to": "2025-08-04",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "CAMS": {
+      "trades": [
+        {
+          "symbol": "CAMS",
+          "entryTs": "2025-07-30T00:00:00+05:30",
+          "entryPrice": 3980.4,
+          "exitTs": "2025-07-28T00:00:00+05:30",
+          "exitPrice": 3991.05,
+          "pnl": 1065,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=3797.80 vol>=137941",
+          "trace": {
+            "reason": "breakout N=1 close>=3797.80 vol>=137941"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 1065,
+        "winRate": 100,
+        "maxDrawdown": 0,
+        "trades": 1,
+        "avgReturn": 0.0026756104914079214,
+        "profitFactor": null,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [],
+  "status": "done",
+  "createdAt": "2025-11-07T16:54:18.559Z",
+  "completedAt": "2025-11-07T16:54:18.559Z",
+  "error": null,
+  "insightsStatus": "done"
+}

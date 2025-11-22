@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762529093526",
+  "summary": {
+    "runId": "run-1762529093526",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -750,
+    "avgReturn": -0.00721119176962646,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 750,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "HUDCO": {
+      "trades": [
+        {
+          "symbol": "HUDCO",
+          "entryTs": "2025-07-12T15:45:00.000Z",
+          "entryPrice": 1040.05,
+          "exitTs": "2025-07-12T16:45:00.000Z",
+          "exitPrice": 1032.55,
+          "pnl": -750,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1033.93 vol>=4800",
+          "trace": {
+            "reason": "breakout N=1 close>=1033.93 vol>=4800"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -750,
+        "winRate": 0,
+        "maxDrawdown": 750,
+        "trades": 1,
+        "avgReturn": -0.00721119176962646,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "HUDCO",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -750
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:24:53.532Z",
+  "completedAt": "2025-11-07T15:24:53.532Z",
+  "error": null,
+  "insightsStatus": "done"
+}

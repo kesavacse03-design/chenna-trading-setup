@@ -1,0 +1,55 @@
+{
+  "runId": "run-1762529018139",
+  "summary": {
+    "runId": "run-1762529018139",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": 84,
+    "avgReturn": 0.0003504585165590359,
+    "winRate": 100,
+    "profitFactor": null,
+    "maxDrawdown": 0,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-11",
+    "to": "2025-07-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "GAIL": {
+      "trades": [
+        {
+          "symbol": "GAIL",
+          "entryTs": "2025-07-11T04:45:00.000Z",
+          "entryPrice": 2396.86,
+          "exitTs": "2025-07-11T05:45:00.000Z",
+          "exitPrice": 2397.7,
+          "pnl": 84,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2396.27 vol>=4648",
+          "trace": {
+            "reason": "breakout N=1 close>=2396.27 vol>=4648"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 84,
+        "winRate": 100,
+        "maxDrawdown": 0,
+        "trades": 1,
+        "avgReturn": 0.0003504585165590359,
+        "profitFactor": null,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [],
+  "status": "done",
+  "createdAt": "2025-11-07T15:23:38.146Z",
+  "completedAt": "2025-11-07T15:23:38.147Z",
+  "error": null,
+  "insightsStatus": "done"
+}

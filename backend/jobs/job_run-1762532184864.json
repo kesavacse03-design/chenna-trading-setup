@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532184864",
+  "summary": {
+    "runId": "run-1762532184864",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -1113,
+    "avgReturn": -0.005455614920837156,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 1113,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "BAJAJFINSV": {
+      "trades": [
+        {
+          "symbol": "BAJAJFINSV",
+          "entryTs": "2025-07-12T08:45:00.000Z",
+          "entryPrice": 2040.1,
+          "exitTs": "2025-07-12T09:45:00.000Z",
+          "exitPrice": 2028.97,
+          "pnl": -1113,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2030.97 vol>=600",
+          "trace": {
+            "reason": "breakout N=1 close>=2030.97 vol>=600"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -1113,
+        "winRate": 0,
+        "maxDrawdown": 1113,
+        "trades": 1,
+        "avgReturn": -0.005455614920837156,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "BAJAJFINSV",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1113
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:16:24.868Z",
+  "completedAt": "2025-11-07T16:16:24.868Z",
+  "error": null,
+  "insightsStatus": "done"
+}

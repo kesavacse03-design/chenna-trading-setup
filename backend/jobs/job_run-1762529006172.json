@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762529006172",
+  "summary": {
+    "runId": "run-1762529006172",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -901,
+    "avgReturn": -0.004642248064012526,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 901,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-11",
+    "to": "2025-07-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "PIDILITIND": {
+      "trades": [
+        {
+          "symbol": "PIDILITIND",
+          "entryTs": "2025-07-11T08:45:00.000Z",
+          "entryPrice": 1940.87,
+          "exitTs": "2025-07-11T11:45:00.000Z",
+          "exitPrice": 1931.86,
+          "pnl": -901,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1933.38 vol>=3688",
+          "trace": {
+            "reason": "breakout N=1 close>=1933.38 vol>=3688"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -901,
+        "winRate": 0,
+        "maxDrawdown": 901,
+        "trades": 1,
+        "avgReturn": -0.004642248064012526,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "PIDILITIND",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -901
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:23:26.178Z",
+  "completedAt": "2025-11-07T15:23:26.178Z",
+  "error": null,
+  "insightsStatus": "done"
+}

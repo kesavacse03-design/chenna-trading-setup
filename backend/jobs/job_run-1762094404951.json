@@ -1,0 +1,50 @@
+{
+  "runId": "run-1762094404951",
+  "summary": {
+    "runId": "run-1762094404951",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -266,
+    "avgReturn": -0.0026373713537846096,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 266,
+    "avgHoldingDays": 0,
+    "missingCount": 0
+  },
+  "perSymbol": {
+    "SYM002": {
+      "trades": [
+        {
+          "symbol": "SYM002",
+          "entryTs": "2020-01-01T09:45:00.000Z",
+          "entryPrice": 1008.58,
+          "exitTs": "2020-01-01T10:45:00.000Z",
+          "exitPrice": 1005.92,
+          "pnl": -266,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1004.86 vol>=2049",
+          "trace": {
+            "reason": "breakout N=1 close>=1004.86 vol>=2049"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -266,
+        "winRate": 0,
+        "maxDrawdown": 266,
+        "trades": 1,
+        "avgReturn": -0.0026373713537846096,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [],
+  "status": "done",
+  "createdAt": "2025-11-02T14:40:04.992Z",
+  "completedAt": "2025-11-02T14:40:04.993Z",
+  "error": null,
+  "insightsStatus": "pending"
+}

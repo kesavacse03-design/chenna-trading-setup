@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762528973354",
+  "summary": {
+    "runId": "run-1762528973354",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -159,
+    "avgReturn": -0.0010106467503574882,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 159,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-11",
+    "to": "2025-07-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "CESC": {
+      "trades": [
+        {
+          "symbol": "CESC",
+          "entryTs": "2025-07-11T06:45:00.000Z",
+          "entryPrice": 1573.25,
+          "exitTs": "2025-07-11T07:45:00.000Z",
+          "exitPrice": 1571.66,
+          "pnl": -159,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1568.88 vol>=3172",
+          "trace": {
+            "reason": "breakout N=1 close>=1568.88 vol>=3172"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -159,
+        "winRate": 0,
+        "maxDrawdown": 159,
+        "trades": 1,
+        "avgReturn": -0.0010106467503574882,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "CESC",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -159
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:22:53.360Z",
+  "completedAt": "2025-11-07T15:22:53.360Z",
+  "error": null,
+  "insightsStatus": "done"
+}

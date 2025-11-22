@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762529120882",
+  "summary": {
+    "runId": "run-1762529120882",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -688,
+    "avgReturn": -0.0037788494282293833,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 688,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-15",
+    "to": "2025-08-04",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "ASTRAL": {
+      "trades": [
+        {
+          "symbol": "ASTRAL",
+          "entryTs": "2025-07-15T05:45:00.000Z",
+          "entryPrice": 1820.66,
+          "exitTs": "2025-07-15T06:45:00.000Z",
+          "exitPrice": 1813.78,
+          "pnl": -688,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1816.34 vol>=4625",
+          "trace": {
+            "reason": "breakout N=1 close>=1816.34 vol>=4625"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -688,
+        "winRate": 0,
+        "maxDrawdown": 688,
+        "trades": 1,
+        "avgReturn": -0.0037788494282293833,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "ASTRAL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -688
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:25:20.888Z",
+  "completedAt": "2025-11-07T15:25:20.888Z",
+  "error": null,
+  "insightsStatus": "done"
+}

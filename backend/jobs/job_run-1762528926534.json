@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762528926534",
+  "summary": {
+    "runId": "run-1762528926534",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -632,
+    "avgReturn": -0.0033062347635937185,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 632,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-09",
+    "to": "2025-07-29",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "INDUSINDBK": {
+      "trades": [
+        {
+          "symbol": "INDUSINDBK",
+          "entryTs": "2025-07-09T07:45:00.000Z",
+          "entryPrice": 1911.54,
+          "exitTs": "2025-07-09T09:45:00.000Z",
+          "exitPrice": 1905.22,
+          "pnl": -632,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1906.62 vol>=2193",
+          "trace": {
+            "reason": "breakout N=1 close>=1906.62 vol>=2193"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -632,
+        "winRate": 0,
+        "maxDrawdown": 632,
+        "trades": 1,
+        "avgReturn": -0.0033062347635937185,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "INDUSINDBK",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -632
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:22:06.540Z",
+  "completedAt": "2025-11-07T15:22:06.540Z",
+  "error": null,
+  "insightsStatus": "done"
+}

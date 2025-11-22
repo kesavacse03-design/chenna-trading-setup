@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532060358",
+  "summary": {
+    "runId": "run-1762532060358",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -606,
+    "avgReturn": -0.004888358286009432,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 606,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-10",
+    "to": "2025-07-30",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "FEDERALBNK": {
+      "trades": [
+        {
+          "symbol": "FEDERALBNK",
+          "entryTs": "2025-07-10T04:45:00.000Z",
+          "entryPrice": 1239.68,
+          "exitTs": "2025-07-10T05:45:00.000Z",
+          "exitPrice": 1233.62,
+          "pnl": -606,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1232.60 vol>=1285",
+          "trace": {
+            "reason": "breakout N=1 close>=1232.60 vol>=1285"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -606,
+        "winRate": 0,
+        "maxDrawdown": 606,
+        "trades": 1,
+        "avgReturn": -0.004888358286009432,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "FEDERALBNK",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -606
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:14:20.363Z",
+  "completedAt": "2025-11-07T16:14:20.363Z",
+  "error": null,
+  "insightsStatus": "done"
+}

@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762534456891",
+  "summary": {
+    "runId": "run-1762534456891",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -4655,
+    "avgReturn": -0.03232414415665576,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 4655,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-11",
+    "to": "2025-07-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "RELIANCE": {
+      "trades": [
+        {
+          "symbol": "RELIANCE",
+          "entryTs": "2025-07-30T00:00:00+05:30",
+          "entryPrice": 1440.1,
+          "exitTs": "2025-07-29T00:00:00+05:30",
+          "exitPrice": 1393.55,
+          "pnl": -4655,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1402.60 vol>=3604925",
+          "trace": {
+            "reason": "breakout N=1 close>=1402.60 vol>=3604925"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -4655,
+        "winRate": 0,
+        "maxDrawdown": 4655,
+        "trades": 1,
+        "avgReturn": -0.03232414415665576,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "RELIANCE",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -4655
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:54:16.894Z",
+  "completedAt": "2025-11-07T16:54:16.894Z",
+  "error": null,
+  "insightsStatus": "done"
+}

@@ -1,0 +1,1145 @@
+{
+  "createdAt": "2025-11-16T06:18:38.080Z",
+  "parameters": {
+    "symbols": [
+      "RELIANCE",
+      "TCS",
+      "INFY",
+      "HDFCBANK",
+      "ICICIBANK",
+      "HINDUNILVR",
+      "SBIN",
+      "BAJFINANCE",
+      "LT",
+      "ASIANPAINT"
+    ],
+    "from": "2025-01-01",
+    "to": "2025-11-01",
+    "interval": "day",
+    "mode": "mock",
+    "grid": {
+      "ema_short": [
+        8,
+        13,
+        21
+      ],
+      "ema_long": [
+        50,
+        89,
+        144
+      ],
+      "atr_mult": [
+        1,
+        1.5,
+        2
+      ],
+      "volumeFactor": [
+        0.8,
+        1,
+        1.2
+      ]
+    },
+    "metric": "netPnl",
+    "aggregate": "category"
+  },
+  "combos": 81,
+  "ranked": [
+    {
+      "config": {
+        "ema_short": 6,
+        "ema_long": 48,
+        "atr_mult": 0.75,
+        "volumeFactor": 0.7
+      },
+      "runId": "run-1763273614390",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273614390-results.json",
+      "metrics": {
+        "netPnl": -5861,
+        "winRate": 0,
+        "maxDrawdown": 5861,
+        "trades": 10,
+        "avgReturn": -0.010393601780963426,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 10
+      },
+      "swing10": {
+        "successWithin10Days": 3,
+        "failWithin10Days": 7,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 30
+      }
+    },
+    {
+      "config": {
+        "ema_short": 6,
+        "ema_long": 48,
+        "atr_mult": 0.75,
+        "volumeFactor": 0.9
+      },
+      "runId": "run-1763273602101",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273602101-results.json",
+      "metrics": {
+        "netPnl": -4264,
+        "winRate": 0,
+        "maxDrawdown": 4264,
+        "trades": 7,
+        "avgReturn": -0.010731224952811107,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 7
+      },
+      "swing10": {
+        "successWithin10Days": 2,
+        "failWithin10Days": 5,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 28.57
+      }
+    },
+    {
+      "config": {
+        "ema_short": 6,
+        "ema_long": 48,
+        "atr_mult": 0.75,
+        "volumeFactor": 1.1
+      },
+      "runId": "run-1763273626055",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273626055-results.json",
+      "metrics": {
+        "netPnl": -3527,
+        "winRate": 0,
+        "maxDrawdown": 3527,
+        "trades": 5,
+        "avgReturn": -0.012080303849827318,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 5
+      },
+      "swing10": {
+        "successWithin10Days": 1,
+        "failWithin10Days": 4,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 20
+      }
+    },
+    {
+      "config": {
+        "ema_short": 11,
+        "ema_long": 47,
+        "atr_mult": 0.7,
+        "volumeFactor": 0.65
+      },
+      "runId": "run-1763273684706",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273684706-results.json",
+      "metrics": {
+        "netPnl": -1944,
+        "winRate": 0,
+        "maxDrawdown": 1944,
+        "trades": 3,
+        "avgReturn": -0.012917574141747221,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 3
+      },
+      "swing10": {
+        "successWithin10Days": 1,
+        "failWithin10Days": 2,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 33.33
+      }
+    },
+    {
+      "config": {
+        "ema_short": 11,
+        "ema_long": 47,
+        "atr_mult": 0.7,
+        "volumeFactor": 0.95
+      },
+      "runId": "run-1763273684701",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273684701-results.json",
+      "metrics": {
+        "netPnl": -671,
+        "winRate": 0,
+        "maxDrawdown": 671,
+        "trades": 1,
+        "avgReturn": -0.01342187906306879,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 1
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 1,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 11,
+        "ema_long": 47,
+        "atr_mult": 0.7,
+        "volumeFactor": 0.85
+      },
+      "runId": "run-1763273696622",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273696622-results.json",
+      "metrics": {
+        "netPnl": -671,
+        "winRate": 0,
+        "maxDrawdown": 671,
+        "trades": 1,
+        "avgReturn": -0.01342187906306879,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 1
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 1,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 11,
+        "ema_long": 47,
+        "atr_mult": 0.7,
+        "volumeFactor": 0.85
+      },
+      "runId": "run-1763273696634",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273696634-results.json",
+      "metrics": {
+        "netPnl": -671,
+        "winRate": 0,
+        "maxDrawdown": 671,
+        "trades": 1,
+        "avgReturn": -0.01342187906306879,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 1
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 1,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 11,
+        "ema_long": 47,
+        "atr_mult": 0.7,
+        "volumeFactor": 1.35
+      },
+      "runId": "run-1763273708807",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273708807-results.json",
+      "metrics": {
+        "netPnl": -671,
+        "winRate": 0,
+        "maxDrawdown": 671,
+        "trades": 1,
+        "avgReturn": -0.01342187906306879,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 1
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 1,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 11,
+        "ema_long": 47,
+        "atr_mult": 0.7,
+        "volumeFactor": 1.05
+      },
+      "runId": "run-1763273708817",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273708817-results.json",
+      "metrics": {
+        "netPnl": -671,
+        "winRate": 0,
+        "maxDrawdown": 671,
+        "trades": 1,
+        "avgReturn": -0.01342187906306879,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 1
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 1,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 6,
+        "ema_long": 52,
+        "atr_mult": 0.75,
+        "volumeFactor": 1.3
+      },
+      "runId": "run-1763273637751",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273637751-results.json",
+      "metrics": {
+        "netPnl": -692,
+        "winRate": 0,
+        "maxDrawdown": 692,
+        "trades": 1,
+        "avgReturn": -0.013841937871302014,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 1
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 1,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 5,
+        "ema_long": 47,
+        "atr_mult": 1.3,
+        "volumeFactor": 1.05
+      },
+      "runId": "run-1763273708796",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273708796-results.json",
+      "metrics": {
+        "netPnl": -5052,
+        "winRate": 0,
+        "maxDrawdown": 5052,
+        "trades": 5,
+        "avgReturn": -0.015363102694693967,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 5
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 4,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 5,
+        "ema_long": 53,
+        "atr_mult": 0.7,
+        "volumeFactor": 1.15
+      },
+      "runId": "run-1763273696608",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273696608-results.json",
+      "metrics": {
+        "netPnl": -1556,
+        "winRate": 0,
+        "maxDrawdown": 1556,
+        "trades": 2,
+        "avgReturn": -0.015495233016268605,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 2
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 2,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 50,
+        "atr_mult": 0.8,
+        "volumeFactor": 0.8
+      },
+      "runId": "run-1763273814993",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273814993-results.json",
+      "metrics": {
+        "netPnl": -2345,
+        "winRate": 0,
+        "maxDrawdown": 2345,
+        "trades": 3,
+        "avgReturn": -0.015591537838150558,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 3
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 3,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 6,
+        "ema_long": 48,
+        "atr_mult": 1.25,
+        "volumeFactor": 0.9
+      },
+      "runId": "run-1763273602103",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273602103-results.json",
+      "metrics": {
+        "netPnl": -3748,
+        "winRate": 0,
+        "maxDrawdown": 3748,
+        "trades": 4,
+        "avgReturn": -0.015678233000460173,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 4
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 3,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 6,
+        "ema_long": 52,
+        "atr_mult": 0.75,
+        "volumeFactor": 1.1
+      },
+      "runId": "run-1763273626077",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273626077-results.json",
+      "metrics": {
+        "netPnl": -1598,
+        "winRate": 0,
+        "maxDrawdown": 1598,
+        "trades": 2,
+        "avgReturn": -0.015913703282734823,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 2
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 2,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 10,
+        "ema_long": 48,
+        "atr_mult": 1.25,
+        "volumeFactor": 0.7
+      },
+      "runId": "run-1763273661195",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273661195-results.json",
+      "metrics": {
+        "netPnl": -2418,
+        "winRate": 0,
+        "maxDrawdown": 2418,
+        "trades": 3,
+        "avgReturn": -0.016127830432296698,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 3
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 2,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 5,
+        "ema_long": 53,
+        "atr_mult": 2.3,
+        "volumeFactor": 0.85
+      },
+      "runId": "run-1763273779308",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273779308-results.json",
+      "metrics": {
+        "netPnl": -1646,
+        "winRate": 0,
+        "maxDrawdown": 1646,
+        "trades": 2,
+        "avgReturn": -0.01650689588948622,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 2
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 1,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 50,
+        "atr_mult": 1,
+        "volumeFactor": 0.68
+      },
+      "runId": "run-1763273826673",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273826673-results.json",
+      "metrics": {
+        "netPnl": -3349,
+        "winRate": 0,
+        "maxDrawdown": 3349,
+        "trades": 4,
+        "avgReturn": -0.016703933051275172,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 4
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 4,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 5,
+        "ema_long": 53,
+        "atr_mult": 1.2,
+        "volumeFactor": 0.65
+      },
+      "runId": "run-1763273720843",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273720843-results.json",
+      "metrics": {
+        "netPnl": -2547,
+        "winRate": 0,
+        "maxDrawdown": 2547,
+        "trades": 3,
+        "avgReturn": -0.01695904738218745,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 3
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 3,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 5,
+        "ema_long": 53,
+        "atr_mult": 1.2,
+        "volumeFactor": 0.85
+      },
+      "runId": "run-1763273732528",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273732528-results.json",
+      "metrics": {
+        "netPnl": -1716,
+        "winRate": 0,
+        "maxDrawdown": 1716,
+        "trades": 2,
+        "avgReturn": -0.017136043348233716,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 2
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 2,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 50,
+        "atr_mult": 1,
+        "volumeFactor": 0.92
+      },
+      "runId": "run-1763273838723",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273838723-results.json",
+      "metrics": {
+        "netPnl": -2609,
+        "winRate": 0,
+        "maxDrawdown": 2609,
+        "trades": 3,
+        "avgReturn": -0.017343013409293413,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 3
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 3,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 5,
+        "ema_long": 47,
+        "atr_mult": 1.8,
+        "volumeFactor": 0.85
+      },
+      "runId": "run-1763273732541",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273732541-results.json",
+      "metrics": {
+        "netPnl": -5834,
+        "winRate": 0,
+        "maxDrawdown": 5834,
+        "trades": 5,
+        "avgReturn": -0.017417157452132685,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 5
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 4,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 11,
+        "ema_long": 47,
+        "atr_mult": 1.2,
+        "volumeFactor": 1.05
+      },
+      "runId": "run-1763273744250",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273744250-results.json",
+      "metrics": {
+        "netPnl": -886,
+        "winRate": 0,
+        "maxDrawdown": 886,
+        "trades": 1,
+        "avgReturn": -0.017722481147360657,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 1
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 1,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 11,
+        "ema_long": 47,
+        "atr_mult": 1.7,
+        "volumeFactor": 0.65
+      },
+      "runId": "run-1763273756506",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273756506-results.json",
+      "metrics": {
+        "netPnl": -1812,
+        "winRate": 0,
+        "maxDrawdown": 1812,
+        "trades": 2,
+        "avgReturn": -0.018164662210036518,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 2
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 1,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 6,
+        "ema_long": 48,
+        "atr_mult": 1.25,
+        "volumeFactor": 1.1
+      },
+      "runId": "run-1763273672927",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273672927-results.json",
+      "metrics": {
+        "netPnl": -4296,
+        "winRate": 0,
+        "maxDrawdown": 4296,
+        "trades": 4,
+        "avgReturn": -0.01836888373677678,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 4
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 3,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 6,
+        "ema_long": 52,
+        "atr_mult": 1.25,
+        "volumeFactor": 0.9
+      },
+      "runId": "run-1763273649326",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273649326-results.json",
+      "metrics": {
+        "netPnl": -1891,
+        "winRate": 0,
+        "maxDrawdown": 1891,
+        "trades": 2,
+        "avgReturn": -0.01884901179867788,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 2
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 2,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 6,
+        "ema_long": 52,
+        "atr_mult": 1.25,
+        "volumeFactor": 0.9
+      },
+      "runId": "run-1763273672915",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273672915-results.json",
+      "metrics": {
+        "netPnl": -1891,
+        "winRate": 0,
+        "maxDrawdown": 1891,
+        "trades": 2,
+        "avgReturn": -0.01884901179867788,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 2
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 2,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 8,
+        "ema_long": 50,
+        "atr_mult": 1.2,
+        "volumeFactor": 0.8
+      },
+      "runId": "run-1763273826662",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273826662-results.json",
+      "metrics": {
+        "netPnl": -2868,
+        "winRate": 0,
+        "maxDrawdown": 2868,
+        "trades": 3,
+        "avgReturn": -0.019065875455987143,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 3
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 2,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 10,
+        "ema_long": 48,
+        "atr_mult": 1.25,
+        "volumeFactor": 0.9
+      },
+      "runId": "run-1763273614431",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273614431-results.json",
+      "metrics": {
+        "netPnl": -1948,
+        "winRate": 0,
+        "maxDrawdown": 1948,
+        "trades": 2,
+        "avgReturn": -0.019459662122136685,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 2
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 1,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 10,
+        "ema_long": 48,
+        "atr_mult": 1.25,
+        "volumeFactor": 1.1
+      },
+      "runId": "run-1763273626066",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273626066-results.json",
+      "metrics": {
+        "netPnl": -1948,
+        "winRate": 0,
+        "maxDrawdown": 1948,
+        "trades": 2,
+        "avgReturn": -0.019459662122136685,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 2
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 1,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 10,
+        "ema_long": 48,
+        "atr_mult": 1.25,
+        "volumeFactor": 1.1
+      },
+      "runId": "run-1763273661219",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273661219-results.json",
+      "metrics": {
+        "netPnl": -1948,
+        "winRate": 0,
+        "maxDrawdown": 1948,
+        "trades": 2,
+        "avgReturn": -0.019459662122136685,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 2
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 1,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 10,
+        "ema_long": 48,
+        "atr_mult": 1.75,
+        "volumeFactor": 0.7
+      },
+      "runId": "run-1763273649340",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273649340-results.json",
+      "metrics": {
+        "netPnl": -1976,
+        "winRate": 0,
+        "maxDrawdown": 1976,
+        "trades": 2,
+        "avgReturn": -0.019813293187390876,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 2
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 1,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 11,
+        "ema_long": 47,
+        "atr_mult": 1.7,
+        "volumeFactor": 0.85
+      },
+      "runId": "run-1763273780462",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273780462-results.json",
+      "metrics": {
+        "netPnl": -1100,
+        "winRate": 0,
+        "maxDrawdown": 1100,
+        "trades": 1,
+        "avgReturn": -0.022003080431260376,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 1
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 0,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 11,
+        "ema_long": 47,
+        "atr_mult": 1.8,
+        "volumeFactor": 0.95
+      },
+      "runId": "run-1763273720854",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273720854-results.json",
+      "metrics": {
+        "netPnl": -1143,
+        "winRate": 0,
+        "maxDrawdown": 1143,
+        "trades": 1,
+        "avgReturn": -0.02286320084811875,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 1
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 0,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 11,
+        "ema_long": 47,
+        "atr_mult": 1.8,
+        "volumeFactor": 1.35
+      },
+      "runId": "run-1763273744237",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273744237-results.json",
+      "metrics": {
+        "netPnl": -1143,
+        "winRate": 0,
+        "maxDrawdown": 1143,
+        "trades": 1,
+        "avgReturn": -0.02286320084811875,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 1
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 0,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 5,
+        "ema_long": 53,
+        "atr_mult": 1.7,
+        "volumeFactor": 1.05
+      },
+      "runId": "run-1763273768160",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273768160-results.json",
+      "metrics": {
+        "netPnl": -2526,
+        "winRate": 0,
+        "maxDrawdown": 2526,
+        "trades": 2,
+        "avgReturn": -0.02513723176917993,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 2
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 1,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 5,
+        "ema_long": 53,
+        "atr_mult": 1.7,
+        "volumeFactor": 1.05
+      },
+      "runId": "run-1763273768889",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273768889-results.json",
+      "metrics": {
+        "netPnl": -2526,
+        "winRate": 0,
+        "maxDrawdown": 2526,
+        "trades": 2,
+        "avgReturn": -0.02513723176917993,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 2
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 1,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    },
+    {
+      "config": {
+        "ema_short": 6,
+        "ema_long": 52,
+        "atr_mult": 1.75,
+        "volumeFactor": 1.1
+      },
+      "runId": "run-1763273661207",
+      "resultsPath": "D:\\chenna-trading-system-dashboard\\backend\\strategy\\output\\run-1763273661207-results.json",
+      "metrics": {
+        "netPnl": -2570,
+        "winRate": 0,
+        "maxDrawdown": 2570,
+        "trades": 2,
+        "avgReturn": -0.02557514173671188,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 2
+      },
+      "swing10": {
+        "successWithin10Days": 0,
+        "failWithin10Days": 1,
+        "expiredTrades": 0,
+        "successRateWithin10Days": 0
+      }
+    }
+  ],
+  "insights": [
+    {
+      "rank": 1,
+      "config": {
+        "ema_short": 6,
+        "ema_long": 48,
+        "atr_mult": 0.75,
+        "volumeFactor": 0.7
+      },
+      "metrics": {
+        "netPnl": -5861,
+        "winRate": 0,
+        "maxDrawdown": 5861,
+        "trades": 10,
+        "avgReturn": -0.010393601780963426,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 10
+      },
+      "runId": "run-1763273614390",
+      "note": null
+    },
+    {
+      "rank": 2,
+      "config": {
+        "ema_short": 6,
+        "ema_long": 48,
+        "atr_mult": 0.75,
+        "volumeFactor": 0.9
+      },
+      "metrics": {
+        "netPnl": -4264,
+        "winRate": 0,
+        "maxDrawdown": 4264,
+        "trades": 7,
+        "avgReturn": -0.010731224952811107,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 7
+      },
+      "runId": "run-1763273602101",
+      "note": null
+    },
+    {
+      "rank": 3,
+      "config": {
+        "ema_short": 6,
+        "ema_long": 48,
+        "atr_mult": 0.75,
+        "volumeFactor": 1.1
+      },
+      "metrics": {
+        "netPnl": -3527,
+        "winRate": 0,
+        "maxDrawdown": 3527,
+        "trades": 5,
+        "avgReturn": -0.012080303849827318,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 5
+      },
+      "runId": "run-1763273626055",
+      "note": null
+    },
+    {
+      "rank": 4,
+      "config": {
+        "ema_short": 11,
+        "ema_long": 47,
+        "atr_mult": 0.7,
+        "volumeFactor": 0.65
+      },
+      "metrics": {
+        "netPnl": -1944,
+        "winRate": 0,
+        "maxDrawdown": 1944,
+        "trades": 3,
+        "avgReturn": -0.012917574141747221,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 3
+      },
+      "runId": "run-1763273684706",
+      "note": null
+    },
+    {
+      "rank": 5,
+      "config": {
+        "ema_short": 11,
+        "ema_long": 47,
+        "atr_mult": 0.7,
+        "volumeFactor": 0.95
+      },
+      "metrics": {
+        "netPnl": -671,
+        "winRate": 0,
+        "maxDrawdown": 671,
+        "trades": 1,
+        "avgReturn": -0.01342187906306879,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 1
+      },
+      "runId": "run-1763273684701",
+      "note": null
+    }
+  ],
+  "timedOut": false,
+  "notes": []
+}

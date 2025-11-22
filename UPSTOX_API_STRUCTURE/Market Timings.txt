@@ -1,0 +1,99 @@
+Market Timings
+API to retrieve the market timings for each exchange for a particular date.
+
+Request
+curl --location 'https://api.upstox.com/v2/market/timings/2024-01-22' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+For additional samples in various languages, please refer to the Sample code section on this page.
+
+Path Parameters
+Name	Required	Type	Description
+date	true	string	The date for retrieving market timing information. Format: 'YYYY-MM-DD'.
+Responses
+200
+4XX
+Response Body
+{
+  "status": "success",
+  "data": [
+    {
+      "exchange": "MCX",
+      "start_time": 1704079800000,
+      "end_time": 1704108600000
+    },
+    {
+      "exchange": "NSE",
+      "start_time": 1704080700000,
+      "end_time": 1704103200000
+    },
+    {
+      "exchange": "NFO",
+      "start_time": 1704080700000,
+      "end_time": 1704103200000
+    },
+    {
+      "exchange": "CDS",
+      "start_time": 1704079800000,
+      "end_time": 1704108600000
+    },
+    {
+      "exchange": "BSE",
+      "start_time": 1704080700000,
+      "end_time": 1704103200000
+    },
+    {
+      "exchange": "BCD",
+      "start_time": 1704079800000,
+      "end_time": 1704108600000
+    },
+    {
+      "exchange": "BFO",
+      "start_time": 1704080700000,
+      "end_time": 1704103200000
+    }
+  ]
+}
+
+Name	Type	Description
+status	string	A string indicating the outcome of the request. Typically success for successful operations.
+data	object	Data object holding information about the market timings
+data[].exchange	string	Exchange for which the market is open. Valid exchanges can be found in the Exchange Appendix
+data[].start_time	number	Timestamp at which market will start.
+data[].end_time	number	Timestamp at which market will end.
+
+Sample Code
+Get market timings of a date
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+import requests
+
+url = 'https://api.upstox.com/v2/market/timings/2024-01-22'
+headers = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Authorization': 'Bearer {your_access_token}'
+}
+
+response = requests.get(url, headers=headers)
+
+if response.status_code == 200:
+    data = response.json()
+    # Process the JSON response
+    print(data)
+else:
+    print("Failed to retrieve data. Status code:", response.status_code)
+
+GET /market/timings/:date
+Request
+Live URL
+https://api.upstox.com/v2
+date — path required
+Date for which market timings are requested in format YYYY-MM-DD

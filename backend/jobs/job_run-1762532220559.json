@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532220559",
+  "summary": {
+    "runId": "run-1762532220559",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -565,
+    "avgReturn": -0.0039545333650629864,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 565,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "VEDL": {
+      "trades": [
+        {
+          "symbol": "VEDL",
+          "entryTs": "2025-07-12T13:45:00.000Z",
+          "entryPrice": 1428.74,
+          "exitTs": "2025-07-12T14:45:00.000Z",
+          "exitPrice": 1423.09,
+          "pnl": -565,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1424.92 vol>=5194",
+          "trace": {
+            "reason": "breakout N=1 close>=1424.92 vol>=5194"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -565,
+        "winRate": 0,
+        "maxDrawdown": 565,
+        "trades": 1,
+        "avgReturn": -0.0039545333650629864,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "VEDL",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -565
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:17:00.564Z",
+  "completedAt": "2025-11-07T16:17:00.564Z",
+  "error": null,
+  "insightsStatus": "done"
+}

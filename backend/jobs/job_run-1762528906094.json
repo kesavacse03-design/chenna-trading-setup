@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762528906094",
+  "summary": {
+    "runId": "run-1762528906094",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -622,
+    "avgReturn": -0.004659664683936742,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 622,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-09",
+    "to": "2025-07-29",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "360ONE": {
+      "trades": [
+        {
+          "symbol": "360ONE",
+          "entryTs": "2025-07-09T09:45:00.000Z",
+          "entryPrice": 1334.86,
+          "exitTs": "2025-07-09T10:45:00.000Z",
+          "exitPrice": 1328.64,
+          "pnl": -622,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1327.66 vol>=1283",
+          "trace": {
+            "reason": "breakout N=1 close>=1327.66 vol>=1283"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -622,
+        "winRate": 0,
+        "maxDrawdown": 622,
+        "trades": 1,
+        "avgReturn": -0.004659664683936742,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "360ONE",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -622
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:21:46.100Z",
+  "completedAt": "2025-11-07T15:21:46.100Z",
+  "error": null,
+  "insightsStatus": "done"
+}

@@ -1,0 +1,93 @@
+{
+  "runId": "run-1762747283472",
+  "summary": {
+    "runId": "run-1762747283472",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -3.6,
+    "avgReturn": -0.00016962089729460666,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 3.6,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-10-01",
+    "to": "2025-10-03",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "N": 1,
+      "volumeFactor": 0.5,
+      "atrStop": 0.5,
+      "targetR": 1,
+      "qty": 10
+    },
+    "swing10": {
+      "successWithin10Days": 1,
+      "failWithin10Days": 0,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 100
+    },
+    "equityCurve": [
+      -3.6
+    ]
+  },
+  "perSymbol": {
+    "SYM_X": {
+      "trades": [
+        {
+          "symbol": "SYM_X",
+          "entryTs": "2025-10-02T16:45:00.000Z",
+          "entryPrice": 2122.38,
+          "exitTs": "2025-10-02T17:45:00.000Z",
+          "exitPrice": 2122.02,
+          "pnl": -3.6,
+          "direction": "LONG",
+          "reason": "breakout N=1 hh=2120.60 vol>=4021 patterns=engulfing adxOk=true squeezeOk=true",
+          "trace": {
+            "reason": "breakout N=1 hh=2120.60 vol>=4021 patterns=engulfing adxOk=true squeezeOk=true"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -3.6,
+        "winRate": 0,
+        "maxDrawdown": 3.6,
+        "trades": 1,
+        "avgReturn": -0.00016962089729460666,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "SYM_Y": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "SYM_X",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -3.6
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-10T04:01:23.501Z",
+  "completedAt": "2025-11-10T04:01:23.501Z",
+  "error": null,
+  "insightsStatus": "done"
+}

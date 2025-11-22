@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762529051529",
+  "summary": {
+    "runId": "run-1762529051529",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -540,
+    "avgReturn": -0.0019469351995068092,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 540,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "GODREJPROP": {
+      "trades": [
+        {
+          "symbol": "GODREJPROP",
+          "entryTs": "2025-07-12T06:45:00.000Z",
+          "entryPrice": 2773.59,
+          "exitTs": "2025-07-12T07:45:00.000Z",
+          "exitPrice": 2768.19,
+          "pnl": -540,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2769.97 vol>=4049",
+          "trace": {
+            "reason": "breakout N=1 close>=2769.97 vol>=4049"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -540,
+        "winRate": 0,
+        "maxDrawdown": 540,
+        "trades": 1,
+        "avgReturn": -0.0019469351995068092,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "GODREJPROP",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -540
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:24:11.535Z",
+  "completedAt": "2025-11-07T15:24:11.535Z",
+  "error": null,
+  "insightsStatus": "done"
+}

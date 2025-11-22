@@ -1,0 +1,81 @@
+{
+  "runId": "opt-1762693950690",
+  "searchMode": "grid",
+  "combosTried": 1,
+  "results": 1,
+  "timedOut": false,
+  "topN": [
+    {
+      "rank": 1,
+      "score": 2.77,
+      "metrics": {
+        "trades": 5,
+        "netPnl": 5,
+        "avgReturn": 0.01,
+        "winRate": 50,
+        "maxDrawdown": -2
+      },
+      "config": {
+        "ema_short": 8,
+        "ema_long": 55,
+        "atr_mult": 1.2
+      },
+      "runId": "mt-meer9q",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "A",
+              "D"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 5,
+              "avgReturn": 0.01,
+              "winRate": 50,
+              "maxDrawdown": -2
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "B"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 5,
+              "avgReturn": 0.01,
+              "winRate": 50,
+              "maxDrawdown": -2
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "C"
+            ],
+            "metrics": {
+              "trades": 5,
+              "netPnl": 5,
+              "avgReturn": 0.01,
+              "winRate": 50,
+              "maxDrawdown": -2
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 15,
+          "netPnl": 15,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": -2,
+          "avgReturn": 0.01
+        }
+      }
+    }
+  ],
+  "summaryText": "Run completed cpuAvg=50% combos=1 mode=grid topExpectancy=0.0100",
+  "avgCpuPercent": 50
+}

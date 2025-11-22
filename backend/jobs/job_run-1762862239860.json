@@ -1,0 +1,193 @@
+{
+  "runId": "run-1762862239860",
+  "summary": {
+    "runId": "run-1762862239860",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -55813,
+    "avgReturn": -0.2631645951604082,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 55813,
+    "avgHoldingDays": 48,
+    "missingCount": 0,
+    "from": "2024-01-01",
+    "to": "2025-10-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "volumeFactor": 1.15
+    },
+    "swing10": {
+      "successWithin10Days": 0,
+      "failWithin10Days": 0,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 0
+    },
+    "equityCurve": [
+      -55813
+    ]
+  },
+  "perSymbol": {
+    "RELIANCE": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "HDFCBANK": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "ICICIBANK": {
+      "trades": [
+        {
+          "symbol": "ICICIBANK",
+          "entryTs": "2024-01-01T03:45:00.000Z",
+          "entryPrice": 2120.84,
+          "exitTs": "2024-02-17T18:45:00.000Z",
+          "exitPrice": 1562.71,
+          "pnl": -55813,
+          "direction": "LONG",
+          "reason": "breakout N=20 hh=-5178.24 vol>=9176 patterns=wrb adxOk=true squeezeOk=true",
+          "trace": {
+            "reason": "breakout N=20 hh=-5178.24 vol>=9176 patterns=wrb adxOk=true squeezeOk=true"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -55813,
+        "winRate": 0,
+        "maxDrawdown": 55813,
+        "trades": 1,
+        "avgReturn": -0.2631645951604082,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "INFY": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "SBIN": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "TATAMOTORS": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "LT": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "ITC": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "AXISBANK": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "TCS": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "ICICIBANK",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -55813
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-11T11:58:04.856Z",
+  "completedAt": "2025-11-11T11:58:04.856Z",
+  "error": null,
+  "insightsStatus": "done"
+}

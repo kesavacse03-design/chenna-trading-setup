@@ -1,0 +1,62 @@
+Exchange Status
+API to retrieve the market status for a particular exchange.
+
+Path Parameters
+Name	Required	Type	Description
+exchange	true	string	The unique identifier for an exchange for which market status data is being queried. For the regex pattern applicable to this field, see the Field Pattern Appendix.
+Request
+curl --location 'https://api.upstox.com/v2/market/status/NSE' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+For additional samples in various languages, please refer to the Sample code section on this page.
+
+Responses
+200
+4XX
+Response Body
+{
+  "status": "success",
+  "data": {
+    "exchange": "NSE",
+    "status": "NORMAL_OPEN",
+    "last_updated": 1705549500000
+  }
+}
+
+Name	Type	Description
+status	string	A string indicating the outcome of the request. Typically success for successful operations.
+data	object	Data object holding market status information for an exchange.
+data.exchange	string	Exchange to which the market status is associated. Valid exchanges can be found in the Exchange Appendix
+data.status	string	Current exchange status. Valid market statuses can be found in the Market Status Appendix
+data.last_updated	number	The timestamp at which the market status was last updated.
+
+Sample Code
+Get market status for a particular exchange
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+import requests
+
+url = 'https://api.upstox.com/v2/market/status/NSE'
+headers = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Authorization': 'Bearer {your_access_token}'
+}
+
+response = requests.get(url, headers=headers)
+
+print(response.json())
+
+GET /market/status/:exchange
+Request
+Live URL
+https://api.upstox.com/v2
+exchange — path required
+Exchange for which market status is requested

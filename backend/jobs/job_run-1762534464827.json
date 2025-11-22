@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762534464827",
+  "summary": {
+    "runId": "run-1762534464827",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -500,
+    "avgReturn": -0.003359763472651525,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 500,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-15",
+    "to": "2025-08-04",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "HCLTECH": {
+      "trades": [
+        {
+          "symbol": "HCLTECH",
+          "entryTs": "2025-07-31T00:00:00+05:30",
+          "entryPrice": 1488.2,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 1483.2,
+          "pnl": -500,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1466.90 vol>=1153143",
+          "trace": {
+            "reason": "breakout N=1 close>=1466.90 vol>=1153143"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -500,
+        "winRate": 0,
+        "maxDrawdown": 500,
+        "trades": 1,
+        "avgReturn": -0.003359763472651525,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "HCLTECH",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -500
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:54:24.829Z",
+  "completedAt": "2025-11-07T16:54:24.829Z",
+  "error": null,
+  "insightsStatus": "done"
+}

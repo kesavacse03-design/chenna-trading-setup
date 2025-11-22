@@ -1,0 +1,65 @@
+Upstox Generated SDK's
+Python
+Repository:
+
+pip install upstox-python-sdk
+
+NOTE
+Fields in the SDK follow snake_case formatting, e.g., trading_symbol, user_name.
+
+
+PHP
+Repository:
+
+composer require upstox/upstox-php-sdk
+
+NOTE
+Fields in the SDK follow snake_case formatting, e.g., trading_symbol, user_name.
+
+
+NodeJS
+Repository:
+
+npm install upstox-js-sdk
+
+NOTE
+Fields in the SDK follow camelCase formatting, e.g., tradingSymbol, userName.
+
+
+Java
+Repository:
+
+Include the following Maven dependency:
+
+<dependency>
+    <groupId>com.upstox.api</groupId>
+    <artifactId>upstox-java-sdk</artifactId>
+    <version>1.1.0</version>
+    <scope>compile</scope>
+</dependency>
+
+NOTE
+Fields in the SDK follow camelCase formatting, e.g., tradingSymbol, userName.
+
+
+.NET
+Repository:
+
+nuget install upstox-dotnet-sdk
+
+NOTE
+Fields in the SDK follow PascalCase formatting, e.g., TradingSymbol, UserName.
+
+
+Transition Guide for Upcoming SDK Field Deprecations
+As part of our ongoing efforts to improve the Upstox SDK, we are introducing alternate fields to replace those that will soon be deprecated. This change is designed to ensure a smoother transition and maintain the consistency of your applications. We encourage you to start using the recommended fields listed below. Both the deprecated and the new fields will be available for some time to facilitate this transition. However, please note that deprecated fields will eventually be removed. For detailed information on which fields are being deprecated, refer to the respective API documentation.
+
+API Field to be Deprecated	SDK Field to be Deprecated	Recommended SDK Field to Use	Language	APIs
+tradingsymbol	tradingsymbol	trading_symbol	Python	Multiple
+tradingsymbol	trading_symbol	PHP	Multiple
+tradingsymbol	tradingSymbol	NodeJS	Multiple
+tradingsymbol	tradingSymbol	Java	Multiple
+Tradingsymbol	TradingSymbol	.NET	Multiple
+
+Note
+In instances where a field is utilized in multiple APIs, we recommend searching through the entire documentation to identify all the APIs that make use of this field.

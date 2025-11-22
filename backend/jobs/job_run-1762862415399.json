@@ -1,0 +1,91 @@
+{
+  "runId": "run-1762862415399",
+  "summary": {
+    "runId": "run-1762862415399",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -1134,
+    "avgReturn": -0.005694772259328036,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 1134,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2024-01-01",
+    "to": "2025-10-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "atr_mult": 1.2
+    },
+    "swing10": {
+      "successWithin10Days": 0,
+      "failWithin10Days": 1,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 0
+    },
+    "equityCurve": [
+      -1134
+    ]
+  },
+  "perSymbol": {
+    "ICICIBANK": {
+      "trades": [
+        {
+          "symbol": "ICICIBANK",
+          "entryTs": "2024-01-12T10:45:00.000Z",
+          "entryPrice": 1991.3,
+          "exitTs": "2024-01-12T12:45:00.000Z",
+          "exitPrice": 1979.96,
+          "pnl": -1134,
+          "direction": "LONG",
+          "reason": "breakout N=20 hh=1985.38 vol>=8189 patterns=wrb adxOk=true squeezeOk=true",
+          "trace": {
+            "reason": "breakout N=20 hh=1985.38 vol>=8189 patterns=wrb adxOk=true squeezeOk=true"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -1134,
+        "winRate": 0,
+        "maxDrawdown": 1134,
+        "trades": 1,
+        "avgReturn": -0.005694772259328036,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "TATAMOTORS": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "AXISBANK": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [],
+  "status": "done",
+  "createdAt": "2025-11-11T12:00:19.851Z",
+  "completedAt": "2025-11-11T12:00:19.851Z",
+  "error": null
+}

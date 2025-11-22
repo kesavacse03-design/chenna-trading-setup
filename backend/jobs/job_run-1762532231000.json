@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762532231000",
+  "summary": {
+    "runId": "run-1762532231000",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -557,
+    "avgReturn": -0.005289297007796193,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 557,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "INFY": {
+      "trades": [
+        {
+          "symbol": "INFY",
+          "entryTs": "2025-07-12T07:45:00.000Z",
+          "entryPrice": 1053.07,
+          "exitTs": "2025-07-12T08:45:00.000Z",
+          "exitPrice": 1047.5,
+          "pnl": -557,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=1049.07 vol>=1455",
+          "trace": {
+            "reason": "breakout N=1 close>=1049.07 vol>=1455"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -557,
+        "winRate": 0,
+        "maxDrawdown": 557,
+        "trades": 1,
+        "avgReturn": -0.005289297007796193,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "INFY",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -557
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:17:11.004Z",
+  "completedAt": "2025-11-07T16:17:11.004Z",
+  "error": null,
+  "insightsStatus": "done"
+}

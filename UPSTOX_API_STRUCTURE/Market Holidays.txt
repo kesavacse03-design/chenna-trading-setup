@@ -1,0 +1,146 @@
+Market Holidays
+API to retrieve holidays for the current year. It also supports an optional parameter to fetch holiday details for a specific date.
+
+Path Parameters
+Name	Required	Type	Description
+date	false	string	The date for retrieving holiday information. Format: 'YYYY-MM-DD'.
+Request
+curl --location 'https://api.upstox.com/v2/market/holidays' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+For additional samples in various languages, please refer to the Sample code section on this page.
+
+Responses
+200
+Response Body
+{
+  "status": "success",
+  "data": [
+    {
+      "date": "2024-01-01",
+      "description": "New Year Day",
+      "holiday_type": "TRADING_HOLIDAY",
+      "closed_exchanges": [],
+      "open_exchanges": [
+        {
+          "exchange": "MCX",
+          "start_time": 1704079800000,
+          "end_time": 1704108600000
+        },
+        {
+          "exchange": "NSE",
+          "start_time": 1704080700000,
+          "end_time": 1704103200000
+        },
+        {
+          "exchange": "NFO",
+          "start_time": 1704080700000,
+          "end_time": 1704103200000
+        },
+        {
+          "exchange": "CDS",
+          "start_time": 1704079800000,
+          "end_time": 1704108600000
+        },
+        {
+          "exchange": "BSE",
+          "start_time": 1704080700000,
+          "end_time": 1704103200000
+        },
+        {
+          "exchange": "BCD",
+          "start_time": 1704079800000,
+          "end_time": 1704108600000
+        },
+        {
+          "exchange": "BFO",
+          "start_time": 1704080700000,
+          "end_time": 1704103200000
+        }
+      ]
+    },
+    {
+      "date": "2024-01-20",
+      "description": "Special DR Trading",
+      "holiday_type": "TRADING_HOLIDAY",
+      "closed_exchanges": ["MCX", "CDS", "BCD"],
+      "open_exchanges": [
+        {
+          "exchange": "NSE",
+          "start_time": 1705722300000,
+          "end_time": 1705734000000
+        },
+        {
+          "exchange": "NFO",
+          "start_time": 1705722300000,
+          "end_time": 1705734000000
+        },
+        {
+          "exchange": "BSE",
+          "start_time": 1705722300000,
+          "end_time": 1705734000000
+        },
+        {
+          "exchange": "BFO",
+          "start_time": 1705722300000,
+          "end_time": 1705734000000
+        }
+      ]
+    },
+    {
+      "date": "2024-01-26",
+      "description": "Republic Day",
+      "holiday_type": "TRADING_HOLIDAY",
+      "closed_exchanges": ["NFO", "CDS", "BSE", "BCD", "MCX", "NSE", "BFO"],
+      "open_exchanges": []
+    }
+  ]
+}
+
+Name	Type	Description
+status	string	A string indicating the outcome of the request. Typically success for successful operations.
+data	object	Data object holding holidays information in the current year
+data[].date	string	Date of the holiday in particular format YYYY-MM-DD
+data[].description	string	Description about the holiday
+data[].holiday_type	string	Type of the holiday.
+Possible values: SETTLEMENT_HOLIDAY, TRADING_HOLIDAY, SPECIAL_TIMING
+data[].closed_exchanges	string[]	List of exchanges for which market is close.
+data[].open_exchanges	string[]	List of exchanges for which market is open.
+data[].open_exchanges[].exchange	string	Exchange for which the market is open
+data[].open_exchanges[].start_time	number	Timestamp at which market will start.
+data[].open_exchanges[].end_time	number	Timestamp at which market will end.
+
+Sample Code
+Get market holidays for current year
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v2/market/holidays' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json'
+
+Get market holiday status of a date
+Curl
+Python
+Node.js
+Java
+PHP
+Python SDK
+Node.js SDK
+Java SDK
+curl --location 'https://api.upstox.com/v2/market/holidays/2024-01-22' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {your_access_token}'
+
+GET /market/holidays
+Request
+Live URL
+https://api.upstox.com/v2

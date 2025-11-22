@@ -1,0 +1,353 @@
+Market Data Feed Discontinued
+The Market stream feed communicates market updates(latest trading price, close price, open price, etc.) when connected over the websocket. The market data feed response requires decoding using protobuf, utilizing the provided proto file. You'll need to translate the Market Data Proto File into the appropriate format compatible with your specific programming language.
+
+Integration involves connecting to the provided endpoint using the wss: protocol through a WebSocket client, which is configured to automatically redirect to the authorized WebSocket endpoint upon authentication. Therefore, the client's configuration must be adjusted to support this automatic redirection. For example, in a Node.js client, you should enable the followRedirects setting to facilitate seamless handling of redirection.
+
+After establishing a connection, proceed by subscribing to the necessary instrumentKeys, selecting the method and mode according to your preference. Ensure that the request structure aligns with the format outlined here.
+
+NOTE
+For the 1d interval, a single candle representing the previous day is returned. In the case of I1 and I30 intervals, two candles, one for the current and one for the preceding are provided.
+
+Header Parameters
+Name	Required	Type	Description
+Authorization	true	string	Requires the format Bearer access_token where access_token is obtained from the Token API.
+Accept	true	string	Defines the content format the client expects, which should be set to */*.
+NOTE
+Over the socket, you have the capacity to subscribe to up to 100 instrumentKeys.
+
+Request structure
+{
+  "guid": "someguid",
+  "method": "sub",
+  "data": {
+    "mode": "full",
+    "instrumentKeys": ["NSE_INDEX|Nifty Bank"]
+  }
+}
+
+Field	Description
+guid	Globally unique identifier for the request.
+method	The method for the request. (Refer to the table below for possible values.)
+mode	The mode for the request. (Refer to the table below for possible values.)
+instrumentKeys	Instrument keys for which you want updates.
+Method field values
+
+Value	Description
+sub	Default mode is ltpc unless specified by user.
+change_mode	Instrument key is mandatory.
+unsub	Unsubscribe instrument key/s with further updates.
+Mode field values
+
+Value	Description
+ltpc	Provides information solely about the most recent trade, encompassing details such as the last trade price, time of the last trade, quantity traded, and the closing price from the previous day.
+option_chain	Provides specific information about a given option contract, covering LTPC, BID and ASK data at D0 Depth, as well as information on option greeks.
+full	Offers comprehensive information, including the latest trade prices, D5 depth, 1-minute, 30-minute, and daily candlestick data, along with some additional details.
+Responses
+302
+This API does not provide a typical JSON response. Instead, upon successful authentication, it automatically redirects the client to the appropriate websocket endpoint where market updates can be received in real-time. Users are expected to handle data streams as per the websocket protocol once the redirection is complete.
+
+Message Structure
+
+FO
+EQ
+Index
+Response received with mode ltpc
+
+{
+  "feeds": {
+    "NSE_FO|50201": {
+      "ltpc": {
+        "ltp": 141,
+        "ltt": "1725875999894",
+        "ltq": "25",
+        "cp": 233.95
+      }
+    }
+  },
+  "currentTs": "1725876064349"
+}
+
+Name	Type	Description
+type	string	Present in live feed, indicating the nature of the data.
+feeds	object	Includes updates for instrumentKeys requested.
+ltpc	object	Details of LTP information
+ltpc.ltp	number	Last traded price
+ltpc.ltt	string	Last traded time (Timestamp)
+ltpc.ltq	string	Last traded quantity
+ltpc.cp	number	Closed price
+feeds.currentTs	number	Timestamp of the received tick
+Response received with mode option_chain
+
+{
+  "feeds": {
+    "NSE_FO|50201": {
+      "oc": {
+        "ltpc": {
+          "ltp": 141,
+          "ltt": "1725875999894",
+          "ltq": "25",
+          "cp": 233.95
+        },
+        "bidAskQuote": {
+          "bq": 600,
+          "bp": 141,
+          "bno": 3,
+          "aq": 50,
+          "ap": 141.35,
+          "ano": 1,
+          "bidQ": "600",
+          "askQ": "50"
+        },
+        "optionGreeks": {
+          "op": 141,
+          "up": 24951.931923793596,
+          "iv": 0.127716064453125,
+          "delta": -0.5637,
+          "theta": -18.9642,
+          "gamma": 0.0014,
+          "vega": 8.9092,
+          "rho": -1.1677
+        },
+        "eFeedDetails": {
+          "atp": 189.33,
+          "cp": 233.95,
+          "vtt": "32205075",
+          "oi": 2811525,
+          "tbq": 58850,
+          "tsq": 94825,
+          "lc": 0.05,
+          "uc": 628.75,
+          "fp": 141,
+          "fv": 25,
+          "dhoi": 3375025,
+          "dloi": 2671675,
+          "poi": 3021775
+        }
+      }
+    }
+  },
+  "currentTs": "1725876528408"
+}
+
+Name	Type	Description
+type	string	Present in live feed, indicating the nature of the data.
+feeds	object	Includes updates for instrumentKeys requested.
+oc	object	Details of Option Chain
+ltpc	object	Details of LTP information
+ltpc.ltp	number	Last traded price
+ltpc.ltt	string	Last traded time (Timestamp)
+ltpc.ltq	string	Last traded quantity
+ltpc.cp	number	Closed price
+bidAskQuote.bidQ	number (int64)	Bid quantity
+bidAskQuote.bp	number	Bid price
+bidAskQuote.askQ	number (int64)	Ask quantity
+bidAskQuote.ap	number	Ask price
+optionGreeks.up	number	Underlier Price
+optionGreeks.iv	number	Implied Volatility
+optionGreeks.delta	number	Measures the rate of change of options premium based on the directional movement of the underlying
+optionGreeks.theta	number	Measures the impact on premium based on time left for expiry
+optionGreeks.gamma	number	Rate of change of delta itself
+optionGreeks.vega	number	Rate of change of premium based on change in volatility
+optionGreeks.rho	number	Measures an option's sensitivity to changes in the risk-free rate of interest
+eFeedDetails.cp	number	Close price
+eFeedDetails.tbq	number	Total buy quantity
+eFeedDetails.tsq	number	Total sell quantity
+eFeedDetails.lc	number	Lower circuit
+eFeedDetails.uc	number	Upper circuit
+feeds.currentTs	number	Timestamp of the received tick
+Response received with mode full
+
+{
+  "feeds": {
+    "NSE_FO|50201": {
+      "ff": {
+        "marketFF": {
+          "ltpc": {
+            "ltp": 141,
+            "ltt": "1725875999894",
+            "ltq": "25",
+            "cp": 233.95
+          },
+          "marketLevel": {
+            "bidAskQuote": [
+              {
+                "bq": 600,
+                "bp": 141,
+                "bno": 3,
+                "aq": 50,
+                "ap": 141.35,
+                "ano": 1,
+                "bidQ": "600",
+                "askQ": "50"
+              },
+              {
+                "bq": 625,
+                "bp": 140,
+                "bno": 5,
+                "aq": 25,
+                "ap": 141.45,
+                "ano": 1,
+                "bidQ": "625",
+                "askQ": "25"
+              },
+              {
+                "bq": 25,
+                "bp": 139.6,
+                "bno": 1,
+                "aq": 875,
+                "ap": 142,
+                "ano": 2,
+                "bidQ": "25",
+                "askQ": "875"
+              },
+              {
+                "bq": 100,
+                "bp": 139.5,
+                "bno": 2,
+                "aq": 100,
+                "ap": 142.5,
+                "ano": 1,
+                "bidQ": "100",
+                "askQ": "100"
+              },
+              {
+                "bq": 175,
+                "bp": 139,
+                "bno": 3,
+                "aq": 50,
+                "ap": 142.95,
+                "ano": 1,
+                "bidQ": "175",
+                "askQ": "50"
+              }
+            ]
+          },
+          "optionGreeks": {
+            "op": 141,
+            "up": 24951.931923793596,
+            "iv": 0.127716064453125,
+            "delta": -0.5637,
+            "theta": -18.9642,
+            "gamma": 0.0014,
+            "vega": 8.9092,
+            "rho": -1.1677
+          },
+          "marketOHLC": {
+            "ohlc": [
+              {
+                "interval": "1d",
+                "open": 260,
+                "high": 282.7,
+                "low": 136.75,
+                "close": 141,
+                "volume": 32205075,
+                "ts": "1725820200000",
+                "vol": "32205075"
+              },
+              {
+                "interval": "I1",
+                "open": 138.5,
+                "high": 144.2,
+                "low": 138.4,
+                "close": 143.75,
+                "volume": 232500,
+                "ts": "1725875880000",
+                "vol": "232500"
+              },
+              {
+                "interval": "I1",
+                "open": 143.9,
+                "high": 146.5,
+                "low": 140,
+                "close": 141,
+                "volume": 151250,
+                "ts": "1725875940000",
+                "vol": "151250"
+              },
+              {
+                "interval": "I30",
+                "open": 173.5,
+                "high": 178,
+                "low": 138.45,
+                "close": 142.55,
+                "volume": 3288600,
+                "ts": "1725873300000",
+                "vol": "3288600"
+              },
+              {
+                "interval": "I30",
+                "open": 142.65,
+                "high": 158.7,
+                "low": 136.75,
+                "close": 141,
+                "volume": 2336050,
+                "ts": "1725875100000",
+                "vol": "2336050"
+              }
+            ]
+          },
+          "eFeedDetails": {
+            "atp": 189.33,
+            "cp": 233.95,
+            "vtt": "32205075",
+            "oi": 2811525,
+            "tbq": 58850,
+            "tsq": 94825,
+            "lc": 0.05,
+            "uc": 628.75,
+            "fp": 141,
+            "fv": 25,
+            "dhoi": 3375025,
+            "dloi": 2671675,
+            "poi": 3021775
+          }
+        }
+      }
+    }
+  },
+  "currentTs": "1725876633607"
+}
+
+Name	Type	Description
+type	string	Present in live feed, indicating the nature of the data.
+feeds	object	Includes updates for instrumentKeys requested.
+ltpc.ltp	number	Last traded price
+ltpc.ltt	string	Last traded time (Timestamp)
+ltpc.ltq	string	Last traded quantity
+ltpc.cp	number	Closed price
+bidAskQuote.bidQ	number (int64)	Bid quantity
+bidAskQuote.bp	number	Bid price
+bidAskQuote.askQ	number (int64)	Ask quantity
+bidAskQuote.ap	number	Ask price
+optionGreeks.iv	number	Implied Volatality
+optionGreeks.delta	number	Measures the rate of change of options premium based on the directional movement of the underlying
+optionGreeks.theta	number	Measures the impact on premium based on time left for expiry
+optionGreeks.gamma	number	Rate of change of delta itself
+optionGreeks.vega	number	Rate of change of premium based on change in volatility
+marketOHLC.ohlc[].interval	string	Possible values: 1d, I1, I30
+Here 1d is 1 day, I1 and I30 are 1-minute and 30-minute intervals respectively.
+marketOHLC.ohlc[].open	string	Open
+marketOHLC.ohlc[].high	string	High price
+marketOHLC.ohlc[].low	string	Low price
+marketOHLC.ohlc[].close	string	Close price
+marketOHLC.ohlc[].ts	string	Timestamp
+marketOHLC.ohlc[].vol	number (int64)	volume traded
+eFeedDetails.atp	number	Average traded price
+eFeedDetails.cp	number	Close price
+eFeedDetails.vtt	string	Volume traded today
+eFeedDetails.oi	number	Open interest
+eFeedDetails.tbq	number	Total buy quantity
+eFeedDetails.tsq	number	Total sell quantity
+eFeedDetails.lc	number	Lower circuit
+eFeedDetails.uc	number	Upper circuit
+eFeedDetails.poi	number	Previous open interest
+feeds.currentTs	number	Timestamp of the received tick
+Heartbeat
+If there is no data to stream over an open WebSocket connection, the API automatically sends a standard ping frame periodically to maintain the connection's aliveness. Most standard WebSocket client libraries across various programming languages handle this automatically by responding with a pong frame, requiring no manual intervention.
+
+Notice of Deprecation
+Several fields (bidAskQuote.ano, bidAskQuote.bno, bidAskQuote.bq, and others) part of the Market Feed ticker will be deprecated starting from October 10, 2024, and will be removed in future versions. For further details, please refer to the Market Feed Changes Announcement.
+
+WSS /feed/market-data-feed
+Request
+Live URL

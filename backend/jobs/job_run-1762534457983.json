@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762534457983",
+  "summary": {
+    "runId": "run-1762534457983",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -20,
+    "avgReturn": -0.0007930214115780676,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 20,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-12",
+    "to": "2025-08-01",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "WIPRO": {
+      "trades": [
+        {
+          "symbol": "WIPRO",
+          "entryTs": "2025-07-31T00:00:00+05:30",
+          "entryPrice": 252.2,
+          "exitTs": "2025-07-30T00:00:00+05:30",
+          "exitPrice": 252,
+          "pnl": -20,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=246.90 vol>=3669382",
+          "trace": {
+            "reason": "breakout N=1 close>=246.90 vol>=3669382"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -20,
+        "winRate": 0,
+        "maxDrawdown": 20,
+        "trades": 1,
+        "avgReturn": -0.0007930214115780676,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "WIPRO",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -20
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:54:17.988Z",
+  "completedAt": "2025-11-07T16:54:17.988Z",
+  "error": null,
+  "insightsStatus": "done"
+}

@@ -1,0 +1,431 @@
+{
+  "runId": "opt-1763274573330",
+  "searchMode": "hybrid",
+  "combosTried": 2,
+  "results": 47,
+  "timedOut": false,
+  "topN": [
+    {
+      "rank": 1,
+      "score": 200.34,
+      "metrics": {
+        "netPnl": 200,
+        "winRate": 60,
+        "maxDrawdown": 0,
+        "trades": 50,
+        "avgReturn": 0.02,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      },
+      "config": {
+        "ema_short": 10,
+        "ema_long": 53,
+        "atr_mult": 1.75
+      },
+      "runId": "mockopt-4",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "S1",
+              "S4"
+            ],
+            "metrics": {
+              "netPnl": -10,
+              "winRate": 30,
+              "maxDrawdown": 0,
+              "trades": 0,
+              "avgReturn": -0.01,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "S2",
+              "S5"
+            ],
+            "metrics": {
+              "netPnl": 200,
+              "winRate": 60,
+              "maxDrawdown": 0,
+              "trades": 50,
+              "avgReturn": 0.02,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "S3",
+              "S6"
+            ],
+            "metrics": {
+              "netPnl": 200,
+              "winRate": 60,
+              "maxDrawdown": 0,
+              "trades": 50,
+              "avgReturn": 0.02,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 100,
+          "netPnl": 390,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": 0,
+          "avgReturn": 0.01
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "score": 200.34,
+      "metrics": {
+        "netPnl": 200,
+        "winRate": 60,
+        "maxDrawdown": 0,
+        "trades": 50,
+        "avgReturn": 0.02,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      },
+      "config": {
+        "ema_short": 6,
+        "ema_long": 57,
+        "atr_mult": 1.75
+      },
+      "runId": "mockopt-5",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "S1",
+              "S4"
+            ],
+            "metrics": {
+              "netPnl": -10,
+              "winRate": 30,
+              "maxDrawdown": 0,
+              "trades": 0,
+              "avgReturn": -0.01,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "S2",
+              "S5"
+            ],
+            "metrics": {
+              "netPnl": 200,
+              "winRate": 60,
+              "maxDrawdown": 0,
+              "trades": 50,
+              "avgReturn": 0.02,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "S3",
+              "S6"
+            ],
+            "metrics": {
+              "netPnl": 200,
+              "winRate": 60,
+              "maxDrawdown": 0,
+              "trades": 50,
+              "avgReturn": 0.02,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 100,
+          "netPnl": 390,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": 0,
+          "avgReturn": 0.01
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "score": 200.34,
+      "metrics": {
+        "netPnl": 200,
+        "winRate": 60,
+        "maxDrawdown": 0,
+        "trades": 50,
+        "avgReturn": 0.02,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      },
+      "config": {
+        "ema_short": 15,
+        "ema_long": 53,
+        "atr_mult": 1.25
+      },
+      "runId": "mockopt-7",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "S1",
+              "S4"
+            ],
+            "metrics": {
+              "netPnl": -10,
+              "winRate": 30,
+              "maxDrawdown": 0,
+              "trades": 0,
+              "avgReturn": -0.01,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "S2",
+              "S5"
+            ],
+            "metrics": {
+              "netPnl": 200,
+              "winRate": 60,
+              "maxDrawdown": 0,
+              "trades": 50,
+              "avgReturn": 0.02,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "S3",
+              "S6"
+            ],
+            "metrics": {
+              "netPnl": 200,
+              "winRate": 60,
+              "maxDrawdown": 0,
+              "trades": 50,
+              "avgReturn": 0.02,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 100,
+          "netPnl": 390,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": 0,
+          "avgReturn": 0.01
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "score": 200.34,
+      "metrics": {
+        "netPnl": 200,
+        "winRate": 60,
+        "maxDrawdown": 0,
+        "trades": 50,
+        "avgReturn": 0.02,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      },
+      "config": {
+        "ema_short": 15,
+        "ema_long": 57,
+        "atr_mult": 1.75
+      },
+      "runId": "mockopt-8",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "S1",
+              "S4"
+            ],
+            "metrics": {
+              "netPnl": -10,
+              "winRate": 30,
+              "maxDrawdown": 0,
+              "trades": 0,
+              "avgReturn": -0.01,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "S2",
+              "S5"
+            ],
+            "metrics": {
+              "netPnl": 200,
+              "winRate": 60,
+              "maxDrawdown": 0,
+              "trades": 50,
+              "avgReturn": 0.02,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "S3",
+              "S6"
+            ],
+            "metrics": {
+              "netPnl": 200,
+              "winRate": 60,
+              "maxDrawdown": 0,
+              "trades": 50,
+              "avgReturn": 0.02,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 100,
+          "netPnl": 390,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": 0,
+          "avgReturn": 0.01
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "score": 200.34,
+      "metrics": {
+        "netPnl": 200,
+        "winRate": 60,
+        "maxDrawdown": 0,
+        "trades": 50,
+        "avgReturn": 0.02,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      },
+      "config": {
+        "ema_short": 11,
+        "ema_long": 57,
+        "atr_mult": 1.25
+      },
+      "runId": "mockopt-10",
+      "validation3": {
+        "K": 3,
+        "folds": [
+          {
+            "index": 0,
+            "symbols": [
+              "S1",
+              "S4"
+            ],
+            "metrics": {
+              "netPnl": -10,
+              "winRate": 30,
+              "maxDrawdown": 0,
+              "trades": 0,
+              "avgReturn": -0.01,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          },
+          {
+            "index": 1,
+            "symbols": [
+              "S2",
+              "S5"
+            ],
+            "metrics": {
+              "netPnl": 200,
+              "winRate": 60,
+              "maxDrawdown": 0,
+              "trades": 50,
+              "avgReturn": 0.02,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          },
+          {
+            "index": 2,
+            "symbols": [
+              "S3",
+              "S6"
+            ],
+            "metrics": {
+              "netPnl": 200,
+              "winRate": 60,
+              "maxDrawdown": 0,
+              "trades": 50,
+              "avgReturn": 0.02,
+              "profitFactor": 0,
+              "wins": 0,
+              "losses": 0
+            }
+          }
+        ],
+        "aggregated": {
+          "trades": 100,
+          "netPnl": 390,
+          "wins": 0,
+          "losses": 0,
+          "maxDrawdown": 0,
+          "avgReturn": 0.01
+        }
+      }
+    }
+  ],
+  "summaryText": "Run completed cpuAvg=NA% combos=2 mode=hybrid topExpectancy=0.0200",
+  "avgCpuPercent": null
+}

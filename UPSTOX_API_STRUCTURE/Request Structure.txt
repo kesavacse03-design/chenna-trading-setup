@@ -1,0 +1,21 @@
+Request Structure
+Use the following structure to make requests to the Upstox API:
+
+curl -X [API_METHOD] \
+    'https://api.upstox.com/v2/[API_ENDPOINT]' \
+    -H 'accept: application/json' \
+    -H 'Authorization: Bearer [YOUR_ACCESS_TOKEN]' \
+    [CONTENT_TYPE_HEADER] \
+    [REQUEST_PAYLOAD]
+
+Placeholders:
+
+Name	Description
+[API_METHOD]	The HTTP method for your request (e.g., GET, POST, PUT, DELETE).
+[API_ENDPOINT]	The specific endpoint you're targeting (e.g., /user/profile, /order/place).
+[YOUR_ACCESS_TOKEN]	Your personal access token for authentication.
+[CONTENT_TYPE_HEADER]	Include -H Content-Type: application/json for requests that send a JSON payload. Include -H Content-Type: application/x-www-form-urlencoded for requests that send data in key-value pair format. Omit for other requests.
+[REQUEST_PAYLOAD]	For POST and PUT methods that send data, use -d '[YOUR_JSON_DATA]'. Omit for other methods.
+
+Note
+All API requests must be encoded using the Standard URL Encoding - Encodes special characters and non-ASCII characters using the percent sign and two hexadecimal digits.

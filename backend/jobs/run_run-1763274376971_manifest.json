@@ -1,0 +1,23 @@
+{
+  "runId": "run-1763274376971",
+  "from": "2025-09-01",
+  "to": "2025-09-05",
+  "interval": "day",
+  "mode": "mock",
+  "symbolsCount": 1,
+  "createdAt": "2025-11-16T06:26:18.028Z",
+  "strategyConfig": {
+    "ema_short": 8,
+    "ema_long": 55,
+    "atr_mult": 0.96,
+    "volumeFactor": 1
+  },
+  "resume": false,
+  "seed": 12345,
+  "gitCommit": "ref: refs/heads/fix/watchlist-hydration",
+  "paramGridFile": null,
+  "thresholds": {
+    "promoMinTrades": 10,
+    "promoMaxDrawdown": 50000
+  }
+}

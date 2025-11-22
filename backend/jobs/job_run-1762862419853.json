@@ -1,0 +1,104 @@
+{
+  "runId": "run-1762862419853",
+  "summary": {
+    "runId": "run-1762862419853",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -1243,
+    "avgReturn": 0.19238507970902347,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 1243,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2024-01-01",
+    "to": "2025-10-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": {
+      "volumeFactor": 0.85
+    },
+    "swing10": {
+      "successWithin10Days": 0,
+      "failWithin10Days": 1,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 0
+    },
+    "equityCurve": [
+      -1243
+    ]
+  },
+  "perSymbol": {
+    "RELIANCE": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "INFY": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "LT": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "TCS": {
+      "trades": [
+        {
+          "symbol": "TCS",
+          "entryTs": "2024-09-12T10:45:00.000Z",
+          "entryPrice": -64.61,
+          "exitTs": "2024-09-12T12:45:00.000Z",
+          "exitPrice": -77.04,
+          "pnl": -1243,
+          "direction": "LONG",
+          "reason": "breakout N=20 hh=-70.59 vol>=8617 patterns=wrb adxOk=true squeezeOk=true",
+          "trace": {
+            "reason": "breakout N=20 hh=-70.59 vol>=8617 patterns=wrb adxOk=true squeezeOk=true"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -1243,
+        "winRate": 0,
+        "maxDrawdown": 1243,
+        "trades": 1,
+        "avgReturn": 0.19238507970902347,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [],
+  "status": "done",
+  "createdAt": "2025-11-11T12:01:09.413Z",
+  "completedAt": "2025-11-11T12:01:09.413Z",
+  "error": null
+}

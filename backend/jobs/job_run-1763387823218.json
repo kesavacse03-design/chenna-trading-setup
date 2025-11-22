@@ -1,0 +1,92 @@
+{
+  "runId": "run-1763387823218",
+  "summary": {
+    "runId": "run-1763387823218",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": 50,
+    "avgReturn": 0.0004511291763283499,
+    "winRate": 100,
+    "profitFactor": 0,
+    "maxDrawdown": 0,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2024-01-01",
+    "to": "2024-12-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null,
+    "swing10": {
+      "successWithin10Days": 1,
+      "failWithin10Days": 0,
+      "expiredTrades": 0,
+      "successRateWithin10Days": 100
+    },
+    "equityCurve": [
+      50
+    ]
+  },
+  "perSymbol": {
+    "AAPL": {
+      "trades": [
+        {
+          "symbol": "AAPL",
+          "entryTs": "2024-01-01T04:45:00.000Z",
+          "entryPrice": 1108.33,
+          "exitTs": "2024-01-01T05:45:00.000Z",
+          "exitPrice": 1108.83,
+          "pnl": 50,
+          "direction": "LONG",
+          "reason": "breakout N=1 hh=1105.30 vol>=4645 patterns=none adxOk=true squeezeOk=true",
+          "trace": {
+            "reason": "breakout N=1 hh=1105.30 vol>=4645 patterns=none adxOk=true squeezeOk=true"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": 50,
+        "winRate": 100,
+        "maxDrawdown": 0,
+        "trades": 1,
+        "avgReturn": 0.0004511291763283499,
+        "profitFactor": 0,
+        "wins": 1,
+        "losses": 0
+      }
+    },
+    "MSFT": {
+      "trades": [],
+      "metrics": {
+        "netPnl": 0,
+        "winRate": 0,
+        "maxDrawdown": 0,
+        "trades": 0,
+        "avgReturn": 0,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [],
+  "status": "done",
+  "createdAt": "2025-11-17T13:57:06.813Z",
+  "completedAt": "2025-11-17T13:57:06.813Z",
+  "error": null,
+  "accuracy": 100,
+  "winRate": 100,
+  "expectancy": 0.0004511291763283499,
+  "totalPnL": 50,
+  "maxDrawdown": 0,
+  "trades": [
+    {
+      "symbol": "AAPL",
+      "entryTs": "2024-01-01T04:45:00.000Z",
+      "entryPrice": 1108.33,
+      "exitTs": "2024-01-01T05:45:00.000Z",
+      "exitPrice": 1108.83,
+      "pnl": 50
+    }
+  ],
+  "insightsStatus": "pending"
+}

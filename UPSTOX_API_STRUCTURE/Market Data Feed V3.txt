@@ -1,0 +1,149 @@
+Market Data Feed V3
+The Market Stream Feed V3 provides real-time market updates, including the latest trading price, close price, open price, and more, through a WebSocket connection. The feed utilizes Protobuf encoding, which requires decoding messages using the provided Market Data V3 Proto file.
+
+With the V3 version, significant enhancements have been introduced, offering improved stability, performance, and reliability for uninterrupted data delivery. This version also includes limitations on connections and subscriptions to ensure a stable and efficient data transmission process. These limitations are designed to optimize performance and maintain consistent feed quality.
+
+To connect to the WebSocket endpoint, use the wss: protocol. Ensure that your WebSocket client is configured to handle automatic redirection to the authorized endpoint after authentication. For example, in a Node.js client, enabling the followRedirects setting facilitates seamless handling of redirection.
+
+Once connected, you can subscribe to the required instrumentKeys by specifying the method and mode based on your needs. Ensure that the subscription request adheres to the V3 format. Incoming data from the feed must be decoded using Protobuf and the provided .proto file, properly adapted to your programming language for compatibility. The following table lists the defined limits for the feeder, which must be adhered to for uninterrupted data streaming.
+
+NOTE
+The WebSocket request message should be sent in binary format, not as a text message.
+Normal Connection and Subscription Limits
+Limit Type	Category	Individual Limit	Combined Limit
+Connection		2 connections per user	N/A
+Subscription	LTPC	5000 instrument keys	2000 instrument keys
+Option Greeks	3000 instrument keys	2000 instrument keys
+Full	2000 instrument keys	1500 instrument keys
+Connection and Subscription Limits under Upstox Plus 
+Limit Type	Category	Individual Limit	Combined Limit
+Connection		5 connections per user	N/A
+Subscription	Full D30	50 instrument keys	1500 instrument keys
+The Individual Limit refers to the maximum number of instrument keys allowed when a user subscribes to a single category. For instance, if a user subscribes only to 'LTPC', they can access up to 5000 instrument keys.
+
+The Combined Limit applies when subscriptions cover multiple categories. For example, if the same user subscribes to both 'LTPC' and 'Option Greeks', the limit for each category is set to 2000 instrument keys. This structure ensures users can efficiently manage multiple data streams within system capacity constraints.
+
+
+Header Parameters
+Name	Required	Type	Description
+Authorization	true	string	Requires the format Bearer access_token where access_token is obtained from the Token API.
+Accept	true	string	Defines the content format the client expects, which should be set to */*.
+Request structure
+{
+  "guid": "13syxu852ztodyqncwt0",
+  "method": "sub",
+  "data": {
+    "mode": "full",
+    "instrumentKeys": ["NSE_INDEX|Nifty Bank"]
+  }
+}
+
+Field	Description
+guid	Globally unique identifier for the request.
+method	The method for the request. (Refer to the table below for possible values.)
+mode	The mode for the request. (Refer to the table below for possible values.)
+instrumentKeys	Instrument keys for which you want updates.
+Method field values
+Value	Description
+sub	Default mode is ltpc unless specified by user.
+change_mode	Instrument key is mandatory.
+unsub	Unsubscribe instrument key/s with further updates.
+Mode field values
+Value	Description
+ltpc	Contains only the latest trading price (LTP) and close price (CP) changes.
+option_greeks	Contains only option greeks.
+full	Includes LTPC, 5 market level quotes, extended feed metadata, and option greeks.
+full_d30	Includes LTPC, 30 market level quotes, extended feed metadata, and option greeks.
+Responses
+302
+This API does not provide a typical JSON response. Instead, upon successful authentication, it automatically redirects the client to the appropriate websocket endpoint where market updates can be received in real-time. Users are expected to handle data streams as per the websocket protocol once the redirection is complete.
+
+The feeds are structured to ensure seamless data flow and synchronization.
+
+The first tick provides the market status, giving the current state of various market segments to ensure synchronization.
+The second tick delivers a snapshot of the current market data, offering the latest available information.
+Subsequent ticks stream live, real-time updates, ensuring clients stay updated with the latest market activity.
+
+Market Status
+The market_info is the first message sent for all feeds. It provides the real-time status of various market segments, ensuring the client is aware of the current trading conditions before streaming data. This helps synchronize the client with active segments and prevents unnecessary data processing for inactive or closed segments.
+
+{
+  "type": "market_info",
+  "currentTs": "1732775008661",
+  "marketInfo": {
+    "segmentStatus": {
+      "NSE_COM": "NORMAL_OPEN",
+      "NCD_FO": "NORMAL_OPEN",
+      "NSE_FO": "NORMAL_OPEN",
+      "BSE_EQ": "NORMAL_OPEN",
+      "BCD_FO": "NORMAL_OPEN",
+      "BSE_FO": "NORMAL_OPEN",
+      "NSE_EQ": "NORMAL_OPEN",
+      "MCX_FO": "NORMAL_OPEN",
+      "MCX_INDEX": "NORMAL_OPEN",
+      "NSE_INDEX": "NORMAL_OPEN",
+      "BSE_INDEX": "NORMAL_OPEN"
+    }
+  }
+}
+
+Name	Type	Description
+type	string	Identifies the message type as market_info.
+currentTs	string	Timestamp indicating when the message was generated.
+marketInfo	object	Contains details about the status of various market segments.
+marketInfo.segmentStatus	object	Key-value pairs where the key is the market segment and the value is its current status (e.g., NORMAL_OPEN). Valid statuses are listed in the Market Status Appendix
+
+Market Data Snapshot
+The second tick provides a snapshot of the current market data, presenting the latest state of the market at the time of connection. This ensures the client starts with an accurate and up-to-date view of market conditions. The following is a sample object for LTPC.
+
+{
+  "type": "live_feed",
+  "feeds": {
+    "NSE_FO|45450": {
+      "ltpc": {
+        "ltp": 219.3,
+        "ltt": "1740729552723",
+        "ltq": "75",
+        "cp": 494.05
+      }
+    }
+  },
+  "currentTs": "1740729566039"
+}
+
+Live Feed
+
+LTPC
+Option Greeks
+Full
+Full D30 (Plus)
+{
+  "type": "live_feed",
+  "feeds": {
+    "NSE_FO|45450": {
+      "ltpc": {
+        "ltp": 219.3,
+        "ltt": "1740729552723",
+        "ltq": "75",
+        "cp": 494.05
+      }
+    }
+  },
+  "currentTs": "1740729566039"
+}
+
+Name	Type	Description
+type	string	Present in live feed, indicating the nature of the data.
+feeds	object	Includes updates for instrumentKeys requested.
+ltpc	object	Details of LTP information
+ltpc.ltp	number	Last traded price
+ltpc.ltt	string	Last traded time (timestamp).
+ltpc.ltq	string	Last traded quantity
+ltpc.cp	number	Closed price
+feeds.currentTs	number	Timestamp of the received tick
+Heartbeat
+If there is no data to stream over an open WebSocket connection, the API automatically sends a standard ping frame periodically to maintain the connection's aliveness. Most standard WebSocket client libraries across various programming languages handle this automatically by responding with a pong frame, requiring no manual intervention.
+
+WSS /feed/market-data-feed
+Request
+Live URL

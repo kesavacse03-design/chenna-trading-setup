@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762528996596",
+  "summary": {
+    "runId": "run-1762528996596",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -601,
+    "avgReturn": -0.0026838384695421235,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 601,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-11",
+    "to": "2025-07-31",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "CROMPTON": {
+      "trades": [
+        {
+          "symbol": "CROMPTON",
+          "entryTs": "2025-07-11T11:45:00.000Z",
+          "entryPrice": 2239.33,
+          "exitTs": "2025-07-11T12:45:00.000Z",
+          "exitPrice": 2233.32,
+          "pnl": -601,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=2235.25 vol>=4008",
+          "trace": {
+            "reason": "breakout N=1 close>=2235.25 vol>=4008"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -601,
+        "winRate": 0,
+        "maxDrawdown": 601,
+        "trades": 1,
+        "avgReturn": -0.0026838384695421235,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "CROMPTON",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -601
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T15:23:16.603Z",
+  "completedAt": "2025-11-07T15:23:16.603Z",
+  "error": null,
+  "insightsStatus": "done"
+}

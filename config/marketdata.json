@@ -1,0 +1,11 @@
+{
+  "providers": ["UPSTOX", "CACHE"],
+  "thresholds": {
+    "consecutiveErrors": 5,
+    "errorRate5xx": 0.1,
+    "windowSize": 100
+  },
+  "execution": {
+    "fallbackSetsPaper": true
+  }
+}

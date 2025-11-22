@@ -1,0 +1,65 @@
+{
+  "runId": "run-1762534450227",
+  "summary": {
+    "runId": "run-1762534450227",
+    "totalTrades": 1,
+    "tradesCount": 1,
+    "totalPnL": -1125,
+    "avgReturn": -0.016119787935234275,
+    "winRate": 0,
+    "profitFactor": 0,
+    "maxDrawdown": 1125,
+    "avgHoldingDays": 0,
+    "missingCount": 0,
+    "from": "2025-07-09",
+    "to": "2025-07-29",
+    "interval": "day",
+    "mode": "mock",
+    "strategyConfig": null
+  },
+  "perSymbol": {
+    "JUBLFOOD": {
+      "trades": [
+        {
+          "symbol": "JUBLFOOD",
+          "entryTs": "2025-07-18T00:00:00+05:30",
+          "entryPrice": 697.9,
+          "exitTs": "2025-07-17T00:00:00+05:30",
+          "exitPrice": 686.65,
+          "pnl": -1125,
+          "direction": "LONG",
+          "reason": "breakout N=1 close>=681.60 vol>=274696",
+          "trace": {
+            "reason": "breakout N=1 close>=681.60 vol>=274696"
+          }
+        }
+      ],
+      "metrics": {
+        "netPnl": -1125,
+        "winRate": 0,
+        "maxDrawdown": 1125,
+        "trades": 1,
+        "avgReturn": -0.016119787935234275,
+        "profitFactor": 0,
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  },
+  "insights": [
+    {
+      "symbol": "JUBLFOOD",
+      "failure": "low_volume_breakout",
+      "suggest": "require volume > 1.5x avg",
+      "trade": {
+        "pnl": -1125
+      },
+      "samplePrior": []
+    }
+  ],
+  "status": "done",
+  "createdAt": "2025-11-07T16:54:10.232Z",
+  "completedAt": "2025-11-07T16:54:10.232Z",
+  "error": null,
+  "insightsStatus": "done"
+}

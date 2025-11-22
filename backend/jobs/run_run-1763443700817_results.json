@@ -1,0 +1,76 @@
+{
+  "runId": "run-1763443700817",
+  "symbols": [
+    "DMART"
+  ],
+  "metrics": {
+    "netPnl": 0,
+    "winRate": 0,
+    "maxDrawdown": 0,
+    "trades": 0,
+    "avgReturn": 0,
+    "profitFactor": 0,
+    "wins": 0,
+    "losses": 0
+  },
+  "perCategory": {},
+  "perSymbol": {
+    "DMART": {
+      "netPnl": 0,
+      "winRate": 0,
+      "maxDrawdown": 0,
+      "trades": 0,
+      "avgReturn": 0,
+      "profitFactor": 0,
+      "wins": 0,
+      "losses": 0
+    }
+  },
+  "swing10": {
+    "successWithin10Days": 0,
+    "failWithin10Days": 0,
+    "expiredTrades": 0,
+    "successRateWithin10Days": 0
+  },
+  "resume": false,
+  "equityCurve": [],
+  "strategyConfig": {
+    "kind": "composite",
+    "ema_short": 8,
+    "ema_long": 50,
+    "rsi_period": 14,
+    "rsi_min": 20,
+    "rsi_max": 80,
+    "atr_mult": 1.2,
+    "volumeFactor": 1,
+    "targetR": 1.2,
+    "qty": 100,
+    "usePatterns": {
+      "engulfing": false,
+      "hammer": false,
+      "doji": false
+    },
+    "enableVWAP": false,
+    "adx_min": 0,
+    "adx_period": 14,
+    "regime": "none",
+    "bb_period": 20,
+    "bb_k": 2,
+    "bb_width": 0.03,
+    "stoch_mode": "none",
+    "stoch_k": 14,
+    "stoch_d": 3,
+    "stoch_kMin": 0,
+    "stoch_kMax": 100,
+    "enableSupertrend": false,
+    "supertrend_period": 10,
+    "supertrend_mult": 3,
+    "atrStop": 1
+  },
+  "missing": [
+    {
+      "symbol": "DMART",
+      "reason": "upstox-failed: no-data"
+    }
+  ]
+}
