@@ -99,7 +99,7 @@ class PriceService {
     }
 
     // Fetch historical candles from Upstox
-    async fetchFromUpstox(instrumentKey, fromDate, toDate, interval = '1day') {
+    async fetchFromUpstox(instrumentKey, fromDate, toDate, interval = 'day') {
         await this.rateLimiter.waitIfNeeded();
 
         const token = await this.getAccessToken();
@@ -218,7 +218,7 @@ class PriceService {
     }
 
     // Smart fetch with caching and delta updates
-    async fetchPrice(symbol, instrumentKey, fromDate, toDate, interval = '1day') {
+    async fetchPrice(symbol, instrumentKey, fromDate, toDate, interval = 'day') {
         // 1. Check full cache first
         const cached = await this.getFromCache(symbol, fromDate, toDate, interval);
         if (cached) {

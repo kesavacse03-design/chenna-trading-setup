@@ -1064,6 +1064,141 @@ app.get('/api/health', (req, res) => {
   res.json({ ok: true, status: 'running', timestamp: new Date().toISOString() });
 });
 
+// ========== OPTIMIZATION API ENDPOINTS ==========
+const AdvancedOptimizer = require('./optimization/advancedOptimizer.cjs');
+
+// Store active optimization jobs
+const optimizationJobs = new Map();
+
+// Start optimization
+app.post('/api/optimize/start', async (req, res) => {
+  try {
+    const { category = 'LONGTERM SWING BO UP' } = req.body;
+    const jobId = `opt_${Date.now()}`;
+
+    console.log(`[Optimization] Starting job ${jobId} for category: ${category}`);
+
+    // Create optimizer instance
+    const optimizer = new AdvancedOptimizer(category);
+
+    // Store job
+    optimizationJobs.set(jobId, {
+      status: 'RUNNING',
+      progress: 0,
+      total: 0,
+      phase: 'STARTING',
+      message: 'Initializing...',
+      startTime: new Date(),
+      optimizer
+    });
+
+    // Set progress callback
+    optimizer.setProgressCallback((progress) => {
+      const job = optimizationJobs.get(jobId);
+      if (job) {
+        job.status = progress.phase === 'COMPLETE' ? 'COMPLETE' : 'RUNNING';
+        job.progress = progress.progress;
+        job.total = progress.total;
+        job.phase = progress.phase;
+        job.message = progress.message;
+        if (progress.bestStrategy) {
+          job.result = progress.bestStrategy;
+        }
+      }
+    });
+
+    // Run optimization in background
+    optimizer.optimize()
+      .then(async (bestStrategy) => {
+        const job = optimizationJobs.get(jobId);
+        if (job) {
+          job.status = 'COMPLETE';
+          job.result = bestStrategy;
+          job.completedAt = new Date();
+
+          // Auto-generate strategy code
+          const filename = await optimizer.generateStrategyCode(bestStrategy);
+          job.generatedFile = filename;
+
+          console.log(`[Optimization] Job ${jobId} completed. Accuracy: ${bestStrategy.accuracy.toFixed(2)}%`);
+        }
+      })
+      .catch((error) => {
+        const job = optimizationJobs.get(jobId);
+        if (job) {
+          job.status = 'ERROR';
+          job.error = error.message;
+          console.error(`[Optimization] Job ${jobId} failed:`, error.message);
+        }
+      });
+
+    res.json({ ok: true, jobId, message: 'Optimization started' });
+
+  } catch (error) {
+    console.error('[POST /api/optimize/start] Error:', error);
+    res.status(500).json({ ok: false, error: error.message });
+  }
+});
+
+// Get optimization status
+app.get('/api/optimize/status/:jobId', (req, res) => {
+  try {
+    const { jobId } = req.params;
+    const job = optimizationJobs.get(jobId);
+
+    if (!job) {
+      return res.status(404).json({ ok: false, error: 'Job not found' });
+    }
+
+    res.json({
+      ok: true,
+      jobId,
+      status: job.status,
+      progress: job.progress,
+      total: job.total,
+      phase: job.phase,
+      message: job.message,
+      startTime: job.startTime,
+      completedAt: job.completedAt
+    });
+
+  } catch (error) {
+    console.error('[GET /api/optimize/status] Error:', error);
+    res.status(500).json({ ok: false, error: error.message });
+  }
+});
+
+// Get optimization results
+app.get('/api/optimize/results/:jobId', (req, res) => {
+  try {
+    const { jobId } = req.params;
+    const job = optimizationJobs.get(jobId);
+
+    if (!job) {
+      return res.status(404).json({ ok: false, error: 'Job not found' });
+    }
+
+    if (job.status !== 'COMPLETE') {
+      return res.status(400).json({ ok: false, error: 'Optimization not complete' });
+    }
+
+    res.json({
+      ok: true,
+      jobId,
+      result: job.result,
+      generatedFile: job.generatedFile,
+      duration: (new Date(job.completedAt) - new Date(job.startTime)) / 1000
+    });
+
+  } catch (error) {
+    console.error('[GET /api/optimize/results] Error:', error);
+    res.status(500).json({ ok: false, error: error.message });
+  }
+});
+
+// ========== END OPTIMIZATION API ==========
+
+
 // Start server
 app.listen(PORT, () => {
   console.log(`[CTS] backend listening on http://localhost:${PORT}`);

@@ -24,8 +24,8 @@ class DownsideLomSwingStrategy {
             riskRewardValid: false
         };
 
-        // 1. Volume Confirmation (2x average)
-        filters.volumeConfirmation = TA.isVolumeSpike(currentCandle, candles.slice(0, idx), 2);
+        // 1. Volume Confirmation (1.5x average - relaxed from 2x)
+        filters.volumeConfirmation = TA.isVolumeSpike(currentCandle, candles.slice(0, idx), 1.5);
 
         // 2. No Recent Fake Breakout
         const swingLevels = TA.getSwingHighLow(candles.slice(0, idx));
@@ -42,11 +42,11 @@ class DownsideLomSwingStrategy {
         const trend = TA.getTrend(candles.slice(0, idx), 20);
         filters.trendAlignment = trend === 'DOWNTREND' || trend === 'SIDEWAYS';
 
-        // 4. Strong Momentum (RSI not oversold/overbought extremes)
+        // 4. Strong Momentum (RSI widened range - relaxed from 25-55)
         const rsi = TA.calculateRSI(candles.slice(0, idx + 1), 14);
         if (rsi) {
-            // For bullish reversal: RSI between 30-50 (oversold but recovering)
-            filters.strongMomentum = rsi > 25 && rsi < 55;
+            // For bullish reversal: RSI between 20-60 (more lenient)
+            filters.strongMomentum = rsi > 20 && rsi < 60;
         }
 
         // 5. Risk/Reward Validation (will be checked in getEntrySignal)
@@ -73,10 +73,10 @@ class DownsideLomSwingStrategy {
             return null; // No pattern
         }
 
-        // 2. Price above short-term moving average (20 EMA)
+        // 2. Price above short-term moving average (20 EMA) - more lenient
         const ema20 = TA.calculateEMA(candles.slice(0, idx + 1), 20);
-        if (!ema20 || currentCandle.close < ema20 * 0.98) {
-            return null; // Not above EMA
+        if (!ema20 || currentCandle.close < ema20 * 0.95) {
+            return null; // Not above EMA (95% tolerance, relaxed from 98%)
         }
 
         // 3. Check anti-trap filters
