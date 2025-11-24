@@ -284,7 +284,7 @@ class AdvancedOptimizer {
 
         // Calculate entry/target/SL
         const atr = EnhancedTA.calculateATR(candles.slice(0, idx + 1), 14);
-        const sw ingLow = EnhancedTA.getSwingHighLow(candles.slice(0, idx), 10).low;
+        const swingLow = EnhancedTA.getSwingHighLow(candles.slice(0, idx), 10).low;
 
         const entry = candle.close;
         const stopLoss = swingLow || (entry - (atr * 1.5));

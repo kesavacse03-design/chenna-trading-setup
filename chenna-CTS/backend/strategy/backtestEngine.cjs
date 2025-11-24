@@ -8,8 +8,14 @@ const DownsideLomSwingStrategy = require('./downsideLomSwingStrategy.cjs');
 const prisma = new PrismaClient();
 
 class BacktestEngine {
-    constructor() {
+    constructor(category) {
+        this.category = category;
         this.strategy = new DownsideLomSwingStrategy();
+    }
+
+    // Main entry point for running backtest
+    async run(options = {}) {
+        return await this.backtestCategory(this.category, options);
     }
 
     // Main backtest function for a category

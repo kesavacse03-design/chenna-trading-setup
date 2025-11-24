@@ -15,14 +15,14 @@ import priceService, { getCachedPrice } from '../utils/priceService';
 import { readLocks, writeLock, isLocked } from '../utils/categoryLocks';
 // simple per-category time filter persistence
 const TIME_FILTERS_KEY = 'cts_timeFilters';
-type TimeRange = '1_DAY' | '15_DAYS' | '30_DAYS' | 'ALL';
+type TimeRange = '1_DAY' | '10_DAYS' | '15_DAYS' | '30_DAYS' | 'ALL';
 function readTimeFilters(): Record<string, TimeRange> {
     try { const raw = localStorage.getItem(TIME_FILTERS_KEY); return raw ? JSON.parse(raw) : {}; } catch (_) { return {}; }
 }
 function writeTimeFilter(categoryKey: string, value: TimeRange) {
     try { const cur = readTimeFilters(); cur[categoryKey] = value; localStorage.setItem(TIME_FILTERS_KEY, JSON.stringify(cur)); } catch (_) { }
 }
-function getTimeFilterFor(categoryKey: string): TimeRange { try { const cur = readTimeFilters(); return (cur[categoryKey] as TimeRange) || 'ALL'; } catch (_) { return 'ALL'; } }
+function getTimeFilterFor(categoryKey: string): TimeRange { try { const cur = readTimeFilters(); return (cur[categoryKey] as TimeRange) || '10_DAYS'; } catch (_) { return '10_DAYS'; } }
 
 interface AnalysisHubProps {
     watchlist: GroupedWatchlist;
@@ -41,17 +41,42 @@ const isStockExpired = (stock: StockData): boolean => {
 
 const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate, onManageStrategy }) => {
     const [isImportModalOpen, setIsImportModalOpen] = useState(false);
-    // removed activePage tabs; main category filter handles view
     const [searchTerm, setSearchTerm] = useState('');
     const [filter, setFilter] = useState<'ALL' | 'SWING' | 'INTRADAY'>('ALL');
-
-    // local copy for optimistic updates
     const [localWatchlist, setLocalWatchlist] = useState<GroupedWatchlist>(watchlist);
     const [toast, setToast] = useState<string | null>(null);
     const [importReport, setImportReport] = useState<any | null>(null);
     const [isImportReportOpen, setImportReportOpen] = useState(false);
 
-    // removed automatic mirror so mapping logic below controls localWatchlist contents
+    // Live prices from backend API
+    const [livePrices, setLivePrices] = useState<Record<string, { ltp: number; updatedAt: string }>>({});
+    const [lastPriceUpdate, setLastPriceUpdate] = useState<string | null>(null);
+    const [marketStatus, setMarketStatus] = useState<any>(null);
+
+    // Fetch live prices from backend API
+    const fetchLivePrices = React.useCallback(async () => {
+        try {
+            const response = await fetch('http://localhost:3001/api/live-prices');
+            if (!response.ok) return;
+            const data = await response.json();
+            if (data.ok && data.prices) {
+                setLivePrices(data.prices);
+                setLastPriceUpdate(data.lastUpdate);
+                setMarketStatus(data.marketStatus);
+                console.log('[LivePrices] Updated:', Object.keys(data.prices).length, 'prices');
+                if (data.marketStatus) console.log('[Market]', data.marketStatus.message);
+            }
+        } catch (error) {
+            console.error('[LivePrices] Fetch failed:', error);
+        }
+    }, []);
+
+    // Fetch prices on mount and every 5 minutes
+    useEffect(() => {
+        fetchLivePrices(); // Initial fetch
+        const interval = setInterval(fetchLivePrices, 5 * 60 * 1000); // Every 5 minutes
+        return () => clearInterval(interval);
+    }, [fetchLivePrices]);
 
     // helper to build an empty canonical watchlist merged with any persisted content
     const getBaseWatchlist = () => {
@@ -246,23 +271,31 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
             const timeFilter = getTimeFilterFor(category);
             const now = new Date();
             const inTimeRange = (s: any) => {
-                const dtStr = s.addedDate || s.date || null;
-                if (!dtStr) return true; // keep if no date metadata
+                // Use date field (the actual import date) if addedDate is missing
+                const dtStr = s.date || s.addedDate || null;
+                if (!dtStr) return false; // Hide stocks with no date
                 const dt = new Date(dtStr);
-                if (Number.isNaN(dt.getTime())) return true;
+                if (Number.isNaN(dt.getTime())) return false; // Hide invalid dates
                 if (timeFilter === 'ALL') return true;
                 const diffMs = now.getTime() - dt.getTime();
                 const days = diffMs / (1000 * 60 * 60 * 24);
                 if (timeFilter === '1_DAY') return days <= 1;
+                if (timeFilter === '10_DAYS') return days <= 10;
                 if (timeFilter === '15_DAYS') return days <= 15;
                 if (timeFilter === '30_DAYS') return days <= 30;
-                return true;
+                return false; // Default: hide if doesn't match any filter
             };
 
             const activeAndFilteredStocks = deduped
                 .filter(s => !isStockExpired(s))
                 .filter(s => (s.stockName || '').toLowerCase().includes(lowerCaseSearchTerm))
-                .filter(s => inTimeRange(s));
+                .filter(s => inTimeRange(s))
+                .sort((a, b) => {
+                    // Sort by date descending (newest first)
+                    const dateA = new Date(a.date || a.addedDate || 0).getTime();
+                    const dateB = new Date(b.date || b.addedDate || 0).getTime();
+                    return dateB - dateA;
+                });
             // push one block per category from the chosen page
             content.push({ page: chosenPage, category, stocks: activeAndFilteredStocks });
         }
@@ -401,10 +434,11 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
                                                 <div className="flex items-center gap-2">
                                                     <label className="text-slate-300 text-xs">Time</label>
                                                     <select aria-label={`Time filter for ${category}`} value={getTimeFilterFor(category)} onChange={(e) => { writeTimeFilter(category, e.target.value as any); setLocalWatchlist(s => JSON.parse(JSON.stringify(s))); }} className="manual-import-select text-xs bg-slate-700/50 border border-slate-600 rounded px-2 py-1">
-                                                        <option value="ALL">All</option>
+                                                        <option value="10_DAYS">10 Days (Default)</option>
                                                         <option value="1_DAY">1 Day</option>
                                                         <option value="15_DAYS">15 Days</option>
                                                         <option value="30_DAYS">30 Days</option>
+                                                        <option value="ALL">📂 Show All Data</option>
                                                     </select>
                                                 </div>
                                                 {/* Live price controls: interval, refresh, toggle */}
@@ -477,12 +511,36 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
                                                             <div className="col-span-5 font-mono text-slate-200 truncate">{stock.stockName}</div>
                                                             <div className="col-span-4 text-right text-slate-300" data-symbol={stock.stockName}>
                                                                 {(() => {
+                                                                    // Use live prices from backend API
+                                                                    const livePrice = livePrices[stock.stockName];
+                                                                    const isMarketOpen = marketStatus?.isOpen !== false;
+
+                                                                    if (livePrice && livePrice.ltp) {
+                                                                        // Green when market open, Blue when closed
+                                                                        const priceColor = isMarketOpen ? 'text-green-400' : 'text-blue-400';
+                                                                        return (
+                                                                            <div className="text-right">
+                                                                                <div className={`${priceColor} font-medium`}>₹{livePrice.ltp.toFixed(2)}</div>
+                                                                                <div className="text-xs text-slate-400">
+                                                                                    {new Date(livePrice.updatedAt).toLocaleTimeString('en-IN', {
+                                                                                        hour: '2-digit',
+                                                                                        minute: '2-digit'
+                                                                                    })}
+                                                                                    {!isMarketOpen && <span className="ml-1 text-blue-400">●</span>}
+                                                                                </div>
+                                                                            </div>
+                                                                        );
+                                                                    }
+
+                                                                    // Fallback to old cached price if live price not available
                                                                     const p = getCachedPrice(stock.stockName);
-                                                                    if (!p) return (<span className="text-slate-500">—</span>);
-                                                                    return (<div className="text-right">
-                                                                        <div className="text-white font-medium">{typeof p.price === 'number' ? p.price.toFixed(2) : '—'}</div>
-                                                                        <div className="text-xs text-slate-400">{p.ts ? new Date(p.ts).toLocaleTimeString() : '—'}</div>
-                                                                    </div>);
+                                                                    if (!p) return <span className="text-slate-500">—</span>;
+                                                                    return (
+                                                                        <div className="text-right">
+                                                                            <div className="text-slate-400 font-medium">{typeof p.price === 'number' ? p.price.toFixed(2) : '—'}</div>
+                                                                            <div className="text-xs text-slate-500">{p.ts ? new Date(p.ts).toLocaleTimeString() : '—'}</div>
+                                                                        </div>
+                                                                    );
                                                                 })()}
                                                             </div>
                                                             <div className="col-span-2 text-right text-slate-400">{stock.date ? (stock.date.length === 10 ? stock.date : new Date(stock.date).toISOString().slice(0, 10)) : (new Date().toISOString().slice(0, 10))}</div>
@@ -509,41 +567,45 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
                             <UploadIcon className="w-4 h-4 mr-2" />Import Data
                         </button>
                     </div>
-                </div>
-            </DashboardCard>
+                </div >
+            </DashboardCard >
             <ManualImport
                 isOpen={isImportModalOpen}
                 onClose={() => setIsImportModalOpen(false)}
                 onImport={(payload) => onWatchlistUpdate(payload as any)}
             />
-            {toast && (
-                <div onClick={() => { setImportReportOpen(true); }} className="fixed bottom-4 right-4 cursor-pointer bg-slate-800 border border-slate-700 text-slate-200 px-4 py-2 rounded shadow-lg">
-                    {toast}
-                </div>
-            )}
-            {isImportReportOpen && importReport && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-6">
-                    <div className="absolute inset-0 bg-black/60" onClick={() => setImportReportOpen(false)} />
-                    <div className="relative bg-slate-900 rounded-lg border border-slate-700 shadow-lg p-4 w-[min(700px,90vw)]">
-                        <div className="flex items-center justify-between mb-2">
-                            <div className="text-slate-100 font-semibold">Import Report</div>
-                            <button onClick={() => setImportReportOpen(false)} className="px-2 py-1">✕</button>
-                        </div>
-                        <div className="text-sm text-slate-300 mb-2">{importReport.toastMessage || ''}</div>
-                        <div className="text-xs text-slate-200">
-                            <div>Total: {importReport.total ?? 0}</div>
-                            <div>Added: {importReport.added ?? 0}</div>
-                            <div>Skipped: {importReport.skipped ?? 0}</div>
-                        </div>
-                        <div className="mt-3 text-xs text-slate-300">
-                            <div className="font-medium">Per-category added:</div>
-                            <ul className="list-disc list-inside">
-                                {Object.entries((importReport.perCategoryAdded || {}) as Record<string, number>).map(([k, v]) => (<li key={k}>{k.replace(/_/g, ' ')}: {v}</li>))}
-                            </ul>
+            {
+                toast && (
+                    <div onClick={() => { setImportReportOpen(true); }} className="fixed bottom-4 right-4 cursor-pointer bg-slate-800 border border-slate-700 text-slate-200 px-4 py-2 rounded shadow-lg">
+                        {toast}
+                    </div>
+                )
+            }
+            {
+                isImportReportOpen && importReport && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-6">
+                        <div className="absolute inset-0 bg-black/60" onClick={() => setImportReportOpen(false)} />
+                        <div className="relative bg-slate-900 rounded-lg border border-slate-700 shadow-lg p-4 w-[min(700px,90vw)]">
+                            <div className="flex items-center justify-between mb-2">
+                                <div className="text-slate-100 font-semibold">Import Report</div>
+                                <button onClick={() => setImportReportOpen(false)} className="px-2 py-1">✕</button>
+                            </div>
+                            <div className="text-sm text-slate-300 mb-2">{importReport.toastMessage || ''}</div>
+                            <div className="text-xs text-slate-200">
+                                <div>Total: {importReport.total ?? 0}</div>
+                                <div>Added: {importReport.added ?? 0}</div>
+                                <div>Skipped: {importReport.skipped ?? 0}</div>
+                            </div>
+                            <div className="mt-3 text-xs text-slate-300">
+                                <div className="font-medium">Per-category added:</div>
+                                <ul className="list-disc list-inside">
+                                    {Object.entries((importReport.perCategoryAdded || {}) as Record<string, number>).map(([k, v]) => (<li key={k}>{k.replace(/_/g, ' ')}: {v}</li>))}
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )
+            }
         </>
     );
 };

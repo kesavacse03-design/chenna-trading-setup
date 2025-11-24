@@ -1064,6 +1064,64 @@ app.get('/api/health', (req, res) => {
   res.json({ ok: true, status: 'running', timestamp: new Date().toISOString() });
 });
 
+// ========== LIVE PRICE API ENDPOINTS ==========
+const livePriceService = require('./services/livePriceService.cjs');
+
+// Get all live prices
+app.get('/api/live-prices', (req, res) => {
+  try {
+    const data = livePriceService.getAllPrices();
+    res.json({
+      ok: true,
+      ...data
+    });
+  } catch (error) {
+    console.error('[API] Live prices error:', error);
+    res.status(500).json({ ok: false, error: error.message });
+  }
+});
+
+// Manually trigger price refresh
+app.post('/api/live-prices/refresh', async (req, res) => {
+  try {
+    console.log('[API] Manual price refresh requested');
+    await livePriceService.updateAllPrices();
+    const data = livePriceService.getAllPrices();
+    res.json({
+      ok: true,
+      message: 'Prices refreshed successfully',
+      ...data
+    });
+  } catch (error) {
+    console.error('[API] Refresh error:', error);
+    res.status(500).json({ ok: false, error: error.message });
+  }
+});
+
+// Configure update interval
+app.post('/api/live-prices/config', (req, res) => {
+  try {
+    const { intervalMinutes } = req.body;
+    if (!intervalMinutes || intervalMinutes < 1) {
+      return res.status(400).json({ ok: false, error: 'Invalid interval' });
+    }
+    livePriceService.setUpdateInterval(intervalMinutes);
+    res.json({
+      ok: true,
+      message: `Update interval set to ${intervalMinutes} minutes`
+    });
+  } catch (error) {
+    res.status(500).json({ ok: false, error: error.message });
+  }
+});
+
+// Start live price service on server startup
+livePriceService.start().catch(err => {
+  console.error('[Server] Failed to start live prices:', err);
+});
+
+
+
 // ========== OPTIMIZATION API ENDPOINTS ==========
 const AdvancedOptimizer = require('./optimization/advancedOptimizer.cjs');
 
@@ -1137,6 +1195,98 @@ app.post('/api/optimize/start', async (req, res) => {
   } catch (error) {
     console.error('[POST /api/optimize/start] Error:', error);
     res.status(500).json({ ok: false, error: error.message });
+  }
+});
+
+// Composite optimizer endpoint (for Strategy Workbench "Sanity Check")
+app.post('/api/optimize/composite', async (req, res) => {
+  try {
+    const { symbols, from, to, categoryKey, mode = 'upstox', pool, limits, threshold } = req.body;
+
+    console.log(`[Composite Optimizer] Starting for ${categoryKey} with ${symbols?.length || 0} symbols`);
+
+    if (!symbols || symbols.length === 0) {
+      return res.json({
+        ok: false,
+        categoryKey,
+        candidates: 0,
+        ranked: [],
+        error: 'No symbols provided'
+      });
+    }
+
+    // Import BacktestEngine
+    const BacktestEngine = require('./strategy/backtestEngine.cjs');
+
+    // Run backtest to get actual results
+    const engine = new BacktestEngine(categoryKey);
+    const backtestResult = await engine.run();
+
+    console.log(`[Composite Optimizer] Backtest complete:`, {
+      totalStocks: backtestResult.totalStocks,
+      totalTrades: backtestResult.totalTrades,
+      accuracy: backtestResult.accuracy
+    });
+
+    // Convert backtest result to ranked candidate format
+    const config = {
+      ema_short: 20,
+      ema_long: 50,
+      rsi_period: 14,
+      rsi_min: 30,
+      rsi_max: 70,
+      atr_mult: 1.5,
+      volumeFactor: 1.5,
+      targetR: 2.0,
+      patterns: 'all'
+    };
+
+    const metrics = {
+      winRate: parseFloat(backtestResult.accuracy) / 100,
+      avgReturn: parseFloat(backtestResult.avgProfit) / 100,
+      netPnl: backtestResult.totalTrades * (parseFloat(backtestResult.avgProfit) / 100) * 100, // Rough estimate
+      maxDrawdown: 0.15, // Placeholder
+      trades: backtestResult.totalTrades
+    };
+
+    const candidate = {
+      config,
+      metrics,
+      trades: backtestResult.trades || []
+    };
+
+    // Check if meets threshold
+    const meetsThreshold = threshold
+      ? (metrics.winRate * 100) >= (threshold.minAccuracyPct || 70) && metrics.avgReturn >= (threshold.minExpectancy || 0)
+      : true;
+
+    const response = {
+      ok: true,
+      categoryKey,
+      candidates: 1,
+      ranked: [candidate],
+      selected: meetsThreshold ? candidate : null,
+      persisted: false,
+      message: `Backtest completed: ${backtestResult.totalTrades} trades, ${backtestResult.accuracy} accuracy`
+    };
+
+    console.log(`[Composite Optimizer] Returning ranked results:`, {
+      candidates: response.candidates,
+      selected: !!response.selected,
+      winRate: (metrics.winRate * 100).toFixed(1) + '%'
+    });
+
+    res.json(response);
+
+  } catch (error) {
+    console.error('[POST /api/optimize/composite] Error:', error);
+    res.status(500).json({
+      ok: false,
+      categoryKey: req.body.categoryKey,
+      candidates: 0,
+      ranked: [],
+      error: error.message
+    });
   }
 });
 
