@@ -111,50 +111,72 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
         }
     };
 
-    // Handle Run Backtest
+    // Handle Run Backtest - Now triggers AUTO-STRATEGY GENERATION
     const handleRunBacktest = async () => {
         setIsRunningBacktest(true);
-        setBacktestProgress(0);
+        setBacktestProgress(10);
         setEventReport(null);
 
         try {
-            // Start backtest
-            const startResp = await startBacktest(categoryKey);
-            if (!startResp.ok || !startResp.jobId) {
-                throw new Error(startResp.error || 'Failed to start backtest');
+            const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:5174';
+
+            showToast('Analyzing stocks and generating strategy...', 'info');
+            setBacktestProgress(30);
+
+            // Call auto-generation API
+            const response = await fetch(`${apiBase}/api/strategy/auto-generate`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    categoryKey,
+                    minAccuracy: 0.70,
+                    mode: 'upstox'
+                })
+            });
+
+            setBacktestProgress(70);
+
+            const result = await response.json();
+
+            if (!result.ok) {
+                throw new Error(result.error || 'Failed to generate strategy');
             }
 
-            const jobId = startResp.jobId;
-            showToast('Backtest started...', 'info');
+            setBacktestProgress(90);
 
-            // Poll for status
-            let done = false;
-            while (!done) {
-                await new Promise(resolve => setTimeout(resolve, 1000));
-
-                const statusResp = await getBacktestStatus(jobId);
-                if (!statusResp.ok) break;
-
-                if (statusResp.status === 'done') {
-                    done = true;
-                    const resultResp = await getBacktestResult(jobId);
-                    if (resultResp.ok && resultResp.result) {
-                        setEventReport(resultResp.result);
-                        showToast('Backtest completed!', 'success');
-                    }
-                } else if (statusResp.status === 'error' || statusResp.status === 'cancelled') {
-                    throw new Error(statusResp.message || 'Backtest failed');
-                } else {
-                    // Update progress
-                    const progress = statusResp.progress && statusResp.total
-                        ? (statusResp.progress / statusResp.total) * 100
-                        : 10;
-                    setBacktestProgress(Math.min(progress, 99));
-                }
+            // Update editor with generated strategy
+            if (result.strategy) {
+                setEditorLogic({
+                    description: result.strategy.description,
+                    rules: result.strategy.rules,
+                    entry: result.strategy.entry,
+                    target: result.strategy.target,
+                    stopLoss: result.strategy.stopLoss
+                });
             }
+
+            // Display backtest results
+            if (result.backtest) {
+                setEventReport({
+                    categoryKey,
+                    accuracy: result.backtest.accuracy,
+                    totalTrades: result.backtest.totalTrades,
+                    totalNetPnl: result.backtest.netPnl,
+                    expectancy: result.backtest.expectancy,
+                    maxDrawdown: result.backtest.maxDrawdown,
+                    avgRMultiple: result.backtest.avgRMultiple
+                });
+            }
+
+            setBacktestProgress(100);
+            showToast(
+                `Strategy generated! ${(result.backtest.accuracy * 100).toFixed(1)}% accuracy with ${result.backtest.totalTrades} trades`,
+                'success'
+            );
+
         } catch (error) {
             const errorMsg = error instanceof Error ? error.message : 'Unknown error';
-            showToast(`Backtest failed: ${errorMsg}`, 'error');
+            showToast(`Generation failed: ${errorMsg}`, 'error');
         } finally {
             setIsRunningBacktest(false);
             setBacktestProgress(0);
