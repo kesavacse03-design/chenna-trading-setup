@@ -182,14 +182,55 @@ const StrategyWorkbenchModal: React.FC<StrategyWorkbenchModalProps> = ({ isOpen,
 
     const handleSanityCheck = async () => {
         setIsLoading(true);
-        // This is a placeholder as the real check requires the backend AI.
-        setTimeout(() => {
+        setSanityCheckResults([]);
+
+        try {
+            // Get API base from window config
+            const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:5174';
+
+            // Call backend validation API
+            const response = await fetch(`${apiBase}/api/ai/validate-signal`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    strategy: editorLogic,
+                    categoryKey,
+                    marketConditions: {
+                        // We could fetch live data here, but for now use static check
+                        timestamp: new Date().toISOString()
+                    }
+                })
+            });
+
+            const result = await response.json();
+
+            if (result.ok && result.passed) {
+                setSanityCheckResults([
+                    `✅ Strategy validated successfully!`,
+                    `Confidence: ${(result.confidence * 100).toFixed(0)}%`,
+                    '',
+                    ...(result.suggestions || [])
+                ]);
+            } else {
+                setSanityCheckResults([
+                    `⚠️ Strategy validation found issues`,
+                    `Confidence: ${(result.confidence * 100).toFixed(0)}%`,
+                    '',
+                    ...(result.issues || ['No specific issues reported'])
+                ]);
+            }
+        } catch (error) {
+            console.error('[Sanity Check] Error:', error);
+            const errorMsg = error instanceof Error ? error.message : 'Unknown error occurred';
             setSanityCheckResults([
-                "Consider adding a specific volume confirmation metric (e.g., > 1.5x average).",
-                "Rule #4 is subjective. Quantify 'not excessively overbought' with a specific RSI value.",
+                '❌ Failed to validate strategy',
+                'Check that backend is running and try again',
+                '',
+                `Error: ${errorMsg}`
             ]);
+        } finally {
             setIsLoading(false);
-        }, 1000);
+        }
     };
 
     const handleSaveEditor = () => {

@@ -1437,6 +1437,39 @@ app.post('/api/ai/reset-usage', (req, res) => {
   }
 });
 
+// POST /api/ai/validate-signal - Validate trading strategy with AI
+app.post('/api/ai/validate-signal', async (req, res) => {
+  try {
+    const { strategy, categoryKey, marketConditions } = req.body;
+
+    if (!strategy) {
+      return res.status(400).json({
+        ok: false,
+        passed: false,
+        confidence: 0,
+        issues: ['Strategy object is required']
+      });
+    }
+
+    const result = await AIIntelligence.validateSignalWithAI(strategy, {
+      categoryKey: categoryKey || 'UNKNOWN',
+      marketConditions: marketConditions || {},
+      description: strategy.description || 'Custom strategy'
+    });
+
+    res.json({ ok: true, ...result });
+  } catch (error) {
+    console.error('[POST /api/ai/validate-signal] Error:', error);
+    res.status(500).json({
+      ok: false,
+      passed: false,
+      confidence: 0,
+      issues: [`Validation failed: ${error.message}`],
+      error: error.message
+    });
+  }
+});
+
 // ========== END AI INTELLIGENCE API ==========
 
 // Start server
