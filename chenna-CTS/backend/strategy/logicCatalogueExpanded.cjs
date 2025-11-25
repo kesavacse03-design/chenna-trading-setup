@@ -421,7 +421,7 @@ class LogicCatalogueExpanded {
                 name: `${pattern} + RSI<20`,
                 entry: (indicators, candles) => {
                     const hasPattern = LogicCatalogueExpanded.checkPattern(candles, pattern);
-                    return hasPattern && indicators.rsi14 && indicators.rsi14 < 20;
+                    return hasPattern && indicators.rsi14 && indicators.rsi14 < 30;
                 },
                 exit: { target: 3.0, stop: 1.5 }
             });
@@ -734,4 +734,5 @@ class LogicCatalogueExpanded {
 }
 
 module.exports = LogicCatalogueExpanded;
+
 
