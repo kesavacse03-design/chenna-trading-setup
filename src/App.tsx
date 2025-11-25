@@ -205,41 +205,16 @@ const App: React.FC = () => {
               <AnalysisHub
                 watchlist={watchlist}
                 onWatchlistUpdate={handleWatchlistUpdate}
-                onManageStrategy={handleManageStrategy}
-              />
-            </div>
-          </div>
-
-          <div className="lg:col-span-1 space-y-6">
-            <PortfolioStats activeTrades={trades} totalCapital={totalCapital} />
-            <DailySummary completedTrades={completedTrades} />
-            <SystemHealth healthState={healthState} />
-            <HealthMap />
-            <TradesDashboard trades={completedTrades} />
-            <IntelligencePanel
-              reports={[]} // Backtest reports can be added to mock later
-              notifications={notifications}
-              onViewReport={() => { }}
-              onClearNotification={handleClearNotification}
-            />
-          </div>
-        </main>
-      </div>
-
-      <CredentialsManager isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
-      <HealthModal isOpen={isHealthOpen} onClose={() => setIsHealthOpen(false)} />
-
-      {isWorkbenchOpen && (
         <StrategyWorkbenchSimple
-          isOpen={isWorkbenchOpen}
-          onClose={() => setIsWorkbenchOpen(false)}
-          categoryKey={selectedCategory}
-          initialLogic={strategyState[selectedCategory]?.[0]?.logic || DEFAULT_STRATEGY_LOGIC}
-          onSaveStrategy={handleSaveStrategy}
-        />
+                isOpen={isWorkbenchOpen}
+                onClose={() => setIsWorkbenchOpen(false)}
+                categoryKey={selectedCategory}
+                initialLogic={strategyState[selectedCategory]?.[0]?.logic || DEFAULT_STRATEGY_LOGIC}
+                onSaveStrategy={handleSaveStrategy}
+              />
       )}
-    </>
-  );
+            </>
+            );
 };
 
-export default App;
+            export default App;
