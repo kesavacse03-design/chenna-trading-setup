@@ -34,6 +34,8 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
     const [backtestProgress, setBacktestProgress] = useState(0);
     const [eventReport, setEventReport] = useState<CategoryEventReport | null>(null);
     const [toast, setToast] = useState<{ msg: string; kind: 'success' | 'error' | 'info' } | null>(null);
+    const [isRunningTimeTravel, setIsRunningTimeTravel] = useState(false);
+    const [timeTravelResults, setTimeTravelResults] = useState<any>(null);
 
     // Load event report on mount
     useEffect(() => {
@@ -180,6 +182,40 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
         } finally {
             setIsRunningBacktest(false);
             setBacktestProgress(0);
+        }
+    };
+
+    // Handle Time-Travel Backtest
+    const handleTimeTravelBacktest = async () => {
+        setIsRunningTimeTravel(true);
+        setTimeTravelResults(null);
+        showToast('🔮 Starting Time-Travel Backtest... Testing 200+ logics!', 'info');
+
+        try {
+            const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
+            const response = await fetch(`${apiBase}/api/strategy/time-travel-backtest`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ categoryKey })
+            });
+
+            if (!response.ok) {
+                throw new Error(`API error: ${response.statusText}`);
+            }
+
+            const result = await response.json();
+
+            if (result.ok) {
+                setTimeTravelResults(result);
+                showToast(`✅ Time-Travel Complete! Top strategy: ${result.top3[0].logic} (${result.top3[0].metrics.winRate}% win rate)`, 'success');
+            } else {
+                throw new Error(result.error || 'Unknown error');
+            }
+        } catch (error: any) {
+            console.error('Time-Travel Backtest error:', error);
+            showToast(`❌ Error: ${error.message}`, 'error');
+        } finally {
+            setIsRunningTimeTravel(false);
         }
     };
 
@@ -341,6 +377,55 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
                                     <>
                                         <WrenchScrewdriverIcon className="w-5 h-5" />
                                         Run Backtest
+                                    </>
+                                )}
+                            </button>
+                        </div>
+
+                        {/* Time-Travel Backtest Section */}
+                        <div className="p-6 rounded-xl bg-gradient-to-br from-purple-900/30 to-indigo-900/30 border border-purple-500/40 shadow-xl">
+                            <div className="flex items-center justify-between mb-4">
+                                <h3 className="font-bold text-xl flex items-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+                                    <SparklesIcon className="w-6 h-6 mr-2 text-purple-400" />
+                                    Time-Travel Backtest (200+ Logics)
+                                </h3>
+                            </div>
+
+                            <p className="text-sm text-slate-300 mb-4">
+                                Tests 200+ strategy combinations, detects all 10 institutional traps, and discovers what ACTUALLY works through time-travel validation.
+                            </p>
+
+                            {timeTravelResults && (
+                                <div className="mb-4 p-4 bg-slate-800/60 rounded-lg space-y-3">
+                                    <div className="text-sm font-bold text-purple-300">🏆 Top 3 Strategies:</div>
+                                    {timeTravelResults.top3.map((strategy: any, idx: number) => (
+                                        <div key={idx} className="text-xs text-slate-300 pl-4 border-l-2 border-purple-500/50">
+                                            <div className="font-bold">#{idx + 1}: {strategy.logic}</div>
+                                            <div className="text-slate-400">
+                                                Win Rate: {strategy.metrics.winRate}% | Expectancy: {strategy.metrics.expectancy}% | Trades: {strategy.metrics.trades}
+                                            </div>
+                                        </div>
+                                    ))}
+                                    <div className="mt-3 pt-3 border-t border-purple-500/30 text-xs text-purple-300">
+                                        ✨ V1 Strategy Created: {timeTravelResults.v1Strategy.expectedMetrics.accuracy} accuracy
+                                    </div>
+                                </div>
+                            )}
+
+                            <button
+                                onClick={handleTimeTravelBacktest}
+                                disabled={isRunningTimeTravel}
+                                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold py-4 px-6 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-purple-500/50 hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2"
+                            >
+                                {isRunningTimeTravel ? (
+                                    <>
+                                        <SpinnerIcon className="w-5 h-5 animate-spin" />
+                                        Running Time-Travel Backtest... (5-10 min)
+                                    </>
+                                ) : (
+                                    <>
+                                        <SparklesIcon className="w-5 h-5" />
+                                        🔮 Run Time-Travel Backtest
                                     </>
                                 )}
                             </button>

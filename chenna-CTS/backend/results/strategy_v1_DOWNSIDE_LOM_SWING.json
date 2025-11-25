@@ -1,0 +1,53 @@
+{
+  "category": "DOWNSIDE_LOM_SWING",
+  "name": "V1 Default - DOWNSIDE_LOM_SWING",
+  "version": "1.0.0",
+  "createdAt": "2025-11-25T14:50:05.248Z",
+  "entryRules": {
+    "logic": "RSI Oversold 20",
+    "description": "Best performing logic from top-ranked strategy"
+  },
+  "exitRules": {
+    "target": 2.5,
+    "stop": 1.5,
+    "source": "From RSI Oversold 20"
+  },
+  "trapFilters": {
+    "enabled": true,
+    "skipOnTraps": true,
+    "minConfidence": 0.7
+  },
+  "positionSizing": {
+    "riskPerTrade": 1.5,
+    "maxPositions": 5
+  },
+  "expectedMetrics": {
+    "accuracy": "38.2%",
+    "expectancy": "0.04%",
+    "trapAvoidance": "4.3%",
+    "avgHolding": "2.2 days"
+  },
+  "contributors": [
+    {
+      "rank": 1,
+      "logic": "RSI Oversold 20",
+      "score": "0.0",
+      "trades": 89,
+      "winRate": "38.2%"
+    },
+    {
+      "rank": 2,
+      "logic": "RSI Oversold 30",
+      "score": "0.0",
+      "trades": 402,
+      "winRate": "36.6%"
+    },
+    {
+      "rank": 3,
+      "logic": "RSI Oversold 40",
+      "score": "0.0",
+      "trades": 973,
+      "winRate": "35.8%"
+    }
+  ]
+}
