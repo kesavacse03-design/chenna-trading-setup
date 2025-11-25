@@ -5,6 +5,7 @@
 
 const { PrismaClient } = require('@prisma/client');
 const AutoStrategyGenerator = require('../strategy/autoGenerator.cjs');
+const TimeTravelEngine = require('../strategy/timeTravelEngine.cjs');
 
 const prisma = new PrismaClient();
 
@@ -140,7 +141,58 @@ function registerAutoStrategyRoutes(app) {
         }
     });
 
+    /**
+     * POST /api/strategy/time-travel-backtest
+     * Run comprehensive time-travel backtest with 200+ logic combinations
+     * Tests institutional trap avoidance and discovers best strategies
+     */
+    app.post('/api/strategy/time-travel-backtest', async (req, res) => {
+        try {
+            const { categoryKey } = req.body;
+
+            if (!categoryKey) {
+                return res.status(400).json({ ok: false, error: 'categoryKey is required' });
+            }
+
+            console.log(`\n🔮 [Time-Travel] Starting comprehensive backtest for: ${categoryKey}\n`);
+
+            // Create engine instance
+            const engine = new TimeTravelEngine();
+
+            // Run backtest (this will take several minutes)
+            const results = await engine.runTimeTravelBacktest(categoryKey);
+
+            console.log(`\n✅ [Time-Travel] Backtest complete!\n`);
+
+            // Return results
+            res.json({
+                ok: true,
+                categoryKey,
+                stats: results.stats,
+                top3: results.top3.map(r => ({
+                    rank: results.top3.indexOf(r) + 1,
+                    logic: r.logic.name,
+                    score: parseFloat(r.score.toFixed(1)),
+                    metrics: {
+                        winRate: parseFloat(r.metrics.winRate.toFixed(1)),
+                        expectancy: parseFloat(r.metrics.expectancy.toFixed(2)),
+                        trades: r.metrics.tradeCount,
+                        trapAvoidance: parseFloat(r.metrics.trapAvoidanceRate.toFixed(1))
+                    },
+                    scoreBreakdown: r.scoreBreakdown
+                })),
+                v1Strategy: results.v1Strategy,
+                message: 'Time-travel backtest completed successfully'
+            });
+
+        } catch (error) {
+            console.error('[POST /api/strategy/time-travel-backtest] Error:', error);
+            res.status(500).json({ ok: false, error: error.message });
+        }
+    });
+
     console.log('[Routes] Auto-strategy generation routes registered ✅');
+    console.log('[Routes] Time-travel backtest endpoint registered ✅');
 }
 
 module.exports = registerAutoStrategyRoutes;
