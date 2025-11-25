@@ -292,6 +292,19 @@ class TimeTravelBacktestEngine {
 
         indicators.currentPrice = availableCandles[availableCandles.length - 1].close;
 
+        // DEBUG: Log indicators ONCE for first stock/first logic only
+        if (!this.debugLogged) {
+            console.log('\n🔍 DEBUG: Indicator Structure:');
+            console.log('  Keys:', Object.keys(indicators).slice(0, 15).join(', '));
+            console.log('  RSI14:', indicators.rsi14);
+            console.log('  SMA50:', indicators.sma50);
+            console.log('  MACD:', indicators.macd ? 'exists' : 'undefined');
+            console.log('  BB:', indicators.bb ? 'exists' : 'undefined');
+            console.log('  currentPrice:', indicators.currentPrice);
+            console.log('\n  Testing simple logic: RSI14 < 30?', indicators.rsi14 && indicators.rsi14 < 30);
+            this.debugged = true;
+        }
+
         // STEP 3: Check for entry signal
         const context = {
             support: this.findSupport(availableCandles),
@@ -302,7 +315,22 @@ class TimeTravelBacktestEngine {
         let hasSignal = false;
         try {
             hasSignal = logic.entry(indicators, availableCandles, context);
+
+            // DEBUG: Log first successful signal
+            if (hasSignal && !this.signalLogged) {
+                console.log(`\n✅ SIGNAL FOUND!`);
+                console.log(`   Logic: ${logic.name}`);
+                console.log(`   Stock: ${stock.symbol}`);
+                console.log(`   Price: ${indicators.currentPrice}`);
+                this.signalLogged = true;
+            }
         } catch (e) {
+            // DEBUG: Log first error
+            if (!this.errorLogged) {
+                console.log(`\n❌ ERROR in logic: ${logic.name}`);
+                console.log(`   Error: ${e.message}`);
+                this.errorLogged = true;
+            }
             return null;
         }
 
