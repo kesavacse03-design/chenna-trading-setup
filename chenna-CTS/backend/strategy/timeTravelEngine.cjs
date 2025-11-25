@@ -22,18 +22,20 @@ class TimeTravelBacktestEngine {
     // ==================== LOGIC CATALOGUE (200+ Combinations) ====================
 
     buildLogicCatalogue() {
+        const LogicCatalogueExpanded = require('./logicCatalogueExpanded.cjs');
+
         const catalogue = {
-            // Single indicator strategies (30)
-            singleIndicator: this.buildSingleIndicatorLogics(),
+            // Single indicator strategies (70+)
+            singleIndicator: LogicCatalogueExpanded.buildSingleIndicatorLogics(),
 
-            // Dual indicator combos (50)
-            dualIndicator: this.buildDualIndicatorLogics(),
+            // Dual indicator combos (60+)
+            dualIndicator: LogicCatalogueExpanded.buildDualIndicatorLogics(),
 
-            // Pattern + indicator combos (60)
-            patternIndicator: this.buildPatternIndicatorLogics(),
+            // Pattern + indicator combos (50+)
+            patternIndicator: LogicCatalogueExpanded.buildPatternIndicatorLogics(),
 
-            // Triple composite rules (60)
-            composite: this.buildCompositeLogics()
+            // Triple/composite rules (35+)
+            composite: LogicCatalogueExpanded.buildCompositeLogics()
         };
 
         // Flatten and assign IDs
