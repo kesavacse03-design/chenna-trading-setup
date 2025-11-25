@@ -420,7 +420,7 @@ class LogicCatalogueExpanded {
             logics.push({
                 name: `${pattern} + RSI<20`,
                 entry: (indicators, candles) => {
-                    const hasPattern = this.checkPattern(candles, pattern);
+                    const hasPattern = LogicCatalogueExpanded.checkPattern(candles, pattern);
                     return hasPattern && indicators.rsi14 && indicators.rsi14 < 20;
                 },
                 exit: { target: 3.0, stop: 1.5 }
@@ -428,7 +428,7 @@ class LogicCatalogueExpanded {
             logics.push({
                 name: `${pattern} + RSI<30`,
                 entry: (indicators, candles) => {
-                    const hasPattern = this.checkPattern(candles, pattern);
+                    const hasPattern = LogicCatalogueExpanded.checkPattern(candles, pattern);
                     return hasPattern && indicators.rsi14 && indicators.rsi14 < 30;
                 },
                 exit: { target: 2.5, stop: 1.5 }
@@ -438,7 +438,7 @@ class LogicCatalogueExpanded {
             logics.push({
                 name: `${pattern} at Support`,
                 entry: (indicators, candles, context) => {
-                    const hasPattern = this.checkPattern(candles, pattern);
+                    const hasPattern = LogicCatalogueExpanded.checkPattern(candles, pattern);
                     const atSupport = context.support && candles[candles.length - 1].close < context.support * 1.02;
                     return hasPattern && atSupport;
                 },
@@ -448,7 +448,7 @@ class LogicCatalogueExpanded {
             logics.push({
                 name: `${pattern} at Resistance`,
                 entry: (indicators, candles, context) => {
-                    const hasPattern = this.checkPattern(candles, pattern);
+                    const hasPattern = LogicCatalogueExpanded.checkPattern(candles, pattern);
                     const atResistance = context.resistance && candles[candles.length - 1].close > context.resistance * 0.98;
                     return hasPattern && atResistance;
                 },
@@ -459,7 +459,7 @@ class LogicCatalogueExpanded {
             logics.push({
                 name: `${pattern} + MACD Bullish`,
                 entry: (indicators, candles) => {
-                    const hasPattern = this.checkPattern(candles, pattern);
+                    const hasPattern = LogicCatalogueExpanded.checkPattern(candles, pattern);
                     return hasPattern && indicators.macdBullish;
                 },
                 exit: { target: 2.5, stop: 1.5 }
@@ -469,7 +469,7 @@ class LogicCatalogueExpanded {
             logics.push({
                 name: `${pattern} + Above SMA50`,
                 entry: (indicators, candles) => {
-                    const hasPattern = this.checkPattern(candles, pattern);
+                    const hasPattern = LogicCatalogueExpanded.checkPattern(candles, pattern);
                     return hasPattern && indicators.aboveSMA50;
                 },
                 exit: { target: 3.0, stop: 1.5 }
@@ -479,7 +479,7 @@ class LogicCatalogueExpanded {
             logics.push({
                 name: `${pattern} + BB Lower`,
                 entry: (indicators, candles) => {
-                    const hasPattern = this.checkPattern(candles, pattern);
+                    const hasPattern = LogicCatalogueExpanded.checkPattern(candles, pattern);
                     const price = indicators.currentPrice;
                     return hasPattern && indicators.bb && price < indicators.bb.lower * 1.05;
                 },
@@ -490,7 +490,7 @@ class LogicCatalogueExpanded {
             logics.push({
                 name: `${pattern} + Strong Trend`,
                 entry: (indicators, candles) => {
-                    const hasPattern = this.checkPattern(candles, pattern);
+                    const hasPattern = LogicCatalogueExpanded.checkPattern(candles, pattern);
                     return hasPattern && indicators.adx && indicators.adx.adx > 25;
                 },
                 exit: { target: 3.5, stop: 1.5 }
@@ -500,9 +500,9 @@ class LogicCatalogueExpanded {
             logics.push({
                 name: `${pattern} + High Volume`,
                 entry: (indicators, candles) => {
-                    const hasPattern = this.checkPattern(candles, pattern);
+                    const hasPattern = LogicCatalogueExpanded.checkPattern(candles, pattern);
                     const lastCandle = candles[candles.length - 1];
-                    const avgVol = this.avgVolume(candles.slice(-20));
+                    const avgVol = LogicCatalogueExpanded.avgVolume(candles.slice(-20));
                     return hasPattern && lastCandle.volume > avgVol * 1.5;
                 },
                 exit: { target: 2.5, stop: 1.5 }
@@ -512,7 +512,7 @@ class LogicCatalogueExpanded {
             logics.push({
                 name: `${pattern} Solo`,
                 entry: (indicators, candles) => {
-                    return this.checkPattern(candles, pattern);
+                    return LogicCatalogueExpanded.checkPattern(candles, pattern);
                 },
                 exit: { target: 2.0, stop: 1.5 }
             });
@@ -615,9 +615,9 @@ class LogicCatalogueExpanded {
         logics.push({
             name: 'Demand Zone: Pattern + Support + Volume',
             entry: (indicators, candles, context) => {
-                const hasPattern = this.checkPattern(candles, 'Bullish Engulfing');
+                const hasPattern = LogicCatalogueExpanded.checkPattern(candles, 'Bullish Engulfing');
                 const atSupport = context.support && candles[candles.length - 1].close < context.support * 1.02;
-                const volumeConfirm = candles[candles.length - 1].volume > this.avgVolume(candles.slice(-20)) * 1.3;
+                const volumeConfirm = candles[candles.length - 1].volume > LogicCatalogueExpanded.avgVolume(candles.slice(-20)) * 1.3;
 
                 return hasPattern && atSupport && volumeConfirm && indicators.rsi14 && indicators.rsi14 < 40;
             },
@@ -636,9 +636,9 @@ class LogicCatalogueExpanded {
         logics.push({
             name: 'Supply Zone: Pattern + Resistance + Volume',
             entry: (indicators, candles, context) => {
-                const hasPattern = this.checkPattern(candles, 'Shooting Star');
+                const hasPattern = LogicCatalogueExpanded.checkPattern(candles, 'Shooting Star');
                 const atResistance = context.resistance && candles[candles.length - 1].close > context.resistance * 0.98;
-                const volumeConfirm = candles[candles.length - 1].volume > this.avgVolume(candles.slice(-20)) * 1.3;
+                const volumeConfirm = candles[candles.length - 1].volume > LogicCatalogueExpanded.avgVolume(candles.slice(-20)) * 1.3;
 
                 return hasPattern && atResistance && volumeConfirm && indicators.rsi14 && indicators.rsi14 > 60;
             },
@@ -649,7 +649,7 @@ class LogicCatalogueExpanded {
         logics.push({
             name: 'Ultimate: RSI + MACD + SMA + Pattern',
             entry: (indicators, candles) => {
-                const hasPattern = this.checkPattern(candles, 'Bullish Engulfing');
+                const hasPattern = LogicCatalogueExpanded.checkPattern(candles, 'Bullish Engulfing');
                 return indicators.rsi14 && indicators.rsi14 < 30 &&
                     indicators.macdBullish &&
                     indicators.aboveSMA200 &&
@@ -662,7 +662,7 @@ class LogicCatalogueExpanded {
             name: 'Ultimate: RSI + BB + SMA + Volume',
             entry: (indicators, candles) => {
                 const price = indicators.currentPrice;
-                const volumeConfirm = candles[candles.length - 1].volume > this.avgVolume(candles.slice(-20)) * 1.5;
+                const volumeConfirm = candles[candles.length - 1].volume > LogicCatalogueExpanded.avgVolume(candles.slice(-20)) * 1.5;
                 return indicators.rsi14 && indicators.rsi14 < 30 &&
                     indicators.bb && price < indicators.bb.lower * 1.01 &&
                     indicators.aboveSMA200 &&
@@ -674,9 +674,9 @@ class LogicCatalogueExpanded {
         logics.push({
             name: 'Ultimate: Pattern + Support + MACD + Volume',
             entry: (indicators, candles, context) => {
-                const hasPattern = this.checkPattern(candles, 'Hammer');
+                const hasPattern = LogicCatalogueExpanded.checkPattern(candles, 'Hammer');
                 const atSupport = context.support && candles[candles.length - 1].close < context.support * 1.02;
-                const volumeConfirm = candles[candles.length - 1].volume > this.avgVolume(candles.slice(-20)) * 1.5;
+                const volumeConfirm = candles[candles.length - 1].volume > LogicCatalogueExpanded.avgVolume(candles.slice(-20)) * 1.5;
                 return hasPattern && atSupport && indicators.macdBullish && volumeConfirm;
             },
             exit: { target: 4.5, stop: 1.5 }
@@ -696,10 +696,10 @@ class LogicCatalogueExpanded {
         logics.push({
             name: 'Ultimate Confluence: All Aligned',
             entry: (indicators, candles, context) => {
-                const hasPattern = this.checkPattern(candles, 'Bullish Engulfing');
+                const hasPattern = LogicCatalogueExpanded.checkPattern(candles, 'Bullish Engulfing');
                 const atSupport = context.support && candles[candles.length - 1].close < context.support * 1.02;
                 const price = indicators.currentPrice;
-                const volumeConfirm = candles[candles.length - 1].volume > this.avgVolume(candles.slice(-20)) * 1.5;
+                const volumeConfirm = candles[candles.length - 1].volume > LogicCatalogueExpanded.avgVolume(candles.slice(-20)) * 1.5;
 
                 return indicators.rsi14 && indicators.rsi14 < 30 &&
                     indicators.macdBullish &&
@@ -734,3 +734,4 @@ class LogicCatalogueExpanded {
 }
 
 module.exports = LogicCatalogueExpanded;
+
