@@ -21,42 +21,77 @@ interface StrategyWorkbenchModalProps {
 }
 
 const StrategyEditor = ({ logic, onLogicChange, onSave, onSanityCheck, isLoadingSanityCheck }: { logic: StrategyLogic, onLogicChange: (logic: StrategyLogic) => void, onSave: () => void, onSanityCheck: () => void, isLoadingSanityCheck: boolean }) => (
-    <div className="p-4 rounded-lg bg-slate-800/70 border border-slate-700 flex-1">
-        <h3 className="font-semibold text-lg flex items-center mb-3 text-cyan-300">
-            <DocumentTextIcon className="w-5 h-5 mr-2" />
-            V1 Strategy Logic
-        </h3>
-        <div>
-            <label htmlFor="strategy-description" className="block text-sm font-medium text-slate-300 mb-1">Description</label>
-            <textarea
-                id="strategy-description"
-                aria-label="Strategy description"
-                title="Strategy description"
-                placeholder="Short description of the strategy"
-                value={logic.description}
-                onChange={e => onLogicChange({ ...logic, description: e.target.value })}
-                className="w-full bg-slate-700/50 rounded p-2 text-sm h-20 resize-none border border-slate-600"
-            />
+    <div className="p-6 rounded-xl bg-gradient-to-br from-slate-800/90 to-slate-900/90 border border-slate-600/50 shadow-2xl flex-1">
+        <div className="flex items-center justify-between mb-5">
+            <h3 className="font-bold text-xl flex items-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                <DocumentTextIcon className="w-6 h-6 mr-2 text-cyan-400" />
+                V1 Strategy Logic
+            </h3>
+            <div className="px-3 py-1 bg-cyan-500/20 border border-cyan-500/40 rounded-full text-xs text-cyan-300 font-medium flex items-center gap-1">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                Active
+            </div>
         </div>
-        <div className="mt-2">
-            <label htmlFor="strategy-rules" className="block text-sm font-medium text-slate-300 mb-1">Rules (one per line)</label>
-            <textarea
-                id="strategy-rules"
-                aria-label="Strategy rules"
-                title="Strategy rules (one per line)"
-                placeholder="Enter one rule per line, e.g. EMA(20,50)"
-                value={Array.isArray(logic.rules) ? logic.rules.join('\n') : String(logic.rules || '')}
-                onChange={e => onLogicChange({ ...logic, rules: e.target.value.split('\n') })}
-                className="w-full bg-slate-700/50 rounded p-2 text-sm font-mono h-32 resize-none border border-slate-600"
-            />
+
+        <div className="space-y-4">
+            <div>
+                <label htmlFor="strategy-description" className="block text-sm font-semibold text-slate-200 mb-2 flex items-center">
+                    <span className="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
+                    Description
+                </label>
+                <textarea
+                    id="strategy-description"
+                    aria-label="Strategy description"
+                    title="Strategy description"
+                    placeholder="Enter a clear description of your trading strategy..."
+                    value={logic.description}
+                    onChange={e => onLogicChange({ ...logic, description: e.target.value })}
+                    className="w-full bg-slate-900/60 rounded-lg p-3 text-sm h-20 resize-none border border-slate-600/50 focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all text-slate-100 placeholder-slate-500"
+                />
+            </div>
+
+            <div>
+                <label htmlFor="strategy-rules" className="block text-sm font-semibold text-slate-200 mb-2 flex items-center">
+                    <span className="w-2 h-2 bg-purple-400 rounded-full mr-2"></span>
+                    Trading Rules (one per line)
+                </label>
+                <textarea
+                    id="strategy-rules"
+                    aria-label="Strategy rules"
+                    title="Strategy rules (one per line)"
+                    placeholder="e.g., EMA(20) > EMA(50)&#10;RSI < 30&#10;Volume > 1.5x avg..."
+                    value={Array.isArray(logic.rules) ? logic.rules.join('\n') : String(logic.rules || '')}
+                    onChange={e => onLogicChange({ ...logic, rules: e.target.value.split('\n') })}
+                    className="w-full bg-slate-900/60 rounded-lg p-3 text-sm font-mono h-36 resize-none border border-slate-600/50 focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all text-slate-100 placeholder-slate-500"
+                />
+            </div>
         </div>
-        <div className="mt-4 flex justify-between items-center">
-            <button onClick={onSanityCheck} disabled={!logic.description || (Array.isArray(logic.rules) && logic.rules.every(r => r === '')) || isLoadingSanityCheck} className="bg-purple-600/50 hover:bg-purple-600/80 text-white text-sm font-semibold py-2 px-4 rounded-lg disabled:bg-slate-600 flex items-center">
-                {isLoadingSanityCheck ? <SpinnerIcon className="w-4 h-4 mr-2" /> : <SparklesIcon className="w-4 h-4 mr-2" />}
-                Sanity Check
+
+        <div className="mt-6 flex justify-between items-center gap-3">
+            <button
+                onClick={onSanityCheck}
+                disabled={!logic.description || (Array.isArray(logic.rules) && logic.rules.every(r => r === '')) || isLoadingSanityCheck}
+                className="flex-1 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white text-sm font-bold py-3 px-5 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center transition-all duration-200 shadow-lg hover:shadow-purple-500/50 hover:scale-[1.02] active:scale-95"
+            >
+                {isLoadingSanityCheck ? (
+                    <>
+                        <SpinnerIcon className="w-5 h-5 mr-2 animate-spin" />
+                        Validating...
+                    </>
+                ) : (
+                    <>
+                        <SparklesIcon className="w-5 h-5 mr-2" />
+                        AI Sanity Check
+                    </>
+                )}
             </button>
-            <button onClick={onSave} disabled={!logic.description || (Array.isArray(logic.rules) && logic.rules.every(r => r === ''))} className="bg-cyan-700 hover:bg-cyan-600 text-white font-bold py-2 px-5 rounded-lg disabled:bg-slate-600">
-                Save V1 Strategy
+
+            <button
+                onClick={onSave}
+                disabled={!logic.description || (Array.isArray(logic.rules) && logic.rules.every(r => r === ''))}
+                className="flex-1 bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-500 hover:to-cyan-600 text-white font-bold py-3 px-6 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-cyan-500/50 hover:scale-[1.02] active:scale-95"
+            >
+                Save Strategy
             </button>
         </div>
     </div>
@@ -775,11 +810,21 @@ const StrategyWorkbenchModal: React.FC<StrategyWorkbenchModalProps> = ({ isOpen,
                                     isLoadingSanityCheck={isLoading}
                                 />
                                 {sanityCheckResults.length > 0 && (
-                                    <div className="mt-4 p-3 bg-purple-900/40 border border-purple-600/50 rounded-lg animate-fade-in-down">
-                                        <h4 className="font-semibold text-purple-300 mb-2 text-sm flex items-center"><LightBulbIcon className="w-4 h-4 mr-2" />Sanity Check Suggestions:</h4>
-                                        <ul className="text-xs text-slate-300 list-disc pl-5 space-y-1">
-                                            {sanityCheckResults.map((s, i) => <li key={i}>{s}</li>)}
-                                        </ul>
+                                    <div className="mt-5 p-5 bg-gradient-to-br from-purple-900/30 to-purple-800/20 border border-purple-500/40 rounded-xl shadow-lg animate-fade-in-down backdrop-blur-sm">
+                                        <div className="flex items-center gap-2 mb-3">
+                                            <LightBulbIcon className="w-5 h-5 text-yellow-400 animate-pulse" />
+                                            <h4 className="font-bold text-lg text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300">AI Validation Results</h4>
+                                        </div>
+                                        <div className="bg-slate-900/60 rounded-lg p-4 border border-purple-500/20">
+                                            <ul className="text-sm text-slate-200 space-y-2">
+                                                {sanityCheckResults.map((s, i) => (
+                                                    <li key={i} className="flex items-start gap-3">
+                                                        <span className="text-purple-400 mt-0.5 font-bold">•</span>
+                                                        <span className="flex-1">{s}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
                                     </div>
                                 )}
                                 <div className="mt-3 p-4 rounded-lg bg-slate-800/70 border border-slate-700">
