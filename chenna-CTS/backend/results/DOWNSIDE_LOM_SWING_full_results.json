@@ -1,7 +1,7 @@
 [
   {
     "logic": {
-      "name": "RSI14 Oversold 15",
+      "name": "Price Above SMA20",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -25,7 +25,7 @@
   },
   {
     "logic": {
-      "name": "RSI14 Overbought 85",
+      "name": "Price Above SMA50",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -49,9 +49,9 @@
   },
   {
     "logic": {
-      "name": "RSI21 Oversold 15",
+      "name": "Price Above SMA200",
       "exit": {
-        "target": 2.5,
+        "target": 3,
         "stop": 1.5
       },
       "id": 3,
@@ -73,9 +73,9 @@
   },
   {
     "logic": {
-      "name": "RSI14 Oversold 20",
+      "name": "Price Below SMA20",
       "exit": {
-        "target": 2.5,
+        "target": 2,
         "stop": 1.5
       },
       "id": 4,
@@ -97,7 +97,7 @@
   },
   {
     "logic": {
-      "name": "RSI14 Overbought 80",
+      "name": "Price Between SMA20 and SMA50",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -121,7 +121,7 @@
   },
   {
     "logic": {
-      "name": "RSI21 Oversold 20",
+      "name": "MACD Bullish Simple",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -145,9 +145,9 @@
   },
   {
     "logic": {
-      "name": "RSI14 Oversold 25",
+      "name": "MACD Bearish Simple",
       "exit": {
-        "target": 2.5,
+        "target": 2,
         "stop": 1.5
       },
       "id": 7,
@@ -169,7 +169,7 @@
   },
   {
     "logic": {
-      "name": "RSI14 Overbought 75",
+      "name": "MACD Histogram Positive",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -193,9 +193,9 @@
   },
   {
     "logic": {
-      "name": "RSI21 Oversold 25",
+      "name": "MACD Histogram Negative",
       "exit": {
-        "target": 2.5,
+        "target": 2,
         "stop": 1.5
       },
       "id": 9,
@@ -217,7 +217,7 @@
   },
   {
     "logic": {
-      "name": "RSI14 Oversold 30",
+      "name": "RSI Below 50 (Normal)",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -241,7 +241,7 @@
   },
   {
     "logic": {
-      "name": "RSI14 Overbought 70",
+      "name": "RSI Above 50 (Normal)",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -265,7 +265,7 @@
   },
   {
     "logic": {
-      "name": "RSI21 Oversold 30",
+      "name": "RSI Normal Oversold < 40",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -289,7 +289,7 @@
   },
   {
     "logic": {
-      "name": "RSI14 Oversold 35",
+      "name": "RSI Normal Overbought > 60",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -313,9 +313,9 @@
   },
   {
     "logic": {
-      "name": "RSI14 Overbought 65",
+      "name": "Golden Cross Active",
       "exit": {
-        "target": 2.5,
+        "target": 3,
         "stop": 1.5
       },
       "id": 14,
@@ -337,7 +337,7 @@
   },
   {
     "logic": {
-      "name": "RSI21 Oversold 35",
+      "name": "Death Cross Active",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -361,7 +361,7 @@
   },
   {
     "logic": {
-      "name": "RSI14 Oversold 40",
+      "name": "ADX Any Trend",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -385,7 +385,7 @@
   },
   {
     "logic": {
-      "name": "RSI14 Overbought 60",
+      "name": "DI+ Leading",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -409,7 +409,7 @@
   },
   {
     "logic": {
-      "name": "RSI21 Oversold 40",
+      "name": "DI- Leading",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -433,10 +433,10 @@
   },
   {
     "logic": {
-      "name": "Price Above SMA10/50",
+      "name": "Price Near BB Middle",
       "exit": {
-        "target": 3,
-        "stop": 1.5
+        "target": 1.5,
+        "stop": 1
       },
       "id": 19,
       "category": "singleIndicator"
@@ -457,9 +457,9 @@
   },
   {
     "logic": {
-      "name": "Price Above SMA10/100",
+      "name": "Price in Lower Half BB",
       "exit": {
-        "target": 3,
+        "target": 2,
         "stop": 1.5
       },
       "id": 20,
@@ -481,9 +481,9 @@
   },
   {
     "logic": {
-      "name": "Price Above SMA10/200",
+      "name": "Price in Upper Half BB",
       "exit": {
-        "target": 3,
+        "target": 2,
         "stop": 1.5
       },
       "id": 21,
@@ -505,7 +505,7 @@
   },
   {
     "logic": {
-      "name": "Price Above SMA20/50",
+      "name": "Bullish Alignment: Price > SMA50 + MACD Bull",
       "exit": {
         "target": 3,
         "stop": 1.5
@@ -529,9 +529,9 @@
   },
   {
     "logic": {
-      "name": "Price Above SMA20/100",
+      "name": "Bearish Alignment: Price < SMA50 + MACD Bear",
       "exit": {
-        "target": 3,
+        "target": 2.5,
         "stop": 1.5
       },
       "id": 23,
@@ -553,9 +553,9 @@
   },
   {
     "logic": {
-      "name": "Price Above SMA20/200",
+      "name": "RSI Normal + Above SMA200",
       "exit": {
-        "target": 3,
+        "target": 2.5,
         "stop": 1.5
       },
       "id": 24,
@@ -577,9 +577,9 @@
   },
   {
     "logic": {
-      "name": "Price Above SMA50/100",
+      "name": "RSI14 Oversold 15",
       "exit": {
-        "target": 3,
+        "target": 2.5,
         "stop": 1.5
       },
       "id": 25,
@@ -601,9 +601,9 @@
   },
   {
     "logic": {
-      "name": "Price Above SMA50/200",
+      "name": "RSI14 Overbought 85",
       "exit": {
-        "target": 3,
+        "target": 2.5,
         "stop": 1.5
       },
       "id": 26,
@@ -625,10 +625,10 @@
   },
   {
     "logic": {
-      "name": "Price Bouncing Off SMA10",
+      "name": "RSI21 Oversold 15",
       "exit": {
-        "target": 2,
-        "stop": 1
+        "target": 2.5,
+        "stop": 1.5
       },
       "id": 27,
       "category": "singleIndicator"
@@ -649,10 +649,10 @@
   },
   {
     "logic": {
-      "name": "Price Bouncing Off SMA20",
+      "name": "RSI14 Oversold 20",
       "exit": {
-        "target": 2,
-        "stop": 1
+        "target": 2.5,
+        "stop": 1.5
       },
       "id": 28,
       "category": "singleIndicator"
@@ -673,10 +673,10 @@
   },
   {
     "logic": {
-      "name": "Price Bouncing Off SMA50",
+      "name": "RSI14 Overbought 80",
       "exit": {
-        "target": 2,
-        "stop": 1
+        "target": 2.5,
+        "stop": 1.5
       },
       "id": 29,
       "category": "singleIndicator"
@@ -697,7 +697,7 @@
   },
   {
     "logic": {
-      "name": "Price Above EMA10",
+      "name": "RSI21 Oversold 20",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -721,7 +721,7 @@
   },
   {
     "logic": {
-      "name": "Price Below EMA10",
+      "name": "RSI14 Oversold 25",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -745,10 +745,10 @@
   },
   {
     "logic": {
-      "name": "Price Near EMA10",
+      "name": "RSI14 Overbought 75",
       "exit": {
-        "target": 2,
-        "stop": 1
+        "target": 2.5,
+        "stop": 1.5
       },
       "id": 32,
       "category": "singleIndicator"
@@ -769,7 +769,7 @@
   },
   {
     "logic": {
-      "name": "EMA10 Rising",
+      "name": "RSI21 Oversold 25",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -793,7 +793,7 @@
   },
   {
     "logic": {
-      "name": "Price Above EMA20",
+      "name": "RSI14 Oversold 30",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -817,7 +817,7 @@
   },
   {
     "logic": {
-      "name": "Price Below EMA20",
+      "name": "RSI14 Overbought 70",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -841,10 +841,10 @@
   },
   {
     "logic": {
-      "name": "Price Near EMA20",
+      "name": "RSI21 Oversold 30",
       "exit": {
-        "target": 2,
-        "stop": 1
+        "target": 2.5,
+        "stop": 1.5
       },
       "id": 36,
       "category": "singleIndicator"
@@ -865,7 +865,7 @@
   },
   {
     "logic": {
-      "name": "EMA20 Rising",
+      "name": "RSI14 Oversold 35",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -889,7 +889,7 @@
   },
   {
     "logic": {
-      "name": "Price Above EMA50",
+      "name": "RSI14 Overbought 65",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -913,7 +913,7 @@
   },
   {
     "logic": {
-      "name": "Price Below EMA50",
+      "name": "RSI21 Oversold 35",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -937,10 +937,10 @@
   },
   {
     "logic": {
-      "name": "Price Near EMA50",
+      "name": "RSI14 Oversold 40",
       "exit": {
-        "target": 2,
-        "stop": 1
+        "target": 2.5,
+        "stop": 1.5
       },
       "id": 40,
       "category": "singleIndicator"
@@ -961,7 +961,7 @@
   },
   {
     "logic": {
-      "name": "EMA50 Rising",
+      "name": "RSI14 Overbought 60",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -985,10 +985,10 @@
   },
   {
     "logic": {
-      "name": "BB Lower Band Touch 0.97",
+      "name": "RSI21 Oversold 40",
       "exit": {
-        "target": 2,
-        "stop": 1
+        "target": 2.5,
+        "stop": 1.5
       },
       "id": 42,
       "category": "singleIndicator"
@@ -1009,10 +1009,10 @@
   },
   {
     "logic": {
-      "name": "BB Lower Band Touch 0.98",
+      "name": "Price Above SMA10/50",
       "exit": {
-        "target": 2,
-        "stop": 1
+        "target": 3,
+        "stop": 1.5
       },
       "id": 43,
       "category": "singleIndicator"
@@ -1033,10 +1033,10 @@
   },
   {
     "logic": {
-      "name": "BB Lower Band Touch 0.99",
+      "name": "Price Above SMA10/100",
       "exit": {
-        "target": 2,
-        "stop": 1
+        "target": 3,
+        "stop": 1.5
       },
       "id": 44,
       "category": "singleIndicator"
@@ -1057,10 +1057,10 @@
   },
   {
     "logic": {
-      "name": "BB Lower Band Touch 1",
+      "name": "Price Above SMA10/200",
       "exit": {
-        "target": 2,
-        "stop": 1
+        "target": 3,
+        "stop": 1.5
       },
       "id": 45,
       "category": "singleIndicator"
@@ -1081,10 +1081,10 @@
   },
   {
     "logic": {
-      "name": "BB Lower Band Touch 1.01",
+      "name": "Price Above SMA20/50",
       "exit": {
-        "target": 2,
-        "stop": 1
+        "target": 3,
+        "stop": 1.5
       },
       "id": 46,
       "category": "singleIndicator"
@@ -1105,10 +1105,10 @@
   },
   {
     "logic": {
-      "name": "BB Lower Band Touch 1.02",
+      "name": "Price Above SMA20/100",
       "exit": {
-        "target": 2,
-        "stop": 1
+        "target": 3,
+        "stop": 1.5
       },
       "id": 47,
       "category": "singleIndicator"
@@ -1129,10 +1129,10 @@
   },
   {
     "logic": {
-      "name": "BB Upper Band Touch 0.98",
+      "name": "Price Above SMA20/200",
       "exit": {
-        "target": 2,
-        "stop": 1
+        "target": 3,
+        "stop": 1.5
       },
       "id": 48,
       "category": "singleIndicator"
@@ -1153,10 +1153,10 @@
   },
   {
     "logic": {
-      "name": "BB Upper Band Touch 0.99",
+      "name": "Price Above SMA50/100",
       "exit": {
-        "target": 2,
-        "stop": 1
+        "target": 3,
+        "stop": 1.5
       },
       "id": 49,
       "category": "singleIndicator"
@@ -1177,10 +1177,10 @@
   },
   {
     "logic": {
-      "name": "BB Upper Band Touch 1",
+      "name": "Price Above SMA50/200",
       "exit": {
-        "target": 2,
-        "stop": 1
+        "target": 3,
+        "stop": 1.5
       },
       "id": 50,
       "category": "singleIndicator"
@@ -1201,7 +1201,7 @@
   },
   {
     "logic": {
-      "name": "BB Upper Band Touch 1.01",
+      "name": "Price Bouncing Off SMA10",
       "exit": {
         "target": 2,
         "stop": 1
@@ -1225,7 +1225,7 @@
   },
   {
     "logic": {
-      "name": "BB Upper Band Touch 1.02",
+      "name": "Price Bouncing Off SMA20",
       "exit": {
         "target": 2,
         "stop": 1
@@ -1249,7 +1249,7 @@
   },
   {
     "logic": {
-      "name": "BB Upper Band Touch 1.03",
+      "name": "Price Bouncing Off SMA50",
       "exit": {
         "target": 2,
         "stop": 1
@@ -1273,7 +1273,7 @@
   },
   {
     "logic": {
-      "name": "MACD Bullish Crossover",
+      "name": "Price Above EMA10",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -1297,7 +1297,7 @@
   },
   {
     "logic": {
-      "name": "MACD Bearish Crossover",
+      "name": "Price Below EMA10",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -1321,10 +1321,10 @@
   },
   {
     "logic": {
-      "name": "MACD Strong Bullish",
+      "name": "Price Near EMA10",
       "exit": {
-        "target": 3,
-        "stop": 1.5
+        "target": 2,
+        "stop": 1
       },
       "id": 56,
       "category": "singleIndicator"
@@ -1345,10 +1345,10 @@
   },
   {
     "logic": {
-      "name": "MACD Weak Bullish",
+      "name": "EMA10 Rising",
       "exit": {
-        "target": 2,
-        "stop": 1
+        "target": 2.5,
+        "stop": 1.5
       },
       "id": 57,
       "category": "singleIndicator"
@@ -1369,10 +1369,10 @@
   },
   {
     "logic": {
-      "name": "MACD Zero Line Cross",
+      "name": "Price Above EMA20",
       "exit": {
-        "target": 2,
-        "stop": 1
+        "target": 2.5,
+        "stop": 1.5
       },
       "id": 58,
       "category": "singleIndicator"
@@ -1393,7 +1393,7 @@
   },
   {
     "logic": {
-      "name": "MACD Histogram Expanding",
+      "name": "Price Below EMA20",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -1417,10 +1417,10 @@
   },
   {
     "logic": {
-      "name": "MACD Signal Above MACD",
+      "name": "Price Near EMA20",
       "exit": {
         "target": 2,
-        "stop": 1.5
+        "stop": 1
       },
       "id": 60,
       "category": "singleIndicator"
@@ -1441,9 +1441,9 @@
   },
   {
     "logic": {
-      "name": "MACD Divergence Setup",
+      "name": "EMA20 Rising",
       "exit": {
-        "target": 3,
+        "target": 2.5,
         "stop": 1.5
       },
       "id": 61,
@@ -1465,9 +1465,9 @@
   },
   {
     "logic": {
-      "name": "ADX Strong Trend >25",
+      "name": "Price Above EMA50",
       "exit": {
-        "target": 3,
+        "target": 2.5,
         "stop": 1.5
       },
       "id": 62,
@@ -1489,9 +1489,9 @@
   },
   {
     "logic": {
-      "name": "ADX Very Strong Trend >40",
+      "name": "Price Below EMA50",
       "exit": {
-        "target": 3.5,
+        "target": 2.5,
         "stop": 1.5
       },
       "id": 63,
@@ -1513,9 +1513,9 @@
   },
   {
     "logic": {
-      "name": "ADX Weak Trend <20",
+      "name": "Price Near EMA50",
       "exit": {
-        "target": 1.5,
+        "target": 2,
         "stop": 1
       },
       "id": 64,
@@ -1537,7 +1537,7 @@
   },
   {
     "logic": {
-      "name": "ADX Building Strength",
+      "name": "EMA50 Rising",
       "exit": {
         "target": 2.5,
         "stop": 1.5
@@ -1561,12 +1561,588 @@
   },
   {
     "logic": {
+      "name": "BB Lower Band Touch 0.97",
+      "exit": {
+        "target": 2,
+        "stop": 1
+      },
+      "id": 66,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "BB Lower Band Touch 0.98",
+      "exit": {
+        "target": 2,
+        "stop": 1
+      },
+      "id": 67,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "BB Lower Band Touch 0.99",
+      "exit": {
+        "target": 2,
+        "stop": 1
+      },
+      "id": 68,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "BB Lower Band Touch 1",
+      "exit": {
+        "target": 2,
+        "stop": 1
+      },
+      "id": 69,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "BB Lower Band Touch 1.01",
+      "exit": {
+        "target": 2,
+        "stop": 1
+      },
+      "id": 70,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "BB Lower Band Touch 1.02",
+      "exit": {
+        "target": 2,
+        "stop": 1
+      },
+      "id": 71,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "BB Upper Band Touch 0.98",
+      "exit": {
+        "target": 2,
+        "stop": 1
+      },
+      "id": 72,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "BB Upper Band Touch 0.99",
+      "exit": {
+        "target": 2,
+        "stop": 1
+      },
+      "id": 73,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "BB Upper Band Touch 1",
+      "exit": {
+        "target": 2,
+        "stop": 1
+      },
+      "id": 74,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "BB Upper Band Touch 1.01",
+      "exit": {
+        "target": 2,
+        "stop": 1
+      },
+      "id": 75,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "BB Upper Band Touch 1.02",
+      "exit": {
+        "target": 2,
+        "stop": 1
+      },
+      "id": 76,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "BB Upper Band Touch 1.03",
+      "exit": {
+        "target": 2,
+        "stop": 1
+      },
+      "id": 77,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "MACD Bullish Crossover",
+      "exit": {
+        "target": 2.5,
+        "stop": 1.5
+      },
+      "id": 78,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "MACD Bearish Crossover",
+      "exit": {
+        "target": 2.5,
+        "stop": 1.5
+      },
+      "id": 79,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "MACD Strong Bullish",
+      "exit": {
+        "target": 3,
+        "stop": 1.5
+      },
+      "id": 80,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "MACD Weak Bullish",
+      "exit": {
+        "target": 2,
+        "stop": 1
+      },
+      "id": 81,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "MACD Zero Line Cross",
+      "exit": {
+        "target": 2,
+        "stop": 1
+      },
+      "id": 82,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "MACD Histogram Expanding",
+      "exit": {
+        "target": 2.5,
+        "stop": 1.5
+      },
+      "id": 83,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "MACD Signal Above MACD",
+      "exit": {
+        "target": 2,
+        "stop": 1.5
+      },
+      "id": 84,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "MACD Divergence Setup",
+      "exit": {
+        "target": 3,
+        "stop": 1.5
+      },
+      "id": 85,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "ADX Strong Trend >25",
+      "exit": {
+        "target": 3,
+        "stop": 1.5
+      },
+      "id": 86,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "ADX Very Strong Trend >40",
+      "exit": {
+        "target": 3.5,
+        "stop": 1.5
+      },
+      "id": 87,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "ADX Weak Trend <20",
+      "exit": {
+        "target": 1.5,
+        "stop": 1
+      },
+      "id": 88,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
+      "name": "ADX Building Strength",
+      "exit": {
+        "target": 2.5,
+        "stop": 1.5
+      },
+      "id": 89,
+      "category": "singleIndicator"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades"
+  },
+  {
+    "logic": {
       "name": "DI+ Above DI-",
       "exit": {
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 66,
+      "id": 90,
       "category": "singleIndicator"
     },
     "trades": [],
@@ -1590,7 +2166,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 67,
+      "id": 91,
       "category": "singleIndicator"
     },
     "trades": [],
@@ -1614,7 +2190,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 68,
+      "id": 92,
       "category": "singleIndicator"
     },
     "trades": [],
@@ -1638,7 +2214,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 69,
+      "id": 93,
       "category": "singleIndicator"
     },
     "trades": [],
@@ -1662,7 +2238,7 @@
         "target": 1.5,
         "stop": 1
       },
-      "id": 70,
+      "id": 94,
       "category": "singleIndicator"
     },
     "trades": [],
@@ -1686,7 +2262,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 71,
+      "id": 95,
       "category": "singleIndicator"
     },
     "trades": [],
@@ -1710,7 +2286,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 72,
+      "id": 96,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -1734,7 +2310,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 73,
+      "id": 97,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -1758,7 +2334,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 74,
+      "id": 98,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -1782,7 +2358,7 @@
         "target": 2.5,
         "stop": 1
       },
-      "id": 75,
+      "id": 99,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -1806,7 +2382,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 76,
+      "id": 100,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -1830,7 +2406,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 77,
+      "id": 101,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -1854,7 +2430,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 78,
+      "id": 102,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -1878,7 +2454,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 79,
+      "id": 103,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -1902,7 +2478,7 @@
         "target": 2.5,
         "stop": 1
       },
-      "id": 80,
+      "id": 104,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -1926,7 +2502,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 81,
+      "id": 105,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -1950,7 +2526,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 82,
+      "id": 106,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -1974,7 +2550,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 83,
+      "id": 107,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -1998,7 +2574,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 84,
+      "id": 108,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2022,7 +2598,7 @@
         "target": 2.5,
         "stop": 1
       },
-      "id": 85,
+      "id": 109,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2046,7 +2622,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 86,
+      "id": 110,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2070,7 +2646,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 87,
+      "id": 111,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2094,7 +2670,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 88,
+      "id": 112,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2118,7 +2694,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 89,
+      "id": 113,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2142,7 +2718,7 @@
         "target": 2.5,
         "stop": 1
       },
-      "id": 90,
+      "id": 114,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2166,7 +2742,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 91,
+      "id": 115,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2190,7 +2766,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 92,
+      "id": 116,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2214,7 +2790,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 93,
+      "id": 117,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2238,7 +2814,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 94,
+      "id": 118,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2262,7 +2838,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 95,
+      "id": 119,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2286,7 +2862,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 96,
+      "id": 120,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2310,7 +2886,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 97,
+      "id": 121,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2334,7 +2910,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 98,
+      "id": 122,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2358,7 +2934,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 99,
+      "id": 123,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2382,7 +2958,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 100,
+      "id": 124,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2406,7 +2982,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 101,
+      "id": 125,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2430,7 +3006,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 102,
+      "id": 126,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2454,7 +3030,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 103,
+      "id": 127,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2478,7 +3054,7 @@
         "target": 2.5,
         "stop": 1
       },
-      "id": 104,
+      "id": 128,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2502,7 +3078,7 @@
         "target": 2,
         "stop": 1
       },
-      "id": 105,
+      "id": 129,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2526,7 +3102,7 @@
         "target": 2.5,
         "stop": 1
       },
-      "id": 106,
+      "id": 130,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2550,7 +3126,7 @@
         "target": 2,
         "stop": 1
       },
-      "id": 107,
+      "id": 131,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2574,7 +3150,7 @@
         "target": 2.5,
         "stop": 1
       },
-      "id": 108,
+      "id": 132,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2598,7 +3174,7 @@
         "target": 2,
         "stop": 1
       },
-      "id": 109,
+      "id": 133,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2622,7 +3198,7 @@
         "target": 2.5,
         "stop": 1
       },
-      "id": 110,
+      "id": 134,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2646,7 +3222,7 @@
         "target": 2,
         "stop": 1
       },
-      "id": 111,
+      "id": 135,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2670,7 +3246,7 @@
         "target": 2.5,
         "stop": 1
       },
-      "id": 112,
+      "id": 136,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2694,7 +3270,7 @@
         "target": 2,
         "stop": 1
       },
-      "id": 113,
+      "id": 137,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2718,7 +3294,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 114,
+      "id": 138,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2742,7 +3318,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 115,
+      "id": 139,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2766,7 +3342,7 @@
         "target": 4,
         "stop": 1.5
       },
-      "id": 116,
+      "id": 140,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2790,7 +3366,7 @@
         "target": 2.5,
         "stop": 1
       },
-      "id": 117,
+      "id": 141,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2814,7 +3390,7 @@
         "target": 4,
         "stop": 1.5
       },
-      "id": 118,
+      "id": 142,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2838,7 +3414,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 119,
+      "id": 143,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2862,7 +3438,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 120,
+      "id": 144,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2886,7 +3462,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 121,
+      "id": 145,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2910,7 +3486,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 122,
+      "id": 146,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2934,7 +3510,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 123,
+      "id": 147,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2958,7 +3534,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 124,
+      "id": 148,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -2982,7 +3558,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 125,
+      "id": 149,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -3006,7 +3582,7 @@
         "target": 2,
         "stop": 1
       },
-      "id": 126,
+      "id": 150,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -3030,7 +3606,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 127,
+      "id": 151,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -3054,7 +3630,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 128,
+      "id": 152,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -3078,7 +3654,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 129,
+      "id": 153,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -3102,7 +3678,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 130,
+      "id": 154,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -3126,7 +3702,7 @@
         "target": 4,
         "stop": 1.5
       },
-      "id": 131,
+      "id": 155,
       "category": "dualIndicator"
     },
     "trades": [],
@@ -3150,7 +3726,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 132,
+      "id": 156,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3174,7 +3750,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 133,
+      "id": 157,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3198,7 +3774,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 134,
+      "id": 158,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3222,7 +3798,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 135,
+      "id": 159,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3246,7 +3822,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 136,
+      "id": 160,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3270,7 +3846,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 137,
+      "id": 161,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3294,7 +3870,7 @@
         "target": 2.5,
         "stop": 1
       },
-      "id": 138,
+      "id": 162,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3318,7 +3894,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 139,
+      "id": 163,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3342,7 +3918,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 140,
+      "id": 164,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3366,7 +3942,7 @@
         "target": 2,
         "stop": 1.5
       },
-      "id": 141,
+      "id": 165,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3390,7 +3966,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 142,
+      "id": 166,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3414,7 +3990,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 143,
+      "id": 167,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3438,7 +4014,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 144,
+      "id": 168,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3462,7 +4038,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 145,
+      "id": 169,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3486,7 +4062,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 146,
+      "id": 170,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3510,7 +4086,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 147,
+      "id": 171,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3534,7 +4110,7 @@
         "target": 2.5,
         "stop": 1
       },
-      "id": 148,
+      "id": 172,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3558,7 +4134,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 149,
+      "id": 173,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3582,7 +4158,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 150,
+      "id": 174,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3606,7 +4182,7 @@
         "target": 2,
         "stop": 1.5
       },
-      "id": 151,
+      "id": 175,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3630,7 +4206,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 152,
+      "id": 176,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3654,7 +4230,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 153,
+      "id": 177,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3678,7 +4254,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 154,
+      "id": 178,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3702,7 +4278,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 155,
+      "id": 179,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3726,7 +4302,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 156,
+      "id": 180,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3750,7 +4326,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 157,
+      "id": 181,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3774,7 +4350,7 @@
         "target": 2.5,
         "stop": 1
       },
-      "id": 158,
+      "id": 182,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3798,7 +4374,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 159,
+      "id": 183,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3822,7 +4398,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 160,
+      "id": 184,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3846,7 +4422,7 @@
         "target": 2,
         "stop": 1.5
       },
-      "id": 161,
+      "id": 185,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3870,7 +4446,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 162,
+      "id": 186,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3894,7 +4470,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 163,
+      "id": 187,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3918,7 +4494,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 164,
+      "id": 188,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3942,7 +4518,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 165,
+      "id": 189,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3966,7 +4542,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 166,
+      "id": 190,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -3990,7 +4566,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 167,
+      "id": 191,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -4014,7 +4590,7 @@
         "target": 2.5,
         "stop": 1
       },
-      "id": 168,
+      "id": 192,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -4038,7 +4614,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 169,
+      "id": 193,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -4062,7 +4638,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 170,
+      "id": 194,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -4086,7 +4662,7 @@
         "target": 2,
         "stop": 1.5
       },
-      "id": 171,
+      "id": 195,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -4110,7 +4686,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 172,
+      "id": 196,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -4134,7 +4710,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 173,
+      "id": 197,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -4158,7 +4734,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 174,
+      "id": 198,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -4182,7 +4758,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 175,
+      "id": 199,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -4206,7 +4782,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 176,
+      "id": 200,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -4230,7 +4806,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 177,
+      "id": 201,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -4254,7 +4830,7 @@
         "target": 2.5,
         "stop": 1
       },
-      "id": 178,
+      "id": 202,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -4278,7 +4854,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 179,
+      "id": 203,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -4302,7 +4878,7 @@
         "target": 2.5,
         "stop": 1.5
       },
-      "id": 180,
+      "id": 204,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -4326,7 +4902,7 @@
         "target": 2,
         "stop": 1.5
       },
-      "id": 181,
+      "id": 205,
       "category": "patternIndicator"
     },
     "trades": [],
@@ -4350,7 +4926,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 182,
+      "id": 206,
       "category": "composite"
     },
     "trades": [],
@@ -4374,7 +4950,7 @@
         "target": 4,
         "stop": 1.5
       },
-      "id": 183,
+      "id": 207,
       "category": "composite"
     },
     "trades": [],
@@ -4398,7 +4974,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 184,
+      "id": 208,
       "category": "composite"
     },
     "trades": [],
@@ -4422,7 +4998,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 185,
+      "id": 209,
       "category": "composite"
     },
     "trades": [],
@@ -4446,7 +5022,7 @@
         "target": 4,
         "stop": 1.5
       },
-      "id": 186,
+      "id": 210,
       "category": "composite"
     },
     "trades": [],
@@ -4470,7 +5046,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 187,
+      "id": 211,
       "category": "composite"
     },
     "trades": [],
@@ -4494,7 +5070,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 188,
+      "id": 212,
       "category": "composite"
     },
     "trades": [],
@@ -4518,7 +5094,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 189,
+      "id": 213,
       "category": "composite"
     },
     "trades": [],
@@ -4542,7 +5118,7 @@
         "target": 4,
         "stop": 1.5
       },
-      "id": 190,
+      "id": 214,
       "category": "composite"
     },
     "trades": [],
@@ -4566,7 +5142,7 @@
         "target": 3,
         "stop": 1.5
       },
-      "id": 191,
+      "id": 215,
       "category": "composite"
     },
     "trades": [],
@@ -4590,7 +5166,7 @@
         "target": 3.5,
         "stop": 1.5
       },
-      "id": 192,
+      "id": 216,
       "category": "composite"
     },
     "trades": [],
@@ -4614,7 +5190,7 @@
         "target": 4.5,
         "stop": 1.5
       },
-      "id": 193,
+      "id": 217,
       "category": "composite"
     },
     "trades": [],
@@ -4638,7 +5214,7 @@
         "target": 4,
         "stop": 1.5
       },
-      "id": 194,
+      "id": 218,
       "category": "composite"
     },
     "trades": [],
@@ -4662,7 +5238,7 @@
         "target": 4.5,
         "stop": 1.5
       },
-      "id": 195,
+      "id": 219,
       "category": "composite"
     },
     "trades": [],
@@ -4686,7 +5262,7 @@
         "target": 4.5,
         "stop": 1.5
       },
-      "id": 196,
+      "id": 220,
       "category": "composite"
     },
     "trades": [],
@@ -4710,7 +5286,7 @@
         "target": 5,
         "stop": 1.5
       },
-      "id": 197,
+      "id": 221,
       "category": "composite"
     },
     "trades": [],

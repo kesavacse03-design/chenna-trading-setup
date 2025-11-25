@@ -2,15 +2,15 @@
   "category": "DOWNSIDE_LOM_SWING",
   "name": "V1 Default - DOWNSIDE_LOM_SWING",
   "version": "1.0.0",
-  "createdAt": "2025-11-25T17:04:44.733Z",
+  "createdAt": "2025-11-25T17:10:06.151Z",
   "entryRules": {
-    "logic": "RSI14 Oversold 15",
+    "logic": "Price Above SMA20",
     "description": "Best performing logic from top-ranked strategy"
   },
   "exitRules": {
     "target": 2.5,
     "stop": 1.5,
-    "source": "From RSI14 Oversold 15"
+    "source": "From Price Above SMA20"
   },
   "trapFilters": {
     "enabled": true,
@@ -30,21 +30,21 @@
   "contributors": [
     {
       "rank": 1,
-      "logic": "RSI14 Oversold 15",
+      "logic": "Price Above SMA20",
       "score": "0.0",
       "trades": 0,
       "winRate": "0.0%"
     },
     {
       "rank": 2,
-      "logic": "RSI14 Overbought 85",
+      "logic": "Price Above SMA50",
       "score": "0.0",
       "trades": 0,
       "winRate": "0.0%"
     },
     {
       "rank": 3,
-      "logic": "RSI21 Oversold 15",
+      "logic": "Price Above SMA200",
       "score": "0.0",
       "trades": 0,
       "winRate": "0.0%"

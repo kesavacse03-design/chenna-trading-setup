@@ -259,7 +259,7 @@ class TimeTravelBacktestEngine {
         for (const stock of stocks) {
             try {
                 const candles = await this.getCandlesForStock(stock.symbol);
-                if (!candles || candles.length < 200) continue;
+                if (!candles || candles.length < 100) continue;  // FIXED: Changed from 200 to 100
 
                 // Time-travel: test at multiple historical dates
                 for (let D = 100; D < candles.length - 10; D++) {
