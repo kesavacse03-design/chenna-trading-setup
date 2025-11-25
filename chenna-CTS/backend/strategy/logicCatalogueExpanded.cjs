@@ -10,7 +10,155 @@ class LogicCatalogueExpanded {
     static buildSingleIndicatorLogics() {
         const logics = [];
 
-        // RSI strategies - 18 combinations
+        // ==================== UNIVERSAL TRIGGER STRATEGIES (25+ that work with ANY data) ====================
+
+        // Price vs SMA strategies - These trigger OFTEN
+        logics.push({
+            name: 'Price Above SMA20',
+            entry: (indicators) => indicators.currentPrice && indicators.sma20 && indicators.currentPrice > indicators.sma20,
+            exit: { target: 2.5, stop: 1.5 }
+        });
+        logics.push({
+            name: 'Price Above SMA50',
+            entry: (indicators) => indicators.currentPrice && indicators.sma50 && indicators.currentPrice > indicators.sma50,
+            exit: { target: 2.5, stop: 1.5 }
+        });
+        logics.push({
+            name: 'Price Above SMA200',
+            entry: (indicators) => indicators.currentPrice && indicators.sma200 && indicators.currentPrice > indicators.sma200,
+            exit: { target: 3.0, stop: 1.5 }
+        });
+        logics.push({
+            name: 'Price Below SMA20',
+            entry: (indicators) => indicators.currentPrice && indicators.sma20 && indicators.currentPrice < indicators.sma20,
+            exit: { target: 2.0, stop: 1.5 }
+        });
+        logics.push({
+            name: 'Price Between SMA20 and SMA50',
+            entry: (indicators) => {
+                const price = indicators.currentPrice;
+                return indicators.sma20 && indicators.sma50 && price < indicators.sma20 && price > indicators.sma50;
+            },
+            exit: { target: 2.5, stop: 1.5 }
+        });
+
+        // MACD strategies - Trigger FREQUENTLY
+        logics.push({
+            name: 'MACD Bullish Simple',
+            entry: (indicators) => indicators.macdBullish === true,
+            exit: { target: 2.5, stop: 1.5 }
+        });
+        logics.push({
+            name: 'MACD Bearish Simple',
+            entry: (indicators) => indicators.macdBullish === false,
+            exit: { target: 2.0, stop: 1.5 }
+        });
+        logics.push({
+            name: 'MACD Histogram Positive',
+            entry: (indicators) => indicators.macd && indicators.macd.histogram > 0,
+            exit: { target: 2.5, stop: 1.5 }
+        });
+        logics.push({
+            name: 'MACD Histogram Negative',
+            entry: (indicators) => indicators.macd && indicators.macd.histogram < 0,
+            exit: { target: 2.0, stop: 1.5 }
+        });
+
+        // Normal RSI strategies - Use REALISTIC values (not extremes)
+        logics.push({
+            name: 'RSI Below 50 (Normal)',
+            entry: (indicators) => indicators.rsi14 && indicators.rsi14 < 50,
+            exit: { target: 2.5, stop: 1.5 }
+        });
+        logics.push({
+            name: 'RSI Above 50 (Normal)',
+            entry: (indicators) => indicators.rsi14 && indicators.rsi14 > 50,
+            exit: { target: 2.5, stop: 1.5 }
+        });
+        logics.push({
+            name: 'RSI Normal Oversold < 40',
+            entry: (indicators) => indicators.rsi14 && indicators.rsi14 < 40,
+            exit: { target: 2.5, stop: 1.5 }
+        });
+        logics.push({
+            name: 'RSI Normal Overbought > 60',
+            entry: (indicators) => indicators.rsi14 && indicators.rsi14 > 60,
+            exit: { target: 2.5, stop: 1.5 }
+        });
+
+        // Trend following - Works in any market
+        logics.push({
+            name: 'Golden Cross Active',
+            entry: (indicators) => indicators.sma50 && indicators.sma200 && indicators.sma50 > indicators.sma200,
+            exit: { target: 3.0, stop: 1.5 }
+        });
+        logics.push({
+            name: 'Death Cross Active',
+            entry: (indicators) => indicators.sma50 && indicators.sma200 && indicators.sma50 < indicators.sma200,
+            exit: { target: 2.5, stop: 1.5 }
+        });
+
+        // ADX trend strength - Common conditions
+        logics.push({
+            name: 'ADX Any Trend',
+            entry: (indicators) => indicators.adx && indicators.adx.adx > 15,
+            exit: { target: 2.5, stop: 1.5 }
+        });
+        logics.push({
+            name: 'DI+ Leading',
+            entry: (indicators) => indicators.adx && indicators.adx.diPlus > indicators.adx.diMinus,
+            exit: { target: 2.5, stop: 1.5 }
+        });
+        logics.push({
+            name: 'DI- Leading',
+            entry: (indicators) => indicators.adx && indicators.adx.diPlus < indicators.adx.diMinus,
+            exit: { target: 2.5, stop: 1.5 }
+        });
+
+        // Bollinger Band normal position
+        logics.push({
+            name: 'Price Near BB Middle',
+            entry: (indicators) => {
+                const price = indicators.currentPrice;
+                return indicators.bb && Math.abs(price - indicators.bb.middle) / indicators.bb.middle < 0.01;
+            },
+            exit: { target: 1.5, stop: 1.0 }
+        });
+        logics.push({
+            name: 'Price in Lower Half BB',
+            entry: (indicators) => {
+                const price = indicators.currentPrice;
+                return indicators.bb && price < indicators.bb.middle;
+            },
+            exit: { target: 2.0, stop: 1.5 }
+        });
+        logics.push({
+            name: 'Price in Upper Half BB',
+            entry: (indicators) => {
+                const price = indicators.currentPrice;
+                return indicators.bb && price > indicators.bb.middle;
+            },
+            exit: { target: 2.0, stop: 1.5 }
+        });
+
+        // Combined simple conditions
+        logics.push({
+            name: 'Bullish Alignment: Price > SMA50 + MACD Bull',
+            entry: (indicators) => indicators.aboveSMA50 && indicators.macdBullish,
+            exit: { target: 3.0, stop: 1.5 }
+        });
+        logics.push({
+            name: 'Bearish Alignment: Price < SMA50 + MACD Bear',
+            entry: (indicators) => !indicators.aboveSMA50 && !indicators.macdBullish,
+            exit: { target: 2.5, stop: 1.5 }
+        });
+        logics.push({
+            name: 'RSI Normal + Above SMA200',
+            entry: (indicators) => indicators.rsi14 && indicators.rsi14 > 40 && indicators.rsi14 < 60 && indicators.aboveSMA200,
+            exit: { target: 2.5, stop: 1.5 }
+        });
+
+        // ==================== ORIGINAL EXTREME RSI STRATEGIES (kept for rare events) ====================
         for (const threshold of [15, 20, 25, 30, 35, 40]) {
             logics.push({
                 name: `RSI14 Oversold ${threshold}`,
