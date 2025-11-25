@@ -13,6 +13,7 @@ import { CogIcon } from './components/icons/CogIcon';
 import NotificationBar from './components/NotificationBar';
 import StrategyWorkbenchModal from './components/StrategyWorkbenchModal';
 import IntelligencePanel from './components/StrategyReportsPanel';
+import AIInsightsPanel from './components/AIInsightsPanel';
 import TradesDashboard from './components/TradesDashboard';
 import * as api from './api';
 import { startTicker, stopTicker } from './utils/ticker';
@@ -211,6 +212,7 @@ const App: React.FC = () => {
           </div>
 
           <div className="lg:col-span-1 space-y-6">
+            <AIInsightsPanel />
             <PortfolioStats activeTrades={trades} totalCapital={totalCapital} />
             <DailySummary completedTrades={completedTrades} />
             <SystemHealth healthState={healthState} />

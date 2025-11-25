@@ -156,3 +156,155 @@ model Trade {
   @@index([stockSymbol, status])
   @@map("trades")
 }
+
+// ============================================
+// AI Intelligence Layer Models
+// ============================================
+
+model Signal {
+  id                   Int       @id @default(autoincrement())
+  signalId             String    @unique @map("signal_id") @db.VarChar(100)
+  categoryKey          String    @map("category_key") @db.VarChar(100)
+  symbol               String    @db.VarChar(50)
+  direction            String    @db.VarChar(10)
+  
+  entryPrice           Decimal   @map("entry_price") @db.Decimal(10, 2)
+  entryConditions      Json      @map("entry_conditions")
+  bufferMinutes        Int       @default(15) @map("buffer_minutes")
+  aiConfidence         Decimal?  @map("ai_confidence") @db.Decimal(5, 2)
+  aiValidation         Json?     @map("ai_validation")
+  
+  targetPrice          Decimal   @map("target_price") @db.Decimal(10, 2)
+  stopLoss             Decimal   @map("stop_loss") @db.Decimal(10, 2)
+  trailingStopPercent  Decimal   @map("trailing_stop_percent") @db.Decimal(5, 2)
+  currentTrailingStop  Decimal?  @map("current_trailing_stop") @db.Decimal(10, 2)
+  
+  trackingDays         Int       @map("tracking_days")
+  trackingStatus       String    @default("ACTIVE") @map("tracking_status") @db.VarChar(20)
+  
+  generatedAt          DateTime  @default(now()) @map("generated_at")
+  expiresAt            DateTime? @map("expires_at")
+  exitedAt             DateTime? @map("exited_at")
+  
+  currentPrice         Decimal?  @map("current_price") @db.Decimal(10, 2)
+  exitPrice            Decimal?  @map("exit_price") @db.Decimal(10, 2)
+  unrealizedPnL        Decimal?  @map("unrealized_pnl") @db.Decimal(10, 2)
+  realizedPnL          Decimal?  @map("realized_pnl") @db.Decimal(10, 2)
+  daysInTrade          Int       @default(0) @map("days_in_trade")
+  
+  strategyVersion      String    @default("v1") @map("strategy_version") @db.VarChar(20)
+  failureReason        String?   @map("failure_reason") @db.Text
+  marketContext        Json?     @map("market_context")
+  telegramSent         Boolean   @default(false) @map("telegram_sent")
+  
+  createdAt            DateTime  @default(now()) @map("created_at")
+  updatedAt            DateTime  @default(now()) @updatedAt @map("updated_at")
+  
+  shadowLearnings      ShadowLearning[]
+  
+  @@index([categoryKey, trackingStatus])
+  @@index([symbol, trackingStatus])
+  @@index([trackingStatus])
+  @@map("signals")
+}
+
+model ShadowLearning {
+  id                   Int      @id @default(autoincrement())
+  categoryKey          String   @map("category_key") @db.VarChar(100)
+  signalId             String?  @map("signal_id") @db.VarChar(100)
+  signal               Signal?  @relation(fields: [signalId], references: [signalId], onDelete: SetNull)
+  
+  failureType          String   @map("failure_type") @db.VarChar(50)
+  aiAnalysis           Json     @map("ai_analysis")
+  rootCause            String?  @map("root_cause") @db.Text
+  suggestedImprovement Json     @map("suggested_improvement")
+  
+  priceHistory         Json?    @map("price_history")
+  volumeProfile        Json?    @map("volume_profile")
+  marketSentiment      String?  @map("market_sentiment") @db.VarChar(20)
+  newsEvents           Json?    @map("news_events")
+  
+  appliedToShadow      Boolean  @default(false) @map("applied_to_shadow")
+  confidence           Decimal? @db.Decimal(5, 2)
+  
+  createdAt            DateTime @default(now()) @map("created_at")
+  
+  @@index([categoryKey])
+  @@index([failureType])
+  @@map("shadow_learnings")
+}
+
+model StrategyVersion {
+  id                   Int       @id @default(autoincrement())
+  categoryKey          String    @map("category_key") @db.VarChar(100)
+  version              String    @db.VarChar(20)
+  
+  description          String    @db.Text
+  rules                Json
+  params               Json
+  
+  accuracy             Decimal?  @db.Decimal(5, 2)
+  totalSignals         Int       @default(0) @map("total_signals")
+  successfulSignals    Int       @default(0) @map("successful_signals")
+  failedSignals        Int       @default(0) @map("failed_signals")
+  avgPnL               Decimal?  @map("avg_pnl") @db.Decimal(10, 2)
+  maxDrawdown          Decimal?  @map("max_drawdown") @db.Decimal(10, 2)
+  expectancy           Decimal?  @db.Decimal(10, 4)
+  
+  isActive             Boolean   @default(false) @map("is_active")
+  isShadow             Boolean   @default(false) @map("is_shadow")
+  promotedAt           DateTime? @map("promoted_at")
+  promotedFrom         String?   @map("promoted_from") @db.VarChar(20)
+  
+  aiGenerated          Boolean   @default(false) @map("ai_generated")
+  learningSource       Json?     @map("learning_source")
+  
+  createdAt            DateTime  @default(now()) @map("created_at")
+  updatedAt            DateTime  @default(now()) @updatedAt @map("updated_at")
+  
+  @@unique([categoryKey, version])
+  @@index([categoryKey, isActive])
+  @@map("strategy_versions")
+}
+
+model TelegramConfig {
+  id                   Int      @id @default(autoincrement())
+  botToken             String   @map("bot_token") @db.VarChar(500)
+  chatId               String   @map("chat_id") @db.VarChar(100)
+  enabled              Boolean  @default(false)
+  
+  notifySignals        Boolean  @default(true) @map("notify_signals")
+  notifyUpdates        Boolean  @default(true) @map("notify_updates")
+  notifyExits          Boolean  @default(true) @map("notify_exits")
+  notifyAIInsights     Boolean  @default(true) @map("notify_ai_insights")
+  
+  dailyUpdateTime      String?  @map("daily_update_time") @db.VarChar(10)
+  
+  createdAt            DateTime @default(now()) @map("created_at")
+  updatedAt            DateTime @default(now()) @updatedAt @map("updated_at")
+  
+  @@map("telegram_config")
+}
+
+model MarketSentimentLog {
+  id                   Int       @id @default(autoincrement())
+  symbol               String    @db.VarChar(50)
+  date                 DateTime  @db.Date
+  
+  sentiment            String    @db.VarChar(20)
+  score                Decimal   @db.Decimal(5, 2)
+  
+  aiAnalysis           Json      @map("ai_analysis")
+  keyEvents            Json?     @map("key_events")
+  recommendation       String?   @db.VarChar(20)
+  
+  newsSources          Json?     @map("news_sources")
+  socialMediaData      Json?     @map("social_media_data")
+  marketIndicators     Json?     @map("market_indicators")
+  
+  createdAt            DateTime  @default(now()) @map("created_at")
+  
+  @@unique([symbol, date])
+  @@index([symbol])
+  @@map("market_sentiment_log")
+}

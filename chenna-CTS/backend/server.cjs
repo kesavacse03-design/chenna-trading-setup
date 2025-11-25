@@ -1348,6 +1348,96 @@ app.get('/api/optimize/results/:jobId', (req, res) => {
 
 // ========== END OPTIMIZATION API ==========
 
+// ========== AI INTELLIGENCE API ==========
+
+// Import AI services
+const MarketSentiment = require('./services/MarketSentiment.cjs');
+const MarketRegimeDetector = require('./services/MarketRegimeDetector.cjs');
+const TechnicalAnalysis = require('./services/TechnicalAnalysis.cjs');
+const AIIntelligence = require('./services/AIIntelligence.cjs');
+
+// GET /api/ai/market-sentiment - Get overall market sentiment
+app.get('/api/ai/market-sentiment', async (req, res) => {
+  try {
+    const sentiment = await MarketSentiment.getMarketSentiment();
+    res.json({ ok: true, sentiment });
+  } catch (error) {
+    console.error('[GET /api/ai/market-sentiment] Error:', error);
+    res.status(500).json({ ok: false, error: error.message });
+  }
+});
+
+// POST /api/ai/analyze-news - Analyze news headlines
+app.post('/api/ai/analyze-news', async (req, res) => {
+  try {
+    const { headlines } = req.body;
+    if (!Array.isArray(headlines)) {
+      return res.status(400).json({ ok: false, error: 'headlines must be an array' });
+    }
+
+    const analysis = await MarketSentiment.analyzeNewsSentiment(headlines);
+    res.json({ ok: true, analysis });
+  } catch (error) {
+    console.error('[POST /api/ai/analyze-news] Error:', error);
+    res.status(500).json({ ok: false, error: error.message });
+  }
+});
+
+// POST /api/ai/detect-regime - Detect market regime from candles
+app.post('/api/ai/detect-regime', async (req, res) => {
+  try {
+    const { candles } = req.body;
+    if (!Array.isArray(candles)) {
+      return res.status(400).json({ ok: false, error: 'candles must be an array' });
+    }
+
+    const regime = MarketRegimeDetector.detectRegime(candles);
+    res.json({ ok: true, regime });
+  } catch (error) {
+    console.error('[POST /api/ai/detect-regime] Error:', error);
+    res.status(500).json({ ok: false, error: error.message });
+  }
+});
+
+// POST /api/ai/technical-analysis - Perform comprehensive technical analysis
+app.post('/api/ai/technical-analysis', async (req, res) => {
+  try {
+    const { candles, config } = req.body;
+    if (!Array.isArray(candles)) {
+      return res.status(400).json({ ok: false, error: 'candles must be an array' });
+    }
+
+    const analysis = TechnicalAnalysis.analyze(candles, config || {});
+    res.json({ ok: true, analysis });
+  } catch (error) {
+    console.error('[POST /api/ai/technical-analysis] Error:', error);
+    res.status(500).json({ ok: false, error: error.message });
+  }
+});
+
+// GET /api/ai/token-usage - Get AI token usage statistics
+app.get('/api/ai/token-usage', (req, res) => {
+  try {
+    const stats = AIIntelligence.getUsageStats();
+    res.json({ ok: true, stats });
+  } catch (error) {
+    console.error('[GET /api/ai/token-usage] Error:', error);
+    res.status(500).json({ ok: false, error: error.message });
+  }
+});
+
+// POST /api/ai/reset-usage - Reset AI token usage statistics
+app.post('/api/ai/reset-usage', (req, res) => {
+  try {
+    AIIntelligence.resetUsageStats();
+    res.json({ ok: true, message: 'Usage stats reset' });
+  } catch (error) {
+    console.error('[POST /api/ai/reset-usage] Error:', error);
+    res.status(500).json({ ok: false, error: error.message });
+  }
+});
+
+// ========== END AI INTELLIGENCE API ==========
 
 // Start server
 app.listen(PORT, () => {

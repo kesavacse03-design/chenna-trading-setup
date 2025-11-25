@@ -311,3 +311,161 @@ export async function optimizeComposite(payload: { symbols: string[]; from: stri
     if (!r.ok) return { ok: false, categoryKey: payload.categoryKey, candidates: 0, ranked: [] } as any;
     return r.json();
 }
+
+// ========== AI Intelligence API Functions ==========
+
+export interface MarketSentiment {
+    score: number;
+    label: string;
+    components: {
+        fiiDii: any;
+        globalCues: string;
+        vix: { value: number; trend: string };
+        pcr: { value: number; trend: string };
+    };
+    timestamp: string;
+}
+
+export interface MarketRegime {
+    regime: 'TRENDING_BULLISH' | 'TRENDING_BEARISH' | 'RANGING' | 'VOLATILE' | 'UNKNOWN';
+    confidence: number;
+    indicators: {
+        adx: number;
+        atrRatio: number;
+        bbWidth: number;
+    };
+    reason: string;
+}
+
+export interface TechnicalAnalysisResult {
+    current: {
+        price: number;
+        emaShort: number;
+        emaLong: number;
+        rsi: number;
+        atr: number;
+    };
+    trend: {
+        direction: 'bullish' | 'bearish';
+        strength: number;
+        emaAlignment: boolean;
+    };
+    indicators: any;
+    patterns: Array<{ type: string; confidence: number; direction: string }>;
+    supportResistance: {
+        support: Array<{ price: number; strength: number; touches?: number }>;
+        resistance: Array<{ price: number; strength: number; touches?: number }>;
+    };
+    volume: any;
+    signals: Array<{ type: string; strength: number; message: string; direction?: string }>;
+}
+
+export interface TokenUsageStats {
+    totalTokensUsed: number;
+    totalCost: number;
+    requestCount: number;
+    avgTokensPerRequest: number;
+    avgCostPerRequest: number;
+    model: string;
+}
+
+export async function getMarketSentiment(): Promise<MarketSentiment | null> {
+    const base = apiBase();
+    if (!base) return null;
+
+    try {
+        const r = await fetch(`${base}/api/ai/market-sentiment`);
+        if (!r.ok) return null;
+        const data = await r.json();
+        return data.sentiment;
+    } catch (e) {
+        console.error('Failed to fetch market sentiment:', e);
+        return null;
+    }
+}
+
+export async function analyzeNews(headlines: string[]): Promise<any> {
+    const base = apiBase();
+    if (!base) return null;
+
+    try {
+        const r = await fetch(`${base}/api/ai/analyze-news`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ headlines })
+        });
+        if (!r.ok) return null;
+        const data = await r.json();
+        return data.analysis;
+    } catch (e) {
+        console.error('Failed to analyze news:', e);
+        return null;
+    }
+}
+
+export async function detectMarketRegime(candles: any[]): Promise<MarketRegime | null> {
+    const base = apiBase();
+    if (!base) return null;
+
+    try {
+        const r = await fetch(`${base}/api/ai/detect-regime`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ candles })
+        });
+        if (!r.ok) return null;
+        const data = await r.json();
+        return data.regime;
+    } catch (e) {
+        console.error('Failed to detect market regime:', e);
+        return null;
+    }
+}
+
+export async function getTechnicalAnalysis(candles: any[], config?: any): Promise<TechnicalAnalysisResult | null> {
+    const base = apiBase();
+    if (!base) return null;
+
+    try {
+        const r = await fetch(`${base}/api/ai/technical-analysis`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ candles, config })
+        });
+        if (!r.ok) return null;
+        const data = await r.json();
+        return data.analysis;
+    } catch (e) {
+        console.error('Failed to get technical analysis:', e);
+        return null;
+    }
+}
+
+export async function getAITokenUsage(): Promise<TokenUsageStats | null> {
+    const base = apiBase();
+    if (!base) return null;
+
+    try {
+        const r = await fetch(`${base}/api/ai/token-usage`);
+        if (!r.ok) return null;
+        const data = await r.json();
+        return data.stats;
+    } catch (e) {
+        console.error('Failed to fetch token usage:', e);
+        return null;
+    }
+}
+
+export async function resetAITokenUsage(): Promise<boolean> {
+    const base = apiBase();
+    if (!base) return false;
+
+    try {
+        const r = await fetch(`${base}/api/ai/reset-usage`, { method: 'POST' });
+        return r.ok;
+    } catch (e) {
+        console.error('Failed to reset token usage:', e);
+        return false;
+    }
+}
+
