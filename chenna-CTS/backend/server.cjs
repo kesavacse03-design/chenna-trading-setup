@@ -22,6 +22,10 @@ app.use(express.json());
 const { InstrumentResolver } = require(path.resolve(__dirname, '../../backend/strategy/instrumentResolver.cjs'));
 const instrumentResolver = new InstrumentResolver();
 
+// Register Auto-Strategy Generation Routes
+const registerAutoStrategyRoutes = require('./api/autoStrategyRoutes.cjs');
+registerAutoStrategyRoutes(app);
+
 // --- GUN SHOT FIXES ---
 // 1. Instrument Search (Fixed - use Prisma directly)
 app.get('/api/instruments/search', async (req, res) => {
