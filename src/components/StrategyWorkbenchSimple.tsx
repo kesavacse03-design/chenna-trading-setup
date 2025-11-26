@@ -394,6 +394,31 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
                             </div>
                         )}
 
+                        {/* V1 Promote Section */}
+                        {v1Strategy && (
+                            <div className="p-5 bg-gradient-to-br from-emerald-900/20 to-green-900/20 border border-emerald-500/40 rounded-xl shadow-lg">
+                                <div className="flex items-center justify-between">
+                                    <div className="flex-1">
+                                        <h4 className="font-bold text-lg text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-green-300 flex items-center">
+                                            <SparklesIcon className="w-5 h-5 mr-2 text-emerald-400" />
+                                            ✨ V1 Strategy Available
+                                        </h4>
+                                        <p className="text-xs text-slate-400 mt-1">{v1Strategy.description}</p>
+                                        <p className="text-xs text-emerald-400 mt-1">
+                                            Accuracy: {v1Strategy.metrics?.accuracy || '100%'}
+                                        </p>
+                                    </div>
+                                    <button
+                                        onClick={handlePromoteV1}
+                                        className="ml-4 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-bold py-2 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-emerald-500/50 hover:scale-105 active:scale-95 flex items-center gap-2"
+                                    >
+                                        <SparklesIcon className="w-4 h-4" />
+                                        Promote V1
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
                         {/* Run Backtest Section */}
                         <div className="p-6 rounded-xl bg-gradient-to-br from-slate-800/90 to-slate-900/90 border border-slate-600/50 shadow-xl">
                             <div className="flex items-center justify-between mb-4">
@@ -538,6 +563,14 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
                                         </div>
                                     </div>
                                 </div>
+
+                                {/* CSV Download Button */}
+                                <button
+                                    onClick={handleDownloadCSV}
+                                    className="mt-6 w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 shadow-lg hover:shadow-indigo-500/50 hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2"
+                                >
+                                    📥 Download CSV ({eventReport.totalTrades || 0} trades)
+                                </button>
                             </div>
                         )}
 
@@ -548,4 +581,4 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
     );
 };
 
-export default StrategyWorkbenchSimple;
+export default StrategyWorkbench Simple;
