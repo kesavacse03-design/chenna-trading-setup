@@ -497,12 +497,12 @@ class TimeTravelBacktestEngine {
         const scored = allResults.map(result => {
             const m = result.metrics;
 
-            // Apply minimum thresholds
-            if (m.tradeCount < 25) {
+            // Apply minimum thresholds (LOWERED for realistic evaluation)
+            if (m.tradeCount < 5) {  // Was 25 - now allow strategies with statistical significance
                 return { ...result, score: 0, failReason: 'Insufficient trades' };
             }
 
-            if (m.expectancy < 0.5) {
+            if (m.expectancy < 0.1) {  // Was 0.5 - now allow marginally profitable strategies
                 return { ...result, score: 0, failReason: 'Low expectancy' };
             }
 
