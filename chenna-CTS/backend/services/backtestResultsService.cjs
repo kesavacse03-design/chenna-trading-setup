@@ -112,19 +112,19 @@ class BacktestResultsService {
 
             trades: trades.map(trade => ({
                 symbol: trade.symbol,
-                entryDate: trade.entryDate || trade.entry?.date,
-                entryPrice: trade.entryPrice || trade.entry?.price,
-                exitDate: trade.exitDate || trade.exit?.date,
-                exitPrice: trade.exitPrice || trade.exit?.price,
-                target: trade.target || (trade.entryPrice || trade.entry?.price) * (1 + (strategy.exit?.target || 2.5) / 100),
-                stopLoss: trade.stopLoss || (trade.entryPrice || trade.entry?.price) * (1 - (strategy.exit?.stop || 1.5) / 100),
+                entryDate: trade.entryDate,
+                entryPrice: trade.entryPrice,
+                exitDate: trade.exitDate,
+                exitPrice: trade.exitPrice,
+                target: trade.target,
+                stopLoss: trade.stopLoss,
                 pnl: trade.pnl,
                 pnlPercent: trade.pnlPercent || ((trade.exitPrice - trade.entryPrice) / trade.entryPrice * 100),
                 holdingDays: trade.holdingDays,
                 exitReason: trade.exitReason,
-                result: trade.result || (trade.pnl > 0 ? 'WIN' : 'LOSS'),
-                target Hit: trade.targetHit || trade.exitReason === 'TARGET',
-                stopHit: trade.stopHit || trade.exitReason === 'STOP'
+                result: trade.result,
+                targetHit: trade.targetHit,
+                stopHit: trade.stopHit
             }))
         };
 
