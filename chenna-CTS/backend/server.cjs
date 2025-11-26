@@ -26,6 +26,10 @@ const instrumentResolver = new InstrumentResolver();
 const registerAutoStrategyRoutes = require('./api/autoStrategyRoutes.cjs');
 registerAutoStrategyRoutes(app);
 
+// Register Backtest Results Routes (for CSV download and history)
+const registerBacktestResultsRoutes = require('./api/backtestResultsRoutes.cjs');
+registerBacktestResultsRoutes(app);
+
 // --- GUN SHOT FIXES ---
 // 1. Instrument Search (Fixed - use Prisma directly)
 app.get('/api/instruments/search', async (req, res) => {

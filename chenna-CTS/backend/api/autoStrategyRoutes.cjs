@@ -6,6 +6,7 @@
 const { PrismaClient } = require('@prisma/client');
 const AutoStrategyGenerator = require('../strategy/autoGenerator.cjs');
 const TimeTravelEngine = require('../strategy/timeTravelEngine.cjs');
+const backtestResultsService = require('../services/backtestResultsService.cjs');
 
 const prisma = new PrismaClient();
 
@@ -164,10 +165,18 @@ function registerAutoStrategyRoutes(app) {
 
             console.log(`\n✅ [Time-Travel] Backtest complete!\n`);
 
-            // Return results
+            // Save results to storage and generate CSV
+            const savedResults = await backtestResultsService.saveTimeTravelResults(categoryKey, results);
+
+            console.log(`\n💾 Results saved:`);
+            console.log(`   JSON: ${savedResults.jsonPath}`);
+            console.log(`   CSV: ${savedResults.csvPath}`);
+
+            // Return results with file paths
             res.json({
                 ok: true,
                 categoryKey,
+                runId: savedResults.runId,
                 stats: results.stats,
                 top3: results.top3.map(r => ({
                     rank: results.top3.indexOf(r) + 1,
@@ -177,12 +186,18 @@ function registerAutoStrategyRoutes(app) {
                         winRate: parseFloat(r.metrics.winRate.toFixed(1)),
                         expectancy: parseFloat(r.metrics.expectancy.toFixed(2)),
                         trades: r.metrics.tradeCount,
+                        avgHolding: parseFloat(r.metrics.avgHolding.toFixed(1)),
                         trapAvoidance: parseFloat(r.metrics.trapAvoidanceRate.toFixed(1))
                     },
                     scoreBreakdown: r.scoreBreakdown
                 })),
                 v1Strategy: results.v1Strategy,
-                message: 'Time-travel backtest completed successfully'
+                files: {
+                    json: savedResults.jsonPath,
+                    csv: savedResults.csvPath
+                },
+                summary: savedResults.summary,
+                message: 'Time-travel backtest completed and saved successfully'
             });
 
         } catch (error) {
