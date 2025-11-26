@@ -118,7 +118,7 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
         setSanityCheckResults([]);
 
         try {
-            const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:5174';
+            const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:5173';
             const response = await fetch(`${apiBase}/api/ai/validate-signal`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -204,16 +204,8 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
 
             setBacktestProgress(90);
 
-            // Update editor with generated strategy
-            if (result.strategy) {
-                setEditorLogic({
-                    description: result.strategy.description,
-                    rules: result.strategy.rules,
-                    entry: result.strategy.entry,
-                    target: result.strategy.target,
-                    stopLoss: result.strategy.stopLoss
-                });
-            }
+            // DON'T update editor with backtest results to preserve user's strategy
+            // Backtest results are only displayed in the results section below
 
             // Display backtest results
             if (result.backtest) {
