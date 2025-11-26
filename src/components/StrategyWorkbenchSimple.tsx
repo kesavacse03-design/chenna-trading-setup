@@ -56,8 +56,28 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
 
                 if (response.ok) {
                     const data = await response.json();
-                    setV1Strategy(data.strategy);
-                    console.log('✅ V1 Strategy loaded:', data.strategy);
+                    const v1 = data.strategy;
+                    setV1Strategy(v1);
+
+                    // ✅ AUTO-POPULATE EDITOR WITH V1 FOR PERSISTENCE
+                    const rulesText = [
+                        `📈 ENTRY: ${v1.rules.entry.logic}`,
+                        ``,
+                        `🎯 EXIT: Target +${v1.rules.exit.target}%, Stop -${v1.rules.exit.stop}%`,
+                        `⚡ RISK: ${v1.params?.positionSizing?.riskPerTrade || 1.5}% per trade`,
+                        `📊 ACCURACY: ${v1.metrics.accuracy}`,
+                        `🛡️ TRAPS: ${v1.rules.traps?.enabled ? 'ENABLED' : 'DISABLED'}`
+                    ].join('\n');
+
+                    setEditorLogic({
+                        description: v1.description + ' - Best performing logic from top-ranked strategy',
+                        rules: rulesText.split('\n'),
+                        entry: v1.rules.entry.logic,
+                        target: v1.rules.exit.target,
+                        stopLoss: v1.rules.exit.stop
+                    });
+
+                    console.log('✅ V1 Strategy loaded and populated into editor:', v1.description);
                 } else {
                     console.log('⚠️ No V1 strategy found - run Time-Travel first');
                 }
