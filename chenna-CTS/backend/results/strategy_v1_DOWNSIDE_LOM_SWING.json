@@ -2,15 +2,15 @@
   "category": "DOWNSIDE_LOM_SWING",
   "name": "V1 Default - DOWNSIDE_LOM_SWING",
   "version": "1.0.0",
-  "createdAt": "2025-11-25T17:10:06.151Z",
+  "createdAt": "2025-11-26T01:43:54.675Z",
   "entryRules": {
     "logic": "Price Above SMA20",
     "description": "Best performing logic from top-ranked strategy"
   },
   "exitRules": {
-    "target": 2.5,
+    "target": 3,
     "stop": 1.5,
-    "source": "From Price Above SMA20"
+    "source": "From Price Above SMA200"
   },
   "trapFilters": {
     "enabled": true,
@@ -22,25 +22,25 @@
     "maxPositions": 5
   },
   "expectedMetrics": {
-    "accuracy": "0.0%",
-    "expectancy": "0.00%",
-    "trapAvoidance": "0.0%",
-    "avgHolding": "0.0 days"
+    "accuracy": "26.5%",
+    "expectancy": "-0.44%",
+    "trapAvoidance": "3.6%",
+    "avgHolding": "1.9 days"
   },
   "contributors": [
     {
       "rank": 1,
       "logic": "Price Above SMA20",
       "score": "0.0",
-      "trades": 0,
-      "winRate": "0.0%"
+      "trades": 1247,
+      "winRate": "26.5%"
     },
     {
       "rank": 2,
       "logic": "Price Above SMA50",
       "score": "0.0",
-      "trades": 0,
-      "winRate": "0.0%"
+      "trades": 1784,
+      "winRate": "29.2%"
     },
     {
       "rank": 3,
