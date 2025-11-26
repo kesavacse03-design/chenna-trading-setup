@@ -49,14 +49,15 @@ model Instrument {
 }
 
 model Category {
-  id          Int             @id @default(autoincrement())
-  key         String          @unique @db.VarChar(100)
-  name        String          @db.VarChar(255)
-  description String?         @db.Text
-  createdAt   DateTime        @default(now()) @map("created_at")
-  stocks      StockCategory[]
-  strategies  Strategy[]
-  backtests   BacktestResult[]
+  id                Int             @id @default(autoincrement())
+  key               String          @unique @db.VarChar(100)
+  name              String          @db.VarChar(255)
+  description       String?         @db.Text
+  livePriceEnabled  Boolean         @default(true) @map("live_price_enabled")
+  createdAt         DateTime        @default(now()) @map("created_at")
+  stocks            StockCategory[]
+  strategies        Strategy[]
+  backtests         BacktestResult[]
 
   @@map("categories")
 }

@@ -89,17 +89,27 @@ class LivePriceService {
         console.log('[LivePrice] 📈 Market OPEN - Starting update...');
 
         try {
+            // ✅ ONLY fetch stocks from categories with livePriceEnabled=true
             const stocks = await prisma.stock.findMany({
+                where: {
+                    categories: {
+                        some: {
+                            category: {
+                                livePriceEnabled: true  // ← Filter by enabled categories!
+                            }
+                        }
+                    }
+                },
                 select: { symbol: true, instrumentKey: true }
             });
 
             if (stocks.length === 0) {
-                console.log('[LivePrice] No stocks in database');
+                console.log('[LivePrice] No stocks in enabled categories');
                 this.isUpdating = false;
                 return;
             }
 
-            console.log(`[LivePrice] Found ${stocks.length} stocks in database`);
+            console.log(`[LivePrice] Found ${stocks.length} stocks in ENABLED categories`);
 
             // Build lookup map
             const stockMap = new Map();

@@ -187,23 +187,36 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
 
     // Handle Time-Travel Backtest
     const handleTimeTravelBacktest = async () => {
+        console.log('🔮 [Time-Travel] Button clicked!');
+        console.log(`   Category Key: "${categoryKey}"`);
+
         setIsRunningTimeTravel(true);
         setTimeTravelResults(null);
         showToast('🔮 Starting Time-Travel Backtest... Testing 200+ logics!', 'info');
 
         try {
             const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
-            const response = await fetch(`${apiBase}/api/strategy/time-travel-backtest`, {
+            const url = `${apiBase}/api/strategy/time-travel-backtest`;
+
+            console.log(`🌐 [Time-Travel] API URL: ${url}`);
+            console.log(`📤 [Time-Travel] Sending request with body:`, { categoryKey });
+
+            const response = await fetch(url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ categoryKey })
             });
 
+            console.log(`📥 [Time-Travel] Response status: ${response.status} ${response.statusText}`);
+
             if (!response.ok) {
+                const errorText = await response.text();
+                console.error(`❌ [Time-Travel] API error response:`, errorText);
                 throw new Error(`API error: ${response.statusText}`);
             }
 
             const result = await response.json();
+            console.log(`✅ [Time-Travel] Got result:`, result);
 
             if (result.ok) {
                 setTimeTravelResults(result);
@@ -212,9 +225,11 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
                 throw new Error(result.error || 'Unknown error');
             }
         } catch (error: any) {
-            console.error('Time-Travel Backtest error:', error);
+            console.error('❌ [Time-Travel] Backtest error:', error);
+            console.error('❌ [Time-Travel] Error stack:', error.stack);
             showToast(`❌ Error: ${error.message}`, 'error');
         } finally {
+            console.log('🏁 [Time-Travel] Request completed (success or error)');
             setIsRunningTimeTravel(false);
         }
     };
