@@ -112,19 +112,19 @@ class BacktestResultsService {
 
             trades: trades.map(trade => ({
                 symbol: trade.symbol,
-                entryDate: trade.entry.date,
-                entryPrice: trade.entry.price,
-                exitDate: trade.exit.date,
-                exitPrice: trade.exit.price,
-                target: trade.entry.price * (1 + strategy.exit.target / 100),
-                stopLoss: trade.entry.price * (1 - strategy.exit.stop / 100),
+                entryDate: trade.entryDate || trade.entry?.date,
+                entryPrice: trade.entryPrice || trade.entry?.price,
+                exitDate: trade.exitDate || trade.exit?.date,
+                exitPrice: trade.exitPrice || trade.exit?.price,
+                target: trade.target || (trade.entryPrice || trade.entry?.price) * (1 + (strategy.exit?.target || 2.5) / 100),
+                stopLoss: trade.stopLoss || (trade.entryPrice || trade.entry?.price) * (1 - (strategy.exit?.stop || 1.5) / 100),
                 pnl: trade.pnl,
-                pnlPercent: ((trade.exit.price - trade.entry.price) / trade.entry.price * 100),
+                pnlPercent: trade.pnlPercent || ((trade.exitPrice - trade.entryPrice) / trade.entryPrice * 100),
                 holdingDays: trade.holdingDays,
                 exitReason: trade.exitReason,
-                result: trade.pnl > 0 ? 'WIN' : 'LOSS',
-                targetHit: trade.exitReason === 'TARGET',
-                stopHit: trade.exitReason === 'STOP'
+                result: trade.result || (trade.pnl > 0 ? 'WIN' : 'LOSS'),
+                target Hit: trade.targetHit || trade.exitReason === 'TARGET',
+                stopHit: trade.stopHit || trade.exitReason === 'STOP'
             }))
         };
 
