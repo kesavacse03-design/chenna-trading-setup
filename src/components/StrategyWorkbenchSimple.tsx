@@ -243,7 +243,45 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
 
             if (result.ok) {
                 setTimeTravelResults(result);
-                showToast(`✅ Time-Travel Complete! Top strategy: ${result.top3[0].logic} (${result.top3[0].metrics.winRate}% win rate)`, 'success');
+
+                // ✅ AUTO-POPULATE V1 STRATEGY INTO TEXT BOXES
+                if (result.v1Strategy) {
+                    const v1 = result.v1Strategy;
+
+                    // Build trading rules text
+                    const rulesText = [
+                        `📈 ENTRY: ${v1.entryRules.logic}`,
+                        ``,
+                        `🎯 EXIT RULES:`,
+                        `  • Target: +${v1.exitRules.target}%`,
+                        `  • Stop Loss: -${v1.exitRules.stop}%`,
+                        `  • Max Holding: 10 days`,
+                        ``,
+                        `⚡ POSITION SIZING:`,
+                        `  • Risk per trade: ${v1.positionSizing.riskPerTrade}%`,
+                        `  • Max positions: ${v1.positionSizing.maxPositions}`,
+                        ``,
+                        `📊 EXPECTED METRICS:`,
+                        `  • Accuracy: ${v1.expectedMetrics.accuracy}`,
+                        `  • Expectancy: ${v1.expectedMetrics.expectancy}`,
+                        `  • Avg Holding: ${v1.expectedMetrics.avgHolding}`,
+                        ``,
+                        `🛡️ INSTITUTIONAL TRAP FILTER: ${v1.trapFilters.enabled ? 'ENABLED' : 'DISABLED'}`
+                    ].join('\n');
+
+                    // Populate editor
+                    setEditorLogic({
+                        description: v1.name + ` - ${v1.entryRules.description}`,
+                        rules: rulesText.split('\n'),
+                        entry: v1.entryRules.logic,
+                        target: v1.exitRules.target,
+                        stopLoss: v1.exitRules.stop
+                    });
+
+                    console.log('✅ V1 Strategy auto-populated into editor text boxes!');
+                }
+
+                showToast(`✅ Time-Travel Complete! V1 Strategy loaded into editor`, 'success');
             } else {
                 throw new Error(result.error || 'Unknown error');
             }
