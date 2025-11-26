@@ -211,6 +211,10 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
             if (result.backtest) {
                 setEventReport({
                     categoryKey,
+                    totalEvents: result.backtest.totalTrades || 0,
+                    eventsWithTrades: result.backtest.totalTrades || 0,
+                    profitableEvents: Math.round((result.backtest.accuracy || 0) * (result.backtest.totalTrades || 0)),
+                    failedEvents: Math.round((1 - (result.backtest.accuracy || 0)) * (result.backtest.totalTrades || 0)),
                     accuracy: result.backtest.accuracy,
                     totalTrades: result.backtest.totalTrades,
                     totalNetPnl: result.backtest.netPnl,
