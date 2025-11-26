@@ -581,4 +581,4 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
     );
 };
 
-export default StrategyWorkbench Simple;
+export default StrategyWorkbenchSimple;
