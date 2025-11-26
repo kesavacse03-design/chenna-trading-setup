@@ -56,28 +56,8 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
 
                 if (response.ok) {
                     const data = await response.json();
-                    const v1 = data.strategy;
-                    setV1Strategy(v1);
-
-                    // ✅ AUTO-POPULATE EDITOR WITH V1 FOR PERSISTENCE
-                    const rulesText = [
-                        `📈 ENTRY: ${v1.rules.entry.logic}`,
-                        ``,
-                        `🎯 EXIT: Target +${v1.rules.exit.target}%, Stop -${v1.rules.exit.stop}%`,
-                        `⚡ RISK: ${v1.params?.positionSizing?.riskPerTrade || 1.5}% per trade`,
-                        `📊 ACCURACY: ${v1.metrics.accuracy}`,
-                        `🛡️ TRAPS: ${v1.rules.traps?.enabled ? 'ENABLED' : 'DISABLED'}`
-                    ].join('\n');
-
-                    setEditorLogic({
-                        description: v1.description + ' - Best performing logic from top-ranked strategy',
-                        rules: rulesText.split('\n'),
-                        entry: v1.rules.entry.logic,
-                        target: v1.rules.exit.target,
-                        stopLoss: v1.rules.exit.stop
-                    });
-
-                    console.log('✅ V1 Strategy loaded and populated into editor:', v1.description);
+                    setV1Strategy(data.strategy);
+                    console.log('✅ V1 Strategy loaded (click "Promote V1" to use)');
                 } else {
                     console.log('⚠️ No V1 strategy found - run Time-Travel first');
                 }
@@ -95,6 +75,41 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
     const showToast = (msg: string, kind: 'success' | 'error' | 'info' = 'info') => {
         setToast({ msg, kind });
         setTimeout(() => setToast(null), 3000);
+    };
+
+    // Handle Promote V1
+    const handlePromoteV1 = () => {
+        if (!v1Strategy) return;
+
+        const rulesText = [
+            `📈 ENTRY: ${v1Strategy.rules.entry.logic}`,
+            ``,
+            `🎯 EXIT: Target +${v1Strategy.rules.exit.target}%, Stop -${v1Strategy.rules.exit.stop}%`,
+            `⚡ RISK: ${v1Strategy.params?.positionSizing?.riskPerTrade || 1.5}% per trade`,
+            `📊 ACCURACY: ${v1Strategy.metrics.accuracy}`,
+            `🛡️ TRAPS: ${v1Strategy.rules.traps?.enabled ? 'ENABLED' : 'DISABLED'}`
+        ].join('\n');
+
+        setEditorLogic({
+            description: v1Strategy.description,
+            rules: rulesText.split('\n')
+        });
+
+        showToast('✅ V1 Strategy promoted to editor!', 'success');
+    };
+
+    // Handle CSV Download
+    const handleDownloadCSV = async () => {
+        try {
+            const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
+
+            // Request latest CSV for this category
+            window.open(`${apiBase}/api/backtest/csv/${categoryKey}`, '_blank');
+            showToast('📥 CSV downloaded!', 'success');
+        } catch (error) {
+            showToast('Failed to download CSV', 'error');
+            console.error('CSV download error:', error);
+        }
     };
 
     // Handle AI Sanity Check
@@ -264,44 +279,12 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
             if (result.ok) {
                 setTimeTravelResults(result);
 
-                // ✅ AUTO-POPULATE V1 STRATEGY INTO TEXT BOXES
+                // Save V1 but DON'T auto-fill editor
                 if (result.v1Strategy) {
-                    const v1 = result.v1Strategy;
-
-                    // Build trading rules text
-                    const rulesText = [
-                        `📈 ENTRY: ${v1.entryRules.logic}`,
-                        ``,
-                        `🎯 EXIT RULES:`,
-                        `  • Target: +${v1.exitRules.target}%`,
-                        `  • Stop Loss: -${v1.exitRules.stop}%`,
-                        `  • Max Holding: 10 days`,
-                        ``,
-                        `⚡ POSITION SIZING:`,
-                        `  • Risk per trade: ${v1.positionSizing.riskPerTrade}%`,
-                        `  • Max positions: ${v1.positionSizing.maxPositions}`,
-                        ``,
-                        `📊 EXPECTED METRICS:`,
-                        `  • Accuracy: ${v1.expectedMetrics.accuracy}`,
-                        `  • Expectancy: ${v1.expectedMetrics.expectancy}`,
-                        `  • Avg Holding: ${v1.expectedMetrics.avgHolding}`,
-                        ``,
-                        `🛡️ INSTITUTIONAL TRAP FILTER: ${v1.trapFilters.enabled ? 'ENABLED' : 'DISABLED'}`
-                    ].join('\n');
-
-                    // Populate editor
-                    setEditorLogic({
-                        description: v1.name + ` - ${v1.entryRules.description}`,
-                        rules: rulesText.split('\n'),
-                        entry: v1.entryRules.logic,
-                        target: v1.exitRules.target,
-                        stopLoss: v1.exitRules.stop
-                    });
-
-                    console.log('✅ V1 Strategy auto-populated into editor text boxes!');
+                    setV1Strategy(result.v1Strategy);
                 }
 
-                showToast(`✅ Time-Travel Complete! V1 Strategy loaded into editor`, 'success');
+                showToast(`✅ Time-Travel Complete! Click "Promote V1" to use best strategy`, 'success');
             } else {
                 throw new Error(result.error || 'Unknown error');
             }
