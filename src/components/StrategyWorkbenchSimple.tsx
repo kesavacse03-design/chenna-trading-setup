@@ -120,20 +120,16 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
         setEventReport(null);
 
         try {
-            const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:5174';
+            const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
 
-            showToast('Analyzing stocks and generating strategy...', 'info');
+            showToast('Running V1 strategy backtest...', 'info');
             setBacktestProgress(30);
 
-            // Call auto-generation API
-            const response = await fetch(`${apiBase}/api/strategy/auto-generate`, {
+            // Call V1 backtest API
+            const response = await fetch(`${apiBase}/api/strategy/run-v1-backtest`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    categoryKey,
-                    minAccuracy: 0.70,
-                    mode: 'upstox'
-                })
+                body: JSON.stringify({ categoryKey })
             });
 
             setBacktestProgress(70);

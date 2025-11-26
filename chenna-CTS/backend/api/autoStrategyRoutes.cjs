@@ -6,6 +6,7 @@
 const { PrismaClient } = require('@prisma/client');
 const AutoStrategyGenerator = require('../strategy/autoGenerator.cjs');
 const TimeTravelEngine = require('../strategy/timeTravelEngine.cjs');
+const V1BacktestEngine = require('../strategy/v1BacktestEngine.cjs');
 const backtestResultsService = require('../services/backtestResultsService.cjs');
 
 const prisma = new PrismaClient();
@@ -206,8 +207,80 @@ function registerAutoStrategyRoutes(app) {
         }
     });
 
+    /**
+     * POST /api/strategy/run-v1-backtest
+     * Run backtest using promoted V1 strategy from database
+     * Tests V1 on all stocks in category and generates detailed results
+     */
+    app.post('/api/strategy/run-v1-backtest', async (req, res) => {
+        try {
+            const { categoryKey } = req.body;
+
+            if (!categoryKey) {
+                return res.status(400).json({ ok: false, error: 'categoryKey is required' });
+            }
+
+            console.log(`\n🎯 [V1-Backtest] Starting for: ${categoryKey}\n`);
+
+            // Create engine instance
+            const engine = new V1BacktestEngine();
+
+            // Run V1 backtest
+            const results = await engine.runV1Backtest(categoryKey);
+
+            console.log(`\n✅ [V1-Backtest] Complete!`);
+            console.log(`   Trades: ${results.trades.length}`);
+            console.log(`   Win Rate: ${results.metrics.winRate}%\n`);
+
+            // Save results to CSV
+            const savedResults = await backtestResultsService.saveRegularBacktestResults(
+                categoryKey,
+                {
+                    name: results.v1Strategy.description,
+                    version: 'V1',
+                    exit: results.v1Strategy.rules.exit
+                },
+                results.trades.map(t => ({ symbol: t.symbol })),
+                results.trades
+            );
+
+            console.log(`💾 Results saved:`);
+            console.log(`   JSON: ${savedResults.jsonPath}`);
+            console.log(`   CSV: ${savedResults.csvPath}\n`);
+
+            // Return results
+            res.json({
+                ok: true,
+                categoryKey,
+                runId: savedResults.runId,
+                backtest: {
+                    accuracy: results.metrics.winRate / 100,
+                    totalTrades: results.metrics.totalTrades,
+                    netPnl: results.metrics.totalPnL,
+                    expectancy: results.metrics.expectancy,
+                    maxDrawdown: results.metrics.maxDrawdown
+                },
+                strategy: {
+                    description: results.v1Strategy.description,
+                    rules: results.v1Strategy.rules
+                },
+                files: {
+                    json: savedResults.jsonPath,
+                    csv: savedResults.csvPath
+                },
+                summary: savedResults.summary,
+                message: 'V1 backtest completed successfully'
+            });
+
+        } catch (error) {
+            console.error('[POST /api/strategy/run-v1-backtest] Error:', error);
+            res.status(500).json({ ok: false, error: error.message });
+        }
+    });
+
     console.log('[Routes] Auto-strategy generation routes registered ✅');
     console.log('[Routes] Time-travel backtest endpoint registered ✅');
+    console.log('[Routes] V1 backtest endpoint registered ✅');
 }
 
 module.exports = registerAutoStrategyRoutes;
