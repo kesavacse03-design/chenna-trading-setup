@@ -2,15 +2,15 @@
   "category": "DOWNSIDE_LOM_SWING",
   "name": "V1 Default - DOWNSIDE_LOM_SWING",
   "version": "1.0.0",
-  "createdAt": "2025-11-26T07:29:15.567Z",
+  "createdAt": "2025-11-26T08:59:36.386Z",
   "entryRules": {
-    "logic": "RSI<25 + Above SMA50",
+    "logic": "RSI14 Oversold 20",
     "description": "Best performing logic from top-ranked strategy"
   },
   "exitRules": {
-    "target": 3,
+    "target": 2.5,
     "stop": 1.5,
-    "source": "From RSI<25 + Above SMA50"
+    "source": "From RSI14 Oversold 20"
   },
   "trapFilters": {
     "enabled": true,
@@ -22,32 +22,32 @@
     "maxPositions": 5
   },
   "expectedMetrics": {
-    "accuracy": "71.4%",
-    "expectancy": "1.71%",
+    "accuracy": "100.0%",
+    "expectancy": "2.50%",
     "trapAvoidance": "0.0%",
-    "avgHolding": "1.1 days"
+    "avgHolding": "1.2 days"
   },
   "contributors": [
     {
       "rank": 1,
-      "logic": "RSI<25 + Above SMA50",
-      "score": "56.5",
-      "trades": 7,
-      "winRate": "71.4%"
+      "logic": "RSI14 Oversold 20",
+      "score": "80.6",
+      "trades": 6,
+      "winRate": "100.0%"
     },
     {
       "rank": 2,
-      "logic": "RSI<25 + Price Between SMA20/50",
-      "score": "50.9",
-      "trades": 7,
-      "winRate": "71.4%"
+      "logic": "BB Lower + RSI<20",
+      "score": "66.6",
+      "trades": 6,
+      "winRate": "83.3%"
     },
     {
       "rank": 3,
-      "logic": "BB Upper Band Touch 1.02",
-      "score": "37.1",
-      "trades": 11,
-      "winRate": "54.5%"
+      "logic": "RSI<35 + Near SMA50",
+      "score": "64.1",
+      "trades": 10,
+      "winRate": "80.0%"
     }
   ]
 }

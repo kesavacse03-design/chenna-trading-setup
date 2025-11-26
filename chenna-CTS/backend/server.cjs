@@ -1478,7 +1478,58 @@ app.post('/api/ai/validate-signal', async (req, res) => {
   }
 });
 
-// ========== END AI INTELLIGENCE API ==========
+// ========== V1 STRATEGY API ==========
+
+/**
+ * GET /api/categories/:categoryKey/v1-strategy
+ * Load the promoted V1 strategy for a category
+ */
+app.get('/api/categories/:categoryKey/v1-strategy', async (req, res) => {
+  try {
+    const { categoryKey } = req.params;
+
+    const v1Strategy = await prisma.strategy.findFirst({
+      where: {
+        category: { key: categoryKey },
+        promoted: true,
+        version: 'V1'
+      },
+      include: {
+        category: true
+      }
+    });
+
+    if (!v1Strategy) {
+      return res.status(404).json({
+        ok: false,
+        error: 'No V1 strategy found. Run Time-Travel backtest first.'
+      });
+    }
+
+    res.json({
+      ok: true,
+      strategy: {
+        id: v1Strategy.id,
+        version: v1Strategy.version,
+        description: v1Strategy.description,
+        rules: v1Strategy.rules,
+        params: v1Strategy.params,
+        metrics: v1Strategy.metrics,
+        promoted: v1Strategy.promoted,
+        createdAt: v1Strategy.createdAt,
+        updatedAt: v1Strategy.updatedAt
+      }
+    });
+
+  } catch (error) {
+    console.error('[GET /api/categories/:categoryKey/v1-strategy] Error:', error);
+    res.status(500).json({ ok: false, error: error.message });
+  }
+});
+
+// ========== END V1 STRATEGY API ==========
+
+// ========== AI INTELLIGENCE API ==========
 
 // Start server
 app.listen(PORT, () => {
