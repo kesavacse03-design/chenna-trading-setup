@@ -36,12 +36,39 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
     const [toast, setToast] = useState<{ msg: string; kind: 'success' | 'error' | 'info' } | null>(null);
     const [isRunningTimeTravel, setIsRunningTimeTravel] = useState(false);
     const [timeTravelResults, setTimeTravelResults] = useState<any>(null);
+    const [v1Strategy, setV1Strategy] = useState<any>(null);
+    const [isLoadingV1, setIsLoadingV1] = useState(false);
 
     // Load event report on mount
     useEffect(() => {
         loadCategoryEventReport(categoryKey).then(report => {
             if (report) setEventReport(report);
         });
+    }, [categoryKey]);
+
+    // Load V1 strategy on mount
+    useEffect(() => {
+        const loadV1Strategy = async () => {
+            setIsLoadingV1(true);
+            try {
+                const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
+                const response = await fetch(`${apiBase}/api/categories/${categoryKey}/v1-strategy`);
+
+                if (response.ok) {
+                    const data = await response.json();
+                    setV1Strategy(data.strategy);
+                    console.log('✅ V1 Strategy loaded:', data.strategy);
+                } else {
+                    console.log('⚠️ No V1 strategy found - run Time-Travel first');
+                }
+            } catch (error) {
+                console.error('❌ Failed to load V1:', error);
+            } finally {
+                setIsLoadingV1(false);
+            }
+        };
+
+        loadV1Strategy();
     }, [categoryKey]);
 
     // Toast helper
@@ -304,33 +331,6 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
                                 </div>
                             </div>
 
-                            <div className="mt-6 flex justify-between items-center gap-3">
-                                <button
-                                    onClick={handleSanityCheck}
-                                    disabled={!editorLogic.description || (Array.isArray(editorLogic.rules) && editorLogic.rules.every(r => r === '')) || isValidating}
-                                    className="flex-1 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white text-sm font-bold py-3 px-5 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center transition-all duration-200 shadow-lg hover:shadow-purple-500/50 hover:scale-[1.02] active:scale-95"
-                                >
-                                    {isValidating ? (
-                                        <>
-                                            <SpinnerIcon className="w-5 h-5 mr-2 animate-spin" />
-                                            Validating...
-                                        </>
-                                    ) : (
-                                        <>
-                                            <SparklesIcon className="w-5 h-5 mr-2" />
-                                            AI Sanity Check
-                                        </>
-                                    )}
-                                </button>
-
-                                <button
-                                    onClick={handleSave}
-                                    disabled={!editorLogic.description || (Array.isArray(editorLogic.rules) && editorLogic.rules.every(r => r === '')) || isSaving}
-                                    className="flex-1 bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-500 hover:to-cyan-600 text-white font-bold py-3 px-6 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-cyan-500/50 hover:scale-[1.02] active:scale-95"
-                                >
-                                    {isSaving ? 'Saving...' : 'Save Strategy'}
-                                </button>
-                            </div>
                         </div>
 
                         {/* AI Validation Results */}
