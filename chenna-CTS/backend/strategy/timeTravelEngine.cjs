@@ -207,8 +207,19 @@ class TimeTravelBacktestEngine {
         const allResults = [];
 
         // Get stocks for category
-        const stocks = await this.getStocksForCategory(categoryKey);
-        console.log(`📊 Testing ${stocks.length} stocks\n`);
+        const allStocks = await this.getStocksForCategory(categoryKey);
+
+        // ⚡ QUICK MODE: Limit to 15 stocks for fast completion (prevents HTTP timeout)
+        // Full backtest with 112 stocks takes 15-20 min → HTTP timeout
+        // Quick mode with 15 stocks takes 2-3 min → Response before timeout!
+        const QUICK_MODE = true;  // TODO: Make this a parameter
+        const stocks = QUICK_MODE ? allStocks.slice(0, 15) : allStocks;
+
+        console.log(`📊 Testing ${stocks.length} stocks ${QUICK_MODE ? `(QUICK MODE - ${allStocks.length} total available)` : ''}\n`);
+        if (QUICK_MODE) {
+            console.log(`⚡ Quick mode enabled for faster results (2-3 min vs 15-20 min)`);
+            console.log(`   Full backtest would test all ${allStocks.length} stocks\n`);
+        }
 
         // Test each logic
         for (let i = 0; i < this.logicCatalogue.length; i++) {
