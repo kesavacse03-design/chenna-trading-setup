@@ -382,6 +382,7 @@ class TimeTravelBacktestEngine {
             mfe: outcome.mfe,
             holdingDays: outcome.holdingDays,
             exitReason: outcome.exitReason,
+            result: outcome.result,  // ← Add result field!
             trapAvoidance: trapScan.trapsDetected === 0 ? 1 : 0
         };
     }
@@ -409,7 +410,8 @@ class TimeTravelBacktestEngine {
                 exit = {
                     price: targetPrice,
                     date: candle.timestamp,
-                    dayNum: i + 1
+                    dayNum: i + 1,
+                    reason: 'TARGET'  // ← Add reason here
                 };
                 break;
             }
@@ -419,7 +421,8 @@ class TimeTravelBacktestEngine {
                 exit = {
                     price: stopPrice,
                     date: candle.timestamp,
-                    dayNum: i + 1
+                    dayNum: i + 1,
+                    reason: 'STOP'  // ← Add reason here
                 };
                 break;
             }
@@ -431,7 +434,8 @@ class TimeTravelBacktestEngine {
             exit = {
                 price: lastCandle.close,
                 date: lastCandle.timestamp,
-                dayNum: futureCandles.length
+                dayNum: futureCandles.length,
+                reason: 'TIME'  // ← Add reason here
             };
         }
 
@@ -443,7 +447,8 @@ class TimeTravelBacktestEngine {
             mae,
             mfe,
             holdingDays: exit.dayNum,
-            exitReason: pnl >= exitRules.target ? 'TARGET' : pnl <= -exitRules.stop ? 'STOP' : 'TIME'
+            exitReason: exit.reason,  // Keep flat for compatibility
+            result: pnl > 0 ? 'WIN' : 'LOSS'  // ← Add result field!
         };
     }
 

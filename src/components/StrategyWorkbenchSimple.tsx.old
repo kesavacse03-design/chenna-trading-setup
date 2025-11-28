@@ -86,11 +86,6 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
             showToast('Promoting V1 strategy...', 'info');
             const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
 
-            // Fetch stock count for this category
-            const stocksResponse = await fetch(`${apiBase}/api/categories/${categoryKey}/stocks`);
-            const stocksData = await stocksResponse.json();
-            const stockCount = stocksData.stocks?.length || 0;
-
             const response = await fetch(`${apiBase}/api/categories/${categoryKey}/promote-strategy`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -104,44 +99,17 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
             const result = await response.json();
 
             if (result.ok) {
-                // Safely access v1Strategy properties with fallbacks
-                const strategyName = v1Strategy.name || 'V1 Strategy';
-                const entryLogic = v1Strategy.rules?.entry?.logic || v1Strategy.description || 'Price-based momentum strategy';
-                const exitTarget = v1Strategy.rules?.exit?.target || v1Strategy.params?.exit?.target || 3;
-                const exitStop = v1Strategy.rules?.exit?.stop || v1Strategy.params?.exit?.stop || 1.5;
-                const riskPerTrade = v1Strategy.params?.positionSizing?.riskPerTrade || 1.5;
-                const accuracy = v1Strategy.metrics?.accuracy || v1Strategy.expectedMetrics?.accuracy || '100%';
-                const trapsEnabled = v1Strategy.rules?.traps?.enabled ?? v1Strategy.params?.traps?.enabled ?? true;
-                const totalTrades = v1Strategy.metrics?.totalTrades || v1Strategy.expectedMetrics?.totalTrades || 0;
-                const winRate = v1Strategy.metrics?.winRate || v1Strategy.expectedMetrics?.winRate || accuracy;
-
-                // Professional display with actual strategy details
                 const rulesText = [
-                    `🏆 ${strategyName}`,
-                    `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
+                    `📈 ENTRY: ${v1Strategy.rules.entry.logic}`,
                     ``,
-                    `📊 TESTED ON: ${stockCount} stocks in ${categoryKey.replace(/_/g, ' ')}`,
-                    stockCount < 10 ? `⚠️  WARNING: Small sample size - add more stocks for reliable metrics` : `✅ Statistically significant sample size`,
-                    ``,
-                    `📈 ENTRY LOGIC:`,
-                    `   ${entryLogic}`,
-                    ``,
-                    `🎯 EXIT RULES:`,
-                    `   • Target: +${exitTarget}% profit`,
-                    `   • Stop Loss: -${exitStop}%`,
-                    `   • Time Exit: 5 days max`,
-                    ``,
-                    `📊 PERFORMANCE:`,
-                    `   • Win Rate: ${winRate}`,
-                    `   • Total Trades: ${totalTrades}`,
-                    `   • Risk/Trade: ${riskPerTrade}%`,
-                    `   • Trap Avoidance: ${trapsEnabled ? 'ENABLED' : 'DISABLED'}`,
-                    ``,
-                    `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
+                    `🎯 EXIT: Target +${v1Strategy.rules.exit.target}%, Stop -${v1Strategy.rules.exit.stop}%`,
+                    `⚡ RISK: ${v1Strategy.params?.positionSizing?.riskPerTrade || 1.5}% per trade`,
+                    `📊 ACCURACY: ${v1Strategy.metrics.accuracy}`,
+                    `🛡️ TRAPS: ${v1Strategy.rules.traps?.enabled ? 'ENABLED' : 'DISABLED'}`
                 ].join('\n');
 
                 setEditorLogic({
-                    description: `${strategyName} - Tested on ${stockCount} stocks`,
+                    description: v1Strategy.description,
                     rules: rulesText.split('\n')
                 });
 
@@ -277,9 +245,7 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
                     totalNetPnl: result.backtest.netPnl,
                     expectancy: result.backtest.expectancy,
                     maxDrawdown: result.backtest.maxDrawdown,
-                    avgRMultiple: result.backtest.avgRMultiple,
-                    avgNetPnlPerEvent: (result.backtest.netPnl || 0) / (result.backtest.totalTrades || 1),
-                    generatedAt: new Date().toISOString()
+                    avgRMultiple: result.backtest.avgRMultiple
                 });
             }
 

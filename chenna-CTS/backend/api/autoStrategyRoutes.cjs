@@ -144,6 +144,77 @@ function registerAutoStrategyRoutes(app) {
     });
 
     /**
+    /**
+     * POST /api/categories/:categoryKey/promote-strategy
+     * Promote a strategy to be the active V1 for a category
+     */
+    app.post('/api/categories/:categoryKey/promote-strategy', async (req, res) => {
+        try {
+            const { categoryKey } = req.params;
+            let { strategyId } = req.body;
+
+            console.log(`[POST /promote-strategy] Request for ${categoryKey}, strategyId: ${strategyId}`);
+
+            // Find category
+            const category = await prisma.category.findUnique({
+                where: { key: categoryKey }
+            });
+
+            if (!category) {
+                return res.status(404).json({ ok: false, error: 'Category not found' });
+            }
+
+            // GUNSHOT FIX: Auto-find V1 if no strategyId provided
+            if (!strategyId) {
+                console.log(`[POST /promote-strategy] No strategyId, finding V1 for ${categoryKey}...`);
+                const v1Strategy = await prisma.strategy.findFirst({
+                    where: {
+                        categoryId: category.id,
+                        version: 'V1'
+                    },
+                    orderBy: { createdAt: 'desc' }
+                });
+
+                if (!v1Strategy) {
+                    return res.status(404).json({ 
+                        ok: false, 
+                        error: 'No V1 strategy found. Run Time-Travel Backtest first.' 
+                    });
+                }
+
+                strategyId = v1Strategy.id;
+                console.log(`[POST /promote-strategy] Found V1 strategy: ${strategyId}`);
+            }
+
+            // Unpromote all existing strategies for this category
+            await prisma.strategy.updateMany({
+                where: {
+                    categoryId: category.id,
+                    promoted: true
+                },
+                data: { promoted: false }
+            });
+
+            // Promote the specified strategy
+            const promotedStrategy = await prisma.strategy.update({
+                where: { id: strategyId },
+                data: { promoted: true, updatedAt: new Date() }
+            });
+
+            console.log(`[POST /promote-strategy]  Promoted strategy ${strategyId} for ${categoryKey}`);
+
+            res.json({
+                ok: true,
+                strategy: promotedStrategy
+            });
+
+        } catch (error) {
+            console.error('[POST /promote-strategy] ERROR:', error);
+            res.status(500).json({ ok: false, error: error.message });
+        }
+    });
+
+    /**
      * POST /api/strategy/time-travel-backtest
      * Run comprehensive time-travel backtest with 200+ logic combinations
      * Tests institutional trap avoidance and discovers best strategies
@@ -203,6 +274,79 @@ function registerAutoStrategyRoutes(app) {
 
         } catch (error) {
             console.error('[POST /api/strategy/time-travel-backtest] Error:', error);
+            console.error('[POST /api/strategy/time-travel-backtest] Stack:', error.stack);
+            console.error('[POST /api/strategy/time-travel-backtest] Full error object:', JSON.stringify(error, null, 2));
+            res.status(500).json({ ok: false, error: error.message });
+        }
+    });
+
+    /**
+    /**
+     * POST /api/categories/:categoryKey/promote-strategy
+     * Promote a strategy to be the active V1 for a category
+     */
+    app.post('/api/categories/:categoryKey/promote-strategy', async (req, res) => {
+        try {
+            const { categoryKey } = req.params;
+            let { strategyId } = req.body;
+
+            console.log(`[POST /promote-strategy] Request for ${categoryKey}, strategyId: ${strategyId}`);
+
+            // Find category
+            const category = await prisma.category.findUnique({
+                where: { key: categoryKey }
+            });
+
+            if (!category) {
+                return res.status(404).json({ ok: false, error: 'Category not found' });
+            }
+
+            // GUNSHOT FIX: Auto-find V1 if no strategyId provided
+            if (!strategyId) {
+                console.log(`[POST /promote-strategy] No strategyId, finding V1 for ${categoryKey}...`);
+                const v1Strategy = await prisma.strategy.findFirst({
+                    where: {
+                        categoryId: category.id,
+                        version: 'V1'
+                    },
+                    orderBy: { createdAt: 'desc' }
+                });
+
+                if (!v1Strategy) {
+                    return res.status(404).json({ 
+                        ok: false, 
+                        error: 'No V1 strategy found. Run Time-Travel Backtest first.' 
+                    });
+                }
+
+                strategyId = v1Strategy.id;
+                console.log(`[POST /promote-strategy] Found V1 strategy: ${strategyId}`);
+            }
+
+            // Unpromote all existing strategies for this category
+            await prisma.strategy.updateMany({
+                where: {
+                    categoryId: category.id,
+                    promoted: true
+                },
+                data: { promoted: false }
+            });
+
+            // Promote the specified strategy
+            const promotedStrategy = await prisma.strategy.update({
+                where: { id: strategyId },
+                data: { promoted: true, updatedAt: new Date() }
+            });
+
+            console.log(`[POST /promote-strategy]  Promoted strategy ${strategyId} for ${categoryKey}`);
+
+            res.json({
+                ok: true,
+                strategy: promotedStrategy
+            });
+
+        } catch (error) {
+            console.error('[POST /promote-strategy] ERROR:', error);
             res.status(500).json({ ok: false, error: error.message });
         }
     });

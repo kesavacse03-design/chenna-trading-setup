@@ -171,14 +171,13 @@ class BacktestResultsService {
 
                 perSymbol[trade.symbol].trades.push({
                     strategy: logic.logic.name,
-                    entryDate: trade.entry.date,
-                    entryPrice: trade.entry.price,
-                    exitDate: trade.exit.date,
-                    exitPrice: trade.exit.price,
-                    pnl: trade.pnl,
+                    entry: trade.entry,
+                    exit: trade.exit,
+                    trapFlags: trade.trapFlags,
+                    pnl: trade.pnlPct || trade.pnl,
                     holdingDays: trade.holdingDays,
-                    exitReason: trade.exitReason,
-                    result: trade.pnl > 0 ? 'WIN' : 'LOSS'
+                    variantName: trade.variantName,
+                    result: trade.result
                 });
             }
         }
@@ -189,7 +188,7 @@ class BacktestResultsService {
             symbolData.wins = symbolData.trades.filter(t => t.result === 'WIN').length;
             symbolData.losses = symbolData.trades.filter(t => t.result === 'LOSS').length;
             symbolData.winRate = (symbolData.wins / symbolData.totalTrades * 100).toFixed(1);
-            symbolData.totalPnL = symbolData.trades.reduce((sum, t) => sum + t.pnl, 0).toFixed(2);
+            symbolData.totalPnL = symbolData.trades.reduce((sum, t) => sum + (t.pnlPct || parseFloat(t.pnl) || 0), 0).toFixed(2);
         });
 
         return Object.values(perSymbol);
@@ -240,18 +239,18 @@ class BacktestResultsService {
                 const row = [
                     symbolData.symbol,
                     trade.strategy,
-                    this.formatDate(trade.entryDate),
-                    trade.entryPrice.toFixed(2),
-                    this.formatDate(trade.exitDate),
-                    trade.exitPrice.toFixed(2),
-                    (trade.entryPrice * 1.025).toFixed(2),  // 2.5% target
-                    (trade.entryPrice * 0.985).toFixed(2),  // 1.5% stop
-                    trade.pnl.toFixed(2),
-                    trade.holdingDays,
-                    trade.exitReason,
-                    trade.result,
-                    trade.exitReason === 'TARGET' ? 'YES' : 'NO',
-                    trade.exitReason === 'STOP' ? 'YES' : 'NO'
+                    this.formatDate(trade.entry?.date),
+                    (trade.entry?.price || 0).toFixed(2),
+                    this.formatDate(trade.exit?.date),
+                    (trade.exit?.price || 0).toFixed(2),
+                    ((trade.entry?.price || 0) * 1.025).toFixed(2),  // 2.5% target
+                    ((trade.entry?.price || 0) * 0.985).toFixed(2),  // 1.5% stop
+                    (trade.pnl || 0).toFixed(2),
+                    trade.holdingDays || 0,
+                    trade.exit?.reason || 'N/A',
+                    trade.result || 'UNKNOWN',
+                    (trade.exit?.reason || '').includes('TARGET') ? 'YES' : 'NO',
+                    (trade.exit?.reason || '').includes('STOP') ? 'YES' : 'NO'
                 ];
                 rows.push(row.join(','));
             }
