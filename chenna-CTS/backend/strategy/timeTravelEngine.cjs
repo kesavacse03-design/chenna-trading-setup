@@ -9,6 +9,7 @@ const TechnicalAnalysis = require('./comprehensiveTA.cjs');
 const InstitutionalTraps = require('./institutionalTraps.cjs');
 const PatternRecognition = require('./patternRecognition.cjs');
 const { getMarketRegime, shouldAllowEntry } = require('../services/regimeService.cjs');
+const AdaptiveGridSearch = require('./adaptiveGridSearch.cjs');
 
 const prisma = new PrismaClient();
 
@@ -258,6 +259,100 @@ class TimeTravelBacktestEngine {
                 totalLogicsTested: this.logicCatalogue.length,
                 totalStocks: stocks.length,
                 timeElapsed: `${elapsed}min`
+            }
+        };
+    }
+
+    /**
+     * Run Time-Travel Backtest with ADAPTIVE parameter expansion
+     * Automatically widens ranges if too few trades or low accuracy
+     */
+    async runAdaptiveTimeTravelBacktest(categoryKey, options = {}) {
+        console.log(`\n🔮 Starting ADAPTIVE Time-Travel Backtest for: ${categoryKey}\n`);
+        console.log(`📊 Adaptive mode: Will auto-expand parameters if needed\n`);
+
+        const startTime = Date.now();
+
+        // Get stocks
+        const allStocks = await this.getStocksForCategory(categoryKey);
+        const stocks = options.quickMode !== false ? allStocks.slice(0, 5) : allStocks;
+        console.log(`📊 Testing on ${stocks.length}/${allStocks.length} stocks\n`);
+
+        // Create adaptive grid search
+        const adaptiveSearch = new AdaptiveGridSearch({
+            maxExpansions: options.maxExpansions || 3,
+            minTrades: options.minTrades || 10,
+            minAccuracy: options.minAccuracy || 50
+        });
+
+        // Test function for adaptive search
+        const testLogic = async (logic) => {
+            const trades = [];
+
+            for (const stock of stocks) {
+                const candles = await this.getCandlesForStock(stock.symbol);
+                if (!candles || candles.length < 50) continue;
+
+                for (let D = 50; D < candles.length - 10; D++) {
+                    const trade = await this.testAtDate(logic, stock, candles, D);
+                    if (trade) trades.push(trade);
+                }
+            }
+
+            const wins = trades.filter(t => t.pnl > 0);
+            return {
+                trades: trades.length,
+                accuracy: trades.length > 0 ? (wins.length / trades.length * 100) : 0,
+                allTrades: trades
+            };
+        };
+
+        // Run adaptive search
+        const searchResult = await adaptiveSearch.runAdaptiveSearch(testLogic);
+
+        // Build final results
+        const top3 = searchResult.bestResult ? [{
+            logic: searchResult.bestResult.logic,
+            trades: searchResult.bestResult.allTrades || [],
+            metrics: {
+                tradeCount: searchResult.bestResult.trades,
+                winRate: searchResult.bestResult.accuracy,
+                avgPnl: 0,
+                expectancy: 0,
+                avgHolding: 0,
+                maxDrawdown: 0,
+                sharpe: 0,
+                trapAvoidanceRate: 0
+            },
+            score: searchResult.bestResult.accuracy
+        }] : [];
+
+        // Create V1 strategy
+        const v1Strategy = this.mergeIntoV1(top3, categoryKey);
+        v1Strategy.adaptiveInfo = {
+            expansionRounds: searchResult.totalRounds,
+            expansionLog: adaptiveSearch.getExpansionSummary()
+        };
+
+        // Save results
+        await this.saveResults(categoryKey, top3, v1Strategy);
+
+        const elapsed = ((Date.now() - startTime) / 1000 / 60).toFixed(1);
+        console.log(`\n✅ Adaptive Backtest Complete in ${elapsed} minutes`);
+        console.log(`   Expansion rounds: ${searchResult.totalRounds}`);
+        console.log(`   Final trades: ${searchResult.bestResult?.trades || 0}`);
+        console.log(`   Final accuracy: ${searchResult.bestResult?.accuracy?.toFixed(1) || 0}%\n`);
+
+        return {
+            scoredLogics: top3,
+            top3,
+            v1Strategy,
+            adaptiveInfo: searchResult,
+            stats: {
+                totalLogicsTested: searchResult.totalRounds * 20, // Approx
+                totalStocks: stocks.length,
+                timeElapsed: `${elapsed}min`,
+                expansionRounds: searchResult.totalRounds
             }
         };
     }
