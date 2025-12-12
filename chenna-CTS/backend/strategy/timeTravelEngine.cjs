@@ -213,8 +213,8 @@ class TimeTravelBacktestEngine {
         // Get stocks for category
         const allStocks = await this.getStocksForCategory(categoryKey);
 
-        // ⚡ ULTRA-FAST MODE: 2 stocks for RAPID testing
-        const QUICK_MODE = true;
+        // ⚡ PRODUCTION MODE: Test ALL stocks (set to true for quick testing)
+        const QUICK_MODE = false;
         const stocks = QUICK_MODE ? allStocks.slice(0, 2) : allStocks;
 
         console.log(`📊 Testing ${stocks.length} stocks ${QUICK_MODE ? `(QUICK TEST - ${allStocks.length} total)` : ''}\n`);
@@ -277,7 +277,7 @@ class TimeTravelBacktestEngine {
 
         // Get stocks
         const allStocks = await this.getStocksForCategory(categoryKey);
-        const stocks = options.quickMode !== false ? allStocks.slice(0, 5) : allStocks;
+        const stocks = options.quickMode === true ? allStocks.slice(0, 5) : allStocks;
         console.log(`📊 Testing on ${stocks.length}/${allStocks.length} stocks\n`);
 
         // Create adaptive grid search
