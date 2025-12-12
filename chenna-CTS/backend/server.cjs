@@ -34,6 +34,10 @@ registerBacktestResultsRoutes(app);
 const labsRoutes = require('./api/labsRoutes.cjs');
 app.use('/api/labs', labsRoutes);
 
+// Register Signal Routes (for Live Signal Scanner)
+const signalRoutes = require('./api/signalRoutes.cjs');
+app.use('/api/signals', signalRoutes);
+
 // --- GUN SHOT FIXES ---
 // 1. Instrument Search (Fixed - use Prisma directly)
 app.get('/api/instruments/search', async (req, res) => {
