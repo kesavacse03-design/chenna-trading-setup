@@ -10,6 +10,7 @@ const InstitutionalTraps = require('./institutionalTraps.cjs');
 const PatternRecognition = require('./patternRecognition.cjs');
 const { getMarketRegime, shouldAllowEntry } = require('../services/regimeService.cjs');
 const AdaptiveGridSearch = require('./adaptiveGridSearch.cjs');
+const ShadowLearner = require('../services/shadowLearner.cjs');
 
 const prisma = new PrismaClient();
 
@@ -17,6 +18,7 @@ class TimeTravelBacktestEngine {
 
     constructor() {
         this.trapDetector = new InstitutionalTraps();
+        this.shadowLearner = new ShadowLearner();  // Analyze failed trades
         this.results = [];
         this.logicCatalogue = this.buildLogicCatalogue();
     }
