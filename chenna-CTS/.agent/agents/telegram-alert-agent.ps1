@@ -1,7 +1,14 @@
-$botToken = "8229860163:AAH3auSAlgQ2LRAHZ3MR5qwC7pu8QBdx-j0"
-$chatId = "744706234"
+# SECURITY: Use environment variables - never hardcode tokens!
+$botToken = $env:TELEGRAM_BOT_TOKEN
+$chatId = $env:TELEGRAM_CHAT_ID
 $runReportPath = ".agent/reports/run-latest.json"
 $logPath = ".agent/logs/telegram-alerts.log"
+
+# Verify tokens are set
+if (-not $botToken -or -not $chatId) {
+    Write-Error "Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID environment variables"
+    exit 1
+}
 $deadLetterPath = ".agent/logs/dead-letter.json"
 
 # Ensure log folder exists
