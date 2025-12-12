@@ -208,7 +208,8 @@ class TimeTravelBacktestEngine {
         console.log(`\n🔮 Starting Time-Travel Backtest for: ${categoryKey}\n`);
 
         const startTime = Date.now();
-        const allResults = [];
+        const fs = require('fs');
+        const path = require('path');
 
         // Get stocks for category
         const allStocks = await this.getStocksForCategory(categoryKey);
@@ -218,21 +219,49 @@ class TimeTravelBacktestEngine {
         const stocks = QUICK_MODE ? allStocks.slice(0, 2) : allStocks;
 
         console.log(`📊 Testing ${stocks.length} stocks ${QUICK_MODE ? `(QUICK TEST - ${allStocks.length} total)` : ''}\n`);
-        if (QUICK_MODE) {
-            console.log(`⚡ Ultra-fast mode: ~30 seconds (full would be 15-20 min)\n`);
+
+        // === INCREMENTAL CACHING - Resume from crashes ===
+        const cacheDir = path.join(__dirname, '../results/cache');
+        if (!fs.existsSync(cacheDir)) fs.mkdirSync(cacheDir, { recursive: true });
+
+        const cacheFile = path.join(cacheDir, `progress_${categoryKey}.json`);
+        let allResults = [];
+        let startIndex = 0;
+
+        // Load existing cache if available (resume from crash)
+        if (fs.existsSync(cacheFile)) {
+            try {
+                const cached = JSON.parse(fs.readFileSync(cacheFile, 'utf8'));
+                if (cached.results && cached.lastIndex !== undefined) {
+                    allResults = cached.results;
+                    startIndex = cached.lastIndex + 1;
+                    console.log(`📂 Resuming from cache: ${startIndex}/${this.logicCatalogue.length} already done\n`);
+                }
+            } catch (e) {
+                console.log(`⚠️  Cache corrupted, starting fresh\n`);
+            }
         }
 
-        // Test each logic
-        for (let i = 0; i < this.logicCatalogue.length; i++) {
+        // Test each logic (resume from startIndex)
+        for (let i = startIndex; i < this.logicCatalogue.length; i++) {
             const logic = this.logicCatalogue[i];
             console.log(`[${i + 1}/${this.logicCatalogue.length}] Testing: ${logic.name}`);
 
             const logicResults = await this.testLogicOnAllStocks(logic, stocks);
             allResults.push(logicResults);
 
+            // Save progress after EACH strategy (crash-proof)
+            fs.writeFileSync(cacheFile, JSON.stringify({
+                categoryKey,
+                totalLogics: this.logicCatalogue.length,
+                lastIndex: i,
+                lastUpdated: new Date().toISOString(),
+                results: allResults
+            }));
+
             // Progress update every 20 logics
             if ((i + 1) % 20 === 0) {
-                console.log(`  Progress: ${i + 1}/${this.logicCatalogue.length} logics tested\n`);
+                console.log(`  Progress: ${i + 1}/${this.logicCatalogue.length} logics saved to cache\n`);
             }
         }
 
