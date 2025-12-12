@@ -163,4 +163,66 @@ router.get('/scheduler/status', async (req, res) => {
     }
 });
 
+/**
+ * GET /api/signals/notifications
+ * Get pending notifications
+ */
+router.get('/notifications', async (req, res) => {
+    try {
+        const notificationService = require('../services/notificationService.cjs');
+        res.json({
+            ok: true,
+            pending: notificationService.getPendingNotifications(),
+            badge: notificationService.getBadgeCount()
+        });
+    } catch (error) {
+        res.status(500).json({ ok: false, error: error.message });
+    }
+});
+
+/**
+ * POST /api/signals/notifications/read/:id
+ * Mark notification as read
+ */
+router.post('/notifications/read/:id', async (req, res) => {
+    try {
+        const notificationService = require('../services/notificationService.cjs');
+        notificationService.markAsRead(req.params.id);
+        res.json({ ok: true });
+    } catch (error) {
+        res.status(500).json({ ok: false, error: error.message });
+    }
+});
+
+/**
+ * POST /api/signals/notifications/read-all
+ * Mark all notifications as read
+ */
+router.post('/notifications/read-all', async (req, res) => {
+    try {
+        const notificationService = require('../services/notificationService.cjs');
+        notificationService.markAllAsRead();
+        res.json({ ok: true });
+    } catch (error) {
+        res.status(500).json({ ok: false, error: error.message });
+    }
+});
+
+/**
+ * GET /api/signals/notifications/history
+ * Get notification history
+ */
+router.get('/notifications/history', async (req, res) => {
+    try {
+        const notificationService = require('../services/notificationService.cjs');
+        const limit = parseInt(req.query.limit) || 20;
+        res.json({
+            ok: true,
+            history: notificationService.getHistory(limit)
+        });
+    } catch (error) {
+        res.status(500).json({ ok: false, error: error.message });
+    }
+});
+
 module.exports = router;

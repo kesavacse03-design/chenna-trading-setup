@@ -1,0 +1,35 @@
+{
+  "categoryKey": "DOWNSIDE_LOM_SWING",
+  "v1Strategy": "RSI Normal Oversold < 40",
+  "regime": {
+    "trend": "neutral",
+    "breadth": 0.5,
+    "volatility": "medium"
+  },
+  "signals": [
+    {
+      "symbol": "NTPC",
+      "name": "NTPC LTD",
+      "price": 326.1,
+      "target": 334.2525,
+      "stop": 321.2085,
+      "targetPercent": 2.5,
+      "stopPercent": 1.5,
+      "confidence": 50,
+      "reason": "RSI(35.0) < 40",
+      "indicators": {
+        "rsi14": "35.0",
+        "macdBullish": false,
+        "aboveSMA50": false
+      },
+      "timestamp": "2025-12-12T10:48:59.348Z"
+    }
+  ],
+  "stats": {
+    "totalStocks": 112,
+    "scanned": 1,
+    "signalsFound": 1,
+    "elapsed": "1.3s"
+  },
+  "scannedAt": "2025-12-12T10:49:00.534Z"
+}
