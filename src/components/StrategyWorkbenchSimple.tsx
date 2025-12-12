@@ -384,48 +384,7 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
                             </div>
                         )}
 
-                        {/* Strategy Editor */}
-                        <div className="p-6 rounded-xl bg-gradient-to-br from-slate-800/90 to-slate-900/90 border border-slate-600/50 shadow-xl">
-                            <div className="flex items-center justify-between mb-5">
-                                <h3 className="font-bold text-xl flex items-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-                                    <DocumentTextIcon className="w-6 h-6 mr-2 text-cyan-400" />
-                                    Strategy Definition
-                                </h3>
-                            </div>
-
-                            <div className="space-y-4">
-                                <div>
-                                    <label htmlFor="strategy-description" className="block text-sm font-semibold text-slate-200 mb-2 flex items-center">
-                                        <span className="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
-                                        Description
-                                    </label>
-                                    <textarea
-                                        id="strategy-description"
-                                        placeholder="Enter a clear description of your trading strategy..."
-                                        value={editorLogic.description}
-                                        onChange={e => setEditorLogic({ ...editorLogic, description: e.target.value })}
-                                        className="w-full bg-slate-900/60 rounded-lg p-3 text-sm h-20 resize-none border border-slate-600/50 focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all text-slate-100 placeholder-slate-500"
-                                    />
-                                </div>
-
-                                <div>
-                                    <label htmlFor="strategy-rules" className="block text-sm font-semibold text-slate-200 mb-2 flex items-center">
-                                        <span className="w-2 h-2 bg-purple-400 rounded-full mr-2"></span>
-                                        Trading Rules (one per line)
-                                    </label>
-                                    <textarea
-                                        id="strategy-rules"
-                                        placeholder="e.g., EMA(20) > EMA(50)&#10;RSI < 30&#10;Volume > 1.5x avg..."
-                                        value={Array.isArray(editorLogic.rules) ? editorLogic.rules.join('\n') : String(editorLogic.rules || '')}
-                                        onChange={e => setEditorLogic({ ...editorLogic, rules: e.target.value.split('\n') })}
-                                        className="w-full bg-slate-900/60 rounded-lg p-3 text-sm font-mono h-36 resize-none border border-slate-600/50 focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all text-slate-100 placeholder-slate-500"
-                                    />
-                                </div>
-                            </div>
-
-                        </div>
-
-                        {/* AI Validation Results */}
+                        {/* Run Backtest Section - Strategy is displayed in V1 panel above */}
                         {sanityCheckResults.length > 0 && (
                             <div className="p-5 bg-gradient-to-br from-purple-900/30 to-purple-800/20 border border-purple-500/40 rounded-xl shadow-lg animate-fade-in-down backdrop-blur-sm">
                                 <div className="flex items-center gap-2 mb-3">
