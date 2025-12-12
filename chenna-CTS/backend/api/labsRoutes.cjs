@@ -65,6 +65,46 @@ router.post('/run-timetravel', async (req, res) => {
 });
 
 /**
+ * GET /api/labs/latest/:categoryKey
+ * Get the latest Labs run result for a category (from saved JSON files)
+ */
+router.get('/latest/:categoryKey', async (req, res) => {
+    try {
+        const { categoryKey } = req.params;
+        const fs = require('fs');
+        const path = require('path');
+
+        const resultsDir = path.join(__dirname, '..', 'results');
+
+        // Find the latest tt_ file for this category
+        const files = fs.readdirSync(resultsDir)
+            .filter(f => f.startsWith(`tt_${categoryKey}_`) && f.endsWith('.json'))
+            .sort()
+            .reverse(); // Most recent first (timestamp in filename)
+
+        if (files.length === 0) {
+            return res.json({ ok: false, error: 'No previous Labs run found', hasResult: false });
+        }
+
+        const latestFile = path.join(resultsDir, files[0]);
+        const rawData = fs.readFileSync(latestFile, 'utf-8');
+        const data = JSON.parse(rawData);
+
+        console.log(`[Labs API] Loaded latest result from ${files[0]}`);
+
+        res.json({
+            ok: true,
+            hasResult: true,
+            result: data,
+            fileName: files[0]
+        });
+    } catch (error) {
+        console.error('[Labs API] Latest result error:', error);
+        res.status(500).json({ ok: false, error: error.message, hasResult: false });
+    }
+});
+
+/**
  * GET /api/labs/cache-status/:categoryKey
  * Get cache status for category stocks
  */

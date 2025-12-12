@@ -56,16 +56,60 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
     const [previousVersions, setPreviousVersions] = useState<any[]>([]);
     const [selectedVersion, setSelectedVersion] = useState<any | null>(null);
 
-    // Load cache status AND previous TT versions when window opens
+    // Load cache status AND previous results when window opens
     useEffect(() => {
         if (isOpen) {
             loadCacheStatus();
             loadPreviousTTVersions();
-            setResult(null);
+            loadLatestResult(); // Load previous result if available
             setError(null);
             setLogs([]);
         }
     }, [isOpen, categoryKey]);
+
+    // Load the latest Labs result from saved files on backend
+    const loadLatestResult = async () => {
+        try {
+            const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
+            const response = await fetch(`${apiBase}/api/labs/latest/${categoryKey}`);
+            const data = await response.json();
+
+            if (data.ok && data.hasResult && data.result) {
+                console.log(`[Labs] Loaded previous result from ${data.fileName}`);
+
+                // Transform the result to match LabsResult interface
+                const loadedResult = data.result;
+                setResult({
+                    runId: loadedResult.runId || data.fileName,
+                    ttVersion: loadedResult.ttVersion || 'TT-Previous',
+                    accuracy: loadedResult.accuracy || 0,
+                    recommendedLogic: loadedResult.v1Strategy || loadedResult.recommendedLogic || {
+                        entry: loadedResult.top3?.[0]?.entryLogic || {},
+                        exit: loadedResult.top3?.[0]?.exitRules || {},
+                        trapAvoidance: []
+                    },
+                    metrics: {
+                        pnl: loadedResult.top3?.[0]?.metrics?.pnl || 0,
+                        drawdown: loadedResult.top3?.[0]?.metrics?.drawdown || 0,
+                        winRate: loadedResult.top3?.[0]?.metrics?.accuracy || 0,
+                        expectancy: loadedResult.top3?.[0]?.metrics?.expectancy || 0
+                    },
+                    cacheStatus: { cached: 0, uncached: 0, total: 0 },
+                    promotionAllowed: (loadedResult.accuracy || 0) >= 70,
+                    v1Exists: true,
+                    message: `Previous Labs result loaded`
+                });
+                setLogs([`📖 Loaded previous Labs result from ${data.fileName}`]);
+            } else {
+                // No previous result - show empty state
+                setResult(null);
+                setLogs([]);
+            }
+        } catch (err) {
+            console.error('[Labs] Failed to load latest result:', err);
+            setResult(null);
+        }
+    };
 
     const loadCacheStatus = async () => {
         // TODO: Backend endpoint /api/labs/cache-status/:categoryKey not implemented yet
