@@ -81,8 +81,51 @@ class V1BacktestEngine {
             orderBy: { createdAt: 'desc' }
         });
 
-        if (!cached) return null;
-        return JSON.parse(cached.data);
+        if (!cached || !cached.data) return null;
+
+        // Handle different data formats:
+        // 1. Prisma already parses JSON columns, so cached.data is usually already an array
+        // 2. But some cache entries have string elements that need parsing
+        // 3. Some entries might still be strings if stored incorrectly
+
+        let data = cached.data;
+
+        // If data is a string, parse it
+        if (typeof data === 'string') {
+            try {
+                data = JSON.parse(data);
+            } catch (e) {
+                console.error(`[V1Backtest] Failed to parse data for ${symbol}:`, e.message);
+                return null;
+            }
+        }
+
+        // If not an array, return null
+        if (!Array.isArray(data)) return null;
+
+        // Normalize each element - some might be strings that need parsing
+        const normalizedCandles = data.map((c, idx) => {
+            // If element is a string, try to parse it
+            if (typeof c === 'string') {
+                try {
+                    c = JSON.parse(c);
+                } catch {
+                    return null;
+                }
+            }
+
+            // Ensure all OHLCV values are proper numbers
+            return {
+                open: parseFloat(c.open) || 0,
+                high: parseFloat(c.high) || 0,
+                low: parseFloat(c.low) || 0,
+                close: parseFloat(c.close) || 0,
+                volume: parseInt(c.volume) || 0,
+                timestamp: c.timestamp || c.date || null
+            };
+        }).filter(c => c !== null && c.close > 0);
+
+        return normalizedCandles;
     }
 
     async testV1OnStock(stock, v1) {
