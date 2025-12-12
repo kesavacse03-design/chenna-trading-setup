@@ -30,6 +30,10 @@ registerAutoStrategyRoutes(app);
 const registerBacktestResultsRoutes = require('./api/backtestResultsRoutes.cjs');
 registerBacktestResultsRoutes(app);
 
+// Register Labs Routes (for Time-Travel Labs API)
+const labsRoutes = require('./api/labsRoutes.cjs');
+app.use('/api/labs', labsRoutes);
+
 // --- GUN SHOT FIXES ---
 // 1. Instrument Search (Fixed - use Prisma directly)
 app.get('/api/instruments/search', async (req, res) => {
