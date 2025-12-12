@@ -8,6 +8,7 @@ const { PrismaClient } = require('@prisma/client');
 const TechnicalAnalysis = require('./comprehensiveTA.cjs');
 const InstitutionalTraps = require('./institutionalTraps.cjs');
 const PatternRecognition = require('./patternRecognition.cjs');
+const { getMarketRegime, shouldAllowEntry } = require('../services/regimeService.cjs');
 
 const prisma = new PrismaClient();
 
@@ -313,11 +314,26 @@ class TimeTravelBacktestEngine {
             this.debugLogged = true;  // FIXED: was 'this.debugged'
         }
 
-        // STEP 3: Check for entry signal
+        // STEP 3: Get market regime for this specific date
+        const regime = await getMarketRegime(currentDate, null);
+
+        // Log regime once for debugging
+        if (!this.regimeLogged) {
+            console.log('\n🌍 MARKET REGIME:');
+            console.log('  Date:', regime.date);
+            console.log('  NIFTY Trend:', regime.niftyTrend);
+            console.log('  Breadth:', (regime.breadth * 100).toFixed(1) + '%');
+            console.log('  Volatility:', regime.volatilityState);
+            console.log('  Recommendation:', regime.recommendation);
+            this.regimeLogged = true;
+        }
+
+        // STEP 4: Check for entry signal
         const context = {
             support: this.findSupport(availableCandles),
             resistance: this.findResistance(availableCandles),
-            timestamp: currentDate
+            timestamp: currentDate,
+            regime  // Pass regime to entry logic
         };
 
         let hasSignal = false;
