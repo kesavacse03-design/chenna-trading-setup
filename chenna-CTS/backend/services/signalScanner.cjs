@@ -19,35 +19,60 @@ class SignalScanner {
 
     /**
      * Load V1 strategy from database for a category
+     * Returns default strategy if V1 not found (graceful fallback)
      */
     async loadV1Strategy(categoryKey) {
-        const category = await prisma.category.findUnique({
-            where: { key: categoryKey }
-        });
+        try {
+            const category = await prisma.category.findUnique({
+                where: { key: categoryKey }
+            });
 
-        if (!category) {
-            throw new Error(`Category ${categoryKey} not found`);
+            if (!category) {
+                console.warn(`[Scanner] Category ${categoryKey} not found, using default strategy`);
+                return this.getDefaultStrategy(categoryKey);
+            }
+
+            const strategy = await prisma.strategy.findFirst({
+                where: {
+                    categoryId: category.id,
+                    promoted: true,
+                    version: 'V1'
+                },
+                orderBy: { updatedAt: 'desc' }
+            });
+
+            if (!strategy) {
+                console.warn(`[Scanner] No V1 strategy for ${categoryKey}, using default`);
+                return this.getDefaultStrategy(categoryKey);
+            }
+
+            return {
+                id: strategy.id,
+                description: strategy.description,
+                rules: strategy.rules,
+                metrics: strategy.metrics,
+                categoryKey
+            };
+        } catch (error) {
+            console.error(`[Scanner] Error loading V1 for ${categoryKey}:`, error.message);
+            return this.getDefaultStrategy(categoryKey);
         }
+    }
 
-        const strategy = await prisma.strategy.findFirst({
-            where: {
-                categoryId: category.id,
-                promoted: true,
-                version: 'V1'
-            },
-            orderBy: { updatedAt: 'desc' }
-        });
-
-        if (!strategy) {
-            throw new Error(`No V1 strategy found for ${categoryKey}`);
-        }
-
+    /**
+     * Default strategy fallback (RSI oversold < 30)
+     */
+    getDefaultStrategy(categoryKey) {
         return {
-            id: strategy.id,
-            description: strategy.description,
-            rules: strategy.rules,
-            metrics: strategy.metrics,
-            categoryKey
+            id: 'default',
+            description: 'Default RSI Oversold Strategy',
+            rules: {
+                entry: { logic: 'RSI Oversold 30', description: 'RSI < 30' },
+                exit: { target: 2.5, stop: 1.5 }
+            },
+            metrics: { winRate: 50 },
+            categoryKey,
+            isDefault: true
         };
     }
 
@@ -65,29 +90,59 @@ class SignalScanner {
 
     /**
      * Fetch latest candles for a stock from cache
+     * @param {string} symbol - Stock symbol
+     * @param {string} interval - 'day' for swing, '15minute' for intraday
      */
-    async getLatestCandles(symbol) {
-        const cached = await prisma.ohlcvCache.findFirst({
-            where: { symbol, interval: 'day' },
-            orderBy: { createdAt: 'desc' }
-        });
+    async getLatestCandles(symbol, interval = 'day') {
+        try {
+            const cached = await prisma.ohlcvCache.findFirst({
+                where: { symbol, interval },
+                orderBy: { createdAt: 'desc' }
+            });
 
-        if (!cached || !cached.data) return null;
+            if (!cached || !cached.data) {
+                // Fallback: if 15minute not found, try day
+                if (interval !== 'day') {
+                    return this.getLatestCandles(symbol, 'day');
+                }
+                return null;
+            }
 
-        let candles = cached.data;
-        if (typeof candles === 'string') {
-            candles = JSON.parse(candles);
+            let candles = cached.data;
+            if (typeof candles === 'string') {
+                candles = JSON.parse(candles);
+            }
+
+            // Normalize candles (handle both array and object formats)
+            if (Array.isArray(candles)) {
+                return candles.map(c => {
+                    // Handle Upstox format: [timestamp, open, high, low, close, volume, oi]
+                    if (Array.isArray(c)) {
+                        return {
+                            timestamp: c[0],
+                            open: parseFloat(c[1]) || 0,
+                            high: parseFloat(c[2]) || 0,
+                            low: parseFloat(c[3]) || 0,
+                            close: parseFloat(c[4]) || 0,
+                            volume: parseInt(c[5]) || 0
+                        };
+                    }
+                    return {
+                        timestamp: c.timestamp || c.date,
+                        open: parseFloat(c.open) || 0,
+                        high: parseFloat(c.high) || 0,
+                        low: parseFloat(c.low) || 0,
+                        close: parseFloat(c.close) || 0,
+                        volume: parseInt(c.volume) || 0
+                    };
+                }).filter(c => c.close > 0);
+            }
+
+            return null;
+        } catch (error) {
+            console.error(`[Scanner] Error loading candles for ${symbol}:`, error.message);
+            return null;
         }
-
-        // Normalize candles
-        return candles.map(c => ({
-            timestamp: c.timestamp || c.date,
-            open: parseFloat(c.open) || 0,
-            high: parseFloat(c.high) || 0,
-            low: parseFloat(c.low) || 0,
-            close: parseFloat(c.close) || 0,
-            volume: parseInt(c.volume) || 0
-        })).filter(c => c.close > 0);
     }
 
     /**
@@ -193,13 +248,16 @@ class SignalScanner {
         const eligibleStocks = await trackingService.getEligibleStocks(categoryKey);
         console.log(`   Eligible stocks: ${eligibleStocks.length} (within ${config.trackingDays}-day window)`);
 
-        // 4. Scan each stock
+        // 4. Determine interval based on category type
+        const interval = config.type === 'INTRADAY' ? '15minute' : 'day';
+
+        // 5. Scan each stock
         const signals = [];
         let scanned = 0;
 
         for (const eligibleStock of eligibleStocks) {
             try {
-                const candles = await this.getLatestCandles(eligibleStock.symbol);
+                const candles = await this.getLatestCandles(eligibleStock.symbol, interval);
                 if (!candles || candles.length < 50) continue;
 
                 // Get indicators
