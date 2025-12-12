@@ -74,34 +74,48 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
             const response = await fetch(`${apiBase}/api/labs/latest/${categoryKey}`);
             const data = await response.json();
 
+            console.log('[Labs] API response:', data);
+
             if (data.ok && data.hasResult && data.result) {
                 console.log(`[Labs] Loaded previous result from ${data.fileName}`);
 
                 // Transform the result to match LabsResult interface
                 const loadedResult = data.result;
+                const topStrategy = loadedResult.top3Strategies?.[0] || loadedResult.summary?.topStrategy;
+                const winRate = loadedResult.summary?.topWinRate || topStrategy?.metrics?.winRate || 0;
+
                 setResult({
                     runId: loadedResult.runId || data.fileName,
-                    ttVersion: loadedResult.ttVersion || 'TT-Previous',
-                    accuracy: loadedResult.accuracy || 0,
-                    recommendedLogic: loadedResult.v1Strategy || loadedResult.recommendedLogic || {
-                        entry: loadedResult.top3?.[0]?.entryLogic || {},
-                        exit: loadedResult.top3?.[0]?.exitRules || {},
+                    ttVersion: loadedResult.runId?.replace(`tt_${categoryKey}_`, 'TT-') || 'TT-Previous',
+                    accuracy: winRate / 100, // Convert percentage to decimal
+                    recommendedLogic: loadedResult.v1Strategy || {
+                        entry: {
+                            logic: topStrategy?.name?.name || topStrategy?.name || 'Unknown',
+                            description: 'Best performing logic from top-ranked strategy'
+                        },
+                        exit: topStrategy?.name?.exit || topStrategy?.exit || { target: 2.5, stop: 1.5 },
                         trapAvoidance: []
                     },
                     metrics: {
-                        pnl: loadedResult.top3?.[0]?.metrics?.pnl || 0,
-                        drawdown: loadedResult.top3?.[0]?.metrics?.drawdown || 0,
-                        winRate: loadedResult.top3?.[0]?.metrics?.accuracy || 0,
-                        expectancy: loadedResult.top3?.[0]?.metrics?.expectancy || 0
+                        pnl: topStrategy?.metrics?.avgPnl || 0,
+                        drawdown: topStrategy?.metrics?.maxDrawdown || 0,
+                        winRate: winRate,
+                        expectancy: topStrategy?.metrics?.expectancy || 0
                     },
-                    cacheStatus: { cached: 0, uncached: 0, total: 0 },
-                    promotionAllowed: (loadedResult.accuracy || 0) >= 70,
+                    cacheStatus: loadedResult.cacheStatus || { cached: 0, uncached: 0, total: 0 },
+                    promotionAllowed: winRate >= 70,
                     v1Exists: true,
                     message: `Previous Labs result loaded`
                 });
-                setLogs([`📖 Loaded previous Labs result from ${data.fileName}`]);
+                setLogs([
+                    `📖 Loaded previous Labs result from ${data.fileName}`,
+                    `✅ Version: ${loadedResult.runId || data.fileName}`,
+                    `📊 Accuracy: ${winRate}%`,
+                    `🎯 Strategy: ${topStrategy?.name?.name || topStrategy?.name || 'Unknown'}`
+                ]);
             } else {
                 // No previous result - show empty state
+                console.log('[Labs] No previous result found:', data.error || 'No data');
                 setResult(null);
                 setLogs([]);
             }
