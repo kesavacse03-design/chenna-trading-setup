@@ -1,24 +1,26 @@
 /**
  * Scheduled Signal Scanner
  * Runs signal scans at scheduled times during market hours
+ * Supports different intervals for Swing (15 min) and Intraday (1 min) categories
  */
 
-// For production, use node-cron: npm install node-cron
-// const cron = require('node-cron');
-
 const signalScanner = require('./signalScanner.cjs');
+const trackingService = require('./trackingService.cjs');
+const notificationService = require('./notificationService.cjs');
+const { getSwingCategories, getIntradayCategories, getCategoryConfig } = require('../config/categoryConfig.cjs');
 
 class ScheduledScanner {
     constructor() {
         this.isRunning = false;
+        this.swingTimer = null;
+        this.intradayTimer = null;
         this.scheduleInfo = {
-            preMarket: '09:00',    // Pre-market scan
-            marketOpen: '09:15',  // Market open scan
-            intraday: 30,         // Minutes between scans
-            marketClose: '15:30', // End of day summary
+            swingIntervalMin: 15,    // Swing categories: every 15 min
+            intradayIntervalMin: 1,  // Intraday categories: every 1 min
+            marketOpen: '09:15',
+            marketClose: '15:30'
         };
         this.scanHistory = [];
-        this.timers = [];
     }
 
     /**
@@ -27,94 +29,152 @@ class ScheduledScanner {
     isMarketHours() {
         const now = new Date();
         const hour = now.getHours();
+        const min = now.getMinutes();
         const day = now.getDay();
 
         // Skip weekends
         if (day === 0 || day === 6) return false;
 
         // Market hours: 9:15 AM to 3:30 PM IST
-        if (hour < 9 || hour >= 16) return false;
-        if (hour === 9 && now.getMinutes() < 15) return false;
-        if (hour === 15 && now.getMinutes() > 30) return false;
+        const currentTime = hour * 60 + min;
+        const marketOpen = 9 * 60 + 15;   // 9:15 AM
+        const marketClose = 15 * 60 + 30; // 3:30 PM
 
-        return true;
+        return currentTime >= marketOpen && currentTime <= marketClose;
     }
 
     /**
-     * Start scheduled scanning
+     * Start scheduled scanning with dual intervals
      */
     startScheduledScanning() {
         if (this.isRunning) {
             console.log('[Scheduler] Already running');
-            return;
+            return { ok: true, message: 'Already running' };
         }
 
         console.log(`\n⏰ Starting Scheduled Signal Scanner`);
-        console.log(`   Pre-market: ${this.scheduleInfo.preMarket}`);
-        console.log(`   Market open: ${this.scheduleInfo.marketOpen}`);
-        console.log(`   Intraday interval: Every ${this.scheduleInfo.intraday} minutes`);
-        console.log(`   Market close: ${this.scheduleInfo.marketClose}\n`);
+        console.log(`   Swing interval: Every ${this.scheduleInfo.swingIntervalMin} minutes`);
+        console.log(`   Intraday interval: Every ${this.scheduleInfo.intradayIntervalMin} minute`);
+        console.log(`   Market hours: ${this.scheduleInfo.marketOpen} - ${this.scheduleInfo.marketClose}\n`);
 
         this.isRunning = true;
 
-        // Start intraday scanning loop
+        // Start Swing scanner (every 15 min)
+        this.startSwingLoop();
+
+        // Start Intraday scanner (every 1 min)
         this.startIntradayLoop();
+
+        return { ok: true, message: 'Scheduled scanning started' };
     }
 
     /**
-     * Intraday scanning loop
+     * Swing categories scanning loop (every 15 minutes)
      */
-    startIntradayLoop() {
-        const intervalMs = this.scheduleInfo.intraday * 60 * 1000;
+    startSwingLoop() {
+        const intervalMs = this.scheduleInfo.swingIntervalMin * 60 * 1000;
 
-        const scan = async () => {
+        const scanSwing = async () => {
             if (!this.isMarketHours()) {
-                console.log(`[Scheduler] Market closed, skipping scan`);
+                console.log(`[Swing] Market closed, skipping scan`);
                 return;
             }
 
             try {
-                console.log(`\n⏰ [Scheduler] Running scheduled scan...`);
-                const results = await signalScanner.scanAllCategories();
+                console.log(`\n⏰ [SWING] Running 15-min scan...`);
+                const swingCategories = getSwingCategories();
 
-                const totalSignals = results.reduce((sum, r) => sum + r.signals.length, 0);
-                console.log(`[Scheduler] Scan complete: ${totalSignals} signals across ${results.length} categories`);
+                for (const categoryKey of swingCategories) {
+                    try {
+                        const result = await signalScanner.scanCategory(categoryKey);
 
-                // Store in history
-                this.scanHistory.push({
-                    timestamp: new Date().toISOString(),
-                    categories: results.length,
-                    totalSignals,
-                    results: results.map(r => ({
-                        category: r.categoryKey,
-                        signals: r.signals.length
-                    }))
-                });
+                        if (result.signals.length > 0) {
+                            await notificationService.notifyNewSignals(result.signals, categoryKey);
+                        }
 
-                // Keep only last 24 scans
-                if (this.scanHistory.length > 24) {
-                    this.scanHistory = this.scanHistory.slice(-24);
-                }
-
-                // TODO: Trigger notifications if new signals
-                if (totalSignals > 0) {
-                    this.triggerNotifications(results);
+                        this.recordScan('SWING', categoryKey, result.signals.length);
+                    } catch (error) {
+                        console.error(`[Swing] Error scanning ${categoryKey}:`, error.message);
+                    }
                 }
             } catch (error) {
-                console.error('[Scheduler] Scan error:', error.message);
+                console.error('[Swing] Scan error:', error.message);
             }
         };
 
         // Run immediately if in market hours
         if (this.isMarketHours()) {
-            scan();
+            scanSwing();
         }
 
         // Set interval
-        const timer = setInterval(scan, intervalMs);
-        this.timers.push(timer);
+        this.swingTimer = setInterval(scanSwing, intervalMs);
+        console.log(`[Swing] Loop started (every ${this.scheduleInfo.swingIntervalMin} min)`);
+    }
 
-        console.log(`[Scheduler] Intraday loop started (every ${this.scheduleInfo.intraday} min)`);
+    /**
+     * Intraday categories scanning loop (every 1 minute)
+     */
+    startIntradayLoop() {
+        const intervalMs = this.scheduleInfo.intradayIntervalMin * 60 * 1000;
+
+        const scanIntraday = async () => {
+            if (!this.isMarketHours()) {
+                console.log(`[Intraday] Market closed, skipping scan`);
+                return;
+            }
+
+            try {
+                console.log(`\n⏰ [INTRADAY] Running 1-min scan...`);
+                const intradayCategories = getIntradayCategories();
+
+                for (const categoryKey of intradayCategories) {
+                    try {
+                        // Check if there are any stocks added today
+                        const eligible = await trackingService.getEligibleStocks(categoryKey);
+                        if (eligible.length === 0) continue;
+
+                        const result = await signalScanner.scanCategory(categoryKey);
+
+                        if (result.signals.length > 0) {
+                            await notificationService.notifyNewSignals(result.signals, categoryKey);
+                        }
+
+                        this.recordScan('INTRADAY', categoryKey, result.signals.length);
+                    } catch (error) {
+                        console.error(`[Intraday] Error scanning ${categoryKey}:`, error.message);
+                    }
+                }
+            } catch (error) {
+                console.error('[Intraday] Scan error:', error.message);
+            }
+        };
+
+        // Run immediately if in market hours
+        if (this.isMarketHours()) {
+            scanIntraday();
+        }
+
+        // Set interval
+        this.intradayTimer = setInterval(scanIntraday, intervalMs);
+        console.log(`[Intraday] Loop started (every ${this.scheduleInfo.intradayIntervalMin} min)`);
+    }
+
+    /**
+     * Record scan in history
+     */
+    recordScan(type, categoryKey, signalsFound) {
+        this.scanHistory.push({
+            timestamp: new Date().toISOString(),
+            type,
+            categoryKey,
+            signalsFound
+        });
+
+        // Keep only last 100 scans
+        if (this.scanHistory.length > 100) {
+            this.scanHistory = this.scanHistory.slice(-100);
+        }
     }
 
     /**
@@ -124,34 +184,32 @@ class ScheduledScanner {
         console.log('[Scheduler] Stopping scheduled scanning...');
         this.isRunning = false;
 
-        for (const timer of this.timers) {
-            clearInterval(timer);
+        if (this.swingTimer) {
+            clearInterval(this.swingTimer);
+            this.swingTimer = null;
         }
-        this.timers = [];
+
+        if (this.intradayTimer) {
+            clearInterval(this.intradayTimer);
+            this.intradayTimer = null;
+        }
 
         console.log('[Scheduler] Stopped');
+        return { ok: true, message: 'Scheduled scanning stopped' };
     }
 
     /**
-     * Trigger notifications for new signals
+     * Get scheduler status
      */
-    triggerNotifications(results) {
-        // Collect all signals
-        const allSignals = results.flatMap(r =>
-            r.signals.map(s => ({ ...s, category: r.categoryKey }))
-        );
-
-        if (allSignals.length === 0) return;
-
-        console.log(`\n🔔 NEW SIGNALS DETECTED!`);
-        for (const signal of allSignals.slice(0, 5)) { // Show top 5
-            console.log(`   📈 ${signal.symbol} @ ₹${signal.price.toFixed(2)}`);
-            console.log(`      Target: ₹${signal.target.toFixed(2)} (+${signal.targetPercent}%)`);
-            console.log(`      Stop: ₹${signal.stop.toFixed(2)} (-${signal.stopPercent}%)`);
-            console.log(`      Confidence: ${signal.confidence}%`);
-        }
-
-        // TODO: Send to Telegram, browser notification, etc.
+    getStatus() {
+        return {
+            isRunning: this.isRunning,
+            scheduleInfo: this.scheduleInfo,
+            isMarketHours: this.isMarketHours(),
+            swingCategories: getSwingCategories(),
+            intradayCategories: getIntradayCategories(),
+            recentScans: this.scanHistory.slice(-20).reverse()
+        };
     }
 
     /**
@@ -161,16 +219,8 @@ class ScheduledScanner {
         return {
             isRunning: this.isRunning,
             scheduleInfo: this.scheduleInfo,
-            history: this.scanHistory
+            history: this.scanHistory.slice(-50).reverse()
         };
-    }
-
-    /**
-     * Manual trigger for testing
-     */
-    async runManualScan(categoryKey) {
-        console.log(`[Scheduler] Manual scan triggered for ${categoryKey}`);
-        return await signalScanner.scanCategory(categoryKey);
     }
 }
 

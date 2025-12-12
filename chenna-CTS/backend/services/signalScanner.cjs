@@ -6,6 +6,8 @@
 const { PrismaClient } = require('@prisma/client');
 const TechnicalAnalysis = require('../strategy/comprehensiveTA.cjs');
 const { getMarketRegime } = require('./regimeService.cjs');
+const { getCategoryConfig, isWithinTrackingWindow } = require('../config/categoryConfig.cjs');
+const trackingService = require('./trackingService.cjs');
 
 const prisma = new PrismaClient();
 
@@ -169,10 +171,15 @@ class SignalScanner {
 
     /**
      * Scan a category for signals using V1 strategy
+     * Only scans stocks within their tracking window
      */
     async scanCategory(categoryKey) {
         console.log(`\n🔍 Scanning ${categoryKey} for signals...`);
         const startTime = Date.now();
+
+        // 0. Get category config
+        const config = getCategoryConfig(categoryKey);
+        console.log(`   Category Type: ${config.type} (${config.trackingDays} days, ${config.scanIntervalMin} min)`);
 
         // 1. Load V1 strategy
         const v1 = await this.loadV1Strategy(categoryKey);
@@ -182,17 +189,17 @@ class SignalScanner {
         const regime = await getMarketRegime(new Date());
         console.log(`   Market Regime: ${regime.niftyTrend} (Breadth: ${(regime.breadth * 100).toFixed(0)}%)`);
 
-        // 3. Get stocks
-        const stocks = await this.getStocksForCategory(categoryKey);
-        console.log(`   Scanning ${stocks.length} stocks...`);
+        // 3. Get ELIGIBLE stocks only (within tracking window)
+        const eligibleStocks = await trackingService.getEligibleStocks(categoryKey);
+        console.log(`   Eligible stocks: ${eligibleStocks.length} (within ${config.trackingDays}-day window)`);
 
         // 4. Scan each stock
         const signals = [];
         let scanned = 0;
 
-        for (const stock of stocks) {
+        for (const eligibleStock of eligibleStocks) {
             try {
-                const candles = await this.getLatestCandles(stock.symbol);
+                const candles = await this.getLatestCandles(eligibleStock.symbol);
                 if (!candles || candles.length < 50) continue;
 
                 // Get indicators
@@ -211,8 +218,8 @@ class SignalScanner {
                     const confidence = this.calculateConfidence(indicators, regime, v1.metrics);
 
                     signals.push({
-                        symbol: stock.symbol,
-                        name: stock.name,
+                        symbol: eligibleStock.symbol,
+                        name: eligibleStock.name,
                         price: indicators.currentPrice,
                         target: targetPrice,
                         stop: stopPrice,
@@ -220,6 +227,7 @@ class SignalScanner {
                         stopPercent: exitRules.stop,
                         confidence,
                         reason,
+                        daysRemaining: eligibleStock.daysRemaining,
                         indicators: {
                             rsi14: indicators.rsi14?.toFixed(1),
                             macdBullish: indicators.macdBullish,
@@ -228,7 +236,7 @@ class SignalScanner {
                         timestamp: new Date().toISOString()
                     });
 
-                    console.log(`   ✅ SIGNAL: ${stock.symbol} @ ₹${indicators.currentPrice.toFixed(2)} (${confidence}% confidence)`);
+                    console.log(`   ✅ SIGNAL: ${eligibleStock.symbol} @ ₹${indicators.currentPrice.toFixed(2)} (${confidence}% confidence)`);
                 }
 
                 scanned++;
