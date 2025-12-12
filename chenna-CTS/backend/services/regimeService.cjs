@@ -165,14 +165,13 @@ async function calculateMarketBreadth(targetDate, categoryKey = null) {
             });
             stocks = categoryStocks.map(sc => sc.stock.symbol);
         } else {
-            // Get all enabled category stocks
-            const enabledCategories = await prisma.category.findMany({
-                where: { enabled: true },
+            // Get all category stocks (no enabled filter - field doesn't exist)
+            const allCategories = await prisma.category.findMany({
                 include: {
                     stocks: { include: { stock: true } }
                 }
             });
-            stocks = enabledCategories.flatMap(c =>
+            stocks = allCategories.flatMap(c =>
                 c.stocks.map(sc => sc.stock.symbol)
             );
             stocks = [...new Set(stocks)]; // Unique symbols
