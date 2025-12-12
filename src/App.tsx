@@ -20,6 +20,7 @@ import { startTicker, stopTicker } from './utils/ticker';
 import { runSyncQueue } from './utils/sync';
 import { normalizeAndMapCategory, migrateLocalStorageAddCategoryMeta } from './utils/categoryMap';
 import { PREPOPULATED_WATCHLIST, DEFAULT_STRATEGY_LOGIC } from './constants';
+import { TimeTravelLabsWindow } from './components/TimeTravelLabsWindow';
 
 // Lazy-load Upstox auth widget
 const UpstoxAuthWidget = React.lazy(() => import('./components/UpstoxAuthWidget'));
@@ -37,6 +38,7 @@ const App: React.FC = () => {
   // Modal State
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isWorkbenchOpen, setIsWorkbenchOpen] = useState(false);
+  const [isLabsOpen, setIsLabsOpen] = useState(false);
   const [isHealthOpen, setIsHealthOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('');
 
@@ -139,6 +141,11 @@ const App: React.FC = () => {
     setIsWorkbenchOpen(true);
   };
 
+  const handleOpenLabs = (categoryKey: string) => {
+    setSelectedCategory(categoryKey);
+    setIsLabsOpen(true);
+  };
+
   const handleSaveStrategy = async (categoryKey: string, newLogic: StrategyLogic) => {
     const newStrategies = await api.saveStrategy(categoryKey, newLogic);
     setStrategyState(newStrategies);
@@ -216,6 +223,7 @@ const App: React.FC = () => {
                 watchlist={watchlist}
                 onWatchlistUpdate={handleWatchlistUpdate}
                 onManageStrategy={handleManageStrategy}
+                onOpenLabs={handleOpenLabs}
               />
             </div>
           </div>
@@ -247,6 +255,14 @@ const App: React.FC = () => {
           categoryKey={selectedCategory}
           initialLogic={strategyState[selectedCategory]?.[0]?.logic || DEFAULT_STRATEGY_LOGIC}
           onSaveStrategy={handleSaveStrategy}
+        />
+      )}
+
+      {isLabsOpen && (
+        <TimeTravelLabsWindow
+          isOpen={isLabsOpen}
+          onClose={() => setIsLabsOpen(false)}
+          categoryKey={selectedCategory}
         />
       )}
     </>

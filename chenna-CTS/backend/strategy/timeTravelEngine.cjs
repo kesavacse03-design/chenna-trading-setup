@@ -267,10 +267,10 @@ class TimeTravelBacktestEngine {
         for (const stock of stocks) {
             try {
                 const candles = await this.getCandlesForStock(stock.symbol);
-                if (!candles || candles.length < 100) continue;  // FIXED: Changed from 200 to 100
+                if (!candles || candles.length < 50) continue;  // LOWERED: Changed from 100 to 50 for more coverage
 
                 // Time-travel: test at multiple historical dates
-                for (let D = 100; D < candles.length - 10; D++) {
+                for (let D = 50; D < candles.length - 10; D++) {  // LOWERED: Start from 50 instead of 100
                     const trade = await this.testAtDate(logic, stock, candles, D);
                     if (trade) trades.push(trade);
                 }
@@ -310,7 +310,7 @@ class TimeTravelBacktestEngine {
             console.log('  BB:', indicators.bb ? 'exists' : 'undefined');
             console.log('  currentPrice:', indicators.currentPrice);
             console.log('\n  Testing simple logic: RSI14 < 30?', indicators.rsi14 && indicators.rsi14 < 30);
-            this.debugged = true;
+            this.debugLogged = true;  // FIXED: was 'this.debugged'
         }
 
         // STEP 3: Check for entry signal
@@ -635,9 +635,56 @@ class TimeTravelBacktestEngine {
             orderBy: { createdAt: 'desc' }
         });
 
-        if (!cached) return null;
+        if (!cached || !cached.data) return null;
 
-        return JSON.parse(cached.data);
+        // Handle both string and object formats
+        let candles = cached.data;
+        if (typeof candles === 'string') {
+            try {
+                candles = JSON.parse(candles);
+            } catch (e) {
+                console.warn(`[getCandlesForStock] Failed to parse data for ${symbol}:`, e.message);
+                return null;
+            }
+        }
+
+        // Ensure it's an array
+        if (!Array.isArray(candles)) {
+            console.warn(`[getCandlesForStock] Data for ${symbol} is not an array`);
+            return null;
+        }
+
+        // Normalize candles - ensure all OHLCV values are proper numbers
+        const normalizedCandles = candles.map((c, idx) => {
+            // Handle case where c might be a string (corrupt entry)
+            if (typeof c === 'string') {
+                try {
+                    c = JSON.parse(c);
+                } catch {
+                    return null;
+                }
+            }
+
+            return {
+                open: parseFloat(c.open) || 0,
+                high: parseFloat(c.high) || 0,
+                low: parseFloat(c.low) || 0,
+                close: parseFloat(c.close) || 0,
+                volume: parseInt(c.volume) || 0,
+                timestamp: c.timestamp || c.date || null
+            };
+        }).filter(c => c !== null && c.close > 0);
+
+        // Debug: Log first load
+        if (!this._candleDebugLogged) {
+            console.log(`[getCandlesForStock] ${symbol}: ${candles.length} raw -> ${normalizedCandles.length} normalized`);
+            if (normalizedCandles.length > 0) {
+                console.log(`  First candle:`, normalizedCandles[0]);
+            }
+            this._candleDebugLogged = true;
+        }
+
+        return normalizedCandles;
     }
 
     async saveResults(categoryKey, scoredLogics, v1Strategy) {

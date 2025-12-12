@@ -330,60 +330,6 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
                 <div className="flex-grow p-6 overflow-y-auto">
                     <div className="max-w-4xl mx-auto space-y-6">
 
-                        {/* V1 Strategy Status Panel - Shows promoted strategy from Labs */}
-                        {v1Strategy ? (
-                            <div className="p-5 rounded-xl bg-gradient-to-br from-emerald-900/40 to-green-900/30 border border-emerald-500/40 shadow-xl mb-6">
-                                <div className="flex items-center justify-between mb-3">
-                                    <h3 className="font-bold text-lg flex items-center text-emerald-300">
-                                        ✅ Active Strategy: <span className="ml-2 px-2 py-0.5 bg-emerald-600 rounded text-white text-sm">{v1Strategy.version || 'V1'}</span>
-                                    </h3>
-                                    <span className="text-xs text-emerald-400/70">
-                                        ID: {v1Strategy.id} | Updated: {v1Strategy.updatedAt ? new Date(v1Strategy.updatedAt).toLocaleDateString() : 'Recently'}
-                                    </span>
-                                </div>
-
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                                    <div className="bg-slate-900/60 rounded-lg p-3 border border-emerald-500/20">
-                                        <div className="text-xs text-emerald-400 font-semibold mb-2">📈 ENTRY RULES</div>
-                                        <div className="text-slate-200 font-mono text-xs whitespace-pre-wrap">
-                                            {typeof v1Strategy.rules === 'object' && v1Strategy.rules?.entry?.logic
-                                                ? v1Strategy.rules.entry.logic
-                                                : typeof v1Strategy.rules === 'object'
-                                                    ? JSON.stringify(v1Strategy.rules, null, 2).substring(0, 200)
-                                                    : String(v1Strategy.rules || 'No rules defined')}
-                                        </div>
-                                    </div>
-
-                                    <div className="bg-slate-900/60 rounded-lg p-3 border border-emerald-500/20">
-                                        <div className="text-xs text-emerald-400 font-semibold mb-2">🎯 EXIT RULES</div>
-                                        <div className="text-slate-200 font-mono text-xs">
-                                            {v1Strategy.params?.target && <div>Target: +{v1Strategy.params.target}%</div>}
-                                            {v1Strategy.params?.stop && <div>Stop: -{v1Strategy.params.stop}%</div>}
-                                            {!v1Strategy.params?.target && (
-                                                <div className="whitespace-pre-wrap">{JSON.stringify(v1Strategy.params, null, 2).substring(0, 100)}</div>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {v1Strategy.metrics && (
-                                    <div className="mt-3 flex gap-4 text-xs">
-                                        <span className="text-emerald-400">Accuracy: {v1Strategy.metrics.accuracy || '—'}</span>
-                                        <span className="text-cyan-400">Expectancy: {v1Strategy.metrics.expectancy || '—'}</span>
-                                    </div>
-                                )}
-                            </div>
-                        ) : isLoadingV1 ? (
-                            <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-600/50 flex items-center gap-3 mb-6">
-                                <SpinnerIcon className="w-5 h-5 animate-spin text-cyan-400" />
-                                <span className="text-slate-400">Loading V1 strategy...</span>
-                            </div>
-                        ) : (
-                            <div className="p-4 rounded-xl bg-amber-900/30 border border-amber-500/40 text-amber-300 text-sm mb-6">
-                                ⚠️ No V1 strategy found for this category. Run Time-Travel Labs first to generate one.
-                            </div>
-                        )}
-
                         {/* Strategy Editor */}
                         <div className="p-6 rounded-xl bg-gradient-to-br from-slate-800/90 to-slate-900/90 border border-slate-600/50 shadow-xl">
                             <div className="flex items-center justify-between mb-5">

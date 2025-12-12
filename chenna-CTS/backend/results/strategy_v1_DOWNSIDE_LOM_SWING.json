@@ -2,15 +2,15 @@
   "category": "DOWNSIDE_LOM_SWING",
   "name": "V1 Default - DOWNSIDE_LOM_SWING",
   "version": "1.0.0",
-  "createdAt": "2025-11-27T10:39:56.914Z",
+  "createdAt": "2025-12-12T06:17:05.970Z",
   "entryRules": {
-    "logic": "Price Near EMA50",
+    "logic": "RSI Normal Oversold < 40",
     "description": "Best performing logic from top-ranked strategy"
   },
   "exitRules": {
     "target": 2.5,
-    "stop": 1,
-    "source": "From MACD Bullish + Near SMA50"
+    "stop": 1.5,
+    "source": "From RSI Normal Oversold < 40"
   },
   "trapFilters": {
     "enabled": true,
@@ -22,32 +22,32 @@
     "maxPositions": 5
   },
   "expectedMetrics": {
-    "accuracy": "36.8%",
-    "expectancy": "0.11%",
+    "accuracy": "100.0%",
+    "expectancy": "2.50%",
     "trapAvoidance": "0.0%",
-    "avgHolding": "1.6 days"
+    "avgHolding": "2.8 days"
   },
   "contributors": [
     {
       "rank": 1,
-      "logic": "Price Near EMA50",
-      "score": "20.3",
-      "trades": 19,
-      "winRate": "36.8%"
+      "logic": "RSI Normal Oversold < 40",
+      "score": "80.5",
+      "trades": 5,
+      "winRate": "100.0%"
     },
     {
       "rank": 2,
-      "logic": "MACD Bullish + Near SMA50",
-      "score": "19.4",
-      "trades": 9,
-      "winRate": "33.3%"
+      "logic": "RSI14 Oversold 40",
+      "score": "80.5",
+      "trades": 5,
+      "winRate": "100.0%"
     },
     {
       "rank": 3,
-      "logic": "Price Above SMA20",
-      "score": "0.0",
-      "trades": 13,
-      "winRate": "30.8%"
+      "logic": "BB Lower Band Touch 1.02",
+      "score": "80.5",
+      "trades": 5,
+      "winRate": "100.0%"
     }
   ]
 }

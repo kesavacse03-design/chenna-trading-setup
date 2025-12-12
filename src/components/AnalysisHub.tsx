@@ -28,6 +28,7 @@ interface AnalysisHubProps {
     watchlist: GroupedWatchlist;
     onWatchlistUpdate: (payload: ImportWatchlistPayload) => void;
     onManageStrategy: (categoryKey: string) => void;
+    onOpenLabs?: (categoryKey: string) => void;
 }
 
 const isStockExpired = (stock: StockData): boolean => {
@@ -39,7 +40,7 @@ const isStockExpired = (stock: StockData): boolean => {
 
 // per-stock rows rendered inline inside subcategory blocks
 
-const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate, onManageStrategy }) => {
+const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate, onManageStrategy, onOpenLabs }) => {
     const [isImportModalOpen, setIsImportModalOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [filter, setFilter] = useState<'ALL' | 'SWING' | 'INTRADAY'>('ALL');
@@ -453,6 +454,15 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
                                                     <button onClick={() => priceService.refreshGroupNow(category)} className="text-xs px-2 py-1 rounded bg-slate-700/40">Refresh now</button>
                                                     <label className="text-xs flex items-center gap-1"><input type="checkbox" defaultChecked onChange={(e) => priceService.setGroupEnabled(category, e.target.checked)} /> Live</label>
                                                 </div>
+                                                {onOpenLabs && (
+                                                    <button
+                                                        onClick={() => onOpenLabs(category)}
+                                                        className="text-white hover:text-white transition-colors text-xs flex items-center px-2 py-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 rounded-md border border-purple-500 font-semibold shadow-lg hover:shadow-purple-500/50"
+                                                    >
+                                                        <WrenchScrewdriverIcon className="w-3 h-3 mr-1.5" />
+                                                        Run Labs
+                                                    </button>
+                                                )}
                                                 <button onClick={() => onManageStrategy(category)} className="text-slate-400 hover:text-cyan-300 transition-colors text-xs flex items-center p-1 bg-slate-700/50 rounded-md border border-slate-600">
                                                     <WrenchScrewdriverIcon className="w-3 h-3 mr-1.5" />
                                                     Manage Strategy
