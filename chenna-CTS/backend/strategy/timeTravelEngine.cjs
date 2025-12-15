@@ -206,7 +206,7 @@ class TimeTravelBacktestEngine {
 
     // ==================== TIME-TRAVEL BACKTEST ====================
 
-    async runTimeTravelBacktest(categoryKey, openAIClient = null) {
+    async runTimeTravelBacktest(categoryKey, openAIClient = null, options = {}) {
         console.log(`\n🔮 Starting Time-Travel Backtest for: ${categoryKey}\n`);
 
         const startTime = Date.now();
@@ -216,11 +216,11 @@ class TimeTravelBacktestEngine {
         // Get stocks for category
         const allStocks = await this.getStocksForCategory(categoryKey);
 
-        // ⚡ PRODUCTION MODE: Test ALL stocks (set to true for quick testing)
-        const QUICK_MODE = false;
-        const stocks = QUICK_MODE ? allStocks.slice(0, 10) : allStocks;
+        // ⚡ Quick Mode: User controls from UI (default OFF = all stocks)
+        const { quickMode = false, stockCount = 10 } = options;
+        const stocks = quickMode ? allStocks.slice(0, stockCount) : allStocks;
 
-        console.log(`📊 Testing ${stocks.length} stocks ${QUICK_MODE ? `(QUICK TEST - ${allStocks.length} total)` : ''}\n`);
+        console.log(`📊 Testing ${stocks.length} stocks ${quickMode ? `(QUICK MODE - ${stockCount} of ${allStocks.length})` : '(FULL MODE)'}\n`);
 
         // === INCREMENTAL CACHING - Resume from crashes ===
         const cacheDir = path.join(__dirname, '../results/cache');
