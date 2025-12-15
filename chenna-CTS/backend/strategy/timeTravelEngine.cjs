@@ -12,6 +12,7 @@ const { getMarketRegime, shouldAllowEntry } = require('../services/regimeService
 const AdaptiveGridSearch = require('./adaptiveGridSearch.cjs');
 const ShadowLearner = require('../services/shadowLearner.cjs');
 const { getCategoryLogicConfig, validateStrategyForCategory } = require('../config/categoryLogicMapping.cjs');
+const SupportResistance = require('./supportResistance.cjs');
 
 const prisma = new PrismaClient();
 
@@ -455,10 +456,15 @@ class TimeTravelBacktestEngine {
             this.regimeLogged = true;
         }
 
-        // STEP 4: Check for entry signal
+        // STEP 4: Check for entry signal (with calculated Support/Resistance context)
+        const srContext = SupportResistance.generateContext(availableCandles);
         const context = {
-            support: this.findSupport(availableCandles),
-            resistance: this.findResistance(availableCandles),
+            support: srContext.support,
+            resistance: srContext.resistance,
+            nearSupport: srContext.nearSupport,
+            nearResistance: srContext.nearResistance,
+            supportTests: srContext.supportTests,
+            resistanceTests: srContext.resistanceTests,
             timestamp: currentDate,
             regime  // Pass regime to entry logic
         };
