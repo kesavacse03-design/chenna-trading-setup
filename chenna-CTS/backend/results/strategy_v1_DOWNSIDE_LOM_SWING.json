@@ -1,8 +1,63 @@
 {
   "category": "DOWNSIDE_LOM_SWING",
   "name": "V1 Default - DOWNSIDE_LOM_SWING",
-  "version": "1.0.0",
-  "createdAt": "2025-12-15T10:28:48.914Z",
+  "version": "2.0.0",
+  "createdAt": "2025-12-15T12:05:33.495Z",
+  "thesis": "This category works when Panic selling happened, weak hands exiting, institutions absorbing",
+  "categoryIntent": "Late-stage selling → exhaustion → bounce",
+  "mustDiscover": "Exhaustion + Stabilization signals",
+  "confirmations": [
+    {
+      "rank": 1,
+      "rule": "rsi_exhaustion_zone",
+      "description": "RSI in exhaustion zone (not fixed value)",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 2,
+      "rule": "atr_spike_contraction",
+      "description": "ATR peaks then contracts",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 3,
+      "rule": "lower_wick_dominance",
+      "description": "Lower wicks show buying",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 4,
+      "rule": "volume_drying",
+      "description": "Volume declines after sell-off",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 5,
+      "rule": "holding_above_low",
+      "description": "Price holds above recent low for 2 sessions",
+      "importance": "HIGH"
+    }
+  ],
+  "invalidations": [
+    {
+      "rule": "trend_continuation",
+      "impact": "Reduces win rate when present"
+    },
+    {
+      "rule": "momentum_chasing",
+      "impact": "Reduces win rate when present"
+    },
+    {
+      "rule": "breakout_logic",
+      "impact": "Reduces win rate when present"
+    }
+  ],
+  "expectedBehavior": {
+    "avgHoldingTime": "5.8 days",
+    "avgDrawdown": "3.0%",
+    "avgMove": "-0.5%",
+    "winRate": "25.0%"
+  },
   "entryRules": {
     "logic": "Price Above SMA20",
     "description": "Best performing logic from top-ranked strategy"
@@ -15,7 +70,7 @@
   "trapFilters": {
     "enabled": true,
     "skipOnTraps": true,
-    "minConfidence": 0.7
+    "minConfidence": 0.6
   },
   "positionSizing": {
     "riskPerTrade": 1.5,
