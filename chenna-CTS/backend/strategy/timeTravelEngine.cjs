@@ -218,7 +218,7 @@ class TimeTravelBacktestEngine {
 
         // ⚡ PRODUCTION MODE: Test ALL stocks (set to true for quick testing)
         const QUICK_MODE = false;
-        const stocks = QUICK_MODE ? allStocks.slice(0, 2) : allStocks;
+        const stocks = QUICK_MODE ? allStocks.slice(0, 10) : allStocks;
 
         console.log(`📊 Testing ${stocks.length} stocks ${QUICK_MODE ? `(QUICK TEST - ${allStocks.length} total)` : ''}\n`);
 
