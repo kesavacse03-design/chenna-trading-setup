@@ -221,20 +221,21 @@ function registerAutoStrategyRoutes(app) {
      */
     app.post('/api/strategy/time-travel-backtest', async (req, res) => {
         try {
-            const { categoryKey, quickMode = false, stockCount = 10 } = req.body;
+            const { categoryKey, quickMode = false, stockCount = 10, forceRefresh = false } = req.body;
 
             if (!categoryKey) {
                 return res.status(400).json({ ok: false, error: 'categoryKey is required' });
             }
 
             console.log(`\n🔮 [Time-Travel] Starting comprehensive backtest for: ${categoryKey}`);
-            console.log(`   Quick Mode: ${quickMode ? `ON (${stockCount} oldest stocks)` : 'OFF (all stocks)'}\n`);
+            console.log(`   Quick Mode: ${quickMode ? `ON (${stockCount} oldest stocks)` : 'OFF (all stocks)'}`);
+            console.log(`   Force Refresh: ${forceRefresh ? 'ON (clearing cache)' : 'OFF (using cache)'}\n`);
 
             // Create engine instance
             const engine = new TimeTravelEngine();
 
             // Run backtest with quickMode option
-            const results = await engine.runTimeTravelBacktest(categoryKey, null, { quickMode, stockCount });
+            const results = await engine.runTimeTravelBacktest(categoryKey, null, { quickMode, stockCount, forceRefresh });
 
             console.log(`\n✅ [Time-Travel] Backtest complete!\n`);
 

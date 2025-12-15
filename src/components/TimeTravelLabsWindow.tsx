@@ -518,6 +518,26 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                                     : '🔬 Full: All stocks (60-90 min)'
                                 }
                             </div>
+                            
+                            {/* Force Refresh Toggle */}
+                            <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-700">
+                                <span className="text-slate-300 text-sm">🗑️ Force Refresh</span>
+                                <button
+                                    onClick={() => setForceRefresh(!forceRefresh)}
+                                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                                        forceRefresh ? 'bg-red-600' : 'bg-slate-600'
+                                    }`}
+                                >
+                                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                                        forceRefresh ? 'translate-x-6' : 'translate-x-1'
+                                    }`} />
+                                </button>
+                            </div>
+                            {forceRefresh && (
+                                <div className="text-xs text-red-400 mt-1">
+                                    ⚠️ Cache will be cleared - full backtest will run
+                                </div>
+                            )}
                         </div>
 
                         {/* Actions */}
