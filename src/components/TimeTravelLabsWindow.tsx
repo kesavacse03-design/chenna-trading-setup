@@ -56,6 +56,10 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
     const [previousVersions, setPreviousVersions] = useState<any[]>([]);
     const [selectedVersion, setSelectedVersion] = useState<any | null>(null);
 
+    // Quick Mode controls - user can test on subset of oldest stocks
+    const [quickMode, setQuickMode] = useState(false);
+    const [stockCount, setStockCount] = useState(10);
+
     // Load cache status AND previous results when window opens
     useEffect(() => {
         if (isOpen) {
@@ -241,7 +245,9 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    categoryKey
+                    categoryKey,
+                    quickMode,      // User's quick mode setting
+                    stockCount      // Number of oldest stocks to test
                 })
             });
 
@@ -465,6 +471,42 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                                 </div>
                             </div>
                         )}
+
+                        {/* Quick Mode Controls */}
+                        <div className="bg-slate-800/50 rounded-lg p-4 mb-4">
+                            <div className="flex items-center justify-between mb-3">
+                                <label className="text-slate-300 text-sm font-medium">Quick Mode</label>
+                                <button
+                                    onClick={() => setQuickMode(!quickMode)}
+                                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                                        quickMode ? 'bg-emerald-600' : 'bg-slate-600'
+                                    }`}
+                                >
+                                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                                        quickMode ? 'translate-x-6' : 'translate-x-1'
+                                    }`} />
+                                </button>
+                            </div>
+                            {quickMode && (
+                                <div className="flex items-center gap-3">
+                                    <label className="text-slate-400 text-sm">Stocks to test:</label>
+                                    <input
+                                        type="number"
+                                        value={stockCount}
+                                        onChange={(e) => setStockCount(Math.max(1, parseInt(e.target.value) || 10))}
+                                        min={1}
+                                        className="w-20 bg-slate-700 text-white px-3 py-1 rounded border border-slate-600 focus:border-emerald-500 focus:outline-none text-center"
+                                    />
+                                    <span className="text-slate-500 text-xs">(oldest first)</span>
+                                </div>
+                            )}
+                            <div className="text-xs text-slate-500 mt-2">
+                                {quickMode 
+                                    ? `⚡ Quick: ${stockCount} oldest stocks`
+                                    : '🔬 Full: All stocks (60-90 min)'
+                                }
+                            </div>
+                        </div>
 
                         {/* Actions */}
                         <div className="space-y-2">
