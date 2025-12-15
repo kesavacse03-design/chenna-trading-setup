@@ -730,18 +730,59 @@ class TimeTravelBacktestEngine {
     }
 
     mergeIntoV1(top3, categoryKey) {
+        // Get category rules for thesis and confirmations
+        const categoryRules = CATEGORY_CONFIRMATION_RULES[categoryKey] || {};
+        
         // Take best from each
         const bestLogic = top3[0].logic;
         const bestRR = top3.reduce((best, curr) =>
             curr.metrics.expectancy > best.metrics.expectancy ? curr : best
         );
 
-        // Create V1 merged strategy
+        // ✅ NEW: Generate category-specific thesis
+        const thesis = categoryRules.intent 
+            ? `This category works when ${categoryRules.behavior || categoryRules.intent}`
+            : `Best performing logic: ${bestLogic.name}`;
+
+        // ✅ NEW: Ranked confirmation rules
+        const confirmations = (categoryRules.confirmationsToTest || []).slice(0, 5).map((conf, i) => ({
+            rank: i + 1,
+            rule: conf.name || conf.desc,
+            description: conf.desc,
+            importance: 'HIGH'
+        }));
+
+        // ✅ NEW: Invalidation rules (what kills trades)
+        const invalidations = (categoryRules.shouldAvoid || []).map(avoid => ({
+            rule: avoid,
+            impact: 'Reduces win rate when present'
+        }));
+
+        // Create V1 merged strategy with INSTITUTIONAL FORMAT
         const v1 = {
             category: categoryKey,
             name: `V1 Default - ${categoryKey}`,
-            version: '1.0.0',
+            version: '2.0.0',
             createdAt: new Date().toISOString(),
+
+            // ✅ 1. Category-Specific Thesis
+            thesis: thesis,
+            categoryIntent: categoryRules.intent || 'Unknown',
+            mustDiscover: categoryRules.mustDiscover || 'Best performing confirmations',
+
+            // ✅ 2. Ranked Confirmation Rules (Top 5)
+            confirmations: confirmations,
+
+            // ✅ 3. Invalidation Rules
+            invalidations: invalidations,
+
+            // ✅ 4. Expected Trade Behavior
+            expectedBehavior: {
+                avgHoldingTime: (top3[0].metrics.avgHolding || 5).toFixed(1) + ' days',
+                avgDrawdown: (top3[0].metrics.maxDrawdown || 2).toFixed(1) + '%',
+                avgMove: (top3[0].metrics.avgPnl || 1.5).toFixed(1) + '%',
+                winRate: (top3[0].metrics.winRate || 50).toFixed(1) + '%'
+            },
 
             // Core entry rules from #1
             entryRules: {
@@ -760,12 +801,12 @@ class TimeTravelBacktestEngine {
             trapFilters: {
                 enabled: true,
                 skipOnTraps: true,
-                minConfidence: 0.70
+                minConfidence: 0.60
             },
 
             // Position sizing (conservative)
             positionSizing: {
-                riskPerTrade: 1.5, // % of capital
+                riskPerTrade: 1.5,
                 maxPositions: 5
             },
 
