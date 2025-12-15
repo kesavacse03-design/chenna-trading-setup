@@ -11,6 +11,7 @@ const PatternRecognition = require('./patternRecognition.cjs');
 const { getMarketRegime, shouldAllowEntry } = require('../services/regimeService.cjs');
 const AdaptiveGridSearch = require('./adaptiveGridSearch.cjs');
 const ShadowLearner = require('../services/shadowLearner.cjs');
+const { getCategoryLogicConfig, validateStrategyForCategory } = require('../config/categoryLogicMapping.cjs');
 
 const prisma = new PrismaClient();
 
@@ -266,7 +267,7 @@ class TimeTravelBacktestEngine {
         }
 
         // Score and rank all logics
-        const scoredLogics = this.scoreAndRankLogics(allResults);
+        const scoredLogics = this.scoreAndRankLogics(allResults, categoryKey);
 
         // Select top 3
         const top3 = scoredLogics.slice(0, 3);
@@ -657,17 +658,38 @@ class TimeTravelBacktestEngine {
         };
     }
 
-    scoreAndRankLogics(allResults) {
+    scoreAndRankLogics(allResults, categoryKey = null) {
+        // Get category-specific config for validation
+        const categoryConfig = categoryKey ? getCategoryLogicConfig(categoryKey) : null;
+        const minTrades = categoryConfig?.minTrades || 10; // Default 10 if no config
+        const maxWinRateIfFewTrades = categoryConfig?.maxWinRateIfFewTrades || 90;
+
         const scored = allResults.map(result => {
             const m = result.metrics;
 
-            // Apply minimum thresholds (LOWERED for realistic evaluation)
-            if (m.tradeCount < 5) {  // Was 25 - now allow strategies with statistical significance
-                return { ...result, score: 0, failReason: 'Insufficient trades' };
+            // INSTITUTIONAL RULE #1: Minimum trade count (category-specific)
+            if (m.tradeCount < minTrades) {
+                return { ...result, score: 0, failReason: `Insufficient trades: ${m.tradeCount} < ${minTrades} required` };
             }
 
-            if (m.expectancy < 0.1) {  // Was 0.5 - now allow marginally profitable strategies
-                return { ...result, score: 0, failReason: 'Low expectancy' };
+            // INSTITUTIONAL RULE #2: Reject suspicious 100% win rate with few trades
+            if (m.winRate >= 100 && m.tradeCount < 20) {
+                return { ...result, score: 0, failReason: `Suspicious 100% win rate with only ${m.tradeCount} trades - likely overfitting` };
+            }
+
+            // INSTITUTIONAL RULE #3: Reject unrealistic win rates with limited data
+            if (m.tradeCount < 20 && m.winRate > maxWinRateIfFewTrades) {
+                return { ...result, score: 0, failReason: `Win rate ${m.winRate.toFixed(0)}% too high for ${m.tradeCount} trades (max ${maxWinRateIfFewTrades}%)` };
+            }
+
+            // INSTITUTIONAL RULE #4: Reject negative expectancy
+            if (m.expectancy < 0) {
+                return { ...result, score: 0, failReason: `Negative expectancy: ${m.expectancy.toFixed(2)}` };
+            }
+
+            // INSTITUTIONAL RULE #5: Low expectancy threshold
+            if (m.expectancy < 0.1) {
+                return { ...result, score: 0, failReason: 'Below minimum expectancy threshold (0.1)' };
             }
 
             // Weighted scoring (30/25/15/10/10/10)
