@@ -642,6 +642,59 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                             </div>
                         ) : (
                             <div className="space-y-6">
+                                                                {/* ✅ Category Thesis */}
+                                {(result as any).thesis && (
+                                    <div className="mb-4">
+                                        <h4 className="text-purple-300 font-semibold mb-2">🎯 Category Thesis</h4>
+                                        <div className="bg-purple-900/30 rounded-lg p-4 border border-purple-500/30">
+                                            <p className="text-sm text-purple-200">{(result as any).thesis}</p>
+                                            {(result as any).categoryIntent && (
+                                                <p className="text-xs text-purple-400 mt-2">Intent: {(result as any).categoryIntent}</p>
+                                            )}
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* ✅ Confirmation Rules */}
+                                {(result as any).confirmations && (result as any).confirmations.length > 0 && (
+                                    <div className="mb-4">
+                                        <h4 className="text-green-300 font-semibold mb-2">✅ Confirmation Rules (Top 5)</h4>
+                                        <div className="bg-green-900/30 rounded-lg p-3 border border-green-500/30">
+                                            {(result as any).confirmations.map((conf: any, i: number) => (
+                                                <div key={i} className="flex items-start gap-2 text-sm py-1">
+                                                    <span className="text-green-400 font-bold">#{conf.rank}</span>
+                                                    <span className="text-green-200">{conf.description || conf.rule}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* ✅ Invalidation Rules */}
+                                {(result as any).invalidations && (result as any).invalidations.length > 0 && (
+                                    <div className="mb-4">
+                                        <h4 className="text-red-300 font-semibold mb-2">❌ Invalidation Rules</h4>
+                                        <div className="bg-red-900/30 rounded-lg p-3 border border-red-500/30">
+                                            {(result as any).invalidations.map((inv: any, i: number) => (
+                                                <div key={i} className="text-sm text-red-200 py-1">• {inv.rule}</div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* ✅ Expected Behavior */}
+                                {(result as any).expectedBehavior && (
+                                    <div className="mb-4">
+                                        <h4 className="text-amber-300 font-semibold mb-2">📊 Expected Behavior</h4>
+                                        <div className="bg-amber-900/30 rounded-lg p-3 border border-amber-500/30 grid grid-cols-2 gap-2 text-sm">
+                                            <div><span className="text-amber-400">Holding:</span> <span className="text-amber-200">{(result as any).expectedBehavior.avgHoldingTime}</span></div>
+                                            <div><span className="text-amber-400">Move:</span> <span className="text-amber-200">{(result as any).expectedBehavior.avgMove}</span></div>
+                                            <div><span className="text-amber-400">Win Rate:</span> <span className="text-amber-200">{(result as any).expectedBehavior.winRate}</span></div>
+                                            <div><span className="text-amber-400">Drawdown:</span> <span className="text-amber-200">{(result as any).expectedBehavior.avgDrawdown}</span></div>
+                                        </div>
+                                    </div>
+                                )}
+
                                 {/* Entry Conditions */}
                                 <div>
                                     <h4 className="text-cyan-300 font-semibold mb-2 flex items-center gap-2">
