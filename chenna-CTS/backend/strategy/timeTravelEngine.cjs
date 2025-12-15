@@ -232,6 +232,13 @@ class TimeTravelBacktestEngine {
         let allResults = [];
         let startIndex = 0;
 
+        // ✅ Force refresh - delete cache and start fresh
+        const { forceRefresh = false } = options;
+        if (forceRefresh && fs.existsSync(cacheFile)) {
+            fs.unlinkSync(cacheFile);
+            console.log(`🗑️ Cache DELETED for ${categoryKey} - running fresh backtest\n`);
+        }
+
         // Load existing cache if available (resume from crash)
         if (fs.existsSync(cacheFile)) {
             try {
