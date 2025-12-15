@@ -13,6 +13,8 @@ const AdaptiveGridSearch = require('./adaptiveGridSearch.cjs');
 const ShadowLearner = require('../services/shadowLearner.cjs');
 const { getCategoryLogicConfig, validateStrategyForCategory } = require('../config/categoryLogicMapping.cjs');
 const SupportResistance = require('./supportResistance.cjs');
+const ConfirmationCalculators = require('./confirmationCalculators.cjs');
+const { CATEGORY_CONFIRMATION_RULES } = require('../config/labsCategoryRules.cjs');
 
 const prisma = new PrismaClient();
 
