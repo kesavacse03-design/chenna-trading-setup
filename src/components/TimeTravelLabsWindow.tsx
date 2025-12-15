@@ -109,8 +109,14 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                     cacheStatus: loadedResult.cacheStatus || { cached: 0, uncached: 0, total: 0 },
                     promotionAllowed: winRate >= 70,
                     v1Exists: true,
-                    message: `Previous Labs result loaded`
-                });
+                    message: `Previous Labs result loaded`,
+                    // ✅ Institutional output fields
+                    thesis: loadedResult.v1Strategy?.thesis || null,
+                    categoryIntent: loadedResult.v1Strategy?.categoryIntent || null,
+                    confirmations: loadedResult.v1Strategy?.confirmations || [],
+                    invalidations: loadedResult.v1Strategy?.invalidations || [],
+                    expectedBehavior: loadedResult.v1Strategy?.expectedBehavior || null
+                } as any);
                 setLogs([
                     `📖 Loaded previous Labs result from ${data.fileName}`,
                     `✅ Version: ${loadedResult.runId || data.fileName}`,
@@ -305,8 +311,14 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                     },
                     promotionAllowed: hasV1,
                     v1Exists: hasV1,
-                    message: data.message || 'Time-Travel backtest completed'
-                };
+                    message: data.message || 'Time-Travel backtest completed',
+                    // ✅ Institutional output fields
+                    thesis: v1?.thesis || null,
+                    categoryIntent: v1?.categoryIntent || null,
+                    confirmations: v1?.confirmations || [],
+                    invalidations: v1?.invalidations || [],
+                    expectedBehavior: v1?.expectedBehavior || null
+                } as any;
 
                 console.log('[Labs] Transformed result:', transformedResult);
                 setResult(transformedResult);
