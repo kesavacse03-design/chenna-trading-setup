@@ -59,6 +59,7 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
     // Quick Mode controls - user can test on subset of oldest stocks
     const [quickMode, setQuickMode] = useState(false);
     const [stockCount, setStockCount] = useState(10);
+    const [forceRefresh, setForceRefresh] = useState(false);
 
     // Load cache status AND previous results when window opens
     useEffect(() => {
@@ -253,7 +254,8 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                 body: JSON.stringify({
                     categoryKey,
                     quickMode,      // User's quick mode setting
-                    stockCount      // Number of oldest stocks to test
+                    stockCount,     // Number of oldest stocks to test
+                    forceRefresh    // Clear cache and run fresh
                 })
             });
 
@@ -490,13 +492,11 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                                 <label className="text-slate-300 text-sm font-medium">Quick Mode</label>
                                 <button
                                     onClick={() => setQuickMode(!quickMode)}
-                                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                                        quickMode ? 'bg-emerald-600' : 'bg-slate-600'
-                                    }`}
+                                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${quickMode ? 'bg-emerald-600' : 'bg-slate-600'
+                                        }`}
                                 >
-                                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                                        quickMode ? 'translate-x-6' : 'translate-x-1'
-                                    }`} />
+                                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${quickMode ? 'translate-x-6' : 'translate-x-1'
+                                        }`} />
                                 </button>
                             </div>
                             {quickMode && (
@@ -513,24 +513,22 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                                 </div>
                             )}
                             <div className="text-xs text-slate-500 mt-2">
-                                {quickMode 
+                                {quickMode
                                     ? `⚡ Quick: ${stockCount} oldest stocks`
                                     : '🔬 Full: All stocks (60-90 min)'
                                 }
                             </div>
-                            
+
                             {/* Force Refresh Toggle */}
                             <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-700">
                                 <span className="text-slate-300 text-sm">🗑️ Force Refresh</span>
                                 <button
                                     onClick={() => setForceRefresh(!forceRefresh)}
-                                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                                        forceRefresh ? 'bg-red-600' : 'bg-slate-600'
-                                    }`}
+                                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${forceRefresh ? 'bg-red-600' : 'bg-slate-600'
+                                        }`}
                                 >
-                                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                                        forceRefresh ? 'translate-x-6' : 'translate-x-1'
-                                    }`} />
+                                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${forceRefresh ? 'translate-x-6' : 'translate-x-1'
+                                        }`} />
                                 </button>
                             </div>
                             {forceRefresh && (
@@ -674,7 +672,7 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                             </div>
                         ) : (
                             <div className="space-y-6">
-                                                                {/* ✅ Category Thesis */}
+                                {/* ✅ Category Thesis */}
                                 {(result as any).thesis && (
                                     <div className="mb-4">
                                         <h4 className="text-purple-300 font-semibold mb-2">🎯 Category Thesis</h4>
