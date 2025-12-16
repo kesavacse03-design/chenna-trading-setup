@@ -65,27 +65,34 @@ class RealisticTradingSimulator {
             applyRefinements: options.applyRefinements || false,
             shadowSuggestions: options.shadowSuggestions || []
         };
-
         // ============================================
         // PASS 2: Apply Shadow-suggested refinements
         // ============================================
+        // Strategy: Apply TARGETED improvements based on Shadow analysis
+        // The goal is to IMPROVE win rate, not just reduce trade count
         if (this.config.applyRefinements && this.config.researchPass === 2) {
             console.log('🔧 [PASS 2] Applying Shadow Learning refinements...');
 
-            // Apply stricter entry filters based on common failure patterns
-            // These are learned improvements from Pass 1 failures
+            // Smart refinement based on Shadow's specific findings:
+            // Main issue: "7 trades stopped within 2 days - entries may be too early"
+            // Solution: Require STRONGER confirmation before entry
             this.refinementConfig = {
-                // Require stronger price confirmation before entry
+                // Require close to be at least 0.3% above signal price (gentler)
                 requirePriceConfirmation: true,
-                // Skip signals where price immediately reverses
+                priceConfirmationThreshold: 0.003, // 0.3% above signal
+
+                // Skip only VERY weak bounces (1.5% below signal instead of 1%)
                 skipWeakBounces: true,
-                // Require candle to close in upper 60% of range
-                minCandleStrength: 0.6,
-                // Wait for volume confirmation
-                requireVolumeConfirmation: true
+                weakBounceThreshold: 0.985, // Low can be 1.5% below signal
+
+                // Require candle to close in upper 40% of range (gentler than 60%)
+                minCandleStrength: 0.4,
+
+                // Require minimum quality score for entry
+                minQualityScore: 3 // Out of 4
             };
 
-            console.log('   Refinements:', JSON.stringify(this.refinementConfig, null, 2));
+            console.log('   Smart Refinements Applied (targeting early-stop pattern)');
         } else {
             // Pass 1: No refinements, pure original logic
             this.refinementConfig = null;
@@ -544,12 +551,16 @@ class RealisticTradingSimulator {
                     // PASS 2 REFINEMENT CHECKS (if enabled)
                     // ============================================
                     if (this.refinementConfig) {
-                        // Check 1: Price Confirmation - close should be above signal price
+                        // Check 1: Price Confirmation - close should be X% above signal price
                         if (this.refinementConfig.requirePriceConfirmation) {
-                            if (todayCandle.close < state.signalPrice) {
+                            const threshold = this.refinementConfig.priceConfirmationThreshold || 0.003;
+                            const minConfirmPrice = state.signalPrice * (1 + threshold);
+
+                            if (todayCandle.close < minConfirmPrice) {
                                 this.log(state.symbol, 'PASS2_FILTER', 'Price not confirmed above signal', {
                                     signalPrice: state.signalPrice,
-                                    closePrice: todayCandle.close
+                                    closePrice: todayCandle.close,
+                                    requiredMin: minConfirmPrice.toFixed(2)
                                 });
                                 state.stateHistory.push({
                                     state: TradeState.INVALIDATED,
@@ -603,14 +614,16 @@ class RealisticTradingSimulator {
                             }
                         }
 
-                        // Check 3: Skip Weak Bounces - today's low should not be below signal price
+                        // Check 3: Skip Weak Bounces - today's low should not be too far below signal price
                         if (this.refinementConfig.skipWeakBounces) {
+                            const threshold = this.refinementConfig.weakBounceThreshold || 0.985;
                             const bounceStrength = todayCandle.low / state.signalPrice;
-                            if (bounceStrength < 0.99) { // Low is more than 1% below signal
+                            if (bounceStrength < threshold) {
                                 this.log(state.symbol, 'PASS2_FILTER', 'Weak bounce detected', {
                                     signalPrice: state.signalPrice,
                                     todayLow: todayCandle.low,
-                                    bounceStrength: bounceStrength.toFixed(3)
+                                    bounceStrength: bounceStrength.toFixed(3),
+                                    minRequired: threshold
                                 });
                                 state.stateHistory.push({
                                     state: TradeState.INVALIDATED,
