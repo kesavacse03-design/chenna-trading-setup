@@ -410,7 +410,11 @@ class TimeTravelBacktestEngine {
         for (const stock of stocks) {
             try {
                 const candles = await this.getCandlesForStock(stock.symbol);
-                if (!candles || candles.length < 50) continue;  // LOWERED: Changed from 100 to 50 for more coverage
+                if (!candles || candles.length < 50) {
+                    // ✅ TRANSPARENT: Log missing data instead of silent skip
+                    if (logic.id === 1) console.log(`⚠️ [${stock.symbol}] Missing data: ${candles ? candles.length : 0} candles (need 50+)`);
+                    continue;
+                }
 
                 // Time-travel: test at multiple historical dates
                 for (let D = 50; D < candles.length - 10; D++) {  // LOWERED: Start from 50 instead of 100
@@ -418,7 +422,8 @@ class TimeTravelBacktestEngine {
                     if (trade) trades.push(trade);
                 }
             } catch (error) {
-                // Skip stock on error
+                // ✅ TRANSPARENT: Log errors instead of silent skip
+                if (logic.id === 1) console.log(`❌ [${stock.symbol}] Error: ${error.message}`);
             }
         }
 
@@ -446,16 +451,16 @@ class TimeTravelBacktestEngine {
         // ✅ EXHAUSTION INDICATORS - For DOWNSIDE_LOM_SWING detection
         const lastCandle = availableCandles[availableCandles.length - 1];
         const prevCandle = availableCandles[availableCandles.length - 2];
-        
+
         // Lower wick percentage (buying pressure)
         const candleRange = lastCandle.high - lastCandle.low;
         const lowerWick = Math.min(lastCandle.open, lastCandle.close) - lastCandle.low;
         indicators.lowerWickPct = candleRange > 0 ? (lowerWick / candleRange) * 100 : 0;
-        
+
         // Upper wick percentage (selling pressure)
         const upperWick = lastCandle.high - Math.max(lastCandle.open, lastCandle.close);
         indicators.upperWickPct = candleRange > 0 ? (upperWick / candleRange) * 100 : 0;
-        
+
         // Volume vs 20-day average
         const recentCandles = availableCandles.slice(-20);
         const avgVolume = recentCandles.reduce((s, c) => s + c.volume, 0) / recentCandles.length;
@@ -463,7 +468,7 @@ class TimeTravelBacktestEngine {
         indicators.volumeDecline = indicators.volumeVsAvg < 0.8;
         indicators.volumeSpike = indicators.volumeVsAvg > 1.5;
         indicators.volumeExpanding = lastCandle.volume > prevCandle.volume * 1.2;
-        
+
         // Check for recent new low (within last 5 days)
         const last5Candles = availableCandles.slice(-5);
         const lookback20 = availableCandles.slice(-25, -5);
@@ -473,12 +478,12 @@ class TimeTravelBacktestEngine {
         indicators.aboveRecentLow = lastCandle.close > recentLow5;
         indicators.newLow = lastCandle.low < prior20Low;
         indicators.holdingAboveLow = !indicators.newLow && indicators.aboveRecentLow;
-        
+
         // Close position within candle range
         const closePosition = candleRange > 0 ? (lastCandle.close - lastCandle.low) / candleRange : 0.5;
         indicators.closeNearHigh = closePosition > 0.7;
         indicators.closeNearLow = closePosition < 0.3;
-        
+
         // ATR spike and contraction
         if (indicators.atr14 && availableCandles.length >= 30) {
             const atrHistory = availableCandles.slice(-30);
@@ -502,13 +507,13 @@ class TimeTravelBacktestEngine {
             indicators.atrContracting = currentATR < prevATR * 0.95;
             indicators.atrExpanding = currentATR > prevATR * 1.1;
         }
-        
+
         // Previous RSI for divergence detection
         if (prevCandle && availableCandles.length >= 16) {
             const prevIndicators = TechnicalAnalysis.getMarketContext(availableCandles.slice(0, -1));
             indicators.rsi14_prev = prevIndicators?.rsi14 || null;
         }
-        
+
         // ✅ END EXHAUSTION INDICATORS
 
         // DEBUG: Log indicators ONCE for first stock/first logic only
@@ -812,7 +817,7 @@ class TimeTravelBacktestEngine {
     mergeIntoV1(top3, categoryKey) {
         // Get category rules for thesis and confirmations
         const categoryRules = CATEGORY_CONFIRMATION_RULES[categoryKey] || {};
-        
+
         // Take best from each
         const bestLogic = top3[0].logic;
         const bestRR = top3.reduce((best, curr) =>
@@ -820,7 +825,7 @@ class TimeTravelBacktestEngine {
         );
 
         // ✅ NEW: Generate category-specific thesis
-        const thesis = categoryRules.intent 
+        const thesis = categoryRules.intent
             ? `This category works when ${categoryRules.behavior || categoryRules.intent}`
             : `Best performing logic: ${bestLogic.name}`;
 
