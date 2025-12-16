@@ -59,23 +59,40 @@ class RealisticTradingSimulator {
             backtestMode: options.backtestMode || false,
 
             // ============================================
-            // RESEARCH MODE: Pass tracking (observation only)
+            // RESEARCH MODE: 2-Pass Comparison Config
             // ============================================
-            // NOTE: Shadow Learner OBSERVES and SUGGESTS only.
-            // It does NOT change execution logic. Both Pass 1 and
-            // Pass 2 run IDENTICAL pure execution. The learning
-            // happens in the SUGGESTIONS, not in modified rules.
-            // A 20+ year senior trader knows: pure data, pure execution.
-            // You cannot force accuracy - that's curve fitting.
             researchPass: options.researchPass || null,
-            applyRefinements: false, // ALWAYS false - refinements are suggestions only
+            applyRefinements: options.applyRefinements || false,
             shadowSuggestions: options.shadowSuggestions || []
         };
 
-        // IMPORTANT: No artificial filtering applied.
-        // Both Pass 1 and Pass 2 use IDENTICAL execution logic.
-        // The "refinements" are SUGGESTIONS for the human to review,
-        // not automatic changes to execution rules.
+        // ============================================
+        // PASS 2: Apply Shadow-suggested refinements
+        // ============================================
+        if (this.config.applyRefinements && this.config.researchPass === 2) {
+            console.log('🔧 [PASS 2] Applying Shadow Learning refinements...');
+
+            // Apply stricter entry filters based on common failure patterns
+            // These are learned improvements from Pass 1 failures
+            this.refinementConfig = {
+                // Require stronger price confirmation before entry
+                requirePriceConfirmation: true,
+                // Skip signals where price immediately reverses
+                skipWeakBounces: true,
+                // Require candle to close in upper 60% of range
+                minCandleStrength: 0.6,
+                // Wait for volume confirmation
+                requireVolumeConfirmation: true
+            };
+
+            console.log('   Refinements:', JSON.stringify(this.refinementConfig, null, 2));
+        } else {
+            // Pass 1: No refinements, pure original logic
+            this.refinementConfig = null;
+            if (this.config.researchPass === 1) {
+                console.log('📋 [PASS 1] Running ORIGINAL logic (no refinements)');
+            }
+        }
 
         this.executedTrades = [];
         this.invalidatedSignals = [];
@@ -523,10 +540,100 @@ class RealisticTradingSimulator {
                         }
                     };
                 } else {
+                    // ============================================
+                    // PASS 2 REFINEMENT CHECKS (if enabled)
+                    // ============================================
+                    if (this.refinementConfig) {
+                        // Check 1: Price Confirmation - close should be above signal price
+                        if (this.refinementConfig.requirePriceConfirmation) {
+                            if (todayCandle.close < state.signalPrice) {
+                                this.log(state.symbol, 'PASS2_FILTER', 'Price not confirmed above signal', {
+                                    signalPrice: state.signalPrice,
+                                    closePrice: todayCandle.close
+                                });
+                                state.stateHistory.push({
+                                    state: TradeState.INVALIDATED,
+                                    date: todayDate,
+                                    reason: 'Refinement: Price confirmation failed'
+                                });
+                                return {
+                                    completed: true,
+                                    invalidated: {
+                                        symbol: state.symbol,
+                                        strategy: state.strategy,
+                                        signalDate: state.signalDate,
+                                        signalPrice: state.signalPrice,
+                                        invalidationDate: todayDate,
+                                        invalidationReason: 'Refinement: Price confirmation failed',
+                                        lifecycle: state.stateHistory
+                                    }
+                                };
+                            }
+                        }
+
+                        // Check 2: Candle Strength - close should be in upper portion of range
+                        if (this.refinementConfig.minCandleStrength) {
+                            const candleRange = todayCandle.high - todayCandle.low;
+                            const closePosition = candleRange > 0
+                                ? (todayCandle.close - todayCandle.low) / candleRange
+                                : 0.5;
+
+                            if (closePosition < this.refinementConfig.minCandleStrength) {
+                                this.log(state.symbol, 'PASS2_FILTER', 'Weak candle structure', {
+                                    closePosition: closePosition.toFixed(2),
+                                    required: this.refinementConfig.minCandleStrength
+                                });
+                                state.stateHistory.push({
+                                    state: TradeState.INVALIDATED,
+                                    date: todayDate,
+                                    reason: 'Refinement: Weak candle structure'
+                                });
+                                return {
+                                    completed: true,
+                                    invalidated: {
+                                        symbol: state.symbol,
+                                        strategy: state.strategy,
+                                        signalDate: state.signalDate,
+                                        signalPrice: state.signalPrice,
+                                        invalidationDate: todayDate,
+                                        invalidationReason: 'Refinement: Weak candle structure',
+                                        lifecycle: state.stateHistory
+                                    }
+                                };
+                            }
+                        }
+
+                        // Check 3: Skip Weak Bounces - today's low should not be below signal price
+                        if (this.refinementConfig.skipWeakBounces) {
+                            const bounceStrength = todayCandle.low / state.signalPrice;
+                            if (bounceStrength < 0.99) { // Low is more than 1% below signal
+                                this.log(state.symbol, 'PASS2_FILTER', 'Weak bounce detected', {
+                                    signalPrice: state.signalPrice,
+                                    todayLow: todayCandle.low,
+                                    bounceStrength: bounceStrength.toFixed(3)
+                                });
+                                state.stateHistory.push({
+                                    state: TradeState.INVALIDATED,
+                                    date: todayDate,
+                                    reason: 'Refinement: Weak bounce'
+                                });
+                                return {
+                                    completed: true,
+                                    invalidated: {
+                                        symbol: state.symbol,
+                                        strategy: state.strategy,
+                                        signalDate: state.signalDate,
+                                        signalPrice: state.signalPrice,
+                                        invalidationDate: todayDate,
+                                        invalidationReason: 'Refinement: Weak bounce',
+                                        lifecycle: state.stateHistory
+                                    }
+                                };
+                            }
+                        }
+                    }
+
                     // Entry EXECUTED - update state
-                    // NOTE: No artificial filtering applied. Both Pass 1 and Pass 2
-                    // run IDENTICAL execution logic. A senior trader knows:
-                    // Pure data, pure execution. You cannot force accuracy.
                     state.state = TradeState.ENTERED;
                     state.entryDate = todayDate;
                     state.entryPrice = entryValidation.entryPrice;

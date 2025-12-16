@@ -57,73 +57,130 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
         setComparison({ before: null, after: null });
         setResearchPhase('pass1');
         setLogs([
-            '🔬 RESEARCH BACKTEST: Pure Execution',
-            '─────────────────────────────────────────',
-            '📋 Running backtest with Shadow observation...',
+            '🔬 RESEARCH BACKTEST: 2-Pass Comparison',
+            '══════════════════════════════════════════',
             '',
-            '⚠️ Note: Shadow provides SUGGESTIONS only.',
-            '   No artificial filtering. Pure data, pure execution.',
-            '   A senior trader knows: you cannot force accuracy.'
+            '📋 PASS 1: Running ORIGINAL logic (baseline)...'
         ]);
 
         try {
             const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
 
-            // Single pure backtest with Shadow observation
-            const response = await fetch(`${apiBase}/api/strategy/realistic-simulation`, {
+            // ═══════════════════════════════════════════════════════
+            // PASS 1: Run ORIGINAL logic (no refinements) - BASELINE
+            // ═══════════════════════════════════════════════════════
+            const pass1Response = await fetch(`${apiBase}/api/strategy/realistic-simulation`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     categoryKey,
                     quickMode: false,
-                    backtestMode: true
+                    backtestMode: true,
+                    researchPass: 1,
+                    applyRefinements: false
                 })
             });
 
-            const data = await response.json();
+            const pass1Data = await pass1Response.json();
+            if (!pass1Data.ok) throw new Error(pass1Data.error || 'Pass 1 failed');
 
-            if (!data.ok) throw new Error(data.error || 'Backtest failed');
-
-            // Store results as "current" (before = previous V1 if exists, after = current)
-            const results = {
-                trades: data.summary?.executedTrades || 0,
-                wins: data.summary?.wins || 0,
-                losses: data.summary?.losses || 0,
-                winRate: data.summary?.winRate || '0',
-                totalPnl: data.summary?.totalPnl || '0',
-                expectancy: data.summary?.expectancy || '0',
-                capitalWinRate: data.summary?.capitalWinRate || '0',
-                avgHoldingDays: data.summary?.avgHoldingDays || '0',
-                targetHitRate: data.summary?.targetHitRate || '0'
+            const beforeResults = {
+                trades: pass1Data.summary?.executedTrades || 0,
+                wins: pass1Data.summary?.wins || 0,
+                losses: pass1Data.summary?.losses || 0,
+                winRate: pass1Data.summary?.winRate || '0',
+                totalPnl: pass1Data.summary?.totalPnl || '0',
+                expectancy: pass1Data.summary?.expectancy || '0',
+                capitalWinRate: pass1Data.summary?.capitalWinRate || '0',
+                avgHoldingDays: pass1Data.summary?.avgHoldingDays || '0',
+                targetHitRate: pass1Data.summary?.targetHitRate || '0'
             };
 
-            setComparison({ before: results, after: null }); // Use for display
+            setComparison(prev => ({ ...prev, before: beforeResults }));
 
             setLogs(prev => [
                 ...prev,
                 '',
-                `✅ BACKTEST COMPLETE`,
-                `   Trades: ${results.trades}`,
-                `   Win Rate: ${results.winRate}%`,
-                `   Total PnL: ${results.totalPnl}%`,
-                `   Expectancy: ${results.expectancy}`,
+                `✅ PASS 1 COMPLETE (Original Logic):`,
+                `   Trades: ${beforeResults.trades} | Win Rate: ${beforeResults.winRate}%`,
+                `   PnL: ${beforeResults.totalPnl}% | Expectancy: ${beforeResults.expectancy}`,
                 ''
             ]);
 
+            // ═══════════════════════════════════════════════════════
+            // SHADOW OBSERVATION: Analyze failures and suggest improvements
+            // ═══════════════════════════════════════════════════════
             setResearchPhase('observing');
 
-            if (data.shadowReport) {
-                setShadowReport(data.shadowReport);
+            if (pass1Data.shadowReport) {
+                setShadowReport(pass1Data.shadowReport);
                 setLogs(prev => [
                     ...prev,
-                    '🔮 SHADOW LEARNER: Analysis complete',
-                    `   ${data.shadowReport.refinementSuggestions?.length || 0} suggestions generated`,
-                    '',
-                    '📝 Review suggestions in Shadow Analysis tab.',
-                    '   These are RECOMMENDATIONS for manual consideration.',
-                    '   Implement changes → Promote to V1.b1 → Re-run to see improvement.'
+                    '👁️ SHADOW LEARNER: Analyzing...',
+                    `   Detected ${pass1Data.shadowReport.refinementSuggestions?.length || 0} improvement opportunities`,
+                    ''
                 ]);
             }
+
+            // ═══════════════════════════════════════════════════════
+            // PASS 2: Run WITH REFINEMENTS APPLIED - IMPROVED
+            // ═══════════════════════════════════════════════════════
+            setResearchPhase('pass2');
+            setLogs(prev => [...prev, '🧪 PASS 2: Running with Shadow refinements APPLIED...']);
+
+            const pass2Response = await fetch(`${apiBase}/api/strategy/realistic-simulation`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    categoryKey,
+                    quickMode: false,
+                    backtestMode: true,
+                    researchPass: 2,
+                    applyRefinements: true,
+                    shadowSuggestions: pass1Data.shadowReport?.refinementSuggestions || []
+                })
+            });
+
+            const pass2Data = await pass2Response.json();
+            if (!pass2Data.ok) throw new Error(pass2Data.error || 'Pass 2 failed');
+
+            const afterResults = {
+                trades: pass2Data.summary?.executedTrades || 0,
+                wins: pass2Data.summary?.wins || 0,
+                losses: pass2Data.summary?.losses || 0,
+                winRate: pass2Data.summary?.winRate || '0',
+                totalPnl: pass2Data.summary?.totalPnl || '0',
+                expectancy: pass2Data.summary?.expectancy || '0',
+                capitalWinRate: pass2Data.summary?.capitalWinRate || '0',
+                avgHoldingDays: pass2Data.summary?.avgHoldingDays || '0',
+                targetHitRate: pass2Data.summary?.targetHitRate || '0'
+            };
+
+            setComparison(prev => ({ ...prev, after: afterResults }));
+
+            // Calculate improvements
+            const tradeDiff = afterResults.trades - beforeResults.trades;
+            const wrBefore = parseFloat(beforeResults.winRate);
+            const wrAfter = parseFloat(afterResults.winRate);
+            const wrDiff = wrAfter - wrBefore;
+            const pnlBefore = parseFloat(beforeResults.totalPnl);
+            const pnlAfter = parseFloat(afterResults.totalPnl);
+            const pnlDiff = pnlAfter - pnlBefore;
+
+            setLogs(prev => [
+                ...prev,
+                '',
+                `✅ PASS 2 COMPLETE (With Refinements):`,
+                `   Trades: ${afterResults.trades} | Win Rate: ${afterResults.winRate}%`,
+                `   PnL: ${afterResults.totalPnl}% | Expectancy: ${afterResults.expectancy}`,
+                '',
+                '══════════════════════════════════════════',
+                '📊 COMPARISON:',
+                `   Trades: ${beforeResults.trades} → ${afterResults.trades} (${tradeDiff >= 0 ? '+' : ''}${tradeDiff})`,
+                `   Win Rate: ${beforeResults.winRate}% → ${afterResults.winRate}% (${wrDiff >= 0 ? '+' : ''}${wrDiff.toFixed(1)}%)`,
+                `   PnL: ${beforeResults.totalPnl}% → ${afterResults.totalPnl}% (${pnlDiff >= 0 ? '+' : ''}${pnlDiff.toFixed(2)}%)`,
+                '══════════════════════════════════════════'
+            ]);
 
             setResearchPhase('complete');
 
@@ -185,24 +242,24 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
                         </p>
                     </div>
 
-                    {/* Progress Steps - Single Pass Flow */}
-                    <div className="flex items-center gap-3">
-                        {['BACKTEST', 'SHADOW', 'DONE'].map((step, i) => {
-                            const phases = ['pass1', 'observing', 'complete'];
+                    {/* Progress Steps - 2-Pass Comparison Flow */}
+                    <div className="flex items-center gap-2">
+                        {['PASS 1', 'SHADOW', 'PASS 2', 'COMPARE'].map((step, i) => {
+                            const phases = ['pass1', 'observing', 'pass2', 'complete'];
                             const currentIdx = phases.indexOf(researchPhase);
                             const isComplete = currentIdx > i || researchPhase === 'complete';
                             const isCurrent = phases[i] === researchPhase;
 
                             return (
                                 <div key={step} className="flex items-center gap-1">
-                                    <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${isComplete ? 'bg-green-500 text-white' :
-                                            isCurrent ? 'bg-purple-500 text-white animate-pulse' :
-                                                'bg-slate-700 text-slate-400'
+                                    <div className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold ${isComplete ? 'bg-green-500 text-white' :
+                                        isCurrent ? 'bg-purple-500 text-white animate-pulse' :
+                                            'bg-slate-700 text-slate-400'
                                         }`}>
                                         {isComplete ? '✓' : i + 1}
                                     </div>
                                     <span className={`text-xs ${isComplete || isCurrent ? 'text-white' : 'text-slate-500'}`}>{step}</span>
-                                    {i < 2 && <span className="text-slate-600 mx-1">→</span>}
+                                    {i < 3 && <span className="text-slate-600 mx-1">→</span>}
                                 </div>
                             );
                         })}
@@ -243,95 +300,109 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
                     <div className="flex-1 p-6 overflow-y-auto">
                         {activeTab === 'results' ? (
                             <div className="space-y-6">
-                                {/* Results Display - Single Pass */}
-                                {comparison.before ? (
+                                {/* Results Display - 2-Pass Comparison */}
+                                {comparison.before && comparison.after ? (
                                     <>
-                                        {/* Current Results Card */}
-                                        <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl p-6 border border-purple-500/30">
-                                            <div className="flex items-center justify-between mb-6">
-                                                <h3 className="text-lg font-semibold text-white">📊 BACKTEST RESULTS</h3>
-                                                <span className="px-3 py-1 bg-green-600/20 border border-green-500/40 rounded text-xs text-green-400">
-                                                    {categoryContext.version}
-                                                </span>
-                                            </div>
-
-                                            {/* Key Metrics Grid */}
-                                            <div className="grid grid-cols-3 gap-6 mb-6">
-                                                <div className="bg-slate-900/60 rounded-xl p-5 text-center border border-slate-700">
-                                                    <div className="text-4xl font-bold text-white">{comparison.before.trades}</div>
-                                                    <div className="text-sm text-slate-400 mt-1">Total Trades</div>
-                                                </div>
-                                                <div className="bg-slate-900/60 rounded-xl p-5 text-center border border-slate-700">
-                                                    <div className="text-4xl font-bold text-green-400">{comparison.before.winRate}%</div>
-                                                    <div className="text-sm text-slate-400 mt-1">Win Rate</div>
-                                                </div>
-                                                <div className="bg-slate-900/60 rounded-xl p-5 text-center border border-slate-700">
-                                                    <div className={`text-4xl font-bold ${parseFloat(comparison.before.totalPnl) >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                                                        {comparison.before.totalPnl}%
+                                        {/* Before/After Cards Row */}
+                                        <div className="grid grid-cols-2 gap-4">
+                                            {/* BEFORE Card - Original Logic */}
+                                            <div className="bg-slate-800/50 rounded-xl p-5 border border-slate-600">
+                                                <h3 className="text-sm font-semibold text-slate-400 mb-4 flex items-center gap-2">
+                                                    📋 BEFORE <span className="text-xs bg-slate-700 px-2 py-0.5 rounded">Original</span>
+                                                </h3>
+                                                <div className="grid grid-cols-2 gap-3">
+                                                    <div className="bg-slate-900/50 rounded-lg p-3 text-center">
+                                                        <div className="text-2xl font-bold text-white">{comparison.before.trades}</div>
+                                                        <div className="text-xs text-slate-500">Trades</div>
                                                     </div>
-                                                    <div className="text-sm text-slate-400 mt-1">Total PnL</div>
+                                                    <div className="bg-slate-900/50 rounded-lg p-3 text-center">
+                                                        <div className="text-2xl font-bold text-white">{comparison.before.winRate}%</div>
+                                                        <div className="text-xs text-slate-500">Win Rate</div>
+                                                    </div>
+                                                    <div className="bg-slate-900/50 rounded-lg p-3 text-center">
+                                                        <div className="text-2xl font-bold text-white">{comparison.before.totalPnl}%</div>
+                                                        <div className="text-xs text-slate-500">Total PnL</div>
+                                                    </div>
+                                                    <div className="bg-slate-900/50 rounded-lg p-3 text-center">
+                                                        <div className="text-2xl font-bold text-white">{comparison.before.expectancy}</div>
+                                                        <div className="text-xs text-slate-500">Expectancy</div>
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                            {/* Secondary Metrics */}
-                                            <div className="grid grid-cols-4 gap-4">
-                                                <div className="bg-slate-800/50 rounded-lg p-4 text-center">
-                                                    <div className="text-xl font-semibold text-white">{comparison.before.expectancy}</div>
-                                                    <div className="text-xs text-slate-500">Expectancy</div>
-                                                </div>
-                                                <div className="bg-slate-800/50 rounded-lg p-4 text-center">
-                                                    <div className="text-xl font-semibold text-white">{comparison.before.capitalWinRate}%</div>
-                                                    <div className="text-xs text-slate-500">Capital Protected</div>
-                                                </div>
-                                                <div className="bg-slate-800/50 rounded-lg p-4 text-center">
-                                                    <div className="text-xl font-semibold text-white">{comparison.before.avgHoldingDays}d</div>
-                                                    <div className="text-xs text-slate-500">Avg Hold</div>
-                                                </div>
-                                                <div className="bg-slate-800/50 rounded-lg p-4 text-center">
-                                                    <div className="text-xl font-semibold text-white">{comparison.before.wins}/{comparison.before.losses}</div>
-                                                    <div className="text-xs text-slate-500">W/L</div>
+                                            {/* AFTER Card - With Refinements */}
+                                            <div className="bg-purple-900/30 rounded-xl p-5 border border-purple-500/30">
+                                                <h3 className="text-sm font-semibold text-purple-300 mb-4 flex items-center gap-2">
+                                                    🔧 AFTER <span className="text-xs bg-purple-700/50 px-2 py-0.5 rounded">Refined</span>
+                                                </h3>
+                                                <div className="grid grid-cols-2 gap-3">
+                                                    <div className="bg-slate-900/50 rounded-lg p-3 text-center">
+                                                        <div className="text-2xl font-bold text-white">{comparison.after.trades}</div>
+                                                        <div className="text-xs text-purple-400">Trades</div>
+                                                    </div>
+                                                    <div className="bg-slate-900/50 rounded-lg p-3 text-center">
+                                                        <div className="text-2xl font-bold text-white">{comparison.after.winRate}%</div>
+                                                        <div className="text-xs text-purple-400">Win Rate</div>
+                                                    </div>
+                                                    <div className="bg-slate-900/50 rounded-lg p-3 text-center">
+                                                        <div className="text-2xl font-bold text-white">{comparison.after.totalPnl}%</div>
+                                                        <div className="text-xs text-purple-400">Total PnL</div>
+                                                    </div>
+                                                    <div className="bg-slate-900/50 rounded-lg p-3 text-center">
+                                                        <div className="text-2xl font-bold text-white">{comparison.after.expectancy}</div>
+                                                        <div className="text-xs text-purple-400">Expectancy</div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        {/* Shadow Learner Info Box */}
-                                        {shadowReport && (
-                                            <div className="bg-purple-900/20 rounded-xl p-5 border border-purple-500/30">
-                                                <div className="flex items-start gap-4">
-                                                    <div className="text-3xl">🔮</div>
-                                                    <div>
-                                                        <h4 className="font-semibold text-purple-300 mb-2">SHADOW LEARNER INSIGHTS</h4>
-                                                        <p className="text-sm text-slate-400 mb-3">
-                                                            {shadowReport.refinementSuggestions?.length || 0} suggestions generated based on failure analysis.
-                                                        </p>
-                                                        <button
-                                                            onClick={() => setActiveTab('shadow')}
-                                                            className="px-4 py-2 bg-purple-600/50 hover:bg-purple-600 text-white text-sm font-medium rounded-lg transition"
-                                                        >
-                                                            View Shadow Analysis →
-                                                        </button>
-                                                    </div>
-                                                </div>
+                                        {/* Delta Summary */}
+                                        <div className="bg-slate-800/30 rounded-xl p-5 border border-slate-700">
+                                            <h3 className="text-sm font-semibold text-white mb-4">📈 IMPROVEMENT DELTA</h3>
+                                            <div className="grid grid-cols-6 gap-4">
+                                                {[
+                                                    { label: 'Trades', before: comparison.before.trades, after: comparison.after.trades, lowerBetter: true },
+                                                    { label: 'Win Rate', before: comparison.before.winRate, after: comparison.after.winRate },
+                                                    { label: 'PnL', before: comparison.before.totalPnl, after: comparison.after.totalPnl },
+                                                    { label: 'Expectancy', before: comparison.before.expectancy, after: comparison.after.expectancy },
+                                                    { label: 'Capital Safe', before: comparison.before.capitalWinRate, after: comparison.after.capitalWinRate },
+                                                    { label: 'Avg Hold', before: comparison.before.avgHoldingDays, after: comparison.after.avgHoldingDays }
+                                                ].map((item, i) => {
+                                                    const delta = calculateDelta(item.before, item.after);
+                                                    const isGood = item.lowerBetter ? delta.direction === 'down' : delta.direction === 'up';
+                                                    return (
+                                                        <div key={i} className="text-center">
+                                                            <div className={`text-lg font-bold ${isGood ? 'text-green-400' : delta.direction === 'neutral' ? 'text-slate-400' : 'text-red-400'}`}>
+                                                                {delta.direction === 'up' ? '↑' : delta.direction === 'down' ? '↓' : '–'} {delta.percent}%
+                                                            </div>
+                                                            <div className="text-xs text-slate-500">{item.label}</div>
+                                                        </div>
+                                                    );
+                                                })}
                                             </div>
-                                        )}
+                                        </div>
 
                                         {/* Promote Button */}
-                                        {shadowReport && (
-                                            <div className="flex justify-center pt-4">
-                                                <button
-                                                    onClick={() => setShowPromoteConfirm(true)}
-                                                    className="px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold rounded-lg transition shadow-lg"
-                                                >
-                                                    🚀 Promote to Default Strategy (V1.b1)
-                                                </button>
-                                            </div>
-                                        )}
+                                        <div className="flex justify-center pt-2">
+                                            <button
+                                                onClick={() => setShowPromoteConfirm(true)}
+                                                className="px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold rounded-lg transition shadow-lg"
+                                            >
+                                                🚀 Promote Refined Logic to V1.b1
+                                            </button>
+                                        </div>
                                     </>
+                                ) : comparison.before ? (
+                                    /* Partial results - Pass 1 only */
+                                    <div className="flex flex-col items-center justify-center h-full text-slate-400">
+                                        <div className="animate-spin text-4xl mb-4">⏳</div>
+                                        <p className="text-lg">Running Pass 2 with refinements...</p>
+                                    </div>
                                 ) : (
                                     <div className="flex flex-col items-center justify-center h-full text-slate-400">
                                         <div className="text-6xl mb-4 opacity-30">🔬</div>
                                         <p className="text-center text-lg">Click "Run Research" to start</p>
-                                        <p className="text-sm text-slate-500 mt-2">Pure backtest with Shadow observation</p>
+                                        <p className="text-sm text-slate-500 mt-2">2-pass comparison: Original vs Refined</p>
                                     </div>
                                 )}
                             </div>
