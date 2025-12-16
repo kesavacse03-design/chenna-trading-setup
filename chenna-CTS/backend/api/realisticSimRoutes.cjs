@@ -158,6 +158,8 @@ function registerRealisticSimRoutes(app) {
                 runId,
                 timeElapsed: `${elapsed}min`,
                 summary: results.summary,
+                interpretation: results.interpretation,
+                shadowReport: results.shadowReport,
                 files: { json: jsonPath, csv: csvPath },
                 message: 'Realistic simulation completed successfully'
             });
