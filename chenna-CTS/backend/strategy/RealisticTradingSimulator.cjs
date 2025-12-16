@@ -76,6 +76,255 @@ class RealisticTradingSimulator {
         console.log(`📋 [${symbol}] ${event}: ${reason}`);
     }
 
+    // ============================================
+    // PROFESSIONAL TRADE QUALITY FILTERS
+    // ============================================
+
+    /**
+     * Calculate Average True Range (ATR) for volatility-adjusted stops
+     */
+    calculateATR(candles, period = 14) {
+        if (candles.length < period + 1) return null;
+
+        let atrSum = 0;
+        for (let i = candles.length - period; i < candles.length; i++) {
+            const current = candles[i];
+            const prev = candles[i - 1];
+            const tr = Math.max(
+                current.high - current.low,
+                Math.abs(current.high - prev.close),
+                Math.abs(current.low - prev.close)
+            );
+            atrSum += tr;
+        }
+        return atrSum / period;
+    }
+
+    /**
+     * Check if price is near a support level (structural confirmation)
+     */
+    isNearSupport(candles, currentPrice) {
+        const lookback = Math.min(20, candles.length - 1);
+        const recentCandles = candles.slice(-lookback);
+
+        // Find recent swing lows
+        const lows = recentCandles.map(c => c.low);
+        const minLow = Math.min(...lows);
+        const avgLow = lows.reduce((a, b) => a + b, 0) / lows.length;
+
+        // Price should be within 3% of recent lows (near support)
+        const nearMinLow = currentPrice <= minLow * 1.03;
+        const nearAvgLow = currentPrice <= avgLow * 1.02;
+
+        // Calculate 20 SMA as dynamic support
+        const closes = recentCandles.map(c => c.close);
+        const sma20 = closes.reduce((a, b) => a + b, 0) / closes.length;
+        const nearSma = currentPrice <= sma20 * 1.02;
+
+        return { nearSupport: nearMinLow || nearAvgLow || nearSma, minLow, sma20 };
+    }
+
+    /**
+     * Check trend alignment - avoid trades against strong momentum
+     */
+    checkTrendAlignment(candles) {
+        const last5 = candles.slice(-5);
+        const last10 = candles.slice(-10);
+        const last20 = candles.slice(-20);
+
+        // Calculate short-term trend
+        const shortTrend = (last5[last5.length - 1].close - last5[0].close) / last5[0].close * 100;
+
+        // Count lower lows in last 5 candles (downtrend strength)
+        let lowerLows = 0;
+        for (let i = 1; i < last5.length; i++) {
+            if (last5[i].low < last5[i - 1].low) lowerLows++;
+        }
+
+        // Check if recent candles are closing near lows (bearish momentum)
+        const closingNearLows = last5.filter(c => {
+            const range = c.high - c.low;
+            if (range === 0) return false;
+            const closePosition = (c.close - c.low) / range;
+            return closePosition < 0.3; // Closing in lower 30%
+        }).length;
+
+        // Calculate momentum - compare last 3 vs prior 3 average ranges
+        const last3Ranges = last5.slice(-3).map(c => c.high - c.low);
+        const prior3Ranges = last5.slice(0, 3).map(c => c.high - c.low);
+        const avgLast3 = last3Ranges.reduce((a, b) => a + b, 0) / 3;
+        const avgPrior3 = prior3Ranges.reduce((a, b) => a + b, 0) / 3;
+        const momentumIncreasing = avgLast3 > avgPrior3 * 1.3; // 30% larger bars
+
+        // Strong downtrend signals to avoid
+        const strongDowntrend = shortTrend < -5 && lowerLows >= 3;
+        const bearishMomentum = closingNearLows >= 3 && momentumIncreasing;
+
+        return {
+            aligned: !strongDowntrend && !bearishMomentum,
+            shortTrend,
+            lowerLows,
+            closingNearLows,
+            reason: strongDowntrend ? 'Strong downtrend detected' :
+                bearishMomentum ? 'Bearish momentum increasing' : null
+        };
+    }
+
+    /**
+     * Check for price stabilization (not just exhaustion signal)
+     */
+    checkPriceStabilization(candles) {
+        const last3 = candles.slice(-3);
+        const last5 = candles.slice(-5);
+
+        // Find the lowest low in last 5 candles
+        const lowestLow = Math.min(...last5.map(c => c.low));
+
+        // Check if last 2 candles are holding above the lowest low
+        const holdingAboveLow = last3.slice(-2).every(c => c.low >= lowestLow * 0.995);
+
+        // Check if any candle closed in upper half of its range
+        const hasUpperRangeClose = last3.some(c => {
+            const range = c.high - c.low;
+            if (range === 0) return false;
+            const closePosition = (c.close - c.low) / range;
+            return closePosition > 0.5;
+        });
+
+        // Check for volume declining on down moves (exhaustion confirmation)
+        let volumeDeclining = false;
+        if (last5.length >= 5) {
+            const downCandles = last5.filter(c => c.close < c.open);
+            if (downCandles.length >= 2) {
+                // Sort by time (most recent last)
+                const sortedDown = downCandles.slice().sort((a, b) =>
+                    new Date(a.timestamp) - new Date(b.timestamp));
+                if (sortedDown.length >= 2) {
+                    const recentVol = sortedDown[sortedDown.length - 1].volume;
+                    const priorVol = sortedDown[0].volume;
+                    volumeDeclining = recentVol < priorVol * 0.8; // 20%+ decline
+                }
+            }
+        }
+
+        return {
+            stabilized: holdingAboveLow && hasUpperRangeClose,
+            holdingAboveLow,
+            hasUpperRangeClose,
+            volumeDeclining
+        };
+    }
+
+    /**
+     * Enhanced entry delay validation - acts as FILTER not just time gap
+     */
+    validateEntryWithStructure(signalPrice, delayCandle, stopPrice, candles) {
+        // Basic stop check
+        if (delayCandle.low <= stopPrice) {
+            return {
+                valid: false,
+                reason: `Price dropped to ${delayCandle.low.toFixed(2)} during delay, below stop ${stopPrice.toFixed(2)}`
+            };
+        }
+
+        // Gap down check (> 2% gap = danger)
+        const gapPercent = ((signalPrice - delayCandle.open) / signalPrice) * 100;
+        if (gapPercent > 2) {
+            return {
+                valid: false,
+                reason: `Gap down ${gapPercent.toFixed(2)}% - market rejecting level`
+            };
+        }
+
+        // NEW: Check if delay candle shows further weakness
+        const range = delayCandle.high - delayCandle.low;
+        if (range > 0) {
+            const closePosition = (delayCandle.close - delayCandle.low) / range;
+            // If closing in lower 25% of range = weakness continuing
+            if (closePosition < 0.25 && delayCandle.close < signalPrice) {
+                return {
+                    valid: false,
+                    reason: `Delay candle closing weak (${(closePosition * 100).toFixed(0)}% of range) - momentum continues`
+                };
+            }
+        }
+
+        // NEW: Check if delay candle made new low vs signal candle
+        const signalCandle = candles[candles.length - 2]; // Previous candle was signal
+        if (delayCandle.low < signalCandle.low * 0.99) { // 1% lower = new low
+            return {
+                valid: false,
+                reason: 'New low made during delay - trend not reversing'
+            };
+        }
+
+        return { valid: true, entryPrice: delayCandle.close };
+    }
+
+    /**
+     * Calculate ATR-based stop that adapts to volatility
+     */
+    calculateVolatilityAdjustedStop(entryPrice, candles, baseStopPercent, multiplier = 1.5) {
+        const atr = this.calculateATR(candles);
+        if (!atr) return entryPrice * (1 - baseStopPercent / 100);
+
+        const atrStopDistance = atr * multiplier;
+        const atrStop = entryPrice - atrStopDistance;
+        const fixedStop = entryPrice * (1 - baseStopPercent / 100);
+
+        // Use the WIDER of the two stops (give trade more room)
+        return Math.min(atrStop, fixedStop);
+    }
+
+    /**
+     * Master quality check - combines all filters
+     */
+    meetsTradeQualityStandards(candles, signalPrice, indicators) {
+        const reasons = [];
+        let score = 0;
+        const maxScore = 4;
+
+        // 1. Structural confirmation - near support?
+        const support = this.isNearSupport(candles, signalPrice);
+        if (support.nearSupport) {
+            score += 1;
+        } else {
+            reasons.push('Not near support level');
+        }
+
+        // 2. Trend alignment - not fighting strong momentum?
+        const trend = this.checkTrendAlignment(candles);
+        if (trend.aligned) {
+            score += 1;
+        } else {
+            reasons.push(trend.reason);
+        }
+
+        // 3. Price stabilization - showing acceptance?
+        const stability = this.checkPriceStabilization(candles);
+        if (stability.stabilized) {
+            score += 1;
+        } else {
+            reasons.push('No price stabilization yet');
+        }
+
+        // 4. Volume confirmation
+        if (stability.volumeDeclining) {
+            score += 1;
+        }
+
+        // Require at least 2 out of 4 confirmations
+        const passesQuality = score >= 2;
+
+        return {
+            passes: passesQuality,
+            score,
+            maxScore,
+            reasons: passesQuality ? [] : reasons
+        };
+    }
+
+
     /**
      * ============================================
      * SYMBOL-LEVEL LOCKING: One trade per stock at a time
@@ -123,7 +372,7 @@ class RealisticTradingSimulator {
                 }
             } else if (today >= cooldownUntilCandle) {
                 // Symbol is free - check all strategies for signals
-                // FIRST strategy to signal wins (priority order)
+                // FIRST strategy to signal AND pass quality filters wins
                 for (const strategy of strategies) {
                     let hasSignal = false;
                     try {
@@ -133,7 +382,43 @@ class RealisticTradingSimulator {
                     }
 
                     if (hasSignal) {
-                        // This strategy wins - LOCK THE SYMBOL
+                        // ======== PROFESSIONAL QUALITY FILTER ========
+                        // Strategy signals, but we need structural confirmation
+                        const qualityCheck = this.meetsTradeQualityStandards(
+                            availableHistory,
+                            todayCandle.close,
+                            indicators
+                        );
+
+                        if (!qualityCheck.passes) {
+                            // Signal rejected due to poor market structure
+                            skipped.push({
+                                symbol: stock.symbol,
+                                strategy: strategy.name,
+                                date: todayDate,
+                                price: todayCandle.close,
+                                reason: `Quality filter failed (${qualityCheck.score}/${qualityCheck.maxScore}): ${qualityCheck.reasons.join(', ')}`
+                            });
+
+                            this.log(stock.symbol, 'QUALITY_FILTER_REJECT',
+                                `${strategy.name} signal rejected: ${qualityCheck.reasons.join(', ')}`);
+
+                            continue; // Try next strategy
+                        }
+
+                        // Calculate volatility-adjusted stop (give trade room to breathe)
+                        const atrStop = this.calculateVolatilityAdjustedStop(
+                            todayCandle.close,
+                            availableHistory,
+                            strategy.exit.stop,
+                            1.5 // 1.5x ATR
+                        );
+
+                        // Use the wider stop (more room)
+                        const fixedStop = todayCandle.close * (1 - strategy.exit.stop / 100);
+                        const effectiveStop = Math.min(atrStop, fixedStop);
+
+                        // Quality passed - LOCK THE SYMBOL
                         activeTradeState = {
                             state: TradeState.SIGNAL_CONFIRMED,
                             symbol: stock.symbol,
@@ -145,16 +430,20 @@ class RealisticTradingSimulator {
                             targetPercent: strategy.exit.target,
                             stopPercent: strategy.exit.stop,
                             targetPrice: todayCandle.close * (1 + strategy.exit.target / 100),
-                            stopPrice: todayCandle.close * (1 - strategy.exit.stop / 100),
+                            stopPrice: effectiveStop, // Now volatility-adjusted!
                             secondTargetPrice: todayCandle.close * (1 + (strategy.exit.target * 1.5) / 100),
+                            qualityScore: qualityCheck.score,
                             stateHistory: [
                                 { state: TradeState.WATCHING, date: todayDate, reason: 'Monitoring stock' },
-                                { state: TradeState.SIGNAL_CONFIRMED, date: todayDate, price: todayCandle.close, reason: 'Entry conditions met' }
+                                {
+                                    state: TradeState.SIGNAL_CONFIRMED, date: todayDate, price: todayCandle.close,
+                                    reason: `Entry conditions met (Quality: ${qualityCheck.score}/${qualityCheck.maxScore})`
+                                }
                             ]
                         };
 
-                        this.log(stock.symbol, 'SYMBOL_LOCKED',
-                            `${strategy.name} signal on ${todayDate}, symbol locked until trade completes`);
+                        this.log(stock.symbol, 'QUALITY_SIGNAL_ACCEPTED',
+                            `${strategy.name} signal PASSED quality (${qualityCheck.score}/${qualityCheck.maxScore}), stop at ${effectiveStop.toFixed(2)}`);
 
                         // Log any other strategies that would have signaled (skipped due to lock)
                         for (const otherStrategy of strategies) {
@@ -188,13 +477,14 @@ class RealisticTradingSimulator {
         // STATE: SIGNAL_CONFIRMED (waiting for delay)
         if (state.state === TradeState.SIGNAL_CONFIRMED) {
             if (today >= state.waitingUntilCandle) {
-                // Delay period complete - validate entry
-                const entryValidation = this.validateEntryOnCandle(
-                    state.signalPrice, todayCandle, state.stopPrice
+                // Delay period complete - validate entry with ENHANCED structural filter
+                const availableHistory = candles.slice(0, today + 1);
+                const entryValidation = this.validateEntryWithStructure(
+                    state.signalPrice, todayCandle, state.stopPrice, availableHistory
                 );
 
                 if (!entryValidation.valid) {
-                    // Entry INVALIDATED
+                    // Entry INVALIDATED by structural filter
                     state.stateHistory.push({
                         state: TradeState.INVALIDATED,
                         date: todayDate,
@@ -222,9 +512,15 @@ class RealisticTradingSimulator {
                     state.highestPriceSinceEntry = state.entryPrice;
                     state.partialExitDone = false;
 
+                    // Recalculate ATR-based stop on actual entry price
+                    const atrStop = this.calculateVolatilityAdjustedStop(
+                        state.entryPrice, availableHistory, state.stopPercent, 1.5
+                    );
+                    const fixedStop = state.entryPrice * (1 - state.stopPercent / 100);
+                    
                     // Recalculate targets based on actual entry price
                     state.targetPrice = state.entryPrice * (1 + state.targetPercent / 100);
-                    state.stopPrice = state.entryPrice * (1 - state.stopPercent / 100);
+                    state.stopPrice = Math.min(atrStop, fixedStop); // Wider stop
                     state.secondTargetPrice = state.entryPrice * (1 + (state.targetPercent * 1.5) / 100);
 
                     state.stateHistory.push({
