@@ -18,7 +18,15 @@ function registerRealisticSimRoutes(app) {
      */
     app.post('/api/strategy/realistic-simulation', async (req, res) => {
         try {
-            const { categoryKey, quickMode = false, backtestMode = true } = req.body;
+            const {
+                categoryKey,
+                quickMode = false,
+                backtestMode = true,
+                // 2-Pass Research Backtest params
+                researchPass = null,
+                applyRefinements = false,
+                shadowSuggestions = []
+            } = req.body;
 
             if (!categoryKey) {
                 return res.status(400).json({ ok: false, error: 'categoryKey is required' });
@@ -28,9 +36,24 @@ function registerRealisticSimRoutes(app) {
             console.log(`   Mode: ${quickMode ? 'Quick (10 stocks)' : 'Full'}`);
             console.log(`   Backtest Mode: ${backtestMode ? 'ON (skip validity)' : 'OFF (enforce validity)'}`);
 
+            // Research mode logging
+            if (researchPass) {
+                console.log(`   📋 Research Pass: ${researchPass}`);
+                console.log(`   🔧 Apply Refinements: ${applyRefinements}`);
+                if (shadowSuggestions.length > 0) {
+                    console.log(`   💡 Shadow Suggestions: ${shadowSuggestions.length} suggestions provided`);
+                }
+            }
+
             // Import simulator
             const { RealisticTradingSimulator } = require('../strategy/RealisticTradingSimulator.cjs');
-            const simulator = new RealisticTradingSimulator({ backtestMode });
+            const simulator = new RealisticTradingSimulator({
+                backtestMode,
+                // Pass refinement config for Pass 2
+                applyRefinements,
+                shadowSuggestions,
+                researchPass
+            });
 
             // Get stocks for category
             const categoryStocks = await prisma.stockCategory.findMany({
