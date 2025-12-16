@@ -34,8 +34,7 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
     const [comparison, setComparison] = useState<ComparisonData>({ before: null, after: null });
     const [shadowReport, setShadowReport] = useState<any | null>(null);
     const [logs, setLogs] = useState<string[]>([]);
-    const [error, setError] = useState<string | null>(null);
-    const [activeTab, setActiveTab] = useState<'before' | 'after'>('after');
+    const [activeTab, setActiveTab] = useState<'results' | 'shadow'>('results');
     const [showPromoteConfirm, setShowPromoteConfirm] = useState(false);
 
     // 2-Pass Research Progress Tracking
@@ -52,63 +51,21 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
         version: 'V1'
     });
 
-    // Load baseline (before) metrics when modal opens
-    useEffect(() => {
-        if (isOpen) {
-            loadBaselineMetrics();
-        }
-    }, [isOpen, categoryKey]);
-
-    const loadBaselineMetrics = async () => {
-        try {
-            const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
-            // Try to load the most recent backtest for comparison
-            const response = await fetch(`${apiBase}/api/labs/latest/${categoryKey}`);
-            const data = await response.json();
-
-            if (data.ok && data.result?.summary) {
-                const summary = data.result.summary;
-                setComparison(prev => ({
-                    ...prev,
-                    before: {
-                        trades: summary.executedTrades || 0,
-                        wins: summary.wins || 0,
-                        losses: summary.losses || 0,
-                        winRate: summary.winRate || '0',
-                        totalPnl: summary.totalPnl || '0',
-                        expectancy: summary.expectancy || '0',
-                        capitalWinRate: summary.capitalWinRate || '0',
-                        avgHoldingDays: summary.avgHoldingDays || '0',
-                        targetHitRate: summary.targetHitRate || '0'
-                    }
-                }));
-                setLogs(['📊 Loaded baseline metrics for comparison']);
-            }
-        } catch (err) {
-            console.log('No baseline metrics available');
-        }
-    };
-
     const handleRunResearch = async () => {
         setIsRunning(true);
-        setError(null);
         setShadowReport(null);
         setComparison({ before: null, after: null });
         setResearchPhase('pass1');
         setLogs([
-            '═══════════════════════════════════════════════════',
             '🔬 RESEARCH BACKTEST: 2-PASS SCIENTIFIC PROCESS',
-            '═══════════════════════════════════════════════════',
-            '',
-            '📋 PASS 1: Testing ORIGINAL logic (no changes)'
+            '─────────────────────────────────────────',
+            '📋 PASS 1: Testing ORIGINAL logic...'
         ]);
 
         try {
             const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
 
-            // ═══════════════════════════════════════════
-            // PASS 1: Run ORIGINAL logic (CONTROL GROUP)
-            // ═══════════════════════════════════════════
+            // PASS 1: Run ORIGINAL logic (CONTROL)
             const pass1Response = await fetch(`${apiBase}/api/strategy/realistic-simulation`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -116,18 +73,15 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
                     categoryKey,
                     quickMode: false,
                     backtestMode: true,
-                    researchPass: 1,  // Signal this is Pass 1 - no refinements
+                    researchPass: 1,
                     applyRefinements: false
                 })
             });
 
             const pass1Data = await pass1Response.json();
 
-            if (!pass1Data.ok) {
-                throw new Error(pass1Data.error || 'Pass 1 failed');
-            }
+            if (!pass1Data.ok) throw new Error(pass1Data.error || 'Pass 1 failed');
 
-            // Store ORIGINAL baseline metrics (BEFORE)
             setComparison(prev => ({
                 ...prev,
                 before: {
@@ -145,38 +99,21 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
 
             setLogs(prev => [
                 ...prev,
-                `✅ PASS 1 Complete: Original Logic Tested`,
-                `   📈 Trades: ${pass1Data.summary?.executedTrades || 0}`,
-                `   🎯 Win Rate: ${pass1Data.summary?.winRate}%`,
-                `   💰 Total PnL: ${pass1Data.summary?.totalPnl}%`,
+                `✅ PASS 1 Complete: ${pass1Data.summary?.executedTrades || 0} trades`,
+                `   Win Rate: ${pass1Data.summary?.winRate}%`,
                 '',
-                '═══════════════════════════════════════════════════',
-                '👁️ SHADOW LEARNER: Observing failures & strengths...'
+                '👁️ SHADOW LEARNER: Analyzing...'
             ]);
 
-            // Store Shadow Report from Pass 1 (observation)
-            if (pass1Data.shadowReport) {
-                setShadowReport(pass1Data.shadowReport);
-            }
+            if (pass1Data.shadowReport) setShadowReport(pass1Data.shadowReport);
 
             setResearchPhase('observing');
+            await new Promise(resolve => setTimeout(resolve, 500));
 
-            // Brief pause to show observation phase
-            await new Promise(resolve => setTimeout(resolve, 1000));
-
-            setLogs(prev => [
-                ...prev,
-                '✅ Shadow analysis complete - suggestions generated',
-                '',
-                '═══════════════════════════════════════════════════',
-                '🧪 PASS 2: Testing with Shadow refinements applied...'
-            ]);
-
+            setLogs(prev => [...prev, '✅ Analysis complete', '', '🧪 PASS 2: Testing refined logic...']);
             setResearchPhase('pass2');
 
-            // ═══════════════════════════════════════════
-            // PASS 2: Run WITH SHADOW REFINEMENTS (EXPERIMENT)
-            // ═══════════════════════════════════════════
+            // PASS 2: Run WITH REFINEMENTS
             const pass2Response = await fetch(`${apiBase}/api/strategy/realistic-simulation`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -184,19 +121,15 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
                     categoryKey,
                     quickMode: false,
                     backtestMode: true,
-                    researchPass: 2,  // Signal this is Pass 2 - apply refinements
+                    researchPass: 2,
                     applyRefinements: true,
                     shadowSuggestions: pass1Data.shadowReport?.refinementSuggestions || []
                 })
             });
 
             const pass2Data = await pass2Response.json();
+            if (!pass2Data.ok) throw new Error(pass2Data.error || 'Pass 2 failed');
 
-            if (!pass2Data.ok) {
-                throw new Error(pass2Data.error || 'Pass 2 failed');
-            }
-
-            // Store REFINED metrics (AFTER)
             setComparison(prev => ({
                 ...prev,
                 after: {
@@ -213,22 +146,15 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
             }));
 
             setResearchPhase('complete');
-            setActiveTab('after');
-
             setLogs(prev => [
                 ...prev,
-                `✅ PASS 2 Complete: Shadow-Refined Logic Tested`,
-                `   📈 Trades: ${pass2Data.summary?.executedTrades || 0}`,
-                `   🎯 Win Rate: ${pass2Data.summary?.winRate}%`,
-                `   💰 Total PnL: ${pass2Data.summary?.totalPnl}%`,
+                `✅ PASS 2 Complete: ${pass2Data.summary?.executedTrades || 0} trades`,
+                `   Win Rate: ${pass2Data.summary?.winRate}%`,
                 '',
-                '═══════════════════════════════════════════════════',
-                '📊 COMPARISON READY - Review Before vs After below',
-                '═══════════════════════════════════════════════════'
+                '📊 COMPARISON READY'
             ]);
 
         } catch (err: any) {
-            setError(err.message);
             setResearchPhase('error');
             setLogs(prev => [...prev, `❌ Error: ${err.message}`]);
         } finally {
@@ -239,36 +165,27 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
     const handlePromote = async (version: string) => {
         setShowPromoteConfirm(false);
         setLogs(prev => [...prev, `🚀 Promoting to ${version}...`]);
-
         try {
             const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
             const response = await fetch(`${apiBase}/api/labs/promote`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    categoryKey,
-                    targetVersion: version,
-                    refinedByShadow: true
-                })
+                body: JSON.stringify({ categoryKey, targetVersion: version, refinedByShadow: true })
             });
-
             const data = await response.json();
             if (data.ok) {
-                setLogs(prev => [...prev, `✅ Successfully promoted to ${version}`]);
+                setLogs(prev => [...prev, `✅ Promoted to ${version}`]);
                 setCategoryContext(prev => ({ ...prev, version }));
-            } else {
-                throw new Error(data.error);
-            }
+            } else throw new Error(data.error);
         } catch (err: any) {
-            setLogs(prev => [...prev, `❌ Promotion failed: ${err.message}`]);
+            setLogs(prev => [...prev, `❌ Failed: ${err.message}`]);
         }
     };
 
-    // Calculate deltas for comparison
     const calculateDelta = (before: string | number, after: string | number) => {
         const b = parseFloat(String(before));
         const a = parseFloat(String(after));
-        if (isNaN(b) || isNaN(a)) return { value: 0, direction: 'neutral' };
+        if (isNaN(b) || isNaN(a)) return { value: 0, direction: 'neutral', percent: '0' };
         const diff = a - b;
         return {
             value: diff,
@@ -277,324 +194,229 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
         };
     };
 
-    // Generate "What Changed" summary
-    const generateWhatChanged = () => {
-        if (!shadowReport?.refinementSuggestions) return [];
-
-        const changes: string[] = [];
-        const suggestions = shadowReport.refinementSuggestions;
-
-        // Find key improvements
-        const earlyEntry = suggestions.find((s: any) => s.area === 'Entry Timing');
-        if (earlyEntry) changes.push('✅ Improved entry timing with price acceptance filter');
-
-        const weakStrategy = suggestions.find((s: any) => s.area === 'Strategy Selection');
-        if (weakStrategy) changes.push('✅ Reduced weak strategy participation');
-
-        const patience = suggestions.find((s: any) => s.area === 'Trade Management');
-        if (patience) changes.push('✅ Allowed strong trades more breathing room');
-
-        const capitalProtection = suggestions.find((s: any) => s.area === 'Risk Management');
-        if (capitalProtection) changes.push('✅ Enhanced capital protection via partial exits');
-
-        // Add failure patterns as removed issues
-        if (shadowReport?.failureAnalysis?.patterns) {
-            const failures = shadowReport.failureAnalysis.patterns;
-            const earlyStops = failures.find((p: any) => p.type === 'EARLY_ENTRY');
-            if (earlyStops) changes.push(`❌ Removed ${earlyStops.count || 0} early entries`);
-        }
-
-        return changes.length > 0 ? changes : ['Analyzing patterns...'];
-    };
-
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-black/95 backdrop-blur-lg z-50 flex items-center justify-center p-4">
-            <div className="bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 border border-purple-500/40 rounded-2xl shadow-2xl w-full max-w-7xl h-[90vh] flex flex-col overflow-hidden">
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-6">
+            <div className="bg-slate-900 border border-purple-500/30 rounded-2xl shadow-2xl w-full max-w-6xl h-[85vh] flex flex-col overflow-hidden">
 
-                {/* Header - Research Mode Badge + Phase Progress */}
-                <div className="flex flex-col border-b border-purple-500/30 bg-purple-900/20">
-                    <div className="flex items-center justify-between p-4">
-                        <div className="flex items-center gap-4">
-                            <div className="flex flex-col">
-                                <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 flex items-center gap-2">
-                                    🔬 Research Backtest + Shadow Learner
-                                </h2>
-                                <p className="text-xs text-purple-300/70">2-Pass Scientific Process • Test → Observe → Re-test → Compare</p>
-                            </div>
-                            <span className="px-3 py-1 bg-purple-600/30 border border-purple-500/50 rounded-full text-xs text-purple-300 font-medium">
-                                RESEARCH MODE
-                            </span>
-                        </div>
-                        <button
-                            onClick={onClose}
-                            className="text-slate-400 hover:text-white p-2 hover:bg-slate-700/50 rounded-lg transition"
-                        >
-                            ✕
-                        </button>
+                {/* Header */}
+                <div className="flex items-center justify-between px-6 py-4 border-b border-purple-500/30 bg-gradient-to-r from-purple-900/30 to-transparent">
+                    <div>
+                        <h2 className="text-lg font-bold text-white flex items-center gap-2">
+                            🔬 Research Backtest
+                            <span className="px-2 py-0.5 bg-purple-600/50 rounded text-xs text-purple-200">SCIENTIFIC</span>
+                        </h2>
+                        <p className="text-xs text-slate-400 mt-1">
+                            {categoryKey.replace(/_/g, ' ')} • {categoryContext.version}
+                        </p>
                     </div>
 
-                    {/* Phase Progress Bar */}
-                    {researchPhase !== 'idle' && (
-                        <div className="flex items-center gap-2 px-4 pb-3">
-                            <div className={`flex items-center gap-1 px-2 py-1 rounded text-xs ${researchPhase === 'pass1' ? 'bg-purple-600 text-white' :
-                                    ['observing', 'pass2', 'complete'].includes(researchPhase) ? 'bg-green-600 text-white' : 'bg-slate-700 text-slate-400'
-                                }`}>
-                                {researchPhase === 'pass1' ? '⏳' : '✓'} PASS 1
-                            </div>
-                            <div className="text-slate-600">→</div>
-                            <div className={`flex items-center gap-1 px-2 py-1 rounded text-xs ${researchPhase === 'observing' ? 'bg-purple-600 text-white' :
-                                    ['pass2', 'complete'].includes(researchPhase) ? 'bg-green-600 text-white' : 'bg-slate-700 text-slate-400'
-                                }`}>
-                                {researchPhase === 'observing' ? '👁️' : ['pass2', 'complete'].includes(researchPhase) ? '✓' : '○'} SHADOW
-                            </div>
-                            <div className="text-slate-600">→</div>
-                            <div className={`flex items-center gap-1 px-2 py-1 rounded text-xs ${researchPhase === 'pass2' ? 'bg-purple-600 text-white' :
-                                    researchPhase === 'complete' ? 'bg-green-600 text-white' : 'bg-slate-700 text-slate-400'
-                                }`}>
-                                {researchPhase === 'pass2' ? '⏳' : researchPhase === 'complete' ? '✓' : '○'} PASS 2
-                            </div>
-                            <div className="text-slate-600">→</div>
-                            <div className={`flex items-center gap-1 px-2 py-1 rounded text-xs ${researchPhase === 'complete' ? 'bg-green-600 text-white' : 'bg-slate-700 text-slate-400'
-                                }`}>
-                                {researchPhase === 'complete' ? '✓' : '○'} COMPARE
-                            </div>
-                        </div>
-                    )}
+                    {/* Progress Steps */}
+                    <div className="flex items-center gap-3">
+                        {['PASS 1', 'SHADOW', 'PASS 2', 'COMPARE'].map((step, i) => {
+                            const phases = ['pass1', 'observing', 'pass2', 'complete'];
+                            const currentIdx = phases.indexOf(researchPhase);
+                            const isComplete = currentIdx > i || researchPhase === 'complete';
+                            const isCurrent = phases[i] === researchPhase;
+
+                            return (
+                                <div key={step} className="flex items-center gap-1">
+                                    <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${isComplete ? 'bg-green-500 text-white' :
+                                            isCurrent ? 'bg-purple-500 text-white animate-pulse' :
+                                                'bg-slate-700 text-slate-400'
+                                        }`}>
+                                        {isComplete ? '✓' : i + 1}
+                                    </div>
+                                    <span className={`text-xs ${isComplete || isCurrent ? 'text-white' : 'text-slate-500'}`}>{step}</span>
+                                    {i < 3 && <span className="text-slate-600 mx-1">→</span>}
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                    <button onClick={onClose} className="text-slate-400 hover:text-white text-xl">✕</button>
                 </div>
 
-                {/* Main Content - 3 Zone Layout */}
-                <div className="flex-1 flex gap-4 p-4 overflow-hidden">
+                {/* Tab Switcher */}
+                <div className="flex gap-4 px-6 py-3 border-b border-slate-800">
+                    <button
+                        onClick={() => setActiveTab('results')}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition ${activeTab === 'results' ? 'bg-purple-600 text-white' : 'text-slate-400 hover:text-white'
+                            }`}
+                    >
+                        📊 Results Comparison
+                    </button>
+                    <button
+                        onClick={() => setActiveTab('shadow')}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition ${activeTab === 'shadow' ? 'bg-purple-600 text-white' : 'text-slate-400 hover:text-white'
+                            }`}
+                    >
+                        🔮 Shadow Analysis {shadowReport && <span className="ml-1 px-1.5 py-0.5 bg-purple-900 rounded text-xs">NEW</span>}
+                    </button>
+                    <div className="flex-1" />
+                    <button
+                        onClick={handleRunResearch}
+                        disabled={isRunning}
+                        className="px-6 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold rounded-lg disabled:opacity-50 transition"
+                    >
+                        {isRunning ? '⏳ Running...' : '▶ Run Research'}
+                    </button>
+                </div>
 
-                    {/* LEFT ZONE: Context */}
-                    <div className="w-64 flex-shrink-0 bg-slate-800/50 rounded-xl p-4 border border-purple-500/20 flex flex-col gap-4">
-                        <h3 className="text-sm font-semibold text-purple-300 border-b border-purple-500/20 pb-2">📋 CONTEXT</h3>
-
-                        <div className="space-y-3">
-                            <div>
-                                <div className="text-xs text-slate-500">Category</div>
-                                <div className="text-sm text-white font-medium">{categoryKey.replace(/_/g, ' ')}</div>
-                            </div>
-                            <div>
-                                <div className="text-xs text-slate-500">Version</div>
-                                <div className="text-sm text-cyan-400 font-mono">{categoryContext.version}</div>
-                            </div>
-                            <div>
-                                <div className="text-xs text-slate-500">Market Thesis</div>
-                                <div className="text-xs text-slate-300 italic">"{categoryContext.thesis}"</div>
-                            </div>
-                            <div className="pt-2 border-t border-slate-700">
-                                <div className="text-xs text-slate-500 mb-2">Expected Behavior</div>
-                                <div className="space-y-1 text-xs">
-                                    <div className="flex justify-between">
-                                        <span className="text-slate-400">Holding:</span>
-                                        <span className="text-slate-300">{categoryContext.expectedBehavior.holdingDays}</span>
-                                    </div>
-                                    <div className="flex justify-between">
-                                        <span className="text-slate-400">Target:</span>
-                                        <span className="text-green-400">{categoryContext.expectedBehavior.targetMove}</span>
-                                    </div>
-                                    <div className="flex justify-between">
-                                        <span className="text-slate-400">Max DD:</span>
-                                        <span className="text-red-400">{categoryContext.expectedBehavior.maxDrawdown}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Run Button */}
-                        <div className="mt-auto">
-                            <button
-                                onClick={handleRunResearch}
-                                disabled={isRunning}
-                                className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold py-3 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg"
-                            >
-                                {isRunning ? (
-                                    <span className="flex items-center justify-center gap-2">
-                                        <span className="animate-spin">⏳</span>
-                                        Running Research...
-                                    </span>
-                                ) : (
-                                    '🔬 Run Research Backtest'
-                                )}
-                            </button>
-                            <p className="text-xs text-center text-purple-400/60 mt-2">
-                                Heavy computation • May take minutes
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* CENTER ZONE: Results with Before/After */}
-                    <div className="flex-1 bg-slate-800/50 rounded-xl border border-purple-500/20 flex flex-col overflow-hidden">
-                        <div className="p-4 border-b border-purple-500/20">
-                            <h3 className="text-sm font-semibold text-purple-300 mb-3">📊 RESULTS COMPARISON</h3>
-
-                            {/* Tabs */}
-                            <div className="flex gap-2">
-                                <button
-                                    onClick={() => setActiveTab('before')}
-                                    className={`px-4 py-2 rounded-lg text-sm font-medium transition ${activeTab === 'before'
-                                        ? 'bg-slate-700 text-white'
-                                        : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
-                                        }`}
-                                >
-                                    Before (Original)
-                                </button>
-                                <button
-                                    onClick={() => setActiveTab('after')}
-                                    className={`px-4 py-2 rounded-lg text-sm font-medium transition ${activeTab === 'after'
-                                        ? 'bg-purple-600 text-white'
-                                        : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
-                                        }`}
-                                >
-                                    After (Shadow-Refined)
-                                </button>
-                            </div>
-                        </div>
-
-                        <div className="flex-1 p-4 overflow-y-auto">
-                            {/* Comparison Table */}
-                            {comparison.before && comparison.after ? (
-                                <div className="space-y-4">
-                                    <table className="w-full text-sm">
-                                        <thead>
-                                            <tr className="border-b border-slate-700">
-                                                <th className="text-left py-2 px-3 text-slate-400">Metric</th>
-                                                <th className="text-right py-2 px-3 text-slate-400">Before</th>
-                                                <th className="text-right py-2 px-3 text-purple-400">After</th>
-                                                <th className="text-right py-2 px-3 text-slate-400">Change</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {[
-                                                { label: 'Trades', before: comparison.before.trades, after: comparison.after.trades, goodIfLower: true },
-                                                { label: 'Win Rate', before: comparison.before.winRate + '%', after: comparison.after.winRate + '%', suffix: '' },
-                                                { label: 'Total PnL', before: comparison.before.totalPnl + '%', after: comparison.after.totalPnl + '%', suffix: '' },
-                                                { label: 'Expectancy', before: comparison.before.expectancy, after: comparison.after.expectancy, suffix: 'R' },
-                                                { label: 'Capital Protection', before: comparison.before.capitalWinRate + '%', after: comparison.after.capitalWinRate + '%', suffix: '' },
-                                                { label: 'Avg Holding', before: comparison.before.avgHoldingDays + 'd', after: comparison.after.avgHoldingDays + 'd', suffix: '' }
-                                            ].map((row, idx) => {
-                                                const delta = calculateDelta(
-                                                    parseFloat(String(row.before)),
-                                                    parseFloat(String(row.after))
-                                                );
-                                                const isGood = row.goodIfLower ? delta.direction === 'down' : delta.direction === 'up';
-
-                                                return (
-                                                    <tr key={idx} className="border-b border-slate-800">
-                                                        <td className="py-3 px-3 text-slate-300">{row.label}</td>
-                                                        <td className="py-3 px-3 text-right text-slate-500">{row.before}</td>
-                                                        <td className="py-3 px-3 text-right text-white font-medium">{row.after}</td>
-                                                        <td className={`py-3 px-3 text-right font-bold ${isGood ? 'text-green-400' : delta.direction === 'neutral' ? 'text-slate-400' : 'text-red-400'}`}>
-                                                            {delta.direction === 'up' ? '↑' : delta.direction === 'down' ? '↓' : '–'}
-                                                            {delta.percent !== '∞' && ` ${delta.percent}%`}
-                                                        </td>
-                                                    </tr>
-                                                );
-                                            })}
-                                        </tbody>
-                                    </table>
-
-                                    {/* What Changed Summary */}
-                                    <div className="bg-slate-900/50 rounded-lg p-4 border border-purple-500/30">
-                                        <h4 className="text-sm font-semibold text-purple-300 mb-3">🧠 What Changed After Shadow Learning</h4>
-                                        <div className="space-y-2">
-                                            {generateWhatChanged().map((change, idx) => (
-                                                <div key={idx} className="text-sm text-slate-300 flex items-start gap-2">
-                                                    <span>{change}</span>
+                {/* Main Content */}
+                <div className="flex-1 flex overflow-hidden">
+                    {/* Content Area */}
+                    <div className="flex-1 p-6 overflow-y-auto">
+                        {activeTab === 'results' ? (
+                            <div className="space-y-6">
+                                {/* Comparison Cards */}
+                                {comparison.before && comparison.after ? (
+                                    <>
+                                        {/* Before/After Cards Row */}
+                                        <div className="grid grid-cols-2 gap-6">
+                                            {/* Before Card */}
+                                            <div className="bg-slate-800/50 rounded-xl p-5 border border-slate-700">
+                                                <h3 className="text-sm font-semibold text-slate-400 mb-4">BEFORE (Original Logic)</h3>
+                                                <div className="grid grid-cols-2 gap-4">
+                                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                                        <div className="text-2xl font-bold text-white">{comparison.before.trades}</div>
+                                                        <div className="text-xs text-slate-500">Trades</div>
+                                                    </div>
+                                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                                        <div className="text-2xl font-bold text-white">{comparison.before.winRate}%</div>
+                                                        <div className="text-xs text-slate-500">Win Rate</div>
+                                                    </div>
+                                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                                        <div className="text-2xl font-bold text-white">{comparison.before.totalPnl}%</div>
+                                                        <div className="text-xs text-slate-500">Total PnL</div>
+                                                    </div>
+                                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                                        <div className="text-2xl font-bold text-white">{comparison.before.expectancy}</div>
+                                                        <div className="text-xs text-slate-500">Expectancy</div>
+                                                    </div>
                                                 </div>
-                                            ))}
+                                            </div>
+
+                                            {/* After Card */}
+                                            <div className="bg-purple-900/30 rounded-xl p-5 border border-purple-500/30">
+                                                <h3 className="text-sm font-semibold text-purple-300 mb-4">AFTER (Shadow Refined)</h3>
+                                                <div className="grid grid-cols-2 gap-4">
+                                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                                        <div className="text-2xl font-bold text-white">{comparison.after.trades}</div>
+                                                        <div className="text-xs text-purple-400">Trades</div>
+                                                    </div>
+                                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                                        <div className="text-2xl font-bold text-white">{comparison.after.winRate}%</div>
+                                                        <div className="text-xs text-purple-400">Win Rate</div>
+                                                    </div>
+                                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                                        <div className="text-2xl font-bold text-white">{comparison.after.totalPnl}%</div>
+                                                        <div className="text-xs text-purple-400">Total PnL</div>
+                                                    </div>
+                                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                                        <div className="text-2xl font-bold text-white">{comparison.after.expectancy}</div>
+                                                        <div className="text-xs text-purple-400">Expectancy</div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
+
+                                        {/* Delta Summary */}
+                                        <div className="bg-slate-800/30 rounded-xl p-5 border border-slate-700">
+                                            <h3 className="text-sm font-semibold text-white mb-4">📈 IMPROVEMENT DELTA</h3>
+                                            <div className="grid grid-cols-6 gap-4">
+                                                {[
+                                                    { label: 'Trades', before: comparison.before.trades, after: comparison.after.trades, lowerBetter: true },
+                                                    { label: 'Win Rate', before: comparison.before.winRate, after: comparison.after.winRate },
+                                                    { label: 'PnL', before: comparison.before.totalPnl, after: comparison.after.totalPnl },
+                                                    { label: 'Expectancy', before: comparison.before.expectancy, after: comparison.after.expectancy },
+                                                    { label: 'Capital Protected', before: comparison.before.capitalWinRate, after: comparison.after.capitalWinRate },
+                                                    { label: 'Avg Hold', before: comparison.before.avgHoldingDays, after: comparison.after.avgHoldingDays }
+                                                ].map((item, i) => {
+                                                    const delta = calculateDelta(item.before, item.after);
+                                                    const isGood = item.lowerBetter ? delta.direction === 'down' : delta.direction === 'up';
+                                                    return (
+                                                        <div key={i} className="text-center">
+                                                            <div className={`text-lg font-bold ${isGood ? 'text-green-400' : delta.direction === 'neutral' ? 'text-slate-400' : 'text-red-400'}`}>
+                                                                {delta.direction === 'up' ? '↑' : delta.direction === 'down' ? '↓' : '–'} {delta.percent}%
+                                                            </div>
+                                                            <div className="text-xs text-slate-500">{item.label}</div>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+
+                                        {/* Promote Button */}
+                                        <div className="flex justify-center">
+                                            <button
+                                                onClick={() => setShowPromoteConfirm(true)}
+                                                className="px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold rounded-lg transition shadow-lg"
+                                            >
+                                                🚀 Promote Refined Logic to V1.b1
+                                            </button>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="flex flex-col items-center justify-center h-full text-slate-400">
+                                        <div className="text-6xl mb-4 opacity-30">🔬</div>
+                                        <p className="text-center text-lg">Click "Run Research" to start</p>
+                                        <p className="text-sm text-slate-500 mt-2">2-pass backtest with Shadow analysis</p>
                                     </div>
-                                </div>
-                            ) : (
-                                <div className="flex flex-col items-center justify-center h-full text-slate-400">
-                                    <div className="text-6xl mb-4 opacity-20">🔬</div>
-                                    <p className="text-center">
-                                        Run Research Backtest to see<br />Before vs After comparison
-                                    </p>
-                                </div>
-                            )}
-                        </div>
-
-                        {/* Log */}
-                        <div className="p-3 border-t border-purple-500/20 bg-black/20 max-h-32 overflow-y-auto">
-                            <div className="text-xs font-mono text-slate-500 space-y-1">
-                                {logs.map((log, i) => (
-                                    <div key={i}>{log}</div>
-                                ))}
+                                )}
                             </div>
-                        </div>
-                    </div>
-
-                    {/* RIGHT ZONE: Shadow Learner */}
-                    <div className="w-80 flex-shrink-0 bg-slate-800/50 rounded-xl border border-purple-500/20 flex flex-col overflow-hidden">
-                        <div className="p-4 border-b border-purple-500/20">
-                            <h3 className="text-sm font-semibold text-purple-300">🔮 SHADOW LEARNER</h3>
-                            <p className="text-xs text-slate-500">Failures • Strengths • Suggestions</p>
-                        </div>
-
-                        <div className="flex-1 p-4 overflow-y-auto">
-                            {shadowReport ? (
-                                <ShadowReportPanel
-                                    shadowReport={shadowReport}
-                                    version={categoryContext.version}
-                                    category={categoryKey}
-                                />
-                            ) : (
-                                <div className="flex flex-col items-center justify-center h-full text-slate-400 text-center">
-                                    <div className="text-4xl mb-3 opacity-20">🔮</div>
-                                    <p className="text-sm">Shadow Report will appear here after research backtest</p>
-                                </div>
-                            )}
-                        </div>
-
-                        {/* Promotion Actions */}
-                        {shadowReport && (
-                            <div className="p-4 border-t border-purple-500/20 space-y-2">
-                                <button
-                                    onClick={() => setShowPromoteConfirm(true)}
-                                    className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-2.5 px-4 rounded-lg transition-all"
-                                >
-                                    🚀 Promote to V1.b1
-                                </button>
-                                <p className="text-xs text-center text-slate-500">
-                                    Creates new version with Shadow refinements
-                                </p>
+                        ) : (
+                            /* Shadow Tab */
+                            <div className="h-full">
+                                {shadowReport ? (
+                                    <ShadowReportPanel
+                                        shadowReport={shadowReport}
+                                        version={categoryContext.version}
+                                        category={categoryKey}
+                                    />
+                                ) : (
+                                    <div className="flex flex-col items-center justify-center h-full text-slate-400">
+                                        <div className="text-6xl mb-4 opacity-30">🔮</div>
+                                        <p className="text-lg">Shadow analysis pending</p>
+                                        <p className="text-sm text-slate-500 mt-2">Run research backtest to generate insights</p>
+                                    </div>
+                                )}
                             </div>
                         )}
                     </div>
-                </div>
 
-                {/* Promotion Confirmation Modal */}
-                {showPromoteConfirm && (
-                    <div className="absolute inset-0 bg-black/80 flex items-center justify-center z-10">
-                        <div className="bg-slate-800 border border-purple-500/50 rounded-xl p-6 max-w-md shadow-2xl">
-                            <h3 className="text-lg font-bold text-purple-400 mb-4">🚀 Promote Shadow-Refined Logic</h3>
-                            <div className="space-y-3 text-sm text-slate-300 mb-6">
-                                <p>You are promoting logic refined by Shadow Learner.</p>
-                                <p>This will create <span className="text-cyan-400 font-bold">V1.b1</span> (manual refinement).</p>
-                                <p className="text-amber-400">Normal backtest will treat this as a new strategy version.</p>
-                            </div>
-                            <div className="flex gap-3">
-                                <button
-                                    onClick={() => setShowPromoteConfirm(false)}
-                                    className="flex-1 bg-slate-700 hover:bg-slate-600 text-white py-2 px-4 rounded-lg transition"
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    onClick={() => handlePromote('V1.b1')}
-                                    className="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white py-2 px-4 rounded-lg transition font-bold"
-                                >
-                                    Confirm Promotion
-                                </button>
+                    {/* Sidebar: Logs */}
+                    <div className="w-64 border-l border-slate-800 flex flex-col">
+                        <div className="px-4 py-3 border-b border-slate-800">
+                            <h3 className="text-xs font-semibold text-slate-400">ACTIVITY LOG</h3>
+                        </div>
+                        <div className="flex-1 p-3 overflow-y-auto">
+                            <div className="space-y-1 text-xs font-mono text-slate-500">
+                                {logs.map((log, i) => (
+                                    <div key={i} className={log.startsWith('✅') ? 'text-green-400' : log.startsWith('❌') ? 'text-red-400' : ''}>{log}</div>
+                                ))}
+                                {logs.length === 0 && <p className="text-slate-600 italic">Ready to run...</p>}
                             </div>
                         </div>
                     </div>
-                )}
+                </div>
             </div>
+
+            {/* Promote Confirmation Modal */}
+            {showPromoteConfirm && (
+                <div className="absolute inset-0 bg-black/70 flex items-center justify-center z-20">
+                    <div className="bg-slate-800 border border-purple-500/50 rounded-xl p-6 max-w-md shadow-2xl">
+                        <h3 className="text-lg font-bold text-white mb-4">🚀 Confirm Promotion</h3>
+                        <p className="text-slate-300 text-sm mb-2">This will create <span className="text-cyan-400 font-bold">V1.b1</span> with Shadow refinements.</p>
+                        <p className="text-amber-400 text-sm mb-6">The refined logic will become the default for this category.</p>
+                        <div className="flex gap-3">
+                            <button onClick={() => setShowPromoteConfirm(false)} className="flex-1 bg-slate-700 hover:bg-slate-600 text-white py-2 rounded-lg">Cancel</button>
+                            <button onClick={() => handlePromote('V1.b1')} className="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white py-2 rounded-lg font-bold">Promote</button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
