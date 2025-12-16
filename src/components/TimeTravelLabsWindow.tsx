@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { XMarkIcon } from './icons/XMarkIcon';
 import { BeakerIcon } from './icons/BeakerIcon';
 import { SpinnerIcon } from './icons/SpinnerIcon';
+import { ShadowReportPanel } from './ShadowReportPanel';
 
 // Helper to safely convert metrics to numbers (prevents .toFixed() TypeError)
 function safeNumber(value: any, fallback = 0): number {
@@ -60,6 +61,10 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
     const [quickMode, setQuickMode] = useState(false);
     const [stockCount, setStockCount] = useState(10);
     const [forceRefresh, setForceRefresh] = useState(false);
+
+    // Shadow Report from realistic backtest
+    const [shadowReport, setShadowReport] = useState<any | null>(null);
+    const [backtestRunning, setBacktestRunning] = useState(false);
 
     // Load cache status AND previous results when window opens
     useEffect(() => {
@@ -400,6 +405,46 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
         }
     };
 
+    // Run Realistic Backtest with Shadow Learner
+    const handleRunBacktest = async () => {
+        setBacktestRunning(true);
+        setShadowReport(null);
+        setLogs(prev => [...prev, '🎯 Starting Realistic Backtest with Shadow Learner...']);
+
+        try {
+            const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
+            const response = await fetch(`${apiBase}/api/strategy/realistic-simulation`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ categoryKey, quickMode, backtestMode: true })
+            });
+
+            const data = await response.json();
+
+            if (data.ok) {
+                setLogs(prev => [
+                    ...prev,
+                    `✅ Backtest complete: ${data.summary?.executedTrades || 0} trades`,
+                    `📊 Win Rate: ${data.summary?.winRate}%`,
+                    `💰 Total PnL: ${data.summary?.totalPnl}%`,
+                    '🔮 Shadow Report generated!'
+                ]);
+
+                // Set Shadow Report for display
+                if (data.shadowReport) {
+                    setShadowReport(data.shadowReport);
+                }
+            } else {
+                throw new Error(data.error || 'Backtest failed');
+            }
+        } catch (err: any) {
+            setError(err.message);
+            setLogs(prev => [...prev, `❌ Backtest error: ${err.message}`]);
+        } finally {
+            setBacktestRunning(false);
+        }
+    };
+
     if (!isOpen) return null;
 
     return (
@@ -558,6 +603,24 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                                 )}
                             </button>
 
+                            {/* Run Realistic Backtest Button */}
+                            <button
+                                onClick={handleRunBacktest}
+                                disabled={backtestRunning || isRunning}
+                                className="w-full bg-gradient-to-r from-purple-600 to-indigo-700 hover:from-purple-500 hover:to-indigo-600 text-white font-bold py-3 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-purple-500/50"
+                            >
+                                {backtestRunning ? (
+                                    <>
+                                        <SpinnerIcon className="w-5 h-5 animate-spin" />
+                                        Running Backtest...
+                                    </>
+                                ) : (
+                                    <>
+                                        🔮 Run Backtest (with Shadow Report)
+                                    </>
+                                )}
+                            </button>
+
                             {/* Promotion Buttons - ALWAYS VISIBLE FOR TESTING */}
                             {result && (
                                 <div className="space-y-2">
@@ -608,6 +671,17 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                             </div>
                         </div>
                     </div>
+
+                    {/* Shadow Report Panel - Shows after backtest runs */}
+                    {shadowReport && (
+                        <div className="mb-6">
+                            <ShadowReportPanel
+                                shadowReport={shadowReport}
+                                version="V1"
+                                category={categoryKey}
+                            />
+                        </div>
+                    )}
 
                     {/* Right Panel: Strategy Logic & Results */}
                     <div className="flex-1 bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-emerald-500/20 overflow-y-auto custom-scrollbar">
