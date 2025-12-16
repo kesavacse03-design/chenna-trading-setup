@@ -16,6 +16,7 @@
 
 const TechnicalAnalysis = require('./comprehensiveTA.cjs');
 const { CategoryFilteredCatalogue } = require('./categoryFilteredCatalogue.cjs');
+const { ShadowLearner } = require('./ShadowLearner.cjs');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
@@ -517,7 +518,7 @@ class RealisticTradingSimulator {
                         state.entryPrice, availableHistory, state.stopPercent, 1.5
                     );
                     const fixedStop = state.entryPrice * (1 - state.stopPercent / 100);
-                    
+
                     // Recalculate targets based on actual entry price
                     state.targetPrice = state.entryPrice * (1 + state.targetPercent / 100);
                     state.stopPrice = Math.min(atrStop, fixedStop); // Wider stop
@@ -1153,7 +1154,7 @@ class RealisticTradingSimulator {
         };
 
         // === PROFESSIONAL SUMMARY ===
-        return {
+        const results = {
             summary: {
                 // Execution metrics
                 totalSignalsGenerated,
@@ -1205,6 +1206,22 @@ class RealisticTradingSimulator {
             trappedSignals: this.trappedSignals,
             logs: this.logs
         };
+
+        // ============================================
+        // SHADOW LEARNER: Generate Research Report
+        // ============================================
+        try {
+            const shadowLearner = new ShadowLearner(results);
+            results.shadowReport = shadowLearner.generateShadowReport();
+
+            // Log that Shadow Report is available
+            console.log('\n' + results.shadowReport.humanReadableSummary);
+        } catch (err) {
+            console.error('Shadow Learner error:', err.message);
+            results.shadowReport = { error: err.message };
+        }
+
+        return results;
     }
 
     async getCandlesForStock(symbol) {
