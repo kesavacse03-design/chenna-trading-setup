@@ -63,6 +63,7 @@ class RealisticTradingSimulator {
         this.missedEntries = [];
         this.expiredStocks = [];
         this.trappedSignals = [];
+        this.skippedSignals = [];  // Signals skipped due to symbol lock
         this.logs = [];
     }
 
@@ -73,6 +74,306 @@ class RealisticTradingSimulator {
         };
         this.logs.push(entry);
         console.log(`📋 [${symbol}] ${event}: ${reason}`);
+    }
+
+    /**
+     * ============================================
+     * SYMBOL-LEVEL LOCKING: One trade per stock at a time
+     * ============================================
+     * 
+     * Tests ALL strategies together. If multiple strategies signal on the same day,
+     * only the FIRST one wins. No new signals while a trade is active.
+     */
+    async simulateStockWithSymbolLock(stock, strategies, candles, categoryKey, startIndex = 50) {
+        const trades = [];
+        const invalidated = [];
+        const skipped = [];
+
+        // Current trade state for THIS STOCK (symbol lock)
+        let activeTradeState = null;
+        let cooldownUntilCandle = 0;  // After trade exit, wait before new signal
+
+        // Process each candle as "today"
+        for (let today = startIndex; today < candles.length; today++) {
+            const todayCandle = candles[today];
+            const todayDate = todayCandle.timestamp;
+            const availableHistory = candles.slice(0, today + 1);
+
+            const indicators = TechnicalAnalysis.getMarketContext(availableHistory);
+            if (!indicators) continue;
+
+            this.addExhaustionIndicators(indicators, availableHistory);
+
+            // ======== SYMBOL LOCK CHECK ========
+            if (activeTradeState) {
+                // Stock is in active trade - process that trade, skip all new signals
+                const tradeResult = this.processActiveTradeDay(
+                    activeTradeState, today, todayCandle, todayDate, candles
+                );
+
+                if (tradeResult.completed) {
+                    // Trade finished - collect result and release lock
+                    if (tradeResult.trade) trades.push(tradeResult.trade);
+                    if (tradeResult.invalidated) invalidated.push(tradeResult.invalidated);
+                    activeTradeState = null;
+                    cooldownUntilCandle = today + 1;  // 1 day cooldown after exit
+
+                    this.log(stock.symbol, 'SYMBOL_UNLOCKED',
+                        `Trade completed on ${todayDate}, symbol now available`);
+                }
+            } else if (today >= cooldownUntilCandle) {
+                // Symbol is free - check all strategies for signals
+                // FIRST strategy to signal wins (priority order)
+                for (const strategy of strategies) {
+                    let hasSignal = false;
+                    try {
+                        hasSignal = strategy.entry(indicators, availableHistory);
+                    } catch (e) {
+                        continue;
+                    }
+
+                    if (hasSignal) {
+                        // This strategy wins - LOCK THE SYMBOL
+                        activeTradeState = {
+                            state: TradeState.SIGNAL_CONFIRMED,
+                            symbol: stock.symbol,
+                            strategy: strategy.name,
+                            signalDate: todayDate,
+                            signalPrice: todayCandle.close,
+                            signalCandleIndex: today,
+                            waitingUntilCandle: today + this.config.swingDelayCandles,
+                            targetPercent: strategy.exit.target,
+                            stopPercent: strategy.exit.stop,
+                            targetPrice: todayCandle.close * (1 + strategy.exit.target / 100),
+                            stopPrice: todayCandle.close * (1 - strategy.exit.stop / 100),
+                            secondTargetPrice: todayCandle.close * (1 + (strategy.exit.target * 1.5) / 100),
+                            stateHistory: [
+                                { state: TradeState.WATCHING, date: todayDate, reason: 'Monitoring stock' },
+                                { state: TradeState.SIGNAL_CONFIRMED, date: todayDate, price: todayCandle.close, reason: 'Entry conditions met' }
+                            ]
+                        };
+
+                        this.log(stock.symbol, 'SYMBOL_LOCKED',
+                            `${strategy.name} signal on ${todayDate}, symbol locked until trade completes`);
+
+                        // Log any other strategies that would have signaled (skipped due to lock)
+                        for (const otherStrategy of strategies) {
+                            if (otherStrategy.name !== strategy.name) {
+                                try {
+                                    if (otherStrategy.entry(indicators, availableHistory)) {
+                                        skipped.push({
+                                            symbol: stock.symbol,
+                                            strategy: otherStrategy.name,
+                                            date: todayDate,
+                                            reason: `Symbol locked by ${strategy.name}`
+                                        });
+                                    }
+                                } catch (e) { }
+                            }
+                        }
+
+                        break;  // First strategy wins, stop checking others
+                    }
+                }
+            }
+        }
+
+        return { trades, invalidated, skipped };
+    }
+
+    /**
+     * Process a single day for an active trade
+     */
+    processActiveTradeDay(state, today, todayCandle, todayDate, candles) {
+        // STATE: SIGNAL_CONFIRMED (waiting for delay)
+        if (state.state === TradeState.SIGNAL_CONFIRMED) {
+            if (today >= state.waitingUntilCandle) {
+                // Delay period complete - validate entry
+                const entryValidation = this.validateEntryOnCandle(
+                    state.signalPrice, todayCandle, state.stopPrice
+                );
+
+                if (!entryValidation.valid) {
+                    // Entry INVALIDATED
+                    state.stateHistory.push({
+                        state: TradeState.INVALIDATED,
+                        date: todayDate,
+                        reason: entryValidation.reason
+                    });
+
+                    return {
+                        completed: true,
+                        invalidated: {
+                            symbol: state.symbol,
+                            strategy: state.strategy,
+                            signalDate: state.signalDate,
+                            signalPrice: state.signalPrice,
+                            invalidationDate: todayDate,
+                            invalidationReason: entryValidation.reason,
+                            lifecycle: state.stateHistory
+                        }
+                    };
+                } else {
+                    // Entry EXECUTED - update state
+                    state.state = TradeState.ENTERED;
+                    state.entryDate = todayDate;
+                    state.entryPrice = entryValidation.entryPrice;
+                    state.entryCandleIndex = today;
+                    state.highestPriceSinceEntry = state.entryPrice;
+                    state.partialExitDone = false;
+
+                    // Recalculate targets based on actual entry price
+                    state.targetPrice = state.entryPrice * (1 + state.targetPercent / 100);
+                    state.stopPrice = state.entryPrice * (1 - state.stopPercent / 100);
+                    state.secondTargetPrice = state.entryPrice * (1 + (state.targetPercent * 1.5) / 100);
+
+                    state.stateHistory.push({
+                        state: TradeState.WAITING_TO_ENTER,
+                        date: state.signalDate,
+                        reason: 'Delay period started'
+                    });
+                    state.stateHistory.push({
+                        state: TradeState.ENTERED,
+                        date: todayDate,
+                        price: state.entryPrice,
+                        reason: 'Entry validated and executed'
+                    });
+
+                    this.log(state.symbol, 'ENTRY_EXECUTED',
+                        `Signal ${state.signalDate} → Entry ${todayDate} @ ${state.entryPrice.toFixed(2)}`);
+                }
+            }
+            return { completed: false };
+        }
+
+        // STATE: ENTERED (before partial exit)
+        if (state.state === TradeState.ENTERED) {
+            state.highestPriceSinceEntry = Math.max(state.highestPriceSinceEntry, todayCandle.high);
+
+            // Check STOP first
+            if (todayCandle.low <= state.stopPrice) {
+                state.stateHistory.push({
+                    state: TradeState.STOPPED_OUT,
+                    date: todayDate,
+                    price: state.stopPrice,
+                    pnl: -state.stopPercent,
+                    reason: 'Stop loss hit'
+                });
+
+                const holdingDays = today - state.entryCandleIndex;
+                return {
+                    completed: true,
+                    trade: this.buildTradeRecord(state, todayDate, state.stopPrice,
+                        -state.stopPercent, holdingDays, 'STOP', 'LOSS')
+                };
+            }
+
+            // Check TARGET (partial exit)
+            if (todayCandle.high >= state.targetPrice) {
+                state.state = TradeState.TRAILING;
+                state.partialExitDone = true;
+                state.partialExitDate = todayDate;
+                state.partialExitPrice = state.targetPrice;
+                state.partialPnl = state.targetPercent * (this.config.partialExitPercent / 100);
+                state.trailingStopPrice = state.entryPrice;  // Breakeven
+                state.trailStartCandle = today;
+
+                state.stateHistory.push({
+                    state: TradeState.PARTIAL_EXIT,
+                    date: todayDate,
+                    price: state.targetPrice,
+                    pnl: state.partialPnl,
+                    reason: `80% booked at target`
+                });
+                state.stateHistory.push({
+                    state: TradeState.TRAILING,
+                    date: todayDate,
+                    reason: 'Trailing remaining 20%'
+                });
+
+                this.log(state.symbol, 'PARTIAL_EXIT',
+                    `Entry ${state.entryDate} → 80% booked ${todayDate} @ ${state.targetPrice.toFixed(2)}`);
+            }
+            return { completed: false };
+        }
+
+        // STATE: TRAILING (20% position)
+        if (state.state === TradeState.TRAILING) {
+            state.highestPriceSinceEntry = Math.max(state.highestPriceSinceEntry, todayCandle.high);
+
+            // Update trailing stop
+            const newTrailingStop = state.highestPriceSinceEntry * (1 - this.config.trailingStepPercent / 100);
+            state.trailingStopPrice = Math.max(state.trailingStopPrice, newTrailingStop);
+
+            const daysSinceTrailStart = today - state.trailStartCandle;
+
+            // Check SECOND TARGET
+            if (todayCandle.high >= state.secondTargetPrice) {
+                const trailingPnl = (state.targetPercent * 1.5) * (this.config.trailingPositionPercent / 100);
+                const totalPnl = state.partialPnl + trailingPnl;
+
+                state.stateHistory.push({
+                    state: TradeState.FULL_EXIT,
+                    date: todayDate,
+                    price: state.secondTargetPrice,
+                    pnl: trailingPnl,
+                    reason: 'Second target hit'
+                });
+
+                const holdingDays = today - state.entryCandleIndex;
+                return {
+                    completed: true,
+                    trade: this.buildTradeRecord(state, todayDate, state.secondTargetPrice,
+                        totalPnl, holdingDays, 'SECOND_TARGET', 'WIN')
+                };
+            }
+
+            // Check TRAILING STOP
+            if (todayCandle.low <= state.trailingStopPrice) {
+                const trailingPnl = ((state.trailingStopPrice - state.entryPrice) / state.entryPrice * 100)
+                    * (this.config.trailingPositionPercent / 100);
+                const totalPnl = state.partialPnl + trailingPnl;
+
+                state.stateHistory.push({
+                    state: TradeState.FULL_EXIT,
+                    date: todayDate,
+                    price: state.trailingStopPrice,
+                    pnl: trailingPnl,
+                    reason: 'Trailing stop hit'
+                });
+
+                const holdingDays = today - state.entryCandleIndex;
+                return {
+                    completed: true,
+                    trade: this.buildTradeRecord(state, todayDate, state.trailingStopPrice,
+                        totalPnl, holdingDays, 'TRAILING_STOP', 'WIN')
+                };
+            }
+
+            // Check TIME EXPIRY
+            if (daysSinceTrailStart >= this.config.maxTrailDays) {
+                const trailingPnl = ((todayCandle.close - state.entryPrice) / state.entryPrice * 100)
+                    * (this.config.trailingPositionPercent / 100);
+                const totalPnl = state.partialPnl + trailingPnl;
+
+                state.stateHistory.push({
+                    state: TradeState.FULL_EXIT,
+                    date: todayDate,
+                    price: todayCandle.close,
+                    pnl: trailingPnl,
+                    reason: 'Trail time expiry'
+                });
+
+                const holdingDays = today - state.entryCandleIndex;
+                return {
+                    completed: true,
+                    trade: this.buildTradeRecord(state, todayDate, todayCandle.close,
+                        totalPnl, holdingDays, 'TIME_EXPIRY', totalPnl > 0 ? 'WIN' : 'LOSS')
+                };
+            }
+        }
+
+        return { completed: false };
     }
 
     /**
@@ -450,17 +751,16 @@ class RealisticTradingSimulator {
             }
 
             if (this.config.backtestMode) {
-                this.log(stock.symbol, 'BACKTEST_MODE', 'Starting time-forward replay');
+                this.log(stock.symbol, 'BACKTEST_MODE', 'Starting time-forward replay with symbol lock');
             }
 
-            // Test each strategy with TIME-FORWARD REPLAY
-            for (const strategy of strategies) {
-                const result = await this.simulateStockTimeline(stock, strategy, candles, categoryKey, 50);
+            // SYMBOL-LEVEL LOCKING: Process all strategies together, one trade at a time
+            const result = await this.simulateStockWithSymbolLock(stock, strategies, candles, categoryKey, 50);
 
-                // Collect results
-                this.executedTrades.push(...result.trades);
-                this.invalidatedSignals.push(...result.invalidated);
-            }
+            // Collect results
+            this.executedTrades.push(...result.trades);
+            this.invalidatedSignals.push(...result.invalidated);
+            this.skippedSignals.push(...(result.skipped || []));
         }
 
         return this.getResults();
@@ -476,6 +776,7 @@ class RealisticTradingSimulator {
                 totalSignalsGenerated: totalSignals,
                 executedTrades: this.executedTrades.length,
                 invalidatedSignals: this.invalidatedSignals.length,
+                skippedBySymbolLock: this.skippedSignals.length,
                 expiredStocks: this.expiredStocks.length,
                 trappedSignals: this.trappedSignals.length,
                 winRate: this.executedTrades.length > 0 ? (wins / this.executedTrades.length * 100).toFixed(1) : 0,
@@ -487,6 +788,7 @@ class RealisticTradingSimulator {
             },
             executedTrades: this.executedTrades,
             invalidatedSignals: this.invalidatedSignals,
+            skippedSignals: this.skippedSignals,
             expiredStocks: this.expiredStocks,
             trappedSignals: this.trappedSignals,
             logs: this.logs
