@@ -1,0 +1,120 @@
+{
+  "runId": "realistic_DOWNSIDE_LOM_SWING_1765880073476",
+  "type": "REALISTIC_SIMULATION",
+  "category": "DOWNSIDE_LOM_SWING",
+  "timestamp": "2025-12-16T10:14:33.477Z",
+  "timeElapsed": "0.0min",
+  "summary": {
+    "totalSignalsGenerated": 0,
+    "executedTrades": 0,
+    "invalidatedSignals": 0,
+    "expiredStocks": 7,
+    "trappedSignals": 0,
+    "winRate": 0,
+    "wins": 0,
+    "losses": 0,
+    "avgPnl": 0
+  },
+  "executedTrades": [],
+  "invalidatedSignals": [],
+  "expiredStocks": [
+    {
+      "symbol": "NTPC",
+      "reason": "Swing stock expired: 30 trading days old (max 10)",
+      "tradingDays": 30
+    },
+    {
+      "symbol": "IOC",
+      "reason": "Swing stock expired: 46 trading days old (max 10)",
+      "tradingDays": 46
+    },
+    {
+      "symbol": "UNITDSPR",
+      "reason": "Swing stock expired: 46 trading days old (max 10)",
+      "tradingDays": 46
+    },
+    {
+      "symbol": "BLUESTARCO",
+      "reason": "Swing stock expired: 46 trading days old (max 10)",
+      "tradingDays": 46
+    },
+    {
+      "symbol": "CROMPTON",
+      "reason": "Swing stock expired: 46 trading days old (max 10)",
+      "tradingDays": 46
+    },
+    {
+      "symbol": "UNOMINDA",
+      "reason": "Swing stock expired: 46 trading days old (max 10)",
+      "tradingDays": 46
+    },
+    {
+      "symbol": "MFSL",
+      "reason": "Swing stock expired: 46 trading days old (max 10)",
+      "tradingDays": 46
+    }
+  ],
+  "trappedSignals": [],
+  "logs": [
+    {
+      "timestamp": "2025-12-16T10:14:33.425Z",
+      "symbol": "NTPC",
+      "event": "STOCK_EXPIRED",
+      "reason": "Swing stock expired: 30 trading days old (max 10)"
+    },
+    {
+      "timestamp": "2025-12-16T10:14:33.441Z",
+      "symbol": "PIDILITIND",
+      "event": "INSUFFICIENT_DATA",
+      "reason": "Only 3 candles available (need 50+)"
+    },
+    {
+      "timestamp": "2025-12-16T10:14:33.444Z",
+      "symbol": "IOC",
+      "event": "STOCK_EXPIRED",
+      "reason": "Swing stock expired: 46 trading days old (max 10)"
+    },
+    {
+      "timestamp": "2025-12-16T10:14:33.447Z",
+      "symbol": "UNITDSPR",
+      "event": "STOCK_EXPIRED",
+      "reason": "Swing stock expired: 46 trading days old (max 10)"
+    },
+    {
+      "timestamp": "2025-12-16T10:14:33.450Z",
+      "symbol": "BLUESTARCO",
+      "event": "STOCK_EXPIRED",
+      "reason": "Swing stock expired: 46 trading days old (max 10)"
+    },
+    {
+      "timestamp": "2025-12-16T10:14:33.452Z",
+      "symbol": "CROMPTON",
+      "event": "STOCK_EXPIRED",
+      "reason": "Swing stock expired: 46 trading days old (max 10)"
+    },
+    {
+      "timestamp": "2025-12-16T10:14:33.454Z",
+      "symbol": "UNOMINDA",
+      "event": "STOCK_EXPIRED",
+      "reason": "Swing stock expired: 46 trading days old (max 10)"
+    },
+    {
+      "timestamp": "2025-12-16T10:14:33.456Z",
+      "symbol": "MFSL",
+      "event": "STOCK_EXPIRED",
+      "reason": "Swing stock expired: 46 trading days old (max 10)"
+    },
+    {
+      "timestamp": "2025-12-16T10:14:33.473Z",
+      "symbol": "CAMS",
+      "event": "INSUFFICIENT_DATA",
+      "reason": "Only 3 candles available (need 50+)"
+    },
+    {
+      "timestamp": "2025-12-16T10:14:33.475Z",
+      "symbol": "BANKNIFTY",
+      "event": "INSUFFICIENT_DATA",
+      "reason": "Only 0 candles available (need 50+)"
+    }
+  ]
+}

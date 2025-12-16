@@ -18,7 +18,7 @@ function registerRealisticSimRoutes(app) {
      */
     app.post('/api/strategy/realistic-simulation', async (req, res) => {
         try {
-            const { categoryKey, quickMode = false } = req.body;
+            const { categoryKey, quickMode = false, backtestMode = true } = req.body;
 
             if (!categoryKey) {
                 return res.status(400).json({ ok: false, error: 'categoryKey is required' });
@@ -26,10 +26,11 @@ function registerRealisticSimRoutes(app) {
 
             console.log(`\n🎯 [Realistic Simulation] Starting for ${categoryKey}`);
             console.log(`   Mode: ${quickMode ? 'Quick (10 stocks)' : 'Full'}`);
+            console.log(`   Backtest Mode: ${backtestMode ? 'ON (skip validity)' : 'OFF (enforce validity)'}`);
 
             // Import simulator
             const { RealisticTradingSimulator } = require('../strategy/RealisticTradingSimulator.cjs');
-            const simulator = new RealisticTradingSimulator();
+            const simulator = new RealisticTradingSimulator({ backtestMode });
 
             // Get stocks for category
             const categoryStocks = await prisma.stockCategory.findMany({

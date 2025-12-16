@@ -51,7 +51,8 @@ class RealisticTradingSimulator {
             partialExitPercent: options.partialExitPercent || 80,
             trailingPositionPercent: options.trailingPositionPercent || 20,
             maxTrailDays: options.maxTrailDays || 5,
-            trailingStepPercent: options.trailingStepPercent || 0.5
+            trailingStepPercent: options.trailingStepPercent || 0.5,
+            backtestMode: options.backtestMode || false  // Skip validity for historical testing
         };
 
         // Results containers
@@ -597,18 +598,22 @@ class RealisticTradingSimulator {
                 continue;
             }
 
-            // PHASE 1: Check stock validity
-            // For backtest, we use the first available date as "current"
-            const simulationDate = candles[50]?.timestamp;
-            const validityCheck = this.isStockValid(stock, categoryKey, simulationDate);
+            // PHASE 1: Check stock validity (skip in backtest mode)
+            if (!this.config.backtestMode) {
+                // For backtest, we use the first available date as "current"
+                const simulationDate = candles[50]?.timestamp;
+                const validityCheck = this.isStockValid(stock, categoryKey, simulationDate);
 
-            if (!validityCheck.valid) {
-                this.expiredStocks.push({
-                    symbol: stock.symbol,
-                    reason: validityCheck.reason,
-                    tradingDays: validityCheck.tradingDays
-                });
-                continue;
+                if (!validityCheck.valid) {
+                    this.expiredStocks.push({
+                        symbol: stock.symbol,
+                        reason: validityCheck.reason,
+                        tradingDays: validityCheck.tradingDays
+                    });
+                    continue;
+                }
+            } else {
+                this.log(stock.symbol, 'BACKTEST_MODE', 'Validity check skipped (backtest mode)');
             }
 
             // Test each strategy
