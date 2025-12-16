@@ -3,6 +3,7 @@ import { XMarkIcon } from './icons/XMarkIcon';
 import { BeakerIcon } from './icons/BeakerIcon';
 import { SpinnerIcon } from './icons/SpinnerIcon';
 import { ShadowReportPanel } from './ShadowReportPanel';
+import { ResearchBacktestModal } from './ResearchBacktestModal';
 
 // Helper to safely convert metrics to numbers (prevents .toFixed() TypeError)
 function safeNumber(value: any, fallback = 0): number {
@@ -62,9 +63,8 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
     const [stockCount, setStockCount] = useState(10);
     const [forceRefresh, setForceRefresh] = useState(false);
 
-    // Shadow Report from realistic backtest
-    const [shadowReport, setShadowReport] = useState<any | null>(null);
-    const [backtestRunning, setBacktestRunning] = useState(false);
+    // Research Backtest Modal (replaces inline backtest)
+    const [showResearchModal, setShowResearchModal] = useState(false);
 
     // Load cache status AND previous results when window opens
     useEffect(() => {
@@ -405,45 +405,7 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
         }
     };
 
-    // Run Realistic Backtest with Shadow Learner
-    const handleRunBacktest = async () => {
-        setBacktestRunning(true);
-        setShadowReport(null);
-        setLogs(prev => [...prev, '🎯 Starting Realistic Backtest with Shadow Learner...']);
-
-        try {
-            const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
-            const response = await fetch(`${apiBase}/api/strategy/realistic-simulation`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ categoryKey, quickMode, backtestMode: true })
-            });
-
-            const data = await response.json();
-
-            if (data.ok) {
-                setLogs(prev => [
-                    ...prev,
-                    `✅ Backtest complete: ${data.summary?.executedTrades || 0} trades`,
-                    `📊 Win Rate: ${data.summary?.winRate}%`,
-                    `💰 Total PnL: ${data.summary?.totalPnl}%`,
-                    '🔮 Shadow Report generated!'
-                ]);
-
-                // Set Shadow Report for display
-                if (data.shadowReport) {
-                    setShadowReport(data.shadowReport);
-                }
-            } else {
-                throw new Error(data.error || 'Backtest failed');
-            }
-        } catch (err: any) {
-            setError(err.message);
-            setLogs(prev => [...prev, `❌ Backtest error: ${err.message}`]);
-        } finally {
-            setBacktestRunning(false);
-        }
-    };
+    // NOTE: Backtest functionality moved to ResearchBacktestModal
 
     if (!isOpen) return null;
 
@@ -602,23 +564,14 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                                     </>
                                 )}
                             </button>
-
-                            {/* Run Realistic Backtest Button */}
+                            {/* Run Research Backtest - Opens Modal */}
                             <button
-                                onClick={handleRunBacktest}
-                                disabled={backtestRunning || isRunning}
-                                className="w-full bg-gradient-to-r from-purple-600 to-indigo-700 hover:from-purple-500 hover:to-indigo-600 text-white font-bold py-3 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-purple-500/50"
+                                onClick={() => setShowResearchModal(true)}
+                                disabled={isRunning}
+                                className="w-full bg-gradient-to-r from-purple-600 to-indigo-700 hover:from-purple-500 hover:to-indigo-600 text-white font-bold py-3 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-purple-500/50 border border-purple-400/30"
                             >
-                                {backtestRunning ? (
-                                    <>
-                                        <SpinnerIcon className="w-5 h-5 animate-spin" />
-                                        Running Backtest...
-                                    </>
-                                ) : (
-                                    <>
-                                        🔮 Run Backtest (with Shadow Report)
-                                    </>
-                                )}
+                                🔬 Research Backtest + Shadow
+                                <span className="text-xs bg-purple-900/50 px-2 py-0.5 rounded-full">Scientific</span>
                             </button>
 
                             {/* Promotion Buttons - ALWAYS VISIBLE FOR TESTING */}
@@ -672,16 +625,7 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                         </div>
                     </div>
 
-                    {/* Shadow Report Panel - Shows after backtest runs */}
-                    {shadowReport && (
-                        <div className="mb-6">
-                            <ShadowReportPanel
-                                shadowReport={shadowReport}
-                                version="V1"
-                                category={categoryKey}
-                            />
-                        </div>
-                    )}
+                    {/* NOTE: Shadow Report now displays in ResearchBacktestModal */}
 
                     {/* Right Panel: Strategy Logic & Results */}
                     <div className="flex-1 bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-emerald-500/20 overflow-y-auto custom-scrollbar">
@@ -876,6 +820,13 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                     </div>
                 </div>
             </div>
+
+            {/* Research Backtest Modal */}
+            <ResearchBacktestModal
+                isOpen={showResearchModal}
+                onClose={() => setShowResearchModal(false)}
+                categoryKey={categoryKey}
+            />
         </div>
     );
 };
