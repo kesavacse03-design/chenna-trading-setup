@@ -2,7 +2,7 @@
   "category": "DOWNSIDE_LOM_SWING",
   "name": "V1 Default - DOWNSIDE_LOM_SWING",
   "version": "2.0.0",
-  "createdAt": "2025-12-16T06:59:41.380Z",
+  "createdAt": "2025-12-16T07:38:35.256Z",
   "thesis": "This category works when Panic selling happened, weak hands exiting, institutions absorbing",
   "categoryIntent": "Late-stage selling → exhaustion → bounce",
   "mustDiscover": "Exhaustion + Stabilization signals",
@@ -53,19 +53,19 @@
     }
   ],
   "expectedBehavior": {
-    "avgHoldingTime": "2.0 days",
-    "avgDrawdown": "2.0%",
-    "avgMove": "2.5%",
-    "winRate": "100.0%"
+    "avgHoldingTime": "2.4 days",
+    "avgDrawdown": "4.0%",
+    "avgMove": "0.4%",
+    "winRate": "53.8%"
   },
   "entryRules": {
-    "logic": "RSI Divergence Exhaustion",
+    "logic": "Volume Dry-Up Exhaustion",
     "description": "Best performing logic from top-ranked strategy"
   },
   "exitRules": {
-    "target": 2.5,
+    "target": 2,
     "stop": 1.5,
-    "source": "From RSI Divergence Exhaustion"
+    "source": "From Volume Dry-Up Exhaustion"
   },
   "trapFilters": {
     "enabled": true,
@@ -77,32 +77,32 @@
     "maxPositions": 5
   },
   "expectedMetrics": {
-    "accuracy": "100.0%",
-    "expectancy": "2.50%",
+    "accuracy": "53.8%",
+    "expectancy": "0.38%",
     "trapAvoidance": "0.0%",
-    "avgHolding": "2.0 days"
+    "avgHolding": "2.4 days"
   },
   "contributors": [
     {
       "rank": 1,
-      "logic": "RSI Divergence Exhaustion",
-      "score": "0.0",
-      "trades": 1,
-      "winRate": "100.0%"
+      "logic": "Volume Dry-Up Exhaustion",
+      "score": "30.0",
+      "trades": 13,
+      "winRate": "53.8%"
     },
     {
       "rank": 2,
-      "logic": "Volume Dry-Up Exhaustion",
+      "logic": "RSI Divergence Exhaustion",
       "score": "0.0",
-      "trades": 1,
-      "winRate": "100.0%"
+      "trades": 7,
+      "winRate": "42.9%"
     },
     {
       "rank": 3,
       "logic": "Lower Wick Dominance",
       "score": "0.0",
-      "trades": 2,
-      "winRate": "100.0%"
+      "trades": 27,
+      "winRate": "33.3%"
     }
   ]
 }

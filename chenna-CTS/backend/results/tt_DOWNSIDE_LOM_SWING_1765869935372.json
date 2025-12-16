@@ -1,0 +1,424 @@
+{
+  "runId": "tt_DOWNSIDE_LOM_SWING_1765869935372",
+  "type": "TIME_TRAVEL",
+  "category": "DOWNSIDE_LOM_SWING",
+  "timestamp": "2025-12-16T07:25:35.372Z",
+  "summary": {
+    "totalStrategies": 8,
+    "totalStocks": 10,
+    "timeElapsed": "1.0min",
+    "topStrategy": {
+      "name": "RSI Divergence Exhaustion",
+      "description": "Price makes new low but RSI makes higher low - selling pressure weakening",
+      "exit": {
+        "target": 2.5,
+        "stop": 1.5
+      },
+      "id": 1,
+      "family": "exhaustion"
+    },
+    "topWinRate": 100,
+    "topScore": 0
+  },
+  "top3Strategies": [
+    {
+      "name": {
+        "name": "RSI Divergence Exhaustion",
+        "description": "Price makes new low but RSI makes higher low - selling pressure weakening",
+        "exit": {
+          "target": 2.5,
+          "stop": 1.5
+        },
+        "id": 1,
+        "family": "exhaustion"
+      },
+      "score": 0,
+      "metrics": {
+        "tradeCount": 1,
+        "winRate": 100,
+        "avgPnl": 2.499999999999992,
+        "expectancy": 2.499999999999992,
+        "avgHolding": 2,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "trades": 1
+    },
+    {
+      "name": {
+        "name": "Volume Dry-Up Exhaustion",
+        "description": "Volume declines after selling spike - sellers exhausted",
+        "exit": {
+          "target": 2,
+          "stop": 1.5
+        },
+        "id": 2,
+        "family": "exhaustion"
+      },
+      "score": 0,
+      "metrics": {
+        "tradeCount": 1,
+        "winRate": 100,
+        "avgPnl": 2.00000000000001,
+        "expectancy": 2.00000000000001,
+        "avgHolding": 3,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "trades": 1
+    },
+    {
+      "name": {
+        "name": "Lower Wick Dominance",
+        "description": "Candles with large lower wicks - buyers absorbing selling",
+        "exit": {
+          "target": 2,
+          "stop": 1.2
+        },
+        "id": 3,
+        "family": "exhaustion"
+      },
+      "score": 0,
+      "metrics": {
+        "tradeCount": 2,
+        "winRate": 100,
+        "avgPnl": 1.9999999999999998,
+        "expectancy": 1.9999999999999998,
+        "avgHolding": 2,
+        "maxDrawdown": 0,
+        "sharpe": 474063118670578.5,
+        "trapAvoidanceRate": 0
+      },
+      "trades": 2
+    }
+  ],
+  "v1Strategy": {
+    "category": "DOWNSIDE_LOM_SWING",
+    "name": "V1 Default - DOWNSIDE_LOM_SWING",
+    "version": "2.0.0",
+    "createdAt": "2025-12-16T07:25:35.357Z",
+    "thesis": "This category works when Panic selling happened, weak hands exiting, institutions absorbing",
+    "categoryIntent": "Late-stage selling → exhaustion → bounce",
+    "mustDiscover": "Exhaustion + Stabilization signals",
+    "confirmations": [
+      {
+        "rank": 1,
+        "rule": "rsi_exhaustion_zone",
+        "description": "RSI in exhaustion zone (not fixed value)",
+        "importance": "HIGH"
+      },
+      {
+        "rank": 2,
+        "rule": "atr_spike_contraction",
+        "description": "ATR peaks then contracts",
+        "importance": "HIGH"
+      },
+      {
+        "rank": 3,
+        "rule": "lower_wick_dominance",
+        "description": "Lower wicks show buying",
+        "importance": "HIGH"
+      },
+      {
+        "rank": 4,
+        "rule": "volume_drying",
+        "description": "Volume declines after sell-off",
+        "importance": "HIGH"
+      },
+      {
+        "rank": 5,
+        "rule": "holding_above_low",
+        "description": "Price holds above recent low for 2 sessions",
+        "importance": "HIGH"
+      }
+    ],
+    "invalidations": [
+      {
+        "rule": "trend_continuation",
+        "impact": "Reduces win rate when present"
+      },
+      {
+        "rule": "momentum_chasing",
+        "impact": "Reduces win rate when present"
+      },
+      {
+        "rule": "breakout_logic",
+        "impact": "Reduces win rate when present"
+      }
+    ],
+    "expectedBehavior": {
+      "avgHoldingTime": "2.0 days",
+      "avgDrawdown": "2.0%",
+      "avgMove": "2.5%",
+      "winRate": "100.0%"
+    },
+    "entryRules": {
+      "logic": "RSI Divergence Exhaustion",
+      "description": "Best performing logic from top-ranked strategy"
+    },
+    "exitRules": {
+      "target": 2.5,
+      "stop": 1.5,
+      "source": "From RSI Divergence Exhaustion"
+    },
+    "trapFilters": {
+      "enabled": true,
+      "skipOnTraps": true,
+      "minConfidence": 0.6
+    },
+    "positionSizing": {
+      "riskPerTrade": 1.5,
+      "maxPositions": 5
+    },
+    "expectedMetrics": {
+      "accuracy": "100.0%",
+      "expectancy": "2.50%",
+      "trapAvoidance": "0.0%",
+      "avgHolding": "2.0 days"
+    },
+    "contributors": [
+      {
+        "rank": 1,
+        "logic": "RSI Divergence Exhaustion",
+        "score": "0.0",
+        "trades": 1,
+        "winRate": "100.0%"
+      },
+      {
+        "rank": 2,
+        "logic": "Volume Dry-Up Exhaustion",
+        "score": "0.0",
+        "trades": 1,
+        "winRate": "100.0%"
+      },
+      {
+        "rank": 3,
+        "logic": "Lower Wick Dominance",
+        "score": "0.0",
+        "trades": 2,
+        "winRate": "100.0%"
+      }
+    ]
+  },
+  "perSymbol": [
+    {
+      "symbol": "NTPC",
+      "trades": [
+        {
+          "strategy": "RSI Divergence Exhaustion",
+          "entry": {
+            "price": 328.7,
+            "date": "2025-09-05T00:00:00+05:30",
+            "dateIndex": 52
+          },
+          "exit": {
+            "price": 336.91749999999996,
+            "date": "2025-09-03T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "TARGET"
+          },
+          "pnl": 2.499999999999992,
+          "holdingDays": 2,
+          "result": "WIN"
+        },
+        {
+          "strategy": "Volume Dry-Up Exhaustion",
+          "entry": {
+            "price": 330.7,
+            "date": "2025-09-01T00:00:00+05:30",
+            "dateIndex": 56
+          },
+          "exit": {
+            "price": 337.314,
+            "date": "2025-08-26T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "TARGET"
+          },
+          "pnl": 2.00000000000001,
+          "holdingDays": 3,
+          "result": "WIN"
+        },
+        {
+          "strategy": "Lower Wick Dominance",
+          "entry": {
+            "price": 328.7,
+            "date": "2025-09-05T00:00:00+05:30",
+            "dateIndex": 52
+          },
+          "exit": {
+            "price": 335.274,
+            "date": "2025-09-03T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "TARGET"
+          },
+          "pnl": 2.000000000000004,
+          "holdingDays": 2,
+          "result": "WIN"
+        },
+        {
+          "strategy": "Lower Wick Dominance",
+          "entry": {
+            "price": 330.8,
+            "date": "2025-08-28T00:00:00+05:30",
+            "dateIndex": 58
+          },
+          "exit": {
+            "price": 337.416,
+            "date": "2025-08-25T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "TARGET"
+          },
+          "pnl": 1.9999999999999956,
+          "holdingDays": 2,
+          "result": "WIN"
+        },
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 328.7,
+            "date": "2025-09-05T00:00:00+05:30",
+            "dateIndex": 52
+          },
+          "exit": {
+            "price": 338.561,
+            "date": "2025-08-25T00:00:00+05:30",
+            "dayNum": 8,
+            "reason": "TARGET"
+          },
+          "pnl": 2.9999999999999973,
+          "holdingDays": 8,
+          "result": "WIN"
+        }
+      ],
+      "totalTrades": 5,
+      "wins": 5,
+      "losses": 0,
+      "winRate": "100.0",
+      "totalPnL": "11.50"
+    }
+  ],
+  "allStrategies": [
+    {
+      "name": "RSI Divergence Exhaustion",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 1,
+        "winRate": 100,
+        "avgPnl": 2.499999999999992,
+        "expectancy": 2.499999999999992,
+        "avgHolding": 2,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "failReason": "Insufficient trades: 1 < 10 required"
+    },
+    {
+      "name": "Volume Dry-Up Exhaustion",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 1,
+        "winRate": 100,
+        "avgPnl": 2.00000000000001,
+        "expectancy": 2.00000000000001,
+        "avgHolding": 3,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "failReason": "Insufficient trades: 1 < 10 required"
+    },
+    {
+      "name": "Lower Wick Dominance",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 2,
+        "winRate": 100,
+        "avgPnl": 1.9999999999999998,
+        "expectancy": 1.9999999999999998,
+        "avgHolding": 2,
+        "maxDrawdown": 0,
+        "sharpe": 474063118670578.5,
+        "trapAvoidanceRate": 0
+      },
+      "failReason": "Insufficient trades: 2 < 10 required"
+    },
+    {
+      "name": "Failed Breakdown",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 1,
+        "winRate": 100,
+        "avgPnl": 2.9999999999999973,
+        "expectancy": 2.9999999999999973,
+        "avgHolding": 8,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "failReason": "Insufficient trades: 1 < 10 required"
+    },
+    {
+      "name": "ATR Spike Contraction",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 0,
+        "winRate": 0,
+        "avgPnl": 0,
+        "expectancy": 0,
+        "avgHolding": 0,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "failReason": "Insufficient trades: 0 < 10 required"
+    },
+    {
+      "name": "Hammer at Support",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 0,
+        "winRate": 0,
+        "avgPnl": 0,
+        "expectancy": 0,
+        "avgHolding": 0,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "failReason": "Insufficient trades: 0 < 10 required"
+    },
+    {
+      "name": "Bullish Engulfing Reversal",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 0,
+        "winRate": 0,
+        "avgPnl": 0,
+        "expectancy": 0,
+        "avgHolding": 0,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "failReason": "Insufficient trades: 0 < 10 required"
+    },
+    {
+      "name": "Morning Star Reversal",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 0,
+        "winRate": 0,
+        "avgPnl": 0,
+        "expectancy": 0,
+        "avgHolding": 0,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "failReason": "Insufficient trades: 0 < 10 required"
+    }
+  ]
+}

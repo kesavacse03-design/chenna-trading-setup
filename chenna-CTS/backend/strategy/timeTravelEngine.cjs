@@ -608,7 +608,7 @@ class TimeTravelBacktestEngine {
         const trapScan = this.trapDetector.scanAllTraps(availableCandles, context);
 
         if (trapScan.recommendation === "AVOID") {
-            console.log(`⚠️ Trap detected for ${stock.symbol} on ${entry.date}: ${trapScan.trapsDetected} traps`);
+            console.log(`⚠️ Trap detected for ${stock.symbol} on ${currentDate}: ${trapScan.trapsDetected} traps`);
             return {
                 symbol: stock.symbol,
                 logic: logic.name,
