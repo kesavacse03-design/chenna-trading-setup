@@ -140,7 +140,7 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
         }
     };
 
-    // Handle Run Backtest - Now triggers AUTO-STRATEGY GENERATION
+    // Handle Run Backtest - Now triggers REALISTIC TRADING SIMULATION
     const handleRunBacktest = async () => {
         setIsRunningBacktest(true);
         setBacktestProgress(10);
@@ -149,14 +149,14 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
         try {
             const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
 
-            showToast('Running V1 strategy backtest...', 'info');
+            showToast('🎯 Running Realistic Trading Simulation (6 phases)...', 'info');
             setBacktestProgress(30);
 
-            // Call V1 backtest API
-            const response = await fetch(`${apiBase}/api/strategy/run-v1-backtest`, {
+            // Call Realistic Simulation API (includes signal delays, partial exits, lifecycle states)
+            const response = await fetch(`${apiBase}/api/strategy/realistic-simulation`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ categoryKey })
+                body: JSON.stringify({ categoryKey, backtestMode: true })
             });
 
             setBacktestProgress(70);
@@ -164,44 +164,48 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
             const result = await response.json();
 
             if (!result.ok) {
-                throw new Error(result.error || 'Failed to generate strategy');
+                throw new Error(result.error || 'Failed to run realistic simulation');
             }
 
             setBacktestProgress(90);
 
-            // Update editor with generated strategy
-            if (result.strategy) {
+            // Update editor with strategy info
+            if (editorLogic) {
                 setEditorLogic({
-                    description: result.strategy.description,
-                    rules: result.strategy.rules,
-                    entry: result.strategy.entry,
-                    target: result.strategy.target,
-                    stopLoss: result.strategy.stopLoss
+                    ...editorLogic,
+                    description: `Realistic Simulation - ${result.summary.executedTrades} trades, ${result.summary.winRate}% win rate`
                 });
             }
 
-            // Display backtest results
-            if (result.backtest) {
-                setEventReport({
-                    categoryKey,
-                    accuracy: result.backtest.accuracy,
-                    totalTrades: result.backtest.totalTrades,
-                    totalNetPnl: result.backtest.netPnl,
-                    expectancy: result.backtest.expectancy,
-                    maxDrawdown: result.backtest.maxDrawdown,
-                    avgRMultiple: result.backtest.avgRMultiple
-                });
+            // Display backtest results from realistic simulation
+            const summary = result.summary;
+            setEventReport({
+                categoryKey,
+                accuracy: parseFloat(summary.winRate) / 100,
+                totalTrades: summary.executedTrades,
+                totalNetPnl: parseFloat(summary.avgPnl) * summary.executedTrades,
+                expectancy: parseFloat(summary.avgPnl) / 100,
+                maxDrawdown: summary.losses,
+                avgRMultiple: summary.executedTrades > 0 ? (summary.wins - summary.losses) / summary.executedTrades : 0,
+                // New realistic simulation stats
+                invalidatedSignals: summary.invalidatedSignals,
+                totalSignals: summary.totalSignalsGenerated
+            });
+
+            // Store CSV path for download
+            if (result.files?.json) {
+                (window as any).__LAST_REALISTIC_RESULTS = result.files.json;
             }
 
             setBacktestProgress(100);
             showToast(
-                `Strategy generated! ${(result.backtest.accuracy * 100).toFixed(1)}% accuracy with ${result.backtest.totalTrades} trades`,
+                `✅ Realistic Sim Complete! ${summary.winRate}% win rate, ${summary.executedTrades} trades (${summary.invalidatedSignals} invalidated by delay)`,
                 'success'
             );
 
         } catch (error) {
             const errorMsg = error instanceof Error ? error.message : 'Unknown error';
-            showToast(`Generation failed: ${errorMsg}`, 'error');
+            showToast(`Simulation failed: ${errorMsg}`, 'error');
         } finally {
             setIsRunningBacktest(false);
             setBacktestProgress(0);
