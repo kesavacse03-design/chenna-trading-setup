@@ -38,6 +38,9 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
     const [activeTab, setActiveTab] = useState<'before' | 'after'>('after');
     const [showPromoteConfirm, setShowPromoteConfirm] = useState(false);
 
+    // 2-Pass Research Progress Tracking
+    const [researchPhase, setResearchPhase] = useState<'idle' | 'pass1' | 'observing' | 'pass2' | 'complete' | 'error'>('idle');
+
     // Category context
     const [categoryContext, setCategoryContext] = useState({
         thesis: 'Capture exhaustion bounces in oversold conditions',
@@ -90,55 +93,143 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
         setIsRunning(true);
         setError(null);
         setShadowReport(null);
-        setLogs(['🔬 Starting Research Backtest with Shadow Learner...', '⏳ This may take several minutes (research-grade analysis)']);
+        setComparison({ before: null, after: null });
+        setResearchPhase('pass1');
+        setLogs([
+            '═══════════════════════════════════════════════════',
+            '🔬 RESEARCH BACKTEST: 2-PASS SCIENTIFIC PROCESS',
+            '═══════════════════════════════════════════════════',
+            '',
+            '📋 PASS 1: Testing ORIGINAL logic (no changes)'
+        ]);
 
         try {
             const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
-            const response = await fetch(`${apiBase}/api/strategy/realistic-simulation`, {
+
+            // ═══════════════════════════════════════════
+            // PASS 1: Run ORIGINAL logic (CONTROL GROUP)
+            // ═══════════════════════════════════════════
+            const pass1Response = await fetch(`${apiBase}/api/strategy/realistic-simulation`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ categoryKey, quickMode: false, backtestMode: true })
+                body: JSON.stringify({
+                    categoryKey,
+                    quickMode: false,
+                    backtestMode: true,
+                    researchPass: 1,  // Signal this is Pass 1 - no refinements
+                    applyRefinements: false
+                })
             });
 
-            const data = await response.json();
+            const pass1Data = await pass1Response.json();
 
-            if (data.ok) {
-                // Update "after" metrics
-                setComparison(prev => ({
-                    ...prev,
-                    after: {
-                        trades: data.summary?.executedTrades || 0,
-                        wins: data.summary?.wins || 0,
-                        losses: data.summary?.losses || 0,
-                        winRate: data.summary?.winRate || '0',
-                        totalPnl: data.summary?.totalPnl || '0',
-                        expectancy: data.summary?.expectancy || '0',
-                        capitalWinRate: data.summary?.capitalWinRate || '0',
-                        avgHoldingDays: data.summary?.avgHoldingDays || '0',
-                        targetHitRate: data.summary?.targetHitRate || '0'
-                    }
-                }));
-
-                // Set Shadow Report
-                if (data.shadowReport) {
-                    setShadowReport(data.shadowReport);
-                }
-
-                setLogs(prev => [
-                    ...prev,
-                    '✅ Research Backtest Complete!',
-                    `📈 Trades: ${data.summary?.executedTrades || 0}`,
-                    `🎯 Win Rate: ${data.summary?.winRate}%`,
-                    `💰 Total PnL: ${data.summary?.totalPnl}%`,
-                    '🔮 Shadow Report Generated - Review suggestions below'
-                ]);
-
-                setActiveTab('after');
-            } else {
-                throw new Error(data.error || 'Research backtest failed');
+            if (!pass1Data.ok) {
+                throw new Error(pass1Data.error || 'Pass 1 failed');
             }
+
+            // Store ORIGINAL baseline metrics (BEFORE)
+            setComparison(prev => ({
+                ...prev,
+                before: {
+                    trades: pass1Data.summary?.executedTrades || 0,
+                    wins: pass1Data.summary?.wins || 0,
+                    losses: pass1Data.summary?.losses || 0,
+                    winRate: pass1Data.summary?.winRate || '0',
+                    totalPnl: pass1Data.summary?.totalPnl || '0',
+                    expectancy: pass1Data.summary?.expectancy || '0',
+                    capitalWinRate: pass1Data.summary?.capitalWinRate || '0',
+                    avgHoldingDays: pass1Data.summary?.avgHoldingDays || '0',
+                    targetHitRate: pass1Data.summary?.targetHitRate || '0'
+                }
+            }));
+
+            setLogs(prev => [
+                ...prev,
+                `✅ PASS 1 Complete: Original Logic Tested`,
+                `   📈 Trades: ${pass1Data.summary?.executedTrades || 0}`,
+                `   🎯 Win Rate: ${pass1Data.summary?.winRate}%`,
+                `   💰 Total PnL: ${pass1Data.summary?.totalPnl}%`,
+                '',
+                '═══════════════════════════════════════════════════',
+                '👁️ SHADOW LEARNER: Observing failures & strengths...'
+            ]);
+
+            // Store Shadow Report from Pass 1 (observation)
+            if (pass1Data.shadowReport) {
+                setShadowReport(pass1Data.shadowReport);
+            }
+
+            setResearchPhase('observing');
+
+            // Brief pause to show observation phase
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            setLogs(prev => [
+                ...prev,
+                '✅ Shadow analysis complete - suggestions generated',
+                '',
+                '═══════════════════════════════════════════════════',
+                '🧪 PASS 2: Testing with Shadow refinements applied...'
+            ]);
+
+            setResearchPhase('pass2');
+
+            // ═══════════════════════════════════════════
+            // PASS 2: Run WITH SHADOW REFINEMENTS (EXPERIMENT)
+            // ═══════════════════════════════════════════
+            const pass2Response = await fetch(`${apiBase}/api/strategy/realistic-simulation`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    categoryKey,
+                    quickMode: false,
+                    backtestMode: true,
+                    researchPass: 2,  // Signal this is Pass 2 - apply refinements
+                    applyRefinements: true,
+                    shadowSuggestions: pass1Data.shadowReport?.refinementSuggestions || []
+                })
+            });
+
+            const pass2Data = await pass2Response.json();
+
+            if (!pass2Data.ok) {
+                throw new Error(pass2Data.error || 'Pass 2 failed');
+            }
+
+            // Store REFINED metrics (AFTER)
+            setComparison(prev => ({
+                ...prev,
+                after: {
+                    trades: pass2Data.summary?.executedTrades || 0,
+                    wins: pass2Data.summary?.wins || 0,
+                    losses: pass2Data.summary?.losses || 0,
+                    winRate: pass2Data.summary?.winRate || '0',
+                    totalPnl: pass2Data.summary?.totalPnl || '0',
+                    expectancy: pass2Data.summary?.expectancy || '0',
+                    capitalWinRate: pass2Data.summary?.capitalWinRate || '0',
+                    avgHoldingDays: pass2Data.summary?.avgHoldingDays || '0',
+                    targetHitRate: pass2Data.summary?.targetHitRate || '0'
+                }
+            }));
+
+            setResearchPhase('complete');
+            setActiveTab('after');
+
+            setLogs(prev => [
+                ...prev,
+                `✅ PASS 2 Complete: Shadow-Refined Logic Tested`,
+                `   📈 Trades: ${pass2Data.summary?.executedTrades || 0}`,
+                `   🎯 Win Rate: ${pass2Data.summary?.winRate}%`,
+                `   💰 Total PnL: ${pass2Data.summary?.totalPnl}%`,
+                '',
+                '═══════════════════════════════════════════════════',
+                '📊 COMPARISON READY - Review Before vs After below',
+                '═══════════════════════════════════════════════════'
+            ]);
+
         } catch (err: any) {
             setError(err.message);
+            setResearchPhase('error');
             setLogs(prev => [...prev, `❌ Error: ${err.message}`]);
         } finally {
             setIsRunning(false);
@@ -222,25 +313,55 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
         <div className="fixed inset-0 bg-black/95 backdrop-blur-lg z-50 flex items-center justify-center p-4">
             <div className="bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 border border-purple-500/40 rounded-2xl shadow-2xl w-full max-w-7xl h-[90vh] flex flex-col overflow-hidden">
 
-                {/* Header - Research Mode Badge */}
-                <div className="flex items-center justify-between p-4 border-b border-purple-500/30 bg-purple-900/20">
-                    <div className="flex items-center gap-4">
-                        <div className="flex flex-col">
-                            <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 flex items-center gap-2">
-                                🔬 Research Backtest + Shadow Learner
-                            </h2>
-                            <p className="text-xs text-purple-300/70">Scientific analysis • Learning mode • Suggestions enabled</p>
+                {/* Header - Research Mode Badge + Phase Progress */}
+                <div className="flex flex-col border-b border-purple-500/30 bg-purple-900/20">
+                    <div className="flex items-center justify-between p-4">
+                        <div className="flex items-center gap-4">
+                            <div className="flex flex-col">
+                                <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 flex items-center gap-2">
+                                    🔬 Research Backtest + Shadow Learner
+                                </h2>
+                                <p className="text-xs text-purple-300/70">2-Pass Scientific Process • Test → Observe → Re-test → Compare</p>
+                            </div>
+                            <span className="px-3 py-1 bg-purple-600/30 border border-purple-500/50 rounded-full text-xs text-purple-300 font-medium">
+                                RESEARCH MODE
+                            </span>
                         </div>
-                        <span className="px-3 py-1 bg-purple-600/30 border border-purple-500/50 rounded-full text-xs text-purple-300 font-medium">
-                            RESEARCH MODE
-                        </span>
+                        <button
+                            onClick={onClose}
+                            className="text-slate-400 hover:text-white p-2 hover:bg-slate-700/50 rounded-lg transition"
+                        >
+                            ✕
+                        </button>
                     </div>
-                    <button
-                        onClick={onClose}
-                        className="text-slate-400 hover:text-white p-2 hover:bg-slate-700/50 rounded-lg transition"
-                    >
-                        ✕
-                    </button>
+
+                    {/* Phase Progress Bar */}
+                    {researchPhase !== 'idle' && (
+                        <div className="flex items-center gap-2 px-4 pb-3">
+                            <div className={`flex items-center gap-1 px-2 py-1 rounded text-xs ${researchPhase === 'pass1' ? 'bg-purple-600 text-white' :
+                                    ['observing', 'pass2', 'complete'].includes(researchPhase) ? 'bg-green-600 text-white' : 'bg-slate-700 text-slate-400'
+                                }`}>
+                                {researchPhase === 'pass1' ? '⏳' : '✓'} PASS 1
+                            </div>
+                            <div className="text-slate-600">→</div>
+                            <div className={`flex items-center gap-1 px-2 py-1 rounded text-xs ${researchPhase === 'observing' ? 'bg-purple-600 text-white' :
+                                    ['pass2', 'complete'].includes(researchPhase) ? 'bg-green-600 text-white' : 'bg-slate-700 text-slate-400'
+                                }`}>
+                                {researchPhase === 'observing' ? '👁️' : ['pass2', 'complete'].includes(researchPhase) ? '✓' : '○'} SHADOW
+                            </div>
+                            <div className="text-slate-600">→</div>
+                            <div className={`flex items-center gap-1 px-2 py-1 rounded text-xs ${researchPhase === 'pass2' ? 'bg-purple-600 text-white' :
+                                    researchPhase === 'complete' ? 'bg-green-600 text-white' : 'bg-slate-700 text-slate-400'
+                                }`}>
+                                {researchPhase === 'pass2' ? '⏳' : researchPhase === 'complete' ? '✓' : '○'} PASS 2
+                            </div>
+                            <div className="text-slate-600">→</div>
+                            <div className={`flex items-center gap-1 px-2 py-1 rounded text-xs ${researchPhase === 'complete' ? 'bg-green-600 text-white' : 'bg-slate-700 text-slate-400'
+                                }`}>
+                                {researchPhase === 'complete' ? '✓' : '○'} COMPARE
+                            </div>
+                        </div>
+                    )}
                 </div>
 
                 {/* Main Content - 3 Zone Layout */}
@@ -314,8 +435,8 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
                                 <button
                                     onClick={() => setActiveTab('before')}
                                     className={`px-4 py-2 rounded-lg text-sm font-medium transition ${activeTab === 'before'
-                                            ? 'bg-slate-700 text-white'
-                                            : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                        ? 'bg-slate-700 text-white'
+                                        : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
                                         }`}
                                 >
                                     Before (Original)
@@ -323,8 +444,8 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
                                 <button
                                     onClick={() => setActiveTab('after')}
                                     className={`px-4 py-2 rounded-lg text-sm font-medium transition ${activeTab === 'after'
-                                            ? 'bg-purple-600 text-white'
-                                            : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                        ? 'bg-purple-600 text-white'
+                                        : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
                                         }`}
                                 >
                                     After (Shadow-Refined)
