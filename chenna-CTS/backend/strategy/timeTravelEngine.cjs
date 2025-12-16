@@ -16,6 +16,7 @@ const SupportResistance = require('./supportResistance.cjs');
 const ConfirmationCalculators = require('./confirmationCalculators.cjs');
 const { CATEGORY_CONFIRMATION_RULES } = require('../config/labsCategoryRules.cjs');
 const { CategoryFilteredCatalogue } = require('./categoryFilteredCatalogue.cjs');
+const { fetchHistoricalForSymbol } = require('../services/historicalDataService.cjs');
 
 const prisma = new PrismaClient();
 
@@ -409,11 +410,33 @@ class TimeTravelBacktestEngine {
 
         for (const stock of stocks) {
             try {
-                const candles = await this.getCandlesForStock(stock.symbol);
+                let candles = await this.getCandlesForStock(stock.symbol);
+
+                // ✅ AUTO-FETCH: If no data, try to fetch from Upstox
                 if (!candles || candles.length < 50) {
-                    // ✅ TRANSPARENT: Log missing data instead of silent skip
-                    if (logic.id === 1) console.log(`⚠️ [${stock.symbol}] Missing data: ${candles ? candles.length : 0} candles (need 50+)`);
-                    continue;
+                    // Only log and attempt fetch on first strategy (avoid duplicate fetches)
+                    if (logic.id === 1) {
+                        const candleCount = candles ? candles.length : 0;
+                        console.log(`⚠️ [${stock.symbol}] Insufficient data: ${candleCount} candles (need 50+)`);
+
+                        // Try auto-fetch from Upstox
+                        try {
+                            const fetchedCandles = await fetchHistoricalForSymbol(stock.symbol, 90);
+                            if (fetchedCandles && fetchedCandles.length >= 50) {
+                                // Store in cache and use for backtest
+                                candles = fetchedCandles;
+                                console.log(`   ✅ Auto-fetched ${fetchedCandles.length} candles - proceeding with test`);
+                            } else {
+                                console.log(`   ❌ Auto-fetch returned insufficient data (${fetchedCandles?.length || 0})`);
+                                continue; // Skip this stock
+                            }
+                        } catch (fetchErr) {
+                            console.log(`   ❌ Auto-fetch failed: ${fetchErr.message}`);
+                            continue; // Skip this stock
+                        }
+                    } else {
+                        continue; // Already attempted fetch on first logic
+                    }
                 }
 
                 // Time-travel: test at multiple historical dates
