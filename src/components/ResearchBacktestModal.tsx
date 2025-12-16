@@ -243,99 +243,95 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
                     <div className="flex-1 p-6 overflow-y-auto">
                         {activeTab === 'results' ? (
                             <div className="space-y-6">
-                                {/* Comparison Cards */}
-                                {comparison.before && comparison.after ? (
+                                {/* Results Display - Single Pass */}
+                                {comparison.before ? (
                                     <>
-                                        {/* Before/After Cards Row */}
-                                        <div className="grid grid-cols-2 gap-6">
-                                            {/* Before Card */}
-                                            <div className="bg-slate-800/50 rounded-xl p-5 border border-slate-700">
-                                                <h3 className="text-sm font-semibold text-slate-400 mb-4">BEFORE (Original Logic)</h3>
-                                                <div className="grid grid-cols-2 gap-4">
-                                                    <div className="bg-slate-900/50 rounded-lg p-3">
-                                                        <div className="text-2xl font-bold text-white">{comparison.before.trades}</div>
-                                                        <div className="text-xs text-slate-500">Trades</div>
+                                        {/* Current Results Card */}
+                                        <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl p-6 border border-purple-500/30">
+                                            <div className="flex items-center justify-between mb-6">
+                                                <h3 className="text-lg font-semibold text-white">📊 BACKTEST RESULTS</h3>
+                                                <span className="px-3 py-1 bg-green-600/20 border border-green-500/40 rounded text-xs text-green-400">
+                                                    {categoryContext.version}
+                                                </span>
+                                            </div>
+
+                                            {/* Key Metrics Grid */}
+                                            <div className="grid grid-cols-3 gap-6 mb-6">
+                                                <div className="bg-slate-900/60 rounded-xl p-5 text-center border border-slate-700">
+                                                    <div className="text-4xl font-bold text-white">{comparison.before.trades}</div>
+                                                    <div className="text-sm text-slate-400 mt-1">Total Trades</div>
+                                                </div>
+                                                <div className="bg-slate-900/60 rounded-xl p-5 text-center border border-slate-700">
+                                                    <div className="text-4xl font-bold text-green-400">{comparison.before.winRate}%</div>
+                                                    <div className="text-sm text-slate-400 mt-1">Win Rate</div>
+                                                </div>
+                                                <div className="bg-slate-900/60 rounded-xl p-5 text-center border border-slate-700">
+                                                    <div className={`text-4xl font-bold ${parseFloat(comparison.before.totalPnl) >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                                                        {comparison.before.totalPnl}%
                                                     </div>
-                                                    <div className="bg-slate-900/50 rounded-lg p-3">
-                                                        <div className="text-2xl font-bold text-white">{comparison.before.winRate}%</div>
-                                                        <div className="text-xs text-slate-500">Win Rate</div>
-                                                    </div>
-                                                    <div className="bg-slate-900/50 rounded-lg p-3">
-                                                        <div className="text-2xl font-bold text-white">{comparison.before.totalPnl}%</div>
-                                                        <div className="text-xs text-slate-500">Total PnL</div>
-                                                    </div>
-                                                    <div className="bg-slate-900/50 rounded-lg p-3">
-                                                        <div className="text-2xl font-bold text-white">{comparison.before.expectancy}</div>
-                                                        <div className="text-xs text-slate-500">Expectancy</div>
-                                                    </div>
+                                                    <div className="text-sm text-slate-400 mt-1">Total PnL</div>
                                                 </div>
                                             </div>
 
-                                            {/* After Card */}
-                                            <div className="bg-purple-900/30 rounded-xl p-5 border border-purple-500/30">
-                                                <h3 className="text-sm font-semibold text-purple-300 mb-4">AFTER (Shadow Refined)</h3>
-                                                <div className="grid grid-cols-2 gap-4">
-                                                    <div className="bg-slate-900/50 rounded-lg p-3">
-                                                        <div className="text-2xl font-bold text-white">{comparison.after.trades}</div>
-                                                        <div className="text-xs text-purple-400">Trades</div>
-                                                    </div>
-                                                    <div className="bg-slate-900/50 rounded-lg p-3">
-                                                        <div className="text-2xl font-bold text-white">{comparison.after.winRate}%</div>
-                                                        <div className="text-xs text-purple-400">Win Rate</div>
-                                                    </div>
-                                                    <div className="bg-slate-900/50 rounded-lg p-3">
-                                                        <div className="text-2xl font-bold text-white">{comparison.after.totalPnl}%</div>
-                                                        <div className="text-xs text-purple-400">Total PnL</div>
-                                                    </div>
-                                                    <div className="bg-slate-900/50 rounded-lg p-3">
-                                                        <div className="text-2xl font-bold text-white">{comparison.after.expectancy}</div>
-                                                        <div className="text-xs text-purple-400">Expectancy</div>
-                                                    </div>
+                                            {/* Secondary Metrics */}
+                                            <div className="grid grid-cols-4 gap-4">
+                                                <div className="bg-slate-800/50 rounded-lg p-4 text-center">
+                                                    <div className="text-xl font-semibold text-white">{comparison.before.expectancy}</div>
+                                                    <div className="text-xs text-slate-500">Expectancy</div>
+                                                </div>
+                                                <div className="bg-slate-800/50 rounded-lg p-4 text-center">
+                                                    <div className="text-xl font-semibold text-white">{comparison.before.capitalWinRate}%</div>
+                                                    <div className="text-xs text-slate-500">Capital Protected</div>
+                                                </div>
+                                                <div className="bg-slate-800/50 rounded-lg p-4 text-center">
+                                                    <div className="text-xl font-semibold text-white">{comparison.before.avgHoldingDays}d</div>
+                                                    <div className="text-xs text-slate-500">Avg Hold</div>
+                                                </div>
+                                                <div className="bg-slate-800/50 rounded-lg p-4 text-center">
+                                                    <div className="text-xl font-semibold text-white">{comparison.before.wins}/{comparison.before.losses}</div>
+                                                    <div className="text-xs text-slate-500">W/L</div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        {/* Delta Summary */}
-                                        <div className="bg-slate-800/30 rounded-xl p-5 border border-slate-700">
-                                            <h3 className="text-sm font-semibold text-white mb-4">📈 IMPROVEMENT DELTA</h3>
-                                            <div className="grid grid-cols-6 gap-4">
-                                                {[
-                                                    { label: 'Trades', before: comparison.before.trades, after: comparison.after.trades, lowerBetter: true },
-                                                    { label: 'Win Rate', before: comparison.before.winRate, after: comparison.after.winRate },
-                                                    { label: 'PnL', before: comparison.before.totalPnl, after: comparison.after.totalPnl },
-                                                    { label: 'Expectancy', before: comparison.before.expectancy, after: comparison.after.expectancy },
-                                                    { label: 'Capital Protected', before: comparison.before.capitalWinRate, after: comparison.after.capitalWinRate },
-                                                    { label: 'Avg Hold', before: comparison.before.avgHoldingDays, after: comparison.after.avgHoldingDays }
-                                                ].map((item, i) => {
-                                                    const delta = calculateDelta(item.before, item.after);
-                                                    const isGood = item.lowerBetter ? delta.direction === 'down' : delta.direction === 'up';
-                                                    return (
-                                                        <div key={i} className="text-center">
-                                                            <div className={`text-lg font-bold ${isGood ? 'text-green-400' : delta.direction === 'neutral' ? 'text-slate-400' : 'text-red-400'}`}>
-                                                                {delta.direction === 'up' ? '↑' : delta.direction === 'down' ? '↓' : '–'} {delta.percent}%
-                                                            </div>
-                                                            <div className="text-xs text-slate-500">{item.label}</div>
-                                                        </div>
-                                                    );
-                                                })}
+                                        {/* Shadow Learner Info Box */}
+                                        {shadowReport && (
+                                            <div className="bg-purple-900/20 rounded-xl p-5 border border-purple-500/30">
+                                                <div className="flex items-start gap-4">
+                                                    <div className="text-3xl">🔮</div>
+                                                    <div>
+                                                        <h4 className="font-semibold text-purple-300 mb-2">SHADOW LEARNER INSIGHTS</h4>
+                                                        <p className="text-sm text-slate-400 mb-3">
+                                                            {shadowReport.refinementSuggestions?.length || 0} suggestions generated based on failure analysis.
+                                                        </p>
+                                                        <button
+                                                            onClick={() => setActiveTab('shadow')}
+                                                            className="px-4 py-2 bg-purple-600/50 hover:bg-purple-600 text-white text-sm font-medium rounded-lg transition"
+                                                        >
+                                                            View Shadow Analysis →
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        )}
 
                                         {/* Promote Button */}
-                                        <div className="flex justify-center">
-                                            <button
-                                                onClick={() => setShowPromoteConfirm(true)}
-                                                className="px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold rounded-lg transition shadow-lg"
-                                            >
-                                                🚀 Promote Refined Logic to V1.b1
-                                            </button>
-                                        </div>
+                                        {shadowReport && (
+                                            <div className="flex justify-center pt-4">
+                                                <button
+                                                    onClick={() => setShowPromoteConfirm(true)}
+                                                    className="px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold rounded-lg transition shadow-lg"
+                                                >
+                                                    🚀 Promote to Default Strategy (V1.b1)
+                                                </button>
+                                            </div>
+                                        )}
                                     </>
                                 ) : (
                                     <div className="flex flex-col items-center justify-center h-full text-slate-400">
                                         <div className="text-6xl mb-4 opacity-30">🔬</div>
                                         <p className="text-center text-lg">Click "Run Research" to start</p>
-                                        <p className="text-sm text-slate-500 mt-2">2-pass backtest with Shadow analysis</p>
+                                        <p className="text-sm text-slate-500 mt-2">Pure backtest with Shadow observation</p>
                                     </div>
                                 )}
                             </div>
