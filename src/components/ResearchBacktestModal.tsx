@@ -185,10 +185,10 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
                         </p>
                     </div>
 
-                    {/* Progress Steps */}
+                    {/* Progress Steps - Single Pass Flow */}
                     <div className="flex items-center gap-3">
-                        {['PASS 1', 'SHADOW', 'PASS 2', 'COMPARE'].map((step, i) => {
-                            const phases = ['pass1', 'observing', 'pass2', 'complete'];
+                        {['BACKTEST', 'SHADOW', 'DONE'].map((step, i) => {
+                            const phases = ['pass1', 'observing', 'complete'];
                             const currentIdx = phases.indexOf(researchPhase);
                             const isComplete = currentIdx > i || researchPhase === 'complete';
                             const isCurrent = phases[i] === researchPhase;
@@ -196,13 +196,13 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
                             return (
                                 <div key={step} className="flex items-center gap-1">
                                     <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${isComplete ? 'bg-green-500 text-white' :
-                                        isCurrent ? 'bg-purple-500 text-white animate-pulse' :
-                                            'bg-slate-700 text-slate-400'
+                                            isCurrent ? 'bg-purple-500 text-white animate-pulse' :
+                                                'bg-slate-700 text-slate-400'
                                         }`}>
                                         {isComplete ? '✓' : i + 1}
                                     </div>
                                     <span className={`text-xs ${isComplete || isCurrent ? 'text-white' : 'text-slate-500'}`}>{step}</span>
-                                    {i < 3 && <span className="text-slate-600 mx-1">→</span>}
+                                    {i < 2 && <span className="text-slate-600 mx-1">→</span>}
                                 </div>
                             );
                         })}
