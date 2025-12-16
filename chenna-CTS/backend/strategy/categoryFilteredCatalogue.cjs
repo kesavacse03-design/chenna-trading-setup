@@ -83,14 +83,14 @@ class CategoryFilteredCatalogue {
             name: 'RSI Divergence Exhaustion',
             description: 'Price makes new low but RSI makes higher low - selling pressure weakening',
             entry: (indicators, candles) => {
-                // RSI in oversold zone (LOOSENED: 35 -> 45)
-                if (!indicators.rsi14 || indicators.rsi14 > 45) return false;
+                // RSI in oversold zone (TIGHTENED: 45 -> 35 for quality)
+                if (!indicators.rsi14 || indicators.rsi14 > 35) return false;
 
                 // Check for RSI making higher low (divergence)
                 // RSI improving while price still weak
                 if (indicators.rsi14_prev && indicators.rsi14 > indicators.rsi14_prev) {
-                    // Lower wick showing buying (LOOSENED: 30 -> 25)
-                    if (indicators.lowerWickPct && indicators.lowerWickPct > 25) {
+                    // Lower wick showing buying (TIGHTENED: 25 -> 35% for quality)
+                    if (indicators.lowerWickPct && indicators.lowerWickPct > 35) {
                         return true;
                     }
                 }
@@ -104,11 +104,11 @@ class CategoryFilteredCatalogue {
             name: 'Volume Dry-Up Exhaustion',
             description: 'Volume declines after selling spike - sellers exhausted',
             entry: (indicators, candles) => {
-                // RSI oversold (LOOSENED: 40 -> 50)
-                if (!indicators.rsi14 || indicators.rsi14 > 50) return false;
+                // RSI oversold (TIGHTENED: 50 -> 40 for quality)
+                if (!indicators.rsi14 || indicators.rsi14 > 40) return false;
 
-                // Volume below average (LOOSENED: 0.7 -> 0.85)
-                if (indicators.volumeVsAvg && indicators.volumeVsAvg < 0.85) {
+                // Volume below average (TIGHTENED: 0.85 -> 0.7 for stronger signal)
+                if (indicators.volumeVsAvg && indicators.volumeVsAvg < 0.70) {
                     // Price not making aggressive new lows (allow marginal)
                     if (!indicators.newLow || indicators.holdingAboveLow) {
                         return true;
@@ -124,10 +124,10 @@ class CategoryFilteredCatalogue {
             name: 'Lower Wick Dominance',
             description: 'Candles with large lower wicks - buyers absorbing selling',
             entry: (indicators, candles) => {
-                // Lower wick (LOOSENED: 40% -> 30%)
-                if (indicators.lowerWickPct && indicators.lowerWickPct > 30) {
-                    // RSI in oversold area (LOOSENED: 40 -> 50)
-                    if (indicators.rsi14 && indicators.rsi14 < 50) {
+                // Lower wick (TIGHTENED: 30% -> 40% for strong buying)
+                if (indicators.lowerWickPct && indicators.lowerWickPct > 40) {
+                    // RSI in oversold area (TIGHTENED: 50 -> 40 for quality)
+                    if (indicators.rsi14 && indicators.rsi14 < 40) {
                         return true;
                     }
                 }
