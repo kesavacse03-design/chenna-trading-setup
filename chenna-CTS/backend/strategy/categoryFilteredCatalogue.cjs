@@ -83,14 +83,14 @@ class CategoryFilteredCatalogue {
             name: 'RSI Divergence Exhaustion',
             description: 'Price makes new low but RSI makes higher low - selling pressure weakening',
             entry: (indicators, candles) => {
-                // RSI in oversold zone
-                if (!indicators.rsi14 || indicators.rsi14 > 35) return false;
+                // RSI in oversold zone (LOOSENED: 35 -> 45)
+                if (!indicators.rsi14 || indicators.rsi14 > 45) return false;
 
                 // Check for RSI making higher low (divergence)
                 // RSI improving while price still weak
                 if (indicators.rsi14_prev && indicators.rsi14 > indicators.rsi14_prev) {
-                    // Extra confirmation: lower wick showing buying
-                    if (indicators.lowerWickPct && indicators.lowerWickPct > 30) {
+                    // Lower wick showing buying (LOOSENED: 30 -> 25)
+                    if (indicators.lowerWickPct && indicators.lowerWickPct > 25) {
                         return true;
                     }
                 }
@@ -104,13 +104,13 @@ class CategoryFilteredCatalogue {
             name: 'Volume Dry-Up Exhaustion',
             description: 'Volume declines after selling spike - sellers exhausted',
             entry: (indicators, candles) => {
-                // RSI oversold
-                if (!indicators.rsi14 || indicators.rsi14 > 40) return false;
+                // RSI oversold (LOOSENED: 40 -> 50)
+                if (!indicators.rsi14 || indicators.rsi14 > 50) return false;
 
-                // Volume below average (dried up)
-                if (indicators.volumeVsAvg && indicators.volumeVsAvg < 0.7) {
-                    // Price not making new lows
-                    if (!indicators.newLow) {
+                // Volume below average (LOOSENED: 0.7 -> 0.85)
+                if (indicators.volumeVsAvg && indicators.volumeVsAvg < 0.85) {
+                    // Price not making aggressive new lows (allow marginal)
+                    if (!indicators.newLow || indicators.holdingAboveLow) {
                         return true;
                     }
                 }
@@ -124,10 +124,10 @@ class CategoryFilteredCatalogue {
             name: 'Lower Wick Dominance',
             description: 'Candles with large lower wicks - buyers absorbing selling',
             entry: (indicators, candles) => {
-                // Check lower wick > 40% of range
-                if (indicators.lowerWickPct && indicators.lowerWickPct > 40) {
-                    // RSI in oversold area
-                    if (indicators.rsi14 && indicators.rsi14 < 40) {
+                // Lower wick (LOOSENED: 40% -> 30%)
+                if (indicators.lowerWickPct && indicators.lowerWickPct > 30) {
+                    // RSI in oversold area (LOOSENED: 40 -> 50)
+                    if (indicators.rsi14 && indicators.rsi14 < 50) {
                         return true;
                     }
                 }
@@ -141,12 +141,13 @@ class CategoryFilteredCatalogue {
             name: 'Failed Breakdown',
             description: 'Price breaks low but immediately reclaims - bear trap',
             entry: (indicators, candles) => {
-                // Had a new low recently
-                if (indicators.recentNewLow) {
-                    // Now trading above that low
-                    if (indicators.aboveRecentLow) {
-                        // Close near high of day (strength)
-                        if (indicators.closeNearHigh) {
+                // Had a new low recently OR price at recent low area
+                if (indicators.recentNewLow || indicators.priceNearLow) {
+                    // Now trading above that low (OR just holding)
+                    if (indicators.aboveRecentLow || indicators.holdingAboveLow) {
+                        // Close in upper half of candle (LOOSENED from closeNearHigh)
+                        const closePosition = indicators.closeNearHigh || (indicators.lowerWickPct && indicators.lowerWickPct > 20);
+                        if (closePosition) {
                             return true;
                         }
                     }
@@ -161,12 +162,12 @@ class CategoryFilteredCatalogue {
             name: 'ATR Spike Contraction',
             description: 'Volatility spikes then contracts - panic followed by stabilization',
             entry: (indicators, candles) => {
-                // ATR had recent spike and now contracting
-                if (indicators.atrSpikeRecent && indicators.atrContracting) {
-                    // Price holding above lows
-                    if (!indicators.newLow) {
-                        // RSI recovering from oversold
-                        if (indicators.rsi14 && indicators.rsi14 > 25 && indicators.rsi14 < 45) {
+                // ATR showing contraction (LOOSENED: removed spike requirement as primary)
+                if (indicators.atrContracting || (indicators.atrSpikeRecent && !indicators.atrExpanding)) {
+                    // Price stabilizing (allow marginal new low)
+                    if (!indicators.newLow || indicators.holdingAboveLow) {
+                        // RSI in recovery zone (LOOSENED: 25-45 -> 20-55)
+                        if (indicators.rsi14 && indicators.rsi14 > 20 && indicators.rsi14 < 55) {
                             return true;
                         }
                     }

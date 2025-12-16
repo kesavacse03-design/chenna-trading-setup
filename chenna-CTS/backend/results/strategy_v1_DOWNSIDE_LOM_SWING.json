@@ -2,7 +2,7 @@
   "category": "DOWNSIDE_LOM_SWING",
   "name": "V1 Default - DOWNSIDE_LOM_SWING",
   "version": "2.0.0",
-  "createdAt": "2025-12-16T05:05:58.857Z",
+  "createdAt": "2025-12-16T06:38:47.408Z",
   "thesis": "This category works when Panic selling happened, weak hands exiting, institutions absorbing",
   "categoryIntent": "Late-stage selling → exhaustion → bounce",
   "mustDiscover": "Exhaustion + Stabilization signals",
@@ -53,19 +53,19 @@
     }
   ],
   "expectedBehavior": {
-    "avgHoldingTime": "5.8 days",
-    "avgDrawdown": "3.0%",
-    "avgMove": "-0.5%",
-    "winRate": "25.0%"
+    "avgHoldingTime": "5.0 days",
+    "avgDrawdown": "2.0%",
+    "avgMove": "1.5%",
+    "winRate": "50.0%"
   },
   "entryRules": {
-    "logic": "Price Above SMA20",
+    "logic": "RSI Divergence Exhaustion",
     "description": "Best performing logic from top-ranked strategy"
   },
   "exitRules": {
-    "target": 3,
-    "stop": 1.5,
-    "source": "From Price Above SMA200"
+    "target": 2,
+    "stop": 1.2,
+    "source": "From Lower Wick Dominance"
   },
   "trapFilters": {
     "enabled": true,
@@ -77,32 +77,32 @@
     "maxPositions": 5
   },
   "expectedMetrics": {
-    "accuracy": "25.0%",
-    "expectancy": "-0.50%",
+    "accuracy": "0.0%",
+    "expectancy": "0.00%",
     "trapAvoidance": "0.0%",
-    "avgHolding": "5.8 days"
+    "avgHolding": "0.0 days"
   },
   "contributors": [
     {
       "rank": 1,
-      "logic": "Price Above SMA20",
+      "logic": "RSI Divergence Exhaustion",
       "score": "0.0",
-      "trades": 4,
-      "winRate": "25.0%"
+      "trades": 0,
+      "winRate": "0.0%"
     },
     {
       "rank": 2,
-      "logic": "Price Above SMA50",
+      "logic": "Volume Dry-Up Exhaustion",
       "score": "0.0",
-      "trades": 3,
+      "trades": 0,
       "winRate": "0.0%"
     },
     {
       "rank": 3,
-      "logic": "Price Above SMA200",
+      "logic": "Lower Wick Dominance",
       "score": "0.0",
-      "trades": 0,
-      "winRate": "0.0%"
+      "trades": 1,
+      "winRate": "100.0%"
     }
   ]
 }
