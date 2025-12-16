@@ -86,7 +86,71 @@ function registerRealisticSimRoutes(app) {
                 ...results
             }, null, 2));
 
-            console.log(`\n💾 Results saved: ${jsonPath}\n`);
+            // Generate CSV with new lifecycle structure
+            const csvDir = path.join(resultsDir, 'csv');
+            if (!fs.existsSync(csvDir)) {
+                fs.mkdirSync(csvDir, { recursive: true });
+            }
+            const csvPath = path.join(csvDir, `realistic_${categoryKey}_${Date.now()}.csv`);
+
+            // Build CSV with executed trades + invalidated signals
+            const csvHeaders = [
+                'Type', 'Symbol', 'Strategy', 'SignalDate', 'SignalPrice',
+                'EntryDate', 'EntryPrice', 'ExitDate', 'ExitPrice',
+                'PartialExitPrice', 'TrailingExitPrice', 'ExitReason',
+                'HoldingDays', 'PnL%', 'Result', 'Lifecycle', 'InvalidationReason'
+            ];
+
+            const csvRows = [];
+
+            // Add executed trades
+            for (const trade of results.executedTrades) {
+                csvRows.push([
+                    'EXECUTED',
+                    trade.symbol,
+                    trade.strategy,
+                    trade.signalDate || '',
+                    trade.signalPrice || '',
+                    trade.entryDate || '',
+                    trade.entryPrice || '',
+                    trade.exitDate || '',
+                    trade.exitPrice || '',
+                    trade.partialExit?.price || '',
+                    trade.trailingExit?.price || '',
+                    trade.exitReason || '',
+                    trade.holdingDays || '',
+                    trade.pnl ? trade.pnl.toFixed(2) : '',
+                    trade.result || '',
+                    trade.lifecycle?.stateHistory?.map(s => s.state).join(' → ') || '',
+                    ''
+                ]);
+            }
+
+            // Add invalidated signals
+            for (const signal of results.invalidatedSignals) {
+                csvRows.push([
+                    'INVALIDATED',
+                    signal.symbol,
+                    signal.strategy,
+                    signal.signalDate || '',
+                    signal.signalPrice || '',
+                    '', '', '', '', '', '', '',
+                    '', '', 'INVALIDATED',
+                    signal.lifecycle?.stateHistory?.map(s => s.state).join(' → ') || '',
+                    signal.invalidationReason || ''
+                ]);
+            }
+
+            // Write CSV
+            const csvContent = [
+                csvHeaders.join(','),
+                ...csvRows.map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(','))
+            ].join('\n');
+
+            fs.writeFileSync(csvPath, csvContent);
+
+            console.log(`\n💾 Results saved: ${jsonPath}`);
+            console.log(`📊 CSV saved: ${csvPath}\n`);
 
             res.json({
                 ok: true,
@@ -94,7 +158,7 @@ function registerRealisticSimRoutes(app) {
                 runId,
                 timeElapsed: `${elapsed}min`,
                 summary: results.summary,
-                files: { json: jsonPath },
+                files: { json: jsonPath, csv: csvPath },
                 message: 'Realistic simulation completed successfully'
             });
 

@@ -515,10 +515,10 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
 
                                         try {
                                             const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
-                                            showToast('Downloading CSV with trade details...', 'info');
+                                            showToast('Downloading realistic simulation CSV...', 'info');
 
-                                            // Call backend to get detailed trade-by-trade CSV
-                                            const response = await fetch(`${apiBase}/api/backtest/csv/${categoryKey}`);
+                                            // Get latest realistic simulation CSV
+                                            const response = await fetch(`${apiBase}/api/backtest/csv/realistic_${categoryKey}`);
 
                                             if (!response.ok) {
                                                 throw new Error('CSV file not found. Run backtest first.');
