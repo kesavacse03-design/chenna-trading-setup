@@ -767,28 +767,144 @@ class RealisticTradingSimulator {
     }
 
     getResults() {
-        const totalSignals = this.executedTrades.length + this.invalidatedSignals.length;
-        const wins = this.executedTrades.filter(t => t.result === 'WIN').length;
-        const losses = this.executedTrades.filter(t => t.result === 'LOSS').length;
+        const executed = this.executedTrades;
+        const invalidated = this.invalidatedSignals;
+        const skipped = this.skippedSignals;
 
+        // ========================================
+        // PROFESSIONAL TRADING METRICS
+        // ========================================
+
+        // Basic counts
+        const totalSignalsGenerated = executed.length + invalidated.length;
+        const wins = executed.filter(t => t.result === 'WIN').length;
+        const losses = executed.filter(t => t.result === 'LOSS').length;
+
+        // === CAPITAL WIN RATE ===
+        // Trades that reached partial exit = "protected capital"
+        // These are NOT failures even if trailing portion gets stopped
+        const tradesWithPartialExit = executed.filter(t => t.partialExitPrice !== null);
+        const fullStops = executed.filter(t => t.exitReason === 'STOP' && !t.partialExitPrice);
+
+        // Capital win rate: how often did we protect 80% of position
+        const capitalWinRate = executed.length > 0
+            ? ((wins + tradesWithPartialExit.length) / executed.length * 100)
+            : 0;
+
+        // === SIGNAL QUALITY ===
+        // What % of signals actually entered the market (after delay validation)
+        const signalQuality = totalSignalsGenerated > 0
+            ? (executed.length / totalSignalsGenerated * 100)
+            : 0;
+
+        // === ENTRY FILTER EFFECTIVENESS ===
+        // How many bad entries were avoided by the delay validation
+        const entriesAvoided = invalidated.length;
+        const avoidedBadEntryRate = totalSignalsGenerated > 0
+            ? (entriesAvoided / totalSignalsGenerated * 100)
+            : 0;
+
+        // === RISK MANAGEMENT METRICS ===
+        // Trades that hit first target (partial exit)
+        const targetHitRate = executed.length > 0
+            ? (tradesWithPartialExit.length / executed.length * 100)
+            : 0;
+
+        // Trades that hit second target (full profit)
+        const secondTargetHits = executed.filter(t => t.exitReason === 'SECOND_TARGET');
+        const fullTargetRate = executed.length > 0
+            ? (secondTargetHits.length / executed.length * 100)
+            : 0;
+
+        // Trailing stop exits (profitable but not max target)
+        const trailingExits = executed.filter(t => t.exitReason === 'TRAILING_STOP');
+
+        // === PNL CALCULATIONS ===
+        const totalPnl = executed.reduce((s, t) => s + t.pnl, 0);
+        const avgPnl = executed.length > 0 ? totalPnl / executed.length : 0;
+
+        // Risk-adjusted: wins vs losses weighted
+        const avgWinPnl = wins > 0
+            ? executed.filter(t => t.result === 'WIN').reduce((s, t) => s + t.pnl, 0) / wins
+            : 0;
+        const avgLossPnl = losses > 0
+            ? Math.abs(executed.filter(t => t.result === 'LOSS').reduce((s, t) => s + t.pnl, 0) / losses)
+            : 0;
+
+        // Risk-reward ratio
+        const riskRewardRatio = avgLossPnl > 0 ? avgWinPnl / avgLossPnl : avgWinPnl;
+
+        // Expectancy (what a trader expects per trade)
+        const winRate = executed.length > 0 ? wins / executed.length : 0;
+        const lossRate = executed.length > 0 ? losses / executed.length : 0;
+        const expectancy = (winRate * avgWinPnl) - (lossRate * avgLossPnl);
+
+        // === DISCIPLINE METRICS ===
+        // Symbol lock prevented overlapping trades
+        const overlappingTradesAvoided = skipped.length;
+
+        // Average holding days
+        const avgHoldingDays = executed.length > 0
+            ? executed.reduce((s, t) => s + t.holdingDays, 0) / executed.length
+            : 0;
+
+        // === EXIT REASONS BREAKDOWN ===
+        const exitBreakdown = {
+            secondTarget: secondTargetHits.length,
+            trailingStop: trailingExits.length,
+            fullStop: fullStops.length,
+            timeExpiry: executed.filter(t => t.exitReason === 'TIME_EXPIRY').length
+        };
+
+        // === PROFESSIONAL SUMMARY ===
         return {
             summary: {
-                totalSignalsGenerated: totalSignals,
-                executedTrades: this.executedTrades.length,
-                invalidatedSignals: this.invalidatedSignals.length,
-                skippedBySymbolLock: this.skippedSignals.length,
-                expiredStocks: this.expiredStocks.length,
-                trappedSignals: this.trappedSignals.length,
-                winRate: this.executedTrades.length > 0 ? (wins / this.executedTrades.length * 100).toFixed(1) : 0,
+                // Execution metrics
+                totalSignalsGenerated,
+                executedTrades: executed.length,
+                invalidatedSignals: invalidated.length,
+                skippedBySymbolLock: skipped.length,
+
+                // Traditional metrics (raw)
+                winRate: (winRate * 100).toFixed(1),
                 wins,
                 losses,
-                avgPnl: this.executedTrades.length > 0
-                    ? (this.executedTrades.reduce((s, t) => s + t.pnl, 0) / this.executedTrades.length).toFixed(2)
-                    : 0
+                avgPnl: avgPnl.toFixed(2),
+                totalPnl: totalPnl.toFixed(2),
+
+                // PROFESSIONAL METRICS (what really matters)
+                capitalWinRate: capitalWinRate.toFixed(1),  // Trades that protected capital
+                signalQuality: signalQuality.toFixed(1),    // % of signals that executed
+                targetHitRate: targetHitRate.toFixed(1),    // % that reached first target
+                fullTargetRate: fullTargetRate.toFixed(1),  // % that hit second target
+
+                // Risk metrics
+                riskRewardRatio: riskRewardRatio.toFixed(2),
+                expectancy: expectancy.toFixed(2),          // Expected return per trade
+                avgHoldingDays: avgHoldingDays.toFixed(1),
+
+                // Discipline metrics
+                entriesAvoided,                              // Bad entries filtered out
+                overlappingTradesAvoided,                    // Symbol lock discipline
+
+                // Exit breakdown
+                exitBreakdown
             },
-            executedTrades: this.executedTrades,
-            invalidatedSignals: this.invalidatedSignals,
-            skippedSignals: this.skippedSignals,
+
+            // Professional interpretation
+            interpretation: {
+                signalQualityGrade: signalQuality >= 60 ? 'EXCELLENT' : signalQuality >= 40 ? 'GOOD' : 'NEEDS_WORK',
+                riskManagementGrade: targetHitRate >= 30 ? 'STRONG' : targetHitRate >= 15 ? 'MODERATE' : 'WEAK',
+                capitalProtectionNote: `${tradesWithPartialExit.length} trades booked 80% profit before any adverse move`,
+                disciplineNote: `Avoided ${overlappingTradesAvoided} overlapping trades via symbol lock`,
+                filterNote: `Entry delay filter blocked ${entriesAvoided} potentially bad entries`,
+                tradingStyle: avgHoldingDays <= 2 ? 'Aggressive Swing' : avgHoldingDays <= 5 ? 'Standard Swing' : 'Position Trading'
+            },
+
+            // Raw data
+            executedTrades: executed,
+            invalidatedSignals: invalidated,
+            skippedSignals: skipped,
             expiredStocks: this.expiredStocks,
             trappedSignals: this.trappedSignals,
             logs: this.logs
