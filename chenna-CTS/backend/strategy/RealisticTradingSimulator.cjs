@@ -66,39 +66,33 @@ class RealisticTradingSimulator {
             shadowSuggestions: options.shadowSuggestions || []
         };
         // ============================================
-        // PASS 2: Apply Shadow-suggested refinements
+        // RESEARCH MODE: Both passes run IDENTICAL logic
         // ============================================
-        // Strategy: Apply TARGETED improvements based on Shadow analysis
-        // The goal is to IMPROVE win rate, not just reduce trade count
-        if (this.config.applyRefinements && this.config.researchPass === 2) {
-            console.log('🔧 [PASS 2] Applying Shadow Learning refinements...');
+        // CRITICAL INSIGHT from 20+ year senior trader:
+        // "You cannot predict which trades will fail BEFORE they fail."
+        // 
+        // Any automatic filter applied in Pass 2 is EITHER:
+        // 1. Random (filters both winners and losers equally) - useless
+        // 2. Overfitting (uses future knowledge we don't have) - cheating
+        //
+        // THE CORRECT APPROACH:
+        // - Pass 1: Run pure strategy, record results
+        // - Shadow: OBSERVE failure patterns, generate SUGGESTIONS
+        // - Pass 2: Run IDENTICAL logic (sanity check for consistency)
+        // - Human: Review suggestions, decide what to implement
+        // - Manual: Update strategy code based on insights
+        // - Promote: Create V1.b1 with manual changes
+        // - Test: Run fresh backtest on V1.b1 to see real improvement
+        //
+        // Pure data, pure execution. You cannot force accuracy.
+        this.refinementConfig = null; // No automatic filtering
 
-            // Smart refinement based on Shadow's specific findings:
-            // Main issue: "7 trades stopped within 2 days - entries may be too early"
-            // Solution: Require STRONGER confirmation before entry
-            this.refinementConfig = {
-                // Require close to be at least 0.3% above signal price (gentler)
-                requirePriceConfirmation: true,
-                priceConfirmationThreshold: 0.003, // 0.3% above signal
-
-                // Skip only VERY weak bounces (1.5% below signal instead of 1%)
-                skipWeakBounces: true,
-                weakBounceThreshold: 0.985, // Low can be 1.5% below signal
-
-                // Require candle to close in upper 40% of range (gentler than 60%)
-                minCandleStrength: 0.4,
-
-                // Require minimum quality score for entry
-                minQualityScore: 3 // Out of 4
-            };
-
-            console.log('   Smart Refinements Applied (targeting early-stop pattern)');
-        } else {
-            // Pass 1: No refinements, pure original logic
-            this.refinementConfig = null;
-            if (this.config.researchPass === 1) {
-                console.log('📋 [PASS 1] Running ORIGINAL logic (no refinements)');
-            }
+        if (this.config.researchPass === 1) {
+            console.log('📋 [PASS 1] Running ORIGINAL logic (baseline)');
+        } else if (this.config.researchPass === 2) {
+            console.log('📋 [PASS 2] Running IDENTICAL logic (consistency check)');
+            console.log('   NOTE: No automatic filtering. Shadow provides SUGGESTIONS only.');
+            console.log('   To see improvement: Implement suggestions manually → Promote → Re-run');
         }
 
         this.executedTrades = [];

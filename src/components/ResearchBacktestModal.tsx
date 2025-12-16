@@ -57,130 +57,106 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
         setComparison({ before: null, after: null });
         setResearchPhase('pass1');
         setLogs([
-            '🔬 RESEARCH BACKTEST: 2-Pass Comparison',
+            '🔬 RESEARCH BACKTEST',
             '══════════════════════════════════════════',
             '',
-            '📋 PASS 1: Running ORIGINAL logic (baseline)...'
+            '📋 Running pure backtest with Shadow observation...'
         ]);
 
         try {
             const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
 
             // ═══════════════════════════════════════════════════════
-            // PASS 1: Run ORIGINAL logic (no refinements) - BASELINE
+            // SINGLE PASS: Run PURE strategy execution
             // ═══════════════════════════════════════════════════════
-            const pass1Response = await fetch(`${apiBase}/api/strategy/realistic-simulation`, {
+            const response = await fetch(`${apiBase}/api/strategy/realistic-simulation`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     categoryKey,
                     quickMode: false,
                     backtestMode: true,
-                    researchPass: 1,
-                    applyRefinements: false
+                    researchPass: 1
                 })
             });
 
-            const pass1Data = await pass1Response.json();
-            if (!pass1Data.ok) throw new Error(pass1Data.error || 'Pass 1 failed');
+            const data = await response.json();
+            if (!data.ok) throw new Error(data.error || 'Backtest failed');
 
-            const beforeResults = {
-                trades: pass1Data.summary?.executedTrades || 0,
-                wins: pass1Data.summary?.wins || 0,
-                losses: pass1Data.summary?.losses || 0,
-                winRate: pass1Data.summary?.winRate || '0',
-                totalPnl: pass1Data.summary?.totalPnl || '0',
-                expectancy: pass1Data.summary?.expectancy || '0',
-                capitalWinRate: pass1Data.summary?.capitalWinRate || '0',
-                avgHoldingDays: pass1Data.summary?.avgHoldingDays || '0',
-                targetHitRate: pass1Data.summary?.targetHitRate || '0'
+            const currentResults = {
+                trades: data.summary?.executedTrades || 0,
+                wins: data.summary?.wins || 0,
+                losses: data.summary?.losses || 0,
+                winRate: data.summary?.winRate || '0',
+                totalPnl: data.summary?.totalPnl || '0',
+                expectancy: data.summary?.expectancy || '0',
+                capitalWinRate: data.summary?.capitalWinRate || '0',
+                avgHoldingDays: data.summary?.avgHoldingDays || '0',
+                targetHitRate: data.summary?.targetHitRate || '0'
             };
 
-            setComparison(prev => ({ ...prev, before: beforeResults }));
+            setComparison(prev => ({ ...prev, before: currentResults }));
 
             setLogs(prev => [
                 ...prev,
                 '',
-                `✅ PASS 1 COMPLETE (Original Logic):`,
-                `   Trades: ${beforeResults.trades} | Win Rate: ${beforeResults.winRate}%`,
-                `   PnL: ${beforeResults.totalPnl}% | Expectancy: ${beforeResults.expectancy}`,
+                `✅ BACKTEST COMPLETE:`,
+                `   Trades: ${currentResults.trades} | Win Rate: ${currentResults.winRate}%`,
+                `   PnL: ${currentResults.totalPnl}% | Expectancy: ${currentResults.expectancy}`,
                 ''
             ]);
 
             // ═══════════════════════════════════════════════════════
-            // SHADOW OBSERVATION: Analyze failures and suggest improvements
+            // SHADOW OBSERVATION: Analyze and calculate theoretical improvement
             // ═══════════════════════════════════════════════════════
             setResearchPhase('observing');
 
-            if (pass1Data.shadowReport) {
-                setShadowReport(pass1Data.shadowReport);
+            if (data.shadowReport) {
+                setShadowReport(data.shadowReport);
+
+                // Calculate THEORETICAL improvement from Shadow analysis
+                // This shows what COULD happen if suggestions are implemented
+                const failurePatterns = data.shadowReport.failurePatterns || [];
+                const earlyEntryPattern = failurePatterns.find((p: any) => p.pattern === 'EARLY_ENTRY');
+                const earlyEntryLosses = earlyEntryPattern?.count || 0;
+
+                // Theoretical: If early-entry losses were avoided
+                const theoreticalWins = currentResults.wins;
+                const theoreticalLosses = Math.max(0, currentResults.losses - earlyEntryLosses);
+                const theoreticalTrades = theoreticalWins + theoreticalLosses;
+                const theoreticalWinRate = theoreticalTrades > 0
+                    ? ((theoreticalWins / theoreticalTrades) * 100).toFixed(1)
+                    : currentResults.winRate;
+
+                // Store as "after" for display
+                const theoreticalResults = {
+                    ...currentResults,
+                    trades: theoreticalTrades,
+                    losses: theoreticalLosses,
+                    winRate: theoreticalWinRate,
+                    isTheoretical: true
+                };
+
+                setComparison(prev => ({ ...prev, after: theoreticalResults }));
+
                 setLogs(prev => [
                     ...prev,
-                    '👁️ SHADOW LEARNER: Analyzing...',
-                    `   Detected ${pass1Data.shadowReport.refinementSuggestions?.length || 0} improvement opportunities`,
-                    ''
+                    '👁️ SHADOW LEARNER: Analysis complete',
+                    `   ${data.shadowReport.refinementSuggestions?.length || 0} suggestions generated`,
+                    '',
+                    '═══════════════════════════════════════════',
+                    '📊 THEORETICAL IMPROVEMENT (if suggestions implemented):',
+                    `   Early-entry losses that could be avoided: ${earlyEntryLosses}`,
+                    `   Potential Win Rate: ${theoreticalWinRate}% (from ${currentResults.winRate}%)`,
+                    '',
+                    '⚠️ This is THEORETICAL. To achieve this:',
+                    '   1. Review Shadow suggestions',
+                    '   2. Implement changes manually',
+                    '   3. Promote to V1.b1',
+                    '   4. Run fresh backtest to verify',
+                    '═══════════════════════════════════════════'
                 ]);
             }
-
-            // ═══════════════════════════════════════════════════════
-            // PASS 2: Run WITH REFINEMENTS APPLIED - IMPROVED
-            // ═══════════════════════════════════════════════════════
-            setResearchPhase('pass2');
-            setLogs(prev => [...prev, '🧪 PASS 2: Running with Shadow refinements APPLIED...']);
-
-            const pass2Response = await fetch(`${apiBase}/api/strategy/realistic-simulation`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    categoryKey,
-                    quickMode: false,
-                    backtestMode: true,
-                    researchPass: 2,
-                    applyRefinements: true,
-                    shadowSuggestions: pass1Data.shadowReport?.refinementSuggestions || []
-                })
-            });
-
-            const pass2Data = await pass2Response.json();
-            if (!pass2Data.ok) throw new Error(pass2Data.error || 'Pass 2 failed');
-
-            const afterResults = {
-                trades: pass2Data.summary?.executedTrades || 0,
-                wins: pass2Data.summary?.wins || 0,
-                losses: pass2Data.summary?.losses || 0,
-                winRate: pass2Data.summary?.winRate || '0',
-                totalPnl: pass2Data.summary?.totalPnl || '0',
-                expectancy: pass2Data.summary?.expectancy || '0',
-                capitalWinRate: pass2Data.summary?.capitalWinRate || '0',
-                avgHoldingDays: pass2Data.summary?.avgHoldingDays || '0',
-                targetHitRate: pass2Data.summary?.targetHitRate || '0'
-            };
-
-            setComparison(prev => ({ ...prev, after: afterResults }));
-
-            // Calculate improvements
-            const tradeDiff = afterResults.trades - beforeResults.trades;
-            const wrBefore = parseFloat(beforeResults.winRate);
-            const wrAfter = parseFloat(afterResults.winRate);
-            const wrDiff = wrAfter - wrBefore;
-            const pnlBefore = parseFloat(beforeResults.totalPnl);
-            const pnlAfter = parseFloat(afterResults.totalPnl);
-            const pnlDiff = pnlAfter - pnlBefore;
-
-            setLogs(prev => [
-                ...prev,
-                '',
-                `✅ PASS 2 COMPLETE (With Refinements):`,
-                `   Trades: ${afterResults.trades} | Win Rate: ${afterResults.winRate}%`,
-                `   PnL: ${afterResults.totalPnl}% | Expectancy: ${afterResults.expectancy}`,
-                '',
-                '══════════════════════════════════════════',
-                '📊 COMPARISON:',
-                `   Trades: ${beforeResults.trades} → ${afterResults.trades} (${tradeDiff >= 0 ? '+' : ''}${tradeDiff})`,
-                `   Win Rate: ${beforeResults.winRate}% → ${afterResults.winRate}% (${wrDiff >= 0 ? '+' : ''}${wrDiff.toFixed(1)}%)`,
-                `   PnL: ${beforeResults.totalPnl}% → ${afterResults.totalPnl}% (${pnlDiff >= 0 ? '+' : ''}${pnlDiff.toFixed(2)}%)`,
-                '══════════════════════════════════════════'
-            ]);
 
             setResearchPhase('complete');
 
@@ -242,10 +218,10 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
                         </p>
                     </div>
 
-                    {/* Progress Steps - 2-Pass Comparison Flow */}
+                    {/* Progress Steps - Single Pass with Analysis */}
                     <div className="flex items-center gap-2">
-                        {['PASS 1', 'SHADOW', 'PASS 2', 'COMPARE'].map((step, i) => {
-                            const phases = ['pass1', 'observing', 'pass2', 'complete'];
+                        {['BACKTEST', 'ANALYZE', 'DONE'].map((step, i) => {
+                            const phases = ['pass1', 'observing', 'complete'];
                             const currentIdx = phases.indexOf(researchPhase);
                             const isComplete = currentIdx > i || researchPhase === 'complete';
                             const isCurrent = phases[i] === researchPhase;
@@ -259,7 +235,7 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
                                         {isComplete ? '✓' : i + 1}
                                     </div>
                                     <span className={`text-xs ${isComplete || isCurrent ? 'text-white' : 'text-slate-500'}`}>{step}</span>
-                                    {i < 3 && <span className="text-slate-600 mx-1">→</span>}
+                                    {i < 2 && <span className="text-slate-600 mx-1">→</span>}
                                 </div>
                             );
                         })}
