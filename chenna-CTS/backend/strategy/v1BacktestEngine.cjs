@@ -5,6 +5,7 @@
 
 const TechnicalAnalysis = require('../strategy/comprehensiveTA.cjs');
 const { PrismaClient } = require('@prisma/client');
+const { CategoryFilteredCatalogue } = require('./categoryFilteredCatalogue.cjs');
 const prisma = new PrismaClient();
 
 class V1BacktestEngine {
@@ -30,7 +31,7 @@ class V1BacktestEngine {
         // 3. Test V1 on each stock
         const allTrades = [];
         for (const stock of stocks) {
-            const trades = await this.testV1OnStock(stock, v1);
+            const trades = await this.testV1OnStock(stock, v1, categoryKey);
             allTrades.push(...trades);
         }
 
@@ -128,7 +129,7 @@ class V1BacktestEngine {
         return normalizedCandles;
     }
 
-    async testV1OnStock(stock, v1) {
+    async testV1OnStock(stock, v1, categoryKey) {
         const trades = [];
 
         try {
@@ -143,7 +144,7 @@ class V1BacktestEngine {
                 if (futureCandles.length < 10) continue;
 
                 // Check if V1 entry signal is triggered
-                const hasSignal = this.checkV1Entry(availableCandles, v1.rules.entry);
+                const hasSignal = this.checkV1Entry(availableCandles, v1.rules.entry, categoryKey);
 
                 if (hasSignal) {
                     const entry = {
@@ -179,48 +180,64 @@ class V1BacktestEngine {
         return trades;
     }
 
-    checkV1Entry(candles, entryRules) {
+    checkV1Entry(candles, entryRules, categoryKey = 'DOWNSIDE_LOM_SWING') {
         try {
-            // Calculate indicators
+            // Calculate base indicators
             const indicators = TechnicalAnalysis.getMarketContext(candles);
             if (!indicators) return false;
 
-            // Parse V1 entry logic
-            // Example: "RSI<25 + Above SMA50"
+            // ✅ Add exhaustion indicators (same as Labs timeTravelEngine)
+            const lastCandle = candles[candles.length - 1];
+            const prevCandle = candles[candles.length - 2];
+
+            // Lower wick percentage
+            const candleRange = lastCandle.high - lastCandle.low;
+            const lowerWick = Math.min(lastCandle.open, lastCandle.close) - lastCandle.low;
+            indicators.lowerWickPct = candleRange > 0 ? (lowerWick / candleRange) * 100 : 0;
+
+            // Volume vs average
+            const recentCandles = candles.slice(-20);
+            const avgVolume = recentCandles.reduce((s, c) => s + c.volume, 0) / recentCandles.length;
+            indicators.volumeVsAvg = avgVolume > 0 ? lastCandle.volume / avgVolume : 1;
+
+            // RSI previous (for divergence check)
+            indicators.rsi14_prev = prevCandle ? TechnicalAnalysis.getMarketContext(candles.slice(0, -1))?.rsi14 : null;
+
+            // New low check
+            const last5Candles = candles.slice(-5);
+            const lookback20 = candles.slice(-25, -5);
+            const recentLow5 = Math.min(...last5Candles.map(c => c.low));
+            const prior20Low = lookback20.length > 0 ? Math.min(...lookback20.map(c => c.low)) : recentLow5;
+            indicators.recentNewLow = recentLow5 < prior20Low * 0.99;
+            indicators.aboveRecentLow = lastCandle.close > recentLow5;
+            indicators.newLow = lastCandle.low < prior20Low;
+            indicators.holdingAboveLow = !indicators.newLow && indicators.aboveRecentLow;
+
+            // Close position
+            const closePosition = candleRange > 0 ? (lastCandle.close - lastCandle.low) / candleRange : 0.5;
+            indicators.closeNearHigh = closePosition > 0.7;
+
+            // ✅ Use actual strategy function from catalogue
             const logic = entryRules.logic;
+            const catalogue = CategoryFilteredCatalogue.buildForCategory(categoryKey);
 
-            // RSI conditions
-            if (logic.includes('RSI<25') && indicators.rsi14 >= 25) return false;
-            if (logic.includes('RSI<30') && indicators.rsi14 >= 30) return false;
-            if (logic.includes('RSI<35') && indicators.rsi14 >= 35) return false;
+            // Find the strategy by name
+            const strategy = catalogue.find(s => s.name === logic);
 
-            // SMA conditions
-            if (logic.includes('Above SMA50') && !indicators.aboveSMA50) return false;
-            if (logic.includes('Above SMA200') && !indicators.aboveSMA200) return false;
-            if (logic.includes('Between SMA20/50')) {
-                const price = candles[candles.length - 1].close;
-                if (!(indicators.sma20 && indicators.sma50 && price > indicators.sma20 && price < indicators.sma50)) {
-                    return false;
-                }
+            if (strategy && typeof strategy.entry === 'function') {
+                // Use the actual entry function (same as Labs)
+                return strategy.entry(indicators, candles);
             }
 
-            // BB conditions
-            if (logic.includes('BB Upper Band Touch')) {
-                const price = candles[candles.length - 1].close;
-                if (!(indicators.bb && price >= indicators.bb.upper * 0.98)) return false;
-            }
-            if (logic.includes('BB Lower Band')) {
-                const price = candles[candles.length - 1].close;
-                if (!(indicators.bb && price <= indicators.bb.lower * 1.02)) return false;
+            // Fallback: If strategy not found, use simple RSI check
+            console.log(`⚠️ Strategy "${logic}" not found in catalogue, using fallback`);
+            if (indicators.rsi14 && indicators.rsi14 < 40) {
+                return true;
             }
 
-            // MACD conditions
-            if (logic.includes('MACD Bullish') && !indicators.macdBullish) return false;
-
-            // If all conditions pass
-            return true;
-
+            return false;
         } catch (error) {
+            console.error(`checkV1Entry error:`, error.message);
             return false;
         }
     }
