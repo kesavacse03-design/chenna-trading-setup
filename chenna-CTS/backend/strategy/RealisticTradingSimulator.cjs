@@ -59,28 +59,23 @@ class RealisticTradingSimulator {
             backtestMode: options.backtestMode || false,
 
             // ============================================
-            // RESEARCH PASS 2: Shadow Refinement Config
+            // RESEARCH MODE: Pass tracking (observation only)
             // ============================================
+            // NOTE: Shadow Learner OBSERVES and SUGGESTS only.
+            // It does NOT change execution logic. Both Pass 1 and
+            // Pass 2 run IDENTICAL pure execution. The learning
+            // happens in the SUGGESTIONS, not in modified rules.
+            // A 20+ year senior trader knows: pure data, pure execution.
+            // You cannot force accuracy - that's curve fitting.
             researchPass: options.researchPass || null,
-            applyRefinements: options.applyRefinements || false,
+            applyRefinements: false, // ALWAYS false - refinements are suggestions only
             shadowSuggestions: options.shadowSuggestions || []
         };
 
-        // Apply stricter filters when refinements are enabled (Pass 2)
-        if (this.config.applyRefinements) {
-            console.log('🔧 [Refinements] Applying Shadow Learning improvements...');
-            // Stricter quality thresholds based on Shadow suggestions
-            this.config.minQualityScore = 3; // Require 3/4 confirmations instead of 2/4
-            this.config.requirePriceAcceptance = true;
-            this.config.skipWeakStrategies = true;
-            this.config.extraPatientDelays = true;
-        } else {
-            // Standard Pass 1 config
-            this.config.minQualityScore = 2;
-            this.config.requirePriceAcceptance = false;
-            this.config.skipWeakStrategies = false;
-            this.config.extraPatientDelays = false;
-        }
+        // IMPORTANT: No artificial filtering applied.
+        // Both Pass 1 and Pass 2 use IDENTICAL execution logic.
+        // The "refinements" are SUGGESTIONS for the human to review,
+        // not automatic changes to execution rules.
 
         this.executedTrades = [];
         this.invalidatedSignals = [];
@@ -528,66 +523,10 @@ class RealisticTradingSimulator {
                         }
                     };
                 } else {
-                    // ============================================
-                    // PASS 2 STRICTER FILTER: Apply Shadow refinements
-                    // ============================================
-                    if (this.config.applyRefinements) {
-                        // Stricter filter 1: Require price acceptance (close above signal price)
-                        if (this.config.requirePriceAcceptance) {
-                            const priceAccepted = todayCandle.close > state.signalPrice;
-                            if (!priceAccepted) {
-                                this.log(state.symbol, 'PASS2_FILTER', 'Price not accepted - closing below signal', {
-                                    signalPrice: state.signalPrice,
-                                    todayClose: todayCandle.close
-                                });
-                                state.stateHistory.push({
-                                    state: TradeState.INVALIDATED,
-                                    date: todayDate,
-                                    reason: 'Pass 2 Filter: Price acceptance failed'
-                                });
-                                return {
-                                    completed: true,
-                                    invalidated: {
-                                        symbol: state.symbol,
-                                        strategy: state.strategy,
-                                        signalDate: state.signalDate,
-                                        signalPrice: state.signalPrice,
-                                        invalidationDate: todayDate,
-                                        invalidationReason: 'Pass 2 Filter: Price acceptance failed',
-                                        lifecycle: state.stateHistory
-                                    }
-                                };
-                            }
-                        }
-
-                        // Stricter filter 2: Skip entries with weak candle structure
-                        const candleRange = todayCandle.high - todayCandle.low;
-                        const closePosition = candleRange > 0 ? (todayCandle.close - todayCandle.low) / candleRange : 0.5;
-                        if (closePosition < 0.6) { // Require closing in upper 40% of range
-                            this.log(state.symbol, 'PASS2_FILTER', 'Weak candle structure - not in upper range', {
-                                closePosition: closePosition.toFixed(2)
-                            });
-                            state.stateHistory.push({
-                                state: TradeState.INVALIDATED,
-                                date: todayDate,
-                                reason: 'Pass 2 Filter: Weak candle structure'
-                            });
-                            return {
-                                completed: true,
-                                invalidated: {
-                                    symbol: state.symbol,
-                                    strategy: state.strategy,
-                                    signalDate: state.signalDate,
-                                    signalPrice: state.signalPrice,
-                                    invalidationDate: todayDate,
-                                    invalidationReason: 'Pass 2 Filter: Weak candle structure',
-                                    lifecycle: state.stateHistory
-                                }
-                            };
-                        }
-                    }
-
                     // Entry EXECUTED - update state
+                    // NOTE: No artificial filtering applied. Both Pass 1 and Pass 2
+                    // run IDENTICAL execution logic. A senior trader knows:
+                    // Pure data, pure execution. You cannot force accuracy.
                     state.state = TradeState.ENTERED;
                     state.entryDate = todayDate;
                     state.entryPrice = entryValidation.entryPrice;
