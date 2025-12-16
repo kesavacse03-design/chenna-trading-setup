@@ -810,7 +810,8 @@ class RealisticTradingSimulator {
 
         if (!Array.isArray(data)) return null;
 
-        return data.map(c => ({
+        // Parse and filter valid candles
+        const candles = data.map(c => ({
             open: parseFloat(c.open) || 0,
             high: parseFloat(c.high) || 0,
             low: parseFloat(c.low) || 0,
@@ -818,6 +819,16 @@ class RealisticTradingSimulator {
             volume: parseInt(c.volume) || 0,
             timestamp: c.timestamp || c.date
         })).filter(c => c.close > 0);
+
+        // CRITICAL: Sort by timestamp ASCENDING (oldest first)
+        // This ensures forward iteration goes from past to future
+        candles.sort((a, b) => {
+            const dateA = new Date(a.timestamp);
+            const dateB = new Date(b.timestamp);
+            return dateA.getTime() - dateB.getTime();
+        });
+
+        return candles;
     }
 }
 
