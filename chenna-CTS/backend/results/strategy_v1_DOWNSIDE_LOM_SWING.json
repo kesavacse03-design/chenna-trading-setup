@@ -2,7 +2,7 @@
   "category": "DOWNSIDE_LOM_SWING",
   "name": "V1 Default - DOWNSIDE_LOM_SWING",
   "version": "2.0.0",
-  "createdAt": "2025-12-16T08:21:57.133Z",
+  "createdAt": "2025-12-16T09:18:05.480Z",
   "thesis": "This category works when Panic selling happened, weak hands exiting, institutions absorbing",
   "categoryIntent": "Late-stage selling → exhaustion → bounce",
   "mustDiscover": "Exhaustion + Stabilization signals",
@@ -53,13 +53,13 @@
     }
   ],
   "expectedBehavior": {
-    "avgHoldingTime": "2.4 days",
-    "avgDrawdown": "4.0%",
-    "avgMove": "0.4%",
-    "winRate": "53.8%"
+    "avgHoldingTime": "3.0 days",
+    "avgDrawdown": "1.5%",
+    "avgMove": "0.5%",
+    "winRate": "50.0%"
   },
   "entryRules": {
-    "logic": "Volume Dry-Up Exhaustion",
+    "logic": "RSI Divergence Exhaustion",
     "description": "Best performing logic from top-ranked strategy"
   },
   "exitRules": {
@@ -77,32 +77,32 @@
     "maxPositions": 5
   },
   "expectedMetrics": {
-    "accuracy": "53.8%",
-    "expectancy": "0.38%",
-    "trapAvoidance": "27.8%",
-    "avgHolding": "2.4 days"
+    "accuracy": "50.0%",
+    "expectancy": "0.50%",
+    "trapAvoidance": "50.0%",
+    "avgHolding": "3.0 days"
   },
   "contributors": [
     {
       "rank": 1,
-      "logic": "Volume Dry-Up Exhaustion",
-      "score": "32.7",
-      "trades": 13,
-      "winRate": "53.8%"
+      "logic": "RSI Divergence Exhaustion",
+      "score": "0.0",
+      "trades": 2,
+      "winRate": "50.0%"
     },
     {
       "rank": 2,
-      "logic": "RSI Divergence Exhaustion",
+      "logic": "Volume Dry-Up Exhaustion",
       "score": "0.0",
-      "trades": 7,
-      "winRate": "42.9%"
+      "trades": 3,
+      "winRate": "66.7%"
     },
     {
       "rank": 3,
       "logic": "Lower Wick Dominance",
       "score": "0.0",
-      "trades": 27,
-      "winRate": "33.3%"
+      "trades": 16,
+      "winRate": "31.3%"
     }
   ]
 }

@@ -30,6 +30,10 @@ registerAutoStrategyRoutes(app);
 const registerBacktestResultsRoutes = require('./api/backtestResultsRoutes.cjs');
 registerBacktestResultsRoutes(app);
 
+// Register Realistic Trading Simulation Routes
+const registerRealisticSimRoutes = require('./api/realisticSimRoutes.cjs');
+registerRealisticSimRoutes(app);
+
 // Register Labs Routes (for Time-Travel Labs API)
 const labsRoutes = require('./api/labsRoutes.cjs');
 app.use('/api/labs', labsRoutes);

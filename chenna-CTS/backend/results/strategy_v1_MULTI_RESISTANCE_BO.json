@@ -1,0 +1,104 @@
+{
+  "category": "MULTI_RESISTANCE_BO",
+  "name": "V1 Default - MULTI_RESISTANCE_BO",
+  "version": "2.0.0",
+  "createdAt": "2025-12-16T09:25:34.492Z",
+  "thesis": "This category works when Multiple resistance tests, sellers exhausted, breakout likely but fake breakouts common",
+  "categoryIntent": "Supply absorption → breakout",
+  "mustDiscover": "Breakout confirmation quality",
+  "confirmations": [
+    {
+      "rank": 1,
+      "rule": "range_tightening",
+      "description": "Range tightening near resistance",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 2,
+      "rule": "volume_contraction_pre",
+      "description": "Volume contraction before breakout",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 3,
+      "rule": "breakout_close_strong",
+      "description": "Breakout candle close > 70% of range",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 4,
+      "rule": "volume_expansion_on_break",
+      "description": "Volume expansion on breakout",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 5,
+      "rule": "no_rejection_candle",
+      "description": "No immediate rejection candle",
+      "importance": "HIGH"
+    }
+  ],
+  "invalidations": [
+    {
+      "rule": "rsi_oversold_logic",
+      "impact": "Reduces win rate when present"
+    },
+    {
+      "rule": "mean_reversion_tools",
+      "impact": "Reduces win rate when present"
+    }
+  ],
+  "expectedBehavior": {
+    "avgHoldingTime": "5.0 days",
+    "avgDrawdown": "2.0%",
+    "avgMove": "1.5%",
+    "winRate": "50.0%"
+  },
+  "entryRules": {
+    "logic": "Range Breakout",
+    "description": "Best performing logic from top-ranked strategy"
+  },
+  "exitRules": {
+    "target": 3,
+    "stop": 1.5,
+    "source": "From Range Breakout"
+  },
+  "trapFilters": {
+    "enabled": true,
+    "skipOnTraps": true,
+    "minConfidence": 0.6
+  },
+  "positionSizing": {
+    "riskPerTrade": 1.5,
+    "maxPositions": 5
+  },
+  "expectedMetrics": {
+    "accuracy": "0.0%",
+    "expectancy": "0.00%",
+    "trapAvoidance": "0.0%",
+    "avgHolding": "0.0 days"
+  },
+  "contributors": [
+    {
+      "rank": 1,
+      "logic": "Range Breakout",
+      "score": "0.0",
+      "trades": 0,
+      "winRate": "0.0%"
+    },
+    {
+      "rank": 2,
+      "logic": "Resistance Break with Volume",
+      "score": "0.0",
+      "trades": 0,
+      "winRate": "0.0%"
+    },
+    {
+      "rank": 3,
+      "logic": "BB Squeeze Breakout",
+      "score": "0.0",
+      "trades": 0,
+      "winRate": "0.0%"
+    }
+  ]
+}
