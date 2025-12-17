@@ -1,19 +1,37 @@
 /**
- * Shadow Learner - Observational Research Module for Backtest
+ * Shadow Learner - 3-Layer Structural Analysis System
  * 
- * PURPOSE:
- * - Observe mistakes during backtest
- * - Detect repeated failure patterns
- * - Identify conditions where logic underperforms/performs well
- * - Produce HUMAN-READABLE refinement suggestions
+ * ARCHITECTURE (Production-Grade):
  * 
- * DOES NOT:
- * - Automatically change logic
- * - Tune parameters
- * - Promote strategies
+ * LAYER 1: Structural Failure Detection (Observation Only)
+ * - Tag every failure with structural market causes
+ * - Use 17-tag failure taxonomy
+ * - No modifications, no optimizations
  * 
- * The user is always the final decision-maker.
+ * LAYER 2: Failure → Rule Gap Mapping (Reasoning)
+ * - Aggregate failures by tag
+ * - Identify dominant failure patterns
+ * - Map to specific rule gaps
+ * - Generate hypotheses for fixes
+ * 
+ * LAYER 3: Controlled Shadow Re-Test (Proof)
+ * - Test ONE rule change at a time
+ * - Measure real deltas
+ * - Accept only proven improvements
+ * 
+ * PRINCIPLES:
+ * - Every improvement must be EARNED, TESTED, and MEASURED
+ * - No automatic logic changes
+ * - User is always the final decision-maker
  */
+
+const {
+    FAILURE_TAXONOMY,
+    analyzeTradeFailures,
+    aggregateFailures
+} = require('./FailureTaxonomy.cjs');
+
+const { testAllHypotheses } = require('./ShadowVariant.cjs');
 
 class ShadowLearner {
     constructor(backtestResults) {
@@ -25,22 +43,229 @@ class ShadowLearner {
     }
 
     /**
-     * Generate complete Shadow Report
+     * Generate complete Shadow Report with 3-Layer Analysis
      */
     generateShadowReport() {
+        // Layer 1: Tag all trades with structural failures
+        const structuralAnalysis = this.analyzeStructuralFailures();
+
+        // Layer 2: Map failures to rule gaps
+        const ruleGapHypotheses = this.mapToRuleGaps(structuralAnalysis);
+
+        // Layer 3: Test hypotheses (controlled shadow re-test)
+        let variantTestResults = null;
+        if (ruleGapHypotheses.length > 0) {
+            try {
+                variantTestResults = testAllHypotheses(this.results, ruleGapHypotheses);
+            } catch (e) {
+                console.error('Layer 3 testing error:', e.message);
+                variantTestResults = { error: e.message };
+            }
+        }
+
         return {
             timestamp: new Date().toISOString(),
             category: this.results.category,
             version: this.results.strategyVersion || 'V1',
 
+            // Original analysis
             performanceFacts: this.analyzePerformance(),
             failureAnalysis: this.analyzeFailures(),
             strengthAnalysis: this.analyzeStrengths(),
             refinementSuggestions: this.generateSuggestions(),
 
+            // Layer 1: Structural Failure Detection
+            structuralFailures: structuralAnalysis,
+
+            // Layer 2: Rule Gap Hypotheses
+            ruleGapHypotheses: ruleGapHypotheses,
+
+            // Layer 3: Variant Test Results (Proven Improvements)
+            variantTestResults: variantTestResults,
+
+            // Summary of proven improvements
+            provenImprovements: variantTestResults?.results?.filter(r => r.status === 'PROVEN') || [],
+
+            // For backward compatibility - expose failure patterns for UI
+            failurePatterns: structuralAnalysis.aggregated || [],
+
             // For UI display
             humanReadableSummary: this.generateHumanSummary()
         };
+    }
+
+    // ============================================
+    // LAYER 1: STRUCTURAL FAILURE DETECTION
+    // ============================================
+    analyzeStructuralFailures() {
+        const losses = this.trades.filter(t => t.result === 'LOSS');
+        const taggedTrades = [];
+
+        for (const trade of losses) {
+            // Build context from available trade data
+            const context = this.buildTradeContext(trade);
+
+            // Get failure tags from taxonomy
+            const failureTags = analyzeTradeFailures(trade, context);
+
+            taggedTrades.push({
+                ...trade,
+                failureTags
+            });
+        }
+
+        // Aggregate failures
+        const aggregated = aggregateFailures(taggedTrades);
+
+        return {
+            totalLosses: losses.length,
+            taggedTrades,
+            aggregated,
+            dominantFailures: aggregated.filter(f => parseFloat(f.impactPct) > 15)
+        };
+    }
+
+    /**
+     * Build market context from trade data for failure detection
+     */
+    buildTradeContext(trade) {
+        // Extract what we can from lifecycle and trade data
+        const context = {
+            // Default values - will be enriched if data available
+            htfTrend: 'UNKNOWN',
+            candlesSinceDownStart: 5,
+            priorRejection: true,
+            atrRatio: 1.0,
+            hasLowerWick: false,
+            acceptanceClosePosition: 0.5,
+            bodyToRangeRatio: 0.5,
+            candleColor: 'UNKNOWN',
+            isVBounce: false,
+            hasConsolidation: true,
+            volumeRatio: 1.0,
+            entryAboveSignalClose: false,
+            isFirstBounce: false,
+            hasRetest: true,
+            bouncePercentFromLow: 0.2,
+            stopWithinATR: false,
+            wouldHaveWorked: false,
+            higherLowFormed: true,
+            partialInCongestion: false,
+            entriesThisPhase: 1,
+            qualityScore: 3
+        };
+
+        // Extract quality score from lifecycle if available
+        if (trade.lifecycle && trade.lifecycle.length > 1) {
+            const qualityMatch = trade.lifecycle[1]?.reason?.match(/Quality: (\d)\/4/);
+            if (qualityMatch) {
+                context.qualityScore = parseInt(qualityMatch[1]);
+            }
+        }
+
+        // Early stop = potential tight stop or premature entry
+        if (trade.holdingDays <= 2) {
+            context.candlesSinceDownStart = 2;
+            context.priorRejection = false;
+        }
+
+        // Strategy-specific context
+        if (trade.strategy?.includes('Lower Wick')) {
+            context.hasLowerWick = true;
+        }
+
+        // If highest price was close to target, stop was inside noise
+        if (trade.highestPriceSinceEntry && trade.targetPrice && trade.entryPrice) {
+            const reached = (trade.highestPriceSinceEntry - trade.entryPrice) / trade.entryPrice;
+            const target = (trade.targetPrice - trade.entryPrice) / trade.entryPrice;
+            if (reached > target * 0.7) {
+                context.wouldHaveWorked = true;
+                context.stopWithinATR = true;
+            }
+        }
+
+        return context;
+    }
+
+    // ============================================
+    // LAYER 2: FAILURE → RULE GAP MAPPING
+    // ============================================
+    mapToRuleGaps(structuralAnalysis) {
+        const hypotheses = [];
+        const dominantFailures = structuralAnalysis.dominantFailures || [];
+
+        // Map each dominant failure to a specific rule gap hypothesis
+        const ruleGapMap = {
+            'FAIL_CONTEXT_PREMATURE_EXHAUSTION': {
+                ruleGap: 'Missing momentum decay confirmation',
+                hypothesis: 'Wait for momentum reduction (smaller red candles) before entry',
+                testable: true,
+                implementation: 'Require 2+ candles with reducing body size before signal'
+            },
+            'FAIL_PRICE_NO_ACCEPTANCE': {
+                ruleGap: 'No price acceptance validation',
+                hypothesis: 'Require close above wick midpoint on acceptance candle',
+                testable: true,
+                implementation: 'Add acceptance_close > wick_midpoint rule'
+            },
+            'FAIL_VOLUME_NO_ABSORPTION': {
+                ruleGap: 'Missing volume confirmation',
+                hypothesis: 'Require volume spike on rejection candle',
+                testable: true,
+                implementation: 'Add volume > 1.2x average on signal candle'
+            },
+            'FAIL_ENTRY_LATE': {
+                ruleGap: 'No bounce percent limit',
+                hypothesis: 'Skip entries where bounce already > 40% of move',
+                testable: true,
+                implementation: 'Add (current_price - low) / (signal_price - low) < 0.4 filter'
+            },
+            'FAIL_MANAGEMENT_TIGHT_STOP': {
+                ruleGap: 'Stop too tight for volatility',
+                hypothesis: 'Widen stop to 1.5x ATR minimum',
+                testable: true,
+                implementation: 'Set stop_distance = max(current_stop, 1.5 * ATR)'
+            },
+            'FAIL_SIGNAL_LOW_QUALITY': {
+                ruleGap: 'Quality threshold too low',
+                hypothesis: 'Increase minimum quality score to 3/4',
+                testable: true,
+                implementation: 'Set minQualityScore = 3'
+            },
+            'FAIL_SIGNAL_OVERTRADING': {
+                ruleGap: 'No per-phase signal limit',
+                hypothesis: 'Allow only 1 entry per symbol per down leg',
+                testable: true,
+                implementation: 'Track phase_id and limit entries'
+            }
+        };
+
+        for (const failure of dominantFailures) {
+            const mapping = ruleGapMap[failure.tag];
+            if (mapping) {
+                hypotheses.push({
+                    failureTag: failure.tag,
+                    failureCount: failure.count,
+                    impactPct: failure.impactPct,
+                    ...mapping,
+                    status: 'HYPOTHESIS', // Not tested yet
+                    provenImprovement: null
+                });
+            } else {
+                // Generic hypothesis for unmapped failures
+                hypotheses.push({
+                    failureTag: failure.tag,
+                    failureCount: failure.count,
+                    impactPct: failure.impactPct,
+                    ruleGap: `Rule gap for ${failure.category} failures`,
+                    hypothesis: failure.marketReality || failure.description,
+                    testable: false,
+                    status: 'NEEDS_ANALYSIS'
+                });
+            }
+        }
+
+        return hypotheses;
     }
 
     // ============================================
