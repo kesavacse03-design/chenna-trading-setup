@@ -32,6 +32,7 @@ const {
 } = require('./FailureTaxonomy.cjs');
 
 const { testAllHypotheses } = require('./ShadowVariant.cjs');
+const { VersionManager, getNextVersion } = require('./VersionManager.cjs');
 
 class ShadowLearner {
     constructor(backtestResults) {
@@ -265,6 +266,169 @@ class ShadowLearner {
         lines.push('═══════════════════════════════════════════');
 
         return lines.join('\n');
+    }
+
+    // ============================================
+    // MULTI-PASS RESEARCH (VERSION CHAIN EVOLUTION)
+    // ============================================
+    /**
+     * Run multi-pass research with auto-promotion (PAST MODE ONLY)
+     * 
+     * This is the time-travel experimentation loop:
+     * 1. Run Pass 1 (TT-V1 baseline)
+     * 2. Shadow analyzes → finds proven improvements
+     * 3. Auto-promote to TT-V1.a
+     * 4. Apply filters, continue simulation
+     * 5. Repeat until no more improvements or max passes
+     * 
+     * @param {Object} initialResults - Initial backtest results
+     * @param {Object} options - Multi-pass options
+     * @returns {Object} Multi-pass results with evolution history
+     */
+    static async runMultiPassResearch(initialResults, options = {}) {
+        const {
+            maxPasses = 5,
+            categoryKey = initialResults.category || 'UNKNOWN',
+            rerunSimulation = null // Async function to re-run simulation with filters
+        } = options;
+
+        const versionManager = new VersionManager(categoryKey, 'TT-V1');
+        const passResults = [];
+        let currentResults = initialResults;
+        let currentFilters = [];
+
+        console.log('\n═══════════════════════════════════════════');
+        console.log('🔬 MULTI-PASS RESEARCH BACKTEST');
+        console.log('   Time-Travel Experimentation Mode');
+        console.log('═══════════════════════════════════════════\n');
+
+        for (let passNum = 1; passNum <= maxPasses; passNum++) {
+            console.log(`\n📊 PASS ${passNum}: ${versionManager.getVersion()}`);
+            console.log('───────────────────────────────────────────');
+
+            // Create ShadowLearner for this pass
+            const shadowLearner = new ShadowLearner(currentResults);
+            const shadowReport = shadowLearner.generateShadowReport();
+            const promotionReport = shadowReport.promotionReport;
+
+            // Extract metrics for evolution tracking
+            const currentMetrics = {
+                winRate: currentResults.summary?.winRate || '0',
+                wins: currentResults.summary?.wins || 0,
+                losses: currentResults.summary?.losses || 0,
+                trades: currentResults.summary?.executedTrades || 0
+            };
+
+            // Record baseline or evolution
+            if (passNum === 1) {
+                versionManager.recordBaseline(currentMetrics);
+            }
+
+            // Store pass result
+            passResults.push({
+                passNumber: passNum,
+                version: versionManager.getVersion(),
+                metrics: currentMetrics,
+                shadowReport,
+                provenCount: promotionReport?.provenCount || 0,
+                rejectedCount: promotionReport?.rejectedCount || 0,
+                activeFilters: [...currentFilters]
+            });
+
+            console.log(`   Trades: ${currentMetrics.trades} | WR: ${currentMetrics.winRate}%`);
+            console.log(`   Losses: ${currentMetrics.losses} | Proven: ${promotionReport?.provenCount || 0}`);
+
+            // Check if we can evolve
+            if (!promotionReport || !promotionReport.canPromote) {
+                console.log(`\n   ⏹️ EVOLUTION STOPPED: ${promotionReport?.statusReason || 'No promotable improvements'}`);
+                break;
+            }
+
+            // AUTO-PROMOTE (PAST MODE ONLY)
+            const provenRules = promotionReport.provenRules || [];
+            if (provenRules.length === 0) {
+                console.log('\n   ⏹️ EVOLUTION STOPPED: No proven rules to apply');
+                break;
+            }
+
+            // Calculate theoretical "after" metrics
+            const afterMetrics = {
+                winRate: currentMetrics.winRate, // Will be updated by actual simulation
+                wins: currentMetrics.wins,
+                losses: Math.max(0, currentMetrics.losses - provenRules.reduce((sum, r) => sum + (r.impact?.lossesAvoided || 0), 0)),
+                trades: currentMetrics.trades - provenRules.reduce((sum, r) => sum + (r.impact?.winsMissed || 0), 0)
+            };
+
+            // Evolve to next version
+            const evolution = versionManager.evolve(provenRules, currentMetrics, afterMetrics);
+
+            console.log(`\n   ✅ AUTO-PROMOTE: ${evolution.fromVersion} → ${evolution.toVersion}`);
+            for (const rule of provenRules) {
+                console.log(`      + ${rule.ruleId}: ${rule.impact?.winRateDelta || 'N/A'} WR improvement`);
+            }
+
+            // Add new filters
+            for (const rule of provenRules) {
+                if (!currentFilters.includes(rule.ruleId)) {
+                    currentFilters.push(rule.ruleId);
+                }
+            }
+
+            // If we have a re-run function, use it (for actual re-simulation)
+            // Otherwise, we just track the theoretical evolution
+            if (rerunSimulation && typeof rerunSimulation === 'function') {
+                try {
+                    currentResults = await rerunSimulation(currentFilters);
+                } catch (e) {
+                    console.log(`   ⚠️ Re-simulation failed: ${e.message}`);
+                    break;
+                }
+            } else {
+                // In "observation only" mode, we just track evolution without re-running
+                // The metrics are theoretical based on what the filters WOULD have done
+                console.log('   (Observation mode - no re-simulation)');
+            }
+
+            // Safety check: don't loop forever
+            if (passNum >= maxPasses) {
+                console.log(`\n   ⏹️ MAX PASSES REACHED (${maxPasses})`);
+                break;
+            }
+        }
+
+        // Generate final summary
+        const evolutionSummary = versionManager.getSummary();
+        const evolutionHistory = versionManager.getHistory();
+        const evolutionTimeline = versionManager.generateTimeline();
+
+        console.log('\n═══════════════════════════════════════════');
+        console.log('📈 EVOLUTION COMPLETE');
+        console.log(`   ${evolutionSummary.baselineVersion} → ${evolutionSummary.finalVersion}`);
+        console.log(`   Passes: ${evolutionSummary.totalPasses} | Evolutions: ${evolutionSummary.totalEvolutions}`);
+        console.log(`   Active Filters: ${evolutionSummary.activeFilters.length}`);
+        console.log('═══════════════════════════════════════════\n');
+
+        return {
+            // Evolution tracking
+            evolutionSummary,
+            evolutionHistory,
+            evolutionTimeline,
+
+            // Pass-by-pass results
+            passResults,
+            totalPasses: passResults.length,
+
+            // Final state
+            finalVersion: evolutionSummary.finalVersion,
+            activeFilters: evolutionSummary.activeFilters,
+
+            // Last shadow report (for UI)
+            finalShadowReport: passResults[passResults.length - 1]?.shadowReport || null,
+
+            // For Before vs After
+            baselineMetrics: evolutionSummary.baselineMetrics,
+            finalMetrics: evolutionSummary.finalMetrics
+        };
     }
 
 

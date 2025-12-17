@@ -152,9 +152,32 @@ interface ShadowReportProps {
             nextAction: string;
             summary: string;
         };
+        // Evolution-specific data (multi-pass mode)
+        evolutionHistory?: Array<{
+            passNumber: number;
+            version: string;
+            fromVersion?: string;
+            provenRules: string[];
+            appliedFilters: string[];
+            beforeMetrics?: { winRate: string; wins: number; losses: number; trades: number };
+            afterMetrics: { winRate: string; wins: number; losses: number; trades: number };
+            delta?: { winRateDelta: string; lossesAvoided: number; winsMissed: number };
+            status: string;
+        }>;
+        evolutionTimeline?: string;
+        evolutionSummary?: {
+            baselineVersion: string;
+            finalVersion: string;
+            totalPasses: number;
+            totalEvolutions: number;
+            activeFilters: string[];
+        };
+        isMultiPass?: boolean;
+        finalVersion?: string;
         humanReadableSummary?: string;
 
     };
+
     version?: string;
     category?: string;
 }
@@ -634,8 +657,81 @@ export const ShadowReportPanel: React.FC<ShadowReportProps> = ({ shadowReport, v
                                     </div>
                                 </div>
                             )}
+
+                            {/* Evolution Timeline (Multi-Pass Mode) */}
+                            {shadowReport?.evolutionHistory && shadowReport.evolutionHistory.length > 0 && (
+                                <div className="bg-gradient-to-r from-indigo-900/30 to-purple-900/30 border border-indigo-700/50 rounded-lg p-4">
+                                    <h5 className="text-sm font-semibold text-indigo-400 mb-3">
+                                        📈 VERSION EVOLUTION TIMELINE
+                                        {shadowReport.isMultiPass && (
+                                            <span className="ml-2 text-xs bg-indigo-700/50 text-indigo-200 px-2 py-0.5 rounded">
+                                                Multi-Pass Mode
+                                            </span>
+                                        )}
+                                    </h5>
+                                    <div className="space-y-2">
+                                        {shadowReport.evolutionHistory.map((record, idx) => (
+                                            <div key={idx} className="flex items-start gap-3">
+                                                {/* Version Dot */}
+                                                <div className="flex flex-col items-center">
+                                                    <div className={`w-3 h-3 rounded-full ${record.status === 'BASELINE' ? 'bg-slate-500' :
+                                                            record.status === 'EVOLVED' ? 'bg-green-500' : 'bg-amber-500'
+                                                        }`}></div>
+                                                    {idx < (shadowReport.evolutionHistory?.length || 0) - 1 && (
+                                                        <div className="w-0.5 h-6 bg-slate-600 mt-1"></div>
+                                                    )}
+                                                </div>
+                                                {/* Version Info */}
+                                                <div className="flex-1">
+                                                    <div className="flex items-center justify-between">
+                                                        <span className={`text-sm font-mono ${record.status === 'BASELINE' ? 'text-slate-400' : 'text-green-400'
+                                                            }`}>
+                                                            {record.version}
+                                                            {record.status === 'BASELINE' && ' (Baseline)'}
+                                                        </span>
+                                                        <span className="text-xs text-slate-400">
+                                                            {record.afterMetrics?.winRate}% WR | {record.afterMetrics?.losses} losses
+                                                        </span>
+                                                    </div>
+                                                    {/* Applied Filters */}
+                                                    {record.appliedFilters && record.appliedFilters.length > 0 && (
+                                                        <div className="mt-1 flex flex-wrap gap-1">
+                                                            {record.appliedFilters.map((filter, fIdx) => (
+                                                                <span key={fIdx} className="text-xs bg-green-900/30 text-green-400 px-1.5 py-0.5 rounded">
+                                                                    +{filter.replace('FAIL_', '')}
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                    )}
+                                                    {/* Delta */}
+                                                    {record.delta && (
+                                                        <div className="mt-1 text-xs text-slate-500">
+                                                            Δ {record.delta.winRateDelta} WR | -{record.delta.lossesAvoided} losses
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    {/* Final Version Summary */}
+                                    {shadowReport.evolutionSummary && (
+                                        <div className="mt-4 pt-3 border-t border-indigo-700/30">
+                                            <div className="flex items-center justify-between text-sm">
+                                                <span className="text-slate-400">
+                                                    {shadowReport.evolutionSummary.baselineVersion} → {shadowReport.evolutionSummary.finalVersion}
+                                                </span>
+                                                <span className="text-indigo-400">
+                                                    {shadowReport.evolutionSummary.totalEvolutions} evolution(s) | {shadowReport.evolutionSummary.activeFilters?.length || 0} filter(s) active
+                                                </span>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     )}
+
 
                     {/* Failures Tab */}
                     {activeTab === 'failures' && failureAnalysis && (

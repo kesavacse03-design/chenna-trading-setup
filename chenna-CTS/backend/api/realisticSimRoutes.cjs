@@ -25,7 +25,10 @@ function registerRealisticSimRoutes(app) {
                 // 2-Pass Research Backtest params
                 researchPass = null,
                 applyRefinements = false,
-                shadowSuggestions = []
+                shadowSuggestions = [],
+                // Multi-Pass Research (Version Chain Evolution)
+                multiPassMode = false,  // Enable TT-V1 → TT-V1.a → TT-V1.b
+                maxPasses = 5           // Max evolution iterations
             } = req.body;
 
             if (!categoryKey) {
@@ -45,6 +48,12 @@ function registerRealisticSimRoutes(app) {
                 }
             }
 
+            // Multi-pass mode logging
+            if (multiPassMode) {
+                console.log(`   🔬 MULTI-PASS MODE: ENABLED (max ${maxPasses} passes)`);
+                console.log(`      Version Chain Evolution: TT-V1 → TT-V1.a → TT-V1.b...`);
+            }
+
             // Import simulator
             const { RealisticTradingSimulator } = require('../strategy/RealisticTradingSimulator.cjs');
             const simulator = new RealisticTradingSimulator({
@@ -52,8 +61,12 @@ function registerRealisticSimRoutes(app) {
                 // Pass refinement config for Pass 2
                 applyRefinements,
                 shadowSuggestions,
-                researchPass
+                researchPass,
+                // Multi-pass evolution config
+                multiPassMode,
+                maxPasses
             });
+
 
             // Get stocks for category
             const categoryStocks = await prisma.stockCategory.findMany({

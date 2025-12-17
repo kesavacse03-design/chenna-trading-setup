@@ -40,6 +40,9 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
     // 2-Pass Research Progress Tracking
     const [researchPhase, setResearchPhase] = useState<'idle' | 'pass1' | 'observing' | 'pass2' | 'complete' | 'error'>('idle');
 
+    // Multi-Pass Evolution Mode
+    const [multiPassMode, setMultiPassMode] = useState(false);
+
     // Category context
     const [categoryContext, setCategoryContext] = useState({
         thesis: 'Capture exhaustion bounces in oversold conditions',
@@ -76,7 +79,10 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
                     categoryKey,
                     quickMode: false,
                     backtestMode: true,
-                    researchPass: 1
+                    researchPass: 1,
+                    // VERSION CHAIN EVOLUTION
+                    multiPassMode: multiPassMode,
+                    maxPasses: 5
                 })
             });
 

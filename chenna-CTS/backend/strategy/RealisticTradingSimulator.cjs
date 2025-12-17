@@ -63,8 +63,19 @@ class RealisticTradingSimulator {
             // ============================================
             researchPass: options.researchPass || null,
             applyRefinements: options.applyRefinements || false,
-            shadowSuggestions: options.shadowSuggestions || []
+            shadowSuggestions: options.shadowSuggestions || [],
+
+            // ============================================
+            // MULTI-PASS MODE: Version Chain Evolution
+            // ============================================
+            multiPassMode: options.multiPassMode || false, // Enable TT-V1 → TT-V1.a → TT-V1.b
+            maxPasses: options.maxPasses || 5               // Max evolution iterations
         };
+
+        // Store multiPassMode on instance for shadow generation
+        this.multiPassMode = this.config.multiPassMode;
+        this.maxPasses = this.config.maxPasses;
+
         // ============================================
         // RESEARCH MODE: Both passes run IDENTICAL logic
         // ============================================
@@ -1195,11 +1206,13 @@ class RealisticTradingSimulator {
             this.skippedSignals.push(...(result.skipped || []));
         }
 
-        return this.getResults();
+        return await this.getResults();
     }
 
-    getResults() {
+
+    async getResults() {
         const executed = this.executedTrades;
+
         const invalidated = this.invalidatedSignals;
         const skipped = this.skippedSignals;
 
@@ -1346,15 +1359,47 @@ class RealisticTradingSimulator {
         // SHADOW LEARNER: Generate Research Report
         // ============================================
         try {
-            const shadowLearner = new ShadowLearner(results);
-            results.shadowReport = shadowLearner.generateShadowReport();
+            // Check if multi-pass mode is enabled
+            if (this.multiPassMode) {
+                // MULTI-PASS RESEARCH (TIME-TRAVEL EXPERIMENTATION)
+                // Runs multiple passes with auto-promotion of proven improvements
+                const multiPassResults = await ShadowLearner.runMultiPassResearch(results, {
+                    maxPasses: this.maxPasses || 5,
+                    categoryKey: results.category
+                });
 
-            // Log that Shadow Report is available
-            console.log('\n' + results.shadowReport.humanReadableSummary);
+                // Merge evolution data into shadow report
+                results.shadowReport = {
+                    ...multiPassResults.finalShadowReport,
+                    // Evolution-specific data
+                    evolutionHistory: multiPassResults.evolutionHistory,
+                    evolutionTimeline: multiPassResults.evolutionTimeline,
+                    evolutionSummary: multiPassResults.evolutionSummary,
+                    passResults: multiPassResults.passResults,
+                    totalPasses: multiPassResults.totalPasses,
+                    finalVersion: multiPassResults.finalVersion,
+                    activeFilters: multiPassResults.activeFilters,
+                    // For Before vs After
+                    baselineMetrics: multiPassResults.baselineMetrics,
+                    finalMetrics: multiPassResults.finalMetrics,
+                    // Flag for UI
+                    isMultiPass: true
+                };
+
+                console.log('\n' + multiPassResults.evolutionTimeline);
+            } else {
+                // SINGLE PASS (default behavior)
+                const shadowLearner = new ShadowLearner(results);
+                results.shadowReport = shadowLearner.generateShadowReport();
+
+                // Log that Shadow Report is available
+                console.log('\n' + results.shadowReport.humanReadableSummary);
+            }
         } catch (err) {
             console.error('Shadow Learner error:', err.message);
             results.shadowReport = { error: err.message };
         }
+
 
         return results;
     }
