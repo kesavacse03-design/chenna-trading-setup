@@ -63,7 +63,31 @@ interface ShadowReportProps {
                 impactPct: string;
             }>;
             dominantFailures: Array<any>;
+            // Per-trade analysis with causal reasoning
+            taggedTrades?: Array<{
+                symbol: string;
+                entryDate: string;
+                pnl: number;
+                failureTags: Array<{ tag: string; severity: string }>;
+                traderReason?: {
+                    primaryCause: string;
+                    traderExplanation: string;
+                    avoidanceGuidance: string;
+                    tagDescriptions: string;
+                    summary: string;
+                    liveActionable: boolean;
+                };
+            }>;
+            // Category-level patterns (Layer 2 summary)
+            categoryPatterns?: Array<{
+                cause: string;
+                count: number;
+                totalLoss: number;
+                percentage: string;
+                examples: Array<{ symbol: string; date: string; explanation: string }>;
+            }>;
         };
+
         // Layer 2: Rule Gap Hypotheses
         ruleGapHypotheses?: Array<{
             failureTag: string;
@@ -227,37 +251,92 @@ export const ShadowReportPanel: React.FC<ShadowReportProps> = ({ shadowReport, v
                         </div>
                     )}
 
-                    {/* Layer 1: Structural Failures Tab */}
+                    {/* Layer 1: Structural Failures Tab - Per-Trade Causal Reasoning */}
                     {activeTab === 'structural' && structuralFailures && (
-                        <div className="space-y-3">
+                        <div className="space-y-4">
                             <div className="flex items-center justify-between">
-                                <h4 className="text-sm font-semibold text-cyan-400">🏷️ Layer 1: Structural Failure Tags</h4>
+                                <h4 className="text-sm font-semibold text-cyan-400">🏷️ Layer 1: Trade-Level Failure Reasoning</h4>
                                 <span className="text-xs text-slate-400">{structuralFailures.totalLosses} losses analyzed</span>
                             </div>
 
-                            {structuralFailures.aggregated?.length > 0 ? (
-                                <div className="space-y-2">
-                                    {structuralFailures.aggregated.map((failure, idx) => (
-                                        <div key={idx} className="bg-slate-900/50 border border-slate-700/50 rounded-lg p-3">
-                                            <div className="flex items-center justify-between mb-2">
+                            {/* LAYER 2 SUMMARY: Category-Level Patterns */}
+                            {(structuralFailures.categoryPatterns?.length ?? 0) > 0 && (
+                                <div className="bg-gradient-to-r from-indigo-900/30 to-purple-900/30 border border-indigo-700/30 rounded-lg p-4">
+                                    <h5 className="text-xs font-semibold text-indigo-400 mb-3">📊 Category-Level Failure Patterns</h5>
+                                    <div className="space-y-2">
+                                        {(structuralFailures.categoryPatterns || []).map((pattern: any, idx: number) => (
+                                            <div key={idx} className="flex items-center justify-between bg-slate-900/50 rounded px-3 py-2">
+                                                <span className="text-sm text-slate-300">{pattern.cause?.replace(/_/g, ' ')}</span>
                                                 <div className="flex items-center gap-2">
-                                                    <span>{getSeverityBadge(failure.severity)}</span>
-                                                    <span className="text-xs font-mono text-cyan-400">{failure.tag}</span>
-                                                </div>
-                                                <div className="flex items-center gap-2">
-                                                    <span className="text-xs bg-slate-700 px-2 py-0.5 rounded text-slate-300">{failure.count} times</span>
-                                                    <span className="text-xs bg-red-900/30 text-red-400 px-2 py-0.5 rounded">{failure.impactPct}% impact</span>
+                                                    <span className="text-xs bg-indigo-900/50 text-indigo-300 px-2 py-0.5 rounded">{pattern.count} trades</span>
+                                                    <span className="text-sm font-semibold text-amber-400">{pattern.percentage}</span>
                                                 </div>
                                             </div>
-                                            <p className="text-sm text-slate-300 mb-1">{failure.description}</p>
-                                            {failure.marketReality && (
-                                                <p className="text-xs text-slate-500 italic">💡 {failure.marketReality}</p>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* LAYER 1 DETAIL: Per-Trade Causal Explanations */}
+                            {(structuralFailures.taggedTrades?.length ?? 0) > 0 ? (
+                                <div className="space-y-3">
+                                    <h5 className="text-xs font-semibold text-slate-400">📋 Per-Trade Analysis (What a trader would say)</h5>
+                                    {(structuralFailures.taggedTrades || []).slice(0, 10).map((trade: any, idx: number) => (
+                                        <div key={idx} className="bg-slate-900/50 border border-red-900/30 rounded-lg p-3">
+                                            <div className="flex items-center justify-between mb-2">
+                                                <div className="flex items-center gap-2">
+                                                    <span className="text-sm font-semibold text-red-400">{trade.symbol}</span>
+                                                    <span className="text-xs text-slate-500">{trade.entryDate}</span>
+                                                </div>
+                                                <span className="text-xs bg-red-900/50 text-red-300 px-2 py-0.5 rounded">
+                                                    {trade.pnl?.toFixed(2)}%
+                                                </span>
+                                            </div>
+
+                                            {trade.traderReason && (
+                                                <>
+                                                    {/* Primary Cause Badge */}
+                                                    <div className="flex items-center gap-2 mb-2">
+                                                        <span className="text-xs bg-amber-900/50 text-amber-300 px-2 py-0.5 rounded font-mono">
+                                                            {trade.traderReason.primaryCause}
+                                                        </span>
+                                                    </div>
+
+                                                    {/* Trader Explanation */}
+                                                    <p className="text-sm text-slate-300 mb-2 leading-relaxed">
+                                                        {trade.traderReason.traderExplanation}
+                                                    </p>
+
+                                                    {/* Avoidance Guidance */}
+                                                    <div className="bg-slate-800/50 rounded p-2 border-l-2 border-cyan-500">
+                                                        <p className="text-xs text-cyan-300">
+                                                            <span className="font-semibold">🎯 Future Avoidance:</span> {trade.traderReason.avoidanceGuidance}
+                                                        </p>
+                                                    </div>
+                                                </>
+                                            )}
+
+                                            {/* Taxonomy Tags (secondary info) */}
+                                            {trade.failureTags?.length > 0 && (
+                                                <div className="flex flex-wrap gap-1 mt-2">
+                                                    {trade.failureTags.map((tag: any, tagIdx: number) => (
+                                                        <span key={tagIdx} className="text-xs bg-slate-700/50 text-slate-400 px-1.5 py-0.5 rounded">
+                                                            {getSeverityBadge(tag.severity)} {tag.tag?.replace('FAIL_', '')}
+                                                        </span>
+                                                    ))}
+                                                </div>
                                             )}
                                         </div>
                                     ))}
+
+                                    {(structuralFailures.taggedTrades?.length || 0) > 10 && (
+                                        <p className="text-xs text-slate-500 text-center">
+                                            Showing 10 of {structuralFailures.taggedTrades?.length || 0} trades
+                                        </p>
+                                    )}
                                 </div>
                             ) : (
-                                <p className="text-slate-500 text-sm">No structural failure tags detected.</p>
+                                <p className="text-slate-500 text-sm">No losing trades to analyze.</p>
                             )}
                         </div>
                     )}
@@ -277,8 +356,8 @@ export const ShadowReportPanel: React.FC<ShadowReportProps> = ({ shadowReport, v
                                             <div className="flex items-center justify-between mb-2">
                                                 <span className="text-xs font-mono text-amber-400">{hyp.failureTag}</span>
                                                 <span className={`text-xs px-2 py-0.5 rounded ${hyp.status === 'PROVEN' ? 'bg-green-900/30 text-green-400' :
-                                                        hyp.status === 'HYPOTHESIS' ? 'bg-amber-900/30 text-amber-400' :
-                                                            'bg-slate-700 text-slate-400'
+                                                    hyp.status === 'HYPOTHESIS' ? 'bg-amber-900/30 text-amber-400' :
+                                                        'bg-slate-700 text-slate-400'
                                                     }`}>{hyp.status}</span>
                                             </div>
                                             <p className="text-sm text-white font-medium mb-1">{hyp.ruleGap}</p>

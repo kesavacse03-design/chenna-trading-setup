@@ -108,9 +108,14 @@ class ShadowLearner {
             // Get failure tags from taxonomy
             const failureTags = analyzeTradeFailures(trade, context);
 
+            // CRITICAL: Generate trader-language causal explanation
+            const traderReason = this.generateTraderExplanation(trade, context, failureTags);
+
             taggedTrades.push({
                 ...trade,
-                failureTags
+                failureTags,
+                // Per-trade causal reasoning (the heart of Layer 1)
+                traderReason
             });
         }
 
@@ -121,8 +126,51 @@ class ShadowLearner {
             totalLosses: losses.length,
             taggedTrades,
             aggregated,
-            dominantFailures: aggregated.filter(f => parseFloat(f.impactPct) > 15)
+            dominantFailures: aggregated.filter(f => parseFloat(f.impactPct) > 15),
+            // Layer 2 aggregate patterns
+            categoryPatterns: this.extractCategoryPatterns(taggedTrades)
         };
+    }
+
+    /**
+     * LAYER 2 ENHANCEMENT: Extract category-level failure patterns
+     * Answers: "What does Downside LOM Swing fail at most often?"
+     */
+    extractCategoryPatterns(taggedTrades) {
+        const patterns = {};
+
+        for (const trade of taggedTrades) {
+            if (!trade.traderReason) continue;
+
+            const cause = trade.traderReason.primaryCause;
+            if (!patterns[cause]) {
+                patterns[cause] = {
+                    cause,
+                    count: 0,
+                    totalLoss: 0,
+                    examples: []
+                };
+            }
+
+            patterns[cause].count++;
+            patterns[cause].totalLoss += Math.abs(trade.pnl || 0);
+            if (patterns[cause].examples.length < 3) {
+                patterns[cause].examples.push({
+                    symbol: trade.symbol,
+                    date: trade.entryDate,
+                    explanation: trade.traderReason.summary
+                });
+            }
+        }
+
+        // Calculate percentages and sort
+        const total = taggedTrades.length;
+        return Object.values(patterns)
+            .map(p => ({
+                ...p,
+                percentage: total > 0 ? ((p.count / total) * 100).toFixed(1) + '%' : '0%'
+            }))
+            .sort((a, b) => b.count - a.count);
     }
 
     /**
@@ -212,6 +260,115 @@ class ShadowLearner {
         }
 
         return context;
+    }
+
+    /**
+     * LAYER 1 CRITICAL: Generate trader-language causal explanation for WHY this trade failed
+     * 
+     * This is the heart of the Shadow Learner - answers:
+     * "Why did this trade fail at that moment?"
+     * 
+     * Rules:
+     * - Only use information available at entry/exit time
+     * - One dominant cause per trade
+     * - Must be usable in live trading analysis
+     */
+    generateTraderExplanation(trade, context, failureTags) {
+        const parts = [];
+        const details = {};
+
+        // Build the explanation from available data
+        const symbol = trade.symbol;
+        const entryPrice = trade.entryPrice?.toFixed(2) || 'N/A';
+        const holdingDays = trade.holdingDays || 0;
+        const strategy = trade.strategy || 'Unknown';
+        const exitReason = trade.exitReason || 'UNKNOWN';
+        const pnl = trade.pnl?.toFixed(2) || '0';
+
+        details.symbol = symbol;
+        details.entryPrice = entryPrice;
+        details.holdingDays = holdingDays;
+        details.exitReason = exitReason;
+        details.pnl = pnl;
+
+        // Primary cause determination based on trade behavior
+        let primaryCause = null;
+        let traderExplanation = '';
+        let avoidanceGuidance = '';
+
+        // CASE 1: Very quick stop (1-2 days) = Premature entry
+        if (holdingDays <= 2 && exitReason === 'STOP_LOSS') {
+            primaryCause = 'PREMATURE_ENTRY';
+            traderExplanation = `Entry at ₹${entryPrice} occurred during momentum continuation, not exhaustion. ` +
+                `Stopped out in ${holdingDays} day(s) - downside pressure was still expanding, not contracting.`;
+            avoidanceGuidance = 'Wait for price deceleration: smaller red candles, higher lows starting to form, ' +
+                'or volume declining on down moves before entering.';
+        }
+        // CASE 2: Quick stop (3-5 days) = Weak signal quality
+        else if (holdingDays <= 5 && exitReason === 'STOP_LOSS') {
+            primaryCause = 'WEAK_SIGNAL';
+            traderExplanation = `Entry at ₹${entryPrice} had insufficient confirmation. ` +
+                `Stopped out after ${holdingDays} days - signal lacked structural backing.`;
+            avoidanceGuidance = 'Look for multiple confluences: lower wick + volume spike + RSI oversold + ' +
+                'price near support. Single-signal entries are unreliable for swings.';
+        }
+        // CASE 3: Trailing stop loss = Trade worked but gave back gains
+        else if (exitReason === 'TRAILING_STOP' && trade.pnl < 0) {
+            primaryCause = 'EARLY_TRAIL';
+            traderExplanation = `Trailing stop activated too early at ₹${entryPrice}. ` +
+                `Trade needed more room to develop before trailing.`;
+            avoidanceGuidance = 'Trail only after structure confirms: higher low formed, or first target hit. ' +
+                'Early trailing chokes potential winners.';
+        }
+        // CASE 4: Reached 70%+ of target then stopped = Tight stop
+        else if (context.wouldHaveWorked && exitReason === 'STOP_LOSS') {
+            primaryCause = 'TIGHT_STOP';
+            traderExplanation = `Trade at ₹${entryPrice} reached ${((trade.highestPriceSinceEntry - trade.entryPrice) / trade.entryPrice * 100).toFixed(1)}% ` +
+                `toward target before stopping out. Stop was inside normal swing volatility.`;
+            avoidanceGuidance = 'Use ATR-based stops (1.5-2x ATR below entry) instead of fixed percentage stops. ' +
+                'Swings need room to breathe.';
+        }
+        // CASE 5: Lower wick strategy that failed = Price acceptance issue
+        else if (strategy.includes('Lower Wick') && holdingDays <= 5) {
+            primaryCause = 'NO_ACCEPTANCE';
+            traderExplanation = `Lower wick rejection at ₹${entryPrice} had no follow-through acceptance. ` +
+                `Wick rejection is not the same as buying - need price to CLOSE above rejection zone.`;
+            avoidanceGuidance = 'Wait for acceptance candle: next candle must close in upper half of wick range. ' +
+                'Wick alone = institutional selling into strength.';
+        }
+        // CASE 6: Gap strategy failure = Volatility expansion trap
+        else if (strategy.includes('Gap')) {
+            primaryCause = 'VOLATILITY_TRAP';
+            traderExplanation = `Gap entry at ₹${entryPrice} during volatility expansion phase. ` +
+                `Exhaustion works in volatility decay, not expansion.`;
+            avoidanceGuidance = 'Avoid gap entries when ATR is expanding. Wait for volatility to contract ' +
+                'before playing exhaustion setups.';
+        }
+        // CASE 7: Default - general analysis
+        else {
+            primaryCause = 'CONTEXT_MISMATCH';
+            traderExplanation = `Entry at ₹${entryPrice} (${strategy}) exited via ${exitReason} after ${holdingDays} days. ` +
+                `Market context at entry did not support the setup thesis.`;
+            avoidanceGuidance = 'Verify setup thesis before entry: Is downside exhausting? Is smart money absorbing? ' +
+                'Is the move late-stage? Is this a reaction, not anticipation?';
+        }
+
+        // Add failure tag context
+        const tagDescriptions = failureTags.slice(0, 2).map(f => f.description).join('; ');
+
+        return {
+            primaryCause,
+            traderExplanation,
+            avoidanceGuidance,
+            tagDescriptions: tagDescriptions || 'Structural pattern not detected',
+            details,
+
+            // Single-line summary for UI
+            summary: `${symbol}: ${traderExplanation.split('.')[0]}.`,
+
+            // Could a trader use this in live analysis?
+            liveActionable: true
+        };
     }
 
     // ============================================
