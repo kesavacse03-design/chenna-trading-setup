@@ -87,40 +87,108 @@ router.get('/latest/:categoryKey', async (req, res) => {
         if (latestRun) {
             console.log(`[Labs API] ✅ Loaded from DATABASE: ${latestRun.ttVersion} for ${categoryKey}`);
 
-            // Transform to match expected format
-            return res.json({
-                ok: true,
-                hasResult: true,
-                source: 'database',
-                result: {
-                    runId: latestRun.id,
-                    v1Strategy: {
-                        thesis: latestRun.recommendedLogic?.thesis || null,
-                        categoryIntent: latestRun.recommendedLogic?.categoryIntent || null,
-                        confirmations: latestRun.recommendedLogic?.confirmations || [],
-                        invalidations: latestRun.recommendedLogic?.invalidations || [],
-                        expectedBehavior: latestRun.recommendedLogic?.expectedBehavior || null
+            // Extract metrics for display
+            const metrics = latestRun.performanceMetrics || {};
+            const strategyParams = latestRun.strategyParams || {};
+            const recommendedLogic = latestRun.recommendedLogic || {};
+
+            // Use entryConditions/exitConditions from record, fallback to recommendedLogic.entry/exit
+            const entryConditions = latestRun.entryConditions || recommendedLogic.entry || {};
+            const exitConditions = latestRun.exitConditions || recommendedLogic.exit || {};
+            const trapRules = latestRun.trapRules || recommendedLogic.trapAvoidance || [];
+
+            // Debug log to see what's in the record
+            console.log(`[Labs API] Entry conditions type: ${typeof entryConditions}, keys: ${Object.keys(entryConditions).length}`);
+            console.log(`[Labs API] RecommendedLogic keys: ${Object.keys(recommendedLogic).join(', ')}`);
+
+            // Check if we have meaningful data - if not, fall through to JSON file
+            const hasEntryData = Object.keys(entryConditions).length > 0;
+            const hasRecommendedEntryData = recommendedLogic.entry && Object.keys(recommendedLogic.entry).length > 0;
+
+            if (!hasEntryData && !hasRecommendedEntryData) {
+                console.log(`[Labs API] DB record ${latestRun.ttVersion} has NO entry data, falling through to JSON file`);
+            } else {
+
+                // Transform to match expected format for TimeTravelLabsWindow.tsx
+                return res.json({
+
+                    ok: true,
+                    hasResult: true,
+                    source: 'database',
+                    result: {
+                        runId: latestRun.id,
+                        ttVersion: latestRun.ttVersion,
+
+                        // V1 Strategy display data
+                        v1Strategy: {
+                            thesis: recommendedLogic.thesis || `Optimized entry for ${categoryKey.replace(/_/g, ' ')} category`,
+                            categoryIntent: recommendedLogic.categoryIntent || 'Capture reversal opportunities',
+                            // Build confirmations from entry conditions
+                            confirmations: Object.entries(entryConditions).map(([key, value], idx) => ({
+                                rank: idx + 1,
+                                rule: key,
+                                description: typeof value === 'string' ? value : JSON.stringify(value)
+                            })).slice(0, 5),
+                            // Build invalidations from trap rules
+                            invalidations: (Array.isArray(trapRules) ? trapRules : []).map(rule => ({
+                                rule: typeof rule === 'string' ? rule : (rule?.type || rule?.name || 'Trap filter')
+                            })),
+                            expectedBehavior: {
+                                avgHoldingTime: `${strategyParams.maxHoldingDays || 10} days`,
+                                avgMove: `${strategyParams.targetR || 2.5}%`,
+                                winRate: `${(latestRun.accuracy * 100).toFixed(1)}%`,
+                                avgDrawdown: `${((metrics.drawdown || 0) * 100).toFixed(1)}%`
+                            },
+                            // Entry/Exit for display
+                            entryRules: entryConditions,
+                            exitRules: exitConditions
+                        },
+
+                        // Summary for display
+                        summary: {
+                            topWinRate: latestRun.accuracy * 100,
+                            topStrategy: {
+                                name: strategyParams.name || recommendedLogic.strategyName || 'Labs Strategy',
+                                metrics: {
+                                    winRate: latestRun.accuracy * 100,
+                                    avgPnl: metrics.pnl || 0,
+                                    maxDrawdown: (metrics.drawdown || 0) * 100,
+                                    expectancy: metrics.expectancy || 0,
+                                    tradeCount: latestRun.tradesTested || 0
+                                }
+                            }
+                        },
+
+                        // Top strategies list
+                        top3Strategies: [{
+                            name: strategyParams.name || 'Labs Strategy',
+                            metrics: {
+                                winRate: latestRun.accuracy * 100,
+                                avgPnl: metrics.pnl || 0,
+                                maxDrawdown: (metrics.drawdown || 0) * 100,
+                                expectancy: metrics.expectancy || 0,
+                                tradeCount: latestRun.tradesTested || 0
+                            }
+                        }],
+
+                        // Cache status
+                        cacheStatus: latestRun.cacheStatus || { cached: 0, uncached: 0, total: 0 },
+
+                        // Raw data for advanced display
+                        entryConditions: entryConditions,
+                        exitConditions: exitConditions,
+                        strategyParams: strategyParams,
+                        performanceMetrics: metrics
                     },
-                    summary: {
-                        topWinRate: latestRun.accuracy * 100,
-                        topStrategy: {
-                            name: latestRun.strategyParams?.name || latestRun.recommendedLogic?.strategyName || 'Labs Strategy',
-                            metrics: latestRun.performanceMetrics || {}
-                        }
-                    },
-                    top3Strategies: [{
-                        name: latestRun.strategyParams?.name || 'Labs Strategy',
-                        metrics: latestRun.performanceMetrics || {}
-                    }],
-                    cacheStatus: latestRun.recommendedLogic?.cacheStatus || { cached: 0, uncached: 0, total: 0 }
-                },
-                fileName: `db:${latestRun.ttVersion}`,
-                createdAt: latestRun.createdAt
-            });
+                    fileName: `db:${latestRun.ttVersion}`,
+                    createdAt: latestRun.createdAt
+                });
+            }
+            // If else block didn't return, fall through to JSON file section below
         }
 
         // ===========================================
-        // 2. FALLBACK: JSON files (legacy support)
+        // 2. FALLBACK: JSON files (when database has no data or empty data)
         // ===========================================
         const fs = require('fs');
         const path = require('path');

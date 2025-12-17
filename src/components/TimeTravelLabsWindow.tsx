@@ -87,35 +87,36 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
             console.log('[Labs] API response:', data);
 
             if (data.ok && data.hasResult && data.result) {
-                console.log(`[Labs] Loaded previous result from ${data.fileName}`);
+                console.log(`[Labs] Loaded previous result from ${data.fileName}, source: ${data.source}`);
 
                 // Transform the result to match LabsResult interface
                 const loadedResult = data.result;
                 const topStrategy = loadedResult.top3Strategies?.[0] || loadedResult.summary?.topStrategy;
                 const winRate = loadedResult.summary?.topWinRate || topStrategy?.metrics?.winRate || 0;
 
+                // Use entryConditions/exitConditions from new API format
+                const entryConditions = loadedResult.entryConditions || loadedResult.v1Strategy?.entryRules || {};
+                const exitConditions = loadedResult.exitConditions || loadedResult.v1Strategy?.exitRules || {};
+
                 setResult({
                     runId: loadedResult.runId || data.fileName,
-                    ttVersion: loadedResult.runId?.replace(`tt_${categoryKey}_`, 'TT-') || 'TT-Previous',
+                    ttVersion: loadedResult.ttVersion || data.fileName?.replace('db:', '') || 'TT-Previous',
                     accuracy: winRate / 100, // Convert percentage to decimal
-                    recommendedLogic: loadedResult.v1Strategy || {
-                        entry: {
-                            logic: topStrategy?.name?.name || topStrategy?.name || 'Unknown',
-                            description: 'Best performing logic from top-ranked strategy'
-                        },
-                        exit: topStrategy?.name?.exit || topStrategy?.exit || { target: 2.5, stop: 1.5 },
-                        trapAvoidance: []
+                    recommendedLogic: {
+                        entry: entryConditions,
+                        exit: exitConditions,
+                        trapAvoidance: loadedResult.v1Strategy?.invalidations?.map((inv: any) => inv.rule) || []
                     },
                     metrics: {
-                        pnl: topStrategy?.metrics?.avgPnl || 0,
-                        drawdown: topStrategy?.metrics?.maxDrawdown || 0,
+                        pnl: topStrategy?.metrics?.avgPnl || loadedResult.performanceMetrics?.pnl || 0,
+                        drawdown: topStrategy?.metrics?.maxDrawdown || (loadedResult.performanceMetrics?.drawdown || 0) * 100,
                         winRate: winRate,
-                        expectancy: topStrategy?.metrics?.expectancy || 0
+                        expectancy: topStrategy?.metrics?.expectancy || loadedResult.performanceMetrics?.expectancy || 0
                     },
                     cacheStatus: loadedResult.cacheStatus || { cached: 0, uncached: 0, total: 0 },
                     promotionAllowed: winRate >= 70,
                     v1Exists: true,
-                    message: `Previous Labs result loaded`,
+                    message: `Loaded from ${data.source === 'database' ? 'DATABASE' : 'file'}`,
                     // ✅ Institutional output fields
                     thesis: loadedResult.v1Strategy?.thesis || null,
                     categoryIntent: loadedResult.v1Strategy?.categoryIntent || null,
@@ -123,12 +124,15 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                     invalidations: loadedResult.v1Strategy?.invalidations || [],
                     expectedBehavior: loadedResult.v1Strategy?.expectedBehavior || null
                 } as any);
+
                 setLogs([
-                    `📖 Loaded previous Labs result from ${data.fileName}`,
-                    `✅ Version: ${loadedResult.runId || data.fileName}`,
-                    `📊 Accuracy: ${winRate}%`,
-                    `🎯 Strategy: ${topStrategy?.name?.name || topStrategy?.name || 'Unknown'}`
+                    `📖 Loaded from ${data.source === 'database' ? 'DATABASE' : 'file'}: ${data.fileName}`,
+                    `✅ Version: ${loadedResult.ttVersion || 'Unknown'}`,
+                    `📊 Win Rate: ${winRate.toFixed(1)}%`,
+                    `🎯 Strategy: ${topStrategy?.name || 'Labs Strategy'}`,
+                    `📋 Entry Rules: ${Object.keys(entryConditions).length} conditions`
                 ]);
+
             } else {
                 // No previous result - show empty state
                 console.log('[Labs] No previous result found:', data.error || 'No data');

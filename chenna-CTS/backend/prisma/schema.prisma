@@ -114,6 +114,46 @@ model BacktestResult {
   @@map("backtest_results")
 }
 
+// ============================================
+// Labs Time-Travel Research Results
+// ============================================
+model LabsRun {
+  id                    String    @id @default(uuid())
+  categoryKey           String    @map("category_key") @db.VarChar(100)
+  ttVersion             String    @map("tt_version") @db.VarChar(50)
+  
+  // Research Results
+  accuracy              Float
+  tradesTested          Int       @default(0) @map("trades_tested")
+  
+  // Strategy Logic (JSON)
+  recommendedLogic      Json?     @map("recommended_logic")
+  entryConditions       Json?     @map("entry_conditions")
+  exitConditions        Json?     @map("exit_conditions")
+  trapRules             Json?     @map("trap_rules")
+  
+  // Strategy Parameters for Backtest
+  strategyParams        Json?     @map("strategy_params")
+  
+  // Performance Metrics
+  performanceMetrics    Json?     @map("performance_metrics")
+  
+  // Cache Status
+  cacheStatus           Json?     @map("cache_status")
+  
+  // Promotion Status
+  promotedToVersionId   Int?      @map("promoted_to_version_id")
+  
+  // Timestamps
+  createdAt             DateTime  @default(now()) @map("created_at")
+  updatedAt             DateTime  @default(now()) @updatedAt @map("updated_at")
+  
+  @@index([categoryKey])
+  @@index([categoryKey, ttVersion])
+  @@map("labs_runs")
+}
+
+
 model OhlcvCache {
   id        Int       @id @default(autoincrement())
   symbol    String    @db.VarChar(50)
