@@ -66,14 +66,64 @@ router.post('/run-timetravel', async (req, res) => {
 
 /**
  * GET /api/labs/latest/:categoryKey
- * Get the latest Labs run result for a category (from saved JSON files)
+ * Get the latest Labs run result for a category
+ * 
+ * PRIORITY:
+ * 1. Query database (LabsRun table) - source of truth
+ * 2. Fall back to JSON files (legacy support)
  */
 router.get('/latest/:categoryKey', async (req, res) => {
     try {
         const { categoryKey } = req.params;
+
+        // ===========================================
+        // 1. DATABASE FIRST (source of truth for production)
+        // ===========================================
+        const latestRun = await prisma.labsRun.findFirst({
+            where: { categoryKey },
+            orderBy: { createdAt: 'desc' }
+        });
+
+        if (latestRun) {
+            console.log(`[Labs API] ✅ Loaded from DATABASE: ${latestRun.ttVersion} for ${categoryKey}`);
+
+            // Transform to match expected format
+            return res.json({
+                ok: true,
+                hasResult: true,
+                source: 'database',
+                result: {
+                    runId: latestRun.id,
+                    v1Strategy: {
+                        thesis: latestRun.recommendedLogic?.thesis || null,
+                        categoryIntent: latestRun.recommendedLogic?.categoryIntent || null,
+                        confirmations: latestRun.recommendedLogic?.confirmations || [],
+                        invalidations: latestRun.recommendedLogic?.invalidations || [],
+                        expectedBehavior: latestRun.recommendedLogic?.expectedBehavior || null
+                    },
+                    summary: {
+                        topWinRate: latestRun.accuracy * 100,
+                        topStrategy: {
+                            name: latestRun.strategyParams?.name || latestRun.recommendedLogic?.strategyName || 'Labs Strategy',
+                            metrics: latestRun.performanceMetrics || {}
+                        }
+                    },
+                    top3Strategies: [{
+                        name: latestRun.strategyParams?.name || 'Labs Strategy',
+                        metrics: latestRun.performanceMetrics || {}
+                    }],
+                    cacheStatus: latestRun.recommendedLogic?.cacheStatus || { cached: 0, uncached: 0, total: 0 }
+                },
+                fileName: `db:${latestRun.ttVersion}`,
+                createdAt: latestRun.createdAt
+            });
+        }
+
+        // ===========================================
+        // 2. FALLBACK: JSON files (legacy support)
+        // ===========================================
         const fs = require('fs');
         const path = require('path');
-
         const resultsDir = path.join(__dirname, '..', 'results');
 
         // Find the latest tt_ file for this category
@@ -83,6 +133,7 @@ router.get('/latest/:categoryKey', async (req, res) => {
             .reverse(); // Most recent first (timestamp in filename)
 
         if (files.length === 0) {
+            console.log(`[Labs API] No Labs result found for ${categoryKey} (checked DB and files)`);
             return res.json({ ok: false, error: 'No previous Labs run found', hasResult: false });
         }
 
@@ -90,11 +141,12 @@ router.get('/latest/:categoryKey', async (req, res) => {
         const rawData = fs.readFileSync(latestFile, 'utf-8');
         const data = JSON.parse(rawData);
 
-        console.log(`[Labs API] Loaded latest result from ${files[0]}`);
+        console.log(`[Labs API] Loaded from FILE: ${files[0]}`);
 
         res.json({
             ok: true,
             hasResult: true,
+            source: 'file',
             result: data,
             fileName: files[0]
         });
@@ -103,6 +155,7 @@ router.get('/latest/:categoryKey', async (req, res) => {
         res.status(500).json({ ok: false, error: error.message, hasResult: false });
     }
 });
+
 
 /**
  * GET /api/labs/cache-status/:categoryKey

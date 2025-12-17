@@ -1,0 +1,1609 @@
+{
+  "runId": "tt_DOWNSIDE_LOM_SWING_1765959805525",
+  "type": "TIME_TRAVEL",
+  "category": "DOWNSIDE_LOM_SWING",
+  "timestamp": "2025-12-17T08:23:25.525Z",
+  "summary": {
+    "totalStrategies": 8,
+    "totalStocks": 112,
+    "timeElapsed": "0.0min",
+    "topStrategy": {
+      "name": "RSI Divergence Exhaustion",
+      "description": "Price makes new low but RSI makes higher low - selling pressure weakening",
+      "exit": {
+        "target": 2.5,
+        "stop": 1.5
+      },
+      "id": 1,
+      "family": "exhaustion"
+    },
+    "topWinRate": 50,
+    "topScore": 0
+  },
+  "top3Strategies": [
+    {
+      "name": {
+        "name": "RSI Divergence Exhaustion",
+        "description": "Price makes new low but RSI makes higher low - selling pressure weakening",
+        "exit": {
+          "target": 2.5,
+          "stop": 1.5
+        },
+        "id": 1,
+        "family": "exhaustion"
+      },
+      "score": 0,
+      "metrics": {
+        "tradeCount": 2,
+        "winRate": 50,
+        "avgPnl": 0.49999999999999023,
+        "expectancy": 0.49999999999999023,
+        "avgHolding": 3,
+        "maxDrawdown": 1.5000000000000049,
+        "sharpe": 0.24999999999999573,
+        "trapAvoidanceRate": 50
+      },
+      "trades": 4
+    },
+    {
+      "name": {
+        "name": "Volume Dry-Up Exhaustion",
+        "description": "Volume declines after selling spike - sellers exhausted",
+        "exit": {
+          "target": 2,
+          "stop": 1.5
+        },
+        "id": 2,
+        "family": "exhaustion"
+      },
+      "score": 0,
+      "metrics": {
+        "tradeCount": 3,
+        "winRate": 66.66666666666666,
+        "avgPnl": 0.8333333333333357,
+        "expectancy": 0.8333333333333355,
+        "avgHolding": 2.3333333333333335,
+        "maxDrawdown": 1.4999999999999996,
+        "sharpe": 0.5050762722761064,
+        "trapAvoidanceRate": 0
+      },
+      "trades": 3
+    },
+    {
+      "name": {
+        "name": "Lower Wick Dominance",
+        "description": "Candles with large lower wicks - buyers absorbing selling",
+        "exit": {
+          "target": 2,
+          "stop": 1.2
+        },
+        "id": 3,
+        "family": "exhaustion"
+      },
+      "score": 0,
+      "metrics": {
+        "tradeCount": 16,
+        "winRate": 31.25,
+        "avgPnl": -0.19999999999999868,
+        "expectancy": -0.19999999999999862,
+        "avgHolding": 1.75,
+        "maxDrawdown": 12.00000000000001,
+        "sharpe": -0.13483997249264715,
+        "trapAvoidanceRate": 30.434782608695656
+      },
+      "trades": 23
+    }
+  ],
+  "v1Strategy": {
+    "category": "DOWNSIDE_LOM_SWING",
+    "name": "V1 Default - DOWNSIDE_LOM_SWING",
+    "version": "2.0.0",
+    "createdAt": "2025-12-17T08:23:24.949Z",
+    "thesis": "This category works when Panic selling happened, weak hands exiting, institutions absorbing",
+    "categoryIntent": "Late-stage selling → exhaustion → bounce",
+    "mustDiscover": "Exhaustion + Stabilization signals",
+    "confirmations": [
+      {
+        "rank": 1,
+        "rule": "rsi_exhaustion_zone",
+        "description": "RSI in exhaustion zone (not fixed value)",
+        "importance": "HIGH"
+      },
+      {
+        "rank": 2,
+        "rule": "atr_spike_contraction",
+        "description": "ATR peaks then contracts",
+        "importance": "HIGH"
+      },
+      {
+        "rank": 3,
+        "rule": "lower_wick_dominance",
+        "description": "Lower wicks show buying",
+        "importance": "HIGH"
+      },
+      {
+        "rank": 4,
+        "rule": "volume_drying",
+        "description": "Volume declines after sell-off",
+        "importance": "HIGH"
+      },
+      {
+        "rank": 5,
+        "rule": "holding_above_low",
+        "description": "Price holds above recent low for 2 sessions",
+        "importance": "HIGH"
+      }
+    ],
+    "invalidations": [
+      {
+        "rule": "trend_continuation",
+        "impact": "Reduces win rate when present"
+      },
+      {
+        "rule": "momentum_chasing",
+        "impact": "Reduces win rate when present"
+      },
+      {
+        "rule": "breakout_logic",
+        "impact": "Reduces win rate when present"
+      }
+    ],
+    "expectedBehavior": {
+      "avgHoldingTime": "3.0 days",
+      "avgDrawdown": "1.5%",
+      "avgMove": "0.5%",
+      "winRate": "50.0%"
+    },
+    "entryRules": {
+      "logic": "RSI Divergence Exhaustion",
+      "description": "Best performing logic from top-ranked strategy"
+    },
+    "exitRules": {
+      "target": 2,
+      "stop": 1.5,
+      "source": "From Volume Dry-Up Exhaustion"
+    },
+    "trapFilters": {
+      "enabled": true,
+      "skipOnTraps": true,
+      "minConfidence": 0.6
+    },
+    "positionSizing": {
+      "riskPerTrade": 1.5,
+      "maxPositions": 5
+    },
+    "expectedMetrics": {
+      "accuracy": "50.0%",
+      "expectancy": "0.50%",
+      "trapAvoidance": "50.0%",
+      "avgHolding": "3.0 days"
+    },
+    "contributors": [
+      {
+        "rank": 1,
+        "logic": "RSI Divergence Exhaustion",
+        "score": "0.0",
+        "trades": 2,
+        "winRate": "50.0%"
+      },
+      {
+        "rank": 2,
+        "logic": "Volume Dry-Up Exhaustion",
+        "score": "0.0",
+        "trades": 3,
+        "winRate": "66.7%"
+      },
+      {
+        "rank": 3,
+        "logic": "Lower Wick Dominance",
+        "score": "0.0",
+        "trades": 16,
+        "winRate": "31.3%"
+      }
+    ]
+  },
+  "perSymbol": [
+    {
+      "symbol": "LTIM",
+      "trades": [
+        {
+          "strategy": "RSI Divergence Exhaustion",
+          "entry": {
+            "price": 5123,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 5046.155,
+            "date": "2025-09-29T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000049,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Lower Wick Dominance",
+          "entry": {
+            "price": 5123,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 5061.524,
+            "date": "2025-09-29T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.1999999999999933,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 5123,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 5046.155,
+            "date": "2025-09-29T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000049,
+          "holdingDays": 2,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 3,
+      "wins": 0,
+      "losses": 3,
+      "winRate": "0.0",
+      "totalPnL": "-4.20"
+    },
+    {
+      "symbol": "FEDERALBNK",
+      "trades": [
+        {
+          "strategy": "RSI Divergence Exhaustion"
+        },
+        {
+          "strategy": "Lower Wick Dominance"
+        },
+        {
+          "strategy": "Failed Breakdown"
+        }
+      ],
+      "totalTrades": 3,
+      "wins": 0,
+      "losses": 0,
+      "winRate": "0.0",
+      "totalPnL": "0.00"
+    },
+    {
+      "symbol": "BAJAJFINSV",
+      "trades": [
+        {
+          "strategy": "RSI Divergence Exhaustion"
+        },
+        {
+          "strategy": "Lower Wick Dominance"
+        },
+        {
+          "strategy": "Failed Breakdown"
+        }
+      ],
+      "totalTrades": 3,
+      "wins": 0,
+      "losses": 0,
+      "winRate": "0.0",
+      "totalPnL": "0.00"
+    },
+    {
+      "symbol": "TCS",
+      "trades": [
+        {
+          "strategy": "RSI Divergence Exhaustion",
+          "entry": {
+            "price": 2914.2,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 2987.0549999999994,
+            "date": "2025-09-25T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "TARGET"
+          },
+          "pnl": 2.4999999999999853,
+          "holdingDays": 4,
+          "result": "WIN"
+        },
+        {
+          "strategy": "Lower Wick Dominance",
+          "entry": {
+            "price": 2914.2,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 2972.484,
+            "date": "2025-09-25T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "TARGET"
+          },
+          "pnl": 2.000000000000004,
+          "holdingDays": 4,
+          "result": "WIN"
+        },
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 2914.2,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 3001.6259999999997,
+            "date": "2025-09-25T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "TARGET"
+          },
+          "pnl": 2.999999999999998,
+          "holdingDays": 4,
+          "result": "WIN"
+        }
+      ],
+      "totalTrades": 3,
+      "wins": 3,
+      "losses": 0,
+      "winRate": "100.0",
+      "totalPnL": "7.50"
+    },
+    {
+      "symbol": "OBEROIRLTY",
+      "trades": [
+        {
+          "strategy": "Volume Dry-Up Exhaustion",
+          "entry": {
+            "price": 1595.6,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 1627.512,
+            "date": "2025-09-25T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "TARGET"
+          },
+          "pnl": 2.000000000000002,
+          "holdingDays": 4,
+          "result": "WIN"
+        },
+        {
+          "strategy": "Lower Wick Dominance",
+          "entry": {
+            "price": 1595.6,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 1576.4527999999998,
+            "date": "2025-09-29T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.200000000000007,
+          "holdingDays": 2,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 1,
+      "losses": 1,
+      "winRate": "50.0",
+      "totalPnL": "0.80"
+    },
+    {
+      "symbol": "POONAWALLA",
+      "trades": [
+        {
+          "strategy": "Volume Dry-Up Exhaustion",
+          "entry": {
+            "price": 502.25,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 494.71625,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999996,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Lower Wick Dominance",
+          "entry": {
+            "price": 502.25,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 496.223,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.1999999999999975,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 0,
+      "losses": 2,
+      "winRate": "0.0",
+      "totalPnL": "-2.70"
+    },
+    {
+      "symbol": "POLICYBZR",
+      "trades": [
+        {
+          "strategy": "Volume Dry-Up Exhaustion",
+          "entry": {
+            "price": 1675.8,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 1709.316,
+            "date": "2025-09-29T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "TARGET"
+          },
+          "pnl": 2.0000000000000044,
+          "holdingDays": 2,
+          "result": "WIN"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 1,
+      "losses": 0,
+      "winRate": "100.0",
+      "totalPnL": "2.00"
+    },
+    {
+      "symbol": "NTPC",
+      "trades": [
+        {
+          "strategy": "Lower Wick Dominance",
+          "entry": {
+            "price": 328.7,
+            "date": "2025-09-05T00:00:00+05:30",
+            "dateIndex": 52
+          },
+          "exit": {
+            "price": 335.274,
+            "date": "2025-09-03T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "TARGET"
+          },
+          "pnl": 2.000000000000004,
+          "holdingDays": 2,
+          "result": "WIN"
+        },
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 328.7,
+            "date": "2025-09-05T00:00:00+05:30",
+            "dateIndex": 52
+          },
+          "exit": {
+            "price": 338.561,
+            "date": "2025-08-25T00:00:00+05:30",
+            "dayNum": 8,
+            "reason": "TARGET"
+          },
+          "pnl": 2.9999999999999973,
+          "holdingDays": 8,
+          "result": "WIN"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 2,
+      "losses": 0,
+      "winRate": "100.0",
+      "totalPnL": "5.00"
+    },
+    {
+      "symbol": "BLUESTARCO",
+      "trades": [
+        {
+          "strategy": "Lower Wick Dominance"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 0,
+      "winRate": "0.0",
+      "totalPnL": "0.00"
+    },
+    {
+      "symbol": "CONCOR",
+      "trades": [
+        {
+          "strategy": "Lower Wick Dominance",
+          "entry": {
+            "price": 526.55,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 537.081,
+            "date": "2025-09-25T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "TARGET"
+          },
+          "pnl": 2.000000000000012,
+          "holdingDays": 4,
+          "result": "WIN"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 1,
+      "losses": 0,
+      "winRate": "100.0",
+      "totalPnL": "2.00"
+    },
+    {
+      "symbol": "360ONE",
+      "trades": [
+        {
+          "strategy": "Lower Wick Dominance",
+          "entry": {
+            "price": 1036.5,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 1024.062,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.20000000000001,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 1036.5,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 1020.9525,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000013,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 0,
+      "losses": 2,
+      "winRate": "0.0",
+      "totalPnL": "-2.70"
+    },
+    {
+      "symbol": "ASTRAL",
+      "trades": [
+        {
+          "strategy": "Lower Wick Dominance",
+          "entry": {
+            "price": 1376.4,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 1359.8832,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.2000000000000075,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 1376.4,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 1355.7540000000001,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.499999999999997,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 0,
+      "losses": 2,
+      "winRate": "0.0",
+      "totalPnL": "-2.70"
+    },
+    {
+      "symbol": "BANKINDIA",
+      "trades": [
+        {
+          "strategy": "Lower Wick Dominance",
+          "entry": {
+            "price": 124.63,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 123.13444,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.1999999999999982,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0.0",
+      "totalPnL": "-1.20"
+    },
+    {
+      "symbol": "PNB",
+      "trades": [
+        {
+          "strategy": "Lower Wick Dominance"
+        },
+        {
+          "strategy": "Failed Breakdown"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 0,
+      "losses": 0,
+      "winRate": "0.0",
+      "totalPnL": "0.00"
+    },
+    {
+      "symbol": "CESC",
+      "trades": [
+        {
+          "strategy": "Lower Wick Dominance"
+        },
+        {
+          "strategy": "Failed Breakdown"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 0,
+      "losses": 0,
+      "winRate": "0.0",
+      "totalPnL": "0.00"
+    },
+    {
+      "symbol": "CANBK",
+      "trades": [
+        {
+          "strategy": "Lower Wick Dominance",
+          "entry": {
+            "price": 123.76,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 122.27488000000001,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.199999999999996,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 123.76,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 121.9036,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000062,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 0,
+      "losses": 2,
+      "winRate": "0.0",
+      "totalPnL": "-2.70"
+    },
+    {
+      "symbol": "VEDL",
+      "trades": [
+        {
+          "strategy": "Lower Wick Dominance",
+          "entry": {
+            "price": 464.85,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 459.27180000000004,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.199999999999996,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 464.85,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 457.87725,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.500000000000004,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 0,
+      "losses": 2,
+      "winRate": "0.0",
+      "totalPnL": "-2.70"
+    },
+    {
+      "symbol": "IIFL",
+      "trades": [
+        {
+          "strategy": "Lower Wick Dominance",
+          "entry": {
+            "price": 452.2,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 446.7736,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.2000000000000002,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 452.2,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 445.417,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000033,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 0,
+      "losses": 2,
+      "winRate": "0.0",
+      "totalPnL": "-2.70"
+    },
+    {
+      "symbol": "NATIONALUM",
+      "trades": [
+        {
+          "strategy": "Lower Wick Dominance",
+          "entry": {
+            "price": 214.5,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 211.926,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.2000000000000057,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 214.5,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 211.2825,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000004,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 0,
+      "losses": 2,
+      "winRate": "0.0",
+      "totalPnL": "-2.70"
+    },
+    {
+      "symbol": "BHARTIARTL",
+      "trades": [
+        {
+          "strategy": "Lower Wick Dominance"
+        },
+        {
+          "strategy": "Failed Breakdown"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 0,
+      "losses": 0,
+      "winRate": "0.0",
+      "totalPnL": "0.00"
+    },
+    {
+      "symbol": "TATACOMM",
+      "trades": [
+        {
+          "strategy": "Lower Wick Dominance",
+          "entry": {
+            "price": 1613.2,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 1645.4640000000002,
+            "date": "2025-09-26T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "TARGET"
+          },
+          "pnl": 2.0000000000000075,
+          "holdingDays": 3,
+          "result": "WIN"
+        },
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 1613.2,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 1661.596,
+            "date": "2025-09-25T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "TARGET"
+          },
+          "pnl": 2.9999999999999973,
+          "holdingDays": 4,
+          "result": "WIN"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 2,
+      "losses": 0,
+      "winRate": "100.0",
+      "totalPnL": "5.00"
+    },
+    {
+      "symbol": "INFY",
+      "trades": [
+        {
+          "strategy": "Lower Wick Dominance"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 0,
+      "winRate": "0.0",
+      "totalPnL": "0.00"
+    },
+    {
+      "symbol": "TATAELXSI",
+      "trades": [
+        {
+          "strategy": "Lower Wick Dominance",
+          "entry": {
+            "price": 5226,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 5330.52,
+            "date": "2025-09-29T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "TARGET"
+          },
+          "pnl": 2.0000000000000084,
+          "holdingDays": 2,
+          "result": "WIN"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 1,
+      "losses": 0,
+      "winRate": "100.0",
+      "totalPnL": "2.00"
+    },
+    {
+      "symbol": "HINDZINC",
+      "trades": [
+        {
+          "strategy": "Lower Wick Dominance",
+          "entry": {
+            "price": 481.35,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 475.5738,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.2000000000000035,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0.0",
+      "totalPnL": "-1.20"
+    },
+    {
+      "symbol": "ANGELONE",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 2173.5,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 2140.8975,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999984,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0.0",
+      "totalPnL": "-1.50"
+    },
+    {
+      "symbol": "NBCC",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 0,
+      "winRate": "0.0",
+      "totalPnL": "0.00"
+    },
+    {
+      "symbol": "DIVISLAB",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 5710,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 5881.3,
+            "date": "2025-09-25T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "TARGET"
+          },
+          "pnl": 3.0000000000000036,
+          "holdingDays": 4,
+          "result": "WIN"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 1,
+      "losses": 0,
+      "winRate": "100.0",
+      "totalPnL": "3.00"
+    },
+    {
+      "symbol": "GRANULES",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 542.65,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 534.5102499999999,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.500000000000009,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0.0",
+      "totalPnL": "-1.50"
+    },
+    {
+      "symbol": "INOXWIND",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 142.15,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 140.01775,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999993,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0.0",
+      "totalPnL": "-1.50"
+    },
+    {
+      "symbol": "IDFCFIRSTB",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 69.02,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 71.0906,
+            "date": "2025-09-24T00:00:00+05:30",
+            "dayNum": 5,
+            "reason": "TARGET"
+          },
+          "pnl": 2.9999999999999987,
+          "holdingDays": 5,
+          "result": "WIN"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 1,
+      "losses": 0,
+      "winRate": "100.0",
+      "totalPnL": "3.00"
+    },
+    {
+      "symbol": "ABCAPITAL",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 0,
+      "winRate": "0.0",
+      "totalPnL": "0.00"
+    },
+    {
+      "symbol": "TITAN",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 3408.3,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 3357.1755000000003,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.499999999999997,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0.0",
+      "totalPnL": "-1.50"
+    },
+    {
+      "symbol": "CHOLAFIN",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 1605.3,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 1581.2205,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000033,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0.0",
+      "totalPnL": "-1.50"
+    },
+    {
+      "symbol": "HCLTECH",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 1389.5,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 1431.185,
+            "date": "2025-09-25T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "TARGET"
+          },
+          "pnl": 2.999999999999996,
+          "holdingDays": 4,
+          "result": "WIN"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 1,
+      "losses": 0,
+      "winRate": "100.0",
+      "totalPnL": "3.00"
+    },
+    {
+      "symbol": "DLF",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 722.3,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 711.4654999999999,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000067,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0.0",
+      "totalPnL": "-1.50"
+    },
+    {
+      "symbol": "PERSISTENT",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 4955.4,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 4881.0689999999995,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000027,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0.0",
+      "totalPnL": "-1.50"
+    },
+    {
+      "symbol": "TORNTPOWER",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 1216,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 1252.48,
+            "date": "2025-09-26T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "TARGET"
+          },
+          "pnl": 3.0000000000000018,
+          "holdingDays": 3,
+          "result": "WIN"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 1,
+      "losses": 0,
+      "winRate": "100.0",
+      "totalPnL": "3.00"
+    },
+    {
+      "symbol": "PRESTIGE",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 1542.1,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 1518.9685,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999976,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0.0",
+      "totalPnL": "-1.50"
+    },
+    {
+      "symbol": "ADANIENSOL",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 896.35,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 882.90475,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999987,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0.0",
+      "totalPnL": "-1.50"
+    },
+    {
+      "symbol": "GODREJPROP",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 0,
+      "winRate": "0.0",
+      "totalPnL": "0.00"
+    },
+    {
+      "symbol": "MCX",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 7998.5,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 7878.5225,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999996,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0.0",
+      "totalPnL": "-1.50"
+    },
+    {
+      "symbol": "CDSL",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 1475.5,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 1453.3675,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999956,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0.0",
+      "totalPnL": "-1.50"
+    },
+    {
+      "symbol": "NUVAMA",
+      "trades": [
+        {
+          "strategy": "Failed Breakdown",
+          "entry": {
+            "price": 6489,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 6391.665,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000007,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0.0",
+      "totalPnL": "-1.50"
+    }
+  ],
+  "allStrategies": [
+    {
+      "name": "RSI Divergence Exhaustion",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 2,
+        "winRate": 50,
+        "avgPnl": 0.49999999999999023,
+        "expectancy": 0.49999999999999023,
+        "avgHolding": 3,
+        "maxDrawdown": 1.5000000000000049,
+        "sharpe": 0.24999999999999573,
+        "trapAvoidanceRate": 50
+      },
+      "failReason": "Insufficient trades: 2 < 10 required"
+    },
+    {
+      "name": "Volume Dry-Up Exhaustion",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 3,
+        "winRate": 66.66666666666666,
+        "avgPnl": 0.8333333333333357,
+        "expectancy": 0.8333333333333355,
+        "avgHolding": 2.3333333333333335,
+        "maxDrawdown": 1.4999999999999996,
+        "sharpe": 0.5050762722761064,
+        "trapAvoidanceRate": 0
+      },
+      "failReason": "Insufficient trades: 3 < 10 required"
+    },
+    {
+      "name": "Lower Wick Dominance",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 16,
+        "winRate": 31.25,
+        "avgPnl": -0.19999999999999868,
+        "expectancy": -0.19999999999999862,
+        "avgHolding": 1.75,
+        "maxDrawdown": 12.00000000000001,
+        "sharpe": -0.13483997249264715,
+        "trapAvoidanceRate": 30.434782608695656
+      },
+      "failReason": "Negative expectancy: -0.20"
+    },
+    {
+      "name": "Failed Breakdown",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 26,
+        "winRate": 26.923076923076923,
+        "avgPnl": -0.28846153846153977,
+        "expectancy": -0.28846153846154,
+        "avgHolding": 2,
+        "maxDrawdown": 12.000000000000036,
+        "sharpe": -0.14451832825402064,
+        "trapAvoidanceRate": 23.52941176470588
+      },
+      "failReason": "Negative expectancy: -0.29"
+    },
+    {
+      "name": "ATR Spike Contraction",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 0,
+        "winRate": 0,
+        "avgPnl": 0,
+        "expectancy": 0,
+        "avgHolding": 0,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "failReason": "Insufficient trades: 0 < 10 required"
+    },
+    {
+      "name": "Hammer at Support",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 0,
+        "winRate": 0,
+        "avgPnl": 0,
+        "expectancy": 0,
+        "avgHolding": 0,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "failReason": "Insufficient trades: 0 < 10 required"
+    },
+    {
+      "name": "Bullish Engulfing Reversal",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 0,
+        "winRate": 0,
+        "avgPnl": 0,
+        "expectancy": 0,
+        "avgHolding": 0,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "failReason": "Insufficient trades: 0 < 10 required"
+    },
+    {
+      "name": "Morning Star Reversal",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 0,
+        "winRate": 0,
+        "avgPnl": 0,
+        "expectancy": 0,
+        "avgHolding": 0,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "failReason": "Insufficient trades: 0 < 10 required"
+    }
+  ]
+}
