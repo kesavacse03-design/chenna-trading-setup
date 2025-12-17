@@ -164,14 +164,41 @@ class ShadowLearner {
         }
 
         // Early stop = potential tight stop or premature entry
+        // This is a key signal - early stops indicate structural issues
         if (trade.holdingDays <= 2) {
             context.candlesSinceDownStart = 2;
             context.priorRejection = false;
+            context.isFirstBounce = true;
+            context.hasRetest = false;
+        }
+
+        // Short hold (<= 5 days) with loss might be premature entry
+        if (trade.holdingDays <= 5 && trade.result === 'LOSS') {
+            context.qualityScore = Math.min(context.qualityScore, 2);
         }
 
         // Strategy-specific context
         if (trade.strategy?.includes('Lower Wick')) {
             context.hasLowerWick = true;
+            // Lower wick strategy with quick stop = no acceptance
+            if (trade.holdingDays <= 3 && trade.result === 'LOSS') {
+                context.acceptanceClosePosition = 0.3; // Below midpoint
+            }
+        }
+
+        // Gap strategy often has volatility issues
+        if (trade.strategy?.includes('Gap')) {
+            context.atrRatio = 1.4; // Likely expansion
+        }
+
+        // Trailing stop exit before significant gain = early trail
+        if (trade.exitReason === 'TRAILING_STOP' && trade.pnl < 0) {
+            context.higherLowFormed = false;
+        }
+
+        // Stop loss hit quickly = might have been too tight
+        if (trade.exitReason === 'STOP_LOSS' && trade.holdingDays <= 3) {
+            context.stopWithinATR = true;
         }
 
         // If highest price was close to target, stop was inside noise
