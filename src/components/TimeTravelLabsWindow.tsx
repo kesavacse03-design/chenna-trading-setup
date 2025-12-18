@@ -66,6 +66,10 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
     // Research Backtest Modal (replaces inline backtest)
     const [showResearchModal, setShowResearchModal] = useState(false);
 
+    // Version Choice Dialog for Run Labs
+    const [showVersionChoice, setShowVersionChoice] = useState(false);
+    const [versionChoiceMode, setVersionChoiceMode] = useState<'override' | 'new'>('new');
+
     // Load cache status AND previous results when window opens
     useEffect(() => {
         if (isOpen) {
@@ -168,23 +172,19 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
     };
 
     const loadPreviousTTVersions = async () => {
-        // TODO: Backend endpoint /api/labs/runs/:categoryKey not implemented yet
-        // Commenting out to prevent 404 errors
-        /*
         try {
             const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
-            const response = await fetch(`${apiBase}/api/labs/runs/${categoryKey}`);
+            const response = await fetch(`${apiBase}/api/labs/versions/${categoryKey}`);
             const data = await response.json();
 
-            if (data.ok && data.runs && data.runs.length > 0) {
-                setPreviousVersions(data.runs);
-                setSelectedVersion(data.runs[0]); // Select most recent by default
-                console.log(`[Labs] Loaded ${data.runs.length} previous TT versions`);
+            if (data.ok && data.versions && data.versions.length > 0) {
+                setPreviousVersions(data.versions);
+                setSelectedVersion(data.versions[0]); // Select most recent by default
+                console.log(`[Labs] Loaded ${data.versions.length} previous TT versions`);
             }
         } catch (err) {
             console.error('[Labs] Failed to load previous versions:', err);
         }
-        */
     };
 
     const handleDeleteVersion = async (runId: string, ttVersion: string) => {
@@ -215,31 +215,46 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
         }
     };
 
-    const handleViewVersion = (version: any) => {
+    const handleViewVersion = async (version: any) => {
         setSelectedVersion(version);
-        // Format and display as result
-        setResult({
-            runId: version.id,
-            ttVersion: version.ttVersion,
-            accuracy: parseFloat(version.accuracy) / 100,
-            recommendedLogic: version.recommendedLogic || {
-                entry: version.entryConditions || {},
-                exit: version.exitConditions || {},
-                trapAvoidance: version.trapRules ? Object.keys(version.trapRules) : []
-            },
-            metrics: version.performanceMetrics || {
-                pnl: 0,
-                drawdown: 0,
-                winRate: 0,
-                expectancy: 0
-            },
-            cacheStatus: version.cacheStatus || { cached: 0, uncached: 0, total: 0 },
-            promotionAllowed: parseFloat(version.accuracy) >= 70,
-            v1Exists: false,  // Will be checked if user tries to promote
-            message: `Viewing ${version.ttVersion}`
-        });
-        setLogs(prev => [...prev, `📖 Viewing ${version.ttVersion} history`]);
+        setLogs(prev => [...prev, `📖 Loading ${version.ttVersion}...`]);
+
+        try {
+            const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
+            const response = await fetch(`${apiBase}/api/labs/run/${version.id}`);
+            const data = await response.json();
+
+            if (data.ok && data.result) {
+                const v = data.result;
+                setResult({
+                    runId: v.id,
+                    ttVersion: v.ttVersion,
+                    accuracy: v.accuracy,
+                    recommendedLogic: {
+                        entry: v.entryConditions || v.recommendedLogic?.entry || {},
+                        exit: v.exitConditions || v.recommendedLogic?.exit || {},
+                        trapAvoidance: v.recommendedLogic?.trapAvoidance || []
+                    },
+                    metrics: v.performanceMetrics || {
+                        pnl: 0,
+                        drawdown: 0,
+                        winRate: v.accuracy * 100,
+                        expectancy: 0
+                    },
+                    cacheStatus: { cached: 0, uncached: 0, total: v.tradesTested || 0 },
+                    promotionAllowed: v.accuracy >= 0.70,
+                    v1Exists: v.isPromoted,
+                    message: `Viewing ${v.ttVersion}`
+                } as any);
+                setLogs(prev => [...prev, `✅ Loaded ${v.ttVersion} - ${(v.accuracy * 100).toFixed(1)}% accuracy`]);
+            } else {
+                throw new Error(data.error || 'Failed to load version');
+            }
+        } catch (err: any) {
+            setLogs(prev => [...prev, `❌ Error: ${err.message}`]);
+        }
     };
+
 
     const handleRunLabs = async () => {
         setIsRunning(true);
@@ -549,8 +564,87 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                             )}
                         </div>
 
+                        {/* TT Version Selector */}
+                        {previousVersions.length > 0 && (
+                            <div className="bg-slate-800/50 rounded-lg p-4 mb-4 border border-amber-500/20">
+                                <h3 className="text-amber-300 font-semibold mb-3 flex items-center gap-2">
+                                    📁 Existing TT Versions
+                                </h3>
+                                <div className="space-y-2">
+                                    <div className="flex flex-col gap-2">
+                                        {previousVersions.slice(0, 5).map((v: any) => (
+                                            <div
+                                                key={v.id}
+                                                className={`flex items-center justify-between p-2 rounded-lg transition-all ${selectedVersion?.id === v.id
+                                                    ? 'bg-amber-900/30 border border-amber-500/50'
+                                                    : 'bg-slate-700/50 hover:bg-slate-700 border border-transparent'
+                                                    }`}
+                                            >
+                                                <div className="flex items-center gap-2">
+                                                    <span className="text-amber-400 font-mono text-sm">{v.ttVersion}</span>
+                                                    <span className="text-slate-400 text-xs">
+                                                        {v.accuracy?.toFixed(1)}%
+                                                    </span>
+                                                    {v.isPromoted && (
+                                                        <span className="text-xs px-1.5 py-0.5 rounded bg-green-900/50 text-green-400">
+                                                            ✓ Promoted
+                                                        </span>
+                                                    )}
+                                                </div>
+                                                <div className="flex items-center gap-1">
+                                                    <button
+                                                        onClick={() => handleViewVersion(v)}
+                                                        className="text-xs px-2 py-1 rounded bg-cyan-900/50 text-cyan-300 hover:bg-cyan-800/50 transition-all"
+                                                        title="View this version's logic"
+                                                    >
+                                                        👁️ View
+                                                    </button>
+                                                    {!v.isPromoted && (
+                                                        <button
+                                                            onClick={() => handleDeleteVersion(v.id, v.ttVersion)}
+                                                            className="text-xs px-2 py-1 rounded bg-red-900/50 text-red-300 hover:bg-red-800/50 transition-all"
+                                                            title="Delete this version"
+                                                        >
+                                                            🗑️
+                                                        </button>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+
+
+                                    {/* Version Choice for New Run */}
+                                    <div className="border-t border-slate-600 pt-3 mt-3">
+                                        <p className="text-slate-400 text-xs mb-2">When running Labs:</p>
+                                        <div className="flex gap-2">
+                                            <button
+                                                onClick={() => setVersionChoiceMode('new')}
+                                                className={`flex-1 text-xs py-2 px-3 rounded transition-all ${versionChoiceMode === 'new'
+                                                    ? 'bg-emerald-900/50 text-emerald-300 border border-emerald-500/50'
+                                                    : 'bg-slate-700 text-slate-400'
+                                                    }`}
+                                            >
+                                                ➕ Save as New TT
+                                            </button>
+                                            <button
+                                                onClick={() => setVersionChoiceMode('override')}
+                                                className={`flex-1 text-xs py-2 px-3 rounded transition-all ${versionChoiceMode === 'override'
+                                                    ? 'bg-amber-900/50 text-amber-300 border border-amber-500/50'
+                                                    : 'bg-slate-700 text-slate-400'
+                                                    }`}
+                                            >
+                                                ✏️ Override {selectedVersion?.ttVersion || 'Latest'}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
                         {/* Actions */}
                         <div className="space-y-2">
+
                             <button
                                 onClick={handleRunLabs}
                                 disabled={isRunning}

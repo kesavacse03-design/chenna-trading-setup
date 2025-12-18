@@ -43,6 +43,11 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
     // Multi-Pass Evolution Mode
     const [multiPassMode, setMultiPassMode] = useState(false);
 
+    // TT Version Selection (Phase 2)
+    const [availableTTVersions, setAvailableTTVersions] = useState<any[]>([]);
+    const [selectedTTVersion, setSelectedTTVersion] = useState<string>('TT-V1');
+    const [savedResearchVersion, setSavedResearchVersion] = useState<string | null>(null);
+
     // Category context
     const [categoryContext, setCategoryContext] = useState({
         thesis: 'Capture exhaustion bounces in oversold conditions',
@@ -53,6 +58,27 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
         },
         version: 'V1'
     });
+
+    // Load TT versions on mount
+    React.useEffect(() => {
+        if (isOpen && categoryKey) {
+            loadTTVersions();
+        }
+    }, [isOpen, categoryKey]);
+
+    const loadTTVersions = async () => {
+        try {
+            const apiBase = (window as any).__CTS_API_BASE || 'http://localhost:3001';
+            const response = await fetch(`${apiBase}/api/labs/versions/${categoryKey}`);
+            const data = await response.json();
+            if (data.ok && data.versions?.length > 0) {
+                setAvailableTTVersions(data.versions);
+                setSelectedTTVersion(data.versions[0].ttVersion);
+            }
+        } catch (err) {
+            console.error('Failed to load TT versions:', err);
+        }
+    };
 
     const handleRunResearch = async () => {
         setIsRunning(true);
@@ -165,6 +191,31 @@ export const ResearchBacktestModal: React.FC<ResearchBacktestModalProps> = ({
             }
 
             setResearchPhase('complete');
+
+            // ═══════════════════════════════════════════════════════
+            // SAVE RESEARCH RUN TO DATABASE (V.bX versioning)
+            // ═══════════════════════════════════════════════════════
+            try {
+                const saveResponse = await fetch(`${apiBase}/api/labs/research/save`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        categoryKey,
+                        baseTTVersion: selectedTTVersion,
+                        beforeMetrics: currentResults,
+                        afterMetrics: comparison.after || currentResults,
+                        shadowReport: data.shadowReport || {},
+                        refinements: data.shadowReport?.refinementSuggestions || []
+                    })
+                });
+                const saveData = await saveResponse.json();
+                if (saveData.ok) {
+                    setSavedResearchVersion(saveData.researchRun.researchVersion);
+                    setLogs(prev => [...prev, '', `💾 Saved as ${saveData.researchRun.researchVersion}`]);
+                }
+            } catch (saveErr: any) {
+                console.error('Failed to save research:', saveErr);
+            }
 
         } catch (err: any) {
             setResearchPhase('error');

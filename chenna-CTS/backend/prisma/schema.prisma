@@ -153,10 +153,92 @@ model LabsRun {
   @@map("labs_runs")
 }
 
+// Research Evolution Runs (V.bX versions)
+// Created by Research Backtest - evolves Labs TT logic
+model ResearchRun {
+  id                String   @id @default(uuid())
+  categoryKey       String   @map("category_key")
+  
+  // Parent Labs Run (which TT version this evolved from)
+  baseLabsRunId     String   @map("base_labs_run_id")
+  baseTTVersion     String   @map("base_tt_version")  // e.g., "TT_v1"
+  
+  // Research Version (V1.b1, V1.b2, ...)
+  researchVersion   String   @map("research_version")
+  
+  // Evolved Logic (after shadow learning)
+  entryConditions   Json?    @map("entry_conditions")
+  exitConditions    Json?    @map("exit_conditions")
+  refinements       Json?    // What shadow learner changed
+  
+  // Before vs After Metrics
+  beforeMetrics     Json?    @map("before_metrics")
+  afterMetrics      Json?    @map("after_metrics")
+  
+  // Shadow Report Data
+  shadowReport      Json?    @map("shadow_report")
+  
+  // Promotion Status
+  promotedToStrategyId Int?  @map("promoted_to_strategy_id")
+  
+  createdAt         DateTime @default(now()) @map("created_at")
+  
+  @@index([categoryKey])
+  @@index([categoryKey, researchVersion])
+  @@map("research_runs")
+}
+
+// Strategy - Promoted strategies from Labs or Research
+model PromotedStrategy {
+  id                  Int       @id @default(autoincrement())
+  categoryKey         String    @map("category_key")
+  version             String    // V1, V2, V3...
+  name                String?
+  
+  // Entry/Exit Rules
+  entryRules          Json?     @map("entry_rules")
+  exitRules           Json?     @map("exit_rules")
+  
+  // Promotion Source
+  promotedFromLabs    String?   @map("promoted_from_labs")    // TT-V1, TT-V2...
+  promotedFromResearch String?  @map("promoted_from_research") // V1.b1, V2.b1...
+  
+  // Status
+  status              String?   @default("ACTIVE") // ACTIVE, INACTIVE
+  
+  createdAt           DateTime  @default(now()) @map("created_at")
+  updatedAt           DateTime  @updatedAt @map("updated_at")
+  
+  @@unique([categoryKey, version])
+  @@index([categoryKey])
+  @@map("promoted_strategies")
+}
+
+// LiveSnapshot - Stock data fetched from tredcode source
+model LiveSnapshot {
+  id          Int       @id @default(autoincrement())
+  symbol      String
+  category    String    // e.g., "50_DAY_HIGH_BREAKOUT", "DOWNSIDE_LOM_SWING"
+  ltp         Float     // Last Traded Price
+  prevClose   Float?    // Previous Close
+  pctChange   Float?    // Percentage Change
+  sector      String?
+  sourceDate  DateTime? @map("source_date") // Date from source
+  fetchedAt   DateTime  @default(now()) @map("fetched_at")
+  
+  @@unique([symbol, category, fetchedAt])
+  @@index([category])
+  @@index([symbol])
+  @@map("live_snapshots")
+}
+
 
 model OhlcvCache {
+
+
   id        Int       @id @default(autoincrement())
   symbol    String    @db.VarChar(50)
+
   interval  String    @db.VarChar(10) // day, 1hour, 30minute
   fromDate  DateTime  @map("from_date") @db.Date
   toDate    DateTime  @map("to_date") @db.Date

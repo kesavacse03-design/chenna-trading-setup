@@ -1,0 +1,3133 @@
+{
+  "runId": "realistic_MULTI_RESISTANCE_BO_1766069692696",
+  "type": "REALISTIC_SIMULATION",
+  "category": "MULTI_RESISTANCE_BO",
+  "timestamp": "2025-12-18T14:54:52.696Z",
+  "timeElapsed": "0.0min",
+  "summary": {
+    "totalSignalsGenerated": 20,
+    "executedTrades": 13,
+    "invalidatedSignals": 7,
+    "skippedBySymbolLock": 9,
+    "winRate": "38.5",
+    "wins": 5,
+    "losses": 8,
+    "avgPnl": "0.14",
+    "totalPnl": "1.79",
+    "capitalWinRate": "76.9",
+    "signalQuality": "65.0",
+    "targetHitRate": "38.5",
+    "fullTargetRate": "7.7",
+    "riskRewardRatio": "1.84",
+    "expectancy": "0.14",
+    "avgHoldingDays": "3.2",
+    "entriesAvoided": 7,
+    "overlappingTradesAvoided": 9,
+    "exitBreakdown": {
+      "secondTarget": 1,
+      "trailingStop": 4,
+      "fullStop": 8,
+      "timeExpiry": 0
+    }
+  },
+  "interpretation": {
+    "signalQualityGrade": "EXCELLENT",
+    "riskManagementGrade": "STRONG",
+    "capitalProtectionNote": "5 trades booked 80% profit before any adverse move",
+    "disciplineNote": "Avoided 9 overlapping trades via symbol lock",
+    "filterNote": "Entry delay filter blocked 7 potentially bad entries",
+    "tradingStyle": "Standard Swing"
+  },
+  "executedTrades": [
+    {
+      "symbol": "APOLLOHOSP",
+      "strategy": "Trend Continuation",
+      "signalDate": "2025-10-14T00:00:00+05:30",
+      "signalPrice": 7759,
+      "entryDate": "2025-10-15T00:00:00+05:30",
+      "entryPrice": 7826,
+      "exitDate": "2025-10-21T00:00:00+05:30",
+      "exitPrice": 8024.675,
+      "partialExitDate": "2025-10-20T00:00:00+05:30",
+      "partialExitPrice": 8060.780000000001,
+      "trailingStopPrice": 8024.675,
+      "pnl": 2.9077306414515727,
+      "holdingDays": 4,
+      "exitReason": "TRAILING_STOP",
+      "result": "WIN",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-10-14T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-10-14T00:00:00+05:30",
+          "price": 7759,
+          "reason": "Entry conditions met (Quality: 2/4)"
+        },
+        {
+          "state": "WAITING_TO_ENTER",
+          "date": "2025-10-14T00:00:00+05:30",
+          "reason": "Delay period started"
+        },
+        {
+          "state": "ENTERED",
+          "date": "2025-10-15T00:00:00+05:30",
+          "price": 7826,
+          "reason": "Entry validated and executed"
+        },
+        {
+          "state": "PARTIAL_EXIT",
+          "date": "2025-10-20T00:00:00+05:30",
+          "price": 8060.780000000001,
+          "pnl": 2.4000000000000004,
+          "reason": "80% booked at target"
+        },
+        {
+          "state": "TRAILING",
+          "date": "2025-10-20T00:00:00+05:30",
+          "reason": "Trailing remaining 20%"
+        },
+        {
+          "state": "FULL_EXIT",
+          "date": "2025-10-21T00:00:00+05:30",
+          "price": 8024.675,
+          "pnl": 0.5077306414515722,
+          "reason": "Trailing stop hit"
+        }
+      ]
+    },
+    {
+      "symbol": "APOLLOHOSP",
+      "strategy": "Trend Continuation",
+      "signalDate": "2025-10-27T00:00:00+05:30",
+      "signalPrice": 7845.5,
+      "entryDate": "2025-10-28T00:00:00+05:30",
+      "entryPrice": 7880.5,
+      "exitDate": "2025-10-31T00:00:00+05:30",
+      "exitPrice": 7700.232142857143,
+      "partialExitDate": null,
+      "partialExitPrice": null,
+      "trailingStopPrice": null,
+      "pnl": -1.5,
+      "holdingDays": 3,
+      "exitReason": "STOP",
+      "result": "LOSS",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-10-27T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-10-27T00:00:00+05:30",
+          "price": 7845.5,
+          "reason": "Entry conditions met (Quality: 2/4)"
+        },
+        {
+          "state": "WAITING_TO_ENTER",
+          "date": "2025-10-27T00:00:00+05:30",
+          "reason": "Delay period started"
+        },
+        {
+          "state": "ENTERED",
+          "date": "2025-10-28T00:00:00+05:30",
+          "price": 7880.5,
+          "reason": "Entry validated and executed"
+        },
+        {
+          "state": "STOPPED_OUT",
+          "date": "2025-10-31T00:00:00+05:30",
+          "price": 7700.232142857143,
+          "pnl": -1.5,
+          "reason": "Stop loss hit"
+        }
+      ]
+    },
+    {
+      "symbol": "APOLLOHOSP",
+      "strategy": "RSI Momentum",
+      "signalDate": "2025-11-03T00:00:00+05:30",
+      "signalPrice": 7824.5,
+      "entryDate": "2025-11-04T00:00:00+05:30",
+      "entryPrice": 7810.5,
+      "exitDate": "2025-11-07T00:00:00+05:30",
+      "exitPrice": 7628.625,
+      "partialExitDate": null,
+      "partialExitPrice": null,
+      "trailingStopPrice": null,
+      "pnl": -1.5,
+      "holdingDays": 2,
+      "exitReason": "STOP",
+      "result": "LOSS",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-11-03T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-11-03T00:00:00+05:30",
+          "price": 7824.5,
+          "reason": "Entry conditions met (Quality: 3/4)"
+        },
+        {
+          "state": "WAITING_TO_ENTER",
+          "date": "2025-11-03T00:00:00+05:30",
+          "reason": "Delay period started"
+        },
+        {
+          "state": "ENTERED",
+          "date": "2025-11-04T00:00:00+05:30",
+          "price": 7810.5,
+          "reason": "Entry validated and executed"
+        },
+        {
+          "state": "STOPPED_OUT",
+          "date": "2025-11-07T00:00:00+05:30",
+          "price": 7628.625,
+          "pnl": -1.5,
+          "reason": "Stop loss hit"
+        }
+      ]
+    },
+    {
+      "symbol": "GRASIM",
+      "strategy": "RSI Momentum",
+      "signalDate": "2025-12-05T00:00:00+05:30",
+      "signalPrice": 2747,
+      "entryDate": "2025-12-08T00:00:00+05:30",
+      "entryPrice": 2744.2,
+      "exitDate": "2025-12-15T00:00:00+05:30",
+      "exitPrice": 2847.1075,
+      "partialExitDate": "2025-12-12T00:00:00+05:30",
+      "partialExitPrice": 2812.8049999999994,
+      "trailingStopPrice": 2835.6505,
+      "pnl": 2.75,
+      "holdingDays": 5,
+      "exitReason": "SECOND_TARGET",
+      "result": "WIN",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-12-05T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-12-05T00:00:00+05:30",
+          "price": 2747,
+          "reason": "Entry conditions met (Quality: 3/4)"
+        },
+        {
+          "state": "WAITING_TO_ENTER",
+          "date": "2025-12-05T00:00:00+05:30",
+          "reason": "Delay period started"
+        },
+        {
+          "state": "ENTERED",
+          "date": "2025-12-08T00:00:00+05:30",
+          "price": 2744.2,
+          "reason": "Entry validated and executed"
+        },
+        {
+          "state": "PARTIAL_EXIT",
+          "date": "2025-12-12T00:00:00+05:30",
+          "price": 2812.8049999999994,
+          "pnl": 2,
+          "reason": "80% booked at target"
+        },
+        {
+          "state": "TRAILING",
+          "date": "2025-12-12T00:00:00+05:30",
+          "reason": "Trailing remaining 20%"
+        },
+        {
+          "state": "FULL_EXIT",
+          "date": "2025-12-15T00:00:00+05:30",
+          "price": 2847.1075,
+          "pnl": 0.75,
+          "reason": "Second target hit"
+        }
+      ]
+    },
+    {
+      "symbol": "HCLTECH",
+      "strategy": "RSI Momentum",
+      "signalDate": "2025-12-01T00:00:00+05:30",
+      "signalPrice": 1642.9,
+      "entryDate": "2025-12-02T00:00:00+05:30",
+      "entryPrice": 1635.5,
+      "exitDate": "2025-12-08T00:00:00+05:30",
+      "exitPrice": 1686.923,
+      "partialExitDate": "2025-12-05T00:00:00+05:30",
+      "partialExitPrice": 1676.3874999999998,
+      "trailingStopPrice": 1686.923,
+      "pnl": 2.628835218587588,
+      "holdingDays": 4,
+      "exitReason": "TRAILING_STOP",
+      "result": "WIN",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-12-01T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-12-01T00:00:00+05:30",
+          "price": 1642.9,
+          "reason": "Entry conditions met (Quality: 2/4)"
+        },
+        {
+          "state": "WAITING_TO_ENTER",
+          "date": "2025-12-01T00:00:00+05:30",
+          "reason": "Delay period started"
+        },
+        {
+          "state": "ENTERED",
+          "date": "2025-12-02T00:00:00+05:30",
+          "price": 1635.5,
+          "reason": "Entry validated and executed"
+        },
+        {
+          "state": "PARTIAL_EXIT",
+          "date": "2025-12-05T00:00:00+05:30",
+          "price": 1676.3874999999998,
+          "pnl": 2,
+          "reason": "80% booked at target"
+        },
+        {
+          "state": "TRAILING",
+          "date": "2025-12-05T00:00:00+05:30",
+          "reason": "Trailing remaining 20%"
+        },
+        {
+          "state": "FULL_EXIT",
+          "date": "2025-12-08T00:00:00+05:30",
+          "price": 1686.923,
+          "pnl": 0.6288352185875881,
+          "reason": "Trailing stop hit"
+        }
+      ]
+    },
+    {
+      "symbol": "IDFCFIRSTB",
+      "strategy": "RSI Momentum",
+      "signalDate": "2025-12-01T00:00:00+05:30",
+      "signalPrice": 80.71,
+      "entryDate": "2025-12-02T00:00:00+05:30",
+      "entryPrice": 81.98,
+      "exitDate": "2025-12-04T00:00:00+05:30",
+      "exitPrice": 79.80071428571429,
+      "partialExitDate": null,
+      "partialExitPrice": null,
+      "trailingStopPrice": null,
+      "pnl": -1.5,
+      "holdingDays": 2,
+      "exitReason": "STOP",
+      "result": "LOSS",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-12-01T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-12-01T00:00:00+05:30",
+          "price": 80.71,
+          "reason": "Entry conditions met (Quality: 3/4)"
+        },
+        {
+          "state": "WAITING_TO_ENTER",
+          "date": "2025-12-01T00:00:00+05:30",
+          "reason": "Delay period started"
+        },
+        {
+          "state": "ENTERED",
+          "date": "2025-12-02T00:00:00+05:30",
+          "price": 81.98,
+          "reason": "Entry validated and executed"
+        },
+        {
+          "state": "STOPPED_OUT",
+          "date": "2025-12-04T00:00:00+05:30",
+          "price": 79.80071428571429,
+          "pnl": -1.5,
+          "reason": "Stop loss hit"
+        }
+      ]
+    },
+    {
+      "symbol": "PIDILITIND",
+      "strategy": "RSI Momentum",
+      "signalDate": "2025-12-03T00:00:00+05:30",
+      "signalPrice": 1478.6,
+      "entryDate": "2025-12-04T00:00:00+05:30",
+      "entryPrice": 1484.7,
+      "exitDate": "2025-12-08T00:00:00+05:30",
+      "exitPrice": 1448.5285714285715,
+      "partialExitDate": null,
+      "partialExitPrice": null,
+      "trailingStopPrice": null,
+      "pnl": -1.5,
+      "holdingDays": 2,
+      "exitReason": "STOP",
+      "result": "LOSS",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-12-03T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-12-03T00:00:00+05:30",
+          "price": 1478.6,
+          "reason": "Entry conditions met (Quality: 4/4)"
+        },
+        {
+          "state": "WAITING_TO_ENTER",
+          "date": "2025-12-03T00:00:00+05:30",
+          "reason": "Delay period started"
+        },
+        {
+          "state": "ENTERED",
+          "date": "2025-12-04T00:00:00+05:30",
+          "price": 1484.7,
+          "reason": "Entry validated and executed"
+        },
+        {
+          "state": "STOPPED_OUT",
+          "date": "2025-12-08T00:00:00+05:30",
+          "price": 1448.5285714285715,
+          "pnl": -1.5,
+          "reason": "Stop loss hit"
+        }
+      ]
+    },
+    {
+      "symbol": "ADANIPORTS",
+      "strategy": "Trend Continuation",
+      "signalDate": "2025-12-01T00:00:00+05:30",
+      "signalPrice": 1530.5,
+      "entryDate": "2025-12-02T00:00:00+05:30",
+      "entryPrice": 1518.1,
+      "exitDate": "2025-12-08T00:00:00+05:30",
+      "exitPrice": 1481.8214285714284,
+      "partialExitDate": null,
+      "partialExitPrice": null,
+      "trailingStopPrice": null,
+      "pnl": -1.5,
+      "holdingDays": 4,
+      "exitReason": "STOP",
+      "result": "LOSS",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-12-01T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-12-01T00:00:00+05:30",
+          "price": 1530.5,
+          "reason": "Entry conditions met (Quality: 3/4)"
+        },
+        {
+          "state": "WAITING_TO_ENTER",
+          "date": "2025-12-01T00:00:00+05:30",
+          "reason": "Delay period started"
+        },
+        {
+          "state": "ENTERED",
+          "date": "2025-12-02T00:00:00+05:30",
+          "price": 1518.1,
+          "reason": "Entry validated and executed"
+        },
+        {
+          "state": "STOPPED_OUT",
+          "date": "2025-12-08T00:00:00+05:30",
+          "price": 1481.8214285714284,
+          "pnl": -1.5,
+          "reason": "Stop loss hit"
+        }
+      ]
+    },
+    {
+      "symbol": "GODREJCP",
+      "strategy": "Trend Continuation",
+      "signalDate": "2025-12-11T00:00:00+05:30",
+      "signalPrice": 1147.9,
+      "entryDate": "2025-12-12T00:00:00+05:30",
+      "entryPrice": 1153.8,
+      "exitDate": "2025-12-17T00:00:00+05:30",
+      "exitPrice": 1192.5075,
+      "partialExitDate": "2025-12-16T00:00:00+05:30",
+      "partialExitPrice": 1188.414,
+      "trailingStopPrice": 1192.5075,
+      "pnl": 3.0709568382735313,
+      "holdingDays": 3,
+      "exitReason": "TRAILING_STOP",
+      "result": "WIN",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-12-11T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-12-11T00:00:00+05:30",
+          "price": 1147.9,
+          "reason": "Entry conditions met (Quality: 3/4)"
+        },
+        {
+          "state": "WAITING_TO_ENTER",
+          "date": "2025-12-11T00:00:00+05:30",
+          "reason": "Delay period started"
+        },
+        {
+          "state": "ENTERED",
+          "date": "2025-12-12T00:00:00+05:30",
+          "price": 1153.8,
+          "reason": "Entry validated and executed"
+        },
+        {
+          "state": "PARTIAL_EXIT",
+          "date": "2025-12-16T00:00:00+05:30",
+          "price": 1188.414,
+          "pnl": 2.4000000000000004,
+          "reason": "80% booked at target"
+        },
+        {
+          "state": "TRAILING",
+          "date": "2025-12-16T00:00:00+05:30",
+          "reason": "Trailing remaining 20%"
+        },
+        {
+          "state": "FULL_EXIT",
+          "date": "2025-12-17T00:00:00+05:30",
+          "price": 1192.5075,
+          "pnl": 0.6709568382735307,
+          "reason": "Trailing stop hit"
+        }
+      ]
+    },
+    {
+      "symbol": "TVSMOTOR",
+      "strategy": "Trend Continuation",
+      "signalDate": "2025-12-03T00:00:00+05:30",
+      "signalPrice": 3631.8,
+      "entryDate": "2025-12-04T00:00:00+05:30",
+      "entryPrice": 3646.4,
+      "exitDate": "2025-12-09T00:00:00+05:30",
+      "exitPrice": 3548.942857142857,
+      "partialExitDate": null,
+      "partialExitPrice": null,
+      "trailingStopPrice": null,
+      "pnl": -1.5,
+      "holdingDays": 3,
+      "exitReason": "STOP",
+      "result": "LOSS",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-12-03T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-12-03T00:00:00+05:30",
+          "price": 3631.8,
+          "reason": "Entry conditions met (Quality: 2/4)"
+        },
+        {
+          "state": "WAITING_TO_ENTER",
+          "date": "2025-12-03T00:00:00+05:30",
+          "reason": "Delay period started"
+        },
+        {
+          "state": "ENTERED",
+          "date": "2025-12-04T00:00:00+05:30",
+          "price": 3646.4,
+          "reason": "Entry validated and executed"
+        },
+        {
+          "state": "STOPPED_OUT",
+          "date": "2025-12-09T00:00:00+05:30",
+          "price": 3548.942857142857,
+          "pnl": -1.5,
+          "reason": "Stop loss hit"
+        }
+      ]
+    },
+    {
+      "symbol": "UNIONBANK",
+      "strategy": "RSI Momentum",
+      "signalDate": "2025-12-01T00:00:00+05:30",
+      "signalPrice": 154.19,
+      "entryDate": "2025-12-02T00:00:00+05:30",
+      "entryPrice": 155.77,
+      "exitDate": "2025-12-03T00:00:00+05:30",
+      "exitPrice": 150.6914285714286,
+      "partialExitDate": null,
+      "partialExitPrice": null,
+      "trailingStopPrice": null,
+      "pnl": -1.5,
+      "holdingDays": 1,
+      "exitReason": "STOP",
+      "result": "LOSS",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-12-01T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-12-01T00:00:00+05:30",
+          "price": 154.19,
+          "reason": "Entry conditions met (Quality: 2/4)"
+        },
+        {
+          "state": "WAITING_TO_ENTER",
+          "date": "2025-12-01T00:00:00+05:30",
+          "reason": "Delay period started"
+        },
+        {
+          "state": "ENTERED",
+          "date": "2025-12-02T00:00:00+05:30",
+          "price": 155.77,
+          "reason": "Entry validated and executed"
+        },
+        {
+          "state": "STOPPED_OUT",
+          "date": "2025-12-03T00:00:00+05:30",
+          "price": 150.6914285714286,
+          "pnl": -1.5,
+          "reason": "Stop loss hit"
+        }
+      ]
+    },
+    {
+      "symbol": "DELHIVERY",
+      "strategy": "RSI Momentum",
+      "signalDate": "2025-10-17T00:00:00+05:30",
+      "signalPrice": 465.35,
+      "entryDate": "2025-10-20T00:00:00+05:30",
+      "entryPrice": 474.9,
+      "exitDate": "2025-10-30T00:00:00+05:30",
+      "exitPrice": 485.11225,
+      "partialExitDate": "2025-10-29T00:00:00+05:30",
+      "partialExitPrice": 486.7724999999999,
+      "trailingStopPrice": 485.11225,
+      "pnl": 2.4300800168456536,
+      "holdingDays": 7,
+      "exitReason": "TRAILING_STOP",
+      "result": "WIN",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-10-17T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-10-17T00:00:00+05:30",
+          "price": 465.35,
+          "reason": "Entry conditions met (Quality: 3/4)"
+        },
+        {
+          "state": "WAITING_TO_ENTER",
+          "date": "2025-10-17T00:00:00+05:30",
+          "reason": "Delay period started"
+        },
+        {
+          "state": "ENTERED",
+          "date": "2025-10-20T00:00:00+05:30",
+          "price": 474.9,
+          "reason": "Entry validated and executed"
+        },
+        {
+          "state": "PARTIAL_EXIT",
+          "date": "2025-10-29T00:00:00+05:30",
+          "price": 486.7724999999999,
+          "pnl": 2,
+          "reason": "80% booked at target"
+        },
+        {
+          "state": "TRAILING",
+          "date": "2025-10-29T00:00:00+05:30",
+          "reason": "Trailing remaining 20%"
+        },
+        {
+          "state": "FULL_EXIT",
+          "date": "2025-10-30T00:00:00+05:30",
+          "price": 485.11225,
+          "pnl": 0.4300800168456534,
+          "reason": "Trailing stop hit"
+        }
+      ]
+    },
+    {
+      "symbol": "DELHIVERY",
+      "strategy": "Trend Continuation",
+      "signalDate": "2025-11-03T00:00:00+05:30",
+      "signalPrice": 472.25,
+      "entryDate": "2025-11-04T00:00:00+05:30",
+      "entryPrice": 484.85,
+      "exitDate": "2025-11-06T00:00:00+05:30",
+      "exitPrice": 465.1464285714286,
+      "partialExitDate": null,
+      "partialExitPrice": null,
+      "trailingStopPrice": null,
+      "pnl": -1.5,
+      "holdingDays": 1,
+      "exitReason": "STOP",
+      "result": "LOSS",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-11-03T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-11-03T00:00:00+05:30",
+          "price": 472.25,
+          "reason": "Entry conditions met (Quality: 3/4)"
+        },
+        {
+          "state": "WAITING_TO_ENTER",
+          "date": "2025-11-03T00:00:00+05:30",
+          "reason": "Delay period started"
+        },
+        {
+          "state": "ENTERED",
+          "date": "2025-11-04T00:00:00+05:30",
+          "price": 484.85,
+          "reason": "Entry validated and executed"
+        },
+        {
+          "state": "STOPPED_OUT",
+          "date": "2025-11-06T00:00:00+05:30",
+          "price": 465.1464285714286,
+          "pnl": -1.5,
+          "reason": "Stop loss hit"
+        }
+      ]
+    }
+  ],
+  "invalidatedSignals": [
+    {
+      "symbol": "ADANIENSOL",
+      "strategy": "RSI Momentum",
+      "signalDate": "2025-12-01T00:00:00+05:30",
+      "signalPrice": 999.1,
+      "invalidationDate": "2025-12-02T00:00:00+05:30",
+      "invalidationReason": "Delay candle closing weak (9% of range) - momentum continues",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-12-01T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-12-01T00:00:00+05:30",
+          "price": 999.1,
+          "reason": "Entry conditions met (Quality: 3/4)"
+        },
+        {
+          "state": "INVALIDATED",
+          "date": "2025-12-02T00:00:00+05:30",
+          "reason": "Delay candle closing weak (9% of range) - momentum continues"
+        }
+      ]
+    },
+    {
+      "symbol": "APOLLOHOSP",
+      "strategy": "Trend Continuation",
+      "signalDate": "2025-10-23T00:00:00+05:30",
+      "signalPrice": 7968.5,
+      "invalidationDate": "2025-10-24T00:00:00+05:30",
+      "invalidationReason": "Delay candle closing weak (8% of range) - momentum continues",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-10-23T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-10-23T00:00:00+05:30",
+          "price": 7968.5,
+          "reason": "Entry conditions met (Quality: 2/4)"
+        },
+        {
+          "state": "INVALIDATED",
+          "date": "2025-10-24T00:00:00+05:30",
+          "reason": "Delay candle closing weak (8% of range) - momentum continues"
+        }
+      ]
+    },
+    {
+      "symbol": "IDFCFIRSTB",
+      "strategy": "RSI Momentum",
+      "signalDate": "2025-12-05T00:00:00+05:30",
+      "signalPrice": 80.87,
+      "invalidationDate": "2025-12-08T00:00:00+05:30",
+      "invalidationReason": "Price dropped to 78.57 during delay, below stop 78.68",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-12-05T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-12-05T00:00:00+05:30",
+          "price": 80.87,
+          "reason": "Entry conditions met (Quality: 4/4)"
+        },
+        {
+          "state": "INVALIDATED",
+          "date": "2025-12-08T00:00:00+05:30",
+          "reason": "Price dropped to 78.57 during delay, below stop 78.68"
+        }
+      ]
+    },
+    {
+      "symbol": "IDFCFIRSTB",
+      "strategy": "RSI Momentum",
+      "signalDate": "2025-12-09T00:00:00+05:30",
+      "signalPrice": 80.91,
+      "invalidationDate": "2025-12-10T00:00:00+05:30",
+      "invalidationReason": "Delay candle closing weak (17% of range) - momentum continues",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-12-09T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-12-09T00:00:00+05:30",
+          "price": 80.91,
+          "reason": "Entry conditions met (Quality: 2/4)"
+        },
+        {
+          "state": "INVALIDATED",
+          "date": "2025-12-10T00:00:00+05:30",
+          "reason": "Delay candle closing weak (17% of range) - momentum continues"
+        }
+      ]
+    },
+    {
+      "symbol": "GODREJCP",
+      "strategy": "RSI Momentum",
+      "signalDate": "2025-12-05T00:00:00+05:30",
+      "signalPrice": 1136,
+      "invalidationDate": "2025-12-08T00:00:00+05:30",
+      "invalidationReason": "New low made during delay - trend not reversing",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-12-05T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-12-05T00:00:00+05:30",
+          "price": 1136,
+          "reason": "Entry conditions met (Quality: 4/4)"
+        },
+        {
+          "state": "INVALIDATED",
+          "date": "2025-12-08T00:00:00+05:30",
+          "reason": "New low made during delay - trend not reversing"
+        }
+      ]
+    },
+    {
+      "symbol": "SBIN",
+      "strategy": "RSI Momentum",
+      "signalDate": "2025-12-01T00:00:00+05:30",
+      "signalPrice": 973.1,
+      "invalidationDate": "2025-12-02T00:00:00+05:30",
+      "invalidationReason": "Delay candle closing weak (15% of range) - momentum continues",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-12-01T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-12-01T00:00:00+05:30",
+          "price": 973.1,
+          "reason": "Entry conditions met (Quality: 4/4)"
+        },
+        {
+          "state": "INVALIDATED",
+          "date": "2025-12-02T00:00:00+05:30",
+          "reason": "Delay candle closing weak (15% of range) - momentum continues"
+        }
+      ]
+    },
+    {
+      "symbol": "SBIN",
+      "strategy": "RSI Momentum",
+      "signalDate": "2025-12-05T00:00:00+05:30",
+      "signalPrice": 971.5,
+      "invalidationDate": "2025-12-08T00:00:00+05:30",
+      "invalidationReason": "Delay candle closing weak (23% of range) - momentum continues",
+      "lifecycle": [
+        {
+          "state": "WATCHING",
+          "date": "2025-12-05T00:00:00+05:30",
+          "reason": "Monitoring stock"
+        },
+        {
+          "state": "SIGNAL_CONFIRMED",
+          "date": "2025-12-05T00:00:00+05:30",
+          "price": 971.5,
+          "reason": "Entry conditions met (Quality: 3/4)"
+        },
+        {
+          "state": "INVALIDATED",
+          "date": "2025-12-08T00:00:00+05:30",
+          "reason": "Delay candle closing weak (23% of range) - momentum continues"
+        }
+      ]
+    }
+  ],
+  "skippedSignals": [
+    {
+      "symbol": "APOLLOHOSP",
+      "strategy": "RSI Momentum",
+      "date": "2025-10-14T00:00:00+05:30",
+      "reason": "Symbol locked by Trend Continuation"
+    },
+    {
+      "symbol": "APOLLOHOSP",
+      "strategy": "RSI Momentum",
+      "date": "2025-10-27T00:00:00+05:30",
+      "reason": "Symbol locked by Trend Continuation"
+    },
+    {
+      "symbol": "GRASIM",
+      "strategy": "RSI Momentum",
+      "date": "2025-12-16T00:00:00+05:30",
+      "reason": "Symbol locked by Trend Continuation"
+    },
+    {
+      "symbol": "HCLTECH",
+      "strategy": "RSI Momentum",
+      "date": "2025-12-09T00:00:00+05:30",
+      "reason": "Symbol locked by Trend Continuation"
+    },
+    {
+      "symbol": "GODREJCP",
+      "strategy": "RSI Momentum",
+      "date": "2025-12-11T00:00:00+05:30",
+      "reason": "Symbol locked by Trend Continuation"
+    },
+    {
+      "symbol": "TVSMOTOR",
+      "strategy": "RSI Momentum",
+      "date": "2025-12-03T00:00:00+05:30",
+      "reason": "Symbol locked by Trend Continuation"
+    },
+    {
+      "symbol": "TVSMOTOR",
+      "strategy": "RSI Momentum",
+      "date": "2025-12-10T00:00:00+05:30",
+      "reason": "Symbol locked by Trend Continuation"
+    },
+    {
+      "symbol": "HINDPETRO",
+      "strategy": "RSI Momentum",
+      "date": "2025-12-15T00:00:00+05:30",
+      "reason": "Symbol locked by Trend Continuation"
+    },
+    {
+      "symbol": "DELHIVERY",
+      "strategy": "RSI Momentum",
+      "date": "2025-11-03T00:00:00+05:30",
+      "reason": "Symbol locked by Trend Continuation"
+    }
+  ],
+  "expiredStocks": [],
+  "trappedSignals": [],
+  "logs": [
+    {
+      "timestamp": "2025-12-18T14:54:52.474Z",
+      "symbol": "ADANIENSOL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.475Z",
+      "symbol": "ADANIENSOL",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (3/4), stop at 962.04"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.475Z",
+      "symbol": "ADANIENSOL",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-12-02T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.479Z",
+      "symbol": "ADANIENSOL",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (3/4), stop at 965.16"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.479Z",
+      "symbol": "ADANIENSOL",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-11T00:00:00+05:30 → Entry 2025-12-12T00:00:00+05:30 @ 1011.30"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.482Z",
+      "symbol": "APOLLOHOSP",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.482Z",
+      "symbol": "APOLLOHOSP",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "Trend Continuation signal PASSED quality (2/4), stop at 7573.27"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.483Z",
+      "symbol": "APOLLOHOSP",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-10-14T00:00:00+05:30 → Entry 2025-10-15T00:00:00+05:30 @ 7826.00"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.484Z",
+      "symbol": "APOLLOHOSP",
+      "event": "PARTIAL_EXIT",
+      "reason": "Entry 2025-10-15T00:00:00+05:30 → 80% booked 2025-10-20T00:00:00+05:30 @ 8060.78"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.486Z",
+      "symbol": "APOLLOHOSP",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-10-21T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.487Z",
+      "symbol": "APOLLOHOSP",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "Trend Continuation signal PASSED quality (2/4), stop at 7773.82"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.487Z",
+      "symbol": "APOLLOHOSP",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-10-24T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.488Z",
+      "symbol": "APOLLOHOSP",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "Trend Continuation signal PASSED quality (2/4), stop at 7665.18"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.488Z",
+      "symbol": "APOLLOHOSP",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-10-27T00:00:00+05:30 → Entry 2025-10-28T00:00:00+05:30 @ 7880.50"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.490Z",
+      "symbol": "APOLLOHOSP",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-10-31T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.490Z",
+      "symbol": "APOLLOHOSP",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (3/4), stop at 7634.64"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.491Z",
+      "symbol": "APOLLOHOSP",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-11-03T00:00:00+05:30 → Entry 2025-11-04T00:00:00+05:30 @ 7810.50"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.491Z",
+      "symbol": "APOLLOHOSP",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-11-07T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.500Z",
+      "symbol": "CONCOR",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.507Z",
+      "symbol": "GRASIM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.508Z",
+      "symbol": "GRASIM",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (3/4), stop at 2691.47"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.508Z",
+      "symbol": "GRASIM",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-05T00:00:00+05:30 → Entry 2025-12-08T00:00:00+05:30 @ 2744.20"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.509Z",
+      "symbol": "GRASIM",
+      "event": "PARTIAL_EXIT",
+      "reason": "Entry 2025-12-08T00:00:00+05:30 → 80% booked 2025-12-12T00:00:00+05:30 @ 2812.80"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.510Z",
+      "symbol": "GRASIM",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-12-15T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.510Z",
+      "symbol": "GRASIM",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "Trend Continuation signal PASSED quality (3/4), stop at 2739.44"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.510Z",
+      "symbol": "GRASIM",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-16T00:00:00+05:30 → Entry 2025-12-17T00:00:00+05:30 @ 2806.60"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.513Z",
+      "symbol": "HCLTECH",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.513Z",
+      "symbol": "HCLTECH",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (2/4), stop at 1598.63"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.513Z",
+      "symbol": "HCLTECH",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-01T00:00:00+05:30 → Entry 2025-12-02T00:00:00+05:30 @ 1635.50"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.514Z",
+      "symbol": "HCLTECH",
+      "event": "PARTIAL_EXIT",
+      "reason": "Entry 2025-12-02T00:00:00+05:30 → 80% booked 2025-12-05T00:00:00+05:30 @ 1676.39"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.515Z",
+      "symbol": "HCLTECH",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-12-08T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.515Z",
+      "symbol": "HCLTECH",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "Trend Continuation signal PASSED quality (3/4), stop at 1615.67"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.515Z",
+      "symbol": "HCLTECH",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-09T00:00:00+05:30 → Entry 2025-12-10T00:00:00+05:30 @ 1666.00"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.521Z",
+      "symbol": "IDFCFIRSTB",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.521Z",
+      "symbol": "IDFCFIRSTB",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (3/4), stop at 78.55"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.522Z",
+      "symbol": "IDFCFIRSTB",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-01T00:00:00+05:30 → Entry 2025-12-02T00:00:00+05:30 @ 81.98"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.522Z",
+      "symbol": "IDFCFIRSTB",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-12-04T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.523Z",
+      "symbol": "IDFCFIRSTB",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (4/4), stop at 78.68"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.523Z",
+      "symbol": "IDFCFIRSTB",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-12-08T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.523Z",
+      "symbol": "IDFCFIRSTB",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (2/4), stop at 78.39"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.524Z",
+      "symbol": "IDFCFIRSTB",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-12-10T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.524Z",
+      "symbol": "IDFCFIRSTB",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (4/4), stop at 78.08"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.524Z",
+      "symbol": "IDFCFIRSTB",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-11T00:00:00+05:30 → Entry 2025-12-12T00:00:00+05:30 @ 82.29"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.525Z",
+      "symbol": "IDFCFIRSTB",
+      "event": "PARTIAL_EXIT",
+      "reason": "Entry 2025-12-12T00:00:00+05:30 → 80% booked 2025-12-15T00:00:00+05:30 @ 84.35"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.527Z",
+      "symbol": "IGL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.532Z",
+      "symbol": "INDIANB",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.540Z",
+      "symbol": "IRCTC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.546Z",
+      "symbol": "IREDA",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.551Z",
+      "symbol": "LICI",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.557Z",
+      "symbol": "NESTLEIND",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.562Z",
+      "symbol": "PFC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.568Z",
+      "symbol": "PIDILITIND",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.570Z",
+      "symbol": "PIDILITIND",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (4/4), stop at 1440.61"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.570Z",
+      "symbol": "PIDILITIND",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-03T00:00:00+05:30 → Entry 2025-12-04T00:00:00+05:30 @ 1484.70"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.571Z",
+      "symbol": "PIDILITIND",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-12-08T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.572Z",
+      "symbol": "PIDILITIND",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (3/4), stop at 1447.69"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.573Z",
+      "symbol": "PIDILITIND",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-12T00:00:00+05:30 → Entry 2025-12-15T00:00:00+05:30 @ 1479.40"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.576Z",
+      "symbol": "RBLBANK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.578Z",
+      "symbol": "RBLBANK",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (3/4), stop at 298.65"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.579Z",
+      "symbol": "RBLBANK",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-11T00:00:00+05:30 → Entry 2025-12-12T00:00:00+05:30 @ 307.60"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.582Z",
+      "symbol": "TATASTEEL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.587Z",
+      "symbol": "TATASTEEL",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (2/4), stop at 167.10"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.587Z",
+      "symbol": "TATASTEEL",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-12T00:00:00+05:30 → Entry 2025-12-15T00:00:00+05:30 @ 172.87"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.590Z",
+      "symbol": "TRENT",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.595Z",
+      "symbol": "ADANIPORTS",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.596Z",
+      "symbol": "ADANIPORTS",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "Trend Continuation signal PASSED quality (3/4), stop at 1492.07"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.596Z",
+      "symbol": "ADANIPORTS",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-01T00:00:00+05:30 → Entry 2025-12-02T00:00:00+05:30 @ 1518.10"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.597Z",
+      "symbol": "ADANIPORTS",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-12-08T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.599Z",
+      "symbol": "ADANIPORTS",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (3/4), stop at 1464.19"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.600Z",
+      "symbol": "ADANIPORTS",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-11T00:00:00+05:30 → Entry 2025-12-12T00:00:00+05:30 @ 1522.80"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.604Z",
+      "symbol": "GODREJCP",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.606Z",
+      "symbol": "GODREJCP",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (4/4), stop at 1103.03"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.606Z",
+      "symbol": "GODREJCP",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-12-08T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.608Z",
+      "symbol": "GODREJCP",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "Trend Continuation signal PASSED quality (3/4), stop at 1111.83"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.608Z",
+      "symbol": "GODREJCP",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-11T00:00:00+05:30 → Entry 2025-12-12T00:00:00+05:30 @ 1153.80"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.609Z",
+      "symbol": "GODREJCP",
+      "event": "PARTIAL_EXIT",
+      "reason": "Entry 2025-12-12T00:00:00+05:30 → 80% booked 2025-12-16T00:00:00+05:30 @ 1188.41"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.610Z",
+      "symbol": "GODREJCP",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-12-17T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.614Z",
+      "symbol": "ITC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.616Z",
+      "symbol": "ITC",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (3/4), stop at 398.61"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.617Z",
+      "symbol": "ITC",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-05T00:00:00+05:30 → Entry 2025-12-08T00:00:00+05:30 @ 402.30"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.623Z",
+      "symbol": "TVSMOTOR",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.623Z",
+      "symbol": "TVSMOTOR",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "Trend Continuation signal PASSED quality (2/4), stop at 3528.96"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.624Z",
+      "symbol": "TVSMOTOR",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-03T00:00:00+05:30 → Entry 2025-12-04T00:00:00+05:30 @ 3646.40"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.625Z",
+      "symbol": "TVSMOTOR",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-12-09T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.625Z",
+      "symbol": "TVSMOTOR",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "Trend Continuation signal PASSED quality (3/4), stop at 3503.91"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.626Z",
+      "symbol": "TVSMOTOR",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-10T00:00:00+05:30 → Entry 2025-12-11T00:00:00+05:30 @ 3637.40"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.631Z",
+      "symbol": "DMART",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.641Z",
+      "symbol": "HINDPETRO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.643Z",
+      "symbol": "HINDPETRO",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "Trend Continuation signal PASSED quality (3/4), stop at 450.76"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.644Z",
+      "symbol": "HINDPETRO",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-15T00:00:00+05:30 → Entry 2025-12-16T00:00:00+05:30 @ 465.35"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.645Z",
+      "symbol": "BANKNIFTY",
+      "event": "INSUFFICIENT_DATA",
+      "reason": "Only 0 candles"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.647Z",
+      "symbol": "SBIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.647Z",
+      "symbol": "SBIN",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (4/4), stop at 953.38"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.648Z",
+      "symbol": "SBIN",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-12-02T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.649Z",
+      "symbol": "SBIN",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (3/4), stop at 948.73"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.649Z",
+      "symbol": "SBIN",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-12-08T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.654Z",
+      "symbol": "UNIONBANK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.654Z",
+      "symbol": "UNIONBANK",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (2/4), stop at 149.30"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.655Z",
+      "symbol": "UNIONBANK",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-01T00:00:00+05:30 → Entry 2025-12-02T00:00:00+05:30 @ 155.77"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.655Z",
+      "symbol": "UNIONBANK",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-12-03T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.657Z",
+      "symbol": "UNIONBANK",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (4/4), stop at 146.60"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.657Z",
+      "symbol": "UNIONBANK",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-12-12T00:00:00+05:30 → Entry 2025-12-15T00:00:00+05:30 @ 153.65"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.659Z",
+      "symbol": "ASTRAL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.663Z",
+      "symbol": "AUROPHARMA",
+      "event": "INSUFFICIENT_DATA",
+      "reason": "Only 0 candles"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.665Z",
+      "symbol": "DELHIVERY",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.666Z",
+      "symbol": "DELHIVERY",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "RSI Momentum signal PASSED quality (3/4), stop at 444.50"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.666Z",
+      "symbol": "DELHIVERY",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-10-17T00:00:00+05:30 → Entry 2025-10-20T00:00:00+05:30 @ 474.90"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.669Z",
+      "symbol": "DELHIVERY",
+      "event": "PARTIAL_EXIT",
+      "reason": "Entry 2025-10-20T00:00:00+05:30 → 80% booked 2025-10-29T00:00:00+05:30 @ 486.77"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.670Z",
+      "symbol": "DELHIVERY",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-10-30T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.670Z",
+      "symbol": "DELHIVERY",
+      "event": "QUALITY_SIGNAL_ACCEPTED",
+      "reason": "Trend Continuation signal PASSED quality (3/4), stop at 453.30"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.671Z",
+      "symbol": "DELHIVERY",
+      "event": "ENTRY_EXECUTED",
+      "reason": "Signal 2025-11-03T00:00:00+05:30 → Entry 2025-11-04T00:00:00+05:30 @ 484.85"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.672Z",
+      "symbol": "DELHIVERY",
+      "event": "SYMBOL_UNLOCKED",
+      "reason": "Trade completed on 2025-11-06T00:00:00+05:30, symbol now available"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.678Z",
+      "symbol": "DIXON",
+      "event": "INSUFFICIENT_DATA",
+      "reason": "Only 0 candles"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.680Z",
+      "symbol": "JIOFIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.686Z",
+      "symbol": "KPITTECH",
+      "event": "INSUFFICIENT_DATA",
+      "reason": "Only 0 candles"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.689Z",
+      "symbol": "NIFTY",
+      "event": "INSUFFICIENT_DATA",
+      "reason": "Only 0 candles"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.691Z",
+      "symbol": "NYKAA",
+      "event": "INSUFFICIENT_DATA",
+      "reason": "Only 0 candles"
+    },
+    {
+      "timestamp": "2025-12-18T14:54:52.693Z",
+      "symbol": "ONGC",
+      "event": "INSUFFICIENT_DATA",
+      "reason": "Only 0 candles"
+    }
+  ],
+  "shadowReport": {
+    "timestamp": "2025-12-18T14:54:52.695Z",
+    "version": "V1",
+    "performanceFacts": {
+      "totalTrades": 13,
+      "wins": 5,
+      "losses": 8,
+      "accuracy": "38.5%",
+      "maxDrawdown": "4.50%",
+      "maxDrawdownTrades": 3,
+      "maxDrawdownSymbols": [
+        "IDFCFIRSTB",
+        "PIDILITIND",
+        "ADANIPORTS"
+      ],
+      "expectancy": "0.092",
+      "avgWinR": "1.84R",
+      "avgLossR": "1.00R",
+      "capitalWinRate": "38.5%",
+      "avgHoldingDays": "3.2",
+      "exitBreakdown": {
+        "secondTarget": 1,
+        "trailingStop": 4,
+        "fullStop": 8,
+        "timeExpiry": 0
+      }
+    },
+    "failureAnalysis": {
+      "patterns": [
+        {
+          "type": "EARLY_ENTRY",
+          "severity": "HIGH",
+          "count": 5,
+          "description": "5 trades stopped within 2 days - entries may be too early",
+          "examples": [
+            {
+              "symbol": "APOLLOHOSP",
+              "entryDate": "2025-11-04T00:00:00+05:30",
+              "holdingDays": 2
+            },
+            {
+              "symbol": "IDFCFIRSTB",
+              "entryDate": "2025-12-02T00:00:00+05:30",
+              "holdingDays": 2
+            },
+            {
+              "symbol": "PIDILITIND",
+              "entryDate": "2025-12-04T00:00:00+05:30",
+              "holdingDays": 2
+            }
+          ]
+        },
+        {
+          "type": "REPEATED_SYMBOL_LOSSES",
+          "severity": "MEDIUM",
+          "description": "Same symbols showing repeated losses",
+          "symbols": [
+            {
+              "symbol": "APOLLOHOSP",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "type": "WEAK_STRATEGY",
+          "severity": "MEDIUM",
+          "description": "Some strategies underperforming",
+          "strategies": [
+            {
+              "strategy": "Trend Continuation",
+              "losses": 4,
+              "total": 6,
+              "lossRate": "66.7%"
+            }
+          ]
+        }
+      ],
+      "earlyEntries": [
+        {
+          "symbol": "APOLLOHOSP",
+          "strategy": "RSI Momentum",
+          "entryDate": "2025-11-04T00:00:00+05:30",
+          "holdingDays": 2,
+          "pnl": "-1.50%"
+        },
+        {
+          "symbol": "IDFCFIRSTB",
+          "strategy": "RSI Momentum",
+          "entryDate": "2025-12-02T00:00:00+05:30",
+          "holdingDays": 2,
+          "pnl": "-1.50%"
+        },
+        {
+          "symbol": "PIDILITIND",
+          "strategy": "RSI Momentum",
+          "entryDate": "2025-12-04T00:00:00+05:30",
+          "holdingDays": 2,
+          "pnl": "-1.50%"
+        },
+        {
+          "symbol": "UNIONBANK",
+          "strategy": "RSI Momentum",
+          "entryDate": "2025-12-02T00:00:00+05:30",
+          "holdingDays": 1,
+          "pnl": "-1.50%"
+        },
+        {
+          "symbol": "DELHIVERY",
+          "strategy": "Trend Continuation",
+          "entryDate": "2025-11-04T00:00:00+05:30",
+          "holdingDays": 1,
+          "pnl": "-1.50%"
+        }
+      ],
+      "rigidExits": [],
+      "repeatedFailures": {}
+    },
+    "strengthAnalysis": {
+      "patterns": [
+        {
+          "type": "FULL_TARGET_HITS",
+          "severity": "POSITIVE",
+          "count": 1,
+          "description": "1 trades reached full target - structure holding well",
+          "avgHoldingDays": "5.0"
+        },
+        {
+          "type": "TRAILING_SUCCESS",
+          "severity": "POSITIVE",
+          "count": 4,
+          "description": "4 trailing stops captured avg 2.76% profit"
+        },
+        {
+          "type": "PATIENCE_REWARD",
+          "severity": "POSITIVE",
+          "count": 4,
+          "description": "4 trades held 4+ days, avg 2.68% profit"
+        },
+        {
+          "type": "QUALITY_FILTER_EFFECTIVE",
+          "severity": "POSITIVE",
+          "description": "High quality score trades showing better win rate"
+        }
+      ],
+      "patiencePayoffs": [
+        {
+          "symbol": "APOLLOHOSP",
+          "holdingDays": 4,
+          "pnl": "2.91%",
+          "exitReason": "TRAILING_STOP"
+        },
+        {
+          "symbol": "GRASIM",
+          "holdingDays": 5,
+          "pnl": "2.75%",
+          "exitReason": "SECOND_TARGET"
+        },
+        {
+          "symbol": "HCLTECH",
+          "holdingDays": 4,
+          "pnl": "2.63%",
+          "exitReason": "TRAILING_STOP"
+        },
+        {
+          "symbol": "DELHIVERY",
+          "holdingDays": 7,
+          "pnl": "2.43%",
+          "exitReason": "TRAILING_STOP"
+        }
+      ],
+      "structureHolds": [],
+      "extendedWins": []
+    },
+    "refinementSuggestions": [
+      {
+        "id": "S1",
+        "priority": "HIGH",
+        "area": "Entry Timing",
+        "observation": "5 trades stopped within 2 days",
+        "suggestion": "Require more price acceptance before entry - wait for at least 1 candle closing above swing low before entering",
+        "impact": "Expected to reduce premature entries by 30-40%"
+      },
+      {
+        "id": "S2",
+        "priority": "MEDIUM",
+        "area": "Stock Selection",
+        "observation": "Same symbols showing repeated losses: APOLLOHOSP",
+        "suggestion": "Consider adding a cooldown period after a loss on a symbol before re-entering",
+        "impact": "Prevents overtrading losing positions"
+      },
+      {
+        "id": "S3",
+        "priority": "MEDIUM",
+        "area": "Strategy Selection",
+        "observation": "Strategies underperforming: Trend Continuation",
+        "suggestion": "Consider requiring additional confirmation (e.g., volume, broader market context) for these strategies",
+        "impact": "May improve strategy-specific win rates"
+      },
+      {
+        "id": "S4",
+        "priority": "LOW",
+        "area": "Trade Management",
+        "observation": "Trades held 4+ days averaged higher profit",
+        "suggestion": "Consider allowing strong setups more room before trailing - patience is being rewarded",
+        "impact": "May capture more profit from strong moves"
+      }
+    ],
+    "structuralFailures": {
+      "totalLosses": 8,
+      "taggedTrades": [
+        {
+          "symbol": "APOLLOHOSP",
+          "strategy": "Trend Continuation",
+          "signalDate": "2025-10-27T00:00:00+05:30",
+          "signalPrice": 7845.5,
+          "entryDate": "2025-10-28T00:00:00+05:30",
+          "entryPrice": 7880.5,
+          "exitDate": "2025-10-31T00:00:00+05:30",
+          "exitPrice": 7700.232142857143,
+          "partialExitDate": null,
+          "partialExitPrice": null,
+          "trailingStopPrice": null,
+          "pnl": -1.5,
+          "holdingDays": 3,
+          "exitReason": "STOP",
+          "result": "LOSS",
+          "lifecycle": [
+            {
+              "state": "WATCHING",
+              "date": "2025-10-27T00:00:00+05:30",
+              "reason": "Monitoring stock"
+            },
+            {
+              "state": "SIGNAL_CONFIRMED",
+              "date": "2025-10-27T00:00:00+05:30",
+              "price": 7845.5,
+              "reason": "Entry conditions met (Quality: 2/4)"
+            },
+            {
+              "state": "WAITING_TO_ENTER",
+              "date": "2025-10-27T00:00:00+05:30",
+              "reason": "Delay period started"
+            },
+            {
+              "state": "ENTERED",
+              "date": "2025-10-28T00:00:00+05:30",
+              "price": 7880.5,
+              "reason": "Entry validated and executed"
+            },
+            {
+              "state": "STOPPED_OUT",
+              "date": "2025-10-31T00:00:00+05:30",
+              "price": 7700.232142857143,
+              "pnl": -1.5,
+              "reason": "Stop loss hit"
+            }
+          ],
+          "failureTags": [
+            {
+              "tag": "FAIL_SIGNAL_LOW_QUALITY",
+              "category": "Signal Quality",
+              "severity": "MEDIUM",
+              "description": "Signal met minimum rule but lacked confluence",
+              "marketReality": "Swings require stacked evidence."
+            }
+          ],
+          "traderReason": {
+            "primaryCause": "CONTEXT_MISMATCH",
+            "traderExplanation": "Entry at ₹7880.50 (Trend Continuation) exited via STOP after 3 days. Market context at entry did not support the setup thesis.",
+            "avoidanceGuidance": "Verify setup thesis before entry: Is downside exhausting? Is smart money absorbing? Is the move late-stage? Is this a reaction, not anticipation?",
+            "tagDescriptions": "Signal met minimum rule but lacked confluence",
+            "details": {
+              "symbol": "APOLLOHOSP",
+              "entryPrice": "7880.50",
+              "holdingDays": 3,
+              "exitReason": "STOP",
+              "pnl": "-1.50"
+            },
+            "summary": "APOLLOHOSP: Entry at ₹7880.",
+            "liveActionable": true
+          }
+        },
+        {
+          "symbol": "APOLLOHOSP",
+          "strategy": "RSI Momentum",
+          "signalDate": "2025-11-03T00:00:00+05:30",
+          "signalPrice": 7824.5,
+          "entryDate": "2025-11-04T00:00:00+05:30",
+          "entryPrice": 7810.5,
+          "exitDate": "2025-11-07T00:00:00+05:30",
+          "exitPrice": 7628.625,
+          "partialExitDate": null,
+          "partialExitPrice": null,
+          "trailingStopPrice": null,
+          "pnl": -1.5,
+          "holdingDays": 2,
+          "exitReason": "STOP",
+          "result": "LOSS",
+          "lifecycle": [
+            {
+              "state": "WATCHING",
+              "date": "2025-11-03T00:00:00+05:30",
+              "reason": "Monitoring stock"
+            },
+            {
+              "state": "SIGNAL_CONFIRMED",
+              "date": "2025-11-03T00:00:00+05:30",
+              "price": 7824.5,
+              "reason": "Entry conditions met (Quality: 3/4)"
+            },
+            {
+              "state": "WAITING_TO_ENTER",
+              "date": "2025-11-03T00:00:00+05:30",
+              "reason": "Delay period started"
+            },
+            {
+              "state": "ENTERED",
+              "date": "2025-11-04T00:00:00+05:30",
+              "price": 7810.5,
+              "reason": "Entry validated and executed"
+            },
+            {
+              "state": "STOPPED_OUT",
+              "date": "2025-11-07T00:00:00+05:30",
+              "price": 7628.625,
+              "pnl": -1.5,
+              "reason": "Stop loss hit"
+            }
+          ],
+          "failureTags": [
+            {
+              "tag": "FAIL_CONTEXT_PREMATURE_EXHAUSTION",
+              "category": "Context",
+              "severity": "HIGH",
+              "description": "Entry on first downside push, no compression or slowdown",
+              "marketReality": "Exhaustion is a PROCESS, not a candle. Needs multiple failed pushes or momentum decay."
+            },
+            {
+              "tag": "FAIL_ENTRY_NO_RETEST",
+              "category": "Entry Timing",
+              "severity": "MEDIUM",
+              "description": "Entry on first bounce candle, no retest of low or range",
+              "marketReality": "Best swing entries happen on ACCEPTANCE or RETEST."
+            },
+            {
+              "tag": "FAIL_SIGNAL_LOW_QUALITY",
+              "category": "Signal Quality",
+              "severity": "MEDIUM",
+              "description": "Signal met minimum rule but lacked confluence",
+              "marketReality": "Swings require stacked evidence."
+            }
+          ],
+          "traderReason": {
+            "primaryCause": "CONTEXT_MISMATCH",
+            "traderExplanation": "Entry at ₹7810.50 (RSI Momentum) exited via STOP after 2 days. Market context at entry did not support the setup thesis.",
+            "avoidanceGuidance": "Verify setup thesis before entry: Is downside exhausting? Is smart money absorbing? Is the move late-stage? Is this a reaction, not anticipation?",
+            "tagDescriptions": "Entry on first downside push, no compression or slowdown; Entry on first bounce candle, no retest of low or range",
+            "details": {
+              "symbol": "APOLLOHOSP",
+              "entryPrice": "7810.50",
+              "holdingDays": 2,
+              "exitReason": "STOP",
+              "pnl": "-1.50"
+            },
+            "summary": "APOLLOHOSP: Entry at ₹7810.",
+            "liveActionable": true
+          }
+        },
+        {
+          "symbol": "IDFCFIRSTB",
+          "strategy": "RSI Momentum",
+          "signalDate": "2025-12-01T00:00:00+05:30",
+          "signalPrice": 80.71,
+          "entryDate": "2025-12-02T00:00:00+05:30",
+          "entryPrice": 81.98,
+          "exitDate": "2025-12-04T00:00:00+05:30",
+          "exitPrice": 79.80071428571429,
+          "partialExitDate": null,
+          "partialExitPrice": null,
+          "trailingStopPrice": null,
+          "pnl": -1.5,
+          "holdingDays": 2,
+          "exitReason": "STOP",
+          "result": "LOSS",
+          "lifecycle": [
+            {
+              "state": "WATCHING",
+              "date": "2025-12-01T00:00:00+05:30",
+              "reason": "Monitoring stock"
+            },
+            {
+              "state": "SIGNAL_CONFIRMED",
+              "date": "2025-12-01T00:00:00+05:30",
+              "price": 80.71,
+              "reason": "Entry conditions met (Quality: 3/4)"
+            },
+            {
+              "state": "WAITING_TO_ENTER",
+              "date": "2025-12-01T00:00:00+05:30",
+              "reason": "Delay period started"
+            },
+            {
+              "state": "ENTERED",
+              "date": "2025-12-02T00:00:00+05:30",
+              "price": 81.98,
+              "reason": "Entry validated and executed"
+            },
+            {
+              "state": "STOPPED_OUT",
+              "date": "2025-12-04T00:00:00+05:30",
+              "price": 79.80071428571429,
+              "pnl": -1.5,
+              "reason": "Stop loss hit"
+            }
+          ],
+          "failureTags": [
+            {
+              "tag": "FAIL_CONTEXT_PREMATURE_EXHAUSTION",
+              "category": "Context",
+              "severity": "HIGH",
+              "description": "Entry on first downside push, no compression or slowdown",
+              "marketReality": "Exhaustion is a PROCESS, not a candle. Needs multiple failed pushes or momentum decay."
+            },
+            {
+              "tag": "FAIL_ENTRY_NO_RETEST",
+              "category": "Entry Timing",
+              "severity": "MEDIUM",
+              "description": "Entry on first bounce candle, no retest of low or range",
+              "marketReality": "Best swing entries happen on ACCEPTANCE or RETEST."
+            },
+            {
+              "tag": "FAIL_SIGNAL_LOW_QUALITY",
+              "category": "Signal Quality",
+              "severity": "MEDIUM",
+              "description": "Signal met minimum rule but lacked confluence",
+              "marketReality": "Swings require stacked evidence."
+            }
+          ],
+          "traderReason": {
+            "primaryCause": "CONTEXT_MISMATCH",
+            "traderExplanation": "Entry at ₹81.98 (RSI Momentum) exited via STOP after 2 days. Market context at entry did not support the setup thesis.",
+            "avoidanceGuidance": "Verify setup thesis before entry: Is downside exhausting? Is smart money absorbing? Is the move late-stage? Is this a reaction, not anticipation?",
+            "tagDescriptions": "Entry on first downside push, no compression or slowdown; Entry on first bounce candle, no retest of low or range",
+            "details": {
+              "symbol": "IDFCFIRSTB",
+              "entryPrice": "81.98",
+              "holdingDays": 2,
+              "exitReason": "STOP",
+              "pnl": "-1.50"
+            },
+            "summary": "IDFCFIRSTB: Entry at ₹81.",
+            "liveActionable": true
+          }
+        },
+        {
+          "symbol": "PIDILITIND",
+          "strategy": "RSI Momentum",
+          "signalDate": "2025-12-03T00:00:00+05:30",
+          "signalPrice": 1478.6,
+          "entryDate": "2025-12-04T00:00:00+05:30",
+          "entryPrice": 1484.7,
+          "exitDate": "2025-12-08T00:00:00+05:30",
+          "exitPrice": 1448.5285714285715,
+          "partialExitDate": null,
+          "partialExitPrice": null,
+          "trailingStopPrice": null,
+          "pnl": -1.5,
+          "holdingDays": 2,
+          "exitReason": "STOP",
+          "result": "LOSS",
+          "lifecycle": [
+            {
+              "state": "WATCHING",
+              "date": "2025-12-03T00:00:00+05:30",
+              "reason": "Monitoring stock"
+            },
+            {
+              "state": "SIGNAL_CONFIRMED",
+              "date": "2025-12-03T00:00:00+05:30",
+              "price": 1478.6,
+              "reason": "Entry conditions met (Quality: 4/4)"
+            },
+            {
+              "state": "WAITING_TO_ENTER",
+              "date": "2025-12-03T00:00:00+05:30",
+              "reason": "Delay period started"
+            },
+            {
+              "state": "ENTERED",
+              "date": "2025-12-04T00:00:00+05:30",
+              "price": 1484.7,
+              "reason": "Entry validated and executed"
+            },
+            {
+              "state": "STOPPED_OUT",
+              "date": "2025-12-08T00:00:00+05:30",
+              "price": 1448.5285714285715,
+              "pnl": -1.5,
+              "reason": "Stop loss hit"
+            }
+          ],
+          "failureTags": [
+            {
+              "tag": "FAIL_CONTEXT_PREMATURE_EXHAUSTION",
+              "category": "Context",
+              "severity": "HIGH",
+              "description": "Entry on first downside push, no compression or slowdown",
+              "marketReality": "Exhaustion is a PROCESS, not a candle. Needs multiple failed pushes or momentum decay."
+            },
+            {
+              "tag": "FAIL_ENTRY_NO_RETEST",
+              "category": "Entry Timing",
+              "severity": "MEDIUM",
+              "description": "Entry on first bounce candle, no retest of low or range",
+              "marketReality": "Best swing entries happen on ACCEPTANCE or RETEST."
+            },
+            {
+              "tag": "FAIL_SIGNAL_LOW_QUALITY",
+              "category": "Signal Quality",
+              "severity": "MEDIUM",
+              "description": "Signal met minimum rule but lacked confluence",
+              "marketReality": "Swings require stacked evidence."
+            }
+          ],
+          "traderReason": {
+            "primaryCause": "CONTEXT_MISMATCH",
+            "traderExplanation": "Entry at ₹1484.70 (RSI Momentum) exited via STOP after 2 days. Market context at entry did not support the setup thesis.",
+            "avoidanceGuidance": "Verify setup thesis before entry: Is downside exhausting? Is smart money absorbing? Is the move late-stage? Is this a reaction, not anticipation?",
+            "tagDescriptions": "Entry on first downside push, no compression or slowdown; Entry on first bounce candle, no retest of low or range",
+            "details": {
+              "symbol": "PIDILITIND",
+              "entryPrice": "1484.70",
+              "holdingDays": 2,
+              "exitReason": "STOP",
+              "pnl": "-1.50"
+            },
+            "summary": "PIDILITIND: Entry at ₹1484.",
+            "liveActionable": true
+          }
+        },
+        {
+          "symbol": "ADANIPORTS",
+          "strategy": "Trend Continuation",
+          "signalDate": "2025-12-01T00:00:00+05:30",
+          "signalPrice": 1530.5,
+          "entryDate": "2025-12-02T00:00:00+05:30",
+          "entryPrice": 1518.1,
+          "exitDate": "2025-12-08T00:00:00+05:30",
+          "exitPrice": 1481.8214285714284,
+          "partialExitDate": null,
+          "partialExitPrice": null,
+          "trailingStopPrice": null,
+          "pnl": -1.5,
+          "holdingDays": 4,
+          "exitReason": "STOP",
+          "result": "LOSS",
+          "lifecycle": [
+            {
+              "state": "WATCHING",
+              "date": "2025-12-01T00:00:00+05:30",
+              "reason": "Monitoring stock"
+            },
+            {
+              "state": "SIGNAL_CONFIRMED",
+              "date": "2025-12-01T00:00:00+05:30",
+              "price": 1530.5,
+              "reason": "Entry conditions met (Quality: 3/4)"
+            },
+            {
+              "state": "WAITING_TO_ENTER",
+              "date": "2025-12-01T00:00:00+05:30",
+              "reason": "Delay period started"
+            },
+            {
+              "state": "ENTERED",
+              "date": "2025-12-02T00:00:00+05:30",
+              "price": 1518.1,
+              "reason": "Entry validated and executed"
+            },
+            {
+              "state": "STOPPED_OUT",
+              "date": "2025-12-08T00:00:00+05:30",
+              "price": 1481.8214285714284,
+              "pnl": -1.5,
+              "reason": "Stop loss hit"
+            }
+          ],
+          "failureTags": [
+            {
+              "tag": "FAIL_SIGNAL_LOW_QUALITY",
+              "category": "Signal Quality",
+              "severity": "MEDIUM",
+              "description": "Signal met minimum rule but lacked confluence",
+              "marketReality": "Swings require stacked evidence."
+            }
+          ],
+          "traderReason": {
+            "primaryCause": "CONTEXT_MISMATCH",
+            "traderExplanation": "Entry at ₹1518.10 (Trend Continuation) exited via STOP after 4 days. Market context at entry did not support the setup thesis.",
+            "avoidanceGuidance": "Verify setup thesis before entry: Is downside exhausting? Is smart money absorbing? Is the move late-stage? Is this a reaction, not anticipation?",
+            "tagDescriptions": "Signal met minimum rule but lacked confluence",
+            "details": {
+              "symbol": "ADANIPORTS",
+              "entryPrice": "1518.10",
+              "holdingDays": 4,
+              "exitReason": "STOP",
+              "pnl": "-1.50"
+            },
+            "summary": "ADANIPORTS: Entry at ₹1518.",
+            "liveActionable": true
+          }
+        },
+        {
+          "symbol": "TVSMOTOR",
+          "strategy": "Trend Continuation",
+          "signalDate": "2025-12-03T00:00:00+05:30",
+          "signalPrice": 3631.8,
+          "entryDate": "2025-12-04T00:00:00+05:30",
+          "entryPrice": 3646.4,
+          "exitDate": "2025-12-09T00:00:00+05:30",
+          "exitPrice": 3548.942857142857,
+          "partialExitDate": null,
+          "partialExitPrice": null,
+          "trailingStopPrice": null,
+          "pnl": -1.5,
+          "holdingDays": 3,
+          "exitReason": "STOP",
+          "result": "LOSS",
+          "lifecycle": [
+            {
+              "state": "WATCHING",
+              "date": "2025-12-03T00:00:00+05:30",
+              "reason": "Monitoring stock"
+            },
+            {
+              "state": "SIGNAL_CONFIRMED",
+              "date": "2025-12-03T00:00:00+05:30",
+              "price": 3631.8,
+              "reason": "Entry conditions met (Quality: 2/4)"
+            },
+            {
+              "state": "WAITING_TO_ENTER",
+              "date": "2025-12-03T00:00:00+05:30",
+              "reason": "Delay period started"
+            },
+            {
+              "state": "ENTERED",
+              "date": "2025-12-04T00:00:00+05:30",
+              "price": 3646.4,
+              "reason": "Entry validated and executed"
+            },
+            {
+              "state": "STOPPED_OUT",
+              "date": "2025-12-09T00:00:00+05:30",
+              "price": 3548.942857142857,
+              "pnl": -1.5,
+              "reason": "Stop loss hit"
+            }
+          ],
+          "failureTags": [
+            {
+              "tag": "FAIL_SIGNAL_LOW_QUALITY",
+              "category": "Signal Quality",
+              "severity": "MEDIUM",
+              "description": "Signal met minimum rule but lacked confluence",
+              "marketReality": "Swings require stacked evidence."
+            }
+          ],
+          "traderReason": {
+            "primaryCause": "CONTEXT_MISMATCH",
+            "traderExplanation": "Entry at ₹3646.40 (Trend Continuation) exited via STOP after 3 days. Market context at entry did not support the setup thesis.",
+            "avoidanceGuidance": "Verify setup thesis before entry: Is downside exhausting? Is smart money absorbing? Is the move late-stage? Is this a reaction, not anticipation?",
+            "tagDescriptions": "Signal met minimum rule but lacked confluence",
+            "details": {
+              "symbol": "TVSMOTOR",
+              "entryPrice": "3646.40",
+              "holdingDays": 3,
+              "exitReason": "STOP",
+              "pnl": "-1.50"
+            },
+            "summary": "TVSMOTOR: Entry at ₹3646.",
+            "liveActionable": true
+          }
+        },
+        {
+          "symbol": "UNIONBANK",
+          "strategy": "RSI Momentum",
+          "signalDate": "2025-12-01T00:00:00+05:30",
+          "signalPrice": 154.19,
+          "entryDate": "2025-12-02T00:00:00+05:30",
+          "entryPrice": 155.77,
+          "exitDate": "2025-12-03T00:00:00+05:30",
+          "exitPrice": 150.6914285714286,
+          "partialExitDate": null,
+          "partialExitPrice": null,
+          "trailingStopPrice": null,
+          "pnl": -1.5,
+          "holdingDays": 1,
+          "exitReason": "STOP",
+          "result": "LOSS",
+          "lifecycle": [
+            {
+              "state": "WATCHING",
+              "date": "2025-12-01T00:00:00+05:30",
+              "reason": "Monitoring stock"
+            },
+            {
+              "state": "SIGNAL_CONFIRMED",
+              "date": "2025-12-01T00:00:00+05:30",
+              "price": 154.19,
+              "reason": "Entry conditions met (Quality: 2/4)"
+            },
+            {
+              "state": "WAITING_TO_ENTER",
+              "date": "2025-12-01T00:00:00+05:30",
+              "reason": "Delay period started"
+            },
+            {
+              "state": "ENTERED",
+              "date": "2025-12-02T00:00:00+05:30",
+              "price": 155.77,
+              "reason": "Entry validated and executed"
+            },
+            {
+              "state": "STOPPED_OUT",
+              "date": "2025-12-03T00:00:00+05:30",
+              "price": 150.6914285714286,
+              "pnl": -1.5,
+              "reason": "Stop loss hit"
+            }
+          ],
+          "failureTags": [
+            {
+              "tag": "FAIL_CONTEXT_PREMATURE_EXHAUSTION",
+              "category": "Context",
+              "severity": "HIGH",
+              "description": "Entry on first downside push, no compression or slowdown",
+              "marketReality": "Exhaustion is a PROCESS, not a candle. Needs multiple failed pushes or momentum decay."
+            },
+            {
+              "tag": "FAIL_ENTRY_NO_RETEST",
+              "category": "Entry Timing",
+              "severity": "MEDIUM",
+              "description": "Entry on first bounce candle, no retest of low or range",
+              "marketReality": "Best swing entries happen on ACCEPTANCE or RETEST."
+            },
+            {
+              "tag": "FAIL_SIGNAL_LOW_QUALITY",
+              "category": "Signal Quality",
+              "severity": "MEDIUM",
+              "description": "Signal met minimum rule but lacked confluence",
+              "marketReality": "Swings require stacked evidence."
+            }
+          ],
+          "traderReason": {
+            "primaryCause": "CONTEXT_MISMATCH",
+            "traderExplanation": "Entry at ₹155.77 (RSI Momentum) exited via STOP after 1 days. Market context at entry did not support the setup thesis.",
+            "avoidanceGuidance": "Verify setup thesis before entry: Is downside exhausting? Is smart money absorbing? Is the move late-stage? Is this a reaction, not anticipation?",
+            "tagDescriptions": "Entry on first downside push, no compression or slowdown; Entry on first bounce candle, no retest of low or range",
+            "details": {
+              "symbol": "UNIONBANK",
+              "entryPrice": "155.77",
+              "holdingDays": 1,
+              "exitReason": "STOP",
+              "pnl": "-1.50"
+            },
+            "summary": "UNIONBANK: Entry at ₹155.",
+            "liveActionable": true
+          }
+        },
+        {
+          "symbol": "DELHIVERY",
+          "strategy": "Trend Continuation",
+          "signalDate": "2025-11-03T00:00:00+05:30",
+          "signalPrice": 472.25,
+          "entryDate": "2025-11-04T00:00:00+05:30",
+          "entryPrice": 484.85,
+          "exitDate": "2025-11-06T00:00:00+05:30",
+          "exitPrice": 465.1464285714286,
+          "partialExitDate": null,
+          "partialExitPrice": null,
+          "trailingStopPrice": null,
+          "pnl": -1.5,
+          "holdingDays": 1,
+          "exitReason": "STOP",
+          "result": "LOSS",
+          "lifecycle": [
+            {
+              "state": "WATCHING",
+              "date": "2025-11-03T00:00:00+05:30",
+              "reason": "Monitoring stock"
+            },
+            {
+              "state": "SIGNAL_CONFIRMED",
+              "date": "2025-11-03T00:00:00+05:30",
+              "price": 472.25,
+              "reason": "Entry conditions met (Quality: 3/4)"
+            },
+            {
+              "state": "WAITING_TO_ENTER",
+              "date": "2025-11-03T00:00:00+05:30",
+              "reason": "Delay period started"
+            },
+            {
+              "state": "ENTERED",
+              "date": "2025-11-04T00:00:00+05:30",
+              "price": 484.85,
+              "reason": "Entry validated and executed"
+            },
+            {
+              "state": "STOPPED_OUT",
+              "date": "2025-11-06T00:00:00+05:30",
+              "price": 465.1464285714286,
+              "pnl": -1.5,
+              "reason": "Stop loss hit"
+            }
+          ],
+          "failureTags": [
+            {
+              "tag": "FAIL_CONTEXT_PREMATURE_EXHAUSTION",
+              "category": "Context",
+              "severity": "HIGH",
+              "description": "Entry on first downside push, no compression or slowdown",
+              "marketReality": "Exhaustion is a PROCESS, not a candle. Needs multiple failed pushes or momentum decay."
+            },
+            {
+              "tag": "FAIL_ENTRY_NO_RETEST",
+              "category": "Entry Timing",
+              "severity": "MEDIUM",
+              "description": "Entry on first bounce candle, no retest of low or range",
+              "marketReality": "Best swing entries happen on ACCEPTANCE or RETEST."
+            },
+            {
+              "tag": "FAIL_SIGNAL_LOW_QUALITY",
+              "category": "Signal Quality",
+              "severity": "MEDIUM",
+              "description": "Signal met minimum rule but lacked confluence",
+              "marketReality": "Swings require stacked evidence."
+            }
+          ],
+          "traderReason": {
+            "primaryCause": "CONTEXT_MISMATCH",
+            "traderExplanation": "Entry at ₹484.85 (Trend Continuation) exited via STOP after 1 days. Market context at entry did not support the setup thesis.",
+            "avoidanceGuidance": "Verify setup thesis before entry: Is downside exhausting? Is smart money absorbing? Is the move late-stage? Is this a reaction, not anticipation?",
+            "tagDescriptions": "Entry on first downside push, no compression or slowdown; Entry on first bounce candle, no retest of low or range",
+            "details": {
+              "symbol": "DELHIVERY",
+              "entryPrice": "484.85",
+              "holdingDays": 1,
+              "exitReason": "STOP",
+              "pnl": "-1.50"
+            },
+            "summary": "DELHIVERY: Entry at ₹484.",
+            "liveActionable": true
+          }
+        }
+      ],
+      "aggregated": [
+        {
+          "tag": "FAIL_SIGNAL_LOW_QUALITY",
+          "category": "Signal Quality",
+          "severity": "MEDIUM",
+          "description": "Signal met minimum rule but lacked confluence",
+          "marketReality": "Swings require stacked evidence.",
+          "count": 8,
+          "totalLoss": 12,
+          "trades": [
+            {
+              "symbol": "APOLLOHOSP",
+              "date": "2025-10-28T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "APOLLOHOSP",
+              "date": "2025-11-04T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "IDFCFIRSTB",
+              "date": "2025-12-02T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "PIDILITIND",
+              "date": "2025-12-04T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "ADANIPORTS",
+              "date": "2025-12-02T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "TVSMOTOR",
+              "date": "2025-12-04T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "UNIONBANK",
+              "date": "2025-12-02T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "DELHIVERY",
+              "date": "2025-11-04T00:00:00+05:30",
+              "pnl": -1.5
+            }
+          ],
+          "impactPct": "100.0",
+          "impactScore": 16
+        },
+        {
+          "tag": "FAIL_CONTEXT_PREMATURE_EXHAUSTION",
+          "category": "Context",
+          "severity": "HIGH",
+          "description": "Entry on first downside push, no compression or slowdown",
+          "marketReality": "Exhaustion is a PROCESS, not a candle. Needs multiple failed pushes or momentum decay.",
+          "count": 5,
+          "totalLoss": 7.5,
+          "trades": [
+            {
+              "symbol": "APOLLOHOSP",
+              "date": "2025-11-04T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "IDFCFIRSTB",
+              "date": "2025-12-02T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "PIDILITIND",
+              "date": "2025-12-04T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "UNIONBANK",
+              "date": "2025-12-02T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "DELHIVERY",
+              "date": "2025-11-04T00:00:00+05:30",
+              "pnl": -1.5
+            }
+          ],
+          "impactPct": "62.5",
+          "impactScore": 15
+        },
+        {
+          "tag": "FAIL_ENTRY_NO_RETEST",
+          "category": "Entry Timing",
+          "severity": "MEDIUM",
+          "description": "Entry on first bounce candle, no retest of low or range",
+          "marketReality": "Best swing entries happen on ACCEPTANCE or RETEST.",
+          "count": 5,
+          "totalLoss": 7.5,
+          "trades": [
+            {
+              "symbol": "APOLLOHOSP",
+              "date": "2025-11-04T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "IDFCFIRSTB",
+              "date": "2025-12-02T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "PIDILITIND",
+              "date": "2025-12-04T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "UNIONBANK",
+              "date": "2025-12-02T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "DELHIVERY",
+              "date": "2025-11-04T00:00:00+05:30",
+              "pnl": -1.5
+            }
+          ],
+          "impactPct": "62.5",
+          "impactScore": 10
+        }
+      ],
+      "dominantFailures": [
+        {
+          "tag": "FAIL_SIGNAL_LOW_QUALITY",
+          "category": "Signal Quality",
+          "severity": "MEDIUM",
+          "description": "Signal met minimum rule but lacked confluence",
+          "marketReality": "Swings require stacked evidence.",
+          "count": 8,
+          "totalLoss": 12,
+          "trades": [
+            {
+              "symbol": "APOLLOHOSP",
+              "date": "2025-10-28T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "APOLLOHOSP",
+              "date": "2025-11-04T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "IDFCFIRSTB",
+              "date": "2025-12-02T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "PIDILITIND",
+              "date": "2025-12-04T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "ADANIPORTS",
+              "date": "2025-12-02T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "TVSMOTOR",
+              "date": "2025-12-04T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "UNIONBANK",
+              "date": "2025-12-02T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "DELHIVERY",
+              "date": "2025-11-04T00:00:00+05:30",
+              "pnl": -1.5
+            }
+          ],
+          "impactPct": "100.0",
+          "impactScore": 16
+        },
+        {
+          "tag": "FAIL_CONTEXT_PREMATURE_EXHAUSTION",
+          "category": "Context",
+          "severity": "HIGH",
+          "description": "Entry on first downside push, no compression or slowdown",
+          "marketReality": "Exhaustion is a PROCESS, not a candle. Needs multiple failed pushes or momentum decay.",
+          "count": 5,
+          "totalLoss": 7.5,
+          "trades": [
+            {
+              "symbol": "APOLLOHOSP",
+              "date": "2025-11-04T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "IDFCFIRSTB",
+              "date": "2025-12-02T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "PIDILITIND",
+              "date": "2025-12-04T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "UNIONBANK",
+              "date": "2025-12-02T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "DELHIVERY",
+              "date": "2025-11-04T00:00:00+05:30",
+              "pnl": -1.5
+            }
+          ],
+          "impactPct": "62.5",
+          "impactScore": 15
+        },
+        {
+          "tag": "FAIL_ENTRY_NO_RETEST",
+          "category": "Entry Timing",
+          "severity": "MEDIUM",
+          "description": "Entry on first bounce candle, no retest of low or range",
+          "marketReality": "Best swing entries happen on ACCEPTANCE or RETEST.",
+          "count": 5,
+          "totalLoss": 7.5,
+          "trades": [
+            {
+              "symbol": "APOLLOHOSP",
+              "date": "2025-11-04T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "IDFCFIRSTB",
+              "date": "2025-12-02T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "PIDILITIND",
+              "date": "2025-12-04T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "UNIONBANK",
+              "date": "2025-12-02T00:00:00+05:30",
+              "pnl": -1.5
+            },
+            {
+              "symbol": "DELHIVERY",
+              "date": "2025-11-04T00:00:00+05:30",
+              "pnl": -1.5
+            }
+          ],
+          "impactPct": "62.5",
+          "impactScore": 10
+        }
+      ],
+      "categoryPatterns": [
+        {
+          "cause": "CONTEXT_MISMATCH",
+          "count": 8,
+          "totalLoss": 12,
+          "examples": [
+            {
+              "symbol": "APOLLOHOSP",
+              "date": "2025-10-28T00:00:00+05:30",
+              "explanation": "APOLLOHOSP: Entry at ₹7880."
+            },
+            {
+              "symbol": "APOLLOHOSP",
+              "date": "2025-11-04T00:00:00+05:30",
+              "explanation": "APOLLOHOSP: Entry at ₹7810."
+            },
+            {
+              "symbol": "IDFCFIRSTB",
+              "date": "2025-12-02T00:00:00+05:30",
+              "explanation": "IDFCFIRSTB: Entry at ₹81."
+            }
+          ],
+          "percentage": "100.0%"
+        }
+      ]
+    },
+    "ruleGapHypotheses": [
+      {
+        "failureTag": "FAIL_SIGNAL_LOW_QUALITY",
+        "failureCount": 8,
+        "impactPct": "100.0",
+        "ruleGap": "Quality threshold too low",
+        "hypothesis": "Increase minimum quality score to 3/4",
+        "testable": true,
+        "implementation": "Set minQualityScore = 3",
+        "status": "HYPOTHESIS",
+        "provenImprovement": null
+      },
+      {
+        "failureTag": "FAIL_CONTEXT_PREMATURE_EXHAUSTION",
+        "failureCount": 5,
+        "impactPct": "62.5",
+        "ruleGap": "Missing momentum decay confirmation",
+        "hypothesis": "Wait for momentum reduction (smaller red candles) before entry",
+        "testable": true,
+        "implementation": "Require 2+ candles with reducing body size before signal",
+        "status": "HYPOTHESIS",
+        "provenImprovement": null
+      },
+      {
+        "failureTag": "FAIL_ENTRY_NO_RETEST",
+        "failureCount": 5,
+        "impactPct": "62.5",
+        "ruleGap": "Rule gap for Entry Timing failures",
+        "hypothesis": "Best swing entries happen on ACCEPTANCE or RETEST.",
+        "testable": false,
+        "status": "NEEDS_ANALYSIS"
+      }
+    ],
+    "variantTestResults": {
+      "totalTested": 2,
+      "proven": 0,
+      "notProven": 2,
+      "notTestable": 0,
+      "results": [
+        {
+          "hypothesisId": "FAIL_CONTEXT_PREMATURE_EXHAUSTION",
+          "variantName": "undefined-shadow-CONTEXT_PREMATURE_EXHAUSTION",
+          "status": "NOT_PROVEN",
+          "baseline": {
+            "trades": 13,
+            "wins": 5,
+            "losses": 8,
+            "winRate": "38.5%"
+          },
+          "variant": {
+            "trades": 12,
+            "wins": 5,
+            "losses": 7,
+            "winRate": "41.7%"
+          },
+          "deltas": {
+            "tradesRemoved": 1,
+            "lossesAvoided": 1,
+            "winsMissed": 0,
+            "winRateDelta": "3.2%",
+            "netPnlImprovement": "1.50%",
+            "lossToWinRatio": "Infinity"
+          },
+          "significance": {
+            "proven": false,
+            "reason": "Too few trades affected (1) for statistical confidence"
+          },
+          "recommendation": "❌ NOT PROVEN: Too few trades affected (1) for statistical confidence",
+          "implementation": "Require 2+ candles with reducing body size before signal"
+        },
+        {
+          "hypothesisId": "FAIL_SIGNAL_LOW_QUALITY",
+          "variantName": "undefined-shadow-SIGNAL_LOW_QUALITY",
+          "status": "NOT_PROVEN",
+          "baseline": {
+            "trades": 13,
+            "wins": 5,
+            "losses": 8,
+            "winRate": "38.5%"
+          },
+          "variant": {
+            "trades": 8,
+            "wins": 3,
+            "losses": 5,
+            "winRate": "37.5%"
+          },
+          "deltas": {
+            "tradesRemoved": 5,
+            "lossesAvoided": 3,
+            "winsMissed": 2,
+            "winRateDelta": "-1.0%",
+            "netPnlImprovement": "-1.04%",
+            "lossToWinRatio": "1.50"
+          },
+          "significance": {
+            "proven": false,
+            "reason": "Win rate did not improve (delta: -1.0%)"
+          },
+          "recommendation": "❌ NOT PROVEN: Win rate did not improve (delta: -1.0%)",
+          "implementation": "Set minQualityScore = 3"
+        }
+      ]
+    },
+    "provenImprovements": [],
+    "promotionReport": {
+      "canPromote": false,
+      "promotionStatus": "NOT_READY",
+      "statusReason": "No statistically proven improvements",
+      "verification": {
+        "items": [
+          {
+            "check": "Used Labs logic (not strategy logic)",
+            "passed": true
+          },
+          {
+            "check": "Category-level rules only (not per-stock)",
+            "passed": true
+          },
+          {
+            "check": "Taxonomy reusable in live trading",
+            "passed": true
+          },
+          {
+            "check": "No future data used",
+            "passed": true
+          },
+          {
+            "check": "Improvements proven, not assumed",
+            "passed": false
+          },
+          {
+            "check": "Matches future live Shadow behavior",
+            "passed": true
+          }
+        ],
+        "allPassed": false,
+        "failedChecks": [
+          "provenNotAssumed"
+        ]
+      },
+      "categoryAnalysis": {
+        "dominantFailure": "CONTEXT_MISMATCH",
+        "dominantPercentage": "100.0%",
+        "failureBreakdown": [
+          {
+            "cause": "CONTEXT_MISMATCH",
+            "percentage": "100.0%",
+            "count": 8
+          }
+        ]
+      },
+      "provenRules": [],
+      "provenCount": 0,
+      "rejectedRules": [
+        {
+          "ruleId": "FAIL_CONTEXT_PREMATURE_EXHAUSTION",
+          "status": "NOT_PROVEN",
+          "reason": "Too few trades affected (1) for statistical confidence",
+          "recommendation": "❌ NOT PROVEN: Too few trades affected (1) for statistical confidence"
+        },
+        {
+          "ruleId": "FAIL_SIGNAL_LOW_QUALITY",
+          "status": "NOT_PROVEN",
+          "reason": "Win rate did not improve (delta: -1.0%)",
+          "recommendation": "❌ NOT PROVEN: Win rate did not improve (delta: -1.0%)"
+        }
+      ],
+      "rejectedCount": 2,
+      "beforeVsAfter": {
+        "before": "Original Labs logic (TT-V1)",
+        "after": "No changes (After = Before)",
+        "identical": true
+      },
+      "nextAction": "No proven improvements. Review failure patterns and adjust thesis manually.",
+      "summary": "═══════════════════════════════════════════\n         SHADOW LEARNER PROMOTION REPORT\n═══════════════════════════════════════════\n\n📊 DOMINANT FAILURE: CONTEXT MISMATCH (100.0%)\n\n❌ NO PROVEN IMPROVEMENTS\n\n   2 hypothesis(es) tested, all rejected:\n   • FAIL_CONTEXT_PREMATURE_EXHAUSTION: Too few trades affected (1) for statistical confidence\n   • FAIL_SIGNAL_LOW_QUALITY: Win rate did not improve (delta: -1.0%)\n\n📋 NEXT: Review failure patterns manually. Consider thesis adjustment.\n\n═══════════════════════════════════════════"
+    },
+    "failurePatterns": [
+      {
+        "tag": "FAIL_SIGNAL_LOW_QUALITY",
+        "category": "Signal Quality",
+        "severity": "MEDIUM",
+        "description": "Signal met minimum rule but lacked confluence",
+        "marketReality": "Swings require stacked evidence.",
+        "count": 8,
+        "totalLoss": 12,
+        "trades": [
+          {
+            "symbol": "APOLLOHOSP",
+            "date": "2025-10-28T00:00:00+05:30",
+            "pnl": -1.5
+          },
+          {
+            "symbol": "APOLLOHOSP",
+            "date": "2025-11-04T00:00:00+05:30",
+            "pnl": -1.5
+          },
+          {
+            "symbol": "IDFCFIRSTB",
+            "date": "2025-12-02T00:00:00+05:30",
+            "pnl": -1.5
+          },
+          {
+            "symbol": "PIDILITIND",
+            "date": "2025-12-04T00:00:00+05:30",
+            "pnl": -1.5
+          },
+          {
+            "symbol": "ADANIPORTS",
+            "date": "2025-12-02T00:00:00+05:30",
+            "pnl": -1.5
+          },
+          {
+            "symbol": "TVSMOTOR",
+            "date": "2025-12-04T00:00:00+05:30",
+            "pnl": -1.5
+          },
+          {
+            "symbol": "UNIONBANK",
+            "date": "2025-12-02T00:00:00+05:30",
+            "pnl": -1.5
+          },
+          {
+            "symbol": "DELHIVERY",
+            "date": "2025-11-04T00:00:00+05:30",
+            "pnl": -1.5
+          }
+        ],
+        "impactPct": "100.0",
+        "impactScore": 16
+      },
+      {
+        "tag": "FAIL_CONTEXT_PREMATURE_EXHAUSTION",
+        "category": "Context",
+        "severity": "HIGH",
+        "description": "Entry on first downside push, no compression or slowdown",
+        "marketReality": "Exhaustion is a PROCESS, not a candle. Needs multiple failed pushes or momentum decay.",
+        "count": 5,
+        "totalLoss": 7.5,
+        "trades": [
+          {
+            "symbol": "APOLLOHOSP",
+            "date": "2025-11-04T00:00:00+05:30",
+            "pnl": -1.5
+          },
+          {
+            "symbol": "IDFCFIRSTB",
+            "date": "2025-12-02T00:00:00+05:30",
+            "pnl": -1.5
+          },
+          {
+            "symbol": "PIDILITIND",
+            "date": "2025-12-04T00:00:00+05:30",
+            "pnl": -1.5
+          },
+          {
+            "symbol": "UNIONBANK",
+            "date": "2025-12-02T00:00:00+05:30",
+            "pnl": -1.5
+          },
+          {
+            "symbol": "DELHIVERY",
+            "date": "2025-11-04T00:00:00+05:30",
+            "pnl": -1.5
+          }
+        ],
+        "impactPct": "62.5",
+        "impactScore": 15
+      },
+      {
+        "tag": "FAIL_ENTRY_NO_RETEST",
+        "category": "Entry Timing",
+        "severity": "MEDIUM",
+        "description": "Entry on first bounce candle, no retest of low or range",
+        "marketReality": "Best swing entries happen on ACCEPTANCE or RETEST.",
+        "count": 5,
+        "totalLoss": 7.5,
+        "trades": [
+          {
+            "symbol": "APOLLOHOSP",
+            "date": "2025-11-04T00:00:00+05:30",
+            "pnl": -1.5
+          },
+          {
+            "symbol": "IDFCFIRSTB",
+            "date": "2025-12-02T00:00:00+05:30",
+            "pnl": -1.5
+          },
+          {
+            "symbol": "PIDILITIND",
+            "date": "2025-12-04T00:00:00+05:30",
+            "pnl": -1.5
+          },
+          {
+            "symbol": "UNIONBANK",
+            "date": "2025-12-02T00:00:00+05:30",
+            "pnl": -1.5
+          },
+          {
+            "symbol": "DELHIVERY",
+            "date": "2025-11-04T00:00:00+05:30",
+            "pnl": -1.5
+          }
+        ],
+        "impactPct": "62.5",
+        "impactScore": 10
+      }
+    ],
+    "humanReadableSummary": "\n═══════════════════════════════════════════════════════════════\n                    SHADOW LEARNER REPORT\n                    undefined - V1\n═══════════════════════════════════════════════════════════════\n\n📊 PERFORMANCE SNAPSHOT\n───────────────────────────────────────────────────────────────\n• Total Trades: 13 (5W / 8L)\n• Accuracy: 38.5%\n• Max Drawdown: 4.50% (3 consecutive losses)\n• Expectancy: 0.092R per trade\n• Avg Win: 1.84R | Avg Loss: 1.00R\n• Capital Protection Rate: 38.5%\n\n📉 FAILURE PATTERNS\n───────────────────────────────────────────────────────────────\n• [HIGH] 5 trades stopped within 2 days - entries may be too early\n• [MEDIUM] Same symbols showing repeated losses\n• [MEDIUM] Some strategies underperforming\n\n📈 STRENGTH PATTERNS\n───────────────────────────────────────────────────────────────\n• [POSITIVE] 1 trades reached full target - structure holding well\n• [POSITIVE] 4 trailing stops captured avg 2.76% profit\n• [POSITIVE] 4 trades held 4+ days, avg 2.68% profit\n• [POSITIVE] High quality score trades showing better win rate\n\n💡 REFINEMENT SUGGESTIONS (USER DECISION REQUIRED)\n───────────────────────────────────────────────────────────────\n[S1] Entry Timing (HIGH)\n    Observed: 5 trades stopped within 2 days\n    Suggestion: \"Require more price acceptance before entry - wait for at least 1 candle closing above swing low before entering\"\n    Expected Impact: Expected to reduce premature entries by 30-40%\n\n[S2] Stock Selection (MEDIUM)\n    Observed: Same symbols showing repeated losses: APOLLOHOSP\n    Suggestion: \"Consider adding a cooldown period after a loss on a symbol before re-entering\"\n    Expected Impact: Prevents overtrading losing positions\n\n[S3] Strategy Selection (MEDIUM)\n    Observed: Strategies underperforming: Trend Continuation\n    Suggestion: \"Consider requiring additional confirmation (e.g., volume, broader market context) for these strategies\"\n    Expected Impact: May improve strategy-specific win rates\n\n[S4] Trade Management (LOW)\n    Observed: Trades held 4+ days averaged higher profit\n    Suggestion: \"Consider allowing strong setups more room before trailing - patience is being rewarded\"\n    Expected Impact: May capture more profit from strong moves\n\n═══════════════════════════════════════════════════════════════\n⚠️  THESE ARE SUGGESTIONS ONLY - NOT AUTO-APPLIED\n    Review carefully and apply manually if you agree.\n    To apply: Create V1.b1 with your refinements.\n═══════════════════════════════════════════════════════════════\n"
+  }
+}

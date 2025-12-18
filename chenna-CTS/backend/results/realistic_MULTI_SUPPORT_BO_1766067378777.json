@@ -1,0 +1,426 @@
+{
+  "runId": "realistic_MULTI_SUPPORT_BO_1766067378777",
+  "type": "REALISTIC_SIMULATION",
+  "category": "MULTI_SUPPORT_BO",
+  "timestamp": "2025-12-18T14:16:18.778Z",
+  "timeElapsed": "0.0min",
+  "summary": {
+    "totalSignalsGenerated": 0,
+    "executedTrades": 0,
+    "invalidatedSignals": 0,
+    "skippedBySymbolLock": 0,
+    "winRate": "0.0",
+    "wins": 0,
+    "losses": 0,
+    "avgPnl": "0.00",
+    "totalPnl": "0.00",
+    "capitalWinRate": "0.0",
+    "signalQuality": "0.0",
+    "targetHitRate": "0.0",
+    "fullTargetRate": "0.0",
+    "riskRewardRatio": "0.00",
+    "expectancy": "0.00",
+    "avgHoldingDays": "0.0",
+    "entriesAvoided": 0,
+    "overlappingTradesAvoided": 0,
+    "exitBreakdown": {
+      "secondTarget": 0,
+      "trailingStop": 0,
+      "fullStop": 0,
+      "timeExpiry": 0
+    }
+  },
+  "interpretation": {
+    "signalQualityGrade": "NEEDS_WORK",
+    "riskManagementGrade": "WEAK",
+    "capitalProtectionNote": "0 trades booked 80% profit before any adverse move",
+    "disciplineNote": "Avoided 0 overlapping trades via symbol lock",
+    "filterNote": "Entry delay filter blocked 0 potentially bad entries",
+    "tradingStyle": "Aggressive Swing"
+  },
+  "executedTrades": [],
+  "invalidatedSignals": [],
+  "skippedSignals": [],
+  "expiredStocks": [],
+  "trappedSignals": [],
+  "logs": [
+    {
+      "timestamp": "2025-12-18T14:16:18.435Z",
+      "symbol": "ADANIENSOL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.441Z",
+      "symbol": "APOLLOHOSP",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.455Z",
+      "symbol": "CONCOR",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.461Z",
+      "symbol": "GRASIM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.467Z",
+      "symbol": "HCLTECH",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.471Z",
+      "symbol": "IDFCFIRSTB",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.475Z",
+      "symbol": "IGL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.482Z",
+      "symbol": "INDIANB",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.486Z",
+      "symbol": "IRCTC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.493Z",
+      "symbol": "IREDA",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.502Z",
+      "symbol": "LICI",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.508Z",
+      "symbol": "NESTLEIND",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.517Z",
+      "symbol": "PFC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.525Z",
+      "symbol": "PIDILITIND",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.535Z",
+      "symbol": "RBLBANK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.543Z",
+      "symbol": "TATASTEEL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.553Z",
+      "symbol": "TRENT",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.563Z",
+      "symbol": "ADANIPORTS",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.572Z",
+      "symbol": "GODREJCP",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.580Z",
+      "symbol": "ITC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.587Z",
+      "symbol": "TVSMOTOR",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.592Z",
+      "symbol": "DMART",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.602Z",
+      "symbol": "HINDPETRO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.609Z",
+      "symbol": "BANKNIFTY",
+      "event": "INSUFFICIENT_DATA",
+      "reason": "Only 0 candles"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.614Z",
+      "symbol": "SBIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.622Z",
+      "symbol": "UNIONBANK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.631Z",
+      "symbol": "360ONE",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.639Z",
+      "symbol": "ADANIENT",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.649Z",
+      "symbol": "APLAPOLLO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.657Z",
+      "symbol": "BSE",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.668Z",
+      "symbol": "FEDERALBNK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.675Z",
+      "symbol": "GLENMARK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.685Z",
+      "symbol": "HDFCBANK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.693Z",
+      "symbol": "HDFCLIFE",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.701Z",
+      "symbol": "HFCL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.708Z",
+      "symbol": "HUDCO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.717Z",
+      "symbol": "INOXWIND",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.725Z",
+      "symbol": "IRFC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.734Z",
+      "symbol": "JIOFIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.743Z",
+      "symbol": "MARUTI",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.752Z",
+      "symbol": "NATIONALUM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.756Z",
+      "symbol": "NIFTY",
+      "event": "INSUFFICIENT_DATA",
+      "reason": "Only 0 candles"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.759Z",
+      "symbol": "MCX",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.765Z",
+      "symbol": "TITAGARH",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.769Z",
+      "symbol": "SUZLON",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-18T14:16:18.773Z",
+      "symbol": "YESBANK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    }
+  ],
+  "shadowReport": {
+    "timestamp": "2025-12-18T14:16:18.776Z",
+    "version": "V1",
+    "performanceFacts": {
+      "totalTrades": 0,
+      "wins": 0,
+      "losses": 0,
+      "accuracy": "0.0%",
+      "maxDrawdown": "0.00%",
+      "maxDrawdownTrades": 0,
+      "maxDrawdownSymbols": [],
+      "expectancy": "0.000",
+      "avgWinR": "0.00R",
+      "avgLossR": "0.00R",
+      "capitalWinRate": "0.0%",
+      "avgHoldingDays": "0.0",
+      "exitBreakdown": {
+        "secondTarget": 0,
+        "trailingStop": 0,
+        "fullStop": 0,
+        "timeExpiry": 0
+      }
+    },
+    "failureAnalysis": {
+      "patterns": [],
+      "earlyEntries": [],
+      "rigidExits": [],
+      "repeatedFailures": {}
+    },
+    "strengthAnalysis": {
+      "patterns": [],
+      "patiencePayoffs": [],
+      "structureHolds": [],
+      "extendedWins": []
+    },
+    "refinementSuggestions": [],
+    "structuralFailures": {
+      "totalLosses": 0,
+      "taggedTrades": [],
+      "aggregated": [],
+      "dominantFailures": [],
+      "categoryPatterns": []
+    },
+    "ruleGapHypotheses": [],
+    "variantTestResults": null,
+    "provenImprovements": [],
+    "promotionReport": {
+      "canPromote": false,
+      "promotionStatus": "NOT_READY",
+      "statusReason": "No statistically proven improvements",
+      "verification": {
+        "items": [
+          {
+            "check": "Used Labs logic (not strategy logic)",
+            "passed": true
+          },
+          {
+            "check": "Category-level rules only (not per-stock)",
+            "passed": true
+          },
+          {
+            "check": "Taxonomy reusable in live trading",
+            "passed": true
+          },
+          {
+            "check": "No future data used",
+            "passed": true
+          },
+          {
+            "check": "Improvements proven, not assumed",
+            "passed": false
+          },
+          {
+            "check": "Matches future live Shadow behavior",
+            "passed": true
+          }
+        ],
+        "allPassed": false,
+        "failedChecks": [
+          "provenNotAssumed"
+        ]
+      },
+      "categoryAnalysis": {
+        "dominantFailure": "UNKNOWN",
+        "dominantPercentage": "0%",
+        "failureBreakdown": []
+      },
+      "provenRules": [],
+      "provenCount": 0,
+      "rejectedRules": [],
+      "rejectedCount": 0,
+      "beforeVsAfter": {
+        "before": "Original Labs logic (TT-V1)",
+        "after": "No changes (After = Before)",
+        "identical": true
+      },
+      "nextAction": "No proven improvements. Review failure patterns and adjust thesis manually.",
+      "summary": "═══════════════════════════════════════════\n         SHADOW LEARNER PROMOTION REPORT\n═══════════════════════════════════════════\n\n📊 DOMINANT FAILURE: UNKNOWN (0%)\n\n❌ NO PROVEN IMPROVEMENTS\n\n\n📋 NEXT: Review failure patterns manually. Consider thesis adjustment.\n\n═══════════════════════════════════════════"
+    },
+    "failurePatterns": [],
+    "humanReadableSummary": "\n═══════════════════════════════════════════════════════════════\n                    SHADOW LEARNER REPORT\n                    undefined - V1\n═══════════════════════════════════════════════════════════════\n\n📊 PERFORMANCE SNAPSHOT\n───────────────────────────────────────────────────────────────\n• Total Trades: 0 (0W / 0L)\n• Accuracy: 0.0%\n• Max Drawdown: 0.00% (0 consecutive losses)\n• Expectancy: 0.000R per trade\n• Avg Win: 0.00R | Avg Loss: 0.00R\n• Capital Protection Rate: 0.0%\n\n📉 FAILURE PATTERNS\n───────────────────────────────────────────────────────────────\n• No significant failure patterns detected\n\n📈 STRENGTH PATTERNS\n───────────────────────────────────────────────────────────────\n• Analyzing for strength patterns...\n\n💡 REFINEMENT SUGGESTIONS (USER DECISION REQUIRED)\n───────────────────────────────────────────────────────────────\n═══════════════════════════════════════════════════════════════\n⚠️  THESE ARE SUGGESTIONS ONLY - NOT AUTO-APPLIED\n    Review carefully and apply manually if you agree.\n    To apply: Create V1.b1 with your refinements.\n═══════════════════════════════════════════════════════════════\n"
+  }
+}

@@ -272,7 +272,367 @@ router.get('/cache-status/:categoryKey', async (req, res) => {
 });
 
 /**
+ * GET /api/labs/versions/:categoryKey
+ * List all TT versions for a category
+ * Returns: [{ ttVersion, accuracy, createdAt, ... }]
+ */
+router.get('/versions/:categoryKey', async (req, res) => {
+    try {
+        const { categoryKey } = req.params;
+
+        const versions = await prisma.labsRun.findMany({
+            where: { categoryKey },
+            orderBy: { createdAt: 'desc' },
+            select: {
+                id: true,
+                ttVersion: true,
+                accuracy: true,
+                tradesTested: true,
+                promotedToVersionId: true,
+                createdAt: true
+            }
+        });
+
+        res.json({
+            ok: true,
+            categoryKey,
+            versions: versions.map(v => ({
+                id: v.id,
+                ttVersion: v.ttVersion,
+                accuracy: v.accuracy * 100,
+                tradesTested: v.tradesTested,
+                isPromoted: !!v.promotedToVersionId,
+                createdAt: v.createdAt
+            })),
+            latestVersion: versions[0]?.ttVersion || null
+        });
+    } catch (error) {
+        console.error('[Labs API] Versions list error:', error);
+        res.status(500).json({ ok: false, error: error.message });
+    }
+});
+
+/**
+ * GET /api/labs/run/:id
+ * Get a specific Labs run by ID (to view its logic)
+ */
+router.get('/run/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const labsRun = await prisma.labsRun.findUnique({
+            where: { id }
+        });
+
+        if (!labsRun) {
+            return res.status(404).json({ ok: false, error: 'Labs run not found' });
+        }
+
+        res.json({
+            ok: true,
+            result: {
+                id: labsRun.id,
+                ttVersion: labsRun.ttVersion,
+                categoryKey: labsRun.categoryKey,
+                accuracy: labsRun.accuracy,
+                tradesTested: labsRun.tradesTested,
+                entryConditions: labsRun.entryConditions,
+                exitConditions: labsRun.exitConditions,
+                recommendedLogic: labsRun.recommendedLogic,
+                strategyParams: labsRun.strategyParams,
+                performanceMetrics: labsRun.performanceMetrics,
+                isPromoted: !!labsRun.promotedToVersionId,
+                createdAt: labsRun.createdAt
+            }
+        });
+    } catch (error) {
+        console.error('[Labs API] Get run error:', error);
+        res.status(500).json({ ok: false, error: error.message });
+    }
+});
+
+/**
+ * DELETE /api/labs/run/:id
+ * Delete a specific Labs run
+ */
+router.delete('/run/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const labsRun = await prisma.labsRun.findUnique({
+            where: { id }
+        });
+
+        if (!labsRun) {
+            return res.status(404).json({ ok: false, error: 'Labs run not found' });
+        }
+
+        if (labsRun.promotedToVersionId) {
+            return res.status(400).json({
+                ok: false,
+                error: 'Cannot delete a promoted version. Remove strategy first.'
+            });
+        }
+
+        await prisma.labsRun.delete({
+            where: { id }
+        });
+
+        console.log(`[Labs API] ✅ Deleted Labs run ${labsRun.ttVersion}`);
+
+        res.json({
+            ok: true,
+            deleted: labsRun.ttVersion,
+            message: `${labsRun.ttVersion} deleted successfully`
+        });
+    } catch (error) {
+        console.error('[Labs API] Delete run error:', error);
+        res.status(500).json({ ok: false, error: error.message });
+    }
+});
+
+// ============================================================
+// RESEARCH BACKTEST ENDPOINTS (Phase 2 - V.bX Versioning)
+// ============================================================
+
+/**
+ * POST /api/labs/research/save
+ * Save Research Backtest results with V.bX versioning
+ * Creates versions like V1.b1, V1.b2, etc. linked to parent TT version
+ */
+router.post('/research/save', async (req, res) => {
+    try {
+        const {
+            categoryKey,
+            baseTTVersion,       // e.g., "TT-V1"
+            beforeMetrics,       // Metrics BEFORE shadow learning
+            afterMetrics,        // Metrics AFTER shadow learning
+            shadowReport,        // Shadow learner analysis
+            entryConditions,     // Refined entry conditions
+            exitConditions,      // Refined exit conditions
+            refinements          // What was changed
+        } = req.body;
+
+        if (!categoryKey || !baseTTVersion) {
+            return res.status(400).json({
+                ok: false,
+                error: 'Missing required fields: categoryKey, baseTTVersion'
+            });
+        }
+
+        // Find the parent Labs run
+        const parentLabs = await prisma.labsRun.findFirst({
+            where: { categoryKey, ttVersion: baseTTVersion },
+            orderBy: { createdAt: 'desc' }
+        });
+
+        if (!parentLabs) {
+            return res.status(404).json({
+                ok: false,
+                error: `Parent Labs version ${baseTTVersion} not found`
+            });
+        }
+
+        // Count existing research runs for this TT version to generate V.bX
+        const existingCount = await prisma.researchRun.count({
+            where: { categoryKey, baseTTVersion }
+        });
+
+        // Generate version: V1.b1, V1.b2, etc.
+        const versionNumber = baseTTVersion.replace('TT-V', '');
+        const researchVersion = `V${versionNumber}.b${existingCount + 1}`;
+
+        // Create the research run
+        const researchRun = await prisma.researchRun.create({
+            data: {
+                categoryKey,
+                baseLabsRunId: parentLabs.id,
+                baseTTVersion,
+                researchVersion,
+                entryConditions: entryConditions || parentLabs.entryConditions,
+                exitConditions: exitConditions || parentLabs.exitConditions,
+                refinements: refinements || {},
+                beforeMetrics: beforeMetrics || {},
+                afterMetrics: afterMetrics || {},
+                shadowReport: shadowReport || {}
+            }
+        });
+
+        console.log(`✅ Research run saved: ${researchVersion} (based on ${baseTTVersion})`);
+
+        res.json({
+            ok: true,
+            researchRun: {
+                id: researchRun.id,
+                researchVersion: researchRun.researchVersion,
+                baseTTVersion: researchRun.baseTTVersion,
+                beforeMetrics: researchRun.beforeMetrics,
+                afterMetrics: researchRun.afterMetrics
+            },
+            message: `${researchVersion} saved successfully`
+        });
+    } catch (error) {
+        console.error('[Labs API] Research save error:', error);
+        res.status(500).json({ ok: false, error: error.message });
+    }
+});
+
+/**
+ * GET /api/labs/research/versions/:categoryKey
+ * List all research runs for a category
+ */
+router.get('/research/versions/:categoryKey', async (req, res) => {
+    try {
+        const { categoryKey } = req.params;
+
+        const versions = await prisma.researchRun.findMany({
+            where: { categoryKey },
+            orderBy: { createdAt: 'desc' },
+            select: {
+                id: true,
+                researchVersion: true,
+                baseTTVersion: true,
+                beforeMetrics: true,
+                afterMetrics: true,
+                promotedToStrategyId: true,
+                createdAt: true
+            }
+        });
+
+        res.json({
+            ok: true,
+            categoryKey,
+            versions: versions.map(v => ({
+                id: v.id,
+                researchVersion: v.researchVersion,
+                baseTTVersion: v.baseTTVersion,
+                improvement: v.afterMetrics?.winRate - v.beforeMetrics?.winRate || 0,
+                isPromoted: !!v.promotedToStrategyId,
+                createdAt: v.createdAt
+            }))
+        });
+    } catch (error) {
+        console.error('[Labs API] Research versions error:', error);
+        res.status(500).json({ ok: false, error: error.message });
+    }
+});
+
+/**
+ * GET /api/labs/research/run/:id
+ * Get specific research run details
+ */
+router.get('/research/run/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const run = await prisma.researchRun.findUnique({
+            where: { id }
+        });
+
+        if (!run) {
+            return res.status(404).json({ ok: false, error: 'Research run not found' });
+        }
+
+        res.json({
+            ok: true,
+            result: run
+        });
+    } catch (error) {
+        console.error('[Labs API] Research run error:', error);
+        res.status(500).json({ ok: false, error: error.message });
+    }
+});
+
+/**
+ * POST /api/labs/research/promote
+ * Promote a Research run (V.bX) to Strategy
+ */
+router.post('/research/promote', async (req, res) => {
+    try {
+        const { researchRunId, categoryKey, targetVersion } = req.body;
+
+        if (!researchRunId || !categoryKey) {
+            return res.status(400).json({
+                ok: false,
+                error: 'Missing required fields: researchRunId, categoryKey'
+            });
+        }
+
+        // Get the research run
+        const researchRun = await prisma.researchRun.findUnique({
+            where: { id: researchRunId }
+        });
+
+        if (!researchRun) {
+            return res.status(404).json({
+                ok: false,
+                error: 'Research run not found'
+            });
+        }
+
+        // Determine target version (V1, V2, etc.)
+        const version = targetVersion || researchRun.researchVersion.split('.')[0]; // V1.b1 -> V1
+
+        // Check if strategy already exists for this version
+        const existingStrategy = await prisma.promotedStrategy.findFirst({
+            where: { categoryKey, version }
+        });
+
+        let strategyId;
+        if (existingStrategy) {
+            // Update existing strategy
+            await prisma.promotedStrategy.update({
+                where: { id: existingStrategy.id },
+                data: {
+                    entryRules: researchRun.entryConditions || {},
+                    exitRules: researchRun.exitConditions || {},
+                    promotedFromResearch: researchRun.researchVersion,
+                    updatedAt: new Date()
+                }
+            });
+            strategyId = existingStrategy.id;
+            console.log(`✅ Updated existing Strategy ${version} from ${researchRun.researchVersion}`);
+        } else {
+            // Create new strategy
+            const newStrategy = await prisma.promotedStrategy.create({
+                data: {
+                    categoryKey,
+                    version,
+                    name: `${categoryKey.replace(/_/g, ' ')} ${version}`,
+                    entryRules: researchRun.entryConditions || {},
+                    exitRules: researchRun.exitConditions || {},
+                    promotedFromResearch: researchRun.researchVersion,
+                    status: 'ACTIVE'
+                }
+            });
+            strategyId = newStrategy.id;
+            console.log(`✅ Created new Strategy ${version} from ${researchRun.researchVersion}`);
+        }
+
+
+        // Mark research run as promoted
+        await prisma.researchRun.update({
+            where: { id: researchRunId },
+            data: { promotedToStrategyId: strategyId }
+        });
+
+        res.json({
+            ok: true,
+            strategyId,
+            version,
+            promotedFrom: researchRun.researchVersion,
+            message: `${researchRun.researchVersion} promoted to Strategy ${version}`
+        });
+    } catch (error) {
+        console.error('[Labs API] Research promote error:', error);
+        res.status(500).json({ ok: false, error: error.message });
+    }
+});
+
+/**
  * POST /api/labs/promote-to-strategy
+
+
  * Promote Labs run to Strategy version
  */
 router.post('/promote-to-strategy', async (req, res) => {
@@ -378,6 +738,113 @@ router.post('/promote-to-strategy', async (req, res) => {
         res.status(500).json({ ok: false, error: error.message });
     }
 });
+
+/**
+ * POST /api/labs/promote
+ * Promote latest Labs run to Strategy version (for Research Backtest modal)
+ * This endpoint uses categoryKey and targetVersion (frontend-friendly version)
+ */
+router.post('/promote', async (req, res) => {
+    try {
+        const { categoryKey, targetVersion, refinedByShadow } = req.body;
+
+        if (!categoryKey || !targetVersion) {
+            return res.status(400).json({
+                ok: false,
+                error: 'Missing required fields: categoryKey, targetVersion'
+            });
+        }
+
+        console.log(`[Labs API] Promote request: ${categoryKey} → ${targetVersion} (refined: ${refinedByShadow})`);
+
+        // Get the latest Labs run for this category
+        const latestRun = await prisma.labsRun.findFirst({
+            where: { categoryKey },
+            orderBy: { createdAt: 'desc' }
+        });
+
+        if (!latestRun) {
+            return res.status(404).json({
+                ok: false,
+                error: 'No Labs run found for this category. Run Labs first.'
+            });
+        }
+
+        // Get category
+        const category = await prisma.category.findUnique({
+            where: { key: categoryKey }
+        });
+
+        if (!category) {
+            return res.status(404).json({ ok: false, error: 'Category not found' });
+        }
+
+        // Check if version exists
+        const existingVersion = await prisma.strategy.findFirst({
+            where: {
+                categoryId: category.id,
+                version: targetVersion
+            }
+        });
+
+        let strategy;
+        if (existingVersion) {
+            // Update existing version
+            strategy = await prisma.strategy.update({
+                where: { id: existingVersion.id },
+                data: {
+                    rules: latestRun.entryConditions || latestRun.recommendedLogic?.entry || {},
+                    params: {
+                        ...latestRun.exitConditions,
+                        ...latestRun.strategyParams,
+                        refinedByShadow
+                    },
+                    metrics: latestRun.performanceMetrics,
+                    description: `Promoted from ${latestRun.ttVersion} - ${(latestRun.accuracy * 100).toFixed(1)}% accuracy${refinedByShadow ? ' (Shadow Refined)' : ''}`,
+                    promoted: true,
+                    updatedAt: new Date()
+                }
+            });
+            console.log(`[Labs API] ✅ Updated ${targetVersion} from ${latestRun.ttVersion}`);
+        } else {
+            // Create new version
+            strategy = await prisma.strategy.create({
+                data: {
+                    categoryId: category.id,
+                    version: targetVersion,
+                    promoted: true,
+                    rules: latestRun.entryConditions || latestRun.recommendedLogic?.entry || {},
+                    params: {
+                        ...latestRun.exitConditions,
+                        ...latestRun.strategyParams,
+                        refinedByShadow
+                    },
+                    metrics: latestRun.performanceMetrics,
+                    description: `Promoted from ${latestRun.ttVersion} - ${(latestRun.accuracy * 100).toFixed(1)}% accuracy${refinedByShadow ? ' (Shadow Refined)' : ''}`
+                }
+            });
+            console.log(`[Labs API] ✅ Created ${targetVersion} from ${latestRun.ttVersion}`);
+        }
+
+        // Mark labs run as promoted
+        await prisma.labsRun.update({
+            where: { id: latestRun.id },
+            data: { promotedToVersionId: strategy.id }
+        });
+
+        res.json({
+            ok: true,
+            version: targetVersion,
+            strategyId: strategy.id,
+            fromTTVersion: latestRun.ttVersion,
+            overrode: !!existingVersion
+        });
+    } catch (error) {
+        console.error('[Labs API] Promote error:', error);
+        res.status(500).json({ ok: false, error: error.message });
+    }
+});
+
 
 /**
  * GET /api/labs/check-version/:categoryKey/:version

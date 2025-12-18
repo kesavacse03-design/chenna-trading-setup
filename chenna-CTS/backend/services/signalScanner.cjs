@@ -320,7 +320,7 @@ class SignalScanner {
             },
             signals,
             stats: {
-                totalStocks: stocks.length,
+                totalStocks: eligibleStocks.length,
                 scanned,
                 signalsFound: signals.length,
                 elapsed: `${elapsed}s`

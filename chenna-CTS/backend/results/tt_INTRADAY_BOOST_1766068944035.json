@@ -1,0 +1,450 @@
+{
+  "runId": "tt_INTRADAY_BOOST_1766068944035",
+  "type": "TIME_TRAVEL",
+  "category": "INTRADAY_BOOST",
+  "timestamp": "2025-12-18T14:42:24.035Z",
+  "summary": {
+    "totalStrategies": 3,
+    "totalStocks": 10,
+    "timeElapsed": "0.8min",
+    "topStrategy": {
+      "name": "Trend Continuation",
+      "description": "Price above SMAs with momentum",
+      "exit": {
+        "target": 3,
+        "stop": 1.5
+      },
+      "id": 1,
+      "family": "momentum"
+    },
+    "topWinRate": 0,
+    "topScore": 0
+  },
+  "top3Strategies": [
+    {
+      "name": {
+        "name": "Trend Continuation",
+        "description": "Price above SMAs with momentum",
+        "exit": {
+          "target": 3,
+          "stop": 1.5
+        },
+        "id": 1,
+        "family": "momentum"
+      },
+      "score": 0,
+      "metrics": {
+        "tradeCount": 4,
+        "winRate": 0,
+        "avgPnl": -1.5000000000000018,
+        "expectancy": -1.5000000000000018,
+        "avgHolding": 2.5,
+        "maxDrawdown": 6.000000000000007,
+        "sharpe": -370611199200470.4,
+        "trapAvoidanceRate": 69.23076923076923
+      },
+      "trades": 13
+    },
+    {
+      "name": {
+        "name": "MACD Momentum",
+        "description": "MACD bullish with histogram expanding",
+        "exit": {
+          "target": 2.5,
+          "stop": 1.5
+        },
+        "id": 2,
+        "family": "momentum"
+      },
+      "score": 0,
+      "metrics": {
+        "tradeCount": 0,
+        "winRate": 0,
+        "avgPnl": 0,
+        "expectancy": 0,
+        "avgHolding": 0,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "trades": 0
+    },
+    {
+      "name": {
+        "name": "RSI Momentum",
+        "description": "RSI rising above 50 with price above SMA",
+        "exit": {
+          "target": 2.5,
+          "stop": 1.5
+        },
+        "id": 3,
+        "family": "momentum"
+      },
+      "score": 0,
+      "metrics": {
+        "tradeCount": 4,
+        "winRate": 25,
+        "avgPnl": -0.49999999999999967,
+        "expectancy": -0.49999999999999956,
+        "avgHolding": 2.5,
+        "maxDrawdown": 2.9999999999999987,
+        "sharpe": -0.28867513459481275,
+        "trapAvoidanceRate": 60
+      },
+      "trades": 10
+    }
+  ],
+  "v1Strategy": {
+    "category": "INTRADAY_BOOST",
+    "name": "V1 Default - INTRADAY_BOOST",
+    "version": "2.0.0",
+    "createdAt": "2025-12-18T14:42:23.799Z",
+    "thesis": "This category works when Late-session acceleration",
+    "categoryIntent": "Late-session acceleration",
+    "mustDiscover": "Best performing confirmations",
+    "confirmations": [
+      {
+        "rank": 1,
+        "rule": "afternoon_momentum",
+        "description": "Afternoon momentum build",
+        "importance": "HIGH"
+      },
+      {
+        "rank": 2,
+        "rule": "failed_pullbacks",
+        "description": "Failed pullbacks as fuel",
+        "importance": "HIGH"
+      },
+      {
+        "rank": 3,
+        "rule": "volume_ramp",
+        "description": "Volume ramping up",
+        "importance": "HIGH"
+      }
+    ],
+    "invalidations": [],
+    "expectedBehavior": {
+      "avgHoldingTime": "2.5 days",
+      "avgDrawdown": "6.0%",
+      "avgMove": "-1.5%",
+      "winRate": "50.0%"
+    },
+    "entryRules": {
+      "logic": "Trend Continuation",
+      "description": "Best performing logic from top-ranked strategy"
+    },
+    "exitRules": {
+      "target": 2.5,
+      "stop": 1.5,
+      "source": "From MACD Momentum"
+    },
+    "trapFilters": {
+      "enabled": true,
+      "skipOnTraps": true,
+      "minConfidence": 0.6
+    },
+    "positionSizing": {
+      "riskPerTrade": 1.5,
+      "maxPositions": 5
+    },
+    "expectedMetrics": {
+      "accuracy": "0.0%",
+      "expectancy": "-1.50%",
+      "trapAvoidance": "69.2%",
+      "avgHolding": "2.5 days"
+    },
+    "contributors": [
+      {
+        "rank": 1,
+        "logic": "Trend Continuation",
+        "score": "0.0",
+        "trades": 4,
+        "winRate": "0.0%"
+      },
+      {
+        "rank": 2,
+        "logic": "MACD Momentum",
+        "score": "0.0",
+        "trades": 0,
+        "winRate": "0.0%"
+      },
+      {
+        "rank": 3,
+        "logic": "RSI Momentum",
+        "score": "0.0",
+        "trades": 4,
+        "winRate": "25.0%"
+      }
+    ]
+  },
+  "perSymbol": [
+    {
+      "symbol": "ADANIGREEN",
+      "trades": [
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "RSI Momentum"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 0,
+      "losses": 0,
+      "winRate": "0.0",
+      "totalPnL": "0.00"
+    },
+    {
+      "symbol": "BOSCHLTD",
+      "trades": [
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 39920,
+            "date": "2025-09-16T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 39321.2,
+            "date": "2025-09-15T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000073,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 40910,
+            "date": "2025-09-05T00:00:00+05:30",
+            "dateIndex": 57
+          },
+          "exit": {
+            "price": 40296.35,
+            "date": "2025-09-01T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000036,
+          "holdingDays": 4,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 40740,
+            "date": "2025-09-04T00:00:00+05:30",
+            "dateIndex": 58
+          },
+          "exit": {
+            "price": 40128.9,
+            "date": "2025-09-01T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999964,
+          "holdingDays": 3,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 41100,
+            "date": "2025-09-03T00:00:00+05:30",
+            "dateIndex": 59
+          },
+          "exit": {
+            "price": 40483.5,
+            "date": "2025-09-01T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.5,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 40910,
+            "date": "2025-09-05T00:00:00+05:30",
+            "dateIndex": 57
+          },
+          "exit": {
+            "price": 40296.35,
+            "date": "2025-09-01T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000036,
+          "holdingDays": 4,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 40740,
+            "date": "2025-09-04T00:00:00+05:30",
+            "dateIndex": 58
+          },
+          "exit": {
+            "price": 41758.5,
+            "date": "2025-09-03T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "TARGET"
+          },
+          "pnl": 2.5,
+          "holdingDays": 1,
+          "result": "WIN"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 41100,
+            "date": "2025-09-03T00:00:00+05:30",
+            "dateIndex": 59
+          },
+          "exit": {
+            "price": 40483.5,
+            "date": "2025-09-01T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.5,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        }
+      ],
+      "totalTrades": 19,
+      "wins": 1,
+      "losses": 6,
+      "winRate": "5.3",
+      "totalPnL": "-6.50"
+    },
+    {
+      "symbol": "ADANIENT",
+      "trades": [
+        {
+          "strategy": "RSI Momentum"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 0,
+      "winRate": "0.0",
+      "totalPnL": "0.00"
+    },
+    {
+      "symbol": "AMBUJACEM",
+      "trades": [
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 573.8,
+            "date": "2025-10-06T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 565.193,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999951,
+          "holdingDays": 3,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0.0",
+      "totalPnL": "-1.50"
+    }
+  ],
+  "allStrategies": [
+    {
+      "name": "Trend Continuation",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 4,
+        "winRate": 0,
+        "avgPnl": -1.5000000000000018,
+        "expectancy": -1.5000000000000018,
+        "avgHolding": 2.5,
+        "maxDrawdown": 6.000000000000007,
+        "sharpe": -370611199200470.4,
+        "trapAvoidanceRate": 69.23076923076923
+      },
+      "failReason": "Insufficient trades: 4 < 15 required"
+    },
+    {
+      "name": "MACD Momentum",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 0,
+        "winRate": 0,
+        "avgPnl": 0,
+        "expectancy": 0,
+        "avgHolding": 0,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "failReason": "Insufficient trades: 0 < 15 required"
+    },
+    {
+      "name": "RSI Momentum",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 4,
+        "winRate": 25,
+        "avgPnl": -0.49999999999999967,
+        "expectancy": -0.49999999999999956,
+        "avgHolding": 2.5,
+        "maxDrawdown": 2.9999999999999987,
+        "sharpe": -0.28867513459481275,
+        "trapAvoidanceRate": 60
+      },
+      "failReason": "Insufficient trades: 4 < 15 required"
+    }
+  ]
+}

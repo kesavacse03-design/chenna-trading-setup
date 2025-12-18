@@ -1,50 +1,44 @@
 {
-  "category": "MULTI_RESISTANCE_BO",
-  "name": "V1 Default - MULTI_RESISTANCE_BO",
+  "category": "MULTI_SUPPORT_BO",
+  "name": "V1 Default - MULTI_SUPPORT_BO",
   "version": "2.0.0",
-  "createdAt": "2025-12-18T14:54:30.694Z",
-  "thesis": "This category works when Multiple resistance tests, sellers exhausted, breakout likely but fake breakouts common",
-  "categoryIntent": "Supply absorption → breakout",
-  "mustDiscover": "Breakout confirmation quality",
+  "createdAt": "2025-12-18T14:14:33.272Z",
+  "thesis": "This category works when Same as MULTI_RESISTANCE_BO but inverted for downside",
+  "categoryIntent": "Demand absorption → breakdown",
+  "mustDiscover": "Breakdown confirmation quality",
   "confirmations": [
     {
       "rank": 1,
-      "rule": "range_tightening",
-      "description": "Range tightening near resistance",
+      "rule": "support_weakening",
+      "description": "Support getting weaker with each test",
       "importance": "HIGH"
     },
     {
       "rank": 2,
-      "rule": "volume_contraction_pre",
-      "description": "Volume contraction before breakout",
+      "rule": "failed_bounces",
+      "description": "Bounces getting weaker",
       "importance": "HIGH"
     },
     {
       "rank": 3,
-      "rule": "breakout_close_strong",
-      "description": "Breakout candle close > 70% of range",
+      "rule": "distribution_candles",
+      "description": "Distribution candles appearing",
       "importance": "HIGH"
     },
     {
       "rank": 4,
-      "rule": "volume_expansion_on_break",
-      "description": "Volume expansion on breakout",
-      "importance": "HIGH"
-    },
-    {
-      "rank": 5,
-      "rule": "no_rejection_candle",
-      "description": "No immediate rejection candle",
+      "rule": "breakdown_followthrough",
+      "description": "Breakdown with follow-through",
       "importance": "HIGH"
     }
   ],
   "invalidations": [
     {
-      "rule": "rsi_oversold_logic",
+      "rule": "bounce_logic",
       "impact": "Reduces win rate when present"
     },
     {
-      "rule": "mean_reversion_tools",
+      "rule": "mean_reversion",
       "impact": "Reduces win rate when present"
     }
   ],

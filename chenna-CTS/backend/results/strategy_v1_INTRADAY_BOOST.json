@@ -1,0 +1,83 @@
+{
+  "category": "INTRADAY_BOOST",
+  "name": "V1 Default - INTRADAY_BOOST",
+  "version": "2.0.0",
+  "createdAt": "2025-12-18T14:42:23.799Z",
+  "thesis": "This category works when Late-session acceleration",
+  "categoryIntent": "Late-session acceleration",
+  "mustDiscover": "Best performing confirmations",
+  "confirmations": [
+    {
+      "rank": 1,
+      "rule": "afternoon_momentum",
+      "description": "Afternoon momentum build",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 2,
+      "rule": "failed_pullbacks",
+      "description": "Failed pullbacks as fuel",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 3,
+      "rule": "volume_ramp",
+      "description": "Volume ramping up",
+      "importance": "HIGH"
+    }
+  ],
+  "invalidations": [],
+  "expectedBehavior": {
+    "avgHoldingTime": "2.5 days",
+    "avgDrawdown": "6.0%",
+    "avgMove": "-1.5%",
+    "winRate": "50.0%"
+  },
+  "entryRules": {
+    "logic": "Trend Continuation",
+    "description": "Best performing logic from top-ranked strategy"
+  },
+  "exitRules": {
+    "target": 2.5,
+    "stop": 1.5,
+    "source": "From MACD Momentum"
+  },
+  "trapFilters": {
+    "enabled": true,
+    "skipOnTraps": true,
+    "minConfidence": 0.6
+  },
+  "positionSizing": {
+    "riskPerTrade": 1.5,
+    "maxPositions": 5
+  },
+  "expectedMetrics": {
+    "accuracy": "0.0%",
+    "expectancy": "-1.50%",
+    "trapAvoidance": "69.2%",
+    "avgHolding": "2.5 days"
+  },
+  "contributors": [
+    {
+      "rank": 1,
+      "logic": "Trend Continuation",
+      "score": "0.0",
+      "trades": 4,
+      "winRate": "0.0%"
+    },
+    {
+      "rank": 2,
+      "logic": "MACD Momentum",
+      "score": "0.0",
+      "trades": 0,
+      "winRate": "0.0%"
+    },
+    {
+      "rank": 3,
+      "logic": "RSI Momentum",
+      "score": "0.0",
+      "trades": 4,
+      "winRate": "25.0%"
+    }
+  ]
+}

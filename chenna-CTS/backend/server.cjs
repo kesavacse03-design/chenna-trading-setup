@@ -42,6 +42,11 @@ app.use('/api/labs', labsRoutes);
 const signalRoutes = require('./api/signalRoutes.cjs');
 app.use('/api/signals', signalRoutes);
 
+// Register Data Fetch Agent Routes (for tredcode data fetching)
+const dataFetchRoutes = require('./api/dataFetchRoutes.cjs');
+app.use('/api/data-fetch', dataFetchRoutes);
+console.log('[Routes] Data Fetch Agent routes registered ✅');
+
 // --- GUN SHOT FIXES ---
 // 1. Instrument Search (Fixed - use Prisma directly)
 app.get('/api/instruments/search', async (req, res) => {

@@ -27,6 +27,10 @@ class BacktestResultsService {
         const timestamp = new Date().toISOString();
         const runId = `tt_${categoryKey}_${Date.now()}`;
 
+        // Get v1Strategy data for database save
+        const v1Strategy = results.v1Strategy || {};
+        const topStrategy = results.top3?.[0] || {};
+
         const backtestRun = {
             runId,
             type: 'TIME_TRAVEL',
@@ -70,6 +74,82 @@ class BacktestResultsService {
         // Save CSV
         const csvPath = await this.exportToCSV(backtestRun, 'TIME_TRAVEL');
 
+        // ✅ SAVE TO DATABASE - Persist entry/exit conditions
+        try {
+            const { PrismaClient } = require('@prisma/client');
+            const prisma = new PrismaClient();
+
+            // ✅ FIXED: Extract from correct v1Strategy structure
+            const v1 = results.v1Strategy || {};
+            const topLogic = results.top3?.[0]?.logic || {};
+
+            // Entry conditions from v1Strategy structure
+            const entryConditions = {
+                logic: v1.entryRules?.logic || topLogic.name || 'Unknown',
+                description: v1.entryRules?.description || '',
+                thesis: v1.thesis || '',
+                categoryIntent: v1.categoryIntent || '',
+                confirmations: v1.confirmations || [],
+                mustDiscover: v1.mustDiscover || ''
+            };
+
+            // Exit conditions from v1Strategy structure
+            const exitConditions = {
+                target: v1.exitRules?.target || topLogic.exit?.target || 2.5,
+                stop: v1.exitRules?.stop || topLogic.exit?.stop || 1.5,
+                source: v1.exitRules?.source || '',
+                trapFilters: v1.trapFilters || {}
+            };
+
+            // Generate TT version based on existing count
+            const existingCount = await prisma.labsRun.count({
+                where: { categoryKey }
+            });
+            const ttVersion = `TT-V${existingCount + 1}`;
+
+            await prisma.labsRun.create({
+                data: {
+                    categoryKey,
+                    ttVersion,
+                    accuracy: (results.top3?.[0]?.metrics?.winRate || 0) / 100,
+                    tradesTested: results.top3?.[0]?.metrics?.tradeCount || 0,
+                    recommendedLogic: {
+                        entry: entryConditions,
+                        exit: exitConditions,
+                        trapAvoidance: v1.invalidations?.map(inv => inv.rule) || []
+                    },
+                    entryConditions: entryConditions,
+                    exitConditions: exitConditions,
+                    trapRules: v1.invalidations || [],
+                    strategyParams: {
+                        name: topLogic.name || 'Labs Strategy',
+                        description: v1.thesis || '',
+                        targetR: exitConditions.target,
+                        stopR: exitConditions.stop,
+                        maxHoldingDays: 10
+                    },
+                    performanceMetrics: {
+                        pnl: results.top3?.[0]?.metrics?.avgPnl || 0,
+                        drawdown: (results.top3?.[0]?.metrics?.maxDrawdown || 0) / 100,
+                        winRate: results.top3?.[0]?.metrics?.winRate || 0,
+                        expectancy: results.top3?.[0]?.metrics?.expectancy || 0,
+                        avgHolding: results.top3?.[0]?.metrics?.avgHolding || 0
+                    },
+                    cacheStatus: {
+                        cached: results.stats?.cachedStocks || 0,
+                        uncached: results.stats?.totalStocks || 0,
+                        total: results.stats?.totalStocks || 0
+                    }
+                }
+            });
+
+            console.log(`✅ Labs result saved to DATABASE: ${ttVersion}`);
+            await prisma.$disconnect();
+        } catch (dbError) {
+            console.error(`❌ Failed to save Labs result to database:`, dbError.message);
+        }
+
+
         console.log(`✅ Time-Travel results saved:`);
         console.log(`   JSON: ${jsonPath}`);
         console.log(`   CSV: ${csvPath}`);
@@ -81,6 +161,7 @@ class BacktestResultsService {
             summary: backtestRun.summary
         };
     }
+
 
     /**
      * Save Regular Backtest Results (V1 strategy on stocks)
