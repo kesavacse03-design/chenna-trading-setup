@@ -144,13 +144,13 @@ export async function getPrices(symbols: string[]): Promise<Record<string, { pri
     return mock.getPrices(symbols);
 }
 
-export async function createStock(payload: { symbol: string; date: string; category: string }): Promise<any> {
+export async function createStock(payload: { symbol: string; date: string; category: string; sector?: string }): Promise<any> {
     const imeta4: any = (globalThis as any).import?.meta || {};
     const base = (window as any).__CTS_API_BASE || imeta4.env?.VITE_API_BASE || '';
     if (base) {
         // Gun-shot mode: Direct backend call, no silent fallback
         const url = `${base.replace(/\/$/, '')}/api/stocks`;
-        const body = { symbol: payload.symbol, date: payload.date, category: payload.category };
+        const body = { symbol: payload.symbol, date: payload.date, category: payload.category, sector: payload.sector };
         const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
         if (r.ok) return r.json();
         if (r.status === 409) { const err: any = new Error('Duplicate'); err.code = 'DUPLICATE'; throw err; }

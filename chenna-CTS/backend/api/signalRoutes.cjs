@@ -79,6 +79,58 @@ router.get('/active', async (req, res) => {
 });
 
 /**
+ * GET /api/signals/trades
+ * Get all active signals from DATABASE (not memory)
+ * This is the source for Active Trades UI
+ */
+router.get('/trades', async (req, res) => {
+    try {
+        const { PrismaClient } = require('@prisma/client');
+        const prisma = new PrismaClient();
+
+        const signals = await prisma.signal.findMany({
+            where: { trackingStatus: 'ACTIVE' },
+            orderBy: { generatedAt: 'desc' }
+        });
+
+        await prisma.$disconnect();
+
+        // Group by category
+        const byCategory = {};
+        signals.forEach(s => {
+            if (!byCategory[s.categoryKey]) byCategory[s.categoryKey] = [];
+            byCategory[s.categoryKey].push({
+                id: s.signalId,
+                symbol: s.symbol,
+                direction: s.direction,
+                entry: Number(s.entryPrice),
+                current: Number(s.currentPrice) || Number(s.entryPrice),
+                target: Number(s.targetPrice),
+                stopLoss: Number(s.stopLoss),
+                pnl: Number(s.unrealizedPnL) || 0,
+                confidence: Number(s.aiConfidence) || 50,
+                daysInTrade: s.daysInTrade || 0,
+                trackingDays: s.trackingDays || 10,
+                generatedAt: s.generatedAt
+            });
+        });
+
+        res.json({
+            ok: true,
+            totalSignals: signals.length,
+            byCategory,
+            signals
+        });
+    } catch (error) {
+        console.error('[Signals API] Trades error:', error);
+        res.status(500).json({
+            ok: false,
+            error: error.message
+        });
+    }
+});
+
+/**
  * GET /api/signals/history/:categoryKey
  * Get historical signal scans
  */

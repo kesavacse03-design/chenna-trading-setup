@@ -1,0 +1,83 @@
+{
+  "category": "DOWNSIDE_LOM_INTRA",
+  "name": "V1 Default - DOWNSIDE_LOM_INTRA",
+  "version": "2.0.0",
+  "createdAt": "2025-12-22T14:26:07.239Z",
+  "thesis": "This category works when Intraday capitulation → bounce",
+  "categoryIntent": "Intraday capitulation → bounce",
+  "mustDiscover": "Best performing confirmations",
+  "confirmations": [
+    {
+      "rank": 1,
+      "rule": "sharp_selloff_exhaustion",
+      "description": "Sharp sell-off exhaustion",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 2,
+      "rule": "panic_volume",
+      "description": "Panic volume spike",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 3,
+      "rule": "reversal_candles_at_lows",
+      "description": "Reversal candles near lows",
+      "importance": "HIGH"
+    }
+  ],
+  "invalidations": [],
+  "expectedBehavior": {
+    "avgHoldingTime": "2.3 days",
+    "avgDrawdown": "7.5%",
+    "avgMove": "0.1%",
+    "winRate": "47.1%"
+  },
+  "entryRules": {
+    "logic": "Volume Dry-Up Exhaustion",
+    "description": "Best performing logic from top-ranked strategy"
+  },
+  "exitRules": {
+    "target": 2,
+    "stop": 1.5,
+    "source": "From Volume Dry-Up Exhaustion"
+  },
+  "trapFilters": {
+    "enabled": true,
+    "skipOnTraps": true,
+    "minConfidence": 0.6
+  },
+  "positionSizing": {
+    "riskPerTrade": 1.5,
+    "maxPositions": 5
+  },
+  "expectedMetrics": {
+    "accuracy": "47.1%",
+    "expectancy": "0.15%",
+    "trapAvoidance": "5.6%",
+    "avgHolding": "2.3 days"
+  },
+  "contributors": [
+    {
+      "rank": 1,
+      "logic": "Volume Dry-Up Exhaustion",
+      "score": "20.1",
+      "trades": 17,
+      "winRate": "47.1%"
+    },
+    {
+      "rank": 2,
+      "logic": "RSI Divergence Exhaustion",
+      "score": "0.0",
+      "trades": 4,
+      "winRate": "25.0%"
+    },
+    {
+      "rank": 3,
+      "logic": "Lower Wick Dominance",
+      "score": "0.0",
+      "trades": 27,
+      "winRate": "18.5%"
+    }
+  ]
+}

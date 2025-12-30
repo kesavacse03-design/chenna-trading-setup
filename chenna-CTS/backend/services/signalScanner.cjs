@@ -19,24 +19,16 @@ class SignalScanner {
 
     /**
      * Load V1 strategy from database for a category
-     * Returns default strategy if V1 not found (graceful fallback)
+     * Queries StrategyVersion table where strategies are stored
      */
     async loadV1Strategy(categoryKey) {
         try {
-            const category = await prisma.category.findUnique({
-                where: { key: categoryKey }
-            });
-
-            if (!category) {
-                console.warn(`[Scanner] Category ${categoryKey} not found, using default strategy`);
-                return this.getDefaultStrategy(categoryKey);
-            }
-
-            const strategy = await prisma.strategy.findFirst({
+            // Query StrategyVersion table (where seed_strategies.cjs saves)
+            const strategy = await prisma.strategyVersion.findFirst({
                 where: {
-                    categoryId: category.id,
-                    promoted: true,
-                    version: 'V1'
+                    categoryKey: categoryKey,
+                    version: 'V1',
+                    isActive: true
                 },
                 orderBy: { updatedAt: 'desc' }
             });
@@ -46,11 +38,13 @@ class SignalScanner {
                 return this.getDefaultStrategy(categoryKey);
             }
 
+            console.log(`[Scanner] Loaded V1 strategy for ${categoryKey}`);
             return {
                 id: strategy.id,
                 description: strategy.description,
                 rules: strategy.rules,
-                metrics: strategy.metrics,
+                params: strategy.params,
+                metrics: { winRate: strategy.accuracy || 50 },
                 categoryKey
             };
         } catch (error) {
@@ -58,6 +52,7 @@ class SignalScanner {
             return this.getDefaultStrategy(categoryKey);
         }
     }
+
 
     /**
      * Default strategy fallback (RSI oversold < 30)

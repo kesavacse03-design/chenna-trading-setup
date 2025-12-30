@@ -646,19 +646,23 @@ app.get('/api/categories/:categoryKey/stocks', async (req, res) => {
       return res.json({ ok: true, stocks: [] }); // Return empty if category doesn't exist yet
     }
 
+    // IMPORTANT: Use addedDate from StockCategory for duplicate detection (not stock.createdAt)
     const stocks = category.stocks.map(item => ({
       symbol: item.stock.symbol,
       name: item.stock.name,
       instrumentKey: item.stock.instrumentKey,
-      listedDate: item.stock.createdAt // Using createdAt as proxy for listedDate if not stored
+      addedDate: item.addedDate,  // The actual date used for duplicate detection
+      date: item.addedDate ? item.addedDate.toISOString().slice(0, 10) : null  // Frontend-friendly date string
     }));
 
+    console.log(`[GET /api/categories/${categoryKey}/stocks] Returning ${stocks.length} stocks`);
     res.json({ ok: true, stocks });
   } catch (e) {
     console.error('Error fetching category stocks:', e);
     res.status(500).json({ ok: false, error: String(e.message) });
   }
 });
+
 
 // POST (Save) stocks to a category
 app.post('/api/categories/:categoryKey/stocks', async (req, res) => {
@@ -763,9 +767,9 @@ app.post('/api/categories/:categoryKey/stocks', async (req, res) => {
 
 // POST (Save) single stock (used by ManualImport)
 app.post('/api/stocks', async (req, res) => {
-  const { symbol, date, category } = req.body;
+  const { symbol, date, category, sector } = req.body;
 
-  console.log(`[POST /api/stocks] Received ${symbol} for ${category} on ${date}`);
+  console.log(`[POST /api/stocks] Received ${symbol} for ${category} on ${date}${sector ? ` (sector: ${sector})` : ''}`);
 
   if (!symbol || !category) {
     return res.status(400).json({ ok: false, error: 'symbol and category are required' });
@@ -820,12 +824,13 @@ app.post('/api/stocks', async (req, res) => {
       return res.status(409).json({ ok: false, error: 'Duplicate entry', code: 'DUPLICATE' });
     }
 
-    // Create link
+    // Create link with sector
     await prisma.stockCategory.create({
       data: {
         stockId: stock.id,
         categoryId: catRecord.id,
-        addedDate: addedDate
+        addedDate: addedDate,
+        sector: sector || null  // Save sector if provided
       }
     });
 
@@ -1548,7 +1553,18 @@ app.get('/api/categories/:categoryKey/v1-strategy', async (req, res) => {
 
 // ========== AI INTELLIGENCE API ==========
 
+// Import ScheduledScanner for automated signal generation
+const scheduledScanner = require('./services/scheduledScanner.cjs');
+
 // Start server
 app.listen(PORT, () => {
   console.log(`[CTS] backend listening on http://localhost:${PORT}`);
+
+  // Start scheduled signal scanning (Swing: 15min, Intraday: 1min)
+  try {
+    const result = scheduledScanner.startScheduledScanning();
+    console.log(`[CTS] ⏰ Signal Scanner: ${result.message}`);
+  } catch (e) {
+    console.warn('[CTS] ⚠️ Signal Scanner failed to start:', e.message);
+  }
 });

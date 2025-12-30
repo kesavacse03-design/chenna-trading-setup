@@ -13,22 +13,60 @@ const puppeteer = require('puppeteer');
 const prisma = new PrismaClient();
 
 // Category mapping: tredcode category name -> CTS category key
+// Categories are THE SAME between tredcode and CTS, just need to normalize
+// (replace spaces and dashes with underscores)
+// 
+// COMPLETE LIST OF ALL 14 CTS CATEGORIES:
+// 1. HIGH_POWERED_STOCKS    2. INTRADAY_BOOST       3. DOWNSIDE_LOM_INTRA
+// 4. UPSIDE_LOM_INTRA       5. DAILY_CONTRACTION    6. PRE_MARKET
+// 7. DOWNSIDE_LOM_SWING     8. UPSIDE_LOM_SWING     9. MULTI_RESISTANCE_BO
+// 10. MULTI_SUPPORT_BO      11. SHORT_TERM_SWING_BO_UP   12. SHORT_TERM_SWING_BO_DOWN
+// 13. LONG_TERM_SWING_BO_UP 14. LONG_TERM_SWING_BO_DOWN
+//
 const CATEGORY_MAPPING = {
-    '50 Day High Breakout': 'HIGH_POWERED_STOCKS',
-    '50 Day Low Breakout': 'DOWNSIDE_LOM_SWING',
-    'Upside LOM': 'UPSIDE_LOM_SWING',
-    'Downside LOM': 'DOWNSIDE_LOM_SWING',
+    // ============== MARKET DEPTH CATEGORIES ==============
+    'HIGH POWERED STOCKS': 'HIGH_POWERED_STOCKS',
+    'INTRADAY BOOST': 'INTRADAY_BOOST',
+    'DOWNSIDE LOM INTRA': 'DOWNSIDE_LOM_INTRA',
+    'UPSIDE LOM INTRA': 'UPSIDE_LOM_INTRA',
+    'DOWNSIDE LOM SWING': 'DOWNSIDE_LOM_SWING',
+    'UPSIDE LOM SWING': 'UPSIDE_LOM_SWING',
+
+    // ============== PRO SETUPS CATEGORIES ==============
     'DAILY CONTRACTION': 'DAILY_CONTRACTION',
     'PRE MARKET': 'PRE_MARKET',
-    '5 Minute MOMENTUM SPIKE': 'INTRADAY_BOOST',
-    'INTRADAY BOOST': 'INTRADAY_BOOST'
+    'MULTI RESISTANCE BO': 'MULTI_RESISTANCE_BO',
+    'MULTI SUPPORT BO': 'MULTI_SUPPORT_BO',
+
+    // ============== SWING CENTER CATEGORIES ==============
+    'SHORT TERM SWING BO - UP': 'SHORT_TERM_SWING_BO_UP',
+    'SHORT TERM SWING BO - DOWN': 'SHORT_TERM_SWING_BO_DOWN',
+    'LONG TERM SWING BO - UP': 'LONG_TERM_SWING_BO_UP',
+    'LONG TERM SWING BO - DOWN': 'LONG_TERM_SWING_BO_DOWN',
+
+    // ============== ALTERNATIVE SPELLINGS/FORMATS ==============
+    // Tredcode may use different dash types or spacing
+    'DOWNSIDE LOM - SWING': 'DOWNSIDE_LOM_SWING',
+    'UPSIDE LOM - SWING': 'UPSIDE_LOM_SWING',
+    'DOWNSIDE LOM - INTRA': 'DOWNSIDE_LOM_INTRA',
+    'UPSIDE LOM - INTRA': 'UPSIDE_LOM_INTRA',
+    // With en-dash (–) instead of hyphen (-)
+    'SHORT TERM SWING BO – UP': 'SHORT_TERM_SWING_BO_UP',
+    'SHORT TERM SWING BO – DOWN': 'SHORT_TERM_SWING_BO_DOWN',
+    'LONG TERM SWING BO – UP': 'LONG_TERM_SWING_BO_UP',
+    'LONG TERM SWING BO – DOWN': 'LONG_TERM_SWING_BO_DOWN'
 };
+
 
 // Pages to fetch
 const PAGES = [
     { url: 'https://tredcode.tradingcafeindia.com/swing-center', name: 'Swing Center' },
-    { url: 'https://tredcode.tradingcafeindia.com/pro-setups', name: 'Pro Setups' }
+    { url: 'https://tredcode.tradingcafeindia.com/pro-setups', name: 'Pro Setups' },
+    { url: 'https://tredcode.tradingcafeindia.com/market-depth', name: 'Market Depth' }
 ];
+
+// Helper: delay function (replaces deprecated page.waitForTimeout)
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 class DataFetchAgent {
     constructor() {
@@ -45,21 +83,71 @@ class DataFetchAgent {
     }
 
     /**
-     * Initialize browser with existing session cookies
+     * Initialize browser with dedicated CTS profile
+     * First run: Opens browser for user to login
+     * Subsequent runs: Uses saved session cookies
      */
     async initBrowser() {
         if (this.browser) return;
 
         console.log('[DataFetchAgent] Initializing browser...');
+
+        // Use a dedicated profile directory for CTS (not user's Chrome)
+        const path = require('path');
+        const fs = require('fs');
+        const ctsProfileDir = path.join(__dirname, '..', 'browser-data');
+        const cookiesFile = path.join(__dirname, '..', 'auth', 'tredcode_cookies.json');
+
         this.browser = await puppeteer.launch({
-            headless: 'new',
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
+            headless: false, // Keep visible for first-time login
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                `--user-data-dir=${ctsProfileDir}`
+            ]
         });
         this.page = await this.browser.newPage();
         await this.page.setViewport({ width: 1920, height: 1080 });
 
+        // Try to load and inject cookies from file
+        console.log('[DataFetchAgent] Cookie file path:', cookiesFile);
+        console.log('[DataFetchAgent] Cookie file exists:', fs.existsSync(cookiesFile));
+
+        if (fs.existsSync(cookiesFile)) {
+            try {
+                const cookiesJson = fs.readFileSync(cookiesFile, 'utf8');
+                const cookies = JSON.parse(cookiesJson);
+                console.log('[DataFetchAgent] Parsed cookies count:', cookies.length);
+
+                if (Array.isArray(cookies) && cookies.length > 0) {
+                    // Ensure all cookies have required fields for setCookie
+                    const validCookies = cookies.map(c => ({
+                        name: c.name,
+                        value: c.value,
+                        domain: c.domain || '.tradingcafeindia.com',
+                        path: c.path || '/',
+                        httpOnly: c.httpOnly || false,
+                        secure: c.secure || false,
+                        sameSite: c.sameSite || 'Lax'
+                    }));
+
+                    await this.page.setCookie(...validCookies);
+                    console.log(`[DataFetchAgent] ✅ Loaded ${validCookies.length} cookies from auth/tredcode_cookies.json`);
+                }
+            } catch (err) {
+                console.log('[DataFetchAgent] ⚠️ Could not load cookies:', err.message);
+                console.log('[DataFetchAgent] Full error:', err);
+            }
+        } else {
+            console.log('[DataFetchAgent] ℹ️ No cookies file found. Will need manual login.');
+            console.log('[DataFetchAgent] Run: node scripts/export_tredcode_cookies.cjs for instructions');
+        }
+
         console.log('[DataFetchAgent] Browser initialized');
+
+        console.log('[DataFetchAgent] Profile stored at:', ctsProfileDir);
     }
+
 
     /**
      * Close browser
@@ -73,6 +161,60 @@ class DataFetchAgent {
     }
 
     /**
+     * Check if logged into tredcode, wait for login if needed
+     */
+    async checkLoginAndWait() {
+        console.log('[DataFetchAgent] Checking login status...');
+
+        await this.page.goto('https://tredcode.tradingcafeindia.com/', { waitUntil: 'networkidle2', timeout: 60000 });
+        await delay(3000);
+
+        // Check if we see data tables (logged in) or login page
+        const isLoggedIn = await this.page.evaluate(() => {
+            // Look for user email or data content
+            const hasUserEmail = document.body.innerText.includes('@gmail.com');
+            const hasDataTables = document.querySelectorAll('table').length > 0;
+            const hasLoginButton = document.body.innerText.includes('Sign in with Google');
+
+            return (hasUserEmail || hasDataTables) && !hasLoginButton;
+        });
+
+        if (isLoggedIn) {
+            console.log('[DataFetchAgent] ✅ Already logged in');
+            return true;
+        }
+
+        console.log('[DataFetchAgent] ⚠️ Not logged in - please login with Google in the browser window');
+        console.log('[DataFetchAgent] Waiting up to 2 minutes for login...');
+
+        // Wait for login (check every 5 seconds for 2 minutes)
+        const maxWait = 120000; // 2 minutes
+        const checkInterval = 5000;
+        let waited = 0;
+
+        while (waited < maxWait) {
+            await delay(checkInterval);
+            waited += checkInterval;
+
+            const nowLoggedIn = await this.page.evaluate(() => {
+                const hasUserEmail = document.body.innerText.includes('@gmail.com');
+                const hasDataTables = document.querySelectorAll('table').length > 0;
+                return hasUserEmail || hasDataTables;
+            });
+
+            if (nowLoggedIn) {
+                console.log('[DataFetchAgent] ✅ Login detected! Continuing...');
+                return true;
+            }
+
+            console.log(`[DataFetchAgent] Still waiting... (${Math.round(waited / 1000)}s / 120s)`);
+        }
+
+        console.log('[DataFetchAgent] ❌ Login timeout - skipping this fetch cycle');
+        return false;
+    }
+
+    /**
      * Fetch a single page and extract all tables
      */
     async fetchPage(pageConfig) {
@@ -81,7 +223,7 @@ class DataFetchAgent {
 
         try {
             await this.page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
-            await this.page.waitForTimeout(2000); // Wait for dynamic content
+            await delay(2000); // Wait for dynamic content
 
             // Scroll to load all data
             await this.page.evaluate(async () => {
@@ -280,7 +422,15 @@ class DataFetchAgent {
         try {
             await this.initBrowser();
 
+            // Check login status - wait for user to login if needed
+            const loggedIn = await this.checkLoginAndWait();
+            if (!loggedIn) {
+                console.log('[DataFetchAgent] Skipping fetch cycle - not logged in');
+                return { ok: false, error: 'Not logged in to tredcode' };
+            }
+
             for (const pageConfig of PAGES) {
+
                 const tables = await this.fetchPage(pageConfig);
 
                 for (const table of tables) {

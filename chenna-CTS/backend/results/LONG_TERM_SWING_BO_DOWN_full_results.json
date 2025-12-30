@@ -1,0 +1,77 @@
+[
+  {
+    "logic": {
+      "name": "Range Breakout",
+      "description": "Price breaks out of consolidation range",
+      "exit": {
+        "target": 3,
+        "stop": 1.5
+      },
+      "id": 1,
+      "family": "breakout"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades: 0 < 10 required"
+  },
+  {
+    "logic": {
+      "name": "Resistance Break with Volume",
+      "description": "Price breaks resistance with volume confirmation",
+      "exit": {
+        "target": 3.5,
+        "stop": 1.5
+      },
+      "id": 2,
+      "family": "breakout"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades: 0 < 10 required"
+  },
+  {
+    "logic": {
+      "name": "BB Squeeze Breakout",
+      "description": "Bollinger Band squeeze followed by expansion",
+      "exit": {
+        "target": 2.5,
+        "stop": 1.5
+      },
+      "id": 3,
+      "family": "breakout"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades: 0 < 10 required"
+  }
+]

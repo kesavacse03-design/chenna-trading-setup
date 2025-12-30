@@ -1,0 +1,83 @@
+{
+  "category": "DAILY_CONTRACTION",
+  "name": "V1 Default - DAILY_CONTRACTION",
+  "version": "2.0.0",
+  "createdAt": "2025-12-22T14:48:34.180Z",
+  "thesis": "This category works when Volatility squeeze",
+  "categoryIntent": "Volatility squeeze",
+  "mustDiscover": "Best performing confirmations",
+  "confirmations": [
+    {
+      "rank": 1,
+      "rule": "atr_contraction",
+      "description": "ATR contracting",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 2,
+      "rule": "narrow_candles",
+      "description": "Narrow body candles",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 3,
+      "rule": "expansion_probability",
+      "description": "Expansion probability rising",
+      "importance": "HIGH"
+    }
+  ],
+  "invalidations": [],
+  "expectedBehavior": {
+    "avgHoldingTime": "5.0 days",
+    "avgDrawdown": "2.0%",
+    "avgMove": "1.5%",
+    "winRate": "50.0%"
+  },
+  "entryRules": {
+    "logic": "Volatility Squeeze",
+    "description": "Best performing logic from top-ranked strategy"
+  },
+  "exitRules": {
+    "target": 2.5,
+    "stop": 1.5,
+    "source": "From Volatility Squeeze"
+  },
+  "trapFilters": {
+    "enabled": true,
+    "skipOnTraps": true,
+    "minConfidence": 0.6
+  },
+  "positionSizing": {
+    "riskPerTrade": 1.5,
+    "maxPositions": 5
+  },
+  "expectedMetrics": {
+    "accuracy": "0.0%",
+    "expectancy": "0.00%",
+    "trapAvoidance": "0.0%",
+    "avgHolding": "0.0 days"
+  },
+  "contributors": [
+    {
+      "rank": 1,
+      "logic": "Volatility Squeeze",
+      "score": "0.0",
+      "trades": 0,
+      "winRate": "0.0%"
+    },
+    {
+      "rank": 2,
+      "logic": "Narrow Range Day",
+      "score": "0.0",
+      "trades": 0,
+      "winRate": "0.0%"
+    },
+    {
+      "rank": 3,
+      "logic": "Range Breakout",
+      "score": "0.0",
+      "trades": 0,
+      "winRate": "0.0%"
+    }
+  ]
+}

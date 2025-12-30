@@ -1,0 +1,2973 @@
+{
+  "runId": "tt_UPSIDE_LOM_INTRA_1766414173018",
+  "type": "TIME_TRAVEL",
+  "category": "UPSIDE_LOM_INTRA",
+  "timestamp": "2025-12-22T14:36:13.018Z",
+  "summary": {
+    "totalStrategies": 5,
+    "totalStocks": 126,
+    "timeElapsed": "8.0min",
+    "topStrategy": {
+      "name": "Trend Continuation",
+      "description": "Price above SMAs with momentum",
+      "exit": {
+        "target": 3,
+        "stop": 1.5
+      },
+      "id": 1,
+      "family": "momentum"
+    },
+    "topWinRate": 12.962962962962962,
+    "topScore": 0
+  },
+  "top3Strategies": [
+    {
+      "name": {
+        "name": "Trend Continuation",
+        "description": "Price above SMAs with momentum",
+        "exit": {
+          "target": 3,
+          "stop": 1.5
+        },
+        "id": 1,
+        "family": "momentum"
+      },
+      "score": 0,
+      "metrics": {
+        "tradeCount": 54,
+        "winRate": 12.962962962962962,
+        "avgPnl": -0.9166666666666672,
+        "expectancy": -0.9166666666666672,
+        "avgHolding": 2.574074074074074,
+        "maxDrawdown": 49.50000000000003,
+        "sharpe": -0.6064496310619685,
+        "trapAvoidanceRate": 44.89795918367347
+      },
+      "trades": 98
+    },
+    {
+      "name": {
+        "name": "MACD Momentum",
+        "description": "MACD bullish with histogram expanding",
+        "exit": {
+          "target": 2.5,
+          "stop": 1.5
+        },
+        "id": 2,
+        "family": "momentum"
+      },
+      "score": 0,
+      "metrics": {
+        "tradeCount": 0,
+        "winRate": 0,
+        "avgPnl": 0,
+        "expectancy": 0,
+        "avgHolding": 0,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "trades": 0
+    },
+    {
+      "name": {
+        "name": "RSI Momentum",
+        "description": "RSI rising above 50 with price above SMA",
+        "exit": {
+          "target": 2.5,
+          "stop": 1.5
+        },
+        "id": 3,
+        "family": "momentum"
+      },
+      "score": 0,
+      "metrics": {
+        "tradeCount": 79,
+        "winRate": 13.924050632911392,
+        "avgPnl": -0.9430379746835467,
+        "expectancy": -0.9430379746835469,
+        "avgHolding": 2.392405063291139,
+        "maxDrawdown": 74.50000000000018,
+        "sharpe": -0.6809974449683932,
+        "trapAvoidanceRate": 31.896551724137932
+      },
+      "trades": 116
+    }
+  ],
+  "v1Strategy": {
+    "category": "UPSIDE_LOM_INTRA",
+    "name": "V1 Default - UPSIDE_LOM_INTRA",
+    "version": "2.0.0",
+    "createdAt": "2025-12-22T14:36:13.009Z",
+    "thesis": "This category works when Intraday profit booking → continuation",
+    "categoryIntent": "Intraday profit booking → continuation",
+    "mustDiscover": "Best performing confirmations",
+    "confirmations": [
+      {
+        "rank": 1,
+        "rule": "controlled_pullback",
+        "description": "Controlled, shallow pullback",
+        "importance": "HIGH"
+      },
+      {
+        "rank": 2,
+        "rule": "vwap_defense",
+        "description": "Buyers defending VWAP",
+        "importance": "HIGH"
+      },
+      {
+        "rank": 3,
+        "rule": "no_heavy_sells",
+        "description": "No heavy sell candles",
+        "importance": "HIGH"
+      }
+    ],
+    "invalidations": [],
+    "expectedBehavior": {
+      "avgHoldingTime": "2.6 days",
+      "avgDrawdown": "49.5%",
+      "avgMove": "-0.9%",
+      "winRate": "13.0%"
+    },
+    "entryRules": {
+      "logic": "Trend Continuation",
+      "description": "Best performing logic from top-ranked strategy"
+    },
+    "exitRules": {
+      "target": 2.5,
+      "stop": 1.5,
+      "source": "From MACD Momentum"
+    },
+    "trapFilters": {
+      "enabled": true,
+      "skipOnTraps": true,
+      "minConfidence": 0.6
+    },
+    "positionSizing": {
+      "riskPerTrade": 1.5,
+      "maxPositions": 5
+    },
+    "expectedMetrics": {
+      "accuracy": "13.0%",
+      "expectancy": "-0.92%",
+      "trapAvoidance": "44.9%",
+      "avgHolding": "2.6 days"
+    },
+    "contributors": [
+      {
+        "rank": 1,
+        "logic": "Trend Continuation",
+        "score": "0.0",
+        "trades": 54,
+        "winRate": "13.0%"
+      },
+      {
+        "rank": 2,
+        "logic": "MACD Momentum",
+        "score": "0.0",
+        "trades": 0,
+        "winRate": "0.0%"
+      },
+      {
+        "rank": 3,
+        "logic": "RSI Momentum",
+        "score": "0.0",
+        "trades": 79,
+        "winRate": "13.9%"
+      }
+    ]
+  },
+  "perSymbol": [
+    {
+      "symbol": "HDFCAMC",
+      "trades": [
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 2890,
+            "date": "2025-09-16T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 2846.65,
+            "date": "2025-09-10T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "STOP"
+          },
+          "pnl": -1.499999999999997,
+          "holdingDays": 4,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 2872,
+            "date": "2025-09-15T00:00:00+05:30",
+            "dateIndex": 51
+          },
+          "exit": {
+            "price": 2828.92,
+            "date": "2025-09-09T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999976,
+          "holdingDays": 4,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 2946,
+            "date": "2025-08-25T00:00:00+05:30",
+            "dateIndex": 65
+          },
+          "exit": {
+            "price": 2901.81,
+            "date": "2025-08-22T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000018,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 2897,
+            "date": "2025-08-21T00:00:00+05:30",
+            "dateIndex": 67
+          },
+          "exit": {
+            "price": 2853.545,
+            "date": "2025-08-20T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999976,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 2855,
+            "date": "2025-08-20T00:00:00+05:30",
+            "dateIndex": 68
+          },
+          "exit": {
+            "price": 2812.175,
+            "date": "2025-08-18T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999938,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 2859.5,
+            "date": "2025-08-19T00:00:00+05:30",
+            "dateIndex": 69
+          },
+          "exit": {
+            "price": 2816.6075,
+            "date": "2025-08-18T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999976,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 2858.5,
+            "date": "2025-08-18T00:00:00+05:30",
+            "dateIndex": 70
+          },
+          "exit": {
+            "price": 2815.6225,
+            "date": "2025-08-14T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000018,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 2890,
+            "date": "2025-09-16T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 2846.65,
+            "date": "2025-09-10T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "STOP"
+          },
+          "pnl": -1.499999999999997,
+          "holdingDays": 4,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 2899,
+            "date": "2025-09-12T00:00:00+05:30",
+            "dateIndex": 52
+          },
+          "exit": {
+            "price": 2855.515,
+            "date": "2025-09-10T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000044,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 2899.5,
+            "date": "2025-09-11T00:00:00+05:30",
+            "dateIndex": 53
+          },
+          "exit": {
+            "price": 2856.0075,
+            "date": "2025-09-10T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999944,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 2902,
+            "date": "2025-09-10T00:00:00+05:30",
+            "dateIndex": 54
+          },
+          "exit": {
+            "price": 2858.47,
+            "date": "2025-09-09T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000069,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 2946,
+            "date": "2025-08-25T00:00:00+05:30",
+            "dateIndex": 65
+          },
+          "exit": {
+            "price": 2901.81,
+            "date": "2025-08-22T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000018,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 2897,
+            "date": "2025-08-21T00:00:00+05:30",
+            "dateIndex": 67
+          },
+          "exit": {
+            "price": 2853.545,
+            "date": "2025-08-20T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999976,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 2855,
+            "date": "2025-08-20T00:00:00+05:30",
+            "dateIndex": 68
+          },
+          "exit": {
+            "price": 2812.175,
+            "date": "2025-08-18T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999938,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 2859.5,
+            "date": "2025-08-19T00:00:00+05:30",
+            "dateIndex": 69
+          },
+          "exit": {
+            "price": 2816.6075,
+            "date": "2025-08-18T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999976,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 2858.5,
+            "date": "2025-08-18T00:00:00+05:30",
+            "dateIndex": 70
+          },
+          "exit": {
+            "price": 2815.6225,
+            "date": "2025-08-14T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000018,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 19,
+      "wins": 0,
+      "losses": 16,
+      "winRate": "0.0",
+      "totalPnL": "-24.00"
+    },
+    {
+      "symbol": "NMDC",
+      "trades": [
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 76.09,
+            "date": "2025-10-07T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 74.94865,
+            "date": "2025-09-29T00:00:00+05:30",
+            "dayNum": 5,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000036,
+          "holdingDays": 5,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 76.09,
+            "date": "2025-10-07T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 74.94865,
+            "date": "2025-09-29T00:00:00+05:30",
+            "dayNum": 5,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000036,
+          "holdingDays": 5,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 76.09,
+            "date": "2025-10-07T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 74.94865,
+            "date": "2025-09-29T00:00:00+05:30",
+            "dayNum": 5,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000036,
+          "holdingDays": 5,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 3,
+      "wins": 0,
+      "losses": 3,
+      "winRate": "0.0",
+      "totalPnL": "-4.50"
+    },
+    {
+      "symbol": "APOLLOHOSP",
+      "trades": [
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 7929,
+            "date": "2025-09-10T00:00:00+05:30",
+            "dateIndex": 54
+          },
+          "exit": {
+            "price": 7810.065,
+            "date": "2025-09-09T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000049,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 7786.5,
+            "date": "2025-09-08T00:00:00+05:30",
+            "dateIndex": 56
+          },
+          "exit": {
+            "price": 7669.7025,
+            "date": "2025-09-03T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999958,
+          "holdingDays": 3,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 7804.5,
+            "date": "2025-09-05T00:00:00+05:30",
+            "dateIndex": 57
+          },
+          "exit": {
+            "price": 7687.4325,
+            "date": "2025-09-03T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000013,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 7926.5,
+            "date": "2025-08-21T00:00:00+05:30",
+            "dateIndex": 67
+          },
+          "exit": {
+            "price": 7807.6025,
+            "date": "2025-08-19T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000004,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 7883,
+            "date": "2025-08-20T00:00:00+05:30",
+            "dateIndex": 68
+          },
+          "exit": {
+            "price": 7764.755,
+            "date": "2025-08-14T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999987,
+          "holdingDays": 3,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 7823.5,
+            "date": "2025-08-19T00:00:00+05:30",
+            "dateIndex": 69
+          },
+          "exit": {
+            "price": 7706.1475,
+            "date": "2025-08-13T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999996,
+          "holdingDays": 3,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 7822.5,
+            "date": "2025-08-18T00:00:00+05:30",
+            "dateIndex": 70
+          },
+          "exit": {
+            "price": 7705.162499999999,
+            "date": "2025-08-13T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.500000000000007,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 7804.5,
+            "date": "2025-09-05T00:00:00+05:30",
+            "dateIndex": 57
+          },
+          "exit": {
+            "price": 7687.4325,
+            "date": "2025-09-03T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000013,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 7793.5,
+            "date": "2025-08-26T00:00:00+05:30",
+            "dateIndex": 64
+          },
+          "exit": {
+            "price": 7676.5975,
+            "date": "2025-08-13T00:00:00+05:30",
+            "dayNum": 8,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000018,
+          "holdingDays": 8,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 7926.5,
+            "date": "2025-08-21T00:00:00+05:30",
+            "dateIndex": 67
+          },
+          "exit": {
+            "price": 7807.6025,
+            "date": "2025-08-19T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000004,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 7883,
+            "date": "2025-08-20T00:00:00+05:30",
+            "dateIndex": 68
+          },
+          "exit": {
+            "price": 7764.755,
+            "date": "2025-08-14T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999987,
+          "holdingDays": 3,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 7823.5,
+            "date": "2025-08-19T00:00:00+05:30",
+            "dateIndex": 69
+          },
+          "exit": {
+            "price": 7706.1475,
+            "date": "2025-08-13T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999996,
+          "holdingDays": 3,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 7822.5,
+            "date": "2025-08-18T00:00:00+05:30",
+            "dateIndex": 70
+          },
+          "exit": {
+            "price": 7705.162499999999,
+            "date": "2025-08-13T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.500000000000007,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 7821.5,
+            "date": "2025-08-14T00:00:00+05:30",
+            "dateIndex": 71
+          },
+          "exit": {
+            "price": 7704.1775,
+            "date": "2025-08-13T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000027,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 29,
+      "wins": 0,
+      "losses": 14,
+      "winRate": "0.0",
+      "totalPnL": "-21.00"
+    },
+    {
+      "symbol": "SYNGENE",
+      "trades": [
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 670.8,
+            "date": "2025-09-15T00:00:00+05:30",
+            "dateIndex": 51
+          },
+          "exit": {
+            "price": 660.7379999999999,
+            "date": "2025-09-12T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000018,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 664.15,
+            "date": "2025-09-12T00:00:00+05:30",
+            "dateIndex": 52
+          },
+          "exit": {
+            "price": 654.1877499999999,
+            "date": "2025-09-11T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.500000000000006,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 661,
+            "date": "2025-09-11T00:00:00+05:30",
+            "dateIndex": 53
+          },
+          "exit": {
+            "price": 651.085,
+            "date": "2025-09-10T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999947,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 652.55,
+            "date": "2025-09-10T00:00:00+05:30",
+            "dateIndex": 54
+          },
+          "exit": {
+            "price": 642.7617499999999,
+            "date": "2025-09-09T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000098,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 644.6,
+            "date": "2025-09-09T00:00:00+05:30",
+            "dateIndex": 55
+          },
+          "exit": {
+            "price": 663.938,
+            "date": "2025-09-04T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "TARGET"
+          },
+          "pnl": 2.9999999999999947,
+          "holdingDays": 3,
+          "result": "WIN"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 649.5,
+            "date": "2025-09-08T00:00:00+05:30",
+            "dateIndex": 56
+          },
+          "exit": {
+            "price": 639.7574999999999,
+            "date": "2025-09-03T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000098,
+          "holdingDays": 3,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 667.4,
+            "date": "2025-08-22T00:00:00+05:30",
+            "dateIndex": 66
+          },
+          "exit": {
+            "price": 657.389,
+            "date": "2025-08-19T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999951,
+          "holdingDays": 3,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 683.05,
+            "date": "2025-08-19T00:00:00+05:30",
+            "dateIndex": 69
+          },
+          "exit": {
+            "price": 672.8042499999999,
+            "date": "2025-08-18T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000064,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 659.15,
+            "date": "2025-08-13T00:00:00+05:30",
+            "dateIndex": 72
+          },
+          "exit": {
+            "price": 649.26275,
+            "date": "2025-08-12T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999993,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 670.8,
+            "date": "2025-09-15T00:00:00+05:30",
+            "dateIndex": 51
+          },
+          "exit": {
+            "price": 660.7379999999999,
+            "date": "2025-09-12T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000018,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 664.15,
+            "date": "2025-09-12T00:00:00+05:30",
+            "dateIndex": 52
+          },
+          "exit": {
+            "price": 654.1877499999999,
+            "date": "2025-09-11T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.500000000000006,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 661,
+            "date": "2025-09-11T00:00:00+05:30",
+            "dateIndex": 53
+          },
+          "exit": {
+            "price": 651.085,
+            "date": "2025-09-10T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999947,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 652.55,
+            "date": "2025-09-10T00:00:00+05:30",
+            "dateIndex": 54
+          },
+          "exit": {
+            "price": 642.7617499999999,
+            "date": "2025-09-09T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000098,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 656.8,
+            "date": "2025-09-04T00:00:00+05:30",
+            "dateIndex": 58
+          },
+          "exit": {
+            "price": 646.948,
+            "date": "2025-09-03T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999962,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 651.9,
+            "date": "2025-09-03T00:00:00+05:30",
+            "dateIndex": 59
+          },
+          "exit": {
+            "price": 642.1215,
+            "date": "2025-09-02T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000013,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 667.7,
+            "date": "2025-08-25T00:00:00+05:30",
+            "dateIndex": 65
+          },
+          "exit": {
+            "price": 684.3925,
+            "date": "2025-08-19T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "TARGET"
+          },
+          "pnl": 2.499999999999999,
+          "holdingDays": 4,
+          "result": "WIN"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 667.4,
+            "date": "2025-08-22T00:00:00+05:30",
+            "dateIndex": 66
+          },
+          "exit": {
+            "price": 684.0849999999999,
+            "date": "2025-08-19T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "TARGET"
+          },
+          "pnl": 2.499999999999992,
+          "holdingDays": 3,
+          "result": "WIN"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        }
+      ],
+      "totalTrades": 27,
+      "wins": 3,
+      "losses": 14,
+      "winRate": "11.1",
+      "totalPnL": "-13.00"
+    },
+    {
+      "symbol": "VBL",
+      "trades": [
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 469.8,
+            "date": "2025-09-12T00:00:00+05:30",
+            "dateIndex": 52
+          },
+          "exit": {
+            "price": 483.894,
+            "date": "2025-09-05T00:00:00+05:30",
+            "dayNum": 5,
+            "reason": "TARGET"
+          },
+          "pnl": 2.9999999999999987,
+          "holdingDays": 5,
+          "result": "WIN"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 474.65,
+            "date": "2025-09-11T00:00:00+05:30",
+            "dateIndex": 53
+          },
+          "exit": {
+            "price": 488.8895,
+            "date": "2025-09-05T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "TARGET"
+          },
+          "pnl": 3.0000000000000044,
+          "holdingDays": 4,
+          "result": "WIN"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 495.35,
+            "date": "2025-09-01T00:00:00+05:30",
+            "dateIndex": 61
+          },
+          "exit": {
+            "price": 487.91975,
+            "date": "2025-08-29T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000002,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 487.15,
+            "date": "2025-08-29T00:00:00+05:30",
+            "dateIndex": 62
+          },
+          "exit": {
+            "price": 501.7645,
+            "date": "2025-08-28T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "TARGET"
+          },
+          "pnl": 3.0000000000000044,
+          "holdingDays": 1,
+          "result": "WIN"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 517.65,
+            "date": "2025-08-20T00:00:00+05:30",
+            "dateIndex": 68
+          },
+          "exit": {
+            "price": 509.88525,
+            "date": "2025-08-19T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999987,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 505.4,
+            "date": "2025-08-19T00:00:00+05:30",
+            "dateIndex": 69
+          },
+          "exit": {
+            "price": 497.81899999999996,
+            "date": "2025-08-18T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000033,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 499.8,
+            "date": "2025-08-18T00:00:00+05:30",
+            "dateIndex": 70
+          },
+          "exit": {
+            "price": 514.794,
+            "date": "2025-08-13T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "TARGET"
+          },
+          "pnl": 2.9999999999999942,
+          "holdingDays": 2,
+          "result": "WIN"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 469.8,
+            "date": "2025-09-12T00:00:00+05:30",
+            "dateIndex": 52
+          },
+          "exit": {
+            "price": 481.54499999999996,
+            "date": "2025-09-05T00:00:00+05:30",
+            "dayNum": 5,
+            "reason": "TARGET"
+          },
+          "pnl": 2.499999999999989,
+          "holdingDays": 5,
+          "result": "WIN"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 474.65,
+            "date": "2025-09-11T00:00:00+05:30",
+            "dateIndex": 53
+          },
+          "exit": {
+            "price": 486.51624999999996,
+            "date": "2025-09-05T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "TARGET"
+          },
+          "pnl": 2.499999999999996,
+          "holdingDays": 4,
+          "result": "WIN"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 495.35,
+            "date": "2025-09-01T00:00:00+05:30",
+            "dateIndex": 61
+          },
+          "exit": {
+            "price": 487.91975,
+            "date": "2025-08-29T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000002,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 487.15,
+            "date": "2025-08-29T00:00:00+05:30",
+            "dateIndex": 62
+          },
+          "exit": {
+            "price": 499.32874999999996,
+            "date": "2025-08-28T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "TARGET"
+          },
+          "pnl": 2.499999999999996,
+          "holdingDays": 1,
+          "result": "WIN"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 505.4,
+            "date": "2025-08-19T00:00:00+05:30",
+            "dateIndex": 69
+          },
+          "exit": {
+            "price": 497.81899999999996,
+            "date": "2025-08-18T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000033,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 501.85,
+            "date": "2025-08-14T00:00:00+05:30",
+            "dateIndex": 71
+          },
+          "exit": {
+            "price": 514.39625,
+            "date": "2025-08-13T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "TARGET"
+          },
+          "pnl": 2.499999999999997,
+          "holdingDays": 1,
+          "result": "WIN"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 514.25,
+            "date": "2025-08-12T00:00:00+05:30",
+            "dateIndex": 73
+          },
+          "exit": {
+            "price": 506.53625,
+            "date": "2025-08-11T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000009,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 36,
+      "wins": 8,
+      "losses": 6,
+      "winRate": "22.2",
+      "totalPnL": "13.00"
+    },
+    {
+      "symbol": "EICHERMOT",
+      "trades": [
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        }
+      ],
+      "totalTrades": 6,
+      "wins": 0,
+      "losses": 0,
+      "winRate": "0.0",
+      "totalPnL": "0.00"
+    },
+    {
+      "symbol": "ABB",
+      "trades": [
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 5199,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 5121.015,
+            "date": "2025-09-26T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999938,
+          "holdingDays": 3,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 5199,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 5121.015,
+            "date": "2025-09-26T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999938,
+          "holdingDays": 3,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 5199,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 5121.015,
+            "date": "2025-09-26T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999938,
+          "holdingDays": 3,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 5199,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 5121.015,
+            "date": "2025-09-26T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999938,
+          "holdingDays": 3,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 4,
+      "wins": 0,
+      "losses": 4,
+      "winRate": "0.0",
+      "totalPnL": "-6.00"
+    },
+    {
+      "symbol": "ADANIGREEN",
+      "trades": [
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "RSI Momentum"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 0,
+      "losses": 0,
+      "winRate": "0.0",
+      "totalPnL": "0.00"
+    },
+    {
+      "symbol": "ASIANPAINT",
+      "trades": [
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 2537.3,
+            "date": "2025-09-09T00:00:00+05:30",
+            "dateIndex": 55
+          },
+          "exit": {
+            "price": 2499.2405000000003,
+            "date": "2025-08-29T00:00:00+05:30",
+            "dayNum": 7,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999938,
+          "holdingDays": 7,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 2568.6,
+            "date": "2025-09-04T00:00:00+05:30",
+            "dateIndex": 58
+          },
+          "exit": {
+            "price": 2530.071,
+            "date": "2025-09-03T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 2553.9,
+            "date": "2025-09-03T00:00:00+05:30",
+            "dateIndex": 59
+          },
+          "exit": {
+            "price": 2515.5915,
+            "date": "2025-09-01T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000036,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 2540,
+            "date": "2025-09-02T00:00:00+05:30",
+            "dateIndex": 60
+          },
+          "exit": {
+            "price": 2501.9,
+            "date": "2025-08-29T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999964,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 2518.6,
+            "date": "2025-08-29T00:00:00+05:30",
+            "dateIndex": 62
+          },
+          "exit": {
+            "price": 2480.821,
+            "date": "2025-08-28T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 2570.1,
+            "date": "2025-08-20T00:00:00+05:30",
+            "dateIndex": 68
+          },
+          "exit": {
+            "price": 2531.5485,
+            "date": "2025-08-14T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000013,
+          "holdingDays": 3,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 2579.4,
+            "date": "2025-08-19T00:00:00+05:30",
+            "dateIndex": 69
+          },
+          "exit": {
+            "price": 2540.709,
+            "date": "2025-08-18T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.50000000000001,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 2587.4,
+            "date": "2025-08-18T00:00:00+05:30",
+            "dateIndex": 70
+          },
+          "exit": {
+            "price": 2548.589,
+            "date": "2025-08-14T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000058,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 2553.9,
+            "date": "2025-09-03T00:00:00+05:30",
+            "dateIndex": 59
+          },
+          "exit": {
+            "price": 2515.5915,
+            "date": "2025-09-01T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000036,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 2540,
+            "date": "2025-09-02T00:00:00+05:30",
+            "dateIndex": 60
+          },
+          "exit": {
+            "price": 2501.9,
+            "date": "2025-08-29T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999964,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 2566.6,
+            "date": "2025-08-21T00:00:00+05:30",
+            "dateIndex": 67
+          },
+          "exit": {
+            "price": 2528.1009999999997,
+            "date": "2025-08-14T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000098,
+          "holdingDays": 4,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 2570.1,
+            "date": "2025-08-20T00:00:00+05:30",
+            "dateIndex": 68
+          },
+          "exit": {
+            "price": 2531.5485,
+            "date": "2025-08-14T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000013,
+          "holdingDays": 3,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 2579.4,
+            "date": "2025-08-19T00:00:00+05:30",
+            "dateIndex": 69
+          },
+          "exit": {
+            "price": 2540.709,
+            "date": "2025-08-18T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.50000000000001,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 2587.4,
+            "date": "2025-08-18T00:00:00+05:30",
+            "dateIndex": 70
+          },
+          "exit": {
+            "price": 2548.589,
+            "date": "2025-08-14T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000058,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 23,
+      "wins": 0,
+      "losses": 14,
+      "winRate": "0.0",
+      "totalPnL": "-21.00"
+    },
+    {
+      "symbol": "CIPLA",
+      "trades": [
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 1559,
+            "date": "2025-09-16T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 1535.615,
+            "date": "2025-09-09T00:00:00+05:30",
+            "dayNum": 5,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999993,
+          "holdingDays": 5,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 1548.3,
+            "date": "2025-09-15T00:00:00+05:30",
+            "dateIndex": 51
+          },
+          "exit": {
+            "price": 1594.749,
+            "date": "2025-09-04T00:00:00+05:30",
+            "dayNum": 7,
+            "reason": "TARGET"
+          },
+          "pnl": 3.0000000000000044,
+          "holdingDays": 7,
+          "result": "WIN"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 1574.6,
+            "date": "2025-09-12T00:00:00+05:30",
+            "dateIndex": 52
+          },
+          "exit": {
+            "price": 1550.981,
+            "date": "2025-09-09T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999947,
+          "holdingDays": 3,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 1560.8,
+            "date": "2025-09-11T00:00:00+05:30",
+            "dateIndex": 53
+          },
+          "exit": {
+            "price": 1537.388,
+            "date": "2025-09-09T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000022,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 1563.8,
+            "date": "2025-09-10T00:00:00+05:30",
+            "dateIndex": 54
+          },
+          "exit": {
+            "price": 1540.3429999999998,
+            "date": "2025-09-09T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000069,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 1553.4,
+            "date": "2025-09-05T00:00:00+05:30",
+            "dateIndex": 57
+          },
+          "exit": {
+            "price": 1600.0020000000002,
+            "date": "2025-08-26T00:00:00+05:30",
+            "dayNum": 7,
+            "reason": "TARGET"
+          },
+          "pnl": 3.0000000000000053,
+          "holdingDays": 7,
+          "result": "WIN"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 1587.2,
+            "date": "2025-09-01T00:00:00+05:30",
+            "dateIndex": 61
+          },
+          "exit": {
+            "price": 1563.392,
+            "date": "2025-08-21T00:00:00+05:30",
+            "dayNum": 6,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999993,
+          "holdingDays": 6,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 1589.4,
+            "date": "2025-08-29T00:00:00+05:30",
+            "dateIndex": 62
+          },
+          "exit": {
+            "price": 1565.559,
+            "date": "2025-08-21T00:00:00+05:30",
+            "dayNum": 5,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000075,
+          "holdingDays": 5,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 1601.2,
+            "date": "2025-08-25T00:00:00+05:30",
+            "dateIndex": 65
+          },
+          "exit": {
+            "price": 1577.182,
+            "date": "2025-08-21T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000018,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 1592.8,
+            "date": "2025-08-22T00:00:00+05:30",
+            "dateIndex": 66
+          },
+          "exit": {
+            "price": 1568.908,
+            "date": "2025-08-21T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000033,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "Trend Continuation"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 1559,
+            "date": "2025-09-16T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 1535.615,
+            "date": "2025-09-09T00:00:00+05:30",
+            "dayNum": 5,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999993,
+          "holdingDays": 5,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 1548.3,
+            "date": "2025-09-15T00:00:00+05:30",
+            "dateIndex": 51
+          },
+          "exit": {
+            "price": 1587.0074999999997,
+            "date": "2025-09-04T00:00:00+05:30",
+            "dayNum": 7,
+            "reason": "TARGET"
+          },
+          "pnl": 2.499999999999984,
+          "holdingDays": 7,
+          "result": "WIN"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 1574.6,
+            "date": "2025-09-12T00:00:00+05:30",
+            "dateIndex": 52
+          },
+          "exit": {
+            "price": 1550.981,
+            "date": "2025-09-09T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999947,
+          "holdingDays": 3,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 1560.8,
+            "date": "2025-09-11T00:00:00+05:30",
+            "dateIndex": 53
+          },
+          "exit": {
+            "price": 1537.388,
+            "date": "2025-09-09T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000022,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 1563.8,
+            "date": "2025-09-10T00:00:00+05:30",
+            "dateIndex": 54
+          },
+          "exit": {
+            "price": 1540.3429999999998,
+            "date": "2025-09-09T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000069,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 1553.4,
+            "date": "2025-09-05T00:00:00+05:30",
+            "dateIndex": 57
+          },
+          "exit": {
+            "price": 1592.235,
+            "date": "2025-09-04T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "TARGET"
+          },
+          "pnl": 2.4999999999999876,
+          "holdingDays": 1,
+          "result": "WIN"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 1587.2,
+            "date": "2025-09-01T00:00:00+05:30",
+            "dateIndex": 61
+          },
+          "exit": {
+            "price": 1563.392,
+            "date": "2025-08-21T00:00:00+05:30",
+            "dayNum": 6,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999993,
+          "holdingDays": 6,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 1589.4,
+            "date": "2025-08-29T00:00:00+05:30",
+            "dateIndex": 62
+          },
+          "exit": {
+            "price": 1565.559,
+            "date": "2025-08-21T00:00:00+05:30",
+            "dayNum": 5,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000075,
+          "holdingDays": 5,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 1601.2,
+            "date": "2025-08-25T00:00:00+05:30",
+            "dateIndex": 65
+          },
+          "exit": {
+            "price": 1577.182,
+            "date": "2025-08-21T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000018,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 1592.8,
+            "date": "2025-08-22T00:00:00+05:30",
+            "dateIndex": 66
+          },
+          "exit": {
+            "price": 1568.908,
+            "date": "2025-08-21T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000033,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum"
+        }
+      ],
+      "totalTrades": 33,
+      "wins": 4,
+      "losses": 16,
+      "winRate": "12.1",
+      "totalPnL": "-13.00"
+    },
+    {
+      "symbol": "BDL",
+      "trades": [
+        {
+          "strategy": "Trend Continuation",
+          "entry": {
+            "price": 1541.8,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 1518.673,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.499999999999997,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 1541.8,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 1518.673,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.499999999999997,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 0,
+      "losses": 2,
+      "winRate": "0.0",
+      "totalPnL": "-3.00"
+    },
+    {
+      "symbol": "ICICIPRULI",
+      "trades": [
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 603.5,
+            "date": "2025-10-07T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 594.4475,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000016,
+          "holdingDays": 3,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 603.5,
+            "date": "2025-10-07T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 594.4475,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000016,
+          "holdingDays": 3,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 0,
+      "losses": 2,
+      "winRate": "0.0",
+      "totalPnL": "-3.00"
+    },
+    {
+      "symbol": "ASHOKLEY",
+      "trades": [
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 139.83,
+            "date": "2025-10-07T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 137.73255,
+            "date": "2025-10-06T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000064,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 139.83,
+            "date": "2025-10-07T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 137.73255,
+            "date": "2025-10-06T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000064,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 0,
+      "losses": 2,
+      "winRate": "0.0",
+      "totalPnL": "-3.00"
+    },
+    {
+      "symbol": "JSWENERGY",
+      "trades": [
+        {
+          "strategy": "RSI Momentum"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 0,
+      "winRate": "0.0",
+      "totalPnL": "0.00"
+    },
+    {
+      "symbol": "AMBUJACEM",
+      "trades": [
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 573.8,
+            "date": "2025-10-06T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 565.193,
+            "date": "2025-09-30T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999951,
+          "holdingDays": 3,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0.0",
+      "totalPnL": "-1.50"
+    },
+    {
+      "symbol": "DALBHARAT",
+      "trades": [
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 2229.4,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 2285.1349999999998,
+            "date": "2025-09-25T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "TARGET"
+          },
+          "pnl": 2.4999999999999853,
+          "holdingDays": 4,
+          "result": "WIN"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 1,
+      "losses": 0,
+      "winRate": "100.0",
+      "totalPnL": "2.50"
+    },
+    {
+      "symbol": "HEROMOTOCO",
+      "trades": [
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 5615,
+            "date": "2025-10-07T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 5530.775,
+            "date": "2025-10-06T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000064,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 5615,
+            "date": "2025-10-07T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 5530.775,
+            "date": "2025-10-06T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000064,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 5615,
+            "date": "2025-10-07T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 5530.775,
+            "date": "2025-10-06T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000064,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 3,
+      "wins": 0,
+      "losses": 3,
+      "winRate": "0.0",
+      "totalPnL": "-4.50"
+    },
+    {
+      "symbol": "MOTHERSON",
+      "trades": [
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 106,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 104.41,
+            "date": "2025-09-26T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000033,
+          "holdingDays": 3,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0.0",
+      "totalPnL": "-1.50"
+    },
+    {
+      "symbol": "RECLTD",
+      "trades": [
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 377.75,
+            "date": "2025-10-07T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 387.19374999999997,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "TARGET"
+          },
+          "pnl": 2.499999999999991,
+          "holdingDays": 3,
+          "result": "WIN"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 377.75,
+            "date": "2025-10-07T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 387.19374999999997,
+            "date": "2025-10-01T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "TARGET"
+          },
+          "pnl": 2.499999999999991,
+          "holdingDays": 3,
+          "result": "WIN"
+        }
+      ],
+      "totalTrades": 2,
+      "wins": 2,
+      "losses": 0,
+      "winRate": "100.0",
+      "totalPnL": "5.00"
+    },
+    {
+      "symbol": "TITAGARH",
+      "trades": [
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 898.85,
+            "date": "2025-10-06T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 885.36725,
+            "date": "2025-10-03T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.500000000000001,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 1,
+      "wins": 0,
+      "losses": 1,
+      "winRate": "0.0",
+      "totalPnL": "-1.50"
+    },
+    {
+      "symbol": "LAURUSLABS",
+      "trades": [
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 894.85,
+            "date": "2025-09-16T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 881.42725,
+            "date": "2025-09-08T00:00:00+05:30",
+            "dayNum": 6,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000073,
+          "holdingDays": 6,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 895,
+            "date": "2025-09-15T00:00:00+05:30",
+            "dateIndex": 51
+          },
+          "exit": {
+            "price": 881.5749999999999,
+            "date": "2025-09-08T00:00:00+05:30",
+            "dayNum": 5,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000075,
+          "holdingDays": 5,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 896.05,
+            "date": "2025-09-12T00:00:00+05:30",
+            "dateIndex": 52
+          },
+          "exit": {
+            "price": 882.60925,
+            "date": "2025-09-08T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999978,
+          "holdingDays": 4,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 895.6,
+            "date": "2025-09-11T00:00:00+05:30",
+            "dateIndex": 53
+          },
+          "exit": {
+            "price": 882.166,
+            "date": "2025-09-08T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999964,
+          "holdingDays": 3,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 896.4,
+            "date": "2025-09-10T00:00:00+05:30",
+            "dateIndex": 54
+          },
+          "exit": {
+            "price": 882.954,
+            "date": "2025-09-08T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.500000000000003,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 902.3,
+            "date": "2025-09-09T00:00:00+05:30",
+            "dateIndex": 55
+          },
+          "exit": {
+            "price": 888.7655,
+            "date": "2025-09-08T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999978,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 889.9,
+            "date": "2025-08-21T00:00:00+05:30",
+            "dateIndex": 67
+          },
+          "exit": {
+            "price": 876.5514999999999,
+            "date": "2025-08-20T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000064,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 883.9,
+            "date": "2025-08-19T00:00:00+05:30",
+            "dateIndex": 69
+          },
+          "exit": {
+            "price": 870.6415,
+            "date": "2025-08-18T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.500000000000003,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 894.85,
+            "date": "2025-09-16T00:00:00+05:30",
+            "dateIndex": 50
+          },
+          "exit": {
+            "price": 881.42725,
+            "date": "2025-09-08T00:00:00+05:30",
+            "dayNum": 6,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000073,
+          "holdingDays": 6,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 895,
+            "date": "2025-09-15T00:00:00+05:30",
+            "dateIndex": 51
+          },
+          "exit": {
+            "price": 881.5749999999999,
+            "date": "2025-09-08T00:00:00+05:30",
+            "dayNum": 5,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000075,
+          "holdingDays": 5,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 896.05,
+            "date": "2025-09-12T00:00:00+05:30",
+            "dateIndex": 52
+          },
+          "exit": {
+            "price": 882.60925,
+            "date": "2025-09-08T00:00:00+05:30",
+            "dayNum": 4,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999978,
+          "holdingDays": 4,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 895.6,
+            "date": "2025-09-11T00:00:00+05:30",
+            "dateIndex": 53
+          },
+          "exit": {
+            "price": 882.166,
+            "date": "2025-09-08T00:00:00+05:30",
+            "dayNum": 3,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999964,
+          "holdingDays": 3,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 896.4,
+            "date": "2025-09-10T00:00:00+05:30",
+            "dateIndex": 54
+          },
+          "exit": {
+            "price": 882.954,
+            "date": "2025-09-08T00:00:00+05:30",
+            "dayNum": 2,
+            "reason": "STOP"
+          },
+          "pnl": -1.500000000000003,
+          "holdingDays": 2,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 902.3,
+            "date": "2025-09-09T00:00:00+05:30",
+            "dateIndex": 55
+          },
+          "exit": {
+            "price": 888.7655,
+            "date": "2025-09-08T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.4999999999999978,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 889.9,
+            "date": "2025-08-21T00:00:00+05:30",
+            "dateIndex": 67
+          },
+          "exit": {
+            "price": 876.5514999999999,
+            "date": "2025-08-20T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.5000000000000064,
+          "holdingDays": 1,
+          "result": "LOSS"
+        },
+        {
+          "strategy": "RSI Momentum",
+          "entry": {
+            "price": 883.9,
+            "date": "2025-08-19T00:00:00+05:30",
+            "dateIndex": 69
+          },
+          "exit": {
+            "price": 870.6415,
+            "date": "2025-08-18T00:00:00+05:30",
+            "dayNum": 1,
+            "reason": "STOP"
+          },
+          "pnl": -1.500000000000003,
+          "holdingDays": 1,
+          "result": "LOSS"
+        }
+      ],
+      "totalTrades": 16,
+      "wins": 0,
+      "losses": 16,
+      "winRate": "0.0",
+      "totalPnL": "-24.00"
+    }
+  ],
+  "allStrategies": [
+    {
+      "name": "Trend Continuation",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 54,
+        "winRate": 12.962962962962962,
+        "avgPnl": -0.9166666666666672,
+        "expectancy": -0.9166666666666672,
+        "avgHolding": 2.574074074074074,
+        "maxDrawdown": 49.50000000000003,
+        "sharpe": -0.6064496310619685,
+        "trapAvoidanceRate": 44.89795918367347
+      },
+      "failReason": "Negative expectancy: -0.92"
+    },
+    {
+      "name": "MACD Momentum",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 0,
+        "winRate": 0,
+        "avgPnl": 0,
+        "expectancy": 0,
+        "avgHolding": 0,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "failReason": "Insufficient trades: 0 < 15 required"
+    },
+    {
+      "name": "RSI Momentum",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 79,
+        "winRate": 13.924050632911392,
+        "avgPnl": -0.9430379746835467,
+        "expectancy": -0.9430379746835469,
+        "avgHolding": 2.392405063291139,
+        "maxDrawdown": 74.50000000000018,
+        "sharpe": -0.6809974449683932,
+        "trapAvoidanceRate": 31.896551724137932
+      },
+      "failReason": "Negative expectancy: -0.94"
+    },
+    {
+      "name": "BB Lower Bounce",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 0,
+        "winRate": 0,
+        "avgPnl": 0,
+        "expectancy": 0,
+        "avgHolding": 0,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "failReason": "Insufficient trades: 0 < 15 required"
+    },
+    {
+      "name": "EMA Pullback",
+      "score": 0,
+      "metrics": {
+        "tradeCount": 0,
+        "winRate": 0,
+        "avgPnl": 0,
+        "expectancy": 0,
+        "avgHolding": 0,
+        "maxDrawdown": 0,
+        "sharpe": 0,
+        "trapAvoidanceRate": 0
+      },
+      "failReason": "Insufficient trades: 0 < 15 required"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "category": "UPSIDE_LOM_INTRA",
+  "name": "V1 Default - UPSIDE_LOM_INTRA",
+  "version": "2.0.0",
+  "createdAt": "2025-12-22T14:36:13.009Z",
+  "thesis": "This category works when Intraday profit booking → continuation",
+  "categoryIntent": "Intraday profit booking → continuation",
+  "mustDiscover": "Best performing confirmations",
+  "confirmations": [
+    {
+      "rank": 1,
+      "rule": "controlled_pullback",
+      "description": "Controlled, shallow pullback",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 2,
+      "rule": "vwap_defense",
+      "description": "Buyers defending VWAP",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 3,
+      "rule": "no_heavy_sells",
+      "description": "No heavy sell candles",
+      "importance": "HIGH"
+    }
+  ],
+  "invalidations": [],
+  "expectedBehavior": {
+    "avgHoldingTime": "2.6 days",
+    "avgDrawdown": "49.5%",
+    "avgMove": "-0.9%",
+    "winRate": "13.0%"
+  },
+  "entryRules": {
+    "logic": "Trend Continuation",
+    "description": "Best performing logic from top-ranked strategy"
+  },
+  "exitRules": {
+    "target": 2.5,
+    "stop": 1.5,
+    "source": "From MACD Momentum"
+  },
+  "trapFilters": {
+    "enabled": true,
+    "skipOnTraps": true,
+    "minConfidence": 0.6
+  },
+  "positionSizing": {
+    "riskPerTrade": 1.5,
+    "maxPositions": 5
+  },
+  "expectedMetrics": {
+    "accuracy": "13.0%",
+    "expectancy": "-0.92%",
+    "trapAvoidance": "44.9%",
+    "avgHolding": "2.6 days"
+  },
+  "contributors": [
+    {
+      "rank": 1,
+      "logic": "Trend Continuation",
+      "score": "0.0",
+      "trades": 54,
+      "winRate": "13.0%"
+    },
+    {
+      "rank": 2,
+      "logic": "MACD Momentum",
+      "score": "0.0",
+      "trades": 0,
+      "winRate": "0.0%"
+    },
+    {
+      "rank": 3,
+      "logic": "RSI Momentum",
+      "score": "0.0",
+      "trades": 79,
+      "winRate": "13.9%"
+    }
+  ]
+}

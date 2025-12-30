@@ -1,0 +1,1912 @@
+[
+  {
+    "id": "7b590ef2-a27e-4445-b038-a1c531703dc2",
+    "categoryKey": "DOWNSIDE_LOM_SWING",
+    "ttVersion": "TT-V1",
+    "accuracy": 0.5,
+    "tradesTested": 2,
+    "recommendedLogic": {
+      "exit": {
+        "stop": 1.5,
+        "source": "From Volume Dry-Up Exhaustion",
+        "target": 2,
+        "trapFilters": {
+          "enabled": true,
+          "skipOnTraps": true,
+          "minConfidence": 0.6
+        }
+      },
+      "entry": {
+        "logic": "RSI Divergence Exhaustion",
+        "thesis": "This category works when Panic selling happened, weak hands exiting, institutions absorbing",
+        "description": "Best performing logic from top-ranked strategy",
+        "mustDiscover": "Exhaustion + Stabilization signals",
+        "confirmations": [
+          {
+            "rank": 1,
+            "rule": "rsi_exhaustion_zone",
+            "importance": "HIGH",
+            "description": "RSI in exhaustion zone (not fixed value)"
+          },
+          {
+            "rank": 2,
+            "rule": "atr_spike_contraction",
+            "importance": "HIGH",
+            "description": "ATR peaks then contracts"
+          },
+          {
+            "rank": 3,
+            "rule": "lower_wick_dominance",
+            "importance": "HIGH",
+            "description": "Lower wicks show buying"
+          },
+          {
+            "rank": 4,
+            "rule": "volume_drying",
+            "importance": "HIGH",
+            "description": "Volume declines after sell-off"
+          },
+          {
+            "rank": 5,
+            "rule": "holding_above_low",
+            "importance": "HIGH",
+            "description": "Price holds above recent low for 2 sessions"
+          }
+        ],
+        "categoryIntent": "Late-stage selling → exhaustion → bounce"
+      },
+      "trapAvoidance": [
+        "trend_continuation",
+        "momentum_chasing",
+        "breakout_logic"
+      ]
+    },
+    "entryConditions": {
+      "logic": "RSI Divergence Exhaustion",
+      "thesis": "This category works when Panic selling happened, weak hands exiting, institutions absorbing",
+      "description": "Best performing logic from top-ranked strategy",
+      "mustDiscover": "Exhaustion + Stabilization signals",
+      "confirmations": [
+        {
+          "rank": 1,
+          "rule": "rsi_exhaustion_zone",
+          "importance": "HIGH",
+          "description": "RSI in exhaustion zone (not fixed value)"
+        },
+        {
+          "rank": 2,
+          "rule": "atr_spike_contraction",
+          "importance": "HIGH",
+          "description": "ATR peaks then contracts"
+        },
+        {
+          "rank": 3,
+          "rule": "lower_wick_dominance",
+          "importance": "HIGH",
+          "description": "Lower wicks show buying"
+        },
+        {
+          "rank": 4,
+          "rule": "volume_drying",
+          "importance": "HIGH",
+          "description": "Volume declines after sell-off"
+        },
+        {
+          "rank": 5,
+          "rule": "holding_above_low",
+          "importance": "HIGH",
+          "description": "Price holds above recent low for 2 sessions"
+        }
+      ],
+      "categoryIntent": "Late-stage selling → exhaustion → bounce"
+    },
+    "exitConditions": {
+      "stop": 1.5,
+      "source": "From Volume Dry-Up Exhaustion",
+      "target": 2,
+      "trapFilters": {
+        "enabled": true,
+        "skipOnTraps": true,
+        "minConfidence": 0.6
+      }
+    },
+    "trapRules": [
+      {
+        "rule": "trend_continuation",
+        "impact": "Reduces win rate when present"
+      },
+      {
+        "rule": "momentum_chasing",
+        "impact": "Reduces win rate when present"
+      },
+      {
+        "rule": "breakout_logic",
+        "impact": "Reduces win rate when present"
+      }
+    ],
+    "strategyParams": {
+      "name": "RSI Divergence Exhaustion",
+      "stopR": 1.5,
+      "targetR": 2,
+      "description": "This category works when Panic selling happened, weak hands exiting, institutions absorbing",
+      "maxHoldingDays": 10
+    },
+    "performanceMetrics": {
+      "pnl": 0.4999999999999902,
+      "winRate": 50,
+      "drawdown": 0.01500000000000005,
+      "avgHolding": 3,
+      "expectancy": 0.4999999999999902
+    },
+    "cacheStatus": {
+      "total": 10,
+      "cached": 0,
+      "uncached": 10
+    },
+    "promotedToVersionId": null,
+    "createdAt": "2025-12-17T15:17:11.124Z",
+    "updatedAt": "2025-12-17T15:17:11.124Z"
+  },
+  {
+    "id": "d5ff1fb5-523a-4ced-a02d-987a9f5dfd03",
+    "categoryKey": "DOWNSIDE_LOM_SWING",
+    "ttVersion": "TT-V2",
+    "accuracy": 0.5,
+    "tradesTested": 2,
+    "recommendedLogic": {
+      "exit": {
+        "stop": 1.5,
+        "source": "From Volume Dry-Up Exhaustion",
+        "target": 2,
+        "trapFilters": {
+          "enabled": true,
+          "skipOnTraps": true,
+          "minConfidence": 0.6
+        }
+      },
+      "entry": {
+        "logic": "RSI Divergence Exhaustion",
+        "thesis": "This category works when Panic selling happened, weak hands exiting, institutions absorbing",
+        "description": "Best performing logic from top-ranked strategy",
+        "mustDiscover": "Exhaustion + Stabilization signals",
+        "confirmations": [
+          {
+            "rank": 1,
+            "rule": "rsi_exhaustion_zone",
+            "importance": "HIGH",
+            "description": "RSI in exhaustion zone (not fixed value)"
+          },
+          {
+            "rank": 2,
+            "rule": "atr_spike_contraction",
+            "importance": "HIGH",
+            "description": "ATR peaks then contracts"
+          },
+          {
+            "rank": 3,
+            "rule": "lower_wick_dominance",
+            "importance": "HIGH",
+            "description": "Lower wicks show buying"
+          },
+          {
+            "rank": 4,
+            "rule": "volume_drying",
+            "importance": "HIGH",
+            "description": "Volume declines after sell-off"
+          },
+          {
+            "rank": 5,
+            "rule": "holding_above_low",
+            "importance": "HIGH",
+            "description": "Price holds above recent low for 2 sessions"
+          }
+        ],
+        "categoryIntent": "Late-stage selling → exhaustion → bounce"
+      },
+      "trapAvoidance": [
+        "trend_continuation",
+        "momentum_chasing",
+        "breakout_logic"
+      ]
+    },
+    "entryConditions": {
+      "logic": "RSI Divergence Exhaustion",
+      "thesis": "This category works when Panic selling happened, weak hands exiting, institutions absorbing",
+      "description": "Best performing logic from top-ranked strategy",
+      "mustDiscover": "Exhaustion + Stabilization signals",
+      "confirmations": [
+        {
+          "rank": 1,
+          "rule": "rsi_exhaustion_zone",
+          "importance": "HIGH",
+          "description": "RSI in exhaustion zone (not fixed value)"
+        },
+        {
+          "rank": 2,
+          "rule": "atr_spike_contraction",
+          "importance": "HIGH",
+          "description": "ATR peaks then contracts"
+        },
+        {
+          "rank": 3,
+          "rule": "lower_wick_dominance",
+          "importance": "HIGH",
+          "description": "Lower wicks show buying"
+        },
+        {
+          "rank": 4,
+          "rule": "volume_drying",
+          "importance": "HIGH",
+          "description": "Volume declines after sell-off"
+        },
+        {
+          "rank": 5,
+          "rule": "holding_above_low",
+          "importance": "HIGH",
+          "description": "Price holds above recent low for 2 sessions"
+        }
+      ],
+      "categoryIntent": "Late-stage selling → exhaustion → bounce"
+    },
+    "exitConditions": {
+      "stop": 1.5,
+      "source": "From Volume Dry-Up Exhaustion",
+      "target": 2,
+      "trapFilters": {
+        "enabled": true,
+        "skipOnTraps": true,
+        "minConfidence": 0.6
+      }
+    },
+    "trapRules": [
+      {
+        "rule": "trend_continuation",
+        "impact": "Reduces win rate when present"
+      },
+      {
+        "rule": "momentum_chasing",
+        "impact": "Reduces win rate when present"
+      },
+      {
+        "rule": "breakout_logic",
+        "impact": "Reduces win rate when present"
+      }
+    ],
+    "strategyParams": {
+      "name": "RSI Divergence Exhaustion",
+      "stopR": 1.5,
+      "targetR": 2,
+      "description": "This category works when Panic selling happened, weak hands exiting, institutions absorbing",
+      "maxHoldingDays": 10
+    },
+    "performanceMetrics": {
+      "pnl": 0.4999999999999902,
+      "winRate": 50,
+      "drawdown": 0.01500000000000005,
+      "avgHolding": 3,
+      "expectancy": 0.4999999999999902
+    },
+    "cacheStatus": {
+      "total": 112,
+      "cached": 0,
+      "uncached": 112
+    },
+    "promotedToVersionId": 200,
+    "createdAt": "2025-12-17T15:33:15.048Z",
+    "updatedAt": "2025-12-18T12:21:42.671Z"
+  },
+  {
+    "id": "a88d3236-2bcd-49ef-8458-c1b07235dbbd",
+    "categoryKey": "DOWNSIDE_LOM_SWING",
+    "ttVersion": "TT-V3",
+    "accuracy": 0.5,
+    "tradesTested": 2,
+    "recommendedLogic": {
+      "exit": {
+        "stop": 1.5,
+        "source": "From Volume Dry-Up Exhaustion",
+        "target": 2,
+        "trapFilters": {
+          "enabled": true,
+          "skipOnTraps": true,
+          "minConfidence": 0.6
+        }
+      },
+      "entry": {
+        "logic": "RSI Divergence Exhaustion",
+        "thesis": "This category works when Panic selling happened, weak hands exiting, institutions absorbing",
+        "description": "Best performing logic from top-ranked strategy",
+        "mustDiscover": "Exhaustion + Stabilization signals",
+        "confirmations": [
+          {
+            "rank": 1,
+            "rule": "rsi_exhaustion_zone",
+            "importance": "HIGH",
+            "description": "RSI in exhaustion zone (not fixed value)"
+          },
+          {
+            "rank": 2,
+            "rule": "atr_spike_contraction",
+            "importance": "HIGH",
+            "description": "ATR peaks then contracts"
+          },
+          {
+            "rank": 3,
+            "rule": "lower_wick_dominance",
+            "importance": "HIGH",
+            "description": "Lower wicks show buying"
+          },
+          {
+            "rank": 4,
+            "rule": "volume_drying",
+            "importance": "HIGH",
+            "description": "Volume declines after sell-off"
+          },
+          {
+            "rank": 5,
+            "rule": "holding_above_low",
+            "importance": "HIGH",
+            "description": "Price holds above recent low for 2 sessions"
+          }
+        ],
+        "categoryIntent": "Late-stage selling → exhaustion → bounce"
+      },
+      "trapAvoidance": [
+        "trend_continuation",
+        "momentum_chasing",
+        "breakout_logic"
+      ]
+    },
+    "entryConditions": {
+      "logic": "RSI Divergence Exhaustion",
+      "thesis": "This category works when Panic selling happened, weak hands exiting, institutions absorbing",
+      "description": "Best performing logic from top-ranked strategy",
+      "mustDiscover": "Exhaustion + Stabilization signals",
+      "confirmations": [
+        {
+          "rank": 1,
+          "rule": "rsi_exhaustion_zone",
+          "importance": "HIGH",
+          "description": "RSI in exhaustion zone (not fixed value)"
+        },
+        {
+          "rank": 2,
+          "rule": "atr_spike_contraction",
+          "importance": "HIGH",
+          "description": "ATR peaks then contracts"
+        },
+        {
+          "rank": 3,
+          "rule": "lower_wick_dominance",
+          "importance": "HIGH",
+          "description": "Lower wicks show buying"
+        },
+        {
+          "rank": 4,
+          "rule": "volume_drying",
+          "importance": "HIGH",
+          "description": "Volume declines after sell-off"
+        },
+        {
+          "rank": 5,
+          "rule": "holding_above_low",
+          "importance": "HIGH",
+          "description": "Price holds above recent low for 2 sessions"
+        }
+      ],
+      "categoryIntent": "Late-stage selling → exhaustion → bounce"
+    },
+    "exitConditions": {
+      "stop": 1.5,
+      "source": "From Volume Dry-Up Exhaustion",
+      "target": 2,
+      "trapFilters": {
+        "enabled": true,
+        "skipOnTraps": true,
+        "minConfidence": 0.6
+      }
+    },
+    "trapRules": [
+      {
+        "rule": "trend_continuation",
+        "impact": "Reduces win rate when present"
+      },
+      {
+        "rule": "momentum_chasing",
+        "impact": "Reduces win rate when present"
+      },
+      {
+        "rule": "breakout_logic",
+        "impact": "Reduces win rate when present"
+      }
+    ],
+    "strategyParams": {
+      "name": "RSI Divergence Exhaustion",
+      "stopR": 1.5,
+      "targetR": 2,
+      "description": "This category works when Panic selling happened, weak hands exiting, institutions absorbing",
+      "maxHoldingDays": 10
+    },
+    "performanceMetrics": {
+      "pnl": 0.4999999999999902,
+      "winRate": 50,
+      "drawdown": 0.01500000000000005,
+      "avgHolding": 3,
+      "expectancy": 0.4999999999999902
+    },
+    "cacheStatus": {
+      "total": 112,
+      "cached": 0,
+      "uncached": 112
+    },
+    "promotedToVersionId": 200,
+    "createdAt": "2025-12-18T14:04:27.049Z",
+    "updatedAt": "2025-12-18T14:04:39.408Z"
+  },
+  {
+    "id": "4fd3927a-2bc8-41a0-8e61-5a22f2ff7a03",
+    "categoryKey": "MULTI_SUPPORT_BO",
+    "ttVersion": "TT-V1",
+    "accuracy": 0,
+    "tradesTested": 0,
+    "recommendedLogic": {
+      "exit": {
+        "stop": 1.5,
+        "source": "From Range Breakout",
+        "target": 3,
+        "trapFilters": {
+          "enabled": true,
+          "skipOnTraps": true,
+          "minConfidence": 0.6
+        }
+      },
+      "entry": {
+        "logic": "Range Breakout",
+        "thesis": "This category works when Same as MULTI_RESISTANCE_BO but inverted for downside",
+        "description": "Best performing logic from top-ranked strategy",
+        "mustDiscover": "Breakdown confirmation quality",
+        "confirmations": [
+          {
+            "rank": 1,
+            "rule": "support_weakening",
+            "importance": "HIGH",
+            "description": "Support getting weaker with each test"
+          },
+          {
+            "rank": 2,
+            "rule": "failed_bounces",
+            "importance": "HIGH",
+            "description": "Bounces getting weaker"
+          },
+          {
+            "rank": 3,
+            "rule": "distribution_candles",
+            "importance": "HIGH",
+            "description": "Distribution candles appearing"
+          },
+          {
+            "rank": 4,
+            "rule": "breakdown_followthrough",
+            "importance": "HIGH",
+            "description": "Breakdown with follow-through"
+          }
+        ],
+        "categoryIntent": "Demand absorption → breakdown"
+      },
+      "trapAvoidance": [
+        "bounce_logic",
+        "mean_reversion"
+      ]
+    },
+    "entryConditions": {
+      "logic": "Range Breakout",
+      "thesis": "This category works when Same as MULTI_RESISTANCE_BO but inverted for downside",
+      "description": "Best performing logic from top-ranked strategy",
+      "mustDiscover": "Breakdown confirmation quality",
+      "confirmations": [
+        {
+          "rank": 1,
+          "rule": "support_weakening",
+          "importance": "HIGH",
+          "description": "Support getting weaker with each test"
+        },
+        {
+          "rank": 2,
+          "rule": "failed_bounces",
+          "importance": "HIGH",
+          "description": "Bounces getting weaker"
+        },
+        {
+          "rank": 3,
+          "rule": "distribution_candles",
+          "importance": "HIGH",
+          "description": "Distribution candles appearing"
+        },
+        {
+          "rank": 4,
+          "rule": "breakdown_followthrough",
+          "importance": "HIGH",
+          "description": "Breakdown with follow-through"
+        }
+      ],
+      "categoryIntent": "Demand absorption → breakdown"
+    },
+    "exitConditions": {
+      "stop": 1.5,
+      "source": "From Range Breakout",
+      "target": 3,
+      "trapFilters": {
+        "enabled": true,
+        "skipOnTraps": true,
+        "minConfidence": 0.6
+      }
+    },
+    "trapRules": [
+      {
+        "rule": "bounce_logic",
+        "impact": "Reduces win rate when present"
+      },
+      {
+        "rule": "mean_reversion",
+        "impact": "Reduces win rate when present"
+      }
+    ],
+    "strategyParams": {
+      "name": "Range Breakout",
+      "stopR": 1.5,
+      "targetR": 3,
+      "description": "This category works when Same as MULTI_RESISTANCE_BO but inverted for downside",
+      "maxHoldingDays": 10
+    },
+    "performanceMetrics": {
+      "pnl": 0,
+      "winRate": 0,
+      "drawdown": 0,
+      "avgHolding": 0,
+      "expectancy": 0
+    },
+    "cacheStatus": {
+      "total": 46,
+      "cached": 0,
+      "uncached": 46
+    },
+    "promotedToVersionId": null,
+    "createdAt": "2025-12-18T14:14:33.374Z",
+    "updatedAt": "2025-12-18T14:14:33.374Z"
+  },
+  {
+    "id": "1a408080-fd0f-4760-ad9d-a2776a009421",
+    "categoryKey": "SHORT_TERM_SWING_BO_DOWN",
+    "ttVersion": "TT-V2",
+    "accuracy": 0,
+    "tradesTested": 0,
+    "recommendedLogic": {
+      "exit": {
+        "stop": 1.5,
+        "source": "From Range Breakout",
+        "target": 3,
+        "trapFilters": {
+          "enabled": true,
+          "skipOnTraps": true,
+          "minConfidence": 0.6
+        }
+      },
+      "entry": {
+        "logic": "Range Breakout",
+        "thesis": "This category works when Same as UP but inverted",
+        "description": "Best performing logic from top-ranked strategy",
+        "mustDiscover": "Best performing confirmations",
+        "confirmations": [],
+        "categoryIntent": "Fast breakdown after compression"
+      },
+      "trapAvoidance": []
+    },
+    "entryConditions": {
+      "logic": "Range Breakout",
+      "thesis": "This category works when Same as UP but inverted",
+      "description": "Best performing logic from top-ranked strategy",
+      "mustDiscover": "Best performing confirmations",
+      "confirmations": [],
+      "categoryIntent": "Fast breakdown after compression"
+    },
+    "exitConditions": {
+      "stop": 1.5,
+      "source": "From Range Breakout",
+      "target": 3,
+      "trapFilters": {
+        "enabled": true,
+        "skipOnTraps": true,
+        "minConfidence": 0.6
+      }
+    },
+    "trapRules": [],
+    "strategyParams": {
+      "name": "Range Breakout",
+      "stopR": 1.5,
+      "targetR": 3,
+      "description": "This category works when Same as UP but inverted",
+      "maxHoldingDays": 10
+    },
+    "performanceMetrics": {
+      "pnl": 0,
+      "winRate": 0,
+      "drawdown": 0,
+      "avgHolding": 0,
+      "expectancy": 0
+    },
+    "cacheStatus": {
+      "total": 351,
+      "cached": 0,
+      "uncached": 351
+    },
+    "promotedToVersionId": null,
+    "createdAt": "2025-12-23T04:47:30.923Z",
+    "updatedAt": "2025-12-23T04:47:30.923Z"
+  },
+  {
+    "id": "c0dae9ef-e356-429b-8110-5ea5cdbfad6a",
+    "categoryKey": "INTRADAY_BOOST",
+    "ttVersion": "TT-V1",
+    "accuracy": 0,
+    "tradesTested": 4,
+    "recommendedLogic": {
+      "exit": {
+        "stop": 1.5,
+        "source": "From MACD Momentum",
+        "target": 2.5,
+        "trapFilters": {
+          "enabled": true,
+          "skipOnTraps": true,
+          "minConfidence": 0.6
+        }
+      },
+      "entry": {
+        "logic": "Trend Continuation",
+        "thesis": "This category works when Late-session acceleration",
+        "description": "Best performing logic from top-ranked strategy",
+        "mustDiscover": "Best performing confirmations",
+        "confirmations": [
+          {
+            "rank": 1,
+            "rule": "afternoon_momentum",
+            "importance": "HIGH",
+            "description": "Afternoon momentum build"
+          },
+          {
+            "rank": 2,
+            "rule": "failed_pullbacks",
+            "importance": "HIGH",
+            "description": "Failed pullbacks as fuel"
+          },
+          {
+            "rank": 3,
+            "rule": "volume_ramp",
+            "importance": "HIGH",
+            "description": "Volume ramping up"
+          }
+        ],
+        "categoryIntent": "Late-session acceleration"
+      },
+      "trapAvoidance": []
+    },
+    "entryConditions": {
+      "logic": "Trend Continuation",
+      "thesis": "This category works when Late-session acceleration",
+      "description": "Best performing logic from top-ranked strategy",
+      "mustDiscover": "Best performing confirmations",
+      "confirmations": [
+        {
+          "rank": 1,
+          "rule": "afternoon_momentum",
+          "importance": "HIGH",
+          "description": "Afternoon momentum build"
+        },
+        {
+          "rank": 2,
+          "rule": "failed_pullbacks",
+          "importance": "HIGH",
+          "description": "Failed pullbacks as fuel"
+        },
+        {
+          "rank": 3,
+          "rule": "volume_ramp",
+          "importance": "HIGH",
+          "description": "Volume ramping up"
+        }
+      ],
+      "categoryIntent": "Late-session acceleration"
+    },
+    "exitConditions": {
+      "stop": 1.5,
+      "source": "From MACD Momentum",
+      "target": 2.5,
+      "trapFilters": {
+        "enabled": true,
+        "skipOnTraps": true,
+        "minConfidence": 0.6
+      }
+    },
+    "trapRules": [],
+    "strategyParams": {
+      "name": "Trend Continuation",
+      "stopR": 1.5,
+      "targetR": 2.5,
+      "description": "This category works when Late-session acceleration",
+      "maxHoldingDays": 10
+    },
+    "performanceMetrics": {
+      "pnl": -1.500000000000002,
+      "winRate": 0,
+      "drawdown": 0.06000000000000007,
+      "avgHolding": 2.5,
+      "expectancy": -1.500000000000002
+    },
+    "cacheStatus": {
+      "total": 10,
+      "cached": 0,
+      "uncached": 10
+    },
+    "promotedToVersionId": null,
+    "createdAt": "2025-12-18T14:42:24.135Z",
+    "updatedAt": "2025-12-18T14:42:24.135Z"
+  },
+  {
+    "id": "34adb8c6-505f-4b51-acaf-fcb241fb7812",
+    "categoryKey": "HIGH_POWERED_STOCKS",
+    "ttVersion": "TT-V1",
+    "accuracy": 0,
+    "tradesTested": 0,
+    "recommendedLogic": {
+      "exit": {
+        "stop": 1.5,
+        "source": "From Trend Continuation",
+        "target": 3,
+        "trapFilters": {
+          "enabled": true,
+          "skipOnTraps": true,
+          "minConfidence": 0.6
+        }
+      },
+      "entry": {
+        "logic": "Trend Continuation",
+        "thesis": "This category works when High relative strength, news/sector momentum, strong institutional participation",
+        "description": "Best performing logic from top-ranked strategy",
+        "mustDiscover": "Continuation reliability",
+        "confirmations": [
+          {
+            "rank": 1,
+            "rule": "opening_range_behavior",
+            "importance": "HIGH",
+            "description": "Opening range behavior"
+          },
+          {
+            "rank": 2,
+            "rule": "vwap_acceptance",
+            "importance": "HIGH",
+            "description": "Price accepting VWAP"
+          },
+          {
+            "rank": 3,
+            "rule": "shallow_pullbacks",
+            "importance": "HIGH",
+            "description": "Shallow pullback depth"
+          },
+          {
+            "rank": 4,
+            "rule": "volume_on_push",
+            "importance": "HIGH",
+            "description": "Volume confirmation on push"
+          },
+          {
+            "rank": 5,
+            "rule": "time_of_day",
+            "importance": "HIGH",
+            "description": "Time-of-day effects"
+          }
+        ],
+        "categoryIntent": "Momentum day candidates"
+      },
+      "trapAvoidance": []
+    },
+    "entryConditions": {
+      "logic": "Trend Continuation",
+      "thesis": "This category works when High relative strength, news/sector momentum, strong institutional participation",
+      "description": "Best performing logic from top-ranked strategy",
+      "mustDiscover": "Continuation reliability",
+      "confirmations": [
+        {
+          "rank": 1,
+          "rule": "opening_range_behavior",
+          "importance": "HIGH",
+          "description": "Opening range behavior"
+        },
+        {
+          "rank": 2,
+          "rule": "vwap_acceptance",
+          "importance": "HIGH",
+          "description": "Price accepting VWAP"
+        },
+        {
+          "rank": 3,
+          "rule": "shallow_pullbacks",
+          "importance": "HIGH",
+          "description": "Shallow pullback depth"
+        },
+        {
+          "rank": 4,
+          "rule": "volume_on_push",
+          "importance": "HIGH",
+          "description": "Volume confirmation on push"
+        },
+        {
+          "rank": 5,
+          "rule": "time_of_day",
+          "importance": "HIGH",
+          "description": "Time-of-day effects"
+        }
+      ],
+      "categoryIntent": "Momentum day candidates"
+    },
+    "exitConditions": {
+      "stop": 1.5,
+      "source": "From Trend Continuation",
+      "target": 3,
+      "trapFilters": {
+        "enabled": true,
+        "skipOnTraps": true,
+        "minConfidence": 0.6
+      }
+    },
+    "trapRules": [],
+    "strategyParams": {
+      "name": "Trend Continuation",
+      "stopR": 1.5,
+      "targetR": 3,
+      "description": "This category works when High relative strength, news/sector momentum, strong institutional participation",
+      "maxHoldingDays": 10
+    },
+    "performanceMetrics": {
+      "pnl": 0,
+      "winRate": 0,
+      "drawdown": 0,
+      "avgHolding": 0,
+      "expectancy": 0
+    },
+    "cacheStatus": {
+      "total": 10,
+      "cached": 0,
+      "uncached": 10
+    },
+    "promotedToVersionId": null,
+    "createdAt": "2025-12-18T14:48:21.253Z",
+    "updatedAt": "2025-12-18T14:48:21.253Z"
+  },
+  {
+    "id": "5a1a5f93-b651-4172-bdc2-0dea25457e6b",
+    "categoryKey": "MULTI_RESISTANCE_BO",
+    "ttVersion": "TT-V1",
+    "accuracy": 0,
+    "tradesTested": 0,
+    "recommendedLogic": {
+      "exit": {
+        "stop": 1.5,
+        "source": "From Range Breakout",
+        "target": 3,
+        "trapFilters": {
+          "enabled": true,
+          "skipOnTraps": true,
+          "minConfidence": 0.6
+        }
+      },
+      "entry": {
+        "logic": "Range Breakout",
+        "thesis": "This category works when Multiple resistance tests, sellers exhausted, breakout likely but fake breakouts common",
+        "description": "Best performing logic from top-ranked strategy",
+        "mustDiscover": "Breakout confirmation quality",
+        "confirmations": [
+          {
+            "rank": 1,
+            "rule": "range_tightening",
+            "importance": "HIGH",
+            "description": "Range tightening near resistance"
+          },
+          {
+            "rank": 2,
+            "rule": "volume_contraction_pre",
+            "importance": "HIGH",
+            "description": "Volume contraction before breakout"
+          },
+          {
+            "rank": 3,
+            "rule": "breakout_close_strong",
+            "importance": "HIGH",
+            "description": "Breakout candle close > 70% of range"
+          },
+          {
+            "rank": 4,
+            "rule": "volume_expansion_on_break",
+            "importance": "HIGH",
+            "description": "Volume expansion on breakout"
+          },
+          {
+            "rank": 5,
+            "rule": "no_rejection_candle",
+            "importance": "HIGH",
+            "description": "No immediate rejection candle"
+          }
+        ],
+        "categoryIntent": "Supply absorption → breakout"
+      },
+      "trapAvoidance": [
+        "rsi_oversold_logic",
+        "mean_reversion_tools"
+      ]
+    },
+    "entryConditions": {
+      "logic": "Range Breakout",
+      "thesis": "This category works when Multiple resistance tests, sellers exhausted, breakout likely but fake breakouts common",
+      "description": "Best performing logic from top-ranked strategy",
+      "mustDiscover": "Breakout confirmation quality",
+      "confirmations": [
+        {
+          "rank": 1,
+          "rule": "range_tightening",
+          "importance": "HIGH",
+          "description": "Range tightening near resistance"
+        },
+        {
+          "rank": 2,
+          "rule": "volume_contraction_pre",
+          "importance": "HIGH",
+          "description": "Volume contraction before breakout"
+        },
+        {
+          "rank": 3,
+          "rule": "breakout_close_strong",
+          "importance": "HIGH",
+          "description": "Breakout candle close > 70% of range"
+        },
+        {
+          "rank": 4,
+          "rule": "volume_expansion_on_break",
+          "importance": "HIGH",
+          "description": "Volume expansion on breakout"
+        },
+        {
+          "rank": 5,
+          "rule": "no_rejection_candle",
+          "importance": "HIGH",
+          "description": "No immediate rejection candle"
+        }
+      ],
+      "categoryIntent": "Supply absorption → breakout"
+    },
+    "exitConditions": {
+      "stop": 1.5,
+      "source": "From Range Breakout",
+      "target": 3,
+      "trapFilters": {
+        "enabled": true,
+        "skipOnTraps": true,
+        "minConfidence": 0.6
+      }
+    },
+    "trapRules": [
+      {
+        "rule": "rsi_oversold_logic",
+        "impact": "Reduces win rate when present"
+      },
+      {
+        "rule": "mean_reversion_tools",
+        "impact": "Reduces win rate when present"
+      }
+    ],
+    "strategyParams": {
+      "name": "Range Breakout",
+      "stopR": 1.5,
+      "targetR": 3,
+      "description": "This category works when Multiple resistance tests, sellers exhausted, breakout likely but fake breakouts common",
+      "maxHoldingDays": 10
+    },
+    "performanceMetrics": {
+      "pnl": 0,
+      "winRate": 0,
+      "drawdown": 0,
+      "avgHolding": 0,
+      "expectancy": 0
+    },
+    "cacheStatus": {
+      "total": 35,
+      "cached": 0,
+      "uncached": 35
+    },
+    "promotedToVersionId": 210,
+    "createdAt": "2025-12-18T14:54:30.815Z",
+    "updatedAt": "2025-12-18T14:55:00.867Z"
+  },
+  {
+    "id": "ff898091-4481-45e2-a0f9-2a311bc87f94",
+    "categoryKey": "SHORT_TERM_SWING_BO_UP",
+    "ttVersion": "TT-V1",
+    "accuracy": 0,
+    "tradesTested": 0,
+    "recommendedLogic": {
+      "exit": {
+        "stop": 1.5,
+        "source": "From Range Breakout",
+        "target": 3,
+        "trapFilters": {
+          "enabled": true,
+          "skipOnTraps": true,
+          "minConfidence": 0.6
+        }
+      },
+      "entry": {
+        "logic": "Range Breakout",
+        "thesis": "This category works when Short-term energy build-up, momentum expansion expected",
+        "description": "Best performing logic from top-ranked strategy",
+        "mustDiscover": "Compression → expansion triggers",
+        "confirmations": [
+          {
+            "rank": 1,
+            "rule": "bb_width_contraction",
+            "importance": "HIGH",
+            "description": "Bollinger Band width contraction"
+          },
+          {
+            "rank": 2,
+            "rule": "narrow_range",
+            "importance": "HIGH",
+            "description": "Range < X% of ATR"
+          },
+          {
+            "rank": 3,
+            "rule": "expansion_volume",
+            "importance": "HIGH",
+            "description": "Expansion candle volume > average"
+          },
+          {
+            "rank": 4,
+            "rule": "followthrough_session",
+            "importance": "HIGH",
+            "description": "Follow-through next session"
+          }
+        ],
+        "categoryIntent": "Fast continuation after compression"
+      },
+      "trapAvoidance": []
+    },
+    "entryConditions": {
+      "logic": "Range Breakout",
+      "thesis": "This category works when Short-term energy build-up, momentum expansion expected",
+      "description": "Best performing logic from top-ranked strategy",
+      "mustDiscover": "Compression → expansion triggers",
+      "confirmations": [
+        {
+          "rank": 1,
+          "rule": "bb_width_contraction",
+          "importance": "HIGH",
+          "description": "Bollinger Band width contraction"
+        },
+        {
+          "rank": 2,
+          "rule": "narrow_range",
+          "importance": "HIGH",
+          "description": "Range < X% of ATR"
+        },
+        {
+          "rank": 3,
+          "rule": "expansion_volume",
+          "importance": "HIGH",
+          "description": "Expansion candle volume > average"
+        },
+        {
+          "rank": 4,
+          "rule": "followthrough_session",
+          "importance": "HIGH",
+          "description": "Follow-through next session"
+        }
+      ],
+      "categoryIntent": "Fast continuation after compression"
+    },
+    "exitConditions": {
+      "stop": 1.5,
+      "source": "From Range Breakout",
+      "target": 3,
+      "trapFilters": {
+        "enabled": true,
+        "skipOnTraps": true,
+        "minConfidence": 0.6
+      }
+    },
+    "trapRules": [],
+    "strategyParams": {
+      "name": "Range Breakout",
+      "stopR": 1.5,
+      "targetR": 3,
+      "description": "This category works when Short-term energy build-up, momentum expansion expected",
+      "maxHoldingDays": 10
+    },
+    "performanceMetrics": {
+      "pnl": 0,
+      "winRate": 0,
+      "drawdown": 0,
+      "avgHolding": 0,
+      "expectancy": 0
+    },
+    "cacheStatus": {
+      "total": 274,
+      "cached": 0,
+      "uncached": 274
+    },
+    "promotedToVersionId": null,
+    "createdAt": "2025-12-19T07:11:47.275Z",
+    "updatedAt": "2025-12-19T07:11:47.275Z"
+  },
+  {
+    "id": "d045e311-e3f1-4122-b16a-f39522283b51",
+    "categoryKey": "PRE_MARKET",
+    "ttVersion": "TT-V1",
+    "accuracy": 0,
+    "tradesTested": 0,
+    "recommendedLogic": {
+      "exit": {
+        "stop": 1.5,
+        "source": "From Range Breakout",
+        "target": 3,
+        "trapFilters": {
+          "enabled": true,
+          "skipOnTraps": true,
+          "minConfidence": 0.6
+        }
+      },
+      "entry": {
+        "logic": "Range Breakout",
+        "thesis": "This category works when Gap behavior analysis",
+        "description": "Best performing logic from top-ranked strategy",
+        "mustDiscover": "Best performing confirmations",
+        "confirmations": [
+          {
+            "rank": 1,
+            "rule": "gap_acceptance_rejection",
+            "importance": "HIGH",
+            "description": "Gap acceptance vs rejection"
+          },
+          {
+            "rank": 2,
+            "rule": "opening_volume",
+            "importance": "HIGH",
+            "description": "Opening volume analysis"
+          },
+          {
+            "rank": 3,
+            "rule": "first_15min_structure",
+            "importance": "HIGH",
+            "description": "First 15-minute structure"
+          }
+        ],
+        "categoryIntent": "Gap behavior analysis"
+      },
+      "trapAvoidance": []
+    },
+    "entryConditions": {
+      "logic": "Range Breakout",
+      "thesis": "This category works when Gap behavior analysis",
+      "description": "Best performing logic from top-ranked strategy",
+      "mustDiscover": "Best performing confirmations",
+      "confirmations": [
+        {
+          "rank": 1,
+          "rule": "gap_acceptance_rejection",
+          "importance": "HIGH",
+          "description": "Gap acceptance vs rejection"
+        },
+        {
+          "rank": 2,
+          "rule": "opening_volume",
+          "importance": "HIGH",
+          "description": "Opening volume analysis"
+        },
+        {
+          "rank": 3,
+          "rule": "first_15min_structure",
+          "importance": "HIGH",
+          "description": "First 15-minute structure"
+        }
+      ],
+      "categoryIntent": "Gap behavior analysis"
+    },
+    "exitConditions": {
+      "stop": 1.5,
+      "source": "From Range Breakout",
+      "target": 3,
+      "trapFilters": {
+        "enabled": true,
+        "skipOnTraps": true,
+        "minConfidence": 0.6
+      }
+    },
+    "trapRules": [],
+    "strategyParams": {
+      "name": "Range Breakout",
+      "stopR": 1.5,
+      "targetR": 3,
+      "description": "This category works when Gap behavior analysis",
+      "maxHoldingDays": 10
+    },
+    "performanceMetrics": {
+      "pnl": 0,
+      "winRate": 0,
+      "drawdown": 0,
+      "avgHolding": 0,
+      "expectancy": 0
+    },
+    "cacheStatus": {
+      "total": 195,
+      "cached": 0,
+      "uncached": 195
+    },
+    "promotedToVersionId": null,
+    "createdAt": "2025-12-22T14:04:08.215Z",
+    "updatedAt": "2025-12-22T14:04:08.215Z"
+  },
+  {
+    "id": "ccca016a-a275-4379-9539-16e2333e9aef",
+    "categoryKey": "DOWNSIDE_LOM_INTRA",
+    "ttVersion": "TT-V1",
+    "accuracy": 0.4705882352941176,
+    "tradesTested": 17,
+    "recommendedLogic": {
+      "exit": {
+        "stop": 1.5,
+        "source": "From Volume Dry-Up Exhaustion",
+        "target": 2,
+        "trapFilters": {
+          "enabled": true,
+          "skipOnTraps": true,
+          "minConfidence": 0.6
+        }
+      },
+      "entry": {
+        "logic": "Volume Dry-Up Exhaustion",
+        "thesis": "This category works when Intraday capitulation → bounce",
+        "description": "Best performing logic from top-ranked strategy",
+        "mustDiscover": "Best performing confirmations",
+        "confirmations": [
+          {
+            "rank": 1,
+            "rule": "sharp_selloff_exhaustion",
+            "importance": "HIGH",
+            "description": "Sharp sell-off exhaustion"
+          },
+          {
+            "rank": 2,
+            "rule": "panic_volume",
+            "importance": "HIGH",
+            "description": "Panic volume spike"
+          },
+          {
+            "rank": 3,
+            "rule": "reversal_candles_at_lows",
+            "importance": "HIGH",
+            "description": "Reversal candles near lows"
+          }
+        ],
+        "categoryIntent": "Intraday capitulation → bounce"
+      },
+      "trapAvoidance": []
+    },
+    "entryConditions": {
+      "logic": "Volume Dry-Up Exhaustion",
+      "thesis": "This category works when Intraday capitulation → bounce",
+      "description": "Best performing logic from top-ranked strategy",
+      "mustDiscover": "Best performing confirmations",
+      "confirmations": [
+        {
+          "rank": 1,
+          "rule": "sharp_selloff_exhaustion",
+          "importance": "HIGH",
+          "description": "Sharp sell-off exhaustion"
+        },
+        {
+          "rank": 2,
+          "rule": "panic_volume",
+          "importance": "HIGH",
+          "description": "Panic volume spike"
+        },
+        {
+          "rank": 3,
+          "rule": "reversal_candles_at_lows",
+          "importance": "HIGH",
+          "description": "Reversal candles near lows"
+        }
+      ],
+      "categoryIntent": "Intraday capitulation → bounce"
+    },
+    "exitConditions": {
+      "stop": 1.5,
+      "source": "From Volume Dry-Up Exhaustion",
+      "target": 2,
+      "trapFilters": {
+        "enabled": true,
+        "skipOnTraps": true,
+        "minConfidence": 0.6
+      }
+    },
+    "trapRules": [],
+    "strategyParams": {
+      "name": "Volume Dry-Up Exhaustion",
+      "stopR": 1.5,
+      "targetR": 2,
+      "description": "This category works when Intraday capitulation → bounce",
+      "maxHoldingDays": 10
+    },
+    "performanceMetrics": {
+      "pnl": 0.1470588235294126,
+      "winRate": 47.05882352941176,
+      "drawdown": 0.07500000000000014,
+      "avgHolding": 2.294117647058823,
+      "expectancy": 0.1470588235294126
+    },
+    "cacheStatus": {
+      "total": 205,
+      "cached": 0,
+      "uncached": 205
+    },
+    "promotedToVersionId": null,
+    "createdAt": "2025-12-22T14:26:07.311Z",
+    "updatedAt": "2025-12-22T14:26:07.311Z"
+  },
+  {
+    "id": "17ead986-df2a-42fe-b0d2-9e0290362a13",
+    "categoryKey": "UPSIDE_LOM_INTRA",
+    "ttVersion": "TT-V1",
+    "accuracy": 0.1296296296296296,
+    "tradesTested": 54,
+    "recommendedLogic": {
+      "exit": {
+        "stop": 1.5,
+        "source": "From MACD Momentum",
+        "target": 2.5,
+        "trapFilters": {
+          "enabled": true,
+          "skipOnTraps": true,
+          "minConfidence": 0.6
+        }
+      },
+      "entry": {
+        "logic": "Trend Continuation",
+        "thesis": "This category works when Intraday profit booking → continuation",
+        "description": "Best performing logic from top-ranked strategy",
+        "mustDiscover": "Best performing confirmations",
+        "confirmations": [
+          {
+            "rank": 1,
+            "rule": "controlled_pullback",
+            "importance": "HIGH",
+            "description": "Controlled, shallow pullback"
+          },
+          {
+            "rank": 2,
+            "rule": "vwap_defense",
+            "importance": "HIGH",
+            "description": "Buyers defending VWAP"
+          },
+          {
+            "rank": 3,
+            "rule": "no_heavy_sells",
+            "importance": "HIGH",
+            "description": "No heavy sell candles"
+          }
+        ],
+        "categoryIntent": "Intraday profit booking → continuation"
+      },
+      "trapAvoidance": []
+    },
+    "entryConditions": {
+      "logic": "Trend Continuation",
+      "thesis": "This category works when Intraday profit booking → continuation",
+      "description": "Best performing logic from top-ranked strategy",
+      "mustDiscover": "Best performing confirmations",
+      "confirmations": [
+        {
+          "rank": 1,
+          "rule": "controlled_pullback",
+          "importance": "HIGH",
+          "description": "Controlled, shallow pullback"
+        },
+        {
+          "rank": 2,
+          "rule": "vwap_defense",
+          "importance": "HIGH",
+          "description": "Buyers defending VWAP"
+        },
+        {
+          "rank": 3,
+          "rule": "no_heavy_sells",
+          "importance": "HIGH",
+          "description": "No heavy sell candles"
+        }
+      ],
+      "categoryIntent": "Intraday profit booking → continuation"
+    },
+    "exitConditions": {
+      "stop": 1.5,
+      "source": "From MACD Momentum",
+      "target": 2.5,
+      "trapFilters": {
+        "enabled": true,
+        "skipOnTraps": true,
+        "minConfidence": 0.6
+      }
+    },
+    "trapRules": [],
+    "strategyParams": {
+      "name": "Trend Continuation",
+      "stopR": 1.5,
+      "targetR": 2.5,
+      "description": "This category works when Intraday profit booking → continuation",
+      "maxHoldingDays": 10
+    },
+    "performanceMetrics": {
+      "pnl": -0.9166666666666672,
+      "winRate": 12.96296296296296,
+      "drawdown": 0.4950000000000003,
+      "avgHolding": 2.574074074074074,
+      "expectancy": -0.9166666666666672
+    },
+    "cacheStatus": {
+      "total": 126,
+      "cached": 0,
+      "uncached": 126
+    },
+    "promotedToVersionId": null,
+    "createdAt": "2025-12-22T14:36:13.071Z",
+    "updatedAt": "2025-12-22T14:36:13.071Z"
+  },
+  {
+    "id": "3238a924-6020-4f81-83bc-f598c36aacbb",
+    "categoryKey": "DAILY_CONTRACTION",
+    "ttVersion": "TT-V1",
+    "accuracy": 0,
+    "tradesTested": 0,
+    "recommendedLogic": {
+      "exit": {
+        "stop": 1.5,
+        "source": "From Volatility Squeeze",
+        "target": 2.5,
+        "trapFilters": {
+          "enabled": true,
+          "skipOnTraps": true,
+          "minConfidence": 0.6
+        }
+      },
+      "entry": {
+        "logic": "Volatility Squeeze",
+        "thesis": "This category works when Volatility squeeze",
+        "description": "Best performing logic from top-ranked strategy",
+        "mustDiscover": "Best performing confirmations",
+        "confirmations": [
+          {
+            "rank": 1,
+            "rule": "atr_contraction",
+            "importance": "HIGH",
+            "description": "ATR contracting"
+          },
+          {
+            "rank": 2,
+            "rule": "narrow_candles",
+            "importance": "HIGH",
+            "description": "Narrow body candles"
+          },
+          {
+            "rank": 3,
+            "rule": "expansion_probability",
+            "importance": "HIGH",
+            "description": "Expansion probability rising"
+          }
+        ],
+        "categoryIntent": "Volatility squeeze"
+      },
+      "trapAvoidance": []
+    },
+    "entryConditions": {
+      "logic": "Volatility Squeeze",
+      "thesis": "This category works when Volatility squeeze",
+      "description": "Best performing logic from top-ranked strategy",
+      "mustDiscover": "Best performing confirmations",
+      "confirmations": [
+        {
+          "rank": 1,
+          "rule": "atr_contraction",
+          "importance": "HIGH",
+          "description": "ATR contracting"
+        },
+        {
+          "rank": 2,
+          "rule": "narrow_candles",
+          "importance": "HIGH",
+          "description": "Narrow body candles"
+        },
+        {
+          "rank": 3,
+          "rule": "expansion_probability",
+          "importance": "HIGH",
+          "description": "Expansion probability rising"
+        }
+      ],
+      "categoryIntent": "Volatility squeeze"
+    },
+    "exitConditions": {
+      "stop": 1.5,
+      "source": "From Volatility Squeeze",
+      "target": 2.5,
+      "trapFilters": {
+        "enabled": true,
+        "skipOnTraps": true,
+        "minConfidence": 0.6
+      }
+    },
+    "trapRules": [],
+    "strategyParams": {
+      "name": "Volatility Squeeze",
+      "stopR": 1.5,
+      "targetR": 2.5,
+      "description": "This category works when Volatility squeeze",
+      "maxHoldingDays": 10
+    },
+    "performanceMetrics": {
+      "pnl": 0,
+      "winRate": 0,
+      "drawdown": 0,
+      "avgHolding": 0,
+      "expectancy": 0
+    },
+    "cacheStatus": {
+      "total": 186,
+      "cached": 0,
+      "uncached": 186
+    },
+    "promotedToVersionId": null,
+    "createdAt": "2025-12-22T14:48:34.230Z",
+    "updatedAt": "2025-12-22T14:48:34.230Z"
+  },
+  {
+    "id": "40005269-ccba-49da-8fec-dd6e1b0dafde",
+    "categoryKey": "UPSIDE_LOM_SWING",
+    "ttVersion": "TT-V1",
+    "accuracy": 0.1447368421052632,
+    "tradesTested": 76,
+    "recommendedLogic": {
+      "exit": {
+        "stop": 1.5,
+        "source": "From MACD Momentum",
+        "target": 2.5,
+        "trapFilters": {
+          "enabled": true,
+          "skipOnTraps": true,
+          "minConfidence": 0.6
+        }
+      },
+      "entry": {
+        "logic": "Trend Continuation",
+        "thesis": "This category works when Strong prior rally, profit booking phase, healthy pullback",
+        "description": "Best performing logic from top-ranked strategy",
+        "mustDiscover": "Pullback quality & continuation confirmation",
+        "confirmations": [
+          {
+            "rank": 1,
+            "rule": "ema_support_holding",
+            "importance": "HIGH",
+            "description": "EMA support holding on pullback"
+          },
+          {
+            "rank": 2,
+            "rule": "pullback_volume_low",
+            "importance": "HIGH",
+            "description": "Pullback volume < rally volume"
+          },
+          {
+            "rank": 3,
+            "rule": "higher_low_formation",
+            "importance": "HIGH",
+            "description": "Higher-low formed"
+          },
+          {
+            "rank": 4,
+            "rule": "no_distribution",
+            "importance": "HIGH",
+            "description": "No distribution candles"
+          }
+        ],
+        "categoryIntent": "Late-stage buying → exhaustion → pullback continuation"
+      },
+      "trapAvoidance": [
+        "mean_reversion_entries",
+        "oversold_logic"
+      ]
+    },
+    "entryConditions": {
+      "logic": "Trend Continuation",
+      "thesis": "This category works when Strong prior rally, profit booking phase, healthy pullback",
+      "description": "Best performing logic from top-ranked strategy",
+      "mustDiscover": "Pullback quality & continuation confirmation",
+      "confirmations": [
+        {
+          "rank": 1,
+          "rule": "ema_support_holding",
+          "importance": "HIGH",
+          "description": "EMA support holding on pullback"
+        },
+        {
+          "rank": 2,
+          "rule": "pullback_volume_low",
+          "importance": "HIGH",
+          "description": "Pullback volume < rally volume"
+        },
+        {
+          "rank": 3,
+          "rule": "higher_low_formation",
+          "importance": "HIGH",
+          "description": "Higher-low formed"
+        },
+        {
+          "rank": 4,
+          "rule": "no_distribution",
+          "importance": "HIGH",
+          "description": "No distribution candles"
+        }
+      ],
+      "categoryIntent": "Late-stage buying → exhaustion → pullback continuation"
+    },
+    "exitConditions": {
+      "stop": 1.5,
+      "source": "From MACD Momentum",
+      "target": 2.5,
+      "trapFilters": {
+        "enabled": true,
+        "skipOnTraps": true,
+        "minConfidence": 0.6
+      }
+    },
+    "trapRules": [
+      {
+        "rule": "mean_reversion_entries",
+        "impact": "Reduces win rate when present"
+      },
+      {
+        "rule": "oversold_logic",
+        "impact": "Reduces win rate when present"
+      }
+    ],
+    "strategyParams": {
+      "name": "Trend Continuation",
+      "stopR": 1.5,
+      "targetR": 2.5,
+      "description": "This category works when Strong prior rally, profit booking phase, healthy pullback",
+      "maxHoldingDays": 10
+    },
+    "performanceMetrics": {
+      "pnl": -0.8706862642760409,
+      "winRate": 14.47368421052632,
+      "drawdown": 0.6617215608497911,
+      "avgHolding": 2.802631578947369,
+      "expectancy": -0.8706862642760409
+    },
+    "cacheStatus": {
+      "total": 143,
+      "cached": 0,
+      "uncached": 143
+    },
+    "promotedToVersionId": null,
+    "createdAt": "2025-12-22T15:09:12.265Z",
+    "updatedAt": "2025-12-22T15:09:12.265Z"
+  },
+  {
+    "id": "53dd7f4d-5dc7-4309-90a6-b74820a5a4bc",
+    "categoryKey": "LONG_TERM_SWING_BO_UP",
+    "ttVersion": "TT-V1",
+    "accuracy": 0,
+    "tradesTested": 0,
+    "recommendedLogic": {
+      "exit": {
+        "stop": 1.5,
+        "source": "From Range Breakout",
+        "target": 3,
+        "trapFilters": {
+          "enabled": true,
+          "skipOnTraps": true,
+          "minConfidence": 0.6
+        }
+      },
+      "entry": {
+        "logic": "Range Breakout",
+        "thesis": "This category works when Multi-week accumulation, structural trend change",
+        "description": "Best performing logic from top-ranked strategy",
+        "mustDiscover": "Structural breakout confirmation",
+        "confirmations": [],
+        "categoryIntent": "Large base → structural breakout"
+      },
+      "trapAvoidance": []
+    },
+    "entryConditions": {
+      "logic": "Range Breakout",
+      "thesis": "This category works when Multi-week accumulation, structural trend change",
+      "description": "Best performing logic from top-ranked strategy",
+      "mustDiscover": "Structural breakout confirmation",
+      "confirmations": [],
+      "categoryIntent": "Large base → structural breakout"
+    },
+    "exitConditions": {
+      "stop": 1.5,
+      "source": "From Range Breakout",
+      "target": 3,
+      "trapFilters": {
+        "enabled": true,
+        "skipOnTraps": true,
+        "minConfidence": 0.6
+      }
+    },
+    "trapRules": [],
+    "strategyParams": {
+      "name": "Range Breakout",
+      "stopR": 1.5,
+      "targetR": 3,
+      "description": "This category works when Multi-week accumulation, structural trend change",
+      "maxHoldingDays": 10
+    },
+    "performanceMetrics": {
+      "pnl": 0,
+      "winRate": 0,
+      "drawdown": 0,
+      "avgHolding": 0,
+      "expectancy": 0
+    },
+    "cacheStatus": {
+      "total": 190,
+      "cached": 0,
+      "uncached": 190
+    },
+    "promotedToVersionId": null,
+    "createdAt": "2025-12-22T15:24:56.953Z",
+    "updatedAt": "2025-12-22T15:24:56.953Z"
+  },
+  {
+    "id": "5ceda9ae-9a8e-4e74-acef-3db0249b3842",
+    "categoryKey": "LONG_TERM_SWING_BO_DOWN",
+    "ttVersion": "TT-V1",
+    "accuracy": 0,
+    "tradesTested": 0,
+    "recommendedLogic": {
+      "exit": {
+        "stop": 1.5,
+        "source": "From Range Breakout",
+        "target": 3,
+        "trapFilters": {
+          "enabled": true,
+          "skipOnTraps": true,
+          "minConfidence": 0.6
+        }
+      },
+      "entry": {
+        "logic": "Range Breakout",
+        "thesis": "This category works when Same as UP but inverted",
+        "description": "Best performing logic from top-ranked strategy",
+        "mustDiscover": "Best performing confirmations",
+        "confirmations": [],
+        "categoryIntent": "Large top → structural breakdown"
+      },
+      "trapAvoidance": []
+    },
+    "entryConditions": {
+      "logic": "Range Breakout",
+      "thesis": "This category works when Same as UP but inverted",
+      "description": "Best performing logic from top-ranked strategy",
+      "mustDiscover": "Best performing confirmations",
+      "confirmations": [],
+      "categoryIntent": "Large top → structural breakdown"
+    },
+    "exitConditions": {
+      "stop": 1.5,
+      "source": "From Range Breakout",
+      "target": 3,
+      "trapFilters": {
+        "enabled": true,
+        "skipOnTraps": true,
+        "minConfidence": 0.6
+      }
+    },
+    "trapRules": [],
+    "strategyParams": {
+      "name": "Range Breakout",
+      "stopR": 1.5,
+      "targetR": 3,
+      "description": "This category works when Same as UP but inverted",
+      "maxHoldingDays": 10
+    },
+    "performanceMetrics": {
+      "pnl": 0,
+      "winRate": 0,
+      "drawdown": 0,
+      "avgHolding": 0,
+      "expectancy": 0
+    },
+    "cacheStatus": {
+      "total": 225,
+      "cached": 0,
+      "uncached": 225
+    },
+    "promotedToVersionId": null,
+    "createdAt": "2025-12-22T15:45:16.422Z",
+    "updatedAt": "2025-12-22T15:45:16.422Z"
+  },
+  {
+    "id": "91daf30b-10f6-422b-96b8-e4e91689dd52",
+    "categoryKey": "SHORT_TERM_SWING_BO_DOWN",
+    "ttVersion": "TT-V1",
+    "accuracy": 0,
+    "tradesTested": 0,
+    "recommendedLogic": {
+      "exit": {
+        "stop": 1.5,
+        "source": "From Range Breakout",
+        "target": 3,
+        "trapFilters": {
+          "enabled": true,
+          "skipOnTraps": true,
+          "minConfidence": 0.6
+        }
+      },
+      "entry": {
+        "logic": "Range Breakout",
+        "thesis": "This category works when Same as UP but inverted",
+        "description": "Best performing logic from top-ranked strategy",
+        "mustDiscover": "Best performing confirmations",
+        "confirmations": [],
+        "categoryIntent": "Fast breakdown after compression"
+      },
+      "trapAvoidance": []
+    },
+    "entryConditions": {
+      "logic": "Range Breakout",
+      "thesis": "This category works when Same as UP but inverted",
+      "description": "Best performing logic from top-ranked strategy",
+      "mustDiscover": "Best performing confirmations",
+      "confirmations": [],
+      "categoryIntent": "Fast breakdown after compression"
+    },
+    "exitConditions": {
+      "stop": 1.5,
+      "source": "From Range Breakout",
+      "target": 3,
+      "trapFilters": {
+        "enabled": true,
+        "skipOnTraps": true,
+        "minConfidence": 0.6
+      }
+    },
+    "trapRules": [],
+    "strategyParams": {
+      "name": "Range Breakout",
+      "stopR": 1.5,
+      "targetR": 3,
+      "description": "This category works when Same as UP but inverted",
+      "maxHoldingDays": 10
+    },
+    "performanceMetrics": {
+      "pnl": 0,
+      "winRate": 0,
+      "drawdown": 0,
+      "avgHolding": 0,
+      "expectancy": 0
+    },
+    "cacheStatus": {
+      "total": 351,
+      "cached": 0,
+      "uncached": 351
+    },
+    "promotedToVersionId": null,
+    "createdAt": "2025-12-23T04:47:19.437Z",
+    "updatedAt": "2025-12-23T04:47:19.437Z"
+  }
+]

@@ -1,0 +1,64 @@
+{
+  "category": "LONG_TERM_SWING_BO_DOWN",
+  "name": "V1 Default - LONG_TERM_SWING_BO_DOWN",
+  "version": "2.0.0",
+  "createdAt": "2025-12-22T15:45:16.379Z",
+  "thesis": "This category works when Same as UP but inverted",
+  "categoryIntent": "Large top → structural breakdown",
+  "mustDiscover": "Best performing confirmations",
+  "confirmations": [],
+  "invalidations": [],
+  "expectedBehavior": {
+    "avgHoldingTime": "5.0 days",
+    "avgDrawdown": "2.0%",
+    "avgMove": "1.5%",
+    "winRate": "50.0%"
+  },
+  "entryRules": {
+    "logic": "Range Breakout",
+    "description": "Best performing logic from top-ranked strategy"
+  },
+  "exitRules": {
+    "target": 3,
+    "stop": 1.5,
+    "source": "From Range Breakout"
+  },
+  "trapFilters": {
+    "enabled": true,
+    "skipOnTraps": true,
+    "minConfidence": 0.6
+  },
+  "positionSizing": {
+    "riskPerTrade": 1.5,
+    "maxPositions": 5
+  },
+  "expectedMetrics": {
+    "accuracy": "0.0%",
+    "expectancy": "0.00%",
+    "trapAvoidance": "0.0%",
+    "avgHolding": "0.0 days"
+  },
+  "contributors": [
+    {
+      "rank": 1,
+      "logic": "Range Breakout",
+      "score": "0.0",
+      "trades": 0,
+      "winRate": "0.0%"
+    },
+    {
+      "rank": 2,
+      "logic": "Resistance Break with Volume",
+      "score": "0.0",
+      "trades": 0,
+      "winRate": "0.0%"
+    },
+    {
+      "rank": 3,
+      "logic": "BB Squeeze Breakout",
+      "score": "0.0",
+      "trades": 0,
+      "winRate": "0.0%"
+    }
+  ]
+}

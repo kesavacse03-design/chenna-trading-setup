@@ -3,6 +3,8 @@ import DashboardCard from './DashboardCard';
 import { GroupedWatchlist, StockData, ImportWatchlistPayload } from '../types';
 import { UploadIcon } from './icons/UploadIcon';
 import ManualImport from './ManualImport';
+import TredcodeSync from './TredcodeSync';
+import SmartPasteImport from './SmartPasteImport';
 import { SearchIcon } from './icons/SearchIcon';
 import { WrenchScrewdriverIcon } from './icons/WrenchScrewdriverIcon';
 import { TrashIcon } from './icons/TrashIcon';
@@ -48,6 +50,9 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
     const [toast, setToast] = useState<string | null>(null);
     const [importReport, setImportReport] = useState<any | null>(null);
     const [isImportReportOpen, setImportReportOpen] = useState(false);
+
+    // Multi-select deletion state
+    const [selectedStocks, setSelectedStocks] = useState<Set<string>>(new Set());
 
     // Live prices from backend API
     const [livePrices, setLivePrices] = useState<Record<string, { ltp: number; updatedAt: string }>>({});
@@ -404,6 +409,137 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
         try { window.dispatchEvent(new CustomEvent('cts:toast', { detail: { message: msg, kind: 'success' } })); } catch (_) { }
     };
 
+    // Multi-select deletion helpers
+    const getStockKey = (category: string, stockName: string, date?: string) => `${category}|${stockName}|${date || ''}`;
+
+    const toggleSelectStock = (category: string, stockName: string, date?: string) => {
+        const key = getStockKey(category, stockName, date);
+        setSelectedStocks(prev => {
+            const next = new Set(prev);
+            if (next.has(key)) next.delete(key);
+            else next.add(key);
+            return next;
+        });
+    };
+
+    const toggleSelectAllInCategory = (page: string, category: string) => {
+        const allStocks = (localWatchlist[page]?.[category] || []);
+        const timeFilter = getTimeFilterFor(category);
+        const now = new Date();
+
+        // Filter stocks by time range (same logic as display)
+        const stocks = allStocks.filter((s: any) => {
+            if (!s.stockName) return false;
+            if (isStockExpired(s)) return false;
+            if (!s.stockName.toLowerCase().includes((searchTerm || '').toLowerCase())) return false;
+
+            const dtStr = s.addedDate || s.date || null;
+            if (!dtStr) return true;
+            const dt = new Date(dtStr);
+            if (Number.isNaN(dt.getTime())) return true;
+            if (timeFilter === 'ALL') return true;
+            const diffMs = now.getTime() - dt.getTime();
+            const days = diffMs / (1000 * 60 * 60 * 24);
+            if (timeFilter === '1_DAY') return days <= 1;
+            if (timeFilter === '15_DAYS') return days <= 15;
+            if (timeFilter === '30_DAYS') return days <= 30;
+            return true;
+        });
+
+        const allKeys = stocks.map((s: any) => getStockKey(category, s.stockName, s.date));
+        const allSelected = allKeys.length > 0 && allKeys.every(k => selectedStocks.has(k));
+        setSelectedStocks(prev => {
+            const next = new Set(prev);
+            if (allSelected) allKeys.forEach(k => next.delete(k));
+            else allKeys.forEach(k => next.add(k));
+            return next;
+        });
+    };
+
+    // Helper: get stocks filtered by current time range and search
+    const getFilteredStocksInCategory = (page: string, category: string) => {
+        const allStocks = (localWatchlist[page]?.[category] || []);
+        const timeFilter = getTimeFilterFor(category);
+        const now = new Date();
+
+        return allStocks.filter((s: any) => {
+            if (!s.stockName) return false;
+            if (isStockExpired(s)) return false;
+            if (!s.stockName.toLowerCase().includes((searchTerm || '').toLowerCase())) return false;
+
+            const dtStr = s.addedDate || s.date || null;
+            if (!dtStr) return true;
+            const dt = new Date(dtStr);
+            if (Number.isNaN(dt.getTime())) return true;
+            if (timeFilter === 'ALL') return true;
+            const diffMs = now.getTime() - dt.getTime();
+            const days = diffMs / (1000 * 60 * 60 * 24);
+            if (timeFilter === '1_DAY') return days <= 1;
+            if (timeFilter === '15_DAYS') return days <= 15;
+            if (timeFilter === '30_DAYS') return days <= 30;
+            return true;
+        });
+    };
+
+
+    const getSelectedInCategory = (category: string) => {
+        return Array.from(selectedStocks).filter(k => k.startsWith(`${category}|`));
+    };
+
+    const handleDeleteSelected = async (page: string, category: string) => {
+        try {
+            if (isLocked(category)) {
+                try { window.dispatchEvent(new CustomEvent('cts:toast', { detail: { message: `${category.replace(/_/g, ' ')} is locked`, kind: 'error' } })); } catch (_) { }
+                return;
+            }
+        } catch (_) { }
+
+        const selectedKeys = getSelectedInCategory(category);
+        if (selectedKeys.length === 0) {
+            try { window.dispatchEvent(new CustomEvent('cts:toast', { detail: { message: 'No stocks selected', kind: 'error' } })); } catch (_) { }
+            return;
+        }
+
+        const confirmMsg = `Delete ${selectedKeys.length} selected stock(s) from ${category.replace(/_/g, ' ')}?`;
+        if (!window.confirm(confirmMsg)) return;
+
+        // Parse selected keys to get stock details
+        const toDelete = selectedKeys.map(k => {
+            const [_, stockName, date] = k.split('|');
+            return { stockName, date };
+        });
+
+        // Optimistic UI update
+        const copy: GroupedWatchlist = JSON.parse(JSON.stringify(localWatchlist));
+        const arr = copy[page]?.[category] || [];
+        const filtered = arr.filter((s: any) => !toDelete.some(d => d.stockName === s.stockName && (d.date || '') === (s.date || '')));
+        if (copy[page]) copy[page][category] = filtered;
+        setLocalWatchlist(copy);
+
+        // Persist to storage
+        try { storage.setWatchlist(copy); } catch (_) { }
+
+        // Delete from backend
+        let deletedCount = 0;
+        for (const d of toDelete) {
+            try {
+                const result = await api.deleteCategoryStock(category, d.stockName);
+                if (result.ok) deletedCount++;
+            } catch (e) {
+                console.warn(`Failed to delete ${d.stockName}:`, e);
+            }
+        }
+
+        // Clear selections for this category
+        setSelectedStocks(prev => {
+            const next = new Set(prev);
+            selectedKeys.forEach(k => next.delete(k));
+            return next;
+        });
+
+        const msg = `Deleted ${deletedCount} stock(s) from ${category.replace(/_/g, ' ')}`;
+        try { window.dispatchEvent(new CustomEvent('cts:toast', { detail: { message: msg, kind: 'success' } })); } catch (_) { }
+    };
 
     return (
         <>
@@ -467,6 +603,12 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
                                                     <WrenchScrewdriverIcon className="w-3 h-3 mr-1.5" />
                                                     Manage Strategy
                                                 </button>
+                                                {/* Delete Selected button */}
+                                                {getSelectedInCategory(category).length > 0 && (
+                                                    <button title={`Delete ${getSelectedInCategory(category).length} selected`} disabled={!!readLocks()[category]} onClick={() => handleDeleteSelected(page, category)} className={`text-xs px-2 py-1 rounded-md border ${readLocks()[category] ? 'opacity-50 cursor-not-allowed bg-slate-700/30' : 'bg-amber-600 text-white border-amber-500 hover:bg-amber-500'}`}>
+                                                        🗑️ Delete Selected ({getSelectedInCategory(category).length})
+                                                    </button>
+                                                )}
                                                 {/* Master Delete button */}
                                                 <button title={`Delete all in ${category.replace(/_/g, ' ')}`} disabled={!!readLocks()[category]} onClick={() => handleDeleteAll(page, category)} className={`text-xs p-1 rounded-md border ${readLocks()[category] ? 'opacity-50 cursor-not-allowed bg-slate-700/30' : 'bg-red-700 text-white border-red-600'}`}>
                                                     Delete All
@@ -488,7 +630,24 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
                                         </div>
                                         <div className="max-h-[240px] overflow-y-auto border border-slate-700 rounded-md bg-slate-900/60 p-1">
                                             <div className="sticky top-0 bg-slate-800/80 z-10 rounded-t p-2 grid grid-cols-12 gap-2 items-center">
-                                                <div className="col-span-5 text-slate-300 font-semibold">Stock</div>
+                                                <div className="col-span-1">
+                                                    {(() => {
+                                                        const filteredStocks = getFilteredStocksInCategory(page, category);
+                                                        const allKeys = filteredStocks.map((s: any) => getStockKey(category, s.stockName, s.date));
+                                                        const allChecked = allKeys.length > 0 && allKeys.every(k => selectedStocks.has(k));
+                                                        return (
+                                                            <input
+                                                                type="checkbox"
+                                                                onChange={() => toggleSelectAllInCategory(page, category)}
+                                                                checked={allChecked}
+                                                                className="w-4 h-4 accent-cyan-500 cursor-pointer"
+                                                                title={`Select All (${allKeys.length} visible)`}
+                                                            />
+                                                        );
+                                                    })()}
+                                                </div>
+
+                                                <div className="col-span-4 text-slate-300 font-semibold">Stock</div>
                                                 <div className="col-span-4 text-right text-slate-300 font-semibold">Live Price</div>
                                                 <div className="col-span-2 text-right text-slate-300 font-semibold">Date</div>
                                                 <div className="col-span-1" />
@@ -516,52 +675,65 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
                                                     };
                                                     const filtered = stocks.filter(s => !isStockExpired(s) && s.stockName.toLowerCase().includes((searchTerm || '').toLowerCase()) && inTimeRange(s));
                                                     if (filtered.length === 0) return (<div className="p-3 text-sm text-slate-500">No stocks in this time range</div>);
-                                                    return filtered.map((stock: any) => (
-                                                        <div key={`${page}-${category}-${stock.stockName}-${stock.date ?? ''}`} className="grid grid-cols-12 gap-2 items-center p-2 hover:bg-slate-800/40 rounded">
-                                                            <div className="col-span-5 font-mono text-slate-200 truncate">{stock.stockName}</div>
-                                                            <div className="col-span-4 text-right text-slate-300" data-symbol={stock.stockName}>
-                                                                {(() => {
-                                                                    // Use live prices from backend API
-                                                                    const livePrice = livePrices[stock.stockName];
-                                                                    const isMarketOpen = marketStatus?.isOpen !== false;
+                                                    return filtered.map((stock: any) => {
+                                                        const stockKey = getStockKey(category, stock.stockName, stock.date);
+                                                        const isSelected = selectedStocks.has(stockKey);
+                                                        return (
+                                                            <div key={`${page}-${category}-${stock.stockName}-${stock.date ?? ''}`} className={`grid grid-cols-12 gap-2 items-center p-2 hover:bg-slate-800/40 rounded ${isSelected ? 'bg-cyan-900/20' : ''}`}>
+                                                                <div className="col-span-1">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={isSelected}
+                                                                        onChange={() => toggleSelectStock(category, stock.stockName, stock.date)}
+                                                                        className="w-4 h-4 accent-cyan-500 cursor-pointer"
+                                                                    />
+                                                                </div>
+                                                                <div className="col-span-4 font-mono text-slate-200 truncate">{stock.stockName}</div>
+                                                                <div className="col-span-4 text-right text-slate-300" data-symbol={stock.stockName}>
+                                                                    {(() => {
+                                                                        // Use live prices from backend API
+                                                                        const livePrice = livePrices[stock.stockName];
+                                                                        const isMarketOpen = marketStatus?.isOpen !== false;
 
-                                                                    if (livePrice && livePrice.ltp) {
-                                                                        // Green when market open, Blue when closed
-                                                                        const priceColor = isMarketOpen ? 'text-green-400' : 'text-blue-400';
+                                                                        if (livePrice && livePrice.ltp) {
+                                                                            // Green when market open, Blue when closed
+                                                                            const priceColor = isMarketOpen ? 'text-green-400' : 'text-blue-400';
+                                                                            return (
+                                                                                <div className="text-right">
+                                                                                    <div className={`${priceColor} font-medium`}>₹{livePrice.ltp.toFixed(2)}</div>
+                                                                                    <div className="text-xs text-slate-400">
+                                                                                        {new Date(livePrice.updatedAt).toLocaleTimeString('en-IN', {
+                                                                                            hour: '2-digit',
+                                                                                            minute: '2-digit'
+                                                                                        })}
+                                                                                        {!isMarketOpen && <span className="ml-1 text-blue-400">●</span>}
+                                                                                    </div>
+                                                                                </div>
+                                                                            );
+                                                                        }
+
+                                                                        // Fallback to old cached price if live price not available
+                                                                        const p = getCachedPrice(stock.stockName);
+                                                                        if (!p) return <span className="text-slate-500">—</span>;
                                                                         return (
                                                                             <div className="text-right">
-                                                                                <div className={`${priceColor} font-medium`}>₹{livePrice.ltp.toFixed(2)}</div>
-                                                                                <div className="text-xs text-slate-400">
-                                                                                    {new Date(livePrice.updatedAt).toLocaleTimeString('en-IN', {
-                                                                                        hour: '2-digit',
-                                                                                        minute: '2-digit'
-                                                                                    })}
-                                                                                    {!isMarketOpen && <span className="ml-1 text-blue-400">●</span>}
-                                                                                </div>
+                                                                                <div className="text-slate-400 font-medium">{typeof p.price === 'number' ? p.price.toFixed(2) : '—'}</div>
+                                                                                <div className="text-xs text-slate-500">{p.ts ? new Date(p.ts).toLocaleTimeString() : '—'}</div>
                                                                             </div>
                                                                         );
-                                                                    }
-
-                                                                    // Fallback to old cached price if live price not available
-                                                                    const p = getCachedPrice(stock.stockName);
-                                                                    if (!p) return <span className="text-slate-500">—</span>;
-                                                                    return (
-                                                                        <div className="text-right">
-                                                                            <div className="text-slate-400 font-medium">{typeof p.price === 'number' ? p.price.toFixed(2) : '—'}</div>
-                                                                            <div className="text-xs text-slate-500">{p.ts ? new Date(p.ts).toLocaleTimeString() : '—'}</div>
-                                                                        </div>
-                                                                    );
-                                                                })()}
+                                                                    })()}
+                                                                </div>
+                                                                <div className="col-span-2 text-right text-slate-400">{stock.date ? (stock.date.length === 10 ? stock.date : new Date(stock.date).toISOString().slice(0, 10)) : (new Date().toISOString().slice(0, 10))}</div>
+                                                                <div className="col-span-1 text-right">
+                                                                    <button aria-label={`Delete ${stock.stockName} from ${category}`} onClick={() => handleDelete(page, category, stock.stockName, stock.date)} className="text-slate-400 hover:text-red-400 px-2 py-1 rounded">
+                                                                        <TrashIcon className="w-4 h-4" />
+                                                                    </button>
+                                                                </div>
                                                             </div>
-                                                            <div className="col-span-2 text-right text-slate-400">{stock.date ? (stock.date.length === 10 ? stock.date : new Date(stock.date).toISOString().slice(0, 10)) : (new Date().toISOString().slice(0, 10))}</div>
-                                                            <div className="col-span-1 text-right">
-                                                                <button aria-label={`Delete ${stock.stockName} from ${category}`} onClick={() => handleDelete(page, category, stock.stockName, stock.date)} className="text-slate-400 hover:text-red-400 px-2 py-1 rounded">
-                                                                    <TrashIcon className="w-4 h-4" />
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    ));
+                                                        )
+                                                    });
                                                 })()}
+
 
                                             </div>
                                         </div>
@@ -572,10 +744,12 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
                             <div className="text-center text-slate-500 pt-10 flex items-center justify-center h-full"><p>No active stocks. Import data to begin monitoring.</p></div>
                         )}
                     </div>
-                    <div className="flex-shrink-0 pt-3 mt-3 border-t border-slate-700">
-                        <button type="button" onClick={() => setIsImportModalOpen(true)} className="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center transition-colors text-sm">
+                    <div className="flex-shrink-0 pt-3 mt-3 border-t border-slate-700 flex gap-2">
+                        <button type="button" onClick={() => setIsImportModalOpen(true)} className="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center transition-colors text-sm">
                             <UploadIcon className="w-4 h-4 mr-2" />Import Data
                         </button>
+                        <SmartPasteImport />
+                        <TredcodeSync />
                     </div>
                 </div >
             </DashboardCard >

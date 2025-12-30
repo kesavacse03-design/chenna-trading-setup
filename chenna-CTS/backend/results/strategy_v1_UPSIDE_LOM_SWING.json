@@ -1,0 +1,98 @@
+{
+  "category": "UPSIDE_LOM_SWING",
+  "name": "V1 Default - UPSIDE_LOM_SWING",
+  "version": "2.0.0",
+  "createdAt": "2025-12-22T15:09:12.171Z",
+  "thesis": "This category works when Strong prior rally, profit booking phase, healthy pullback",
+  "categoryIntent": "Late-stage buying → exhaustion → pullback continuation",
+  "mustDiscover": "Pullback quality & continuation confirmation",
+  "confirmations": [
+    {
+      "rank": 1,
+      "rule": "ema_support_holding",
+      "description": "EMA support holding on pullback",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 2,
+      "rule": "pullback_volume_low",
+      "description": "Pullback volume < rally volume",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 3,
+      "rule": "higher_low_formation",
+      "description": "Higher-low formed",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 4,
+      "rule": "no_distribution",
+      "description": "No distribution candles",
+      "importance": "HIGH"
+    }
+  ],
+  "invalidations": [
+    {
+      "rule": "mean_reversion_entries",
+      "impact": "Reduces win rate when present"
+    },
+    {
+      "rule": "oversold_logic",
+      "impact": "Reduces win rate when present"
+    }
+  ],
+  "expectedBehavior": {
+    "avgHoldingTime": "2.8 days",
+    "avgDrawdown": "66.2%",
+    "avgMove": "-0.9%",
+    "winRate": "14.5%"
+  },
+  "entryRules": {
+    "logic": "Trend Continuation",
+    "description": "Best performing logic from top-ranked strategy"
+  },
+  "exitRules": {
+    "target": 2.5,
+    "stop": 1.5,
+    "source": "From MACD Momentum"
+  },
+  "trapFilters": {
+    "enabled": true,
+    "skipOnTraps": true,
+    "minConfidence": 0.6
+  },
+  "positionSizing": {
+    "riskPerTrade": 1.5,
+    "maxPositions": 5
+  },
+  "expectedMetrics": {
+    "accuracy": "14.5%",
+    "expectancy": "-0.87%",
+    "trapAvoidance": "43.7%",
+    "avgHolding": "2.8 days"
+  },
+  "contributors": [
+    {
+      "rank": 1,
+      "logic": "Trend Continuation",
+      "score": "0.0",
+      "trades": 76,
+      "winRate": "14.5%"
+    },
+    {
+      "rank": 2,
+      "logic": "MACD Momentum",
+      "score": "0.0",
+      "trades": 0,
+      "winRate": "0.0%"
+    },
+    {
+      "rank": 3,
+      "logic": "RSI Momentum",
+      "score": "0.0",
+      "trades": 119,
+      "winRate": "16.8%"
+    }
+  ]
+}

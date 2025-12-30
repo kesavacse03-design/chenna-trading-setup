@@ -1,0 +1,83 @@
+{
+  "category": "PRE_MARKET",
+  "name": "V1 Default - PRE_MARKET",
+  "version": "2.0.0",
+  "createdAt": "2025-12-22T14:04:07.259Z",
+  "thesis": "This category works when Gap behavior analysis",
+  "categoryIntent": "Gap behavior analysis",
+  "mustDiscover": "Best performing confirmations",
+  "confirmations": [
+    {
+      "rank": 1,
+      "rule": "gap_acceptance_rejection",
+      "description": "Gap acceptance vs rejection",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 2,
+      "rule": "opening_volume",
+      "description": "Opening volume analysis",
+      "importance": "HIGH"
+    },
+    {
+      "rank": 3,
+      "rule": "first_15min_structure",
+      "description": "First 15-minute structure",
+      "importance": "HIGH"
+    }
+  ],
+  "invalidations": [],
+  "expectedBehavior": {
+    "avgHoldingTime": "5.0 days",
+    "avgDrawdown": "2.0%",
+    "avgMove": "1.5%",
+    "winRate": "50.0%"
+  },
+  "entryRules": {
+    "logic": "Range Breakout",
+    "description": "Best performing logic from top-ranked strategy"
+  },
+  "exitRules": {
+    "target": 3,
+    "stop": 1.5,
+    "source": "From Range Breakout"
+  },
+  "trapFilters": {
+    "enabled": true,
+    "skipOnTraps": true,
+    "minConfidence": 0.6
+  },
+  "positionSizing": {
+    "riskPerTrade": 1.5,
+    "maxPositions": 5
+  },
+  "expectedMetrics": {
+    "accuracy": "0.0%",
+    "expectancy": "0.00%",
+    "trapAvoidance": "0.0%",
+    "avgHolding": "0.0 days"
+  },
+  "contributors": [
+    {
+      "rank": 1,
+      "logic": "Range Breakout",
+      "score": "0.0",
+      "trades": 0,
+      "winRate": "0.0%"
+    },
+    {
+      "rank": 2,
+      "logic": "Resistance Break with Volume",
+      "score": "0.0",
+      "trades": 0,
+      "winRate": "0.0%"
+    },
+    {
+      "rank": 3,
+      "logic": "BB Squeeze Breakout",
+      "score": "0.0",
+      "trades": 0,
+      "winRate": "0.0%"
+    }
+  ]
+}

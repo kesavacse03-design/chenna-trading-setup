@@ -1,0 +1,3622 @@
+[
+  {
+    "logic": {
+      "name": "Trend Continuation",
+      "description": "Price above SMAs with momentum",
+      "exit": {
+        "target": 3,
+        "stop": 1.5
+      },
+      "id": 1,
+      "family": "momentum"
+    },
+    "trades": [
+      {
+        "symbol": "HDFCAMC",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 2890,
+          "date": "2025-09-16T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 2846.65,
+          "date": "2025-09-10T00:00:00+05:30",
+          "dayNum": 4,
+          "reason": "STOP"
+        },
+        "pnl": -1.499999999999997,
+        "mae": -1.9031141868512111,
+        "mfe": 1.0207612456747406,
+        "holdingDays": 4,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "HDFCAMC",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 2872,
+          "date": "2025-09-15T00:00:00+05:30",
+          "dateIndex": 51
+        },
+        "exit": {
+          "price": 2828.92,
+          "date": "2025-09-09T00:00:00+05:30",
+          "dayNum": 4,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999976,
+        "mae": -1.9672701949860725,
+        "mfe": 1.653899721448468,
+        "holdingDays": 4,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "HDFCAMC",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 2946,
+          "date": "2025-08-25T00:00:00+05:30",
+          "dateIndex": 65
+        },
+        "exit": {
+          "price": 2901.81,
+          "date": "2025-08-22T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000018,
+        "mae": -1.6632722335369994,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "HDFCAMC",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "HDFCAMC",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 2897,
+          "date": "2025-08-21T00:00:00+05:30",
+          "dateIndex": 67
+        },
+        "exit": {
+          "price": 2853.545,
+          "date": "2025-08-20T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999976,
+        "mae": -2.657921988263721,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "HDFCAMC",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 2855,
+          "date": "2025-08-20T00:00:00+05:30",
+          "dateIndex": 68
+        },
+        "exit": {
+          "price": 2812.175,
+          "date": "2025-08-18T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999938,
+        "mae": -3.3975481611208407,
+        "mfe": 0.5253940455341506,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "HDFCAMC",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 2859.5,
+          "date": "2025-08-19T00:00:00+05:30",
+          "dateIndex": 69
+        },
+        "exit": {
+          "price": 2816.6075,
+          "date": "2025-08-18T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999976,
+        "mae": -3.549571603427173,
+        "mfe": 0.20982689281342895,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "HDFCAMC",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 2858.5,
+          "date": "2025-08-18T00:00:00+05:30",
+          "dateIndex": 70
+        },
+        "exit": {
+          "price": 2815.6225,
+          "date": "2025-08-14T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000018,
+        "mae": -5.4748994227741825,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "NMDC",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 76.09,
+          "date": "2025-10-07T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 74.94865,
+          "date": "2025-09-29T00:00:00+05:30",
+          "dayNum": 5,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000036,
+        "mae": -2.037061374687866,
+        "mfe": 2.4839006439742417,
+        "holdingDays": 5,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 7929,
+          "date": "2025-09-10T00:00:00+05:30",
+          "dateIndex": 54
+        },
+        "exit": {
+          "price": 7810.065,
+          "date": "2025-09-09T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000049,
+        "mae": -2.1944759742716613,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 7786.5,
+          "date": "2025-09-08T00:00:00+05:30",
+          "dateIndex": 56
+        },
+        "exit": {
+          "price": 7669.7025,
+          "date": "2025-09-03T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999958,
+        "mae": -1.675977653631285,
+        "mfe": 1.695241764592564,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 7804.5,
+          "date": "2025-09-05T00:00:00+05:30",
+          "dateIndex": 57
+        },
+        "exit": {
+          "price": 7687.4325,
+          "date": "2025-09-03T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000013,
+        "mae": -1.9027484143763214,
+        "mfe": 1.4606957524505093,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 2
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 7926.5,
+          "date": "2025-08-21T00:00:00+05:30",
+          "dateIndex": 67
+        },
+        "exit": {
+          "price": 7807.6025,
+          "date": "2025-08-19T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000004,
+        "mae": -1.5959124455938938,
+        "mfe": 0,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 7883,
+          "date": "2025-08-20T00:00:00+05:30",
+          "dateIndex": 68
+        },
+        "exit": {
+          "price": 7764.755,
+          "date": "2025-08-14T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999987,
+        "mae": -1.6998604592160345,
+        "mfe": 0.4376506406190537,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 7823.5,
+          "date": "2025-08-19T00:00:00+05:30",
+          "dateIndex": 69
+        },
+        "exit": {
+          "price": 7706.1475,
+          "date": "2025-08-13T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999996,
+        "mae": -5.553780277369464,
+        "mfe": 1.2015082763469036,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 7822.5,
+          "date": "2025-08-18T00:00:00+05:30",
+          "dateIndex": 70
+        },
+        "exit": {
+          "price": 7705.162499999999,
+          "date": "2025-08-13T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.500000000000007,
+        "mae": -5.541706615532119,
+        "mfe": 0.4729945669542985,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 670.8,
+          "date": "2025-09-15T00:00:00+05:30",
+          "dateIndex": 51
+        },
+        "exit": {
+          "price": 660.7379999999999,
+          "date": "2025-09-12T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000018,
+        "mae": -1.7740011926058403,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 664.15,
+          "date": "2025-09-12T00:00:00+05:30",
+          "dateIndex": 52
+        },
+        "exit": {
+          "price": 654.1877499999999,
+          "date": "2025-09-11T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.500000000000006,
+        "mae": -1.867048106602421,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 661,
+          "date": "2025-09-11T00:00:00+05:30",
+          "dateIndex": 53
+        },
+        "exit": {
+          "price": 651.085,
+          "date": "2025-09-10T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999947,
+        "mae": -2.4205748865355523,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 652.55,
+          "date": "2025-09-10T00:00:00+05:30",
+          "dateIndex": 54
+        },
+        "exit": {
+          "price": 642.7617499999999,
+          "date": "2025-09-09T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000098,
+        "mae": -3.762163818864448,
+        "mfe": 0.1455827139682853,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 644.6,
+          "date": "2025-09-09T00:00:00+05:30",
+          "dateIndex": 55
+        },
+        "exit": {
+          "price": 663.938,
+          "date": "2025-09-04T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "TARGET"
+        },
+        "pnl": 2.9999999999999947,
+        "mae": -0.3490536766987279,
+        "mfe": 3.3896990381632053,
+        "holdingDays": 3,
+        "exitReason": "TARGET",
+        "result": "WIN",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 649.5,
+          "date": "2025-09-08T00:00:00+05:30",
+          "dateIndex": 56
+        },
+        "exit": {
+          "price": 639.7574999999999,
+          "date": "2025-09-03T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000098,
+        "mae": -2.371054657428788,
+        "mfe": 2.6096997690531247,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 667.4,
+          "date": "2025-08-22T00:00:00+05:30",
+          "dateIndex": 66
+        },
+        "exit": {
+          "price": 657.389,
+          "date": "2025-08-19T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999951,
+        "mae": -1.5283188492657975,
+        "mfe": 2.5771651183698,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 683.05,
+          "date": "2025-08-19T00:00:00+05:30",
+          "dateIndex": 69
+        },
+        "exit": {
+          "price": 672.8042499999999,
+          "date": "2025-08-18T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000064,
+        "mae": -3.0085645267549896,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 659.15,
+          "date": "2025-08-13T00:00:00+05:30",
+          "dateIndex": 72
+        },
+        "exit": {
+          "price": 649.26275,
+          "date": "2025-08-12T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999993,
+        "mae": -3.011454145490408,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 469.8,
+          "date": "2025-09-12T00:00:00+05:30",
+          "dateIndex": 52
+        },
+        "exit": {
+          "price": 483.894,
+          "date": "2025-09-05T00:00:00+05:30",
+          "dayNum": 5,
+          "reason": "TARGET"
+        },
+        "pnl": 2.9999999999999987,
+        "mae": -0.27671349510430215,
+        "mfe": 4.927628778203486,
+        "holdingDays": 5,
+        "exitReason": "TARGET",
+        "result": "WIN",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 474.65,
+          "date": "2025-09-11T00:00:00+05:30",
+          "dateIndex": 53
+        },
+        "exit": {
+          "price": 488.8895,
+          "date": "2025-09-05T00:00:00+05:30",
+          "dayNum": 4,
+          "reason": "TARGET"
+        },
+        "pnl": 3.0000000000000044,
+        "mae": -1.2956915622037244,
+        "mfe": 3.855472453386709,
+        "holdingDays": 4,
+        "exitReason": "TARGET",
+        "result": "WIN",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 2
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 495.35,
+          "date": "2025-09-01T00:00:00+05:30",
+          "dateIndex": 61
+        },
+        "exit": {
+          "price": 487.91975,
+          "date": "2025-08-29T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000002,
+        "mae": -2.311496921368738,
+        "mfe": 0.8176037145452617,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 487.15,
+          "date": "2025-08-29T00:00:00+05:30",
+          "dateIndex": 62
+        },
+        "exit": {
+          "price": 501.7645,
+          "date": "2025-08-28T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "TARGET"
+        },
+        "pnl": 3.0000000000000044,
+        "mae": 0,
+        "mfe": 6.127476136713543,
+        "holdingDays": 1,
+        "exitReason": "TARGET",
+        "result": "WIN",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 517.65,
+          "date": "2025-08-20T00:00:00+05:30",
+          "dateIndex": 68
+        },
+        "exit": {
+          "price": 509.88525,
+          "date": "2025-08-19T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999987,
+        "mae": -3.6800927267458623,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 505.4,
+          "date": "2025-08-19T00:00:00+05:30",
+          "dateIndex": 69
+        },
+        "exit": {
+          "price": 497.81899999999996,
+          "date": "2025-08-18T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000033,
+        "mae": -2.4040364068064854,
+        "mfe": 0.672734467748325,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 499.8,
+          "date": "2025-08-18T00:00:00+05:30",
+          "dateIndex": 70
+        },
+        "exit": {
+          "price": 514.794,
+          "date": "2025-08-13T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "TARGET"
+        },
+        "pnl": 2.9999999999999942,
+        "mae": -0.07002801120448633,
+        "mfe": 4.041616646658661,
+        "holdingDays": 2,
+        "exitReason": "TARGET",
+        "result": "WIN",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "EICHERMOT",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "ABB",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 5199,
+          "date": "2025-10-01T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 5121.015,
+          "date": "2025-09-26T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999938,
+        "mae": -1.5002885170225042,
+        "mfe": 0.9040200038468936,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ADANIGREEN",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 2537.3,
+          "date": "2025-09-09T00:00:00+05:30",
+          "dateIndex": 55
+        },
+        "exit": {
+          "price": 2499.2405000000003,
+          "date": "2025-08-29T00:00:00+05:30",
+          "dayNum": 7,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999938,
+        "mae": -1.8641863398100411,
+        "mfe": 2.5499546762306315,
+        "holdingDays": 7,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 2568.6,
+          "date": "2025-09-04T00:00:00+05:30",
+          "dateIndex": 58
+        },
+        "exit": {
+          "price": 2530.071,
+          "date": "2025-09-03T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5,
+        "mae": -1.6078797788678552,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 2553.9,
+          "date": "2025-09-03T00:00:00+05:30",
+          "dateIndex": 59
+        },
+        "exit": {
+          "price": 2515.5915,
+          "date": "2025-09-01T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000036,
+        "mae": -1.5192450761580398,
+        "mfe": 0.9358236422726062,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 2540,
+          "date": "2025-09-02T00:00:00+05:30",
+          "dateIndex": 60
+        },
+        "exit": {
+          "price": 2501.9,
+          "date": "2025-08-29T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999964,
+        "mae": -1.968503937007874,
+        "mfe": 1.4881889763779599,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 2518.6,
+          "date": "2025-08-29T00:00:00+05:30",
+          "dateIndex": 62
+        },
+        "exit": {
+          "price": 2480.821,
+          "date": "2025-08-28T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5,
+        "mae": -2.128166441673942,
+        "mfe": 0.37322321924879265,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 2570.1,
+          "date": "2025-08-20T00:00:00+05:30",
+          "dateIndex": 68
+        },
+        "exit": {
+          "price": 2531.5485,
+          "date": "2025-08-14T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000013,
+        "mae": -2.817011011244702,
+        "mfe": 0.968833897513719,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 2579.4,
+          "date": "2025-08-19T00:00:00+05:30",
+          "dateIndex": 69
+        },
+        "exit": {
+          "price": 2540.709,
+          "date": "2025-08-18T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.50000000000001,
+        "mae": -1.65930061254556,
+        "mfe": 0.6047918120493103,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 2587.4,
+          "date": "2025-08-18T00:00:00+05:30",
+          "dateIndex": 70
+        },
+        "exit": {
+          "price": 2548.589,
+          "date": "2025-08-14T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000058,
+        "mae": -3.466800649300467,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 1559,
+          "date": "2025-09-16T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 1535.615,
+          "date": "2025-09-09T00:00:00+05:30",
+          "dayNum": 5,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999993,
+        "mae": -1.661321359846061,
+        "mfe": 1.3341885824246282,
+        "holdingDays": 5,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 1548.3,
+          "date": "2025-09-15T00:00:00+05:30",
+          "dateIndex": 51
+        },
+        "exit": {
+          "price": 1594.749,
+          "date": "2025-09-04T00:00:00+05:30",
+          "dayNum": 7,
+          "reason": "TARGET"
+        },
+        "pnl": 3.0000000000000044,
+        "mae": -0.981721888522899,
+        "mfe": 3.2745591939546634,
+        "holdingDays": 7,
+        "exitReason": "TARGET",
+        "result": "WIN",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 1574.6,
+          "date": "2025-09-12T00:00:00+05:30",
+          "dateIndex": 52
+        },
+        "exit": {
+          "price": 1550.981,
+          "date": "2025-09-09T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999947,
+        "mae": -2.635589991108853,
+        "mfe": 0,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 1560.8,
+          "date": "2025-09-11T00:00:00+05:30",
+          "dateIndex": 53
+        },
+        "exit": {
+          "price": 1537.388,
+          "date": "2025-09-09T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000022,
+        "mae": -1.774730907227066,
+        "mfe": 0.6535110199897518,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 1563.8,
+          "date": "2025-09-10T00:00:00+05:30",
+          "dateIndex": 54
+        },
+        "exit": {
+          "price": 1540.3429999999998,
+          "date": "2025-09-09T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000069,
+        "mae": -1.9631666453510708,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 1553.4,
+          "date": "2025-09-05T00:00:00+05:30",
+          "dateIndex": 57
+        },
+        "exit": {
+          "price": 1600.0020000000002,
+          "date": "2025-08-26T00:00:00+05:30",
+          "dayNum": 7,
+          "reason": "TARGET"
+        },
+        "pnl": 3.0000000000000053,
+        "mae": 0,
+        "mfe": 3.263808420239463,
+        "holdingDays": 7,
+        "exitReason": "TARGET",
+        "result": "WIN",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 1587.2,
+          "date": "2025-09-01T00:00:00+05:30",
+          "dateIndex": 61
+        },
+        "exit": {
+          "price": 1563.392,
+          "date": "2025-08-21T00:00:00+05:30",
+          "dayNum": 6,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999993,
+        "mae": -3.055695564516129,
+        "mfe": 1.2978830645161232,
+        "holdingDays": 6,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 1589.4,
+          "date": "2025-08-29T00:00:00+05:30",
+          "dateIndex": 62
+        },
+        "exit": {
+          "price": 1565.559,
+          "date": "2025-08-21T00:00:00+05:30",
+          "dayNum": 5,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000075,
+        "mae": -3.189882974707439,
+        "mfe": 1.15766956084056,
+        "holdingDays": 5,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 2
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 2
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 1601.2,
+          "date": "2025-08-25T00:00:00+05:30",
+          "dateIndex": 65
+        },
+        "exit": {
+          "price": 1577.182,
+          "date": "2025-08-21T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000018,
+        "mae": -3.9033225081189107,
+        "mfe": 0.04996252810391922,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 1592.8,
+          "date": "2025-08-22T00:00:00+05:30",
+          "dateIndex": 66
+        },
+        "exit": {
+          "price": 1568.908,
+          "date": "2025-08-21T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000033,
+        "mae": -3.3965344048216917,
+        "mfe": 0.2009040683073861,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 2
+      },
+      {
+        "symbol": "NMDC",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 76.09,
+          "date": "2025-10-07T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 74.94865,
+          "date": "2025-09-29T00:00:00+05:30",
+          "dayNum": 5,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000036,
+        "mae": -2.037061374687866,
+        "mfe": 2.4839006439742417,
+        "holdingDays": 5,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "EICHERMOT",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "EICHERMOT",
+        "logic": "Trend Continuation",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "ABB",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 5199,
+          "date": "2025-10-01T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 5121.015,
+          "date": "2025-09-26T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999938,
+        "mae": -1.5002885170225042,
+        "mfe": 0.9040200038468936,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "BDL",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 1541.8,
+          "date": "2025-10-01T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 1518.673,
+          "date": "2025-09-30T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.499999999999997,
+        "mae": -5.188740433259826,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "NMDC",
+        "logic": "Trend Continuation",
+        "entry": {
+          "price": 76.09,
+          "date": "2025-10-07T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 74.94865,
+          "date": "2025-09-29T00:00:00+05:30",
+          "dayNum": 5,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000036,
+        "mae": -2.037061374687866,
+        "mfe": 2.4839006439742417,
+        "holdingDays": 5,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      }
+    ],
+    "metrics": {
+      "tradeCount": 54,
+      "winRate": 12.962962962962962,
+      "avgPnl": -0.9166666666666672,
+      "expectancy": -0.9166666666666672,
+      "avgHolding": 2.574074074074074,
+      "maxDrawdown": 49.50000000000003,
+      "sharpe": -0.6064496310619685,
+      "trapAvoidanceRate": 44.89795918367347
+    },
+    "score": 0,
+    "failReason": "Negative expectancy: -0.92"
+  },
+  {
+    "logic": {
+      "name": "MACD Momentum",
+      "description": "MACD bullish with histogram expanding",
+      "exit": {
+        "target": 2.5,
+        "stop": 1.5
+      },
+      "id": 2,
+      "family": "momentum"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades: 0 < 15 required"
+  },
+  {
+    "logic": {
+      "name": "RSI Momentum",
+      "description": "RSI rising above 50 with price above SMA",
+      "exit": {
+        "target": 2.5,
+        "stop": 1.5
+      },
+      "id": 3,
+      "family": "momentum"
+    },
+    "trades": [
+      {
+        "symbol": "HDFCAMC",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 2890,
+          "date": "2025-09-16T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 2846.65,
+          "date": "2025-09-10T00:00:00+05:30",
+          "dayNum": 4,
+          "reason": "STOP"
+        },
+        "pnl": -1.499999999999997,
+        "mae": -1.9031141868512111,
+        "mfe": 1.0207612456747406,
+        "holdingDays": 4,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "HDFCAMC",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 2899,
+          "date": "2025-09-12T00:00:00+05:30",
+          "dateIndex": 52
+        },
+        "exit": {
+          "price": 2855.515,
+          "date": "2025-09-10T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000044,
+        "mae": -2.207657813038979,
+        "mfe": 0.689893066574681,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "HDFCAMC",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 2899.5,
+          "date": "2025-09-11T00:00:00+05:30",
+          "dateIndex": 53
+        },
+        "exit": {
+          "price": 2856.0075,
+          "date": "2025-09-10T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999944,
+        "mae": -2.224521469218831,
+        "mfe": 0.5863079841351957,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "HDFCAMC",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 2902,
+          "date": "2025-09-10T00:00:00+05:30",
+          "dateIndex": 54
+        },
+        "exit": {
+          "price": 2858.47,
+          "date": "2025-09-09T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000069,
+        "mae": -2.9807029634734667,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "HDFCAMC",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "HDFCAMC",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 2946,
+          "date": "2025-08-25T00:00:00+05:30",
+          "dateIndex": 65
+        },
+        "exit": {
+          "price": 2901.81,
+          "date": "2025-08-22T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000018,
+        "mae": -1.6632722335369994,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "HDFCAMC",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "HDFCAMC",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 2897,
+          "date": "2025-08-21T00:00:00+05:30",
+          "dateIndex": 67
+        },
+        "exit": {
+          "price": 2853.545,
+          "date": "2025-08-20T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999976,
+        "mae": -2.657921988263721,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "HDFCAMC",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 2855,
+          "date": "2025-08-20T00:00:00+05:30",
+          "dateIndex": 68
+        },
+        "exit": {
+          "price": 2812.175,
+          "date": "2025-08-18T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999938,
+        "mae": -3.3975481611208407,
+        "mfe": 0.5253940455341506,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "HDFCAMC",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 2859.5,
+          "date": "2025-08-19T00:00:00+05:30",
+          "dateIndex": 69
+        },
+        "exit": {
+          "price": 2816.6075,
+          "date": "2025-08-18T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999976,
+        "mae": -3.549571603427173,
+        "mfe": 0.20982689281342895,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "HDFCAMC",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 2858.5,
+          "date": "2025-08-18T00:00:00+05:30",
+          "dateIndex": 70
+        },
+        "exit": {
+          "price": 2815.6225,
+          "date": "2025-08-14T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000018,
+        "mae": -5.4748994227741825,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ICICIPRULI",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 603.5,
+          "date": "2025-10-07T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 594.4475,
+          "date": "2025-10-01T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000016,
+        "mae": -2.634631317315655,
+        "mfe": 0,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ASHOKLEY",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 139.83,
+          "date": "2025-10-07T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 137.73255,
+          "date": "2025-10-06T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000064,
+        "mae": -1.6877637130801784,
+        "mfe": 0.47915325752698806,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "JSWENERGY",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 2
+      },
+      {
+        "symbol": "AMBUJACEM",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 573.8,
+          "date": "2025-10-06T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 565.193,
+          "date": "2025-09-30T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999951,
+        "mae": -1.925758103868936,
+        "mfe": 1.0718020216103332,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "DALBHARAT",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 2229.4,
+          "date": "2025-10-01T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 2285.1349999999998,
+          "date": "2025-09-25T00:00:00+05:30",
+          "dayNum": 4,
+          "reason": "TARGET"
+        },
+        "pnl": 2.4999999999999853,
+        "mae": -1.2245447205526232,
+        "mfe": 4.059388176190904,
+        "holdingDays": 4,
+        "exitReason": "TARGET",
+        "result": "WIN",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 7804.5,
+          "date": "2025-09-05T00:00:00+05:30",
+          "dateIndex": 57
+        },
+        "exit": {
+          "price": 7687.4325,
+          "date": "2025-09-03T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000013,
+        "mae": -1.9027484143763214,
+        "mfe": 1.4606957524505093,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 7793.5,
+          "date": "2025-08-26T00:00:00+05:30",
+          "dateIndex": 64
+        },
+        "exit": {
+          "price": 7676.5975,
+          "date": "2025-08-13T00:00:00+05:30",
+          "dayNum": 8,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000018,
+        "mae": -5.190222621415281,
+        "mfe": 2.3930198242124847,
+        "holdingDays": 8,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 2
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 7926.5,
+          "date": "2025-08-21T00:00:00+05:30",
+          "dateIndex": 67
+        },
+        "exit": {
+          "price": 7807.6025,
+          "date": "2025-08-19T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000004,
+        "mae": -1.5959124455938938,
+        "mfe": 0,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 7883,
+          "date": "2025-08-20T00:00:00+05:30",
+          "dateIndex": 68
+        },
+        "exit": {
+          "price": 7764.755,
+          "date": "2025-08-14T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999987,
+        "mae": -1.6998604592160345,
+        "mfe": 0.4376506406190537,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 7823.5,
+          "date": "2025-08-19T00:00:00+05:30",
+          "dateIndex": 69
+        },
+        "exit": {
+          "price": 7706.1475,
+          "date": "2025-08-13T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999996,
+        "mae": -5.553780277369464,
+        "mfe": 1.2015082763469036,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 7822.5,
+          "date": "2025-08-18T00:00:00+05:30",
+          "dateIndex": 70
+        },
+        "exit": {
+          "price": 7705.162499999999,
+          "date": "2025-08-13T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.500000000000007,
+        "mae": -5.541706615532119,
+        "mfe": 0.4729945669542985,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "APOLLOHOSP",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 7821.5,
+          "date": "2025-08-14T00:00:00+05:30",
+          "dateIndex": 71
+        },
+        "exit": {
+          "price": 7704.1775,
+          "date": "2025-08-13T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000027,
+        "mae": -5.529629866393914,
+        "mfe": 0.2365275202966183,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 670.8,
+          "date": "2025-09-15T00:00:00+05:30",
+          "dateIndex": 51
+        },
+        "exit": {
+          "price": 660.7379999999999,
+          "date": "2025-09-12T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000018,
+        "mae": -1.7740011926058403,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 664.15,
+          "date": "2025-09-12T00:00:00+05:30",
+          "dateIndex": 52
+        },
+        "exit": {
+          "price": 654.1877499999999,
+          "date": "2025-09-11T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.500000000000006,
+        "mae": -1.867048106602421,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 661,
+          "date": "2025-09-11T00:00:00+05:30",
+          "dateIndex": 53
+        },
+        "exit": {
+          "price": 651.085,
+          "date": "2025-09-10T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999947,
+        "mae": -2.4205748865355523,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 652.55,
+          "date": "2025-09-10T00:00:00+05:30",
+          "dateIndex": 54
+        },
+        "exit": {
+          "price": 642.7617499999999,
+          "date": "2025-09-09T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000098,
+        "mae": -3.762163818864448,
+        "mfe": 0.1455827139682853,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 656.8,
+          "date": "2025-09-04T00:00:00+05:30",
+          "dateIndex": 58
+        },
+        "exit": {
+          "price": 646.948,
+          "date": "2025-09-03T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999962,
+        "mae": -3.456151035322767,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 651.9,
+          "date": "2025-09-03T00:00:00+05:30",
+          "dateIndex": 59
+        },
+        "exit": {
+          "price": 642.1215,
+          "date": "2025-09-02T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000013,
+        "mae": -3.3900905046786356,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 667.7,
+          "date": "2025-08-25T00:00:00+05:30",
+          "dateIndex": 65
+        },
+        "exit": {
+          "price": 684.3925,
+          "date": "2025-08-19T00:00:00+05:30",
+          "dayNum": 4,
+          "reason": "TARGET"
+        },
+        "pnl": 2.499999999999999,
+        "mae": -1.5725625280814737,
+        "mfe": 2.531076830912083,
+        "holdingDays": 4,
+        "exitReason": "TARGET",
+        "result": "WIN",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 667.4,
+          "date": "2025-08-22T00:00:00+05:30",
+          "dateIndex": 66
+        },
+        "exit": {
+          "price": 684.0849999999999,
+          "date": "2025-08-19T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "TARGET"
+        },
+        "pnl": 2.499999999999992,
+        "mae": -1.5283188492657975,
+        "mfe": 2.5771651183698,
+        "holdingDays": 3,
+        "exitReason": "TARGET",
+        "result": "WIN",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "SYNGENE",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 469.8,
+          "date": "2025-09-12T00:00:00+05:30",
+          "dateIndex": 52
+        },
+        "exit": {
+          "price": 481.54499999999996,
+          "date": "2025-09-05T00:00:00+05:30",
+          "dayNum": 5,
+          "reason": "TARGET"
+        },
+        "pnl": 2.499999999999989,
+        "mae": -0.27671349510430215,
+        "mfe": 4.927628778203486,
+        "holdingDays": 5,
+        "exitReason": "TARGET",
+        "result": "WIN",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 474.65,
+          "date": "2025-09-11T00:00:00+05:30",
+          "dateIndex": 53
+        },
+        "exit": {
+          "price": 486.51624999999996,
+          "date": "2025-09-05T00:00:00+05:30",
+          "dayNum": 4,
+          "reason": "TARGET"
+        },
+        "pnl": 2.499999999999996,
+        "mae": -1.2956915622037244,
+        "mfe": 3.855472453386709,
+        "holdingDays": 4,
+        "exitReason": "TARGET",
+        "result": "WIN",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 2
+      },
+      {
+        "symbol": "VBL",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 495.35,
+          "date": "2025-09-01T00:00:00+05:30",
+          "dateIndex": 61
+        },
+        "exit": {
+          "price": 487.91975,
+          "date": "2025-08-29T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000002,
+        "mae": -2.311496921368738,
+        "mfe": 0.8176037145452617,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 487.15,
+          "date": "2025-08-29T00:00:00+05:30",
+          "dateIndex": 62
+        },
+        "exit": {
+          "price": 499.32874999999996,
+          "date": "2025-08-28T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "TARGET"
+        },
+        "pnl": 2.499999999999996,
+        "mae": 0,
+        "mfe": 6.127476136713543,
+        "holdingDays": 1,
+        "exitReason": "TARGET",
+        "result": "WIN",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 505.4,
+          "date": "2025-08-19T00:00:00+05:30",
+          "dateIndex": 69
+        },
+        "exit": {
+          "price": 497.81899999999996,
+          "date": "2025-08-18T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000033,
+        "mae": -2.4040364068064854,
+        "mfe": 0.672734467748325,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 501.85,
+          "date": "2025-08-14T00:00:00+05:30",
+          "dateIndex": 71
+        },
+        "exit": {
+          "price": 514.39625,
+          "date": "2025-08-13T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "TARGET"
+        },
+        "pnl": 2.499999999999997,
+        "mae": 0,
+        "mfe": 3.6166185115074176,
+        "holdingDays": 1,
+        "exitReason": "TARGET",
+        "result": "WIN",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "VBL",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 514.25,
+          "date": "2025-08-12T00:00:00+05:30",
+          "dateIndex": 73
+        },
+        "exit": {
+          "price": 506.53625,
+          "date": "2025-08-11T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000009,
+        "mae": -4.229460379192999,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "HEROMOTOCO",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 5615,
+          "date": "2025-10-07T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 5530.775,
+          "date": "2025-10-06T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000064,
+        "mae": -1.5672306322350844,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "EICHERMOT",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "MOTHERSON",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 106,
+          "date": "2025-10-01T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 104.41,
+          "date": "2025-09-26T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000033,
+        "mae": -2.5849056603773537,
+        "mfe": 1.22641509433962,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ABB",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 5199,
+          "date": "2025-10-01T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 5121.015,
+          "date": "2025-09-26T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999938,
+        "mae": -1.5002885170225042,
+        "mfe": 0.9040200038468936,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ADANIGREEN",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 2553.9,
+          "date": "2025-09-03T00:00:00+05:30",
+          "dateIndex": 59
+        },
+        "exit": {
+          "price": 2515.5915,
+          "date": "2025-09-01T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000036,
+        "mae": -1.5192450761580398,
+        "mfe": 0.9358236422726062,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 2540,
+          "date": "2025-09-02T00:00:00+05:30",
+          "dateIndex": 60
+        },
+        "exit": {
+          "price": 2501.9,
+          "date": "2025-08-29T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999964,
+        "mae": -1.968503937007874,
+        "mfe": 1.4881889763779599,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 2566.6,
+          "date": "2025-08-21T00:00:00+05:30",
+          "dateIndex": 67
+        },
+        "exit": {
+          "price": 2528.1009999999997,
+          "date": "2025-08-14T00:00:00+05:30",
+          "dayNum": 4,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000098,
+        "mae": -2.6844853113067906,
+        "mfe": 1.1065222473311032,
+        "holdingDays": 4,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 2570.1,
+          "date": "2025-08-20T00:00:00+05:30",
+          "dateIndex": 68
+        },
+        "exit": {
+          "price": 2531.5485,
+          "date": "2025-08-14T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000013,
+        "mae": -2.817011011244702,
+        "mfe": 0.968833897513719,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 2579.4,
+          "date": "2025-08-19T00:00:00+05:30",
+          "dateIndex": 69
+        },
+        "exit": {
+          "price": 2540.709,
+          "date": "2025-08-18T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.50000000000001,
+        "mae": -1.65930061254556,
+        "mfe": 0.6047918120493103,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ASIANPAINT",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 2587.4,
+          "date": "2025-08-18T00:00:00+05:30",
+          "dateIndex": 70
+        },
+        "exit": {
+          "price": 2548.589,
+          "date": "2025-08-14T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000058,
+        "mae": -3.466800649300467,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 1559,
+          "date": "2025-09-16T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 1535.615,
+          "date": "2025-09-09T00:00:00+05:30",
+          "dayNum": 5,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999993,
+        "mae": -1.661321359846061,
+        "mfe": 1.3341885824246282,
+        "holdingDays": 5,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 1548.3,
+          "date": "2025-09-15T00:00:00+05:30",
+          "dateIndex": 51
+        },
+        "exit": {
+          "price": 1587.0074999999997,
+          "date": "2025-09-04T00:00:00+05:30",
+          "dayNum": 7,
+          "reason": "TARGET"
+        },
+        "pnl": 2.499999999999984,
+        "mae": -0.981721888522899,
+        "mfe": 3.2745591939546634,
+        "holdingDays": 7,
+        "exitReason": "TARGET",
+        "result": "WIN",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 1574.6,
+          "date": "2025-09-12T00:00:00+05:30",
+          "dateIndex": 52
+        },
+        "exit": {
+          "price": 1550.981,
+          "date": "2025-09-09T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999947,
+        "mae": -2.635589991108853,
+        "mfe": 0,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 1560.8,
+          "date": "2025-09-11T00:00:00+05:30",
+          "dateIndex": 53
+        },
+        "exit": {
+          "price": 1537.388,
+          "date": "2025-09-09T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000022,
+        "mae": -1.774730907227066,
+        "mfe": 0.6535110199897518,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 1563.8,
+          "date": "2025-09-10T00:00:00+05:30",
+          "dateIndex": 54
+        },
+        "exit": {
+          "price": 1540.3429999999998,
+          "date": "2025-09-09T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000069,
+        "mae": -1.9631666453510708,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 1553.4,
+          "date": "2025-09-05T00:00:00+05:30",
+          "dateIndex": 57
+        },
+        "exit": {
+          "price": 1592.235,
+          "date": "2025-09-04T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "TARGET"
+        },
+        "pnl": 2.4999999999999876,
+        "mae": 0,
+        "mfe": 2.9354963306295807,
+        "holdingDays": 1,
+        "exitReason": "TARGET",
+        "result": "WIN",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 1587.2,
+          "date": "2025-09-01T00:00:00+05:30",
+          "dateIndex": 61
+        },
+        "exit": {
+          "price": 1563.392,
+          "date": "2025-08-21T00:00:00+05:30",
+          "dayNum": 6,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999993,
+        "mae": -3.055695564516129,
+        "mfe": 1.2978830645161232,
+        "holdingDays": 6,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 1589.4,
+          "date": "2025-08-29T00:00:00+05:30",
+          "dateIndex": 62
+        },
+        "exit": {
+          "price": 1565.559,
+          "date": "2025-08-21T00:00:00+05:30",
+          "dayNum": 5,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000075,
+        "mae": -3.189882974707439,
+        "mfe": 1.15766956084056,
+        "holdingDays": 5,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 2
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 2
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 1601.2,
+          "date": "2025-08-25T00:00:00+05:30",
+          "dateIndex": 65
+        },
+        "exit": {
+          "price": 1577.182,
+          "date": "2025-08-21T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000018,
+        "mae": -3.9033225081189107,
+        "mfe": 0.04996252810391922,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 1592.8,
+          "date": "2025-08-22T00:00:00+05:30",
+          "dateIndex": 66
+        },
+        "exit": {
+          "price": 1568.908,
+          "date": "2025-08-21T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000033,
+        "mae": -3.3965344048216917,
+        "mfe": 0.2009040683073861,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "CIPLA",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 2
+      },
+      {
+        "symbol": "RECLTD",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 377.75,
+          "date": "2025-10-07T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 387.19374999999997,
+          "date": "2025-10-01T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "TARGET"
+        },
+        "pnl": 2.499999999999991,
+        "mae": -1.4956982131038987,
+        "mfe": 3.3223031105228356,
+        "holdingDays": 3,
+        "exitReason": "TARGET",
+        "result": "WIN",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ASHOKLEY",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 139.83,
+          "date": "2025-10-07T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 137.73255,
+          "date": "2025-10-06T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000064,
+        "mae": -1.6877637130801784,
+        "mfe": 0.47915325752698806,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ICICIPRULI",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 603.5,
+          "date": "2025-10-07T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 594.4475,
+          "date": "2025-10-01T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000016,
+        "mae": -2.634631317315655,
+        "mfe": 0,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "HEROMOTOCO",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 5615,
+          "date": "2025-10-07T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 5530.775,
+          "date": "2025-10-06T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000064,
+        "mae": -1.5672306322350844,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "EICHERMOT",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "EICHERMOT",
+        "logic": "RSI Momentum",
+        "skipped": true,
+        "reason": "Institutional trap detected",
+        "trapsDetected": 1
+      },
+      {
+        "symbol": "HEROMOTOCO",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 5615,
+          "date": "2025-10-07T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 5530.775,
+          "date": "2025-10-06T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000064,
+        "mae": -1.5672306322350844,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "ABB",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 5199,
+          "date": "2025-10-01T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 5121.015,
+          "date": "2025-09-26T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999938,
+        "mae": -1.5002885170225042,
+        "mfe": 0.9040200038468936,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "BDL",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 1541.8,
+          "date": "2025-10-01T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 1518.673,
+          "date": "2025-09-30T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.499999999999997,
+        "mae": -5.188740433259826,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "TITAGARH",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 898.85,
+          "date": "2025-10-06T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 885.36725,
+          "date": "2025-10-03T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.500000000000001,
+        "mae": -2.264004005117653,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "RECLTD",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 377.75,
+          "date": "2025-10-07T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 387.19374999999997,
+          "date": "2025-10-01T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "TARGET"
+        },
+        "pnl": 2.499999999999991,
+        "mae": -1.4956982131038987,
+        "mfe": 3.3223031105228356,
+        "holdingDays": 3,
+        "exitReason": "TARGET",
+        "result": "WIN",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "LAURUSLABS",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 894.85,
+          "date": "2025-09-16T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 881.42725,
+          "date": "2025-09-08T00:00:00+05:30",
+          "dayNum": 6,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000073,
+        "mae": -1.8997597362686482,
+        "mfe": 1.8550595071799767,
+        "holdingDays": 6,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "LAURUSLABS",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 895,
+          "date": "2025-09-15T00:00:00+05:30",
+          "dateIndex": 51
+        },
+        "exit": {
+          "price": 881.5749999999999,
+          "date": "2025-09-08T00:00:00+05:30",
+          "dayNum": 5,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000075,
+        "mae": -1.916201117318433,
+        "mfe": 1.8379888268156477,
+        "holdingDays": 5,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "LAURUSLABS",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 896.05,
+          "date": "2025-09-12T00:00:00+05:30",
+          "dateIndex": 52
+        },
+        "exit": {
+          "price": 882.60925,
+          "date": "2025-09-08T00:00:00+05:30",
+          "dayNum": 4,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999978,
+        "mae": -2.0311366553205663,
+        "mfe": 1.7186540929635725,
+        "holdingDays": 4,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "LAURUSLABS",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 895.6,
+          "date": "2025-09-11T00:00:00+05:30",
+          "dateIndex": 53
+        },
+        "exit": {
+          "price": 882.166,
+          "date": "2025-09-08T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999964,
+        "mae": -1.9819115676641357,
+        "mfe": 1.7697632871817799,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "LAURUSLABS",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 896.4,
+          "date": "2025-09-10T00:00:00+05:30",
+          "dateIndex": 54
+        },
+        "exit": {
+          "price": 882.954,
+          "date": "2025-09-08T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.500000000000003,
+        "mae": -2.069388665774203,
+        "mfe": 1.031905399375279,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "LAURUSLABS",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 902.3,
+          "date": "2025-09-09T00:00:00+05:30",
+          "dateIndex": 55
+        },
+        "exit": {
+          "price": 888.7655,
+          "date": "2025-09-08T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999978,
+        "mae": -2.7097417710295835,
+        "mfe": 0.37127341239056,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "LAURUSLABS",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 889.9,
+          "date": "2025-08-21T00:00:00+05:30",
+          "dateIndex": 67
+        },
+        "exit": {
+          "price": 876.5514999999999,
+          "date": "2025-08-20T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000064,
+        "mae": -1.7642431733902608,
+        "mfe": 0.28093044162265424,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "LAURUSLABS",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 883.9,
+          "date": "2025-08-19T00:00:00+05:30",
+          "dateIndex": 69
+        },
+        "exit": {
+          "price": 870.6415,
+          "date": "2025-08-18T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.500000000000003,
+        "mae": -2.8849417354904405,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "LAURUSLABS",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 894.85,
+          "date": "2025-09-16T00:00:00+05:30",
+          "dateIndex": 50
+        },
+        "exit": {
+          "price": 881.42725,
+          "date": "2025-09-08T00:00:00+05:30",
+          "dayNum": 6,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000073,
+        "mae": -1.8997597362686482,
+        "mfe": 1.8550595071799767,
+        "holdingDays": 6,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "LAURUSLABS",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 895,
+          "date": "2025-09-15T00:00:00+05:30",
+          "dateIndex": 51
+        },
+        "exit": {
+          "price": 881.5749999999999,
+          "date": "2025-09-08T00:00:00+05:30",
+          "dayNum": 5,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000075,
+        "mae": -1.916201117318433,
+        "mfe": 1.8379888268156477,
+        "holdingDays": 5,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "LAURUSLABS",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 896.05,
+          "date": "2025-09-12T00:00:00+05:30",
+          "dateIndex": 52
+        },
+        "exit": {
+          "price": 882.60925,
+          "date": "2025-09-08T00:00:00+05:30",
+          "dayNum": 4,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999978,
+        "mae": -2.0311366553205663,
+        "mfe": 1.7186540929635725,
+        "holdingDays": 4,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "LAURUSLABS",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 895.6,
+          "date": "2025-09-11T00:00:00+05:30",
+          "dateIndex": 53
+        },
+        "exit": {
+          "price": 882.166,
+          "date": "2025-09-08T00:00:00+05:30",
+          "dayNum": 3,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999964,
+        "mae": -1.9819115676641357,
+        "mfe": 1.7697632871817799,
+        "holdingDays": 3,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "LAURUSLABS",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 896.4,
+          "date": "2025-09-10T00:00:00+05:30",
+          "dateIndex": 54
+        },
+        "exit": {
+          "price": 882.954,
+          "date": "2025-09-08T00:00:00+05:30",
+          "dayNum": 2,
+          "reason": "STOP"
+        },
+        "pnl": -1.500000000000003,
+        "mae": -2.069388665774203,
+        "mfe": 1.031905399375279,
+        "holdingDays": 2,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "LAURUSLABS",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 902.3,
+          "date": "2025-09-09T00:00:00+05:30",
+          "dateIndex": 55
+        },
+        "exit": {
+          "price": 888.7655,
+          "date": "2025-09-08T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.4999999999999978,
+        "mae": -2.7097417710295835,
+        "mfe": 0.37127341239056,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "LAURUSLABS",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 889.9,
+          "date": "2025-08-21T00:00:00+05:30",
+          "dateIndex": 67
+        },
+        "exit": {
+          "price": 876.5514999999999,
+          "date": "2025-08-20T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.5000000000000064,
+        "mae": -1.7642431733902608,
+        "mfe": 0.28093044162265424,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      },
+      {
+        "symbol": "LAURUSLABS",
+        "logic": "RSI Momentum",
+        "entry": {
+          "price": 883.9,
+          "date": "2025-08-19T00:00:00+05:30",
+          "dateIndex": 69
+        },
+        "exit": {
+          "price": 870.6415,
+          "date": "2025-08-18T00:00:00+05:30",
+          "dayNum": 1,
+          "reason": "STOP"
+        },
+        "pnl": -1.500000000000003,
+        "mae": -2.8849417354904405,
+        "mfe": 0,
+        "holdingDays": 1,
+        "exitReason": "STOP",
+        "result": "LOSS",
+        "trapAvoidance": 1
+      }
+    ],
+    "metrics": {
+      "tradeCount": 79,
+      "winRate": 13.924050632911392,
+      "avgPnl": -0.9430379746835467,
+      "expectancy": -0.9430379746835469,
+      "avgHolding": 2.392405063291139,
+      "maxDrawdown": 74.50000000000018,
+      "sharpe": -0.6809974449683932,
+      "trapAvoidanceRate": 31.896551724137932
+    },
+    "score": 0,
+    "failReason": "Negative expectancy: -0.94"
+  },
+  {
+    "logic": {
+      "name": "BB Lower Bounce",
+      "description": "Price at lower Bollinger Band in uptrend",
+      "exit": {
+        "target": 2,
+        "stop": 1.5
+      },
+      "id": 4,
+      "family": "mean_reversion"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades: 0 < 15 required"
+  },
+  {
+    "logic": {
+      "name": "EMA Pullback",
+      "description": "Pullback to EMA in established uptrend",
+      "exit": {
+        "target": 2.5,
+        "stop": 1.5
+      },
+      "id": 5,
+      "family": "mean_reversion"
+    },
+    "trades": [],
+    "metrics": {
+      "tradeCount": 0,
+      "winRate": 0,
+      "avgPnl": 0,
+      "expectancy": 0,
+      "avgHolding": 0,
+      "maxDrawdown": 0,
+      "sharpe": 0,
+      "trapAvoidanceRate": 0
+    },
+    "score": 0,
+    "failReason": "Insufficient trades: 0 < 15 required"
+  }
+]

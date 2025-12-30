@@ -1,0 +1,1794 @@
+{
+  "runId": "realistic_SHORT_TERM_SWING_BO_UP_1766128347271",
+  "type": "REALISTIC_SIMULATION",
+  "category": "SHORT_TERM_SWING_BO_UP",
+  "timestamp": "2025-12-19T07:12:27.271Z",
+  "timeElapsed": "0.0min",
+  "summary": {
+    "totalSignalsGenerated": 0,
+    "executedTrades": 0,
+    "invalidatedSignals": 0,
+    "skippedBySymbolLock": 0,
+    "winRate": "0.0",
+    "wins": 0,
+    "losses": 0,
+    "avgPnl": "0.00",
+    "totalPnl": "0.00",
+    "capitalWinRate": "0.0",
+    "signalQuality": "0.0",
+    "targetHitRate": "0.0",
+    "fullTargetRate": "0.0",
+    "riskRewardRatio": "0.00",
+    "expectancy": "0.00",
+    "avgHoldingDays": "0.0",
+    "entriesAvoided": 0,
+    "overlappingTradesAvoided": 0,
+    "exitBreakdown": {
+      "secondTarget": 0,
+      "trailingStop": 0,
+      "fullStop": 0,
+      "timeExpiry": 0
+    }
+  },
+  "interpretation": {
+    "signalQualityGrade": "NEEDS_WORK",
+    "riskManagementGrade": "WEAK",
+    "capitalProtectionNote": "0 trades booked 80% profit before any adverse move",
+    "disciplineNote": "Avoided 0 overlapping trades via symbol lock",
+    "filterNote": "Entry delay filter blocked 0 potentially bad entries",
+    "tradingStyle": "Aggressive Swing"
+  },
+  "executedTrades": [],
+  "invalidatedSignals": [],
+  "skippedSignals": [],
+  "expiredStocks": [],
+  "trappedSignals": [],
+  "logs": [
+    {
+      "timestamp": "2025-12-19T07:12:25.887Z",
+      "symbol": "GAIL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:25.893Z",
+      "symbol": "HINDALCO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:25.899Z",
+      "symbol": "PIDILITIND",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:25.904Z",
+      "symbol": "TORNTPOWER",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:25.915Z",
+      "symbol": "HINDZINC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:25.923Z",
+      "symbol": "APLAPOLLO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:25.932Z",
+      "symbol": "POLYCAB",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:25.940Z",
+      "symbol": "SAIL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:25.946Z",
+      "symbol": "LTF",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:25.952Z",
+      "symbol": "ABB",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:25.957Z",
+      "symbol": "TATASTEEL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:25.963Z",
+      "symbol": "PPLPHARMA",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:25.967Z",
+      "symbol": "GLENMARK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:25.972Z",
+      "symbol": "TITAN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:25.978Z",
+      "symbol": "YESBANK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:25.983Z",
+      "symbol": "ITC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:25.987Z",
+      "symbol": "IGL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:25.994Z",
+      "symbol": "RBLBANK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:25.998Z",
+      "symbol": "HAVELLS",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.003Z",
+      "symbol": "SAMMAANCAP",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.009Z",
+      "symbol": "COLPAL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.015Z",
+      "symbol": "ONGC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.019Z",
+      "symbol": "NESTLEIND",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.024Z",
+      "symbol": "NATIONALUM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.030Z",
+      "symbol": "HUDCO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.034Z",
+      "symbol": "RVNL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.039Z",
+      "symbol": "NMDC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.045Z",
+      "symbol": "UNOMINDA",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.050Z",
+      "symbol": "EXIDEIND",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.055Z",
+      "symbol": "VOLTAS",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.061Z",
+      "symbol": "CROMPTON",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.065Z",
+      "symbol": "MARUTI",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.069Z",
+      "symbol": "EICHERMOT",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.073Z",
+      "symbol": "MANAPPURAM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.080Z",
+      "symbol": "GRANULES",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.086Z",
+      "symbol": "CGPOWER",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.093Z",
+      "symbol": "DALBHARAT",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.098Z",
+      "symbol": "NYKAA",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.103Z",
+      "symbol": "TATACHEM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.109Z",
+      "symbol": "SUPREMEIND",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.114Z",
+      "symbol": "ALKEM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.127Z",
+      "symbol": "DRREDDY",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.134Z",
+      "symbol": "PIIND",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.138Z",
+      "symbol": "ZYDUSLIFE",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.145Z",
+      "symbol": "VBL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.175Z",
+      "symbol": "HDFCAMC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.198Z",
+      "symbol": "SYNGENE",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.217Z",
+      "symbol": "AMBER",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.237Z",
+      "symbol": "LUPIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.246Z",
+      "symbol": "GRASIM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.252Z",
+      "symbol": "SUNPHARMA",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.265Z",
+      "symbol": "AUROPHARMA",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.270Z",
+      "symbol": "APOLLOHOSP",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.281Z",
+      "symbol": "JSL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.285Z",
+      "symbol": "DELHIVERY",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.295Z",
+      "symbol": "BOSCHLTD",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.304Z",
+      "symbol": "LT",
+      "event": "INSUFFICIENT_DATA",
+      "reason": "Only 22 candles"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.307Z",
+      "symbol": "JIOFIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.312Z",
+      "symbol": "ASIANPAINT",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.320Z",
+      "symbol": "DMART",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.326Z",
+      "symbol": "HINDUNILVR",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.331Z",
+      "symbol": "KAYNES",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.335Z",
+      "symbol": "JSWSTEEL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.339Z",
+      "symbol": "PAGEIND",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.345Z",
+      "symbol": "FORTIS",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.354Z",
+      "symbol": "DABUR",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.359Z",
+      "symbol": "BRITANNIA",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.363Z",
+      "symbol": "DIXON",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.367Z",
+      "symbol": "GODREJCP",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.371Z",
+      "symbol": "TVSMOTOR",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.376Z",
+      "symbol": "HEROMOTOCO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.381Z",
+      "symbol": "JSWENERGY",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.384Z",
+      "symbol": "TCS",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.388Z",
+      "symbol": "BANDHANBNK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.393Z",
+      "symbol": "IDEA",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.397Z",
+      "symbol": "ASTRAL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.401Z",
+      "symbol": "AUBANK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.405Z",
+      "symbol": "JUBLFOOD",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.410Z",
+      "symbol": "IOC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.415Z",
+      "symbol": "VEDL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.418Z",
+      "symbol": "BHEL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.421Z",
+      "symbol": "TATAPOWER",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.427Z",
+      "symbol": "HINDPETRO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.431Z",
+      "symbol": "BPCL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.435Z",
+      "symbol": "IRCTC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.438Z",
+      "symbol": "PATANJALI",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.444Z",
+      "symbol": "INOXWIND",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.449Z",
+      "symbol": "NTPC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.461Z",
+      "symbol": "COALINDIA",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.465Z",
+      "symbol": "UNITDSPR",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.468Z",
+      "symbol": "CONCOR",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.472Z",
+      "symbol": "ADANIGREEN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.478Z",
+      "symbol": "ADANIENSOL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.482Z",
+      "symbol": "LICHSGFIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.485Z",
+      "symbol": "POWERGRID",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.489Z",
+      "symbol": "RECLTD",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.494Z",
+      "symbol": "HCLTECH",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.498Z",
+      "symbol": "ADANIENT",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.501Z",
+      "symbol": "BHARATFORG",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.506Z",
+      "symbol": "MAXHEALTH",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.511Z",
+      "symbol": "SBILIFE",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.515Z",
+      "symbol": "ABCAPITAL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.519Z",
+      "symbol": "INFY",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.522Z",
+      "symbol": "TECHM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.528Z",
+      "symbol": "INDIANB",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.532Z",
+      "symbol": "PNB",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.535Z",
+      "symbol": "SONACOMS",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.539Z",
+      "symbol": "GODREJPROP",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.545Z",
+      "symbol": "KALYANKJIL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.548Z",
+      "symbol": "FEDERALBNK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.552Z",
+      "symbol": "SBIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.555Z",
+      "symbol": "UPL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.560Z",
+      "symbol": "INDHOTEL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.564Z",
+      "symbol": "MOTHERSON",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.568Z",
+      "symbol": "IEX",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.571Z",
+      "symbol": "PRESTIGE",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.576Z",
+      "symbol": "BAJAJ-AUTO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.580Z",
+      "symbol": "GMRAIRPORT",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.583Z",
+      "symbol": "SHRIRAMFIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.587Z",
+      "symbol": "INDIGO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.592Z",
+      "symbol": "TATACONSUM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.596Z",
+      "symbol": "WIPRO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.600Z",
+      "symbol": "NBCC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.603Z",
+      "symbol": "PERSISTENT",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.609Z",
+      "symbol": "SBICARD",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.613Z",
+      "symbol": "AXISBANK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.617Z",
+      "symbol": "KEI",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.620Z",
+      "symbol": "PGEL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.626Z",
+      "symbol": "BHARTIARTL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.630Z",
+      "symbol": "CANBK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.633Z",
+      "symbol": "RELIANCE",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.636Z",
+      "symbol": "POWERINDIA",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.641Z",
+      "symbol": "OFSS",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.645Z",
+      "symbol": "CDSL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.662Z",
+      "symbol": "CAMS",
+      "event": "INSUFFICIENT_DATA",
+      "reason": "Only 3 candles"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.665Z",
+      "symbol": "MAZDOCK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.669Z",
+      "symbol": "HDFCBANK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.680Z",
+      "symbol": "LTIM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.686Z",
+      "symbol": "360ONE",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.694Z",
+      "symbol": "POLICYBZR",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.701Z",
+      "symbol": "COFORGE",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.706Z",
+      "symbol": "BSE",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.713Z",
+      "symbol": "MCX",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.717Z",
+      "symbol": "BANKBARODA",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.721Z",
+      "symbol": "INFY",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.726Z",
+      "symbol": "DIVISLAB",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.729Z",
+      "symbol": "LUPIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.733Z",
+      "symbol": "COALINDIA",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.736Z",
+      "symbol": "AUROPHARMA",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.741Z",
+      "symbol": "RELIANCE",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.745Z",
+      "symbol": "BIOCON",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.749Z",
+      "symbol": "SYNGENE",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.759Z",
+      "symbol": "PHOENIXLTD",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.763Z",
+      "symbol": "LAURUSLABS",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.772Z",
+      "symbol": "DRREDDY",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.777Z",
+      "symbol": "GLENMARK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.781Z",
+      "symbol": "FEDERALBNK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.784Z",
+      "symbol": "UNIONBANK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.788Z",
+      "symbol": "TITAN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.792Z",
+      "symbol": "SBIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.796Z",
+      "symbol": "TATAELXSI",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.800Z",
+      "symbol": "PATANJALI",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.803Z",
+      "symbol": "IDFCFIRSTB",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.809Z",
+      "symbol": "CANBK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.812Z",
+      "symbol": "WIPRO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.817Z",
+      "symbol": "VOLTAS",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.820Z",
+      "symbol": "NUVAMA",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.825Z",
+      "symbol": "SRF",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.829Z",
+      "symbol": "HINDALCO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.833Z",
+      "symbol": "COALINDIA",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.836Z",
+      "symbol": "PATANJALI",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.840Z",
+      "symbol": "MANAPPURAM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.844Z",
+      "symbol": "CROMPTON",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.848Z",
+      "symbol": "APLAPOLLO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.851Z",
+      "symbol": "SHRIRAMFIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.855Z",
+      "symbol": "VEDL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.861Z",
+      "symbol": "FEDERALBNK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.865Z",
+      "symbol": "NATIONALUM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.869Z",
+      "symbol": "HDFCAMC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.879Z",
+      "symbol": "UNIONBANK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.883Z",
+      "symbol": "ASHOKLEY",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.886Z",
+      "symbol": "TCS",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.890Z",
+      "symbol": "PHOENIXLTD",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.894Z",
+      "symbol": "TECHM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.898Z",
+      "symbol": "HINDZINC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.902Z",
+      "symbol": "BHARTIARTL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.905Z",
+      "symbol": "BPCL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.911Z",
+      "symbol": "LUPIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.915Z",
+      "symbol": "CGPOWER",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.918Z",
+      "symbol": "HINDPETRO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.921Z",
+      "symbol": "SHRIRAMFIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.928Z",
+      "symbol": "SBIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.931Z",
+      "symbol": "NATIONALUM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.935Z",
+      "symbol": "TATACONSUM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.939Z",
+      "symbol": "BLUESTARCO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.944Z",
+      "symbol": "ICICIPRULI",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.947Z",
+      "symbol": "MARICO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.950Z",
+      "symbol": "COLPAL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.953Z",
+      "symbol": "SRF",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.959Z",
+      "symbol": "SBILIFE",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.964Z",
+      "symbol": "TITAN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.968Z",
+      "symbol": "PIDILITIND",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.974Z",
+      "symbol": "HDFCLIFE",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.980Z",
+      "symbol": "TATACONSUM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.985Z",
+      "symbol": "SUPREMEIND",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.989Z",
+      "symbol": "ASTRAL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.995Z",
+      "symbol": "ICICIPRULI",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:26.999Z",
+      "symbol": "INDUSTOWER",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.002Z",
+      "symbol": "ADANIGREEN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.008Z",
+      "symbol": "SYNGENE",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.018Z",
+      "symbol": "IDFCFIRSTB",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.022Z",
+      "symbol": "AMBUJACEM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.027Z",
+      "symbol": "HINDPETRO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.031Z",
+      "symbol": "BPCL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.034Z",
+      "symbol": "IOC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.038Z",
+      "symbol": "BRITANNIA",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.043Z",
+      "symbol": "FEDERALBNK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.046Z",
+      "symbol": "GODREJCP",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.050Z",
+      "symbol": "ASHOKLEY",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.054Z",
+      "symbol": "UPL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.058Z",
+      "symbol": "VOLTAS",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.062Z",
+      "symbol": "SHRIRAMFIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.066Z",
+      "symbol": "SHREECEM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.069Z",
+      "symbol": "ABCAPITAL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.073Z",
+      "symbol": "FEDERALBNK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.077Z",
+      "symbol": "HEROMOTOCO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.082Z",
+      "symbol": "AUBANK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.085Z",
+      "symbol": "SBIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.088Z",
+      "symbol": "INFY",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.093Z",
+      "symbol": "TECHM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.097Z",
+      "symbol": "EICHERMOT",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.100Z",
+      "symbol": "TCS",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.103Z",
+      "symbol": "DRREDDY",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.108Z",
+      "symbol": "SHRIRAMFIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.113Z",
+      "symbol": "HEROMOTOCO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.117Z",
+      "symbol": "BAJAJ-AUTO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.120Z",
+      "symbol": "FEDERALBNK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.125Z",
+      "symbol": "AUBANK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.128Z",
+      "symbol": "SBILIFE",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.132Z",
+      "symbol": "TCS",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.135Z",
+      "symbol": "SONACOMS",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.139Z",
+      "symbol": "GMRAIRPORT",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.144Z",
+      "symbol": "MAXHEALTH",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.148Z",
+      "symbol": "TECHM",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.150Z",
+      "symbol": "MARUTI",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.154Z",
+      "symbol": "HEROMOTOCO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.158Z",
+      "symbol": "WIPRO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.162Z",
+      "symbol": "DRREDDY",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.166Z",
+      "symbol": "LT",
+      "event": "INSUFFICIENT_DATA",
+      "reason": "Only 22 candles"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.167Z",
+      "symbol": "AXISBANK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.170Z",
+      "symbol": "IEX",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.175Z",
+      "symbol": "COLPAL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.179Z",
+      "symbol": "EICHERMOT",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.182Z",
+      "symbol": "NBCC",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.185Z",
+      "symbol": "INDHOTEL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.189Z",
+      "symbol": "PGEL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.194Z",
+      "symbol": "SBILIFE",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.197Z",
+      "symbol": "POWERGRID",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.201Z",
+      "symbol": "KEI",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.204Z",
+      "symbol": "HEROMOTOCO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.209Z",
+      "symbol": "PERSISTENT",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.214Z",
+      "symbol": "BHEL",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.218Z",
+      "symbol": "PIDILITIND",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.221Z",
+      "symbol": "BHARATFORG",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.225Z",
+      "symbol": "HCLTECH",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.229Z",
+      "symbol": "SONACOMS",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.232Z",
+      "symbol": "TCS",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.237Z",
+      "symbol": "SUNPHARMA",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.247Z",
+      "symbol": "VOLTAS",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.250Z",
+      "symbol": "MAXHEALTH",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.253Z",
+      "symbol": "WIPRO",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.259Z",
+      "symbol": "SBIN",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.262Z",
+      "symbol": "CANBK",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    },
+    {
+      "timestamp": "2025-12-19T07:12:27.266Z",
+      "symbol": "PNB",
+      "event": "BACKTEST_MODE",
+      "reason": "Starting time-forward replay with symbol lock"
+    }
+  ],
+  "shadowReport": {
+    "timestamp": "2025-12-19T07:12:27.269Z",
+    "version": "V1",
+    "performanceFacts": {
+      "totalTrades": 0,
+      "wins": 0,
+      "losses": 0,
+      "accuracy": "0.0%",
+      "maxDrawdown": "0.00%",
+      "maxDrawdownTrades": 0,
+      "maxDrawdownSymbols": [],
+      "expectancy": "0.000",
+      "avgWinR": "0.00R",
+      "avgLossR": "0.00R",
+      "capitalWinRate": "0.0%",
+      "avgHoldingDays": "0.0",
+      "exitBreakdown": {
+        "secondTarget": 0,
+        "trailingStop": 0,
+        "fullStop": 0,
+        "timeExpiry": 0
+      }
+    },
+    "failureAnalysis": {
+      "patterns": [],
+      "earlyEntries": [],
+      "rigidExits": [],
+      "repeatedFailures": {}
+    },
+    "strengthAnalysis": {
+      "patterns": [],
+      "patiencePayoffs": [],
+      "structureHolds": [],
+      "extendedWins": []
+    },
+    "refinementSuggestions": [],
+    "structuralFailures": {
+      "totalLosses": 0,
+      "taggedTrades": [],
+      "aggregated": [],
+      "dominantFailures": [],
+      "categoryPatterns": []
+    },
+    "ruleGapHypotheses": [],
+    "variantTestResults": null,
+    "provenImprovements": [],
+    "promotionReport": {
+      "canPromote": false,
+      "promotionStatus": "NOT_READY",
+      "statusReason": "No statistically proven improvements",
+      "verification": {
+        "items": [
+          {
+            "check": "Used Labs logic (not strategy logic)",
+            "passed": true
+          },
+          {
+            "check": "Category-level rules only (not per-stock)",
+            "passed": true
+          },
+          {
+            "check": "Taxonomy reusable in live trading",
+            "passed": true
+          },
+          {
+            "check": "No future data used",
+            "passed": true
+          },
+          {
+            "check": "Improvements proven, not assumed",
+            "passed": false
+          },
+          {
+            "check": "Matches future live Shadow behavior",
+            "passed": true
+          }
+        ],
+        "allPassed": false,
+        "failedChecks": [
+          "provenNotAssumed"
+        ]
+      },
+      "categoryAnalysis": {
+        "dominantFailure": "UNKNOWN",
+        "dominantPercentage": "0%",
+        "failureBreakdown": []
+      },
+      "provenRules": [],
+      "provenCount": 0,
+      "rejectedRules": [],
+      "rejectedCount": 0,
+      "beforeVsAfter": {
+        "before": "Original Labs logic (TT-V1)",
+        "after": "No changes (After = Before)",
+        "identical": true
+      },
+      "nextAction": "No proven improvements. Review failure patterns and adjust thesis manually.",
+      "summary": "═══════════════════════════════════════════\n         SHADOW LEARNER PROMOTION REPORT\n═══════════════════════════════════════════\n\n📊 DOMINANT FAILURE: UNKNOWN (0%)\n\n❌ NO PROVEN IMPROVEMENTS\n\n\n📋 NEXT: Review failure patterns manually. Consider thesis adjustment.\n\n═══════════════════════════════════════════"
+    },
+    "failurePatterns": [],
+    "humanReadableSummary": "\n═══════════════════════════════════════════════════════════════\n                    SHADOW LEARNER REPORT\n                    undefined - V1\n═══════════════════════════════════════════════════════════════\n\n📊 PERFORMANCE SNAPSHOT\n───────────────────────────────────────────────────────────────\n• Total Trades: 0 (0W / 0L)\n• Accuracy: 0.0%\n• Max Drawdown: 0.00% (0 consecutive losses)\n• Expectancy: 0.000R per trade\n• Avg Win: 0.00R | Avg Loss: 0.00R\n• Capital Protection Rate: 0.0%\n\n📉 FAILURE PATTERNS\n───────────────────────────────────────────────────────────────\n• No significant failure patterns detected\n\n📈 STRENGTH PATTERNS\n───────────────────────────────────────────────────────────────\n• Analyzing for strength patterns...\n\n💡 REFINEMENT SUGGESTIONS (USER DECISION REQUIRED)\n───────────────────────────────────────────────────────────────\n═══════════════════════════════════════════════════════════════\n⚠️  THESE ARE SUGGESTIONS ONLY - NOT AUTO-APPLIED\n    Review carefully and apply manually if you agree.\n    To apply: Create V1.b1 with your refinements.\n═══════════════════════════════════════════════════════════════\n"
+  }
+}

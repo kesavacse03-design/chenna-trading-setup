@@ -1,0 +1,566 @@
+[
+  {
+    "id": 2,
+    "categoryKey": "DOWNSIDE_LOM_INTRA",
+    "version": "V1",
+    "description": "Intraday bearish momentum strategy. Targets stocks breaking down from opening low of day with volume confirmation.",
+    "rules": {
+      "exit": {
+        "targetPct": 1.5,
+        "stopLossPct": 0.75,
+        "trailingStop": true
+      },
+      "entry": {
+        "condition": "price_below_open_low",
+        "macdSignal": "bearish_cross",
+        "rsiThreshold": 40,
+        "volumeConfirm": true
+      }
+    },
+    "params": {
+      "direction": "SHORT",
+      "timeframe": "intraday",
+      "trackingDays": 1
+    },
+    "accuracy": null,
+    "totalSignals": 0,
+    "successfulSignals": 0,
+    "failedSignals": 0,
+    "avgPnL": null,
+    "maxDrawdown": null,
+    "expectancy": null,
+    "isActive": true,
+    "isShadow": false,
+    "promotedAt": null,
+    "promotedFrom": null,
+    "aiGenerated": false,
+    "learningSource": null,
+    "createdAt": "2025-12-19T07:45:28.753Z",
+    "updatedAt": "2025-12-19T07:45:28.753Z"
+  },
+  {
+    "id": 3,
+    "categoryKey": "UPSIDE_LOM_INTRA",
+    "version": "V1",
+    "description": "Intraday bullish momentum strategy. Targets stocks breaking above opening high with strong volume.",
+    "rules": {
+      "exit": {
+        "targetPct": 1.5,
+        "stopLossPct": 0.75,
+        "trailingStop": true
+      },
+      "entry": {
+        "condition": "price_above_open_high",
+        "macdSignal": "bullish_cross",
+        "rsiThreshold": 60,
+        "volumeConfirm": true
+      }
+    },
+    "params": {
+      "direction": "LONG",
+      "timeframe": "intraday",
+      "trackingDays": 1
+    },
+    "accuracy": null,
+    "totalSignals": 0,
+    "successfulSignals": 0,
+    "failedSignals": 0,
+    "avgPnL": null,
+    "maxDrawdown": null,
+    "expectancy": null,
+    "isActive": true,
+    "isShadow": false,
+    "promotedAt": null,
+    "promotedFrom": null,
+    "aiGenerated": false,
+    "learningSource": null,
+    "createdAt": "2025-12-19T07:45:28.984Z",
+    "updatedAt": "2025-12-19T07:45:28.984Z"
+  },
+  {
+    "id": 4,
+    "categoryKey": "DAILY_CONTRACTION",
+    "version": "V1",
+    "description": "Volatility contraction breakout. Targets stocks with narrowing daily range ready for expansion.",
+    "rules": {
+      "exit": {
+        "targetPct": 2,
+        "stopLossPct": 1,
+        "trailingStop": true
+      },
+      "entry": {
+        "condition": "range_contraction_breakout",
+        "atrMultiple": 0.5,
+        "volumeConfirm": true
+      }
+    },
+    "params": {
+      "direction": "LONG",
+      "timeframe": "intraday",
+      "trackingDays": 1
+    },
+    "accuracy": null,
+    "totalSignals": 0,
+    "successfulSignals": 0,
+    "failedSignals": 0,
+    "avgPnL": null,
+    "maxDrawdown": null,
+    "expectancy": null,
+    "isActive": true,
+    "isShadow": false,
+    "promotedAt": null,
+    "promotedFrom": null,
+    "aiGenerated": false,
+    "learningSource": null,
+    "createdAt": "2025-12-19T07:45:28.990Z",
+    "updatedAt": "2025-12-19T07:45:28.990Z"
+  },
+  {
+    "id": 5,
+    "categoryKey": "PRE_MARKET",
+    "version": "V1",
+    "description": "Pre-market gap strategy. Targets stocks with significant pre-market activity for opening moves.",
+    "rules": {
+      "exit": {
+        "targetPct": 1.5,
+        "timeLimit": "11:00",
+        "stopLossPct": 0.75
+      },
+      "entry": {
+        "condition": "gap_with_volume",
+        "volumeMultiple": 1.5,
+        "gapThresholdPct": 1
+      }
+    },
+    "params": {
+      "direction": "LONG",
+      "timeframe": "intraday",
+      "trackingDays": 1
+    },
+    "accuracy": null,
+    "totalSignals": 0,
+    "successfulSignals": 0,
+    "failedSignals": 0,
+    "avgPnL": null,
+    "maxDrawdown": null,
+    "expectancy": null,
+    "isActive": true,
+    "isShadow": false,
+    "promotedAt": null,
+    "promotedFrom": null,
+    "aiGenerated": false,
+    "learningSource": null,
+    "createdAt": "2025-12-19T07:45:28.995Z",
+    "updatedAt": "2025-12-19T07:45:28.995Z"
+  },
+  {
+    "id": 6,
+    "categoryKey": "DOWNSIDE_LOM_SWING",
+    "version": "V1",
+    "description": "Multi-day bearish swing strategy. Targets stocks in downtrend breaking key support levels.",
+    "rules": {
+      "exit": {
+        "targetPct": 5,
+        "stopLossPct": 2.5,
+        "trailingStopPct": 3
+      },
+      "entry": {
+        "maBelow": [
+          20,
+          50
+        ],
+        "condition": "support_breakdown",
+        "rsiThreshold": 45,
+        "volumeConfirm": true
+      }
+    },
+    "params": {
+      "direction": "SHORT",
+      "timeframe": "swing",
+      "trackingDays": 10
+    },
+    "accuracy": null,
+    "totalSignals": 0,
+    "successfulSignals": 0,
+    "failedSignals": 0,
+    "avgPnL": null,
+    "maxDrawdown": null,
+    "expectancy": null,
+    "isActive": true,
+    "isShadow": false,
+    "promotedAt": null,
+    "promotedFrom": null,
+    "aiGenerated": false,
+    "learningSource": null,
+    "createdAt": "2025-12-19T07:45:28.999Z",
+    "updatedAt": "2025-12-19T07:45:28.999Z"
+  },
+  {
+    "id": 7,
+    "categoryKey": "UPSIDE_LOM_SWING",
+    "version": "V1",
+    "description": "Multi-day bullish swing strategy. Targets stocks breaking above resistance with trend confirmation.",
+    "rules": {
+      "exit": {
+        "targetPct": 5,
+        "stopLossPct": 2.5,
+        "trailingStopPct": 3
+      },
+      "entry": {
+        "maAbove": [
+          20,
+          50
+        ],
+        "condition": "resistance_breakout",
+        "rsiThreshold": 55,
+        "volumeConfirm": true
+      }
+    },
+    "params": {
+      "direction": "LONG",
+      "timeframe": "swing",
+      "trackingDays": 10
+    },
+    "accuracy": null,
+    "totalSignals": 0,
+    "successfulSignals": 0,
+    "failedSignals": 0,
+    "avgPnL": null,
+    "maxDrawdown": null,
+    "expectancy": null,
+    "isActive": true,
+    "isShadow": false,
+    "promotedAt": null,
+    "promotedFrom": null,
+    "aiGenerated": false,
+    "learningSource": null,
+    "createdAt": "2025-12-19T07:45:29.004Z",
+    "updatedAt": "2025-12-19T07:45:29.004Z"
+  },
+  {
+    "id": 8,
+    "categoryKey": "MULTI_RESISTANCE_BO",
+    "version": "V1",
+    "description": "Multi-level resistance breakout. Targets stocks clearing multiple resistance zones.",
+    "rules": {
+      "exit": {
+        "targetPct": 6,
+        "stopLossPct": 2,
+        "trailingStopPct": 3.5
+      },
+      "entry": {
+        "rsiAbove": 50,
+        "condition": "multi_resistance_clear",
+        "volumeMultiple": 1.5,
+        "resistanceLevels": 2
+      }
+    },
+    "params": {
+      "direction": "LONG",
+      "timeframe": "swing",
+      "trackingDays": 10
+    },
+    "accuracy": null,
+    "totalSignals": 0,
+    "successfulSignals": 0,
+    "failedSignals": 0,
+    "avgPnL": null,
+    "maxDrawdown": null,
+    "expectancy": null,
+    "isActive": true,
+    "isShadow": false,
+    "promotedAt": null,
+    "promotedFrom": null,
+    "aiGenerated": false,
+    "learningSource": null,
+    "createdAt": "2025-12-19T07:45:29.008Z",
+    "updatedAt": "2025-12-19T07:45:29.008Z"
+  },
+  {
+    "id": 9,
+    "categoryKey": "MULTI_SUPPORT_BO",
+    "version": "V1",
+    "description": "Multi-level support breakdown. Targets stocks breaking multiple support zones for shorts.",
+    "rules": {
+      "exit": {
+        "targetPct": 6,
+        "stopLossPct": 2,
+        "trailingStopPct": 3.5
+      },
+      "entry": {
+        "rsiBelow": 50,
+        "condition": "multi_support_break",
+        "supportLevels": 2,
+        "volumeMultiple": 1.5
+      }
+    },
+    "params": {
+      "direction": "SHORT",
+      "timeframe": "swing",
+      "trackingDays": 10
+    },
+    "accuracy": null,
+    "totalSignals": 0,
+    "successfulSignals": 0,
+    "failedSignals": 0,
+    "avgPnL": null,
+    "maxDrawdown": null,
+    "expectancy": null,
+    "isActive": true,
+    "isShadow": false,
+    "promotedAt": null,
+    "promotedFrom": null,
+    "aiGenerated": false,
+    "learningSource": null,
+    "createdAt": "2025-12-19T07:45:29.013Z",
+    "updatedAt": "2025-12-19T07:45:29.013Z"
+  },
+  {
+    "id": 10,
+    "categoryKey": "SHORT_TERM_SWING_BO_UP",
+    "version": "V1",
+    "description": "Short-term bullish breakout (3-5 days). Quick momentum plays on breakout stocks.",
+    "rules": {
+      "exit": {
+        "targetPct": 4,
+        "stopLossPct": 1.5,
+        "trailingStopPct": 2
+      },
+      "entry": {
+        "rsiRange": [
+          45,
+          70
+        ],
+        "condition": "short_term_breakout",
+        "volumeSpike": true,
+        "priceAboveMA": 10
+      }
+    },
+    "params": {
+      "direction": "LONG",
+      "timeframe": "short_swing",
+      "trackingDays": 5
+    },
+    "accuracy": null,
+    "totalSignals": 0,
+    "successfulSignals": 0,
+    "failedSignals": 0,
+    "avgPnL": null,
+    "maxDrawdown": null,
+    "expectancy": null,
+    "isActive": true,
+    "isShadow": false,
+    "promotedAt": null,
+    "promotedFrom": null,
+    "aiGenerated": false,
+    "learningSource": null,
+    "createdAt": "2025-12-19T07:45:29.018Z",
+    "updatedAt": "2025-12-19T07:45:29.018Z"
+  },
+  {
+    "id": 11,
+    "categoryKey": "SHORT_TERM_SWING_BO_DOWN",
+    "version": "V1",
+    "description": "Short-term bearish breakdown (3-5 days). Quick momentum shorts on breakdown stocks.",
+    "rules": {
+      "exit": {
+        "targetPct": 4,
+        "stopLossPct": 1.5,
+        "trailingStopPct": 2
+      },
+      "entry": {
+        "rsiRange": [
+          30,
+          55
+        ],
+        "condition": "short_term_breakdown",
+        "volumeSpike": true,
+        "priceBelowMA": 10
+      }
+    },
+    "params": {
+      "direction": "SHORT",
+      "timeframe": "short_swing",
+      "trackingDays": 5
+    },
+    "accuracy": null,
+    "totalSignals": 0,
+    "successfulSignals": 0,
+    "failedSignals": 0,
+    "avgPnL": null,
+    "maxDrawdown": null,
+    "expectancy": null,
+    "isActive": true,
+    "isShadow": false,
+    "promotedAt": null,
+    "promotedFrom": null,
+    "aiGenerated": false,
+    "learningSource": null,
+    "createdAt": "2025-12-19T07:45:29.022Z",
+    "updatedAt": "2025-12-19T07:45:29.022Z"
+  },
+  {
+    "id": 12,
+    "categoryKey": "LONG_TERM_SWING_BO_UP",
+    "version": "V1",
+    "description": "Long-term bullish position (10+ days). Major trend following for sustained moves.",
+    "rules": {
+      "exit": {
+        "targetPct": 10,
+        "stopLossPct": 4,
+        "trailingStopPct": 5
+      },
+      "entry": {
+        "rsiAbove": 50,
+        "condition": "long_term_trend_up",
+        "priceAboveMA": [
+          20,
+          50,
+          100
+        ],
+        "volumeConfirm": true
+      }
+    },
+    "params": {
+      "direction": "LONG",
+      "timeframe": "long_swing",
+      "trackingDays": 15
+    },
+    "accuracy": null,
+    "totalSignals": 0,
+    "successfulSignals": 0,
+    "failedSignals": 0,
+    "avgPnL": null,
+    "maxDrawdown": null,
+    "expectancy": null,
+    "isActive": true,
+    "isShadow": false,
+    "promotedAt": null,
+    "promotedFrom": null,
+    "aiGenerated": false,
+    "learningSource": null,
+    "createdAt": "2025-12-19T07:45:29.026Z",
+    "updatedAt": "2025-12-19T07:45:29.026Z"
+  },
+  {
+    "id": 13,
+    "categoryKey": "LONG_TERM_SWING_BO_DOWN",
+    "version": "V1",
+    "description": "Long-term bearish position (10+ days). Major downtrend following for sustained shorts.",
+    "rules": {
+      "exit": {
+        "targetPct": 10,
+        "stopLossPct": 4,
+        "trailingStopPct": 5
+      },
+      "entry": {
+        "rsiBelow": 50,
+        "condition": "long_term_trend_down",
+        "priceBelowMA": [
+          20,
+          50,
+          100
+        ],
+        "volumeConfirm": true
+      }
+    },
+    "params": {
+      "direction": "SHORT",
+      "timeframe": "long_swing",
+      "trackingDays": 15
+    },
+    "accuracy": null,
+    "totalSignals": 0,
+    "successfulSignals": 0,
+    "failedSignals": 0,
+    "avgPnL": null,
+    "maxDrawdown": null,
+    "expectancy": null,
+    "isActive": true,
+    "isShadow": false,
+    "promotedAt": null,
+    "promotedFrom": null,
+    "aiGenerated": false,
+    "learningSource": null,
+    "createdAt": "2025-12-19T07:45:29.029Z",
+    "updatedAt": "2025-12-19T07:45:29.029Z"
+  },
+  {
+    "id": 14,
+    "categoryKey": "HIGH_POWERED_STOCKS",
+    "version": "V1",
+    "description": "High momentum stocks with strong institutional buying. Volume and price confirmation required.",
+    "rules": {
+      "exit": {
+        "targetPct": 5,
+        "stopLossPct": 2,
+        "trailingStopPct": 3
+      },
+      "entry": {
+        "condition": "institutional_momentum",
+        "priceStrength": true,
+        "volumeMultiple": 2,
+        "relativeStrength": "outperform"
+      }
+    },
+    "params": {
+      "direction": "LONG",
+      "timeframe": "swing",
+      "trackingDays": 10
+    },
+    "accuracy": null,
+    "totalSignals": 0,
+    "successfulSignals": 0,
+    "failedSignals": 0,
+    "avgPnL": null,
+    "maxDrawdown": null,
+    "expectancy": null,
+    "isActive": true,
+    "isShadow": false,
+    "promotedAt": null,
+    "promotedFrom": null,
+    "aiGenerated": false,
+    "learningSource": null,
+    "createdAt": "2025-12-19T07:45:29.032Z",
+    "updatedAt": "2025-12-19T07:45:29.032Z"
+  },
+  {
+    "id": 15,
+    "categoryKey": "INTRADAY_BOOST",
+    "version": "V1",
+    "description": "High volatility intraday movers. Quick trades on stocks showing 2%+ moves.",
+    "rules": {
+      "exit": {
+        "targetPct": 1,
+        "timeLimit": "15:00",
+        "stopLossPct": 0.5
+      },
+      "entry": {
+        "condition": "intraday_momentum",
+        "pctMoveMin": 2,
+        "timeWindow": "09:30-11:30",
+        "volumeSpike": true
+      }
+    },
+    "params": {
+      "direction": "LONG",
+      "timeframe": "intraday",
+      "trackingDays": 1
+    },
+    "accuracy": null,
+    "totalSignals": 0,
+    "successfulSignals": 0,
+    "failedSignals": 0,
+    "avgPnL": null,
+    "maxDrawdown": null,
+    "expectancy": null,
+    "isActive": true,
+    "isShadow": false,
+    "promotedAt": null,
+    "promotedFrom": null,
+    "aiGenerated": false,
+    "learningSource": null,
+    "createdAt": "2025-12-19T07:45:29.036Z",
+    "updatedAt": "2025-12-19T07:45:29.036Z"
+  }
+]
