@@ -1,0 +1,316 @@
+{
+  "category": "MULTI_RESISTANCE_BO",
+  "timestamp": "2026-01-06T04:34:38.442Z",
+  "phases": {
+    "loaded": {
+      "count": 89
+    },
+    "verification": {
+      "valid": 22,
+      "invalid": 67,
+      "invalidReasons": {
+        "ADANIENSOL": "Insufficient candle data",
+        "APOLLOHOSP": "Insufficient candle data",
+        "CONCOR": "Insufficient candle data",
+        "GRASIM": "Insufficient candle data",
+        "HCLTECH": "Insufficient candle data",
+        "IDFCFIRSTB": "Insufficient candle data",
+        "IGL": "Insufficient candle data",
+        "INDIANB": "Insufficient candle data",
+        "IRCTC": "Insufficient candle data",
+        "IREDA": "Insufficient candle data",
+        "LICI": "Not breaking any resistance",
+        "NESTLEIND": "Insufficient candle data",
+        "PFC": "Insufficient candle data",
+        "PIDILITIND": "Insufficient candle data",
+        "RBLBANK": "Insufficient candle data",
+        "TATASTEEL": "Insufficient candle data",
+        "TRENT": "Insufficient candle data",
+        "ADANIPORTS": "Insufficient candle data",
+        "GODREJCP": "Not breaking any resistance",
+        "ITC": "Insufficient candle data",
+        "TVSMOTOR": "Insufficient candle data",
+        "DMART": "Insufficient candle data",
+        "HINDPETRO": "Insufficient candle data",
+        "BANKNIFTY": "Insufficient candle data",
+        "SBIN": "Not breaking any resistance",
+        "UNIONBANK": "Insufficient candle data",
+        "DIXON": "Not breaking any resistance",
+        "JIOFIN": "Not breaking any resistance",
+        "NIFTY": "Not breaking any resistance",
+        "NYKAA": "Not breaking any resistance",
+        "INFY": "Not breaking any resistance",
+        "DRREDDY": "Not breaking any resistance",
+        "POLYCAB": "Not breaking any resistance",
+        "ICICIPRULI": "Not breaking any resistance",
+        "SONACOMS": "Not breaking any resistance",
+        "TITAN": "Not breaking any resistance",
+        "TATATECH": "Not breaking any resistance",
+        "LTIM": "Not breaking any resistance",
+        "AMBUJACEM": "Not breaking any resistance",
+        "SHRIRAMFIN": "Not breaking any resistance",
+        "MAXHEALTH": "Not breaking any resistance",
+        "COLPAL": "Not breaking any resistance",
+        "INDHOTEL": "Not breaking any resistance",
+        "ICICIBANK": "Not breaking any resistance",
+        "360ONE": "Not breaking any resistance",
+        "TATAELXSI": "Not breaking any resistance",
+        "BSE": "Not breaking any resistance",
+        "BANKBARODA": "Not breaking any resistance",
+        "BAJFINANCE": "Not breaking any resistance",
+        "HDFCBANK": "Not breaking any resistance",
+        "HAVELLS": "Not breaking any resistance",
+        "HEROMOTOCO": "Not breaking any resistance",
+        "NCC": "Not breaking any resistance",
+        "HINDUNILVR": "Not breaking any resistance",
+        "TATACONSUM": "Not breaking any resistance",
+        "MFSL": "Not breaking any resistance",
+        "ICICIGI": "Not breaking any resistance",
+        "BAJAJ-AUTO": "Not breaking any resistance",
+        "SHREECEM": "Not breaking any resistance"
+      }
+    },
+    "discovery": {
+      "stocksAnalyzed": 22,
+      "totalPatterns": 149,
+      "uniquePatterns": [
+        "HigherLow",
+        "LowerHigh",
+        "BB_Squeeze",
+        "Consolidation",
+        "MACD_BullishCross",
+        "MACD_BearishCross",
+        "BB_UpperTouch",
+        "Stoch_Overbought",
+        "Accumulation",
+        "StrongClose",
+        "WeakClose",
+        "Distribution",
+        "RSI_Overbought",
+        "Stoch_Oversold",
+        "VolumeSpike",
+        "Doji",
+        "ShootingStar",
+        "VolumeDryUp",
+        "BB_LowerTouch",
+        "MorningStar",
+        "Hammer",
+        "RSI_Oversold",
+        "SupportBreak",
+        "EveningStar",
+        "ResistanceBreak",
+        "InvertedHammer"
+      ]
+    },
+    "testing": {
+      "totalTrades": 111,
+      "wins": 50,
+      "losses": 61,
+      "winRate": "45.0%",
+      "avgPnl": "-0.31%"
+    },
+    "matrix": {
+      "patternsRanked": 22,
+      "top5": [
+        {
+          "pattern": "InvertedHammer",
+          "winRate": "100.0%",
+          "expectancy": "7.27"
+        },
+        {
+          "pattern": "Stoch_Oversold",
+          "winRate": "100.0%",
+          "expectancy": "3.98"
+        },
+        {
+          "pattern": "RSI_Oversold",
+          "winRate": "100.0%",
+          "expectancy": "3.32"
+        },
+        {
+          "pattern": "BB_LowerTouch",
+          "winRate": "100.0%",
+          "expectancy": "2.02"
+        },
+        {
+          "pattern": "VolumeSpike",
+          "winRate": "66.7%",
+          "expectancy": "1.29"
+        }
+      ]
+    },
+    "combinations": {
+      "testedCount": 100,
+      "validCount": 6,
+      "top5": [
+        {
+          "combo": "MACD_BullishCross+HigherLow",
+          "patterns": [
+            "MACD_BullishCross",
+            "HigherLow"
+          ],
+          "size": 2,
+          "valid": true,
+          "trades": 13,
+          "wins": 6,
+          "losses": 7,
+          "winRate": "46.2%",
+          "avgPnl": "-0.15%",
+          "totalPnl": "-1.92%",
+          "expectancy": -0.1474449011082234,
+          "avgHoldingDays": "7.1",
+          "stocks": [
+            "ASTRAL",
+            "AUROPHARMA",
+            "KPITTECH",
+            "ONGC",
+            "CAMS",
+            "TATACONSUM",
+            "IEX",
+            "ULTRACEMCO",
+            "VEDL",
+            "ABCAPITAL",
+            "DMART",
+            "ADANIGREEN",
+            "ADANIENSOL"
+          ]
+        },
+        {
+          "combo": "LowerHigh+MACD_BearishCross",
+          "patterns": [
+            "LowerHigh",
+            "MACD_BearishCross"
+          ],
+          "size": 2,
+          "valid": true,
+          "trades": 9,
+          "wins": 4,
+          "losses": 5,
+          "winRate": "44.4%",
+          "avgPnl": "-0.34%",
+          "totalPnl": "-3.10%",
+          "expectancy": -0.3440198098477201,
+          "avgHoldingDays": "7.6",
+          "stocks": [
+            "DELHIVERY",
+            "SRF",
+            "TORNTPOWER",
+            "NCC",
+            "SBILIFE",
+            "KOTAKBANK",
+            "IDFCFIRSTB",
+            "NESTLEIND",
+            "MUTHOOTFIN"
+          ]
+        },
+        {
+          "combo": "MACD_BullishCross+Accumulation",
+          "patterns": [
+            "MACD_BullishCross",
+            "Accumulation"
+          ],
+          "size": 2,
+          "valid": true,
+          "trades": 5,
+          "wins": 2,
+          "losses": 3,
+          "winRate": "40.0%",
+          "avgPnl": "-0.46%",
+          "totalPnl": "-2.28%",
+          "expectancy": -0.4551876567065058,
+          "avgHoldingDays": "6.4",
+          "stocks": [
+            "CAMS",
+            "IEX",
+            "DMART",
+            "ADANIGREEN",
+            "ADANIENSOL"
+          ]
+        },
+        {
+          "combo": "HigherLow+Accumulation",
+          "patterns": [
+            "HigherLow",
+            "Accumulation"
+          ],
+          "size": 2,
+          "valid": true,
+          "trades": 5,
+          "wins": 2,
+          "losses": 3,
+          "winRate": "40.0%",
+          "avgPnl": "-0.46%",
+          "totalPnl": "-2.28%",
+          "expectancy": -0.4551876567065058,
+          "avgHoldingDays": "6.4",
+          "stocks": [
+            "CAMS",
+            "IEX",
+            "DMART",
+            "ADANIGREEN",
+            "ADANIENSOL"
+          ]
+        },
+        {
+          "combo": "HigherLow+StrongClose",
+          "patterns": [
+            "HigherLow",
+            "StrongClose"
+          ],
+          "size": 2,
+          "valid": true,
+          "trades": 5,
+          "wins": 2,
+          "losses": 3,
+          "winRate": "40.0%",
+          "avgPnl": "-1.00%",
+          "totalPnl": "-5.01%",
+          "expectancy": -1.0026894453898665,
+          "avgHoldingDays": "6.6",
+          "stocks": [
+            "KOTAKBANK",
+            "IDFCFIRSTB",
+            "VEDL",
+            "DMART",
+            "ADANIGREEN"
+          ]
+        }
+      ]
+    }
+  },
+  "summary": {
+    "elapsedSeconds": "2.6",
+    "stocksAnalyzed": 22,
+    "patternsDiscovered": 149,
+    "tradesTested": 111,
+    "bestWinRate": 100,
+    "bestExpectancy": 7.27
+  },
+  "bestStrategy": {
+    "type": "single",
+    "name": "InvertedHammer",
+    "winRate": 100,
+    "expectancy": 7.27,
+    "trades": 1
+  },
+  "error": null,
+  "recommendation": "Use \"InvertedHammer\" pattern with 100.0% win rate and 7.27% expectancy. Tested on 1 trades.",
+  "entryRules": {
+    "category": "MULTI_RESISTANCE_BO",
+    "strategy": "InvertedHammer",
+    "type": "single",
+    "patterns": [
+      "InvertedHammer"
+    ],
+    "expected": {
+      "winRate": 100,
+      "expectancy": 7.27
+    },
+    "conditions": [
+      {
+        "type": "unknown",
+        "rule": "InvertedHammer"
+      }
+    ]
+  }
+}

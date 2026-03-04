@@ -1,29 +1,26 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Header from './components/Header';
-import ActiveTradesDashboard from './components/ActiveTradesDashboard';
+import CategoryController from './components/CategoryController';
+import TradingDashboard from './components/TradingDashboard';
 import AnalysisHub from './components/AnalysisHub';
 import { Trade, Notification as NotificationType, SystemHealthState, GroupedWatchlist, StrategyState, StrategyLogic, ImportWatchlistPayload } from './types';
 import CredentialsManager from './components/CredentialsManager';
-import PortfolioStats from './components/PortfolioStats';
-import DailySummary from './components/DailySummary';
-import SystemHealth from './components/SystemHealth';
-import HealthMap from './components/HealthMap';
-import HealthModal from './components/HealthModal';
-import AIInsightsPanel from './components/AIInsightsPanel';
+import TradeJournal from './components/TradeJournal';
 import { CogIcon } from './components/icons/CogIcon';
-import NotificationBar from './components/NotificationBar';
 import StrategyWorkbenchSimple from './components/StrategyWorkbenchSimple';
-import IntelligencePanel from './components/StrategyReportsPanel';
-import TradesDashboard from './components/TradesDashboard';
 import * as api from './api';
 import { startTicker, stopTicker } from './utils/ticker';
 import { runSyncQueue } from './utils/sync';
 import { normalizeAndMapCategory, migrateLocalStorageAddCategoryMeta } from './utils/categoryMap';
 import { PREPOPULATED_WATCHLIST, DEFAULT_STRATEGY_LOGIC } from './constants';
-import { TimeTravelLabsWindow } from './components/TimeTravelLabsWindow';
+import { LabsWorkflowWindow } from './components/LabsWorkflowWindow';
+import { useSignalNotifications } from './hooks/useSignalNotifications';
 
 // Lazy-load Upstox auth widget
 const UpstoxAuthWidget = React.lazy(() => import('./components/UpstoxAuthWidget'));
+
+// Market Sentiment Component removed (legacy)
+// System Log Component removed (legacy)
 
 const App: React.FC = () => {
   // ========== STATE MANAGEMENT ==========
@@ -35,17 +32,20 @@ const App: React.FC = () => {
   const [healthState, setHealthState] = useState<SystemHealthState | null>(null);
   const [strategyState, setStrategyState] = useState<StrategyState>({});
 
+  // View State: 'trading' | 'watchlist' | 'categories' | 'journal'
+  const [activeView, setActiveView] = useState<'trading' | 'watchlist' | 'categories' | 'journal'>('trading');
+
+  // Browser notifications: sound + popup when new signals arrive
+  useSignalNotifications(true);
+
   // Modal State
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isWorkbenchOpen, setIsWorkbenchOpen] = useState(false);
   const [isLabsOpen, setIsLabsOpen] = useState(false);
-  const [isHealthOpen, setIsHealthOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('');
 
   // Loading State
   const [isLoading, setIsLoading] = useState(true);
-
-  const totalCapital = 1000000;
 
   // ========== DATA HYDRATION & SIMULATION TICKER ==========
   const refreshAllStateFromStorage = useCallback(async () => {
@@ -102,6 +102,9 @@ const App: React.FC = () => {
         });
       } catch (_) { }
 
+      // Log system initialized
+      window.dispatchEvent(new CustomEvent('cts:log', { detail: { message: 'System initialized', type: 'success' } }));
+
       setIsLoading(false);
     };
 
@@ -131,8 +134,10 @@ const App: React.FC = () => {
       const result = await api.importWatchlist(payload);
       setNotificationMessage(result.message);
       setWatchlist(await api.getWatchlist());
+      window.dispatchEvent(new CustomEvent('cts:log', { detail: { message: 'Watchlist updated successfully', type: 'success' } }));
     } catch (error: any) {
       setNotificationMessage(`Import failed: ${error.message}`);
+      window.dispatchEvent(new CustomEvent('cts:log', { detail: { message: `Import failed: ${error.message}`, type: 'error' } }));
     }
   };
 
@@ -144,17 +149,14 @@ const App: React.FC = () => {
   const handleOpenLabs = (categoryKey: string) => {
     setSelectedCategory(categoryKey);
     setIsLabsOpen(true);
+    window.dispatchEvent(new CustomEvent('cts:log', { detail: { message: `Labs opened for ${categoryKey}`, type: 'info' } }));
   };
 
   const handleSaveStrategy = async (categoryKey: string, newLogic: StrategyLogic) => {
     const newStrategies = await api.saveStrategy(categoryKey, newLogic);
     setStrategyState(newStrategies);
     setNotificationMessage(`Strategy for ${categoryKey} saved.`);
-  };
-
-  const handleClearNotification = async (id: number) => {
-    const updatedNotifications = await api.clearNotification(id);
-    setNotifications(updatedNotifications);
+    window.dispatchEvent(new CustomEvent('cts:log', { detail: { message: `Strategy saved for ${categoryKey}`, type: 'success' } }));
   };
 
   // ========== RENDER ==========
@@ -179,74 +181,113 @@ const App: React.FC = () => {
 
   return (
     <>
-      <div className={`text-center text-xs py-1 border-b ${apiBase ? 'bg-blue-700/40 text-white border-blue-400/30' : 'bg-cyan-900/50 text-cyan-200 border-cyan-400/30'}`}>
+      <div className="hidden">
         <b>{bannerText}</b>
       </div>
-      <NotificationBar message={notificationMessage} />
+      {/* NotificationBar removed - not useful */}
 
-      <div className="min-h-screen p-4 sm:p-6 lg:p-8 space-y-6">
-        <div className="flex justify-between items-start">
-          <Header />
-          <div className="flex space-x-2 items-center">
-            <div className="hidden sm:block">
-              {apiBase && <div className="mr-2" />}
+      <div className="min-h-screen p-4 sm:p-6 lg:p-8">
+        {/* Header with Navigation */}
+        <div className="flex justify-between items-center mb-4">
+          <div className="flex items-center gap-4">
+            <Header />
+            {/* Navigation Tabs */}
+            <div className="flex gap-2 ml-8">
+              <button
+                onClick={() => setActiveView('trading')}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeView === 'trading'
+                  ? 'bg-cyan-600 text-white'
+                  : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                  }`}
+              >
+                🎯 Trading Dashboard
+              </button>
+              <button
+                onClick={() => setActiveView('watchlist')}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeView === 'watchlist'
+                  ? 'bg-cyan-600 text-white'
+                  : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                  }`}
+              >
+                📊 Watchlist & Analysis
+              </button>
+              <button
+                onClick={() => setActiveView('journal')}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeView === 'journal'
+                  ? 'bg-cyan-600 text-white'
+                  : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                  }`}
+              >
+                📓 Trade Journal
+              </button>
             </div>
+            <div className="flex gap-2 ml-4">
+              <button
+                onClick={() => setActiveView('categories')}
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${activeView === 'categories'
+                  ? 'bg-cyan-600 text-white'
+                  : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                  }`}
+              >
+                🎛️ Controller
+              </button>
+            </div>
+          </div>
+
+          <div className="flex space-x-2 items-center">
+            <span className={`px-3 py-1 text-xs font-medium rounded-full ${apiBase ? 'bg-green-500/20 text-green-400' : 'bg-slate-700 text-slate-400'}`}>{apiBase ? '🟢 Live' : '⚪ Preview'}</span>
             {apiBase ? (
               <React.Suspense fallback={<span className="text-xs text-slate-500">Upstox…</span>}>
                 <UpstoxAuthWidget />
               </React.Suspense>
             ) : null}
             <button
-              onClick={() => setIsHealthOpen(true)}
-              className="px-3 py-1.5 text-[0.7rem] bg-emerald-600/20 hover:bg-emerald-500/30 text-emerald-200 border border-emerald-500/40 rounded-full mr-1 transition-colors"
-              title="Open System Health Map"
-            >
-              Health
-            </button>
-            <button
               onClick={() => setIsSettingsOpen(true)}
               className="p-2 bg-slate-800/50 hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-300 rounded-full transition-colors"
-              title="Configure Backend"
+              title="Settings"
             >
               <CogIcon className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        <main className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 space-y-6 flex flex-col">
-            <div className="flex-shrink-0 h-96">
-              <ActiveTradesDashboard trades={trades} />
+        {/* Main Content */}
+        {activeView === 'trading' && (
+          /* TRADING DASHBOARD VIEW */
+          <main className="grid grid-cols-1 gap-4">
+            <div className="col-span-1">
+              <TradingDashboard />
             </div>
-            <div className="flex-grow min-h-[30rem]">
-              <AnalysisHub
-                watchlist={watchlist}
-                onWatchlistUpdate={handleWatchlistUpdate}
-                onManageStrategy={handleManageStrategy}
-                onOpenLabs={handleOpenLabs}
-              />
-            </div>
-          </div>
+          </main>
+        )}
 
-          <div className="lg:col-span-1 space-y-6">
-            <AIInsightsPanel />
-            <PortfolioStats activeTrades={trades} totalCapital={totalCapital} />
-            <DailySummary completedTrades={completedTrades} />
-            <SystemHealth healthState={healthState} />
-            <HealthMap />
-            <TradesDashboard trades={completedTrades} />
-            <IntelligencePanel
-              reports={[]}
-              notifications={notifications}
-              onViewReport={() => { }}
-              onClearNotification={handleClearNotification}
+        {activeView === 'journal' && (
+          <main>
+            <TradeJournal />
+          </main>
+        )}
+
+        {activeView === 'watchlist' && (
+          /* WATCHLIST & ANALYSIS VIEW */
+          <main>
+            <AnalysisHub
+              watchlist={watchlist}
+              onWatchlistUpdate={handleWatchlistUpdate}
+              onManageStrategy={handleManageStrategy}
+              onOpenLabs={handleOpenLabs}
             />
-          </div>
-        </main>
+          </main>
+        )}
+
+        {activeView === 'categories' && (
+          <main>
+            <CategoryController />
+          </main>
+        )}
       </div>
 
+      {/* Modals */}
       <CredentialsManager isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
-      <HealthModal isOpen={isHealthOpen} onClose={() => setIsHealthOpen(false)} />
 
       {isWorkbenchOpen && (
         <StrategyWorkbenchSimple
@@ -259,7 +300,7 @@ const App: React.FC = () => {
       )}
 
       {isLabsOpen && (
-        <TimeTravelLabsWindow
+        <LabsWorkflowWindow
           isOpen={isLabsOpen}
           onClose={() => setIsLabsOpen(false)}
           categoryKey={selectedCategory}

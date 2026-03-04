@@ -1,0 +1,30 @@
+--- STUDY 1: FALSE BREAKOUT TRACKING (Next 5 Days) ---
+Total False Breakouts tracking: 55
+Did the stock eventually CLOSE above the 10-day high close within 5 days?
+YES (Delayed Breakout): 26 out of 55
+NO (True Rejection):    29 out of 55
+
+For the 'Delayed Breakout' group:
+  Which day did it finally close above?
+  Day+1: 11 stocks
+  Day+2: 5 stocks
+  Day+3: 5 stocks
+  Day+4: 2 stocks
+  Day+5: 3 stocks
+  10-day forward return from the ACTUAL breakout day:
+  Win rate: 50.0%
+  Avg P&L:  -0.73%
+
+For the 'True Rejection' group:
+  10-day forward return from original signal date:
+  Win rate: 34.5%
+  Avg P&L:  -2.09%
+
+--- STUDY 2: DUPLICATE SIGNAL QUALITY ---
+First signal in a cluster:  285 signals | 57.5% WR | Avg P&L 1.03%
+Second signal (1-2 days later): 66 signals | 56.1% WR | Avg P&L 1.61%
+Third+ signal (3-5 days later): 28 signals | 57.1% WR | Avg P&L 2.10%
+
+Did ANY of the removed duplicates occur after a pullback? (Red candle gap between 1st and dup)
+Duplicates WITH a red candle gap:  21 signals | 71.4% WR | Avg P&L 2.88%
+Duplicates WITHOUT red candle gap: 73 signals | 52.1% WR | Avg P&L 1.44%  (consecutive green days)

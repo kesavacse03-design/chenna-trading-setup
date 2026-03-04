@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trade Analysis Charts - DOWNSIDE_LOM_SWING</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: #1a1a2e; 
+            color: #eee; 
+            padding: 20px;
+            margin: 0;
+        }
+        h1 { color: #00d4ff; text-align: center; }
+        h2 { color: #ff6b6b; border-bottom: 2px solid #ff6b6b; padding-bottom: 10px; }
+        .section { margin: 40px 0; }
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(650px, 1fr));
+            gap: 20px;
+        }
+        .chart-card {
+            background: #16213e;
+            border-radius: 12px;
+            padding: 20px;
+            border: 2px solid #0f3460;
+        }
+        .chart-card.success { border-color: #00ff88; }
+        .chart-card.failure { border-color: #ff4757; }
+        .chart-card h3 { margin: 0 0 10px 0; }
+        .chart-info {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            color: #aaa;
+        }
+        canvas { 
+            background: #0a0a1a; 
+            border-radius: 8px;
+            width: 100%;
+        }
+        .params-box {
+            background: #0f3460;
+            padding: 15px 25px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+        .params-box span { margin-right: 30px; }
+    </style>
+</head>
+<body>
+    <h1>📊 Trade Analysis Charts - DOWNSIDE_LOM_SWING</h1>
+    
+    <div class="params-box">
+        <span><strong>Target:</strong> +2%</span>
+        <span><strong>Stop:</strong> -1.5%</span>
+        <span><strong>Max Days:</strong> 15</span>
+    </div>
+    
+    <div class="section">
+        <h2>✅ SUCCESSFUL TRADES (Hit Target)</h2>
+        <div class="charts-grid">
+            
+        <div class="chart-card success">
+            <h3>✅ PIDILITIND - SUCCESS</h3>
+            <div class="chart-info">
+                <span>Entry: ₹1456.60</span>
+                <span>Target: ₹1485.73 (+2%)</span>
+                <span>Stop: ₹1434.75 (-1.5%)</span>
+                <span>Exit: ₹1485.73</span>
+            </div>
+            <canvas id="success_0" width="600" height="300"></canvas>
+        </div>
+    
+
+        <div class="chart-card success">
+            <h3>✅ IOC - SUCCESS</h3>
+            <div class="chart-info">
+                <span>Entry: ₹169.39</span>
+                <span>Target: ₹172.78 (+2%)</span>
+                <span>Stop: ₹166.85 (-1.5%)</span>
+                <span>Exit: ₹172.78</span>
+            </div>
+            <canvas id="success_1" width="600" height="300"></canvas>
+        </div>
+    
+
+        <div class="chart-card success">
+            <h3>✅ UNITDSPR - SUCCESS</h3>
+            <div class="chart-info">
+                <span>Entry: ₹1409.50</span>
+                <span>Target: ₹1437.69 (+2%)</span>
+                <span>Stop: ₹1388.36 (-1.5%)</span>
+                <span>Exit: ₹1437.69</span>
+            </div>
+            <canvas id="success_2" width="600" height="300"></canvas>
+        </div>
+    
+
+        <div class="chart-card success">
+            <h3>✅ MFSL - SUCCESS</h3>
+            <div class="chart-info">
+                <span>Entry: ₹1619.10</span>
+                <span>Target: ₹1651.48 (+2%)</span>
+                <span>Stop: ₹1594.81 (-1.5%)</span>
+                <span>Exit: ₹1651.48</span>
+            </div>
+            <canvas id="success_3" width="600" height="300"></canvas>
+        </div>
+    
+
+        <div class="chart-card success">
+            <h3>✅ CAMS - SUCCESS</h3>
+            <div class="chart-info">
+                <span>Entry: ₹266.07</span>
+                <span>Target: ₹271.40 (+2%)</span>
+                <span>Stop: ₹262.08 (-1.5%)</span>
+                <span>Exit: ₹271.40</span>
+            </div>
+            <canvas id="success_4" width="600" height="300"></canvas>
+        </div>
+    
+
+        <div class="chart-card success">
+            <h3>✅ BANKNIFTY - SUCCESS</h3>
+            <div class="chart-info">
+                <span>Entry: ₹57937.55</span>
+                <span>Target: ₹59096.30 (+2%)</span>
+                <span>Stop: ₹57068.49 (-1.5%)</span>
+                <span>Exit: ₹59096.30</span>
+            </div>
+            <canvas id="success_5" width="600" height="300"></canvas>
+        </div>
+    
+
+        <div class="chart-card success">
+            <h3>✅ CONCOR - SUCCESS</h3>
+            <div class="chart-info">
+                <span>Entry: ₹521.35</span>
+                <span>Target: ₹531.78 (+2%)</span>
+                <span>Stop: ₹513.53 (-1.5%)</span>
+                <span>Exit: ₹531.78</span>
+            </div>
+            <canvas id="success_6" width="600" height="300"></canvas>
+        </div>
+    
+
+        <div class="chart-card success">
+            <h3>✅ BDL - SUCCESS</h3>
+            <div class="chart-info">
+                <span>Entry: ₹1514.40</span>
+                <span>Target: ₹1544.69 (+2%)</span>
+                <span>Stop: ₹1491.68 (-1.5%)</span>
+                <span>Exit: ₹1544.69</span>
+            </div>
+            <canvas id="success_7" width="600" height="300"></canvas>
+        </div>
+    
+
+        <div class="chart-card success">
+            <h3>✅ ANGELONE - SUCCESS</h3>
+            <div class="chart-info">
+                <span>Entry: ₹2606.40</span>
+                <span>Target: ₹2658.53 (+2%)</span>
+                <span>Stop: ₹2567.30 (-1.5%)</span>
+                <span>Exit: ₹2658.53</span>
+            </div>
+            <canvas id="success_8" width="600" height="300"></canvas>
+        </div>
+    
+
+        <div class="chart-card success">
+            <h3>✅ KFINTECH - SUCCESS</h3>
+            <div class="chart-info">
+                <span>Entry: ₹1081.60</span>
+                <span>Target: ₹1103.23 (+2%)</span>
+                <span>Stop: ₹1065.38 (-1.5%)</span>
+                <span>Exit: ₹1103.23</span>
+            </div>
+            <canvas id="success_9" width="600" height="300"></canvas>
+        </div>
+    
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>❌ FAILED TRADES (Hit Stop or Timeout)</h2>
+        <div class="charts-grid">
+            
+        <div class="chart-card failure">
+            <h3>❌ NTPC - FAILURE</h3>
+            <div class="chart-info">
+                <span>Entry: ₹325.45</span>
+                <span>Target: ₹331.96 (+2%)</span>
+                <span>Stop: ₹320.57 (-1.5%)</span>
+                <span>Exit: ₹327.10</span>
+            </div>
+            <canvas id="failure_0" width="600" height="300"></canvas>
+        </div>
+    
+
+        <div class="chart-card failure">
+            <h3>❌ BLUESTARCO - FAILURE</h3>
+            <div class="chart-info">
+                <span>Entry: ₹1771.60</span>
+                <span>Target: ₹1807.03 (+2%)</span>
+                <span>Stop: ₹1745.03 (-1.5%)</span>
+                <span>Exit: ₹1745.03</span>
+            </div>
+            <canvas id="failure_1" width="600" height="300"></canvas>
+        </div>
+    
+
+        <div class="chart-card failure">
+            <h3>❌ CROMPTON - FAILURE</h3>
+            <div class="chart-info">
+                <span>Entry: ₹280.30</span>
+                <span>Target: ₹285.91 (+2%)</span>
+                <span>Stop: ₹276.10 (-1.5%)</span>
+                <span>Exit: ₹276.10</span>
+            </div>
+            <canvas id="failure_2" width="600" height="300"></canvas>
+        </div>
+    
+
+        <div class="chart-card failure">
+            <h3>❌ UNOMINDA - FAILURE</h3>
+            <div class="chart-info">
+                <span>Entry: ₹1319.30</span>
+                <span>Target: ₹1345.69 (+2%)</span>
+                <span>Stop: ₹1299.51 (-1.5%)</span>
+                <span>Exit: ₹1299.51</span>
+            </div>
+            <canvas id="failure_3" width="600" height="300"></canvas>
+        </div>
+    
+
+        <div class="chart-card failure">
+            <h3>❌ 360ONE - FAILURE</h3>
+            <div class="chart-info">
+                <span>Entry: ₹1074.60</span>
+                <span>Target: ₹1096.09 (+2%)</span>
+                <span>Stop: ₹1058.48 (-1.5%)</span>
+                <span>Exit: ₹1058.48</span>
+            </div>
+            <canvas id="failure_4" width="600" height="300"></canvas>
+        </div>
+    
+
+        <div class="chart-card failure">
+            <h3>❌ MANAPPURAM - FAILURE</h3>
+            <div class="chart-info">
+                <span>Entry: ₹277.95</span>
+                <span>Target: ₹283.51 (+2%)</span>
+                <span>Stop: ₹273.78 (-1.5%)</span>
+                <span>Exit: ₹273.78</span>
+            </div>
+            <canvas id="failure_5" width="600" height="300"></canvas>
+        </div>
+    
+
+        <div class="chart-card failure">
+            <h3>❌ RVNL - FAILURE</h3>
+            <div class="chart-info">
+                <span>Entry: ₹315.90</span>
+                <span>Target: ₹322.22 (+2%)</span>
+                <span>Stop: ₹311.16 (-1.5%)</span>
+                <span>Exit: ₹311.16</span>
+            </div>
+            <canvas id="failure_6" width="600" height="300"></canvas>
+        </div>
+    
+
+        <div class="chart-card failure">
+            <h3>❌ OBEROIRLTY - FAILURE</h3>
+            <div class="chart-info">
+                <span>Entry: ₹1787.20</span>
+                <span>Target: ₹1822.94 (+2%)</span>
+                <span>Stop: ₹1760.39 (-1.5%)</span>
+                <span>Exit: ₹1760.39</span>
+            </div>
+            <canvas id="failure_7" width="600" height="300"></canvas>
+        </div>
+    
+
+        <div class="chart-card failure">
+            <h3>❌ HUDCO - FAILURE</h3>
+            <div class="chart-info">
+                <span>Entry: ₹233.79</span>
+                <span>Target: ₹238.47 (+2%)</span>
+                <span>Stop: ₹230.28 (-1.5%)</span>
+                <span>Exit: ₹230.28</span>
+            </div>
+            <canvas id="failure_8" width="600" height="300"></canvas>
+        </div>
+    
+
+        <div class="chart-card failure">
+            <h3>❌ BANDHANBNK - FAILURE</h3>
+            <div class="chart-info">
+                <span>Entry: ₹152.50</span>
+                <span>Target: ₹155.55 (+2%)</span>
+                <span>Stop: ₹150.21 (-1.5%)</span>
+                <span>Exit: ₹150.21</span>
+            </div>
+            <canvas id="failure_9" width="600" height="300"></canvas>
+        </div>
+    
+        </div>
+    </div>
+    
+    <script>
+        function drawChart(canvasId, candles, entryPrice, targetPrice, stopPrice, entryIdx, exitIdx) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            const width = canvas.width;
+            const height = canvas.height;
+            const padding = { top: 20, right: 60, bottom: 40, left: 60 };
+            
+            const chartWidth = width - padding.left - padding.right;
+            const chartHeight = height - padding.top - padding.bottom;
+            
+            // Find price range
+            let minPrice = Infinity, maxPrice = -Infinity;
+            candles.forEach(c => {
+                minPrice = Math.min(minPrice, c.low, stopPrice * 0.99);
+                maxPrice = Math.max(maxPrice, c.high, targetPrice * 1.01);
+            });
+            
+            const priceRange = maxPrice - minPrice;
+            const candleWidth = chartWidth / candles.length;
+            
+            const priceToY = (price) => padding.top + chartHeight - ((price - minPrice) / priceRange * chartHeight);
+            const indexToX = (i) => padding.left + i * candleWidth + candleWidth / 2;
+            
+            // Background
+            ctx.fillStyle = '#0a0a1a';
+            ctx.fillRect(0, 0, width, height);
+            
+            // Grid lines
+            ctx.strokeStyle = '#222';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 5; i++) {
+                const y = padding.top + (i / 5) * chartHeight;
+                ctx.beginPath();
+                ctx.moveTo(padding.left, y);
+                ctx.lineTo(width - padding.right, y);
+                ctx.stroke();
+                
+                const price = maxPrice - (i / 5) * priceRange;
+                ctx.fillStyle = '#666';
+                ctx.font = '11px sans-serif';
+                ctx.fillText('₹' + price.toFixed(1), width - padding.right + 5, y + 4);
+            }
+            
+            // Target line (green dotted)
+            ctx.strokeStyle = '#00ff88';
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            ctx.moveTo(padding.left, priceToY(targetPrice));
+            ctx.lineTo(width - padding.right, priceToY(targetPrice));
+            ctx.stroke();
+            ctx.fillStyle = '#00ff88';
+            ctx.fillText('Target', padding.left + 5, priceToY(targetPrice) - 5);
+            
+            // Stop line (red dotted)
+            ctx.strokeStyle = '#ff4757';
+            ctx.beginPath();
+            ctx.moveTo(padding.left, priceToY(stopPrice));
+            ctx.lineTo(width - padding.right, priceToY(stopPrice));
+            ctx.stroke();
+            ctx.fillStyle = '#ff4757';
+            ctx.fillText('Stop', padding.left + 5, priceToY(stopPrice) + 12);
+            
+            // Entry line (blue dotted)
+            ctx.strokeStyle = '#00d4ff';
+            ctx.beginPath();
+            ctx.moveTo(padding.left, priceToY(entryPrice));
+            ctx.lineTo(width - padding.right, priceToY(entryPrice));
+            ctx.stroke();
+            ctx.fillStyle = '#00d4ff';
+            ctx.fillText('Entry', padding.left + 5, priceToY(entryPrice) - 5);
+            
+            ctx.setLineDash([]);
+            
+            // Entry vertical line
+            ctx.strokeStyle = '#00d4ff';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(indexToX(entryIdx), padding.top);
+            ctx.lineTo(indexToX(entryIdx), height - padding.bottom);
+            ctx.stroke();
+            
+            // Exit vertical line
+            ctx.strokeStyle = '#ffaa00';
+            ctx.beginPath();
+            ctx.moveTo(indexToX(exitIdx), padding.top);
+            ctx.lineTo(indexToX(exitIdx), height - padding.bottom);
+            ctx.stroke();
+            
+            // Candlesticks
+            candles.forEach((c, i) => {
+                const x = indexToX(i);
+                const openY = priceToY(c.open);
+                const closeY = priceToY(c.close);
+                const highY = priceToY(c.high);
+                const lowY = priceToY(c.low);
+                
+                const isGreen = c.close >= c.open;
+                ctx.strokeStyle = isGreen ? '#00ff88' : '#ff4757';
+                ctx.fillStyle = isGreen ? '#00ff88' : '#ff4757';
+                
+                // Wick
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(x, highY);
+                ctx.lineTo(x, lowY);
+                ctx.stroke();
+                
+                // Body
+                const bodyWidth = candleWidth * 0.6;
+                const bodyHeight = Math.abs(closeY - openY) || 1;
+                ctx.fillRect(x - bodyWidth/2, Math.min(openY, closeY), bodyWidth, bodyHeight);
+            });
+            
+            // Labels
+            ctx.fillStyle = '#00d4ff';
+            ctx.font = 'bold 12px sans-serif';
+            ctx.fillText('ENTRY', indexToX(entryIdx) - 20, height - padding.bottom + 15);
+            ctx.fillStyle = '#ffaa00';
+            ctx.fillText('EXIT', indexToX(exitIdx) - 15, height - padding.bottom + 15);
+        }
+        
+        // Chart data for all charts
+        const chartData = [{"id":"success_0","candles":[{"date":"2025-10-30","open":1491.9,"high":1491.9,"low":1440,"close":1444.6,"volume":1720635},{"date":"2025-11-02","open":1450,"high":1471.9,"low":1446.4,"close":1460.5,"volume":677950},{"date":"2025-11-03","open":1461,"high":1465,"low":1448.3,"close":1455.2,"volume":707089},{"date":"2025-11-05","open":1463,"high":1468.5,"low":1438,"close":1442.8,"volume":692357},{"date":"2025-11-06","open":1448,"high":1458.1,"low":1445.4,"close":1454.8,"volume":533597},{"date":"2025-11-09","open":1460,"high":1467,"low":1451,"close":1456.6,"volume":283000},{"date":"2025-11-10","open":1456.6,"high":1477,"low":1452.2,"close":1472.9,"volume":292665},{"date":"2025-11-11","open":1477,"high":1487,"low":1469.7,"close":1482,"volume":417016},{"date":"2025-11-12","open":1491,"high":1496.3,"low":1478.6,"close":1481.4,"volume":798904},{"date":"2025-11-13","open":1472.6,"high":1476.3,"low":1453,"close":1459.8,"volume":549299},{"date":"2025-11-16","open":1468,"high":1486,"low":1450,"close":1475.5,"volume":898284},{"date":"2025-11-17","open":1483,"high":1496.8,"low":1472,"close":1491,"volume":1135472}],"entryPrice":1456.6,"targetPrice":1485.732,"stopPrice":1434.751,"entryIdx":5,"exitIdx":7},{"id":"success_1","candles":[{"date":"2025-10-30","open":163.51,"high":166.91,"low":163.09,"close":165.9,"volume":25385134},{"date":"2025-11-02","open":167,"high":168.7,"low":165.9,"close":167.73,"volume":19190570},{"date":"2025-11-03","open":168,"high":170.15,"low":167.13,"close":169.25,"volume":23469790},{"date":"2025-11-05","open":170.02,"high":170.03,"low":167.35,"close":168.37,"volume":19729771},{"date":"2025-11-06","open":167.21,"high":169.55,"low":166.1,"close":169.16,"volume":12104934},{"date":"2025-11-09","open":169.14,"high":171.39,"low":168.5,"close":169.39,"volume":12402893},{"date":"2025-11-10","open":168.9,"high":173.49,"low":167.32,"close":172.44,"volume":20113006},{"date":"2025-11-11","open":172.7,"high":174.5,"low":171.51,"close":172.3,"volume":16003745},{"date":"2025-11-12","open":172.69,"high":174.45,"low":171.45,"close":172.45,"volume":11618468},{"date":"2025-11-13","open":172.4,"high":174.21,"low":170.4,"close":171.25,"volume":11051895},{"date":"2025-11-16","open":171.16,"high":174.4,"low":171.16,"close":173.12,"volume":13233156}],"entryPrice":169.39,"targetPrice":172.77779999999998,"stopPrice":166.84914999999998,"entryIdx":5,"exitIdx":6},{"id":"success_2","candles":[{"date":"2025-10-30","open":1455,"high":1488,"low":1428,"close":1431.4,"volume":10485938},{"date":"2025-11-02","open":1435,"high":1464.8,"low":1428.2,"close":1447.6,"volume":1297031},{"date":"2025-11-03","open":1455,"high":1458.1,"low":1443,"close":1450.9,"volume":961290},{"date":"2025-11-05","open":1470,"high":1475,"low":1413.5,"close":1416.5,"volume":1003182},{"date":"2025-11-06","open":1416.5,"high":1433.7,"low":1404,"close":1429.1,"volume":507698},{"date":"2025-11-09","open":1429.1,"high":1430.1,"low":1405.5,"close":1409.5,"volume":429606},{"date":"2025-11-10","open":1413.3,"high":1431,"low":1408.7,"close":1414.5,"volume":1025644},{"date":"2025-11-11","open":1418.1,"high":1439.2,"low":1412.3,"close":1435.6,"volume":1363723},{"date":"2025-11-12","open":1435,"high":1435.9,"low":1417.4,"close":1420.8,"volume":464975},{"date":"2025-11-13","open":1419,"high":1432.4,"low":1412.8,"close":1429.4,"volume":335913},{"date":"2025-11-16","open":1434,"high":1438.1,"low":1424.3,"close":1434.9,"volume":380093},{"date":"2025-11-17","open":1438,"high":1438.2,"low":1416.9,"close":1434.7,"volume":455921}],"entryPrice":1409.5,"targetPrice":1437.69,"stopPrice":1388.3575,"entryIdx":5,"exitIdx":7},{"id":"success_3","candles":[{"date":"2025-10-30","open":1556.2,"high":1567.4,"low":1543.1,"close":1546.5,"volume":330398},{"date":"2025-11-02","open":1531,"high":1568.8,"low":1531,"close":1559.9,"volume":591451},{"date":"2025-11-03","open":1566,"high":1600,"low":1561.5,"close":1592.4,"volume":1155844},{"date":"2025-11-05","open":1604.8,"high":1612,"low":1581.2,"close":1584.2,"volume":471640},{"date":"2025-11-06","open":1576.2,"high":1633.8,"low":1562.1,"close":1618.1,"volume":352093},{"date":"2025-11-09","open":1625.1,"high":1638,"low":1612.4,"close":1619.1,"volume":466129},{"date":"2025-11-10","open":1634,"high":1642,"low":1600.3,"close":1635.5,"volume":693696},{"date":"2025-11-11","open":1600,"high":1727.7,"low":1600,"close":1718.8,"volume":4176641},{"date":"2025-11-12","open":1718.8,"high":1729.9,"low":1691.8,"close":1707.4,"volume":658661},{"date":"2025-11-13","open":1707.4,"high":1707.6,"low":1662,"close":1673.4,"volume":688238},{"date":"2025-11-16","open":1688,"high":1707.9,"low":1678.1,"close":1698.3,"volume":698271},{"date":"2025-11-17","open":1702,"high":1707.1,"low":1677.5,"close":1679.8,"volume":719728}],"entryPrice":1619.1,"targetPrice":1651.482,"stopPrice":1594.8135,"entryIdx":5,"exitIdx":7},{"id":"success_4","candles":[{"date":"2025-11-23","open":269.1376498666565,"high":270.92539008594656,"low":264.4290754310565,"close":267.25672507068373,"volume":186156.74214865023},{"date":"2025-11-24","open":271.57182415018644,"high":274.61381928281554,"low":269.9153098920836,"close":272.58955983993184,"volume":270906.63090359594},{"date":"2025-11-25","open":269.82035184259746,"high":272.42605479302824,"low":266.7851641443775,"close":267.4118032491327,"volume":261231.91865321517},{"date":"2025-11-26","open":269.9279905537313,"high":270.5802200140241,"low":269.80193293773556,"close":270.1188692726637,"volume":119590.26781714911},{"date":"2025-11-27","open":265.34787909890997,"high":266.5376166148852,"low":264.1676438868143,"close":264.601156489845,"volume":335928.1912683592},{"date":"2025-11-28","open":267.9904768020536,"high":268.7130796070223,"low":263.4271102675745,"close":266.07491324872484,"volume":218198.20871396147},{"date":"2025-11-29","open":270.38169281309393,"high":272.9490561196015,"low":269.73217756330376,"close":270.25659754664025,"volume":422490.8902277135},{"date":"2025-11-30","open":269.5004558756249,"high":270.80078842613386,"low":267.646318423718,"close":270.10771355537514,"volume":523410.294532513},{"date":"2025-12-01","open":273.4755297347046,"high":276.00445244119913,"low":270.48790275060713,"close":272.7019540688854,"volume":349657.456982018},{"date":"2025-12-02","open":269.3801313425707,"high":272.3024408761227,"low":267.0094380701346,"close":268.66850922413664,"volume":522498.50477460225},{"date":"2025-12-03","open":266.76997529507514,"high":269.24342939327914,"low":265.8026436023348,"close":267.56310945050467,"volume":267894.3354916994}],"entryPrice":266.07491324872484,"targetPrice":271.3964115136993,"stopPrice":262.083789549994,"entryIdx":5,"exitIdx":6},{"id":"success_5","candles":[{"date":"2025-10-30","open":57942.45,"high":58254.95,"low":57656.95,"close":57776.35,"volume":0},{"date":"2025-11-02","open":57726.85,"high":58247.55,"low":57718.4,"close":58101.45,"volume":0},{"date":"2025-11-03","open":57966.65,"high":58119.65,"low":57732.95,"close":57827.05,"volume":0},{"date":"2025-11-05","open":57714.8,"high":57945.05,"low":57521,"close":57554.25,"volume":0},{"date":"2025-11-06","open":57391.4,"high":58001.35,"low":57157.85,"close":57876.8,"volume":0},{"date":"2025-11-09","open":57846.2,"high":58097.2,"low":57846.2,"close":57937.55,"volume":0},{"date":"2025-11-10","open":57962.3,"high":58187.35,"low":57594.25,"close":58138.15,"volume":0},{"date":"2025-11-11","open":58505.35,"high":58507.7,"low":58171.85,"close":58274.65,"volume":0},{"date":"2025-11-12","open":58158.75,"high":58615.95,"low":58127.1,"close":58381.95,"volume":0},{"date":"2025-11-13","open":58050,"high":58590.15,"low":58050,"close":58517.55,"volume":0},{"date":"2025-11-16","open":58696.3,"high":59001.55,"low":58605.3,"close":58962.7,"volume":0},{"date":"2025-11-17","open":58990.5,"high":59103.65,"low":58798.9,"close":58899.25,"volume":0},{"date":"2025-11-18","open":58908.15,"high":59264.25,"low":58688.55,"close":59216.05,"volume":0},{"date":"2025-11-19","open":59308.2,"high":59440.1,"low":59125.25,"close":59347.7,"volume":0},{"date":"2025-11-20","open":59116.7,"high":59232.15,"low":58823.65,"close":58867.7,"volume":0},{"date":"2025-11-23","open":58996.9,"high":59309.9,"low":58649.5,"close":58835.35,"volume":0}],"entryPrice":57937.55,"targetPrice":59096.30100000001,"stopPrice":57068.486750000004,"entryIdx":5,"exitIdx":11},{"id":"success_6","candles":[{"date":"2025-10-30","open":550,"high":550.8,"low":544.1,"close":545.25,"volume":777245},{"date":"2025-11-02","open":545.55,"high":553,"low":544.25,"close":549.85,"volume":639776},{"date":"2025-11-03","open":549.85,"high":551,"low":539.35,"close":542.5,"volume":711007},{"date":"2025-11-05","open":541.8,"high":541.8,"low":518,"close":519.35,"volume":4558191},{"date":"2025-11-06","open":519.55,"high":523.5,"low":515.8,"close":521.7,"volume":1513467},{"date":"2025-11-09","open":525.9,"high":526.55,"low":520.35,"close":521.35,"volume":1023573},{"date":"2025-11-10","open":522.1,"high":524.1,"low":515.85,"close":522.9,"volume":3241835},{"date":"2025-11-11","open":530,"high":538.5,"low":524.7,"close":530.45,"volume":4975992},{"date":"2025-11-12","open":534.05,"high":534.85,"low":522.8,"close":523.9,"volume":861847},{"date":"2025-11-13","open":525,"high":525,"low":516.55,"close":518.85,"volume":1470642},{"date":"2025-11-16","open":518.85,"high":521.95,"low":517.1,"close":518.15,"volume":1443272},{"date":"2025-11-17","open":518.15,"high":526,"low":512,"close":522.6,"volume":3630058}],"entryPrice":521.35,"targetPrice":531.777,"stopPrice":513.52975,"entryIdx":5,"exitIdx":7},{"id":"success_7","candles":[{"date":"2025-10-30","open":1512,"high":1547,"low":1511.1,"close":1529.9,"volume":1561910},{"date":"2025-11-02","open":1530,"high":1541,"low":1515,"close":1536.6,"volume":664625},{"date":"2025-11-03","open":1534,"high":1539.8,"low":1478.1,"close":1481.1,"volume":1203483},{"date":"2025-11-05","open":1483,"high":1486.1,"low":1424.1,"close":1438.1,"volume":1430679},{"date":"2025-11-06","open":1425.1,"high":1455,"low":1413,"close":1447.7,"volume":984121},{"date":"2025-11-09","open":1450,"high":1521.5,"low":1449.7,"close":1514.4,"volume":1989123},{"date":"2025-11-10","open":1513,"high":1552,"low":1512.1,"close":1533.4,"volume":1622623},{"date":"2025-11-11","open":1541.1,"high":1555,"low":1521.2,"close":1532.4,"volume":1038141},{"date":"2025-11-12","open":1530,"high":1544.9,"low":1510,"close":1517.9,"volume":953101},{"date":"2025-11-13","open":1601,"high":1633.4,"low":1583.2,"close":1613.8,"volume":8771309},{"date":"2025-11-16","open":1620.1,"high":1629.9,"low":1582.3,"close":1589.5,"volume":1613157}],"entryPrice":1514.4,"targetPrice":1544.688,"stopPrice":1491.684,"entryIdx":5,"exitIdx":6},{"id":"success_8","candles":[{"date":"2025-10-30","open":2513.1,"high":2536,"low":2409,"close":2492.4,"volume":1011363},{"date":"2025-11-02","open":2492.4,"high":2569.8,"low":2486.2,"close":2563.8,"volume":623626},{"date":"2025-11-03","open":2560,"high":2584.2,"low":2509.9,"close":2518.4,"volume":621997},{"date":"2025-11-05","open":2530,"high":2559.8,"low":2480,"close":2486.5,"volume":721587},{"date":"2025-11-06","open":2480,"high":2625,"low":2446,"close":2616.4,"volume":1865591},{"date":"2025-11-09","open":2622,"high":2673.3,"low":2600,"close":2606.4,"volume":1230066},{"date":"2025-11-10","open":2606.4,"high":2656.9,"low":2602,"close":2641.4,"volume":750372},{"date":"2025-11-11","open":2663,"high":2710,"low":2637.8,"close":2679.5,"volume":1783272},{"date":"2025-11-12","open":2680,"high":2768.3,"low":2666.4,"close":2713.5,"volume":1167192},{"date":"2025-11-13","open":2713.5,"high":2757,"low":2710.7,"close":2745.3,"volume":536041},{"date":"2025-11-16","open":2759,"high":2864.9,"low":2755.1,"close":2847.4,"volume":1513166},{"date":"2025-11-17","open":2839,"high":2867,"low":2785,"close":2793.4,"volume":744032}],"entryPrice":2606.4,"targetPrice":2658.5280000000002,"stopPrice":2567.304,"entryIdx":5,"exitIdx":7},{"id":"success_9","candles":[{"date":"2025-10-30","open":1102,"high":1118,"low":1091.2,"close":1098.1,"volume":652110},{"date":"2025-11-02","open":1098.1,"high":1115,"low":1095.6,"close":1102.8,"volume":313462},{"date":"2025-11-03","open":1104.8,"high":1104.8,"low":1066,"close":1069.4,"volume":660313},{"date":"2025-11-05","open":1070,"high":1089.4,"low":1053.6,"close":1062.1,"volume":552399},{"date":"2025-11-06","open":1062.1,"high":1116.8,"low":1051,"close":1111,"volume":1132039},{"date":"2025-11-09","open":1109.6,"high":1109.6,"low":1079.2,"close":1081.6,"volume":1168913},{"date":"2025-11-10","open":1085,"high":1095.3,"low":1073.6,"close":1094.1,"volume":245241},{"date":"2025-11-11","open":1094.1,"high":1126.4,"low":1093.8,"close":1100.3,"volume":824642},{"date":"2025-11-12","open":1105,"high":1109.9,"low":1080.5,"close":1083.1,"volume":441405},{"date":"2025-11-13","open":1080,"high":1093.8,"low":1076.2,"close":1084.1,"volume":276013},{"date":"2025-11-16","open":1084.1,"high":1098.7,"low":1082.7,"close":1088.6,"volume":468953},{"date":"2025-11-17","open":1091.5,"high":1102.2,"low":1076.2,"close":1089,"volume":322950}],"entryPrice":1081.6,"targetPrice":1103.232,"stopPrice":1065.376,"entryIdx":5,"exitIdx":7},{"id":"failure_0","candles":[{"date":"2025-10-30","open":345,"high":345,"low":335.6,"close":336.95,"volume":18651312},{"date":"2025-11-02","open":336.85,"high":337.5,"low":333.4,"close":335.2,"volume":10242245},{"date":"2025-11-03","open":335.4,"high":336,"low":329.7,"close":330.6,"volume":11887651},{"date":"2025-11-05","open":332.05,"high":332.95,"low":324.6,"close":326.65,"volume":11587302},{"date":"2025-11-06","open":324.4,"high":327.1,"low":320.85,"close":326.1,"volume":8578167},{"date":"2025-11-09","open":326.1,"high":328.25,"low":324,"close":325.45,"volume":5246998},{"date":"2025-11-10","open":325.95,"high":327.45,"low":322.85,"close":326.65,"volume":6103758},{"date":"2025-11-11","open":327.5,"high":328.25,"low":325.55,"close":327.15,"volume":6850550},{"date":"2025-11-12","open":327.15,"high":329.95,"low":325.55,"close":326.95,"volume":7276001},{"date":"2025-11-13","open":327,"high":329.9,"low":326.2,"close":328.45,"volume":9169855},{"date":"2025-11-16","open":329,"high":331.45,"low":328.55,"close":330.2,"volume":6283156},{"date":"2025-11-17","open":329.05,"high":329.75,"low":327.15,"close":328.45,"volume":6776200},{"date":"2025-11-18","open":328.95,"high":328.95,"low":325.05,"close":326.6,"volume":6935056},{"date":"2025-11-19","open":328,"high":330,"low":326.2,"close":326.6,"volume":5155775},{"date":"2025-11-20","open":326.85,"high":328.4,"low":325,"close":326.65,"volume":6142545},{"date":"2025-11-23","open":326.7,"high":327.1,"low":322.05,"close":323.45,"volume":13719726},{"date":"2025-11-24","open":323.45,"high":325.6,"low":322.5,"close":323.7,"volume":8074651},{"date":"2025-11-25","open":324.3,"high":327.8,"low":324,"close":326.1,"volume":7101095},{"date":"2025-11-26","open":327.15,"high":328.75,"low":325,"close":327.35,"volume":6755179},{"date":"2025-11-27","open":328,"high":328.15,"low":324.25,"close":326.45,"volume":8930988},{"date":"2025-11-30","open":327.1,"high":328.25,"low":325.45,"close":327.1,"volume":6936186},{"date":"2025-12-01","open":327.45,"high":329.95,"low":326.75,"close":328.6,"volume":5806943},{"date":"2025-12-02","open":329,"high":329,"low":321.3,"close":322.95,"volume":8546132},{"date":"2025-12-03","open":322.9,"high":324.3,"low":321.1,"close":322.95,"volume":5965357},{"date":"2025-12-04","open":322.25,"high":324.15,"low":320.95,"close":323.3,"volume":6574010}],"entryPrice":325.45,"targetPrice":331.959,"stopPrice":320.56825,"entryIdx":5,"exitIdx":20},{"id":"failure_1","candles":[{"date":"2025-10-30","open":1965,"high":1988,"low":1932,"close":1937.4,"volume":127593},{"date":"2025-11-02","open":1937.4,"high":1955,"low":1901.3,"close":1934.4,"volume":175025},{"date":"2025-11-03","open":1912.6,"high":1931.9,"low":1886.1,"close":1917.6,"volume":396298},{"date":"2025-11-05","open":1934,"high":2021.4,"low":1776,"close":1785.5,"volume":2860574},{"date":"2025-11-06","open":1790,"high":1790,"low":1712.1,"close":1752.7,"volume":917742},{"date":"2025-11-09","open":1757.6,"high":1781,"low":1706.5,"close":1771.6,"volume":315959},{"date":"2025-11-10","open":1770,"high":1784,"low":1740,"close":1780.1,"volume":240014},{"date":"2025-11-11","open":1780,"high":1802.9,"low":1772,"close":1798,"volume":225467},{"date":"2025-11-12","open":1797,"high":1807,"low":1780.2,"close":1787.7,"volume":317336},{"date":"2025-11-13","open":1785,"high":1802.3,"low":1762.5,"close":1768.4,"volume":401542},{"date":"2025-11-16","open":1768.3,"high":1797.9,"low":1765,"close":1788.9,"volume":143839}],"entryPrice":1771.6,"targetPrice":1807.032,"stopPrice":1745.0259999999998,"entryIdx":5,"exitIdx":6},{"id":"failure_2","candles":[{"date":"2025-10-30","open":286.65,"high":289.3,"low":281.95,"close":282.7,"volume":4577706},{"date":"2025-11-02","open":282.7,"high":285.4,"low":280.85,"close":284.1,"volume":3215109},{"date":"2025-11-03","open":285,"high":286,"low":282.4,"close":283.25,"volume":2340525},{"date":"2025-11-05","open":283.5,"high":284.35,"low":276.4,"close":278.55,"volume":2344095},{"date":"2025-11-06","open":273,"high":279.8,"low":269.1,"close":277.15,"volume":6292556},{"date":"2025-11-09","open":277.15,"high":286.35,"low":276.05,"close":280.3,"volume":5652838},{"date":"2025-11-10","open":280.4,"high":280.95,"low":273.65,"close":279.1,"volume":2263086},{"date":"2025-11-11","open":280.15,"high":282.65,"low":278.3,"close":281.3,"volume":4617350},{"date":"2025-11-12","open":282.65,"high":282.7,"low":276.35,"close":278.6,"volume":2083208},{"date":"2025-11-13","open":278.45,"high":279.6,"low":274.35,"close":276.15,"volume":3368751},{"date":"2025-11-16","open":276.15,"high":278.2,"low":273.65,"close":274.35,"volume":1786175}],"entryPrice":280.3,"targetPrice":285.906,"stopPrice":276.0955,"entryIdx":5,"exitIdx":6},{"id":"failure_3","candles":[{"date":"2025-10-30","open":1224.7,"high":1243.9,"low":1224.5,"close":1235.2,"volume":847020},{"date":"2025-11-02","open":1245,"high":1273.7,"low":1215,"close":1264.6,"volume":1306252},{"date":"2025-11-03","open":1264,"high":1275.9,"low":1248.1,"close":1252,"volume":700575},{"date":"2025-11-05","open":1242,"high":1264,"low":1227.2,"close":1233.8,"volume":979119},{"date":"2025-11-06","open":1237,"high":1258,"low":1197.2,"close":1229.7,"volume":1626201},{"date":"2025-11-09","open":1229.7,"high":1327.8,"low":1227.3,"close":1319.3,"volume":2923214},{"date":"2025-11-10","open":1325.5,"high":1341,"low":1308.2,"close":1311.1,"volume":1327355},{"date":"2025-11-11","open":1311.1,"high":1335,"low":1308.3,"close":1332.9,"volume":978368},{"date":"2025-11-12","open":1333,"high":1334,"low":1293.8,"close":1303.2,"volume":555081},{"date":"2025-11-13","open":1302.2,"high":1310.7,"low":1290.2,"close":1307.2,"volume":391332},{"date":"2025-11-16","open":1307.2,"high":1313.5,"low":1296.7,"close":1299.9,"volume":335117},{"date":"2025-11-17","open":1308.6,"high":1309,"low":1272.5,"close":1292.3,"volume":773878},{"date":"2025-11-18","open":1280.1,"high":1310.9,"low":1280.1,"close":1305.1,"volume":734535}],"entryPrice":1319.3,"targetPrice":1345.686,"stopPrice":1299.5104999999999,"entryIdx":5,"exitIdx":8},{"id":"failure_4","candles":[{"date":"2025-10-30","open":1121.5,"high":1123.9,"low":1074,"close":1080.7,"volume":587485},{"date":"2025-11-02","open":1088.7,"high":1104.9,"low":1084.3,"close":1093.6,"volume":343479},{"date":"2025-11-03","open":1099,"high":1099.4,"low":1071.9,"close":1079.1,"volume":458901},{"date":"2025-11-05","open":1081.6,"high":1084.1,"low":1062.7,"close":1068.2,"volume":396590},{"date":"2025-11-06","open":1060,"high":1076.3,"low":1052.4,"close":1066,"volume":922625},{"date":"2025-11-09","open":1069.5,"high":1079,"low":1056.6,"close":1074.6,"volume":308692},{"date":"2025-11-10","open":1073.1,"high":1089.1,"low":1051.1,"close":1070,"volume":466556},{"date":"2025-11-11","open":1080.8,"high":1096.9,"low":1072.8,"close":1089,"volume":341552},{"date":"2025-11-12","open":1089,"high":1095,"low":1075.8,"close":1085.6,"volume":457966},{"date":"2025-11-13","open":1087,"high":1089.8,"low":1059,"close":1065.4,"volume":601566},{"date":"2025-11-16","open":1062.2,"high":1080,"low":1060.2,"close":1071.8,"volume":441511}],"entryPrice":1074.6,"targetPrice":1096.0919999999999,"stopPrice":1058.481,"entryIdx":5,"exitIdx":6},{"id":"failure_5","candles":[{"date":"2025-10-30","open":265.1,"high":279.9,"low":262.9,"close":269.5,"volume":15980536},{"date":"2025-11-02","open":269,"high":274.3,"low":267.35,"close":267.85,"volume":3643932},{"date":"2025-11-03","open":268.1,"high":271.65,"low":264.65,"close":266.45,"volume":6000539},{"date":"2025-11-05","open":266.8,"high":277.4,"low":266.5,"close":274,"volume":9529258},{"date":"2025-11-06","open":272,"high":274,"low":267.95,"close":270.65,"volume":4893893},{"date":"2025-11-09","open":271.6,"high":279.55,"low":269.55,"close":277.95,"volume":6026935},{"date":"2025-11-10","open":278.55,"high":280.85,"low":274,"close":274.9,"volume":3886000},{"date":"2025-11-11","open":276,"high":277.15,"low":270.75,"close":274.05,"volume":2417862},{"date":"2025-11-12","open":274.35,"high":277.25,"low":273.2,"close":273.85,"volume":2321527},{"date":"2025-11-13","open":278,"high":286.3,"low":277.8,"close":281.15,"volume":10797588},{"date":"2025-11-16","open":280.9,"high":285.3,"low":277.9,"close":282.65,"volume":2687916},{"date":"2025-11-17","open":282.6,"high":282.9,"low":278.4,"close":280.35,"volume":2244434}],"entryPrice":277.95,"targetPrice":283.509,"stopPrice":273.78075,"entryIdx":5,"exitIdx":7},{"id":"failure_6","candles":[{"date":"2025-10-30","open":331.5,"high":332.75,"low":328.4,"close":328.8,"volume":2081372},{"date":"2025-11-02","open":328.4,"high":331.55,"low":327.7,"close":328.7,"volume":2313547},{"date":"2025-11-03","open":329.65,"high":330.35,"low":324.3,"close":325.8,"volume":1993561},{"date":"2025-11-05","open":325.9,"high":327.45,"low":317.3,"close":317.8,"volume":3610101},{"date":"2025-11-06","open":317.7,"high":319.8,"low":314,"close":318,"volume":3577541},{"date":"2025-11-09","open":318.3,"high":320.85,"low":315.55,"close":315.9,"volume":2271236},{"date":"2025-11-10","open":317.5,"high":320.3,"low":315.05,"close":317.75,"volume":2711458},{"date":"2025-11-11","open":314,"high":320.5,"low":308,"close":316.35,"volume":7164298},{"date":"2025-11-12","open":316.05,"high":320.9,"low":314,"close":314.3,"volume":3602435},{"date":"2025-11-13","open":314.35,"high":325.25,"low":314.3,"close":321.05,"volume":7162206},{"date":"2025-11-16","open":322.65,"high":335.65,"low":321.4,"close":327,"volume":13111023},{"date":"2025-11-17","open":327,"high":327.4,"low":320.3,"close":321.2,"volume":3136355}],"entryPrice":315.9,"targetPrice":322.21799999999996,"stopPrice":311.1615,"entryIdx":5,"exitIdx":7},{"id":"failure_7","candles":[{"date":"2025-10-30","open":1760,"high":1794.9,"low":1759,"close":1778.3,"volume":1586130},{"date":"2025-11-02","open":1791.5,"high":1817.6,"low":1777.1,"close":1807.5,"volume":418317},{"date":"2025-11-03","open":1815,"high":1833.7,"low":1777.5,"close":1781.1,"volume":356588},{"date":"2025-11-05","open":1790,"high":1796.9,"low":1768.5,"close":1780.4,"volume":352524},{"date":"2025-11-06","open":1760,"high":1801.1,"low":1756.4,"close":1792.9,"volume":290632},{"date":"2025-11-09","open":1794,"high":1813,"low":1782.9,"close":1787.2,"volume":202911},{"date":"2025-11-10","open":1795,"high":1795,"low":1758,"close":1762.7,"volume":408478},{"date":"2025-11-11","open":1770.2,"high":1783.2,"low":1731,"close":1738.7,"volume":242614},{"date":"2025-11-12","open":1735.2,"high":1764.7,"low":1735.2,"close":1744.2,"volume":240206},{"date":"2025-11-13","open":1748,"high":1763.7,"low":1733.8,"close":1752.4,"volume":183727},{"date":"2025-11-16","open":1760.4,"high":1778.4,"low":1740.2,"close":1745.2,"volume":150217}],"entryPrice":1787.2,"targetPrice":1822.9440000000002,"stopPrice":1760.392,"entryIdx":5,"exitIdx":6},{"id":"failure_8","candles":[{"date":"2025-10-30","open":240,"high":241.95,"low":236.1,"close":237,"volume":6042631},{"date":"2025-11-02","open":236.9,"high":240.91,"low":235.1,"close":237.33,"volume":3311734},{"date":"2025-11-03","open":237.4,"high":238,"low":232.18,"close":233.04,"volume":2955700},{"date":"2025-11-05","open":233,"high":233.61,"low":226.5,"close":227.52,"volume":2660105},{"date":"2025-11-06","open":226,"high":231.5,"low":222.68,"close":230.69,"volume":3027164},{"date":"2025-11-09","open":231,"high":236.45,"low":230.2,"close":233.79,"volume":4276399},{"date":"2025-11-10","open":235,"high":235.89,"low":222.21,"close":230.7,"volume":10810753},{"date":"2025-11-11","open":231,"high":234.66,"low":226.2,"close":227.17,"volume":3675194},{"date":"2025-11-12","open":227.2,"high":229.11,"low":225.01,"close":225.39,"volume":2187588},{"date":"2025-11-13","open":225,"high":228.45,"low":224.25,"close":227.49,"volume":2301154},{"date":"2025-11-16","open":228.7,"high":241.25,"low":228,"close":239.14,"volume":10098250}],"entryPrice":233.79,"targetPrice":238.4658,"stopPrice":230.28314999999998,"entryIdx":5,"exitIdx":6},{"id":"failure_9","candles":[{"date":"2025-10-30","open":164.1,"high":164.9,"low":156.01,"close":156.56,"volume":61847492},{"date":"2025-11-02","open":156.6,"high":158.9,"low":155.2,"close":157.6,"volume":9593425},{"date":"2025-11-03","open":158.2,"high":158.28,"low":154.87,"close":156.16,"volume":16071978},{"date":"2025-11-05","open":156.89,"high":156.89,"low":151.36,"close":152.93,"volume":12978521},{"date":"2025-11-06","open":152.93,"high":155.18,"low":151.76,"close":153.71,"volume":16575533},{"date":"2025-11-09","open":154.39,"high":155.27,"low":152.25,"close":152.5,"volume":7260687},{"date":"2025-11-10","open":152.8,"high":153.5,"low":149.32,"close":150.94,"volume":6636127},{"date":"2025-11-11","open":151.09,"high":156.3,"low":151.09,"close":155.85,"volume":8535481},{"date":"2025-11-12","open":155.5,"high":156.07,"low":154,"close":154.13,"volume":3841132},{"date":"2025-11-13","open":154.3,"high":155.26,"low":153.4,"close":154.59,"volume":4141559},{"date":"2025-11-16","open":154.99,"high":157.75,"low":154.55,"close":154.78,"volume":5810479}],"entryPrice":152.5,"targetPrice":155.55,"stopPrice":150.2125,"entryIdx":5,"exitIdx":6}];
+        
+        // Draw all charts after DOM is ready
+        window.onload = function() {
+            chartData.forEach(chart => {
+                drawChart(chart.id, chart.candles, chart.entryPrice, chart.targetPrice, chart.stopPrice, chart.entryIdx, chart.exitIdx);
+            });
+        };
+    </script>
+</body>
+</html>

@@ -13,6 +13,7 @@ const {
 } = require('../config/categoryConfig.cjs');
 
 const prisma = new PrismaClient();
+const { todayIST, startOfDayUTC, importDateIST } = require('../utils/istUtils.cjs');
 
 class TrackingService {
     constructor() {
@@ -68,16 +69,15 @@ class TrackingService {
         if (!addedDate) return 0;
 
         const config = getCategoryConfig(categoryKey);
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+        const todayStart = startOfDayUTC(todayIST());
 
         const added = new Date(addedDate);
-        added.setHours(0, 0, 0, 0);
+        const addedMidnight = new Date(Date.UTC(added.getUTCFullYear(), added.getUTCMonth(), added.getUTCDate()));
 
-        const expiryDate = new Date(added);
+        const expiryDate = new Date(addedMidnight);
         expiryDate.setDate(expiryDate.getDate() + config.trackingDays);
 
-        const diffTime = expiryDate.getTime() - today.getTime();
+        const diffTime = expiryDate.getTime() - todayStart.getTime();
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
         return Math.max(0, diffDays);
@@ -166,17 +166,14 @@ class TrackingService {
      * For intraday categories, only stocks added TODAY are eligible
      */
     async getTodaysIntradayStocks() {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+        const todayUTC = importDateIST();
 
         const categories = await prisma.category.findMany({
             include: {
                 stocks: {
                     include: { stock: true },
                     where: {
-                        addedDate: {
-                            gte: today
-                        }
+                        addedDate: todayUTC
                     }
                 }
             }

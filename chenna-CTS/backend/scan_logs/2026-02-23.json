@@ -1,0 +1,5706 @@
+[
+  {
+    "scanTime": "2026-03-03T03:19:57.179Z",
+    "totalStocks": 50,
+    "triggered": 16,
+    "expired": 3,
+    "results": [
+      {
+        "symbol": "UPL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 657.25,
+        "stop": 677.15,
+        "t1": 637.35,
+        "t2": 617.45,
+        "orHigh": 714.75,
+        "orLow": 677.15,
+        "orRangePct": "5.26%"
+      },
+      {
+        "symbol": "AUBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "CUMMINSIND",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "INDIANB",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ICICIGI",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1964.9,
+        "orLow": 1936.2,
+        "orRangePct": "1.48%"
+      },
+      {
+        "symbol": "KEI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 4760,
+        "stop": 4794.9,
+        "t1": 4725.1,
+        "t2": 4690.200000000001,
+        "orHigh": 4836.5,
+        "orLow": 4760,
+        "orRangePct": "1.59%"
+      },
+      {
+        "symbol": "INDHOTEL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 675.4,
+        "stop": 679.75,
+        "t1": 671.05,
+        "t2": 666.6999999999999,
+        "orHigh": 683.1,
+        "orLow": 675.4,
+        "orRangePct": "1.13%"
+      },
+      {
+        "symbol": "UNIONBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 199.2,
+        "stop": 198.65,
+        "t1": 200.196,
+        "t2": 201.19199999999998,
+        "orHigh": 199.2,
+        "orLow": 194.63,
+        "orRangePct": "2.33%"
+      },
+      {
+        "symbol": "BAJAJHLDNG",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 11320,
+        "stop": 11286,
+        "t1": 11376.6,
+        "t2": 11433.2,
+        "orHigh": 11320,
+        "orLow": 11150,
+        "orRangePct": "1.52%"
+      },
+      {
+        "symbol": "PNB",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 132.3,
+        "orLow": 130.3,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "IRCTC",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "HAL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 4055,
+        "stop": 4063.8,
+        "t1": 4034.725,
+        "t2": 4014.45,
+        "orHigh": 4150,
+        "orLow": 4056.1,
+        "orRangePct": "2.26%"
+      },
+      {
+        "symbol": "CIPLA",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1335.9,
+        "orLow": 1308.8,
+        "orRangePct": "2.03%"
+      },
+      {
+        "symbol": "SIEMENS",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3264.9,
+        "orLow": 3201,
+        "orRangePct": "1.99%"
+      },
+      {
+        "symbol": "BAJFINANCE",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "PNBHOUSING",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ABB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "COFORGE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TMPV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 384,
+        "orLow": 377.55,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "ABCAPITAL",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "KPITTECH",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 825.5,
+        "stop": 834.6,
+        "t1": 816.4,
+        "t2": 807.3,
+        "orHigh": 841.9,
+        "orLow": 828.3,
+        "orRangePct": "1.63%"
+      },
+      {
+        "symbol": "INDUSINDBK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 918.95,
+        "stop": 928.9,
+        "t1": 909.0000000000001,
+        "t2": 899.0500000000002,
+        "orHigh": 934.65,
+        "orLow": 923.1,
+        "orRangePct": "1.25%"
+      },
+      {
+        "symbol": "NTPC",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 375.8,
+        "orLow": 372.15,
+        "orRangePct": "0.98%"
+      },
+      {
+        "symbol": "POLYCAB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "FORTIS",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BHARATFORG",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ADANIPORTS",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1554.9,
+        "orLow": 1510.8,
+        "orRangePct": "2.92%"
+      },
+      {
+        "symbol": "360ONE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "DMART",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 10,
+        "tier": "TIER_3",
+        "entryPrice": 3864.2,
+        "stop": 3866.9,
+        "t1": 3844.879,
+        "t2": 3825.558,
+        "orHigh": 3900,
+        "orLow": 3864.2,
+        "orRangePct": "0.92%"
+      },
+      {
+        "symbol": "INOXWIND",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 95.66,
+        "stop": 96.63,
+        "t1": 94.69,
+        "t2": 93.72,
+        "orHigh": 97.67,
+        "orLow": 96.5,
+        "orRangePct": "1.20%"
+      },
+      {
+        "symbol": "AXISBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 50,
+        "tier": "TIER_3",
+        "entryPrice": 1398,
+        "stop": 1394,
+        "t1": 1404.99,
+        "t2": 1411.98,
+        "orHigh": 1398,
+        "orLow": 1380.2,
+        "orRangePct": "1.29%"
+      },
+      {
+        "symbol": "MPHASIS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2317.4,
+        "stop": 2338.8,
+        "t1": 2296,
+        "t2": 2274.6,
+        "orHigh": 2360.5,
+        "orLow": 2325.5,
+        "orRangePct": "1.49%"
+      },
+      {
+        "symbol": "RBLBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BPCL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 371.2,
+        "stop": 369.9,
+        "t1": 373.056,
+        "t2": 374.912,
+        "orHigh": 371.2,
+        "orLow": 366.65,
+        "orRangePct": "1.23%"
+      },
+      {
+        "symbol": "WIPRO",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "TATAELXSI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4837.5,
+        "t1": 4766.5,
+        "t2": 4731,
+        "orHigh": 4873,
+        "orLow": 4802,
+        "orRangePct": "1.47%"
+      },
+      {
+        "symbol": "BANKBARODA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BAJAJFINSV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 2069,
+        "orLow": 2039.8,
+        "orRangePct": "1.42%"
+      },
+      {
+        "symbol": "SOLARINDS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 13401,
+        "stop": 13572,
+        "t1": 13230,
+        "t2": 13059,
+        "orHigh": 13630,
+        "orLow": 13401,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "AMBER",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "DRREDDY",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TVSMOTOR",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3881.9,
+        "orLow": 3832.7,
+        "orRangePct": "1.28%"
+      },
+      {
+        "symbol": "BANKINDIA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LUPIN",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BIOCON",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "NAUKRI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 1067.1,
+        "stop": 1068.5,
+        "t1": 1061.7645,
+        "t2": 1056.4289999999999,
+        "orHigh": 1084.9,
+        "orLow": 1067.1,
+        "orRangePct": "1.66%"
+      },
+      {
+        "symbol": "CANBK",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      }
+    ]
+  },
+  {
+    "scanTime": "2026-03-03T03:22:10.216Z",
+    "totalStocks": 50,
+    "triggered": 16,
+    "expired": 3,
+    "results": [
+      {
+        "symbol": "UPL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 657.25,
+        "stop": 677.15,
+        "t1": 637.35,
+        "t2": 617.45,
+        "orHigh": 714.75,
+        "orLow": 677.15,
+        "orRangePct": "5.26%"
+      },
+      {
+        "symbol": "AUBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "CUMMINSIND",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "INDIANB",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ICICIGI",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1964.9,
+        "orLow": 1936.2,
+        "orRangePct": "1.48%"
+      },
+      {
+        "symbol": "KEI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 4760,
+        "stop": 4794.9,
+        "t1": 4725.1,
+        "t2": 4690.200000000001,
+        "orHigh": 4836.5,
+        "orLow": 4760,
+        "orRangePct": "1.59%"
+      },
+      {
+        "symbol": "INDHOTEL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 675.4,
+        "stop": 679.75,
+        "t1": 671.05,
+        "t2": 666.6999999999999,
+        "orHigh": 683.1,
+        "orLow": 675.4,
+        "orRangePct": "1.13%"
+      },
+      {
+        "symbol": "UNIONBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 199.2,
+        "stop": 198.65,
+        "t1": 200.196,
+        "t2": 201.19199999999998,
+        "orHigh": 199.2,
+        "orLow": 194.63,
+        "orRangePct": "2.33%"
+      },
+      {
+        "symbol": "BAJAJHLDNG",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 11320,
+        "stop": 11286,
+        "t1": 11376.6,
+        "t2": 11433.2,
+        "orHigh": 11320,
+        "orLow": 11150,
+        "orRangePct": "1.52%"
+      },
+      {
+        "symbol": "PNB",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 132.3,
+        "orLow": 130.3,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "IRCTC",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "HAL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 4055,
+        "stop": 4063.8,
+        "t1": 4034.725,
+        "t2": 4014.45,
+        "orHigh": 4150,
+        "orLow": 4056.1,
+        "orRangePct": "2.26%"
+      },
+      {
+        "symbol": "CIPLA",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1335.9,
+        "orLow": 1308.8,
+        "orRangePct": "2.03%"
+      },
+      {
+        "symbol": "SIEMENS",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3264.9,
+        "orLow": 3201,
+        "orRangePct": "1.99%"
+      },
+      {
+        "symbol": "BAJFINANCE",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "PNBHOUSING",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ABB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "COFORGE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TMPV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 384,
+        "orLow": 377.55,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "ABCAPITAL",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "KPITTECH",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 825.5,
+        "stop": 834.6,
+        "t1": 816.4,
+        "t2": 807.3,
+        "orHigh": 841.9,
+        "orLow": 828.3,
+        "orRangePct": "1.63%"
+      },
+      {
+        "symbol": "INDUSINDBK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 918.95,
+        "stop": 928.9,
+        "t1": 909.0000000000001,
+        "t2": 899.0500000000002,
+        "orHigh": 934.65,
+        "orLow": 923.1,
+        "orRangePct": "1.25%"
+      },
+      {
+        "symbol": "NTPC",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 375.8,
+        "orLow": 372.15,
+        "orRangePct": "0.98%"
+      },
+      {
+        "symbol": "POLYCAB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "FORTIS",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BHARATFORG",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ADANIPORTS",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1554.9,
+        "orLow": 1510.8,
+        "orRangePct": "2.92%"
+      },
+      {
+        "symbol": "360ONE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "DMART",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 10,
+        "tier": "TIER_3",
+        "entryPrice": 3864.2,
+        "stop": 3866.9,
+        "t1": 3844.879,
+        "t2": 3825.558,
+        "orHigh": 3900,
+        "orLow": 3864.2,
+        "orRangePct": "0.92%"
+      },
+      {
+        "symbol": "INOXWIND",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 95.66,
+        "stop": 96.63,
+        "t1": 94.69,
+        "t2": 93.72,
+        "orHigh": 97.67,
+        "orLow": 96.5,
+        "orRangePct": "1.20%"
+      },
+      {
+        "symbol": "AXISBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 50,
+        "tier": "TIER_3",
+        "entryPrice": 1398,
+        "stop": 1394,
+        "t1": 1404.99,
+        "t2": 1411.98,
+        "orHigh": 1398,
+        "orLow": 1380.2,
+        "orRangePct": "1.29%"
+      },
+      {
+        "symbol": "MPHASIS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2317.4,
+        "stop": 2338.8,
+        "t1": 2296,
+        "t2": 2274.6,
+        "orHigh": 2360.5,
+        "orLow": 2325.5,
+        "orRangePct": "1.49%"
+      },
+      {
+        "symbol": "RBLBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BPCL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 371.2,
+        "stop": 369.9,
+        "t1": 373.056,
+        "t2": 374.912,
+        "orHigh": 371.2,
+        "orLow": 366.65,
+        "orRangePct": "1.23%"
+      },
+      {
+        "symbol": "WIPRO",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "TATAELXSI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4837.5,
+        "t1": 4766.5,
+        "t2": 4731,
+        "orHigh": 4873,
+        "orLow": 4802,
+        "orRangePct": "1.47%"
+      },
+      {
+        "symbol": "BANKBARODA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BAJAJFINSV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 2069,
+        "orLow": 2039.8,
+        "orRangePct": "1.42%"
+      },
+      {
+        "symbol": "SOLARINDS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 13401,
+        "stop": 13572,
+        "t1": 13230,
+        "t2": 13059,
+        "orHigh": 13630,
+        "orLow": 13401,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "AMBER",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "DRREDDY",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TVSMOTOR",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3881.9,
+        "orLow": 3832.7,
+        "orRangePct": "1.28%"
+      },
+      {
+        "symbol": "BANKINDIA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LUPIN",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BIOCON",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "NAUKRI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 1067.1,
+        "stop": 1068.5,
+        "t1": 1061.7645,
+        "t2": 1056.4289999999999,
+        "orHigh": 1084.9,
+        "orLow": 1067.1,
+        "orRangePct": "1.66%"
+      },
+      {
+        "symbol": "CANBK",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      }
+    ]
+  },
+  {
+    "scanTime": "2026-03-03T03:22:48.481Z",
+    "totalStocks": 50,
+    "triggered": 16,
+    "expired": 3,
+    "results": [
+      {
+        "symbol": "UPL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 657.25,
+        "stop": 677.15,
+        "t1": 637.35,
+        "t2": 617.45,
+        "orHigh": 714.75,
+        "orLow": 677.15,
+        "orRangePct": "5.26%"
+      },
+      {
+        "symbol": "AUBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "CUMMINSIND",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "INDIANB",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ICICIGI",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1964.9,
+        "orLow": 1936.2,
+        "orRangePct": "1.48%"
+      },
+      {
+        "symbol": "KEI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 4760,
+        "stop": 4794.9,
+        "t1": 4725.1,
+        "t2": 4690.200000000001,
+        "orHigh": 4836.5,
+        "orLow": 4760,
+        "orRangePct": "1.59%"
+      },
+      {
+        "symbol": "INDHOTEL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 675.4,
+        "stop": 679.75,
+        "t1": 671.05,
+        "t2": 666.6999999999999,
+        "orHigh": 683.1,
+        "orLow": 675.4,
+        "orRangePct": "1.13%"
+      },
+      {
+        "symbol": "UNIONBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 199.2,
+        "stop": 198.65,
+        "t1": 200.196,
+        "t2": 201.19199999999998,
+        "orHigh": 199.2,
+        "orLow": 194.63,
+        "orRangePct": "2.33%"
+      },
+      {
+        "symbol": "BAJAJHLDNG",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 11320,
+        "stop": 11286,
+        "t1": 11376.6,
+        "t2": 11433.2,
+        "orHigh": 11320,
+        "orLow": 11150,
+        "orRangePct": "1.52%"
+      },
+      {
+        "symbol": "PNB",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 132.3,
+        "orLow": 130.3,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "IRCTC",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "HAL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 4055,
+        "stop": 4063.8,
+        "t1": 4034.725,
+        "t2": 4014.45,
+        "orHigh": 4150,
+        "orLow": 4056.1,
+        "orRangePct": "2.26%"
+      },
+      {
+        "symbol": "CIPLA",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1335.9,
+        "orLow": 1308.8,
+        "orRangePct": "2.03%"
+      },
+      {
+        "symbol": "SIEMENS",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3264.9,
+        "orLow": 3201,
+        "orRangePct": "1.99%"
+      },
+      {
+        "symbol": "BAJFINANCE",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "PNBHOUSING",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ABB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "COFORGE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TMPV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 384,
+        "orLow": 377.55,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "ABCAPITAL",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "KPITTECH",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 825.5,
+        "stop": 834.6,
+        "t1": 816.4,
+        "t2": 807.3,
+        "orHigh": 841.9,
+        "orLow": 828.3,
+        "orRangePct": "1.63%"
+      },
+      {
+        "symbol": "INDUSINDBK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 918.95,
+        "stop": 928.9,
+        "t1": 909.0000000000001,
+        "t2": 899.0500000000002,
+        "orHigh": 934.65,
+        "orLow": 923.1,
+        "orRangePct": "1.25%"
+      },
+      {
+        "symbol": "NTPC",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 375.8,
+        "orLow": 372.15,
+        "orRangePct": "0.98%"
+      },
+      {
+        "symbol": "POLYCAB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "FORTIS",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BHARATFORG",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ADANIPORTS",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1554.9,
+        "orLow": 1510.8,
+        "orRangePct": "2.92%"
+      },
+      {
+        "symbol": "360ONE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "DMART",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 10,
+        "tier": "TIER_3",
+        "entryPrice": 3864.2,
+        "stop": 3866.9,
+        "t1": 3844.879,
+        "t2": 3825.558,
+        "orHigh": 3900,
+        "orLow": 3864.2,
+        "orRangePct": "0.92%"
+      },
+      {
+        "symbol": "INOXWIND",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 95.66,
+        "stop": 96.63,
+        "t1": 94.69,
+        "t2": 93.72,
+        "orHigh": 97.67,
+        "orLow": 96.5,
+        "orRangePct": "1.20%"
+      },
+      {
+        "symbol": "AXISBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 50,
+        "tier": "TIER_3",
+        "entryPrice": 1398,
+        "stop": 1394,
+        "t1": 1404.99,
+        "t2": 1411.98,
+        "orHigh": 1398,
+        "orLow": 1380.2,
+        "orRangePct": "1.29%"
+      },
+      {
+        "symbol": "MPHASIS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2317.4,
+        "stop": 2338.8,
+        "t1": 2296,
+        "t2": 2274.6,
+        "orHigh": 2360.5,
+        "orLow": 2325.5,
+        "orRangePct": "1.49%"
+      },
+      {
+        "symbol": "RBLBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BPCL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 371.2,
+        "stop": 369.9,
+        "t1": 373.056,
+        "t2": 374.912,
+        "orHigh": 371.2,
+        "orLow": 366.65,
+        "orRangePct": "1.23%"
+      },
+      {
+        "symbol": "WIPRO",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "TATAELXSI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4837.5,
+        "t1": 4766.5,
+        "t2": 4731,
+        "orHigh": 4873,
+        "orLow": 4802,
+        "orRangePct": "1.47%"
+      },
+      {
+        "symbol": "BANKBARODA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BAJAJFINSV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 2069,
+        "orLow": 2039.8,
+        "orRangePct": "1.42%"
+      },
+      {
+        "symbol": "SOLARINDS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 13401,
+        "stop": 13572,
+        "t1": 13230,
+        "t2": 13059,
+        "orHigh": 13630,
+        "orLow": 13401,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "AMBER",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "DRREDDY",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TVSMOTOR",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3881.9,
+        "orLow": 3832.7,
+        "orRangePct": "1.28%"
+      },
+      {
+        "symbol": "BANKINDIA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LUPIN",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BIOCON",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "NAUKRI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 1067.1,
+        "stop": 1068.5,
+        "t1": 1061.7645,
+        "t2": 1056.4289999999999,
+        "orHigh": 1084.9,
+        "orLow": 1067.1,
+        "orRangePct": "1.66%"
+      },
+      {
+        "symbol": "CANBK",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      }
+    ]
+  },
+  {
+    "scanTime": "2026-03-03T03:25:58.220Z",
+    "totalStocks": 50,
+    "triggered": 16,
+    "expired": 3,
+    "results": [
+      {
+        "symbol": "UPL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 657.25,
+        "stop": 677.15,
+        "t1": 637.35,
+        "t2": 617.45,
+        "orHigh": 714.75,
+        "orLow": 677.15,
+        "orRangePct": "5.26%"
+      },
+      {
+        "symbol": "AUBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "CUMMINSIND",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "INDIANB",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ICICIGI",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1964.9,
+        "orLow": 1936.2,
+        "orRangePct": "1.48%"
+      },
+      {
+        "symbol": "KEI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 4760,
+        "stop": 4794.9,
+        "t1": 4725.1,
+        "t2": 4690.200000000001,
+        "orHigh": 4836.5,
+        "orLow": 4760,
+        "orRangePct": "1.59%"
+      },
+      {
+        "symbol": "INDHOTEL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 675.4,
+        "stop": 679.75,
+        "t1": 671.05,
+        "t2": 666.6999999999999,
+        "orHigh": 683.1,
+        "orLow": 675.4,
+        "orRangePct": "1.13%"
+      },
+      {
+        "symbol": "UNIONBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 199.2,
+        "stop": 198.65,
+        "t1": 200.196,
+        "t2": 201.19199999999998,
+        "orHigh": 199.2,
+        "orLow": 194.63,
+        "orRangePct": "2.33%"
+      },
+      {
+        "symbol": "BAJAJHLDNG",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 11320,
+        "stop": 11286,
+        "t1": 11376.6,
+        "t2": 11433.2,
+        "orHigh": 11320,
+        "orLow": 11150,
+        "orRangePct": "1.52%"
+      },
+      {
+        "symbol": "PNB",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 132.3,
+        "orLow": 130.3,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "IRCTC",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "HAL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 4055,
+        "stop": 4063.8,
+        "t1": 4034.725,
+        "t2": 4014.45,
+        "orHigh": 4150,
+        "orLow": 4056.1,
+        "orRangePct": "2.26%"
+      },
+      {
+        "symbol": "CIPLA",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1335.9,
+        "orLow": 1308.8,
+        "orRangePct": "2.03%"
+      },
+      {
+        "symbol": "SIEMENS",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3264.9,
+        "orLow": 3201,
+        "orRangePct": "1.99%"
+      },
+      {
+        "symbol": "BAJFINANCE",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "PNBHOUSING",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ABB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "COFORGE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TMPV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 384,
+        "orLow": 377.55,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "ABCAPITAL",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "KPITTECH",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 825.5,
+        "stop": 834.6,
+        "t1": 816.4,
+        "t2": 807.3,
+        "orHigh": 841.9,
+        "orLow": 828.3,
+        "orRangePct": "1.63%"
+      },
+      {
+        "symbol": "INDUSINDBK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 918.95,
+        "stop": 928.9,
+        "t1": 909.0000000000001,
+        "t2": 899.0500000000002,
+        "orHigh": 934.65,
+        "orLow": 923.1,
+        "orRangePct": "1.25%"
+      },
+      {
+        "symbol": "NTPC",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 375.8,
+        "orLow": 372.15,
+        "orRangePct": "0.98%"
+      },
+      {
+        "symbol": "POLYCAB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "FORTIS",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BHARATFORG",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ADANIPORTS",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1554.9,
+        "orLow": 1510.8,
+        "orRangePct": "2.92%"
+      },
+      {
+        "symbol": "360ONE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "DMART",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 10,
+        "tier": "TIER_3",
+        "entryPrice": 3864.2,
+        "stop": 3866.9,
+        "t1": 3844.879,
+        "t2": 3825.558,
+        "orHigh": 3900,
+        "orLow": 3864.2,
+        "orRangePct": "0.92%"
+      },
+      {
+        "symbol": "INOXWIND",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 95.66,
+        "stop": 96.63,
+        "t1": 94.69,
+        "t2": 93.72,
+        "orHigh": 97.67,
+        "orLow": 96.5,
+        "orRangePct": "1.20%"
+      },
+      {
+        "symbol": "AXISBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 50,
+        "tier": "TIER_3",
+        "entryPrice": 1398,
+        "stop": 1394,
+        "t1": 1404.99,
+        "t2": 1411.98,
+        "orHigh": 1398,
+        "orLow": 1380.2,
+        "orRangePct": "1.29%"
+      },
+      {
+        "symbol": "MPHASIS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2317.4,
+        "stop": 2338.8,
+        "t1": 2296,
+        "t2": 2274.6,
+        "orHigh": 2360.5,
+        "orLow": 2325.5,
+        "orRangePct": "1.49%"
+      },
+      {
+        "symbol": "RBLBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BPCL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 371.2,
+        "stop": 369.9,
+        "t1": 373.056,
+        "t2": 374.912,
+        "orHigh": 371.2,
+        "orLow": 366.65,
+        "orRangePct": "1.23%"
+      },
+      {
+        "symbol": "WIPRO",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "TATAELXSI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4837.5,
+        "t1": 4766.5,
+        "t2": 4731,
+        "orHigh": 4873,
+        "orLow": 4802,
+        "orRangePct": "1.47%"
+      },
+      {
+        "symbol": "BANKBARODA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BAJAJFINSV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 2069,
+        "orLow": 2039.8,
+        "orRangePct": "1.42%"
+      },
+      {
+        "symbol": "SOLARINDS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 13401,
+        "stop": 13572,
+        "t1": 13230,
+        "t2": 13059,
+        "orHigh": 13630,
+        "orLow": 13401,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "AMBER",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "DRREDDY",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TVSMOTOR",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3881.9,
+        "orLow": 3832.7,
+        "orRangePct": "1.28%"
+      },
+      {
+        "symbol": "BANKINDIA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LUPIN",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BIOCON",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "NAUKRI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 1067.1,
+        "stop": 1068.5,
+        "t1": 1061.7645,
+        "t2": 1056.4289999999999,
+        "orHigh": 1084.9,
+        "orLow": 1067.1,
+        "orRangePct": "1.66%"
+      },
+      {
+        "symbol": "CANBK",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      }
+    ]
+  },
+  {
+    "scanTime": "2026-03-03T07:18:53.047Z",
+    "totalStocks": 50,
+    "triggered": 16,
+    "expired": 3,
+    "results": [
+      {
+        "symbol": "UPL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 657.25,
+        "stop": 677.15,
+        "t1": 637.35,
+        "t2": 617.45,
+        "orHigh": 714.75,
+        "orLow": 677.15,
+        "orRangePct": "5.26%"
+      },
+      {
+        "symbol": "AUBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "CUMMINSIND",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "INDIANB",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ICICIGI",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1964.9,
+        "orLow": 1936.2,
+        "orRangePct": "1.48%"
+      },
+      {
+        "symbol": "KEI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 4760,
+        "stop": 4794.9,
+        "t1": 4725.1,
+        "t2": 4690.200000000001,
+        "orHigh": 4836.5,
+        "orLow": 4760,
+        "orRangePct": "1.59%"
+      },
+      {
+        "symbol": "INDHOTEL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 675.4,
+        "stop": 679.75,
+        "t1": 671.05,
+        "t2": 666.6999999999999,
+        "orHigh": 683.1,
+        "orLow": 675.4,
+        "orRangePct": "1.13%"
+      },
+      {
+        "symbol": "UNIONBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 199.2,
+        "stop": 198.65,
+        "t1": 200.196,
+        "t2": 201.19199999999998,
+        "orHigh": 199.2,
+        "orLow": 194.63,
+        "orRangePct": "2.33%"
+      },
+      {
+        "symbol": "BAJAJHLDNG",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 11320,
+        "stop": 11286,
+        "t1": 11376.6,
+        "t2": 11433.2,
+        "orHigh": 11320,
+        "orLow": 11150,
+        "orRangePct": "1.52%"
+      },
+      {
+        "symbol": "PNB",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 132.3,
+        "orLow": 130.3,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "IRCTC",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "HAL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 4055,
+        "stop": 4063.8,
+        "t1": 4034.725,
+        "t2": 4014.45,
+        "orHigh": 4150,
+        "orLow": 4056.1,
+        "orRangePct": "2.26%"
+      },
+      {
+        "symbol": "CIPLA",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1335.9,
+        "orLow": 1308.8,
+        "orRangePct": "2.03%"
+      },
+      {
+        "symbol": "SIEMENS",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3264.9,
+        "orLow": 3201,
+        "orRangePct": "1.99%"
+      },
+      {
+        "symbol": "BAJFINANCE",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "PNBHOUSING",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ABB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "COFORGE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TMPV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 384,
+        "orLow": 377.55,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "ABCAPITAL",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "KPITTECH",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 825.5,
+        "stop": 834.6,
+        "t1": 816.4,
+        "t2": 807.3,
+        "orHigh": 841.9,
+        "orLow": 828.3,
+        "orRangePct": "1.63%"
+      },
+      {
+        "symbol": "INDUSINDBK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 918.95,
+        "stop": 928.9,
+        "t1": 909.0000000000001,
+        "t2": 899.0500000000002,
+        "orHigh": 934.65,
+        "orLow": 923.1,
+        "orRangePct": "1.25%"
+      },
+      {
+        "symbol": "NTPC",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 375.8,
+        "orLow": 372.15,
+        "orRangePct": "0.98%"
+      },
+      {
+        "symbol": "POLYCAB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "FORTIS",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BHARATFORG",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ADANIPORTS",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1554.9,
+        "orLow": 1510.8,
+        "orRangePct": "2.92%"
+      },
+      {
+        "symbol": "360ONE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "DMART",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 10,
+        "tier": "TIER_3",
+        "entryPrice": 3864.2,
+        "stop": 3866.9,
+        "t1": 3844.879,
+        "t2": 3825.558,
+        "orHigh": 3900,
+        "orLow": 3864.2,
+        "orRangePct": "0.92%"
+      },
+      {
+        "symbol": "INOXWIND",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 95.66,
+        "stop": 96.63,
+        "t1": 94.69,
+        "t2": 93.72,
+        "orHigh": 97.67,
+        "orLow": 96.5,
+        "orRangePct": "1.20%"
+      },
+      {
+        "symbol": "AXISBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 50,
+        "tier": "TIER_3",
+        "entryPrice": 1398,
+        "stop": 1394,
+        "t1": 1404.99,
+        "t2": 1411.98,
+        "orHigh": 1398,
+        "orLow": 1380.2,
+        "orRangePct": "1.29%"
+      },
+      {
+        "symbol": "MPHASIS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2317.4,
+        "stop": 2338.8,
+        "t1": 2296,
+        "t2": 2274.6,
+        "orHigh": 2360.5,
+        "orLow": 2325.5,
+        "orRangePct": "1.49%"
+      },
+      {
+        "symbol": "RBLBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BPCL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 371.2,
+        "stop": 369.9,
+        "t1": 373.056,
+        "t2": 374.912,
+        "orHigh": 371.2,
+        "orLow": 366.65,
+        "orRangePct": "1.23%"
+      },
+      {
+        "symbol": "WIPRO",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "TATAELXSI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4837.5,
+        "t1": 4766.5,
+        "t2": 4731,
+        "orHigh": 4873,
+        "orLow": 4802,
+        "orRangePct": "1.47%"
+      },
+      {
+        "symbol": "BANKBARODA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BAJAJFINSV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 2069,
+        "orLow": 2039.8,
+        "orRangePct": "1.42%"
+      },
+      {
+        "symbol": "SOLARINDS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 13401,
+        "stop": 13572,
+        "t1": 13230,
+        "t2": 13059,
+        "orHigh": 13630,
+        "orLow": 13401,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "AMBER",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "DRREDDY",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TVSMOTOR",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3881.9,
+        "orLow": 3832.7,
+        "orRangePct": "1.28%"
+      },
+      {
+        "symbol": "BANKINDIA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LUPIN",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BIOCON",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "NAUKRI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 1067.1,
+        "stop": 1068.5,
+        "t1": 1061.7645,
+        "t2": 1056.4289999999999,
+        "orHigh": 1084.9,
+        "orLow": 1067.1,
+        "orRangePct": "1.66%"
+      },
+      {
+        "symbol": "CANBK",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      }
+    ]
+  },
+  {
+    "scanTime": "2026-03-03T07:25:48.076Z",
+    "totalStocks": 50,
+    "triggered": 16,
+    "expired": 3,
+    "results": [
+      {
+        "symbol": "UPL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 657.25,
+        "stop": 677.15,
+        "t1": 637.35,
+        "t2": 617.45,
+        "orHigh": 714.75,
+        "orLow": 677.15,
+        "orRangePct": "5.26%"
+      },
+      {
+        "symbol": "AUBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "CUMMINSIND",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "INDIANB",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ICICIGI",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1964.9,
+        "orLow": 1936.2,
+        "orRangePct": "1.48%"
+      },
+      {
+        "symbol": "KEI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 4760,
+        "stop": 4794.9,
+        "t1": 4725.1,
+        "t2": 4690.200000000001,
+        "orHigh": 4836.5,
+        "orLow": 4760,
+        "orRangePct": "1.59%"
+      },
+      {
+        "symbol": "INDHOTEL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 675.4,
+        "stop": 679.75,
+        "t1": 671.05,
+        "t2": 666.6999999999999,
+        "orHigh": 683.1,
+        "orLow": 675.4,
+        "orRangePct": "1.13%"
+      },
+      {
+        "symbol": "UNIONBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 199.2,
+        "stop": 198.65,
+        "t1": 200.196,
+        "t2": 201.19199999999998,
+        "orHigh": 199.2,
+        "orLow": 194.63,
+        "orRangePct": "2.33%"
+      },
+      {
+        "symbol": "BAJAJHLDNG",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 11320,
+        "stop": 11286,
+        "t1": 11376.6,
+        "t2": 11433.2,
+        "orHigh": 11320,
+        "orLow": 11150,
+        "orRangePct": "1.52%"
+      },
+      {
+        "symbol": "PNB",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 132.3,
+        "orLow": 130.3,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "IRCTC",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "HAL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 4055,
+        "stop": 4063.8,
+        "t1": 4034.725,
+        "t2": 4014.45,
+        "orHigh": 4150,
+        "orLow": 4056.1,
+        "orRangePct": "2.26%"
+      },
+      {
+        "symbol": "CIPLA",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1335.9,
+        "orLow": 1308.8,
+        "orRangePct": "2.03%"
+      },
+      {
+        "symbol": "SIEMENS",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3264.9,
+        "orLow": 3201,
+        "orRangePct": "1.99%"
+      },
+      {
+        "symbol": "BAJFINANCE",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "PNBHOUSING",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ABB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "COFORGE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TMPV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 384,
+        "orLow": 377.55,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "ABCAPITAL",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "KPITTECH",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 825.5,
+        "stop": 834.6,
+        "t1": 816.4,
+        "t2": 807.3,
+        "orHigh": 841.9,
+        "orLow": 828.3,
+        "orRangePct": "1.63%"
+      },
+      {
+        "symbol": "INDUSINDBK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 918.95,
+        "stop": 928.9,
+        "t1": 909.0000000000001,
+        "t2": 899.0500000000002,
+        "orHigh": 934.65,
+        "orLow": 923.1,
+        "orRangePct": "1.25%"
+      },
+      {
+        "symbol": "NTPC",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 375.8,
+        "orLow": 372.15,
+        "orRangePct": "0.98%"
+      },
+      {
+        "symbol": "POLYCAB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "FORTIS",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BHARATFORG",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ADANIPORTS",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1554.9,
+        "orLow": 1510.8,
+        "orRangePct": "2.92%"
+      },
+      {
+        "symbol": "360ONE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "DMART",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 10,
+        "tier": "TIER_3",
+        "entryPrice": 3864.2,
+        "stop": 3866.9,
+        "t1": 3844.879,
+        "t2": 3825.558,
+        "orHigh": 3900,
+        "orLow": 3864.2,
+        "orRangePct": "0.92%"
+      },
+      {
+        "symbol": "INOXWIND",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 95.66,
+        "stop": 96.63,
+        "t1": 94.69,
+        "t2": 93.72,
+        "orHigh": 97.67,
+        "orLow": 96.5,
+        "orRangePct": "1.20%"
+      },
+      {
+        "symbol": "AXISBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 50,
+        "tier": "TIER_3",
+        "entryPrice": 1398,
+        "stop": 1394,
+        "t1": 1404.99,
+        "t2": 1411.98,
+        "orHigh": 1398,
+        "orLow": 1380.2,
+        "orRangePct": "1.29%"
+      },
+      {
+        "symbol": "MPHASIS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2317.4,
+        "stop": 2338.8,
+        "t1": 2296,
+        "t2": 2274.6,
+        "orHigh": 2360.5,
+        "orLow": 2325.5,
+        "orRangePct": "1.49%"
+      },
+      {
+        "symbol": "RBLBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BPCL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 371.2,
+        "stop": 369.9,
+        "t1": 373.056,
+        "t2": 374.912,
+        "orHigh": 371.2,
+        "orLow": 366.65,
+        "orRangePct": "1.23%"
+      },
+      {
+        "symbol": "WIPRO",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "TATAELXSI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4837.5,
+        "t1": 4766.5,
+        "t2": 4731,
+        "orHigh": 4873,
+        "orLow": 4802,
+        "orRangePct": "1.47%"
+      },
+      {
+        "symbol": "BANKBARODA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BAJAJFINSV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 2069,
+        "orLow": 2039.8,
+        "orRangePct": "1.42%"
+      },
+      {
+        "symbol": "SOLARINDS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 13401,
+        "stop": 13572,
+        "t1": 13230,
+        "t2": 13059,
+        "orHigh": 13630,
+        "orLow": 13401,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "AMBER",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "DRREDDY",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TVSMOTOR",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3881.9,
+        "orLow": 3832.7,
+        "orRangePct": "1.28%"
+      },
+      {
+        "symbol": "BANKINDIA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LUPIN",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BIOCON",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "NAUKRI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 1067.1,
+        "stop": 1068.5,
+        "t1": 1061.7645,
+        "t2": 1056.4289999999999,
+        "orHigh": 1084.9,
+        "orLow": 1067.1,
+        "orRangePct": "1.66%"
+      },
+      {
+        "symbol": "CANBK",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      }
+    ]
+  },
+  {
+    "scanTime": "2026-03-03T07:49:54.397Z",
+    "totalStocks": 50,
+    "triggered": 15,
+    "expired": 7,
+    "results": [
+      {
+        "symbol": "IDFCFIRSTB",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 75,
+        "tier": "TIER_2",
+        "entryPrice": 67.87,
+        "stop": 70.98,
+        "t1": 64.76,
+        "t2": 61.650000000000006,
+        "orHigh": 75.16,
+        "orLow": 70.98,
+        "orRangePct": "5.56%"
+      },
+      {
+        "symbol": "UPL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 657.1,
+        "stop": 677.15,
+        "t1": 637.0500000000001,
+        "t2": 617.0000000000001,
+        "orHigh": 714.75,
+        "orLow": 677.15,
+        "orRangePct": "5.26%"
+      },
+      {
+        "symbol": "AUBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "CUMMINSIND",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "INDIANB",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ICICIGI",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1964.9,
+        "orLow": 1936.2,
+        "orRangePct": "1.48%"
+      },
+      {
+        "symbol": "UNIONBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 199.2,
+        "stop": 198.65,
+        "t1": 200.196,
+        "t2": 201.19199999999998,
+        "orHigh": 199.2,
+        "orLow": 194.63,
+        "orRangePct": "2.33%"
+      },
+      {
+        "symbol": "BAJAJHLDNG",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 11320,
+        "stop": 11300,
+        "t1": 11376.6,
+        "t2": 11433.2,
+        "orHigh": 11320,
+        "orLow": 11150,
+        "orRangePct": "1.52%"
+      },
+      {
+        "symbol": "IRCTC",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "HAL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 4056.1,
+        "stop": 4071.5,
+        "t1": 4035.8195,
+        "t2": 4015.5389999999998,
+        "orHigh": 4150,
+        "orLow": 4056.1,
+        "orRangePct": "2.26%"
+      },
+      {
+        "symbol": "CIPLA",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1335.9,
+        "orLow": 1308.8,
+        "orRangePct": "2.03%"
+      },
+      {
+        "symbol": "BAJFINANCE",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "PNBHOUSING",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ABB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "COFORGE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TMPV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 384,
+        "orLow": 377.55,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "ABCAPITAL",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "KPITTECH",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 828.3,
+        "stop": 830.1,
+        "t1": 824.1585,
+        "t2": 820.0169999999999,
+        "orHigh": 841.9,
+        "orLow": 828.3,
+        "orRangePct": "1.63%"
+      },
+      {
+        "symbol": "NTPC",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 375.8,
+        "orLow": 372.15,
+        "orRangePct": "0.98%"
+      },
+      {
+        "symbol": "POLYCAB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "FORTIS",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BHARATFORG",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "360ONE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "DMART",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 10,
+        "tier": "TIER_3",
+        "entryPrice": 3864.2,
+        "stop": 3866.9,
+        "t1": 3844.879,
+        "t2": 3825.558,
+        "orHigh": 3900,
+        "orLow": 3864.2,
+        "orRangePct": "0.92%"
+      },
+      {
+        "symbol": "INOXWIND",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 96.12,
+        "stop": 96.63,
+        "t1": 95.61000000000001,
+        "t2": 95.10000000000002,
+        "orHigh": 97.67,
+        "orLow": 96.5,
+        "orRangePct": "1.20%"
+      },
+      {
+        "symbol": "AXISBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 50,
+        "tier": "TIER_3",
+        "entryPrice": 1398,
+        "stop": 1394,
+        "t1": 1404.99,
+        "t2": 1411.98,
+        "orHigh": 1398,
+        "orLow": 1380.2,
+        "orRangePct": "1.29%"
+      },
+      {
+        "symbol": "MPHASIS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2317.4,
+        "stop": 2329,
+        "t1": 2305.8,
+        "t2": 2294.2000000000003,
+        "orHigh": 2360.5,
+        "orLow": 2325.5,
+        "orRangePct": "1.49%"
+      },
+      {
+        "symbol": "RBLBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BPCL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 371.2,
+        "stop": 369.9,
+        "t1": 373.056,
+        "t2": 374.912,
+        "orHigh": 371.2,
+        "orLow": 366.65,
+        "orRangePct": "1.23%"
+      },
+      {
+        "symbol": "WIPRO",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "TATAELXSI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4826.5,
+        "t1": 4777.5,
+        "t2": 4753,
+        "orHigh": 4873,
+        "orLow": 4802,
+        "orRangePct": "1.47%"
+      },
+      {
+        "symbol": "BANKBARODA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BAJAJFINSV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 2069,
+        "orLow": 2039.8,
+        "orRangePct": "1.42%"
+      },
+      {
+        "symbol": "SOLARINDS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 13401,
+        "stop": 13466,
+        "t1": 13333.995,
+        "t2": 13266.99,
+        "orHigh": 13630,
+        "orLow": 13401,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "AMBER",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "DRREDDY",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TVSMOTOR",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3881.9,
+        "orLow": 3832.7,
+        "orRangePct": "1.28%"
+      },
+      {
+        "symbol": "BANKINDIA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LUPIN",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BIOCON",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LTIM",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4807,
+        "t1": 4777.99,
+        "t2": 4753.98,
+        "orHigh": 4876,
+        "orLow": 4802,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "NAUKRI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 1067.1,
+        "stop": 1074,
+        "t1": 1060.1999999999998,
+        "t2": 1053.2999999999997,
+        "orHigh": 1084.9,
+        "orLow": 1067.1,
+        "orRangePct": "1.66%"
+      },
+      {
+        "symbol": "CANBK",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      }
+    ]
+  },
+  {
+    "scanTime": "2026-03-03T07:59:45.644Z",
+    "totalStocks": 50,
+    "triggered": 22,
+    "expired": 0,
+    "results": [
+      {
+        "symbol": "IDFCFIRSTB",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 75,
+        "tier": "TIER_2",
+        "entryPrice": 67.87,
+        "stop": 70.98,
+        "t1": 64.76,
+        "t2": 61.650000000000006,
+        "orHigh": 75.16,
+        "orLow": 70.98,
+        "orRangePct": "5.56%"
+      },
+      {
+        "symbol": "UPL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 657.1,
+        "stop": 677.15,
+        "t1": 637.0500000000001,
+        "t2": 617.0000000000001,
+        "orHigh": 714.75,
+        "orLow": 677.15,
+        "orRangePct": "5.26%"
+      },
+      {
+        "symbol": "AUBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "CUMMINSIND",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "INDIANB",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ICICIGI",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1964.9,
+        "orLow": 1936.2,
+        "orRangePct": "1.48%"
+      },
+      {
+        "symbol": "KEI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4836.5,
+        "stop": 4826,
+        "t1": 4860.6825,
+        "t2": 4884.865,
+        "orHigh": 4836.5,
+        "orLow": 4760,
+        "orRangePct": "1.59%"
+      },
+      {
+        "symbol": "INDHOTEL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 675.4,
+        "stop": 675.95,
+        "t1": 672.023,
+        "t2": 668.646,
+        "orHigh": 683.1,
+        "orLow": 675.4,
+        "orRangePct": "1.13%"
+      },
+      {
+        "symbol": "UNIONBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 199.2,
+        "stop": 198.65,
+        "t1": 200.196,
+        "t2": 201.19199999999998,
+        "orHigh": 199.2,
+        "orLow": 194.63,
+        "orRangePct": "2.33%"
+      },
+      {
+        "symbol": "BAJAJHLDNG",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 11320,
+        "stop": 11300,
+        "t1": 11376.6,
+        "t2": 11433.2,
+        "orHigh": 11320,
+        "orLow": 11150,
+        "orRangePct": "1.52%"
+      },
+      {
+        "symbol": "PNB",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 132.3,
+        "stop": 132.24,
+        "t1": 132.9615,
+        "t2": 133.62300000000002,
+        "orHigh": 132.3,
+        "orLow": 130.3,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "IRCTC",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "HAL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 4056.1,
+        "stop": 4071.5,
+        "t1": 4035.8195,
+        "t2": 4015.5389999999998,
+        "orHigh": 4150,
+        "orLow": 4056.1,
+        "orRangePct": "2.26%"
+      },
+      {
+        "symbol": "CIPLA",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1335.9,
+        "orLow": 1308.8,
+        "orRangePct": "2.03%"
+      },
+      {
+        "symbol": "SIEMENS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 100,
+        "tier": "TIER_1",
+        "entryPrice": 3264.9,
+        "stop": 3262.9,
+        "t1": 3281.2245000000003,
+        "t2": 3297.549,
+        "orHigh": 3264.9,
+        "orLow": 3201,
+        "orRangePct": "1.99%"
+      },
+      {
+        "symbol": "BAJFINANCE",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "PNBHOUSING",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ABB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "COFORGE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TMPV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 384,
+        "orLow": 377.55,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "ABCAPITAL",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "KPITTECH",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 828.3,
+        "stop": 830.1,
+        "t1": 824.1585,
+        "t2": 820.0169999999999,
+        "orHigh": 841.9,
+        "orLow": 828.3,
+        "orRangePct": "1.63%"
+      },
+      {
+        "symbol": "INDUSINDBK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 923.1,
+        "stop": 923.7,
+        "t1": 918.4845,
+        "t2": 913.869,
+        "orHigh": 934.65,
+        "orLow": 923.1,
+        "orRangePct": "1.25%"
+      },
+      {
+        "symbol": "NTPC",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 375.8,
+        "orLow": 372.15,
+        "orRangePct": "0.98%"
+      },
+      {
+        "symbol": "POLYCAB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "FORTIS",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BHARATFORG",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ADANIPORTS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 100,
+        "tier": "TIER_1",
+        "entryPrice": 1554.9,
+        "stop": 1552,
+        "t1": 1562.6745,
+        "t2": 1570.449,
+        "orHigh": 1554.9,
+        "orLow": 1510.8,
+        "orRangePct": "2.92%"
+      },
+      {
+        "symbol": "360ONE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "DMART",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 10,
+        "tier": "TIER_3",
+        "entryPrice": 3864.2,
+        "stop": 3866.9,
+        "t1": 3844.879,
+        "t2": 3825.558,
+        "orHigh": 3900,
+        "orLow": 3864.2,
+        "orRangePct": "0.92%"
+      },
+      {
+        "symbol": "INOXWIND",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 96.12,
+        "stop": 96.63,
+        "t1": 95.61000000000001,
+        "t2": 95.10000000000002,
+        "orHigh": 97.67,
+        "orLow": 96.5,
+        "orRangePct": "1.20%"
+      },
+      {
+        "symbol": "AXISBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 50,
+        "tier": "TIER_3",
+        "entryPrice": 1398,
+        "stop": 1394,
+        "t1": 1404.99,
+        "t2": 1411.98,
+        "orHigh": 1398,
+        "orLow": 1380.2,
+        "orRangePct": "1.29%"
+      },
+      {
+        "symbol": "MPHASIS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2317.4,
+        "stop": 2329,
+        "t1": 2305.8,
+        "t2": 2294.2000000000003,
+        "orHigh": 2360.5,
+        "orLow": 2325.5,
+        "orRangePct": "1.49%"
+      },
+      {
+        "symbol": "RBLBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BPCL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 371.2,
+        "stop": 369.9,
+        "t1": 373.056,
+        "t2": 374.912,
+        "orHigh": 371.2,
+        "orLow": 366.65,
+        "orRangePct": "1.23%"
+      },
+      {
+        "symbol": "WIPRO",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "TATAELXSI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4826.5,
+        "t1": 4777.5,
+        "t2": 4753,
+        "orHigh": 4873,
+        "orLow": 4802,
+        "orRangePct": "1.47%"
+      },
+      {
+        "symbol": "BANKBARODA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BAJAJFINSV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 2069,
+        "orLow": 2039.8,
+        "orRangePct": "1.42%"
+      },
+      {
+        "symbol": "SBILIFE",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2116,
+        "stop": 2110,
+        "t1": 2126.58,
+        "t2": 2137.16,
+        "orHigh": 2116,
+        "orLow": 2072.2,
+        "orRangePct": "2.10%"
+      },
+      {
+        "symbol": "SOLARINDS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 13401,
+        "stop": 13466,
+        "t1": 13333.995,
+        "t2": 13266.99,
+        "orHigh": 13630,
+        "orLow": 13401,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "AMBER",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "DRREDDY",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TVSMOTOR",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3881.9,
+        "orLow": 3832.7,
+        "orRangePct": "1.28%"
+      },
+      {
+        "symbol": "BANKINDIA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LUPIN",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BIOCON",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LTIM",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4807,
+        "t1": 4777.99,
+        "t2": 4753.98,
+        "orHigh": 4876,
+        "orLow": 4802,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "NAUKRI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 1067.1,
+        "stop": 1074,
+        "t1": 1060.1999999999998,
+        "t2": 1053.2999999999997,
+        "orHigh": 1084.9,
+        "orLow": 1067.1,
+        "orRangePct": "1.66%"
+      },
+      {
+        "symbol": "CANBK",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      }
+    ]
+  },
+  {
+    "scanTime": "2026-03-03T08:01:08.534Z",
+    "totalStocks": 50,
+    "triggered": 22,
+    "expired": 0,
+    "results": [
+      {
+        "symbol": "IDFCFIRSTB",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 75,
+        "tier": "TIER_2",
+        "entryPrice": 67.87,
+        "stop": 70.98,
+        "t1": 64.76,
+        "t2": 61.650000000000006,
+        "orHigh": 75.16,
+        "orLow": 70.98,
+        "orRangePct": "5.56%"
+      },
+      {
+        "symbol": "UPL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 657.1,
+        "stop": 677.15,
+        "t1": 637.0500000000001,
+        "t2": 617.0000000000001,
+        "orHigh": 714.75,
+        "orLow": 677.15,
+        "orRangePct": "5.26%"
+      },
+      {
+        "symbol": "AUBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "CUMMINSIND",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "INDIANB",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ICICIGI",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1964.9,
+        "orLow": 1936.2,
+        "orRangePct": "1.48%"
+      },
+      {
+        "symbol": "KEI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4836.5,
+        "stop": 4826,
+        "t1": 4860.6825,
+        "t2": 4884.865,
+        "orHigh": 4836.5,
+        "orLow": 4760,
+        "orRangePct": "1.59%"
+      },
+      {
+        "symbol": "INDHOTEL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 675.4,
+        "stop": 675.95,
+        "t1": 672.023,
+        "t2": 668.646,
+        "orHigh": 683.1,
+        "orLow": 675.4,
+        "orRangePct": "1.13%"
+      },
+      {
+        "symbol": "UNIONBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 199.2,
+        "stop": 198.65,
+        "t1": 200.196,
+        "t2": 201.19199999999998,
+        "orHigh": 199.2,
+        "orLow": 194.63,
+        "orRangePct": "2.33%"
+      },
+      {
+        "symbol": "BAJAJHLDNG",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 11320,
+        "stop": 11300,
+        "t1": 11376.6,
+        "t2": 11433.2,
+        "orHigh": 11320,
+        "orLow": 11150,
+        "orRangePct": "1.52%"
+      },
+      {
+        "symbol": "PNB",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 132.3,
+        "stop": 132.24,
+        "t1": 132.9615,
+        "t2": 133.62300000000002,
+        "orHigh": 132.3,
+        "orLow": 130.3,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "IRCTC",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "HAL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 4056.1,
+        "stop": 4071.5,
+        "t1": 4035.8195,
+        "t2": 4015.5389999999998,
+        "orHigh": 4150,
+        "orLow": 4056.1,
+        "orRangePct": "2.26%"
+      },
+      {
+        "symbol": "CIPLA",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1335.9,
+        "orLow": 1308.8,
+        "orRangePct": "2.03%"
+      },
+      {
+        "symbol": "SIEMENS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 100,
+        "tier": "TIER_1",
+        "entryPrice": 3264.9,
+        "stop": 3262.9,
+        "t1": 3281.2245000000003,
+        "t2": 3297.549,
+        "orHigh": 3264.9,
+        "orLow": 3201,
+        "orRangePct": "1.99%"
+      },
+      {
+        "symbol": "BAJFINANCE",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "PNBHOUSING",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ABB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "COFORGE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TMPV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 384,
+        "orLow": 377.55,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "ABCAPITAL",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "KPITTECH",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 828.3,
+        "stop": 830.1,
+        "t1": 824.1585,
+        "t2": 820.0169999999999,
+        "orHigh": 841.9,
+        "orLow": 828.3,
+        "orRangePct": "1.63%"
+      },
+      {
+        "symbol": "INDUSINDBK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 923.1,
+        "stop": 923.7,
+        "t1": 918.4845,
+        "t2": 913.869,
+        "orHigh": 934.65,
+        "orLow": 923.1,
+        "orRangePct": "1.25%"
+      },
+      {
+        "symbol": "NTPC",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 375.8,
+        "orLow": 372.15,
+        "orRangePct": "0.98%"
+      },
+      {
+        "symbol": "POLYCAB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "FORTIS",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BHARATFORG",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ADANIPORTS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 100,
+        "tier": "TIER_1",
+        "entryPrice": 1554.9,
+        "stop": 1552,
+        "t1": 1562.6745,
+        "t2": 1570.449,
+        "orHigh": 1554.9,
+        "orLow": 1510.8,
+        "orRangePct": "2.92%"
+      },
+      {
+        "symbol": "360ONE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "DMART",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 10,
+        "tier": "TIER_3",
+        "entryPrice": 3864.2,
+        "stop": 3866.9,
+        "t1": 3844.879,
+        "t2": 3825.558,
+        "orHigh": 3900,
+        "orLow": 3864.2,
+        "orRangePct": "0.92%"
+      },
+      {
+        "symbol": "INOXWIND",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 96.12,
+        "stop": 96.63,
+        "t1": 95.61000000000001,
+        "t2": 95.10000000000002,
+        "orHigh": 97.67,
+        "orLow": 96.5,
+        "orRangePct": "1.20%"
+      },
+      {
+        "symbol": "AXISBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 50,
+        "tier": "TIER_3",
+        "entryPrice": 1398,
+        "stop": 1394,
+        "t1": 1404.99,
+        "t2": 1411.98,
+        "orHigh": 1398,
+        "orLow": 1380.2,
+        "orRangePct": "1.29%"
+      },
+      {
+        "symbol": "MPHASIS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2317.4,
+        "stop": 2329,
+        "t1": 2305.8,
+        "t2": 2294.2000000000003,
+        "orHigh": 2360.5,
+        "orLow": 2325.5,
+        "orRangePct": "1.49%"
+      },
+      {
+        "symbol": "RBLBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BPCL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 371.2,
+        "stop": 369.9,
+        "t1": 373.056,
+        "t2": 374.912,
+        "orHigh": 371.2,
+        "orLow": 366.65,
+        "orRangePct": "1.23%"
+      },
+      {
+        "symbol": "WIPRO",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "TATAELXSI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4826.5,
+        "t1": 4777.5,
+        "t2": 4753,
+        "orHigh": 4873,
+        "orLow": 4802,
+        "orRangePct": "1.47%"
+      },
+      {
+        "symbol": "BANKBARODA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BAJAJFINSV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 2069,
+        "orLow": 2039.8,
+        "orRangePct": "1.42%"
+      },
+      {
+        "symbol": "SBILIFE",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2116,
+        "stop": 2110,
+        "t1": 2126.58,
+        "t2": 2137.16,
+        "orHigh": 2116,
+        "orLow": 2072.2,
+        "orRangePct": "2.10%"
+      },
+      {
+        "symbol": "SOLARINDS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 13401,
+        "stop": 13466,
+        "t1": 13333.995,
+        "t2": 13266.99,
+        "orHigh": 13630,
+        "orLow": 13401,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "AMBER",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "DRREDDY",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TVSMOTOR",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3881.9,
+        "orLow": 3832.7,
+        "orRangePct": "1.28%"
+      },
+      {
+        "symbol": "BANKINDIA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LUPIN",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BIOCON",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LTIM",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4807,
+        "t1": 4777.99,
+        "t2": 4753.98,
+        "orHigh": 4876,
+        "orLow": 4802,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "NAUKRI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 1067.1,
+        "stop": 1074,
+        "t1": 1060.1999999999998,
+        "t2": 1053.2999999999997,
+        "orHigh": 1084.9,
+        "orLow": 1067.1,
+        "orRangePct": "1.66%"
+      },
+      {
+        "symbol": "CANBK",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      }
+    ]
+  },
+  {
+    "scanTime": "2026-03-03T08:29:57.564Z",
+    "totalStocks": 50,
+    "triggered": 22,
+    "expired": 0,
+    "results": [
+      {
+        "symbol": "IDFCFIRSTB",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 75,
+        "tier": "TIER_2",
+        "entryPrice": 67.87,
+        "stop": 70.98,
+        "t1": 64.76,
+        "t2": 61.650000000000006,
+        "orHigh": 75.16,
+        "orLow": 70.98,
+        "orRangePct": "5.56%"
+      },
+      {
+        "symbol": "UPL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 657.1,
+        "stop": 677.15,
+        "t1": 637.0500000000001,
+        "t2": 617.0000000000001,
+        "orHigh": 714.75,
+        "orLow": 677.15,
+        "orRangePct": "5.26%"
+      },
+      {
+        "symbol": "AUBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "CUMMINSIND",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "INDIANB",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ICICIGI",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1964.9,
+        "orLow": 1936.2,
+        "orRangePct": "1.48%"
+      },
+      {
+        "symbol": "KEI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4836.5,
+        "stop": 4826,
+        "t1": 4860.6825,
+        "t2": 4884.865,
+        "orHigh": 4836.5,
+        "orLow": 4760,
+        "orRangePct": "1.59%"
+      },
+      {
+        "symbol": "INDHOTEL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 675.4,
+        "stop": 675.95,
+        "t1": 672.023,
+        "t2": 668.646,
+        "orHigh": 683.1,
+        "orLow": 675.4,
+        "orRangePct": "1.13%"
+      },
+      {
+        "symbol": "UNIONBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 199.2,
+        "stop": 198.65,
+        "t1": 200.196,
+        "t2": 201.19199999999998,
+        "orHigh": 199.2,
+        "orLow": 194.63,
+        "orRangePct": "2.33%"
+      },
+      {
+        "symbol": "BAJAJHLDNG",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 11320,
+        "stop": 11300,
+        "t1": 11376.6,
+        "t2": 11433.2,
+        "orHigh": 11320,
+        "orLow": 11150,
+        "orRangePct": "1.52%"
+      },
+      {
+        "symbol": "PNB",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 132.3,
+        "stop": 132.24,
+        "t1": 132.9615,
+        "t2": 133.62300000000002,
+        "orHigh": 132.3,
+        "orLow": 130.3,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "IRCTC",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "HAL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 4056.1,
+        "stop": 4071.5,
+        "t1": 4035.8195,
+        "t2": 4015.5389999999998,
+        "orHigh": 4150,
+        "orLow": 4056.1,
+        "orRangePct": "2.26%"
+      },
+      {
+        "symbol": "CIPLA",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1335.9,
+        "orLow": 1308.8,
+        "orRangePct": "2.03%"
+      },
+      {
+        "symbol": "SIEMENS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 100,
+        "tier": "TIER_1",
+        "entryPrice": 3264.9,
+        "stop": 3262.9,
+        "t1": 3281.2245000000003,
+        "t2": 3297.549,
+        "orHigh": 3264.9,
+        "orLow": 3201,
+        "orRangePct": "1.99%"
+      },
+      {
+        "symbol": "BAJFINANCE",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "PNBHOUSING",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ABB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "COFORGE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TMPV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 384,
+        "orLow": 377.55,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "ABCAPITAL",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "KPITTECH",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 828.3,
+        "stop": 830.1,
+        "t1": 824.1585,
+        "t2": 820.0169999999999,
+        "orHigh": 841.9,
+        "orLow": 828.3,
+        "orRangePct": "1.63%"
+      },
+      {
+        "symbol": "INDUSINDBK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 923.1,
+        "stop": 923.7,
+        "t1": 918.4845,
+        "t2": 913.869,
+        "orHigh": 934.65,
+        "orLow": 923.1,
+        "orRangePct": "1.25%"
+      },
+      {
+        "symbol": "NTPC",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 375.8,
+        "orLow": 372.15,
+        "orRangePct": "0.98%"
+      },
+      {
+        "symbol": "POLYCAB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "FORTIS",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BHARATFORG",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ADANIPORTS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 100,
+        "tier": "TIER_1",
+        "entryPrice": 1554.9,
+        "stop": 1552,
+        "t1": 1562.6745,
+        "t2": 1570.449,
+        "orHigh": 1554.9,
+        "orLow": 1510.8,
+        "orRangePct": "2.92%"
+      },
+      {
+        "symbol": "360ONE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "DMART",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 10,
+        "tier": "TIER_3",
+        "entryPrice": 3864.2,
+        "stop": 3866.9,
+        "t1": 3844.879,
+        "t2": 3825.558,
+        "orHigh": 3900,
+        "orLow": 3864.2,
+        "orRangePct": "0.92%"
+      },
+      {
+        "symbol": "INOXWIND",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 96.12,
+        "stop": 96.63,
+        "t1": 95.61000000000001,
+        "t2": 95.10000000000002,
+        "orHigh": 97.67,
+        "orLow": 96.5,
+        "orRangePct": "1.20%"
+      },
+      {
+        "symbol": "AXISBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 50,
+        "tier": "TIER_3",
+        "entryPrice": 1398,
+        "stop": 1394,
+        "t1": 1404.99,
+        "t2": 1411.98,
+        "orHigh": 1398,
+        "orLow": 1380.2,
+        "orRangePct": "1.29%"
+      },
+      {
+        "symbol": "MPHASIS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2317.4,
+        "stop": 2329,
+        "t1": 2305.8,
+        "t2": 2294.2000000000003,
+        "orHigh": 2360.5,
+        "orLow": 2325.5,
+        "orRangePct": "1.49%"
+      },
+      {
+        "symbol": "RBLBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BPCL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 371.2,
+        "stop": 369.9,
+        "t1": 373.056,
+        "t2": 374.912,
+        "orHigh": 371.2,
+        "orLow": 366.65,
+        "orRangePct": "1.23%"
+      },
+      {
+        "symbol": "WIPRO",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "TATAELXSI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4826.5,
+        "t1": 4777.5,
+        "t2": 4753,
+        "orHigh": 4873,
+        "orLow": 4802,
+        "orRangePct": "1.47%"
+      },
+      {
+        "symbol": "BANKBARODA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BAJAJFINSV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 2069,
+        "orLow": 2039.8,
+        "orRangePct": "1.42%"
+      },
+      {
+        "symbol": "SBILIFE",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2116,
+        "stop": 2110,
+        "t1": 2126.58,
+        "t2": 2137.16,
+        "orHigh": 2116,
+        "orLow": 2072.2,
+        "orRangePct": "2.10%"
+      },
+      {
+        "symbol": "SOLARINDS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 13401,
+        "stop": 13466,
+        "t1": 13333.995,
+        "t2": 13266.99,
+        "orHigh": 13630,
+        "orLow": 13401,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "AMBER",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "DRREDDY",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TVSMOTOR",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3881.9,
+        "orLow": 3832.7,
+        "orRangePct": "1.28%"
+      },
+      {
+        "symbol": "BANKINDIA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LUPIN",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BIOCON",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LTIM",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4807,
+        "t1": 4777.99,
+        "t2": 4753.98,
+        "orHigh": 4876,
+        "orLow": 4802,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "NAUKRI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 1067.1,
+        "stop": 1074,
+        "t1": 1060.1999999999998,
+        "t2": 1053.2999999999997,
+        "orHigh": 1084.9,
+        "orLow": 1067.1,
+        "orRangePct": "1.66%"
+      },
+      {
+        "symbol": "CANBK",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      }
+    ]
+  },
+  {
+    "scanTime": "2026-03-03T08:35:49.271Z",
+    "totalStocks": 50,
+    "triggered": 22,
+    "expired": 0,
+    "results": [
+      {
+        "symbol": "IDFCFIRSTB",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 75,
+        "tier": "TIER_2",
+        "entryPrice": 67.87,
+        "stop": 70.98,
+        "t1": 64.76,
+        "t2": 61.650000000000006,
+        "orHigh": 75.16,
+        "orLow": 70.98,
+        "orRangePct": "5.56%"
+      },
+      {
+        "symbol": "UPL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 657.1,
+        "stop": 677.15,
+        "t1": 637.0500000000001,
+        "t2": 617.0000000000001,
+        "orHigh": 714.75,
+        "orLow": 677.15,
+        "orRangePct": "5.26%"
+      },
+      {
+        "symbol": "AUBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "CUMMINSIND",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "INDIANB",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ICICIGI",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1964.9,
+        "orLow": 1936.2,
+        "orRangePct": "1.48%"
+      },
+      {
+        "symbol": "KEI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4836.5,
+        "stop": 4826,
+        "t1": 4860.6825,
+        "t2": 4884.865,
+        "orHigh": 4836.5,
+        "orLow": 4760,
+        "orRangePct": "1.59%"
+      },
+      {
+        "symbol": "INDHOTEL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 675.4,
+        "stop": 675.95,
+        "t1": 672.023,
+        "t2": 668.646,
+        "orHigh": 683.1,
+        "orLow": 675.4,
+        "orRangePct": "1.13%"
+      },
+      {
+        "symbol": "UNIONBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 199.2,
+        "stop": 198.65,
+        "t1": 200.196,
+        "t2": 201.19199999999998,
+        "orHigh": 199.2,
+        "orLow": 194.63,
+        "orRangePct": "2.33%"
+      },
+      {
+        "symbol": "BAJAJHLDNG",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 11320,
+        "stop": 11300,
+        "t1": 11376.6,
+        "t2": 11433.2,
+        "orHigh": 11320,
+        "orLow": 11150,
+        "orRangePct": "1.52%"
+      },
+      {
+        "symbol": "PNB",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 132.3,
+        "stop": 132.24,
+        "t1": 132.9615,
+        "t2": 133.62300000000002,
+        "orHigh": 132.3,
+        "orLow": 130.3,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "IRCTC",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "HAL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 4056.1,
+        "stop": 4071.5,
+        "t1": 4035.8195,
+        "t2": 4015.5389999999998,
+        "orHigh": 4150,
+        "orLow": 4056.1,
+        "orRangePct": "2.26%"
+      },
+      {
+        "symbol": "CIPLA",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1335.9,
+        "orLow": 1308.8,
+        "orRangePct": "2.03%"
+      },
+      {
+        "symbol": "SIEMENS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 100,
+        "tier": "TIER_1",
+        "entryPrice": 3264.9,
+        "stop": 3262.9,
+        "t1": 3281.2245000000003,
+        "t2": 3297.549,
+        "orHigh": 3264.9,
+        "orLow": 3201,
+        "orRangePct": "1.99%"
+      },
+      {
+        "symbol": "BAJFINANCE",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "PNBHOUSING",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ABB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "COFORGE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TMPV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 384,
+        "orLow": 377.55,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "ABCAPITAL",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "KPITTECH",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 828.3,
+        "stop": 830.1,
+        "t1": 824.1585,
+        "t2": 820.0169999999999,
+        "orHigh": 841.9,
+        "orLow": 828.3,
+        "orRangePct": "1.63%"
+      },
+      {
+        "symbol": "INDUSINDBK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 923.1,
+        "stop": 923.7,
+        "t1": 918.4845,
+        "t2": 913.869,
+        "orHigh": 934.65,
+        "orLow": 923.1,
+        "orRangePct": "1.25%"
+      },
+      {
+        "symbol": "NTPC",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 375.8,
+        "orLow": 372.15,
+        "orRangePct": "0.98%"
+      },
+      {
+        "symbol": "POLYCAB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "FORTIS",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BHARATFORG",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ADANIPORTS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 100,
+        "tier": "TIER_1",
+        "entryPrice": 1554.9,
+        "stop": 1552,
+        "t1": 1562.6745,
+        "t2": 1570.449,
+        "orHigh": 1554.9,
+        "orLow": 1510.8,
+        "orRangePct": "2.92%"
+      },
+      {
+        "symbol": "360ONE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "DMART",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 10,
+        "tier": "TIER_3",
+        "entryPrice": 3864.2,
+        "stop": 3866.9,
+        "t1": 3844.879,
+        "t2": 3825.558,
+        "orHigh": 3900,
+        "orLow": 3864.2,
+        "orRangePct": "0.92%"
+      },
+      {
+        "symbol": "INOXWIND",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 96.12,
+        "stop": 96.63,
+        "t1": 95.61000000000001,
+        "t2": 95.10000000000002,
+        "orHigh": 97.67,
+        "orLow": 96.5,
+        "orRangePct": "1.20%"
+      },
+      {
+        "symbol": "AXISBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 50,
+        "tier": "TIER_3",
+        "entryPrice": 1398,
+        "stop": 1394,
+        "t1": 1404.99,
+        "t2": 1411.98,
+        "orHigh": 1398,
+        "orLow": 1380.2,
+        "orRangePct": "1.29%"
+      },
+      {
+        "symbol": "MPHASIS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2317.4,
+        "stop": 2329,
+        "t1": 2305.8,
+        "t2": 2294.2000000000003,
+        "orHigh": 2360.5,
+        "orLow": 2325.5,
+        "orRangePct": "1.49%"
+      },
+      {
+        "symbol": "RBLBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BPCL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 371.2,
+        "stop": 369.9,
+        "t1": 373.056,
+        "t2": 374.912,
+        "orHigh": 371.2,
+        "orLow": 366.65,
+        "orRangePct": "1.23%"
+      },
+      {
+        "symbol": "WIPRO",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "TATAELXSI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4826.5,
+        "t1": 4777.5,
+        "t2": 4753,
+        "orHigh": 4873,
+        "orLow": 4802,
+        "orRangePct": "1.47%"
+      },
+      {
+        "symbol": "BANKBARODA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BAJAJFINSV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 2069,
+        "orLow": 2039.8,
+        "orRangePct": "1.42%"
+      },
+      {
+        "symbol": "SBILIFE",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2116,
+        "stop": 2110,
+        "t1": 2126.58,
+        "t2": 2137.16,
+        "orHigh": 2116,
+        "orLow": 2072.2,
+        "orRangePct": "2.10%"
+      },
+      {
+        "symbol": "SOLARINDS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 13401,
+        "stop": 13466,
+        "t1": 13333.995,
+        "t2": 13266.99,
+        "orHigh": 13630,
+        "orLow": 13401,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "AMBER",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "DRREDDY",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TVSMOTOR",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3881.9,
+        "orLow": 3832.7,
+        "orRangePct": "1.28%"
+      },
+      {
+        "symbol": "BANKINDIA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LUPIN",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BIOCON",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LTIM",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4807,
+        "t1": 4777.99,
+        "t2": 4753.98,
+        "orHigh": 4876,
+        "orLow": 4802,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "NAUKRI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 1067.1,
+        "stop": 1074,
+        "t1": 1060.1999999999998,
+        "t2": 1053.2999999999997,
+        "orHigh": 1084.9,
+        "orLow": 1067.1,
+        "orRangePct": "1.66%"
+      },
+      {
+        "symbol": "CANBK",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      }
+    ]
+  },
+  {
+    "scanTime": "2026-03-03T09:34:03.186Z",
+    "totalStocks": 50,
+    "triggered": 22,
+    "expired": 0,
+    "results": [
+      {
+        "symbol": "IDFCFIRSTB",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 75,
+        "tier": "TIER_2",
+        "entryPrice": 67.87,
+        "stop": 70.98,
+        "t1": 64.76,
+        "t2": 61.650000000000006,
+        "orHigh": 75.16,
+        "orLow": 70.98,
+        "orRangePct": "5.56%"
+      },
+      {
+        "symbol": "UPL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 657.1,
+        "stop": 677.15,
+        "t1": 637.0500000000001,
+        "t2": 617.0000000000001,
+        "orHigh": 714.75,
+        "orLow": 677.15,
+        "orRangePct": "5.26%"
+      },
+      {
+        "symbol": "AUBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "CUMMINSIND",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "INDIANB",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ICICIGI",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1964.9,
+        "orLow": 1936.2,
+        "orRangePct": "1.48%"
+      },
+      {
+        "symbol": "KEI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4836.5,
+        "stop": 4826,
+        "t1": 4860.6825,
+        "t2": 4884.865,
+        "orHigh": 4836.5,
+        "orLow": 4760,
+        "orRangePct": "1.59%"
+      },
+      {
+        "symbol": "INDHOTEL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 675.4,
+        "stop": 675.95,
+        "t1": 672.023,
+        "t2": 668.646,
+        "orHigh": 683.1,
+        "orLow": 675.4,
+        "orRangePct": "1.13%"
+      },
+      {
+        "symbol": "UNIONBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 199.2,
+        "stop": 198.65,
+        "t1": 200.196,
+        "t2": 201.19199999999998,
+        "orHigh": 199.2,
+        "orLow": 194.63,
+        "orRangePct": "2.33%"
+      },
+      {
+        "symbol": "BAJAJHLDNG",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 11320,
+        "stop": 11300,
+        "t1": 11376.6,
+        "t2": 11433.2,
+        "orHigh": 11320,
+        "orLow": 11150,
+        "orRangePct": "1.52%"
+      },
+      {
+        "symbol": "PNB",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 132.3,
+        "stop": 132.24,
+        "t1": 132.9615,
+        "t2": 133.62300000000002,
+        "orHigh": 132.3,
+        "orLow": 130.3,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "IRCTC",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "HAL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 4056.1,
+        "stop": 4071.5,
+        "t1": 4035.8195,
+        "t2": 4015.5389999999998,
+        "orHigh": 4150,
+        "orLow": 4056.1,
+        "orRangePct": "2.26%"
+      },
+      {
+        "symbol": "CIPLA",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1335.9,
+        "orLow": 1308.8,
+        "orRangePct": "2.03%"
+      },
+      {
+        "symbol": "SIEMENS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 100,
+        "tier": "TIER_1",
+        "entryPrice": 3264.9,
+        "stop": 3262.9,
+        "t1": 3281.2245000000003,
+        "t2": 3297.549,
+        "orHigh": 3264.9,
+        "orLow": 3201,
+        "orRangePct": "1.99%"
+      },
+      {
+        "symbol": "BAJFINANCE",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "PNBHOUSING",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ABB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "COFORGE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TMPV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 384,
+        "orLow": 377.55,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "ABCAPITAL",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "KPITTECH",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 828.3,
+        "stop": 830.1,
+        "t1": 824.1585,
+        "t2": 820.0169999999999,
+        "orHigh": 841.9,
+        "orLow": 828.3,
+        "orRangePct": "1.63%"
+      },
+      {
+        "symbol": "INDUSINDBK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 923.1,
+        "stop": 923.7,
+        "t1": 918.4845,
+        "t2": 913.869,
+        "orHigh": 934.65,
+        "orLow": 923.1,
+        "orRangePct": "1.25%"
+      },
+      {
+        "symbol": "NTPC",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 375.8,
+        "orLow": 372.15,
+        "orRangePct": "0.98%"
+      },
+      {
+        "symbol": "POLYCAB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "FORTIS",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BHARATFORG",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ADANIPORTS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 100,
+        "tier": "TIER_1",
+        "entryPrice": 1554.9,
+        "stop": 1552,
+        "t1": 1562.6745,
+        "t2": 1570.449,
+        "orHigh": 1554.9,
+        "orLow": 1510.8,
+        "orRangePct": "2.92%"
+      },
+      {
+        "symbol": "360ONE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "DMART",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 10,
+        "tier": "TIER_3",
+        "entryPrice": 3864.2,
+        "stop": 3866.9,
+        "t1": 3844.879,
+        "t2": 3825.558,
+        "orHigh": 3900,
+        "orLow": 3864.2,
+        "orRangePct": "0.92%"
+      },
+      {
+        "symbol": "INOXWIND",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 96.12,
+        "stop": 96.63,
+        "t1": 95.61000000000001,
+        "t2": 95.10000000000002,
+        "orHigh": 97.67,
+        "orLow": 96.5,
+        "orRangePct": "1.20%"
+      },
+      {
+        "symbol": "AXISBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 50,
+        "tier": "TIER_3",
+        "entryPrice": 1398,
+        "stop": 1394,
+        "t1": 1404.99,
+        "t2": 1411.98,
+        "orHigh": 1398,
+        "orLow": 1380.2,
+        "orRangePct": "1.29%"
+      },
+      {
+        "symbol": "MPHASIS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2317.4,
+        "stop": 2329,
+        "t1": 2305.8,
+        "t2": 2294.2000000000003,
+        "orHigh": 2360.5,
+        "orLow": 2325.5,
+        "orRangePct": "1.49%"
+      },
+      {
+        "symbol": "RBLBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BPCL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 371.2,
+        "stop": 369.9,
+        "t1": 373.056,
+        "t2": 374.912,
+        "orHigh": 371.2,
+        "orLow": 366.65,
+        "orRangePct": "1.23%"
+      },
+      {
+        "symbol": "WIPRO",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "TATAELXSI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4826.5,
+        "t1": 4777.5,
+        "t2": 4753,
+        "orHigh": 4873,
+        "orLow": 4802,
+        "orRangePct": "1.47%"
+      },
+      {
+        "symbol": "BANKBARODA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BAJAJFINSV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 2069,
+        "orLow": 2039.8,
+        "orRangePct": "1.42%"
+      },
+      {
+        "symbol": "SBILIFE",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2116,
+        "stop": 2110,
+        "t1": 2126.58,
+        "t2": 2137.16,
+        "orHigh": 2116,
+        "orLow": 2072.2,
+        "orRangePct": "2.10%"
+      },
+      {
+        "symbol": "SOLARINDS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 13401,
+        "stop": 13466,
+        "t1": 13333.995,
+        "t2": 13266.99,
+        "orHigh": 13630,
+        "orLow": 13401,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "AMBER",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "DRREDDY",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TVSMOTOR",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3881.9,
+        "orLow": 3832.7,
+        "orRangePct": "1.28%"
+      },
+      {
+        "symbol": "BANKINDIA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LUPIN",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BIOCON",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LTIM",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4807,
+        "t1": 4777.99,
+        "t2": 4753.98,
+        "orHigh": 4876,
+        "orLow": 4802,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "NAUKRI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 1067.1,
+        "stop": 1074,
+        "t1": 1060.1999999999998,
+        "t2": 1053.2999999999997,
+        "orHigh": 1084.9,
+        "orLow": 1067.1,
+        "orRangePct": "1.66%"
+      },
+      {
+        "symbol": "CANBK",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      }
+    ]
+  },
+  {
+    "scanTime": "2026-03-03T09:34:24.465Z",
+    "totalStocks": 50,
+    "triggered": 22,
+    "expired": 0,
+    "results": [
+      {
+        "symbol": "IDFCFIRSTB",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 75,
+        "tier": "TIER_2",
+        "entryPrice": 67.87,
+        "stop": 70.98,
+        "t1": 64.76,
+        "t2": 61.650000000000006,
+        "orHigh": 75.16,
+        "orLow": 70.98,
+        "orRangePct": "5.56%"
+      },
+      {
+        "symbol": "UPL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 657.1,
+        "stop": 677.15,
+        "t1": 637.0500000000001,
+        "t2": 617.0000000000001,
+        "orHigh": 714.75,
+        "orLow": 677.15,
+        "orRangePct": "5.26%"
+      },
+      {
+        "symbol": "AUBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "CUMMINSIND",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "INDIANB",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ICICIGI",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1964.9,
+        "orLow": 1936.2,
+        "orRangePct": "1.48%"
+      },
+      {
+        "symbol": "KEI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4836.5,
+        "stop": 4826,
+        "t1": 4860.6825,
+        "t2": 4884.865,
+        "orHigh": 4836.5,
+        "orLow": 4760,
+        "orRangePct": "1.59%"
+      },
+      {
+        "symbol": "INDHOTEL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 675.4,
+        "stop": 675.95,
+        "t1": 672.023,
+        "t2": 668.646,
+        "orHigh": 683.1,
+        "orLow": 675.4,
+        "orRangePct": "1.13%"
+      },
+      {
+        "symbol": "UNIONBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 199.2,
+        "stop": 198.65,
+        "t1": 200.196,
+        "t2": 201.19199999999998,
+        "orHigh": 199.2,
+        "orLow": 194.63,
+        "orRangePct": "2.33%"
+      },
+      {
+        "symbol": "BAJAJHLDNG",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 11320,
+        "stop": 11300,
+        "t1": 11376.6,
+        "t2": 11433.2,
+        "orHigh": 11320,
+        "orLow": 11150,
+        "orRangePct": "1.52%"
+      },
+      {
+        "symbol": "PNB",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 132.3,
+        "stop": 132.24,
+        "t1": 132.9615,
+        "t2": 133.62300000000002,
+        "orHigh": 132.3,
+        "orLow": 130.3,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "IRCTC",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "HAL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 4056.1,
+        "stop": 4071.5,
+        "t1": 4035.8195,
+        "t2": 4015.5389999999998,
+        "orHigh": 4150,
+        "orLow": 4056.1,
+        "orRangePct": "2.26%"
+      },
+      {
+        "symbol": "CIPLA",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 1335.9,
+        "orLow": 1308.8,
+        "orRangePct": "2.03%"
+      },
+      {
+        "symbol": "SIEMENS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 100,
+        "tier": "TIER_1",
+        "entryPrice": 3264.9,
+        "stop": 3262.9,
+        "t1": 3281.2245000000003,
+        "t2": 3297.549,
+        "orHigh": 3264.9,
+        "orLow": 3201,
+        "orRangePct": "1.99%"
+      },
+      {
+        "symbol": "BAJFINANCE",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "PNBHOUSING",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ABB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "COFORGE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TMPV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 384,
+        "orLow": 377.55,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "ABCAPITAL",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "KPITTECH",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 828.3,
+        "stop": 830.1,
+        "t1": 824.1585,
+        "t2": 820.0169999999999,
+        "orHigh": 841.9,
+        "orLow": 828.3,
+        "orRangePct": "1.63%"
+      },
+      {
+        "symbol": "INDUSINDBK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 85,
+        "tier": "TIER_2",
+        "entryPrice": 923.1,
+        "stop": 923.7,
+        "t1": 918.4845,
+        "t2": 913.869,
+        "orHigh": 934.65,
+        "orLow": 923.1,
+        "orRangePct": "1.25%"
+      },
+      {
+        "symbol": "NTPC",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 375.8,
+        "orLow": 372.15,
+        "orRangePct": "0.98%"
+      },
+      {
+        "symbol": "POLYCAB",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "FORTIS",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BHARATFORG",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "ADANIPORTS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 100,
+        "tier": "TIER_1",
+        "entryPrice": 1554.9,
+        "stop": 1552,
+        "t1": 1562.6745,
+        "t2": 1570.449,
+        "orHigh": 1554.9,
+        "orLow": 1510.8,
+        "orRangePct": "2.92%"
+      },
+      {
+        "symbol": "360ONE",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "DMART",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 10,
+        "tier": "TIER_3",
+        "entryPrice": 3864.2,
+        "stop": 3866.9,
+        "t1": 3844.879,
+        "t2": 3825.558,
+        "orHigh": 3900,
+        "orLow": 3864.2,
+        "orRangePct": "0.92%"
+      },
+      {
+        "symbol": "INOXWIND",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 96.12,
+        "stop": 96.63,
+        "t1": 95.61000000000001,
+        "t2": 95.10000000000002,
+        "orHigh": 97.67,
+        "orLow": 96.5,
+        "orRangePct": "1.20%"
+      },
+      {
+        "symbol": "AXISBANK",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 50,
+        "tier": "TIER_3",
+        "entryPrice": 1398,
+        "stop": 1394,
+        "t1": 1404.99,
+        "t2": 1411.98,
+        "orHigh": 1398,
+        "orLow": 1380.2,
+        "orRangePct": "1.29%"
+      },
+      {
+        "symbol": "MPHASIS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RUNNER (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2317.4,
+        "stop": 2329,
+        "t1": 2305.8,
+        "t2": 2294.2000000000003,
+        "orHigh": 2360.5,
+        "orLow": 2325.5,
+        "orRangePct": "1.49%"
+      },
+      {
+        "symbol": "RBLBANK",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BPCL",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 60,
+        "tier": "TIER_3",
+        "entryPrice": 371.2,
+        "stop": 369.9,
+        "t1": 373.056,
+        "t2": 374.912,
+        "orHigh": 371.2,
+        "orLow": 366.65,
+        "orRangePct": "1.23%"
+      },
+      {
+        "symbol": "WIPRO",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "TATAELXSI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4826.5,
+        "t1": 4777.5,
+        "t2": 4753,
+        "orHigh": 4873,
+        "orLow": 4802,
+        "orRangePct": "1.47%"
+      },
+      {
+        "symbol": "BANKBARODA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "BAJAJFINSV",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 2069,
+        "orLow": 2039.8,
+        "orRangePct": "1.42%"
+      },
+      {
+        "symbol": "SBILIFE",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (LONG)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 2116,
+        "stop": 2110,
+        "t1": 2126.58,
+        "t2": 2137.16,
+        "orHigh": 2116,
+        "orLow": 2072.2,
+        "orRangePct": "2.10%"
+      },
+      {
+        "symbol": "SOLARINDS",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 13401,
+        "stop": 13466,
+        "t1": 13333.995,
+        "t2": 13266.99,
+        "orHigh": 13630,
+        "orLow": 13401,
+        "orRangePct": "1.70%"
+      },
+      {
+        "symbol": "AMBER",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "DRREDDY",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "TVSMOTOR",
+        "passed": false,
+        "reason": "NO_BREAKOUT — price stayed within OR range",
+        "orHigh": 3881.9,
+        "orLow": 3832.7,
+        "orRangePct": "1.28%"
+      },
+      {
+        "symbol": "BANKINDIA",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LUPIN",
+        "passed": false,
+        "reason": "NO_DAY_DATA — no daily candle cache available"
+      },
+      {
+        "symbol": "BIOCON",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      },
+      {
+        "symbol": "LTIM",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 70,
+        "tier": "TIER_2",
+        "entryPrice": 4802,
+        "stop": 4807,
+        "t1": 4777.99,
+        "t2": 4753.98,
+        "orHigh": 4876,
+        "orLow": 4802,
+        "orRangePct": "1.53%"
+      },
+      {
+        "symbol": "NAUKRI",
+        "passed": true,
+        "reason": "SIGNAL_GENERATED — RETEST (SHORT)",
+        "score": 25,
+        "tier": "TIER_3",
+        "entryPrice": 1067.1,
+        "stop": 1074,
+        "t1": 1060.1999999999998,
+        "t2": 1053.2999999999997,
+        "orHigh": 1084.9,
+        "orLow": 1067.1,
+        "orRangePct": "1.66%"
+      },
+      {
+        "symbol": "CANBK",
+        "passed": false,
+        "reason": "NO_DAY_MATCH — target date not found in daily data"
+      }
+    ]
+  }
+]

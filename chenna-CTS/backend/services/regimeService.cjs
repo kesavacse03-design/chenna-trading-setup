@@ -14,6 +14,21 @@ function calculateSMA(prices, period) {
     return slice.reduce((sum, p) => sum + p, 0) / period;
 }
 
+// Exponential Moving Average calculation
+function calculateEMA(prices, period) {
+    if (prices.length < period) return null;
+
+    // Initial EMA is just an SMA of the first `period` limits
+    const k = 2 / (period + 1);
+    let ema = prices.slice(0, period).reduce((sum, p) => sum + p, 0) / period;
+
+    for (let i = period; i < prices.length; i++) {
+        ema = (prices[i] - ema) * k + ema;
+    }
+
+    return ema;
+}
+
 // Average True Range for volatility
 function calculateATR(candles, period = 14) {
     if (candles.length < period + 1) return null;
@@ -54,11 +69,13 @@ async function getMarketRegime(targetDate, categoryKey = null) {
         let niftyTrend = 'neutral';
         let niftyPrice = 0;
         let niftySMA50 = 0;
+        let niftyEMA20 = 0;
 
         if (niftyCandles && niftyCandles.length >= 50) {
             const closes = niftyCandles.map(c => c.close);
             niftyPrice = closes[closes.length - 1];
             niftySMA50 = calculateSMA(closes, 50);
+            niftyEMA20 = calculateEMA(closes, 20);
 
             if (niftySMA50) {
                 const diff = ((niftyPrice - niftySMA50) / niftySMA50) * 100;
@@ -94,6 +111,7 @@ async function getMarketRegime(targetDate, categoryKey = null) {
             niftyTrend,
             niftyPrice,
             niftySMA50,
+            niftyEMA20,
             breadth: breadthResult.breadth,
             breadthStocksAbove: breadthResult.stocksAbove,
             breadthTotal: breadthResult.totalStocks,

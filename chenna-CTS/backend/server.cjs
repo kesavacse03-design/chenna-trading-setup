@@ -6,6 +6,7 @@ const path = require('path');
 const fetch = require('node-fetch');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
+const { todayIST, dateToIST, importDateIST } = require('./utils/istUtils.cjs');
 let axios = null;
 try { axios = require('axios'); } catch (e) { axios = null; }
 
@@ -42,10 +43,68 @@ app.use('/api/labs', labsRoutes);
 const signalRoutes = require('./api/signalRoutes.cjs');
 app.use('/api/signals', signalRoutes);
 
+// Register Tracking Routes (for Live Intraday Monitor)
+const trackingRoutes = require('./api/trackingRoutes.cjs');
+app.use('/api/tracking', trackingRoutes);
+
+// Register Live Price Routes (for price toggle functionality)
+const livePriceRoutes = require('./api/livePriceRoutes.cjs');
+app.use('/api/livePrice', livePriceRoutes);
+console.log('[Routes] Live Price routes registered ✅');
+
 // Register Data Fetch Agent Routes (for tredcode data fetching)
 const dataFetchRoutes = require('./api/dataFetchRoutes.cjs');
 app.use('/api/data-fetch', dataFetchRoutes);
 console.log('[Routes] Data Fetch Agent routes registered ✅');
+
+// Register Trading Routes (for Signals, Positions, Dashboard)
+const tradingRoutes = require('./api/tradingRoutes.cjs');
+app.use('/api/trading', tradingRoutes);
+console.log('[Routes] Trading routes registered ✅');
+
+// Register Time-Travel Backtest Routes
+const backtestRoutes = require('./api/backtestRoutes.cjs');
+app.use('/api/backtest', backtestRoutes);
+console.log('[Routes] Backtest routes registered ✅');
+
+// Register Strategy Configuration Routes (NEW)
+const strategyConfigRoutes = require('./api/strategyConfigRoutes.cjs');
+app.use('/api/strategy', strategyConfigRoutes);
+
+// Register Category Controller Routes (PHASE 10)
+const categoryRoutes = require('./api/categoryRoutes.cjs');
+app.use('/api/categories', categoryRoutes);
+console.log('[Routes] Category Controller routes registered ✅');
+
+// Register V5 Engine Routes (Signal-to-Position Pipeline)
+const v5Routes = require('./api/v5Routes.cjs');
+app.use('/api/v5', v5Routes);
+console.log('[Routes] V5 Engine routes registered ✅');
+
+// Start Trading Scheduler (automatic signal generation at 3:30 PM, etc.)
+const tradingScheduler = require('./services/tradingScheduler.cjs');
+tradingScheduler.start();
+console.log('[Scheduler] Trading scheduler started ✅');
+
+// Startup: Clean up stale intraday positions from previous days
+const eodService = require('./services/eodService.cjs');
+(async () => {
+  try {
+    const result = await eodService.runStartupCleanup();
+    if (result.cleaned > 0) {
+      console.log(`[Startup] ⚠️ Cleaned ${result.cleaned} stale intraday positions from previous days`);
+    } else {
+      console.log('[Startup] ✅ No stale positions — clean start');
+    }
+  } catch (err) {
+    console.error('[Startup] ❌ Stale position cleanup failed:', err.message);
+  }
+})();
+
+// Start Autonomous Signal Scheduler (auto-scan during market hours)
+const signalScheduler = require('./services/signalScheduler.cjs');
+signalScheduler.start();
+console.log('[Scheduler] Signal auto-scanner started ✅');
 
 // --- GUN SHOT FIXES ---
 // 1. Instrument Search (Fixed - use Prisma directly)
@@ -101,9 +160,9 @@ app.post('/api/stocks', async (req, res) => {
 
   try {
     // Normalize Date
-    let dateStr = date || new Date().toISOString().slice(0, 10);
+    let dateStr = date || todayIST();
     const [yyyy, mm, dd] = dateStr.split('-').map(Number);
-    const addedDate = new Date(Date.UTC(yyyy, mm - 1, dd));
+    const addedDate = importDateIST(dateStr);
 
     // Ensure Category - handle null/undefined safely
     const categoryKey = (category || 'UNMAPPED').toString().replace(/ /g, '_').toUpperCase();
@@ -133,9 +192,24 @@ app.post('/api/stocks', async (req, res) => {
     }
 
     // Create Link
-    await prisma.stockCategory.create({
+    const newLink = await prisma.stockCategory.create({
       data: { stockId: stock.id, categoryId: catRecord.id, addedDate: addedDate }
     });
+
+    // --- AUTO-TIER CALCULATION (ASYNC) ---
+    if (categoryKey === 'SHORT_TERM_SWING_BO_DOWN') {
+      // Run in background, do not await
+      (async () => {
+        try {
+          const tierService = require('./services/tierService.cjs');
+          // Use newLink.id which is the stockCategoryId
+          await tierService.calculateAndSaveTier(newLink.id, symbol, addedDate);
+        } catch (err) {
+          console.error(`[Auto-Tier] Failed for ${symbol}:`, err);
+        }
+      })();
+    }
+    // -------------------------------------
 
     console.log(`[POST /api/stocks] ✅ Added ${symbol}`);
     res.json({ ok: true, stockName: stock.symbol, date: dateStr, category: categoryKey });
@@ -183,7 +257,7 @@ const activeJobs = new Map(); // jobId -> { res: Response, logs: string[] }
 process.on('uncaughtException', (err) => {
   console.error('[FATAL] Uncaught Exception:', err);
   console.error('[FATAL] Stack:', err.stack);
-  process.exit(1);
+  // process.exit(1); // Keep running to prevent crash on transient errors
 });
 
 process.on('unhandledRejection', (reason, promise) => {
@@ -233,6 +307,56 @@ async function ensureAccessToken() {
 app.get('/ping', (req, res) => res.send('pong'));
 app.get('/health', (req, res) => res.json({ status: 'ok', version: '0.3.0-upstox' }));
 app.get('/version', (req, res) => res.json({ version: '0.3.0-upstox' }));
+
+// DEBUG: Stock counts per category
+app.get('/debug/stock-counts', async (req, res) => {
+  try {
+    const categoryKey = req.query.category || 'PRE_MARKET';
+
+    // Get category
+    const category = await prisma.category.findFirst({ where: { key: categoryKey } });
+    if (!category) return res.json({ error: 'Category not found', categoryKey });
+
+    // Count via Prisma
+    const totalCount = await prisma.stockCategory.count({ where: { categoryId: category.id } });
+
+    // Group by date
+    const byDate = await prisma.stockCategory.groupBy({
+      by: ['addedDate'],
+      where: { categoryId: category.id },
+      _count: true,
+      orderBy: { addedDate: 'desc' }
+    });
+
+    // Get unique symbols
+    const entries = await prisma.stockCategory.findMany({
+      where: { categoryId: category.id },
+      include: { stock: true },
+      orderBy: { addedDate: 'desc' }
+    });
+
+    const uniqueSymbols = new Set(entries.map(e => e.stock?.symbol)).size;
+
+    // Format date breakdown
+    const dateBreakdown = byDate.map(d => ({
+      date: d.addedDate ? dateToIST(d.addedDate) : 'NULL',
+      count: d._count
+    }));
+
+    res.json({
+      categoryKey,
+      categoryId: category.id,
+      totalCount: totalCount,
+      uniqueSymbols,
+      dateBreakdown,
+      message: totalCount === uniqueSymbols
+        ? 'No duplicate symbols on different dates'
+        : `Stocks appear on multiple dates: ${totalCount - uniqueSymbols} extra entries`
+    });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
 
 // Upstox OAuth
 app.get('/auth/upstox/start', (req, res) => {
@@ -432,8 +556,8 @@ app.get('/debug/upstox/candles', async (req, res) => {
     const resolved = instrumentResolver.resolveBySymbol(symbol);
     const instrumentKey = resolved ? resolved.key : symbol;
 
-    const to = new Date().toISOString().split('T')[0];
-    const from = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+    const to = todayIST();
+    const from = dateToIST(new Date(Date.now() - 30 * 24 * 60 * 60 * 1000));
     const url = `https://api.upstox.com/v2/historical-candle/${encodeURIComponent(instrumentKey)}/day/${to}/${from}`;
 
     const backoffs = [200, 600, 1800];
@@ -500,11 +624,12 @@ app.get('/api/watchlist', async (req, res) => {
         stockName: item.stock.symbol, // Frontend uses stockName or symbol
         symbol: item.stock.symbol,
         name: item.stock.name,
-        date: item.addedDate ? item.addedDate.toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
+        date: item.addedDate ? dateToIST(item.addedDate) : todayIST(),
         price: null, // Price would need a real-time fetch or cache
         category: cat.key,
         exchange: item.stock.exchange,
-        instrument_token: item.stock.instrumentKey
+        instrument_token: item.stock.instrumentKey,
+        meta: item.meta // <--- Added Tier Meta
       }));
     }
 
@@ -536,9 +661,10 @@ app.get('/api/stocks', async (req, res) => {
           name: s.name,
           category: c.category.key,
           categoryKey: c.category.key,
-          date: c.addedDate ? c.addedDate.toISOString().split('T')[0] : null,
+          date: c.addedDate ? dateToIST(c.addedDate) : null,
           instrument_token: s.instrumentKey,
-          exchange: s.exchange
+          exchange: s.exchange,
+          meta: c.meta // <--- Added Tier Meta
         });
       }
     }
@@ -547,6 +673,44 @@ app.get('/api/stocks', async (req, res) => {
   } catch (e) {
     console.error('[ /api/stocks] Error:', e);
     res.status(500).json({ error: String(e.message) });
+  }
+});
+
+// DEBUG: Show per-category counts from /api/stocks (same source as frontend)
+app.get('/debug/api-stocks-breakdown', async (req, res) => {
+  try {
+    const stocks = await prisma.stock.findMany({
+      include: {
+        categories: {
+          include: { category: true }
+        }
+      }
+    });
+
+    // Count per category
+    const counts = {};
+    for (const s of stocks) {
+      for (const c of s.categories) {
+        const key = c.category.key;
+        counts[key] = (counts[key] || 0) + 1;
+      }
+    }
+
+    // Sort by count descending
+    const sorted = Object.entries(counts)
+      .sort((a, b) => b[1] - a[1])
+      .reduce((obj, [k, v]) => ({ ...obj, [k]: v }), {});
+
+    const totalEntries = Object.values(counts).reduce((a, b) => a + b, 0);
+
+    res.json({
+      totalStockCategoryEntries: totalEntries,
+      totalUniqueStocks: stocks.length,
+      perCategory: sorted,
+      message: `Frontend displays these counts. Total ${totalEntries} entries across ${Object.keys(counts).length} categories.`
+    });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
   }
 });
 
@@ -612,22 +776,9 @@ app.get('/api/instruments/count', async (req, res) => {
 // --- Stock Management APIs ---
 
 // GET all categories
-app.get('/api/categories', async (req, res) => {
-  try {
-    const categories = await prisma.category.findMany({
-      select: {
-        key: true,
-        name: true,
-        description: true
-      },
-      orderBy: { name: 'asc' }
-    });
-    res.json({ ok: true, categories });
-  } catch (e) {
-    console.error('[GET /api/categories] Error:', e);
-    res.status(500).json({ ok: false, error: String(e.message) });
-  }
-});
+// GET all categories
+// DEPRECATED: Use /api/categories via CategoryController (registered at top)
+// app.get('/api/categories', ...) -> handled by categoryRoutes.cjs
 
 // GET stocks for a category
 app.get('/api/categories/:categoryKey/stocks', async (req, res) => {
@@ -716,11 +867,10 @@ app.post('/api/categories/:categoryKey/stocks', async (req, res) => {
         if (dateStr) {
           // Parse date and normalize to UTC midnight to match PostgreSQL @db.Date storage
           const parsed = new Date(dateStr);
-          addedDate = new Date(Date.UTC(parsed.getFullYear(), parsed.getMonth(), parsed.getDate()));
+          addedDate = importDateIST(dateStr);
         } else {
-          // Use today's date at UTC midnight
-          const now = new Date();
-          addedDate = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+          // Use today's IST date
+          addedDate = importDateIST();
         }
 
         console.log(`[BACKEND] Processing ${symbol}: dateStr=${dateStr}, addedDate=${addedDate.toISOString().slice(0, 10)}`);
@@ -778,12 +928,10 @@ app.post('/api/stocks', async (req, res) => {
   try {
     // 1. Normalize Date (UTC Midnight)
     let dateStr = date;
-    if (!dateStr) dateStr = new Date().toISOString().slice(0, 10);
+    if (!dateStr) dateStr = todayIST();
 
-    // Parse YYYY-MM-DD
-    const [yyyy, mm, dd] = dateStr.split('-').map(Number);
-    // Create UTC date at midnight
-    const addedDate = new Date(Date.UTC(yyyy, mm - 1, dd));
+    // Use importDateIST for consistent addedDate storage
+    const addedDate = importDateIST(dateStr);
 
     // 2. Ensure Category exists
     // Normalize category key (simple replacement for now, relying on frontend to send valid key)
@@ -1568,3 +1716,5 @@ app.listen(PORT, () => {
     console.warn('[CTS] ⚠️ Signal Scanner failed to start:', e.message);
   }
 });
+
+

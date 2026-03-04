@@ -1,0 +1,309 @@
+{
+  "category": "MULTI_RESISTANCE_BO",
+  "timestamp": "2026-01-06T04:19:25.917Z",
+  "phases": {
+    "loaded": {
+      "count": 89
+    },
+    "verification": {
+      "valid": 25,
+      "invalid": 64,
+      "invalidReasons": {
+        "ADANIENSOL": "Insufficient candle data",
+        "APOLLOHOSP": "Insufficient candle data",
+        "CONCOR": "Insufficient candle data",
+        "GRASIM": "Insufficient candle data",
+        "HCLTECH": "Insufficient candle data",
+        "IDFCFIRSTB": "Insufficient candle data",
+        "IGL": "Insufficient candle data",
+        "INDIANB": "Insufficient candle data",
+        "IRCTC": "Insufficient candle data",
+        "IREDA": "Insufficient candle data",
+        "LICI": "Not breaking any resistance",
+        "NESTLEIND": "Insufficient candle data",
+        "PFC": "Insufficient candle data",
+        "PIDILITIND": "Insufficient candle data",
+        "RBLBANK": "Insufficient candle data",
+        "TATASTEEL": "Insufficient candle data",
+        "TRENT": "Insufficient candle data",
+        "ADANIPORTS": "Insufficient candle data",
+        "GODREJCP": "Not breaking any resistance",
+        "ITC": "Insufficient candle data",
+        "TVSMOTOR": "Insufficient candle data",
+        "DMART": "Insufficient candle data",
+        "HINDPETRO": "Insufficient candle data",
+        "BANKNIFTY": "Insufficient candle data",
+        "SBIN": "Insufficient candle data",
+        "UNIONBANK": "Insufficient candle data",
+        "ASTRAL": "Not breaking any resistance",
+        "AUROPHARMA": "Not breaking any resistance",
+        "DELHIVERY": "Not breaking any resistance",
+        "DIXON": "Not breaking any resistance",
+        "JIOFIN": "Not breaking any resistance",
+        "CAMS": "Not breaking any resistance",
+        "INFY": "Not breaking any resistance",
+        "TORNTPOWER": "Not breaking any resistance",
+        "DRREDDY": "Not breaking any resistance",
+        "NCC": "Not breaking any resistance",
+        "TATACONSUM": "Not breaking any resistance",
+        "POLYCAB": "Not breaking any resistance",
+        "ICICIPRULI": "Not breaking any resistance",
+        "IEX": "Not breaking any resistance",
+        "TATATECH": "Not breaking any resistance",
+        "LTIM": "Not breaking any resistance",
+        "ULTRACEMCO": "Not breaking any resistance",
+        "MAXHEALTH": "Not breaking any resistance",
+        "SBILIFE": "Not breaking any resistance",
+        "COLPAL": "Not breaking any resistance",
+        "KOTAKBANK": "Not breaking any resistance",
+        "ICICIBANK": "Not breaking any resistance",
+        "360ONE": "Not breaking any resistance",
+        "BSE": "Not breaking any resistance",
+        "BANKBARODA": "Not breaking any resistance",
+        "HDFCBANK": "Not breaking any resistance",
+        "HAVELLS": "Not breaking any resistance",
+        "NYKAA": "Not breaking any resistance",
+        "ABCAPITAL": "Not breaking any resistance",
+        "ADANIGREEN": "Not breaking any resistance",
+        "HINDUNILVR": "Not breaking any resistance",
+        "MUTHOOTFIN": "Not breaking any resistance",
+        "AMBUJACEM": "Not breaking any resistance",
+        "SHREECEM": "Not breaking any resistance"
+      }
+    },
+    "discovery": {
+      "stocksAnalyzed": 25,
+      "totalPatterns": 175,
+      "uniquePatterns": [
+        "HigherLow",
+        "BB_Squeeze",
+        "MACD_BullishCross",
+        "Consolidation",
+        "LowerHigh",
+        "VolumeDryUp",
+        "Stoch_Overbought",
+        "Accumulation",
+        "BB_UpperTouch",
+        "MACD_BearishCross",
+        "VolumeSpike",
+        "Doji",
+        "MorningStar",
+        "StrongClose",
+        "ResistanceBreak",
+        "FailedBreakout",
+        "InvertedHammer",
+        "EveningStar",
+        "Distribution",
+        "RSI_Overbought",
+        "Stoch_Oversold",
+        "WeakClose"
+      ]
+    },
+    "testing": {
+      "totalTrades": 122,
+      "wins": 60,
+      "losses": 62,
+      "winRate": "49.2%",
+      "avgPnl": "-0.04%"
+    },
+    "matrix": {
+      "patternsRanked": 18,
+      "top5": [
+        {
+          "pattern": "Stoch_Oversold",
+          "winRate": "100.0%",
+          "expectancy": "2.11"
+        },
+        {
+          "pattern": "BB_UpperTouch",
+          "winRate": "62.5%",
+          "expectancy": "1.78"
+        },
+        {
+          "pattern": "RSI_Overbought",
+          "winRate": "100.0%",
+          "expectancy": "1.77"
+        },
+        {
+          "pattern": "Accumulation",
+          "winRate": "50.0%",
+          "expectancy": "1.17"
+        },
+        {
+          "pattern": "Stoch_Overbought",
+          "winRate": "60.0%",
+          "expectancy": "1.14"
+        }
+      ]
+    },
+    "combinations": {
+      "testedCount": 100,
+      "validCount": 7,
+      "top5": [
+        {
+          "combo": "Accumulation+MACD_BullishCross",
+          "patterns": [
+            "Accumulation",
+            "MACD_BullishCross"
+          ],
+          "size": 2,
+          "valid": true,
+          "trades": 7,
+          "wins": 3,
+          "losses": 4,
+          "winRate": "42.9%",
+          "avgPnl": "1.23%",
+          "totalPnl": "8.58%",
+          "expectancy": 1.2252575061785862,
+          "avgHoldingDays": "8.0",
+          "stocks": [
+            "NIFTY",
+            "SRF",
+            "HAVELLS",
+            "IDFCFIRSTB",
+            "NESTLEIND",
+            "MFSL",
+            "ICICIGI"
+          ]
+        },
+        {
+          "combo": "HigherLow+Accumulation",
+          "patterns": [
+            "HigherLow",
+            "Accumulation"
+          ],
+          "size": 2,
+          "valid": true,
+          "trades": 8,
+          "wins": 4,
+          "losses": 4,
+          "winRate": "50.0%",
+          "avgPnl": "1.17%",
+          "totalPnl": "9.34%",
+          "expectancy": 1.1675415718342173,
+          "avgHoldingDays": "7.8",
+          "stocks": [
+            "NIFTY",
+            "SRF",
+            "HAVELLS",
+            "IDFCFIRSTB",
+            "SBIN",
+            "NESTLEIND",
+            "MFSL",
+            "ICICIGI"
+          ]
+        },
+        {
+          "combo": "MACD_BearishCross+LowerHigh",
+          "patterns": [
+            "MACD_BearishCross",
+            "LowerHigh"
+          ],
+          "size": 2,
+          "valid": true,
+          "trades": 6,
+          "wins": 3,
+          "losses": 3,
+          "winRate": "50.0%",
+          "avgPnl": "1.04%",
+          "totalPnl": "6.24%",
+          "expectancy": 1.0404461080719363,
+          "avgHoldingDays": "9.3",
+          "stocks": [
+            "KPITTECH",
+            "NYKAA",
+            "AMBUJACEM",
+            "INDHOTEL",
+            "TATAELXSI",
+            "ADANIENSOL"
+          ]
+        },
+        {
+          "combo": "HigherLow+VolumeSpike",
+          "patterns": [
+            "HigherLow",
+            "VolumeSpike"
+          ],
+          "size": 2,
+          "valid": true,
+          "trades": 6,
+          "wins": 2,
+          "losses": 4,
+          "winRate": "33.3%",
+          "avgPnl": "1.01%",
+          "totalPnl": "6.09%",
+          "expectancy": 1.0143272485339845,
+          "avgHoldingDays": "7.7",
+          "stocks": [
+            "NIFTY",
+            "SRF",
+            "HAVELLS",
+            "IDFCFIRSTB",
+            "MFSL",
+            "ICICIGI"
+          ]
+        },
+        {
+          "combo": "VolumeSpike+Accumulation",
+          "patterns": [
+            "VolumeSpike",
+            "Accumulation"
+          ],
+          "size": 2,
+          "valid": true,
+          "trades": 6,
+          "wins": 2,
+          "losses": 4,
+          "winRate": "33.3%",
+          "avgPnl": "1.01%",
+          "totalPnl": "6.09%",
+          "expectancy": 1.0143272485339845,
+          "avgHoldingDays": "7.7",
+          "stocks": [
+            "NIFTY",
+            "SRF",
+            "HAVELLS",
+            "IDFCFIRSTB",
+            "MFSL",
+            "ICICIGI"
+          ]
+        }
+      ]
+    }
+  },
+  "summary": {
+    "elapsedSeconds": "1.2",
+    "stocksAnalyzed": 25,
+    "patternsDiscovered": 175,
+    "tradesTested": 122,
+    "bestWinRate": 100,
+    "bestExpectancy": 2.1127132519892644
+  },
+  "bestStrategy": {
+    "type": "single",
+    "name": "Stoch_Oversold",
+    "winRate": 100,
+    "expectancy": 2.1127132519892644,
+    "trades": 1
+  },
+  "error": null,
+  "recommendation": "Use \"Stoch_Oversold\" pattern with 100.0% win rate and 2.11% expectancy. Tested on 1 trades.",
+  "entryRules": {
+    "category": "MULTI_RESISTANCE_BO",
+    "strategy": "Stoch_Oversold",
+    "type": "single",
+    "patterns": [
+      "Stoch_Oversold"
+    ],
+    "expected": {
+      "winRate": 100,
+      "expectancy": 2.1127132519892644
+    },
+    "conditions": [
+      {
+        "type": "indicator",
+        "rule": "Stochastic K < 20"
+      }
+    ]
+  }
+}

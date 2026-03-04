@@ -1,6 +1,8 @@
 /**
  * PROFESSIONAL Live Price Service - GUNSHOT FIX
  * Fetches and caches LTP from Upstox API with bulletproof error handling
+ * 
+ * Now uses liveModeSettings for persistent configuration
  */
 
 const { PrismaClient } = require('@prisma/client');
@@ -8,6 +10,8 @@ const fetch = require('node-fetch');
 const fs = require('fs').promises;
 const path = require('path');
 const marketHours = require('../utils/marketHours.cjs');
+const liveModeSettings = require('./liveModeSettings.cjs');
+const upstoxClient = require('./upstoxClient.cjs');
 
 const prisma = new PrismaClient();
 const TOKENS_PATH = path.join(__dirname, '../auth/tokens.json');
@@ -19,7 +23,15 @@ class LivePriceService {
         this.priceCache = new Map(); // symbol -> {ltp, instrumentKey, updatedAt}
         this.lastUpdate = null;
         this.isUpdating = false;
-        this.updateInterval = UPDATE_INTERVAL;
+        this.intervalId = null;
+
+        // Load from persistent settings
+        const settings = liveModeSettings.getSettings();
+        this.isRunning = settings.liveModeEnabled && settings.services.livePrices;
+        this.activeCategory = settings.activeCategory;
+        this.updateInterval = settings.priceUpdateInterval * 60 * 1000;
+
+        console.log(`[LivePrice] Loaded settings: category=${this.activeCategory}, enabled=${this.isRunning}`);
     }
 
     async getAccessToken() {
@@ -40,23 +52,16 @@ class LivePriceService {
 
         try {
             const url = `https://api.upstox.com/v2/market-quote/ltp?instrument_key=${instrumentKeys.join(',')}`;
-            const response = await fetch(url, {
-                headers: {
-                    'Accept': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                }
-            });
+            const result = await upstoxClient.callUpstox(url, token);
 
-            if (!response.ok) {
-                console.log(`[LivePrice] API error: ${response.status}`);
+            if (!result.ok) {
+                console.log(`[LivePrice] API error: ${result.status} ${result.error}`);
                 return {};
             }
 
-            const data = await response.json();
             const prices = {};
-
-            if (data.data) {
-                for (const [key, value] of Object.entries(data.data)) {
+            if (result.data?.data) {
+                for (const [key, value] of Object.entries(result.data.data)) {
                     if (value.last_price) {
                         prices[key] = {
                             ltp: value.last_price,
@@ -86,16 +91,16 @@ class LivePriceService {
         if (this.isUpdating) return;
 
         this.isUpdating = true;
-        console.log('[LivePrice] 📈 Market OPEN - Starting update...');
+        console.log(`[LivePrice] 📈 Market OPEN - Updating ${this.activeCategory}...`);
 
         try {
-            // ✅ ONLY fetch stocks from categories with livePriceEnabled=true
+            // ✅ OPTIMIZED: Only fetch stocks from active category (default: INTRADAY_BOOST)
             const stocks = await prisma.stock.findMany({
                 where: {
                     categories: {
                         some: {
                             category: {
-                                livePriceEnabled: true  // ← Filter by enabled categories!
+                                key: this.activeCategory  // ← Filter by specific category!
                             }
                         }
                     }
@@ -104,12 +109,12 @@ class LivePriceService {
             });
 
             if (stocks.length === 0) {
-                console.log('[LivePrice] No stocks in enabled categories');
+                console.log(`[LivePrice] No stocks in ${this.activeCategory}`);
                 this.isUpdating = false;
                 return;
             }
 
-            console.log(`[LivePrice] Found ${stocks.length} stocks in ENABLED categories`);
+            console.log(`[LivePrice] Found ${stocks.length} stocks in ${this.activeCategory}`);
 
             // Build lookup map
             const stockMap = new Map();
@@ -239,8 +244,17 @@ class LivePriceService {
         };
     }
 
-    async start() {
-        console.log('[LivePrice] 🚀 Starting service...');
+    async start(category = null) {
+        if (this.isRunning) {
+            console.log('[LivePrice] Already running');
+            return { ok: false, error: 'Already running' };
+        }
+
+        if (category) {
+            this.activeCategory = category;
+        }
+
+        console.log(`[LivePrice] 🚀 Starting for ${this.activeCategory}...`);
         console.log(`[LivePrice] Update interval: ${this.updateInterval / 60000} minutes`);
 
         await this.loadCache();
@@ -250,25 +264,66 @@ class LivePriceService {
             await this.updateAllPrices();
         }, this.updateInterval);
 
+        this.isRunning = true;
         console.log('[LivePrice] ✅ Service ready');
+        return { ok: true, message: `Live prices started for ${this.activeCategory}` };
     }
 
     stop() {
+        if (!this.isRunning) {
+            console.log('[LivePrice] Already stopped');
+            return { ok: false, error: 'Already stopped' };
+        }
+
         if (this.intervalId) {
             clearInterval(this.intervalId);
-            console.log('[LivePrice] Service stopped');
+            this.intervalId = null;
         }
+
+        this.isRunning = false;
+        console.log('[LivePrice] ⏹️ Service stopped');
+        return { ok: true, message: 'Live prices stopped' };
+    }
+
+    setCategory(category) {
+        const wasRunning = this.isRunning;
+
+        if (wasRunning) {
+            this.stop();
+        }
+
+        this.activeCategory = category;
+        console.log(`[LivePrice] Category changed to ${category}`);
+
+        if (wasRunning) {
+            this.start();
+        }
+
+        return { ok: true, category: this.activeCategory };
+    }
+
+    getStatus() {
+        return {
+            isRunning: this.isRunning,
+            activeCategory: this.activeCategory,
+            lastUpdate: this.lastUpdate?.toISOString(),
+            cachedStocks: this.priceCache.size,
+            updateIntervalMinutes: this.updateInterval / 60000
+        };
     }
 
     setUpdateInterval(minutes) {
         this.updateInterval = minutes * 60 * 1000;
         console.log(`[LivePrice] Interval changed to ${minutes} minutes`);
 
-        if (this.intervalId) {
+        if (this.isRunning) {
             this.stop();
             this.start();
         }
+
+        return { ok: true, intervalMinutes: minutes };
     }
 }
 
 module.exports = new LivePriceService();
+

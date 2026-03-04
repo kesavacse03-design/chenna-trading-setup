@@ -1,0 +1,24 @@
+
+======================================================
+STUDY 3: CATEGORICAL STRICT RULES VALIDATION SIMULATION
+
+--- STRATEGY: SHORT_TERM_SWING_BO_DOWN ---
+  Diagnostics: Missing History (42), RSI >=40 (79), Nifty Fail (0), Qualified but no entry (85)
+  Qualified Signals   : 133 (of 444)
+  Entries Triggered   : 48
+  Win Rate (Day 5)    : 29.2%
+  Total P&L           : ₹-16392
+  Avg P&L per Trade   : ₹-341
+
+--- STRATEGY: LONG_TERM_SWING_BO_UP ---
+  Diagnostics: Missing History (55), RSI out of 60-70 bounds (81), Nifty Fail (0), Weekly Trend Fail (14), Conf missed (15)
+  Qualified Signals   : 45 (of 366)
+  Entries Triggered   : 30
+  Win Rate (Day 13)   : 53.3%
+  Total P&L           : ₹-21
+  Avg P&L per Trade   : ₹-1
+
+--- STRATEGY: LONG_TERM_SWING_BO_DOWN ---
+  Diagnostics: Missing History/15d forward (192), Drop out of bounds (0), Nifty Fail (0), Weekly RSI < 30 (0), Entry missed (0)
+  Qualified Signals   : 0 (of 333)
+  Entries Triggered   : 0

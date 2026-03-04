@@ -2,6 +2,7 @@
 import { StrategyLogic, AssignedExample, StrategySnapshotV1, BacktestResult, CategoryMetrics, CategoryEventReport, CandidateRank, CompositeOptimizationResponse, TradeDetail } from '../types';
 import { getV1Snapshot, saveV1Snapshot } from '../lib/watchlistStorage';
 import { XMarkIcon } from './icons/XMarkIcon';
+import LiveTrackingStatus from './LiveTrackingStatus';
 // BrainIcon import removed (unused)
 import { WrenchScrewdriverIcon } from './icons/WrenchScrewdriverIcon';
 import { SparklesIcon } from './icons/SparklesIcon';
@@ -787,6 +788,12 @@ const StrategyWorkbenchModal: React.FC<StrategyWorkbenchModalProps> = ({ isOpen,
                                     <div className="text-xs text-slate-400">
                                         {frozenV1 ? <span className="px-2 py-0.5 rounded bg-emerald-900/40 border border-emerald-700 text-emerald-300">V1 frozen â€” {new Date(frozenV1.createdAt).toLocaleString()}</span> : <span className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300">V1 not saved</span>}
                                     </div>
+
+                                    {/* Live Tracking Panel */}
+                                    <div className="mb-4 mt-2">
+                                        <LiveTrackingStatus />
+                                    </div>
+
                                     {missingData.length > 0 && (
                                         <div>
                                             <button onClick={() => setShowMissingDetails(d => !d)} className="text-xs text-amber-300 bg-amber-900/30 border border-amber-600/50 rounded px-2 py-0.5" title="Missing historical data cache; click to view details.">

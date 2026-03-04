@@ -1,205 +1,231 @@
 /**
- * Data Validator Service  
- * Phase 12: Data Quality Validation
+ * Data Validator - Ensures backtest uses ONLY REAL market data
+ * 
+ * Validates:
+ * 1. Trading days (excludes weekends)
+ * 2. NSE holidays (excludes all holidays)
+ * 3. OHLC sanity (High > Low, etc.)
+ * 4. Data quality warnings
  */
+
+// Complete NSE Holiday List 2024-2025-2026
+const NSE_HOLIDAYS = [
+    // 2024 Holidays
+    '2024-01-26', // Republic Day
+    '2024-03-08', // Maha Shivaratri
+    '2024-03-25', // Holi
+    '2024-03-29', // Good Friday
+    '2024-04-11', // Ugadi/Gudi Padwa
+    '2024-04-14', // Ambedkar Jayanti
+    '2024-04-17', // Ram Navami
+    '2024-04-21', // Mahavir Jayanti
+    '2024-05-23', // Buddha Purnima
+    '2024-06-17', // Eid-ul-Fitr
+    '2024-07-17', // Muharram
+    '2024-08-15', // Independence Day
+    '2024-10-02', // Gandhi Jayanti
+    '2024-10-12', // Dussehra
+    '2024-10-31', // Diwali Laxmi Puja (markets closed early)
+    '2024-11-01', // Diwali Balipratipada
+    '2024-11-15', // Guru Nanak Jayanti
+    '2024-12-25', // Christmas
+
+    // 2025 Holidays (Official NSE list)
+    '2025-01-26', // Republic Day
+    '2025-02-26', // Maha Shivaratri
+    '2025-03-14', // Holi
+    '2025-03-31', // Id-ul-Fitr (Eid)
+    '2025-04-10', // Mahavir Jayanti
+    '2025-04-14', // Ambedkar Jayanti
+    '2025-04-18', // Good Friday
+    '2025-05-01', // Maharashtra Day
+    '2025-05-12', // Buddha Purnima
+    '2025-08-15', // Independence Day
+    '2025-08-16', // Parsi New Year (Nowroz)
+    '2025-08-27', // Janmashtami
+    '2025-10-02', // Gandhi Jayanti
+    '2025-10-20', // Dussehra
+    '2025-10-21', // Diwali Laxmi Puja
+    '2025-11-05', // Guru Nanak Jayanti
+    '2025-12-25', // Christmas
+
+    // 2026 Holidays (Partial - add more as official list releases)
+    '2026-01-26', // Republic Day
+    '2026-02-17', // Maha Shivaratri (approx)
+    '2026-03-03', // Holi (approx)
+    '2026-03-20', // Id-ul-Fitr (approx)
+    '2026-04-03', // Good Friday
+    '2026-04-14', // Ambedkar Jayanti
+    '2026-05-01', // May Day
+    '2026-08-15', // Independence Day
+    '2026-10-02', // Gandhi Jayanti
+    '2026-11-10', // Diwali (approx)
+    '2026-12-25', // Christmas
+];
 
 /**
- * Validate candle data quality
+ * Check if a date string is a valid NSE trading day
  */
-function validateCandles(candles, symbol) {
-    const issues = [];
-    const stats = {
-        total: candles.length,
-        valid: 0,
-        invalid: 0,
-        duplicates: 0,
-        gaps: 0,
-        badOHLC: 0,
-        volumeAnomalies: 0,
-        suspiciousGaps: 0
-    };
-
-    if (!candles || candles.length === 0) {
-        return {
-            valid: false,
-            issues: [{ type: 'NO_DATA', message: 'No candle data provided' }],
-            stats
-        };
+function isValidTradingDay(dateStr) {
+    if (!dateStr || typeof dateStr !== 'string') {
+        return { valid: false, reason: 'INVALID_DATE_FORMAT' };
     }
 
-    // Sort by timestamp
-    const sorted = [...candles].sort((a, b) => a.timestamp - b.timestamp);
+    const date = new Date(dateStr);
+    if (isNaN(date.getTime())) {
+        return { valid: false, reason: 'INVALID_DATE_FORMAT' };
+    }
 
-    // Check for duplicates
-    const timestamps = new Set();
-    sorted.forEach((candle, i) => {
-        if (timestamps.has(candle.timestamp)) {
-            issues.push({
-                type: 'DUPLICATE',
-                index: i,
-                timestamp: candle.timestamp,
-                message: `Duplicate timestamp at index ${i}`
-            });
-            stats.duplicates++;
-        }
-        timestamps.add(candle.timestamp);
-    });
+    const dayOfWeek = date.getDay();
 
-    // Check each candle
-    sorted.forEach((candle, i) => {
-        let candleValid = true;
+    // Weekend check (Saturday = 6, Sunday = 0)
+    if (dayOfWeek === 0) {
+        return { valid: false, reason: 'SUNDAY' };
+    }
+    if (dayOfWeek === 6) {
+        return { valid: false, reason: 'SATURDAY' };
+    }
 
-        // 1. Validate OHLC logic
-        if (candle.high < candle.low) {
-            issues.push({
-                type: 'BAD_OHLC',
-                index: i,
-                message: `High (${candle.high}) < Low (${candle.low})`,
-                severity: 'CRITICAL'
-            });
-            stats.badOHLC++;
-            candleValid = false;
-        }
+    // NSE Holiday check
+    if (NSE_HOLIDAYS.includes(dateStr)) {
+        return { valid: false, reason: 'NSE_HOLIDAY' };
+    }
 
-        if (candle.high < candle.open || candle.high < candle.close) {
-            issues.push({
-                type: 'BAD_OHLC',
-                index: i,
-                message: `High not highest price`,
-                severity: 'CRITICAL'
-            });
-            stats.badOHLC++;
-            candleValid = false;
-        }
+    return { valid: true, reason: 'VALID_TRADING_DAY' };
+}
 
-        if (candle.low > candle.open || candle.low > candle.close) {
-            issues.push({
-                type: 'BAD_OHLC',
-                index: i,
-                message: `Low not lowest price`,
-                severity: 'CRITICAL'
-            });
-            stats.badOHLC++;
-            candleValid = false;
-        }
+/**
+ * Validate OHLC data sanity
+ */
+function validateOHLC(ohlc) {
+    const errors = [];
+    const warnings = [];
 
-        // 2. Check for gaps (missing candles)
-        if (i > 0) {
-            const prev = sorted[i - 1];
-            const expectedDiff = 24 * 60 * 60 * 1000; // 1 day
-            const actualDiff = candle.timestamp - prev.timestamp;
+    const { open, high, low, close } = ohlc;
 
-            if (actualDiff > expectedDiff * 1.5) {
-                const missingDays = Math.floor(actualDiff / expectedDiff) - 1;
-                if (missingDays > 0) {
-                    issues.push({
-                        type: 'GAP',
-                        index: i,
-                        message: `Missing ${missingDays} candle(s) between ${new Date(prev.timestamp).toDateString()} and ${new Date(candle.timestamp).toDateString()}`,
-                        severity: 'MEDIUM'
-                    });
-                    stats.gaps++;
-                }
-            }
-        }
+    // Basic existence checks
+    if (open === undefined || open === null) errors.push('Missing open price');
+    if (high === undefined || high === null) errors.push('Missing high price');
+    if (low === undefined || low === null) errors.push('Missing low price');
+    if (close === undefined || close === null) errors.push('Missing close price');
 
-        // 3. Check for suspicious price gaps (>10%)
-        if (i > 0) {
-            const prev = sorted[i - 1];
-            const gap = Math.abs((candle.open - prev.close) / prev.close) * 100;
+    if (errors.length > 0) {
+        return { valid: false, errors, warnings };
+    }
 
-            if (gap > 10) {
-                issues.push({
-                    type: 'SUSPICIOUS_GAP',
-                    index: i,
-                    message: `Large gap ${gap.toFixed(2)}% - possible corporate action`,
-                    severity: 'HIGH',
-                    gap: gap
-                });
-                stats.suspiciousGaps++;
-            }
-        }
+    // Price sanity checks (impossible scenarios)
+    if (open <= 0) errors.push(`Invalid open price: ${open}`);
+    if (high <= 0) errors.push(`Invalid high price: ${high}`);
+    if (low <= 0) errors.push(`Invalid low price: ${low}`);
+    if (close <= 0) errors.push(`Invalid close price: ${close}`);
 
-        // 4. Check volume anomalies
-        if (i >= 20) {
-            const recentCandles = sorted.slice(i - 20, i);
-            const avgVolume = recentCandles.reduce((sum, c) => sum + c.volume, 0) / 20;
+    if (high < low) errors.push(`High (${high}) < Low (${low}) - IMPOSSIBLE`);
+    if (high < open) errors.push(`High (${high}) < Open (${open}) - IMPOSSIBLE`);
+    if (high < close) errors.push(`High (${high}) < Close (${close}) - IMPOSSIBLE`);
+    if (low > open) errors.push(`Low (${low}) > Open (${open}) - IMPOSSIBLE`);
+    if (low > close) errors.push(`Low (${low}) > Close (${close}) - IMPOSSIBLE`);
 
-            if (candle.volume === 0) {
-                issues.push({
-                    type: 'VOLUME_ANOMALY',
-                    index: i,
-                    message: 'Zero volume',
-                    severity: 'HIGH'
-                });
-                stats.volumeAnomalies++;
-                candleValid = false;
-            } else if (candle.volume > avgVolume * 10) {
-                issues.push({
-                    type: 'VOLUME_ANOMALY',
-                    index: i,
-                    message: `Extremely high volume (${(candle.volume / avgVolume).toFixed(1)}x average)`,
-                    severity: 'MEDIUM'
-                });
-            }
-        }
+    // Suspicious data warnings
+    const allRound = open % 1 === 0 && high % 1 === 0 && low % 1 === 0 && close % 1 === 0;
+    if (allRound) {
+        warnings.push('All prices are round numbers - may be synthetic data');
+    }
 
-        if (candleValid) {
-            stats.valid++;
-        } else {
-            stats.invalid++;
-        }
-    });
-
-    const criticalIssues = issues.filter(i => i.severity === 'CRITICAL');
+    // Check for unrealistic price movements (> 20% in a day)
+    const dayRange = ((high - low) / low) * 100;
+    if (dayRange > 20) {
+        warnings.push(`Unusual day range: ${dayRange.toFixed(1)}%`);
+    }
 
     return {
-        valid: criticalIssues.length === 0,
-        issues,
-        stats,
-        symbol,
-        criticalCount: criticalIssues.length,
-        totalIssues: issues.length
+        valid: errors.length === 0,
+        errors,
+        warnings
     };
 }
 
 /**
- * Filter out invalid candles
+ * Generate pre-backtest validation report
  */
-function filterValidCandles(candles) {
-    return candles.filter(candle => {
-        // Basic OHLC validation
-        if (candle.high < candle.low) return false;
-        if (candle.high < candle.open || candle.high < candle.close) return false;
-        if (candle.low > candle.open || candle.low > candle.close) return false;
-        if (candle.volume === 0) return false;
-        if (!candle.timestamp) return false;
+async function generateValidationReport(trades, category) {
+    const report = {
+        category,
+        timestamp: new Date().toISOString(),
+        summary: {
+            totalTrades: trades.length,
+            validTrades: 0,
+            invalidTrades: 0,
+            holidayTrades: 0,
+            weekendTrades: 0
+        },
+        invalidEntries: [],
+        warnings: [],
+        dataQuality: 'UNKNOWN'
+    };
 
-        return true;
-    });
+    for (const trade of trades) {
+        const dateCheck = isValidTradingDay(trade.date);
+
+        if (!dateCheck.valid) {
+            report.summary.invalidTrades++;
+            report.invalidEntries.push({
+                date: trade.date,
+                symbol: trade.symbol,
+                reason: dateCheck.reason
+            });
+
+            if (dateCheck.reason === 'NSE_HOLIDAY') {
+                report.summary.holidayTrades++;
+            } else if (dateCheck.reason === 'SATURDAY' || dateCheck.reason === 'SUNDAY') {
+                report.summary.weekendTrades++;
+            }
+        } else {
+            report.summary.validTrades++;
+        }
+    }
+
+    // Determine data quality
+    const validPercent = (report.summary.validTrades / trades.length) * 100;
+    if (validPercent >= 95) {
+        report.dataQuality = 'EXCELLENT';
+    } else if (validPercent >= 90) {
+        report.dataQuality = 'GOOD';
+    } else if (validPercent >= 80) {
+        report.dataQuality = 'ACCEPTABLE';
+    } else {
+        report.dataQuality = 'POOR';
+    }
+
+    return report;
 }
 
 /**
- * Get data quality score (0-100)
+ * Filter trades to only include valid trading days
  */
-function getDataQualityScore(validation) {
-    const { stats, totalIssues } = validation;
+function filterValidTrades(trades) {
+    const validTrades = [];
+    const removedTrades = [];
 
-    if (stats.total === 0) return 0;
+    for (const trade of trades) {
+        const dateCheck = isValidTradingDay(trade.date);
 
-    // Deduct points for each issue type
-    let score = 100;
-    score -= (stats.badOHLC / stats.total) * 50;      // Bad OHLC is critical
-    score -= (stats.duplicates / stats.total) * 30;    // Duplicates are serious
-    score -= (stats.gaps / stats.total) * 20;          // Gaps are concerning
-    score -= (stats.volumeAnomalies / stats.total) * 10; // Volume okay if occasional
-    score -= (stats.suspiciousGaps / stats.total) * 15;  // Suspicious gaps need review
+        if (dateCheck.valid) {
+            validTrades.push(trade);
+        } else {
+            removedTrades.push({
+                ...trade,
+                removalReason: dateCheck.reason
+            });
+        }
+    }
 
-    return Math.max(0, Math.min(100, score));
+    return { validTrades, removedTrades };
 }
 
 module.exports = {
-    validateCandles,
-    filterValidCandles,
-    getDataQualityScore
+    NSE_HOLIDAYS,
+    isValidTradingDay,
+    validateOHLC,
+    generateValidationReport,
+    filterValidTrades
 };

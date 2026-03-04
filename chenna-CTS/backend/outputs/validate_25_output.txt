@@ -1,0 +1,961 @@
+﻿ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+  CTS V5 BACKTEST ΓÇö 25-STOCK VALIDATION
+  Strategy Blueprint v3 | Agent Brief v5
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+≡ƒôï Running 25 test stocks
+
+≡ƒôè Fetching NIFTY 50 data...
+[Cache] Γ£ô Hit for NIFTY 50 (2024-06-01 to 2026-02-25)
+   Γ£à Got 432 NIFTY candles (2024-06-03 to 2026-02-24)
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: HEROMOTOCO | Signal Date: 2025-08-04
+Expected: WIN (Confirmed Stage 2, RSI ~63)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Γ£ô Hit for HEROMOTOCO (2024-08-04 to 2025-08-29)
+  Candles fetched: 267 (from 2024-08-05 to 2025-08-29)
+  History up to signal: 250 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 4535.90
+    SMA50: 4319.74
+    SMA200: 4234.96
+    Stage: STAGE_2 (Price > SMA50 > SMA200)
+    Result: PASS Γ£ô
+
+  GATE 2 ΓÇö RSI CHECK:
+    RSI(14): 63.57
+    Range: 60-70
+    Result: PASS Γ£ô
+
+  GATE 3 ΓÇö NIFTY CHECK:
+    NIFTY Close on 2025-08-04: 24723
+    NIFTY 20 EMA: 24956
+    Market: BEARISH (close 24723 < EMA 24956)
+    Result: FAIL Γ£ù ΓÇö SKIPPED (BEARISH market)
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: TATASTEEL | Signal Date: 2025-09-03
+Expected: WIN (Metal sector, strong breakout)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for TATASTEEL (2024-09-03 to 2025-09-28)
+[Delta] Cached until 2025-09-04, fetching from 2025-09-05
+[PriceService] Γ£ô Fetched 16 candles
+[Cache] Γ£ô Saved TATASTEEL (2024-09-03 to 2025-09-28), expires: never
+  Candles fetched: 296 (from 2024-07-23 to 2025-09-26)
+  History up to signal: 279 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 167.85
+    SMA50: 159.84
+    SMA200: 147.87
+    Stage: STAGE_2 (Price > SMA50 > SMA200)
+    Result: PASS Γ£ô
+
+  GATE 2 ΓÇö RSI CHECK:
+    RSI(14): 63.96
+    Range: 60-70
+    Result: PASS Γ£ô
+
+  GATE 3 ΓÇö NIFTY CHECK:
+    NIFTY Close on 2025-09-03: 24715
+    NIFTY 20 EMA: 24734
+    Market: BEARISH (close 24715 < EMA 24734)
+    Result: FAIL Γ£ù ΓÇö SKIPPED (BEARISH market)
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: NMDC | Signal Date: 2025-09-03
+Expected: WIN (Same date as TATASTEEL, cluster test)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for NMDC (2024-09-03 to 2025-09-28)
+[Delta] Cached until 2025-09-27, fetching from 2025-09-28
+[PriceService] Γ£ô Fetched 0 candles
+[Cache] Γ£ô Saved NMDC (2024-09-03 to 2025-09-28), expires: never
+  Candles fetched: 271 (from 2024-08-28 to 2025-09-26)
+  History up to signal: 254 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 74.29
+    SMA50: 70.39
+    SMA200: 69.00
+    Stage: STAGE_2 (Price > SMA50 > SMA200)
+    Result: PASS Γ£ô
+
+  GATE 2 ΓÇö RSI CHECK:
+    RSI(14): 63.28
+    Range: 60-70
+    Result: PASS Γ£ô
+
+  GATE 3 ΓÇö NIFTY CHECK:
+    NIFTY Close on 2025-09-03: 24715
+    NIFTY 20 EMA: 24734
+    Market: BEARISH (close 24715 < EMA 24734)
+    Result: FAIL Γ£ù ΓÇö SKIPPED (BEARISH market)
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: INDUSTOWER | Signal Date: 2026-01-30
+Expected: WIN (Recent data, good validation)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for INDUSTOWER (2025-01-30 to 2026-02-24)
+[Delta] Cached until 2026-01-31, fetching from 2026-02-01
+[PriceService] Attempt 1 failed (ECONNRESET). Retrying in 1000ms...
+[PriceService] Attempt 2 failed (ECONNRESET). Retrying in 2000ms...
+node : [PriceService] Attempt 1 failed for NSE_EQ|INE121J01017: read 
+ECONNRESET
+At line:1 char:1
++ node scripts/validate_25_stocks.cjs 2>&1 | Out-File -FilePath "output 
+...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([PriceService] ...read ECON 
+   NRESET:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[PriceService] Γ£ô Fetched 17 candles
+[Cache] Γ£ô Saved INDUSTOWER (2025-01-30 to 2026-02-24), expires: never
+  Candles fetched: 297 (from 2024-12-16 to 2026-02-23)
+  History up to signal: 280 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 444.30
+    SMA50: 416.91
+    SMA200: 387.05
+    Stage: STAGE_2 (Price > SMA50 > SMA200)
+    Result: PASS Γ£ô
+
+  GATE 2 ΓÇö RSI CHECK:
+    RSI(14): 63.18
+    Range: 60-70
+    Result: PASS Γ£ô
+
+  GATE 3 ΓÇö NIFTY CHECK:
+    NIFTY Close on 2026-01-30: 25321
+    NIFTY 20 EMA: 25545
+    Market: BEARISH (close 25321 < EMA 25545)
+    Result: FAIL Γ£ù ΓÇö SKIPPED (BEARISH market)
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: EXIDEIND | Signal Date: 2025-09-01
+Expected: WIN (Small win, trail test)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for EXIDEIND (2024-09-01 to 2025-09-26)
+[Delta] Cached until 2025-09-02, fetching from 2025-09-03
+[PriceService] Γ£ô Fetched 18 candles
+[Cache] Γ£ô Saved EXIDEIND (2024-09-01 to 2025-09-26), expires: never
+  Candles fetched: 268 (from 2024-09-02 to 2025-09-26)
+  History up to signal: 249 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 412.25
+    SMA50: 386.76
+    SMA200: 388.08
+    Stage: STAGE_1
+    Result: FAIL Γ£ù ΓÇö SKIPPED (STAGE_1)
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: DMART | Signal Date: 2025-07-30
+Expected: WIN (Chart verified pullback entry)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for DMART (2024-07-30 to 2025-08-24)
+[Delta] Cached until 2025-07-31, fetching from 2025-08-01
+[PriceService] Attempt 1 failed (ECONNRESET). Retrying in 1000ms...
+[PriceService] Γ£ô Fetched 15 candles
+[Cache] Γ£ô Saved DMART (2024-07-30 to 2025-08-24), expires: never
+  Candles fetched: 267 (from 2024-07-30 to 2025-08-22)
+  History up to signal: 251 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 4281.40
+    SMA50: 4143.26
+    SMA200: 3917.19
+    Stage: STAGE_2 (Price > SMA50 > SMA200)
+    Result: PASS Γ£ô
+
+  GATE 2 ΓÇö RSI CHECK:
+    RSI(14): 61.85
+    Range: 60-70
+    Result: PASS Γ£ô
+
+  GATE 3 ΓÇö NIFTY CHECK:
+    NIFTY Close on 2025-07-30: 24855
+    NIFTY 20 EMA: 25051
+    Market: BEARISH (close 24855 < EMA 25051)
+    Result: FAIL Γ£ù ΓÇö SKIPPED (BEARISH market)
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: YESBANK | Signal Date: 2025-09-04
+Expected: WIN (Low price stock, qty test)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for YESBANK (2024-09-04 to 2025-09-29)
+[Delta] Cached until 2025-09-04, fetching from 2025-09-05
+[PriceService] Γ£ô Fetched 17 candles
+[Cache] Γ£ô Saved YESBANK (2024-09-04 to 2025-09-29), expires: never
+  Candles fetched: 292 (from 2024-07-30 to 2025-09-29)
+  History up to signal: 275 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 20.29
+    SMA50: 19.57
+    SMA200: 19.16
+    Stage: STAGE_2 (Price > SMA50 > SMA200)
+    Result: PASS Γ£ô
+
+  GATE 2 ΓÇö RSI CHECK:
+    RSI(14): 63.68
+    Range: 60-70
+    Result: PASS Γ£ô
+
+  GATE 3 ΓÇö NIFTY CHECK:
+    NIFTY Close on 2025-09-04: 24734
+    NIFTY 20 EMA: 24734
+    Market: BULLISH (close 24734 > EMA 24734)
+    Result: PASS Γ£ô
+
+  GATE 4 ΓÇö PULLBACK ENTRY (Day 2-5):
+    Day+1 (2025-09-05): O:20.31 H:20.61 L:20.03 C:20.44 ΓÇö Green candle
+      ΓåÆ Skip (never enter Day+1)
+    Day+2 (2025-09-08): O:20.51 H:20.53 L:20.14 C:20.18 ΓÇö Red candle
+      ΓåÆ ENTRY TRIGGERED on Day+2 (2025-09-08) at OPEN: 20.51
+    Pullback low used: 20.03 (from Day+1 to Day+2)
+    Raw risk: 2.34% ΓåÆ Bounded: 2.34%
+    Structure stop: 20.03
+    Result: ENTRY Γ£ô
+
+  POSITION:
+    Entry: 20.51 | Stop: 20.03 | Risk: 0.48/share
+    Qty: floor(1000 / 0.48) = 2083 shares
+    Capital deployed: 42722 | Max risk: 1000 INR
+
+  TRAIL SIMULATION (Target: 21.45, ATR: 0.47):
+    Day 1: Close 20.34 | High 20.48 | Stop 20.03 (Phase 1 ΓÇö hold)
+    Day 2: Close 20.77 | High 20.93 | Stop 20.03 (Phase 1 ΓÇö hold)
+    Day 3: Close 20.98 | High 21.14 | Stop 20.03 (Phase 1 ΓÇö hold)
+    Day 4: Close 20.86 | High 21.08 | Stop 20.30 Γåæ (Phase 2 ΓÇö entry-1% (profit 1.7%))
+    Day 5: Close 21.01 | High 21.28 | Stop 20.30 (Phase 2 ΓÇö already higher (profit 2.4%))
+    Day 6: Close 21.01 | High 21.09 | Stop 20.87 Γåæ (Phase 3 ΓÇö trail to prev low 20.87)
+    Day 7: Low 20.87 <= Stop 20.87 ΓåÆ EXIT at 20.87 (Phase 3)
+
+  RESULT: WIN | P&L: (20.87-20.51) * 2083 = +749.88 INR | 1.76% | Days: 7 | Exit: STOP
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: TATASTEEL | Signal Date: 2026-02-09
+Expected: WIN (Second occurrence, dedup test)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for TATASTEEL (2025-02-09 to 2026-03-06)
+[Delta] Cached until 2026-02-27, fetching from 2026-02-28
+[PriceService] Γ£ô Fetched 0 candles
+[Cache] Γ£ô Saved TATASTEEL (2025-02-09 to 2026-03-06), expires: Wed Feb 25 2026 08:35:50 GMT+0530 (India Standard Time)
+  Candles fetched: 397 (from 2024-07-23 to 2026-02-23)
+  History up to signal: 387 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 202.00
+    SMA50: 179.66
+    SMA200: 167.23
+    Stage: STAGE_2 (Price > SMA50 > SMA200)
+    Result: PASS Γ£ô
+
+  GATE 2 ΓÇö RSI CHECK:
+    RSI(14): 64.86
+    Range: 60-70
+    Result: PASS Γ£ô
+
+  GATE 3 ΓÇö NIFTY CHECK:
+    NIFTY Close on 2026-02-09: 25867
+    NIFTY 20 EMA: 25560
+    Market: BULLISH (close 25867 > EMA 25560)
+    Result: PASS Γ£ô
+
+  GATE 4 ΓÇö PULLBACK ENTRY (Day 2-5):
+    Day+1 (2026-02-10): O:202.99 H:211.10 L:201.08 C:208.01 ΓÇö Green candle
+      ΓåÆ Skip (never enter Day+1)
+    Day+2 (2026-02-11): O:209.40 H:210.25 L:205.30 C:207.59 ΓÇö Red candle
+      ΓåÆ Skip (already ran 3.7% above signal)
+    Day+3 (2026-02-12): O:208.00 H:210.39 L:206.20 C:208.11 ΓÇö Green candle
+      ΓåÆ ENTRY TRIGGERED on Day+3 (2026-02-12) at OPEN: 208.00
+    Pullback low used: 201.08 (from Day+1 to Day+3)
+    Raw risk: 3.33% ΓåÆ Bounded: 3.33%
+    Structure stop: 201.08
+    Result: ENTRY Γ£ô
+
+  POSITION:
+    Entry: 208.00 | Stop: 201.08 | Risk: 6.92/share
+    Qty: floor(1000 / 6.92) = 144 shares
+    Capital deployed: 29952 | Max risk: 996 INR
+
+  TRAIL SIMULATION (Target: 221.46, ATR: 6.73):
+    Day 1: Close 203.18 | High 206.85 | Stop 201.08 (Phase 1 ΓÇö hold)
+    Day 2: Low 200.55 <= Stop 201.08 ΓåÆ EXIT at 201.08 (Phase 1)
+
+  RESULT: LOSS | P&L: (201.08-208.00) * 144 = -996.48 INR | -3.33% | Days: 2 | Exit: STOP
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: DMART | Signal Date: 2026-02-05
+Expected: IMPROVED (Was 0 PnL, should improve with trail fix)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for DMART (2025-02-05 to 2026-03-02)
+[Delta] Cached until 2026-02-04, fetching from 2026-02-05
+[PriceService] Γ£ô Fetched 14 candles
+[Cache] Γ£ô Saved DMART (2025-02-05 to 2026-03-02), expires: Wed Feb 25 2026 08:35:51 GMT+0530 (India Standard Time)
+  Candles fetched: 394 (from 2024-07-29 to 2026-02-24)
+  History up to signal: 381 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 3934.90
+    SMA50: 3802.79
+    SMA200: 4155.63
+    Stage: STAGE_1
+    Result: FAIL Γ£ù ΓÇö SKIPPED (STAGE_1)
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: CAMS | Signal Date: 2025-11-20
+Expected: BLOCKED_NIFTY (Nov bearish ΓÇö NIFTY filter should BLOCK)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for CAMS (2024-11-20 to 2025-12-15)
+[Delta] Cached until 2025-11-21, fetching from 2025-11-22
+[PriceService] Γ£ô Fetched 16 candles
+[Cache] Γ£ô Saved CAMS (2024-11-20 to 2025-12-15), expires: never
+  Candles fetched: 323 (from 2024-08-29 to 2025-12-15)
+  History up to signal: 306 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 802.90
+    SMA50: 776.18
+    SMA200: 767.47
+    Stage: STAGE_2 (Price > SMA50 > SMA200)
+    Result: PASS Γ£ô
+
+  GATE 2 ΓÇö RSI CHECK:
+    RSI(14): 60.21
+    Range: 60-70
+    Result: PASS Γ£ô
+
+  GATE 3 ΓÇö NIFTY CHECK:
+    NIFTY Close on 2025-11-20: 26192
+    NIFTY 20 EMA: 25798
+    Market: BULLISH (close 26192 > EMA 25798)
+    Result: PASS Γ£ô
+
+  GATE 4 ΓÇö PULLBACK ENTRY (Day 2-5):
+    Day+1 (2025-11-21): O:802.90 H:802.90 L:787.60 C:789.60 ΓÇö Red candle
+      ΓåÆ Skip (never enter Day+1)
+    Day+2 (2025-11-24): O:792.00 H:793.70 L:778.20 C:781.40 ΓÇö Red candle
+      ΓåÆ ENTRY TRIGGERED on Day+2 (2025-11-24) at OPEN: 792.00
+    Pullback low used: 778.20 (from Day+1 to Day+2)
+    Raw risk: 1.74% ΓåÆ Bounded: 1.74%
+    Structure stop: 778.20
+    Result: ENTRY Γ£ô
+
+  POSITION:
+    Entry: 792.00 | Stop: 778.20 | Risk: 13.80/share
+    Qty: floor(1000 / 13.80) = 72 shares
+    Capital deployed: 57024 | Max risk: 994 INR
+
+  TRAIL SIMULATION (Target: 827.39, ATR: 17.69):
+    Day 1: Low 769.50 <= Stop 778.20 ΓåÆ EXIT at 778.20 (Phase 1)
+
+  RESULT: LOSS | P&L: (778.20-792.00) * 72 = -993.60 INR | -1.74% | Days: 1 | Exit: STOP
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: IDFCFIRSTB | Signal Date: 2025-12-19
+Expected: BLOCKED_NIFTY (Dec bearish ΓÇö NIFTY filter should BLOCK)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for IDFCFIRSTB (2024-12-19 to 2026-01-13)
+[Delta] Cached until 2025-12-20, fetching from 2025-12-21
+[PriceService] Γ£ô Fetched 16 candles
+[Cache] Γ£ô Saved IDFCFIRSTB (2024-12-19 to 2026-01-13), expires: never
+  Candles fetched: 369 (from 2024-07-23 to 2026-01-13)
+  History up to signal: 353 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 84.68
+    SMA50: 79.43
+    SMA200: 70.63
+    Stage: STAGE_2 (Price > SMA50 > SMA200)
+    Result: PASS Γ£ô
+
+  GATE 2 ΓÇö RSI CHECK:
+    RSI(14): 65.85
+    Range: 60-70
+    Result: PASS Γ£ô
+
+  GATE 3 ΓÇö NIFTY CHECK:
+    NIFTY Close on 2025-12-19: 25966
+    NIFTY 20 EMA: 25934
+    Market: BULLISH (close 25966 > EMA 25934)
+    Result: PASS Γ£ô
+
+  GATE 4 ΓÇö PULLBACK ENTRY (Day 2-5):
+    Day+1 (2025-12-22): O:85.00 H:85.95 L:84.27 C:85.35 ΓÇö Green candle
+      ΓåÆ Skip (never enter Day+1)
+    Day+2 (2025-12-23): O:85.71 H:85.74 L:84.80 C:85.00 ΓÇö Red candle
+      ΓåÆ ENTRY TRIGGERED on Day+2 (2025-12-23) at OPEN: 85.71
+    Pullback low used: 84.27 (from Day+1 to Day+2)
+    Raw risk: 1.68% ΓåÆ Bounded: 1.68%
+    Structure stop: 84.27
+    Result: ENTRY Γ£ô
+
+  POSITION:
+    Entry: 85.71 | Stop: 84.27 | Risk: 1.44/share
+    Qty: floor(1000 / 1.44) = 694 shares
+    Capital deployed: 59483 | Max risk: 999 INR
+
+  TRAIL SIMULATION (Target: 89.34, ATR: 1.82):
+    Day 1: Low 84.06 <= Stop 84.27 ΓåÆ EXIT at 84.27 (Phase 1)
+
+  RESULT: LOSS | P&L: (84.27-85.71) * 694 = -999.36 INR | -1.68% | Days: 1 | Exit: STOP
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: JINDALSTEL | Signal Date: 2025-12-31
+Expected: BLOCKED_NIFTY (Jan ΓÇö NIFTY filter should BLOCK)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for JINDALSTEL (2024-12-31 to 2026-01-25)
+[Delta] Cached until 2026-01-01, fetching from 2026-01-02
+[PriceService] Γ£ô Fetched 15 candles
+[Cache] Γ£ô Saved JINDALSTEL (2024-12-31 to 2026-01-25), expires: never
+  Candles fetched: 350 (from 2024-08-29 to 2026-01-23)
+  History up to signal: 334 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 1053.80
+    SMA50: 1035.28
+    SMA200: 976.50
+    Stage: STAGE_2 (Price > SMA50 > SMA200)
+    Result: PASS Γ£ô
+
+  GATE 2 ΓÇö RSI CHECK:
+    RSI(14): 60.43
+    Range: 60-70
+    Result: PASS Γ£ô
+
+  GATE 3 ΓÇö NIFTY CHECK:
+    NIFTY Close on 2025-12-31: 26130
+    NIFTY 20 EMA: 26001
+    Market: BULLISH (close 26130 > EMA 26001)
+    Result: PASS Γ£ô
+
+  GATE 4 ΓÇö PULLBACK ENTRY (Day 2-5):
+    Day+1 (2026-01-01): O:1053.80 H:1070.00 L:1046.60 C:1068.40 ΓÇö Green candle
+      ΓåÆ Skip (never enter Day+1)
+    Day+2 (2026-01-02): O:1068.80 H:1082.70 L:1065.00 C:1080.30 ΓÇö Green candle
+      ΓåÆ ENTRY TRIGGERED on Day+2 (2026-01-02) at OPEN: 1068.80
+    Pullback low used: 1046.60 (from Day+1 to Day+2)
+    Raw risk: 2.08% ΓåÆ Bounded: 2.08%
+    Structure stop: 1046.60
+    Result: ENTRY Γ£ô
+
+  POSITION:
+    Entry: 1068.80 | Stop: 1046.60 | Risk: 22.20/share
+    Qty: floor(1000 / 22.20) = 45 shares
+    Capital deployed: 48096 | Max risk: 999 INR
+
+  TRAIL SIMULATION (Target: 1113.73, ATR: 22.46):
+    Day 1: Close 1081.60 | High 1087.50 | Stop 1046.60 (Phase 1 ΓÇö hold)
+    Day 2: Close 1079.80 | High 1090.60 | Stop 1046.60 (Phase 1 ΓÇö hold)
+    Day 3: Close 1074.70 | High 1087.00 | Stop 1046.60 (Phase 1 ΓÇö hold)
+    Day 4: Low 1010.00 <= Stop 1046.60 ΓåÆ EXIT at 1046.60 (Phase 2)
+
+  RESULT: LOSS | P&L: (1046.60-1068.80) * 45 = -999.00 INR | -2.08% | Days: 4 | Exit: STOP
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: HAVELLS | Signal Date: 2025-09-02
+Expected: LOSS (Failed trade, verify stop logic)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for HAVELLS (2024-09-02 to 2025-09-27)
+[Delta] Cached until 2025-09-03, fetching from 2025-09-04
+[PriceService] Γ£ô Fetched 17 candles
+[Cache] Γ£ô Saved HAVELLS (2024-09-02 to 2025-09-27), expires: never
+  Candles fetched: 289 (from 2024-08-01 to 2025-09-26)
+  History up to signal: 271 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 1582.80
+    SMA50: 1533.56
+    SMA200: 1568.94
+    Stage: STAGE_1
+    Result: FAIL Γ£ù ΓÇö SKIPPED (STAGE_1)
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: PGEL | Signal Date: 2025-11-21
+Expected: BLOCKED_NIFTY (Nov ΓÇö NIFTY filter may BLOCK)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for PGEL (2024-11-21 to 2025-12-16)
+[Delta] Cached until 2025-11-22, fetching from 2025-11-23
+[PriceService] Γ£ô Fetched 17 candles
+[Cache] Γ£ô Saved PGEL (2024-11-21 to 2025-12-16), expires: never
+  Candles fetched: 267 (from 2024-11-21 to 2025-12-16)
+  History up to signal: 250 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 591.40
+    SMA50: 558.74
+    SMA200: 725.04
+    Stage: STAGE_1
+    Result: FAIL Γ£ù ΓÇö SKIPPED (STAGE_1)
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: CROMPTON | Signal Date: 2026-02-10
+Expected: IMPROVED (Was 0 PnL, should improve with trail fix)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for CROMPTON (2025-02-10 to 2026-03-07)
+[Delta] Cached until 2026-03-06, fetching from 2026-03-07
+[PriceService] Attempt 1 failed (ECONNRESET). Retrying in 1000ms...
+[PriceService] Γ£ô Fetched 0 candles
+[Cache] Γ£ô Saved CROMPTON (2025-02-10 to 2026-03-07), expires: Wed Feb 25 2026 08:35:58 GMT+0530 (India Standard Time)
+  Candles fetched: 270 (from 2025-01-23 to 2026-02-23)
+  History up to signal: 261 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 261.66
+    SMA50: 248.42
+    SMA200: 302.14
+    Stage: STAGE_1
+    Result: FAIL Γ£ù ΓÇö SKIPPED (STAGE_1)
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: VOLTAS | Signal Date: 2026-02-12
+Expected: IMPROVED (Was 0 PnL, should improve with trail fix)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for VOLTAS (2025-02-12 to 2026-03-09)
+[Delta] Cached until 2026-03-06, fetching from 2026-03-07
+[PriceService] Attempt 1 failed (ECONNRESET). Retrying in 1000ms...
+[PriceService] Attempt 2 failed (ECONNRESET). Retrying in 2000ms...
+[PriceService] Γ£ô Fetched 0 candles
+[Cache] Γ£ô Saved VOLTAS (2025-02-12 to 2026-03-09), expires: Wed Feb 25 2026 08:36:02 GMT+0530 (India Standard Time)
+  Candles fetched: 262 (from 2025-02-03 to 2026-02-23)
+  History up to signal: 255 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 1535.80
+    SMA50: 1391.98
+    SMA200: 1353.55
+    Stage: STAGE_2 (Price > SMA50 > SMA200)
+    Result: PASS Γ£ô
+
+  GATE 2 ΓÇö RSI CHECK:
+    RSI(14): 67.18
+    Range: 60-70
+    Result: PASS Γ£ô
+
+  GATE 3 ΓÇö NIFTY CHECK:
+    NIFTY Close on 2026-02-12: 25807
+    NIFTY 20 EMA: 25647
+    Market: BULLISH (close 25807 > EMA 25647)
+    Result: PASS Γ£ô
+
+  GATE 4 ΓÇö PULLBACK ENTRY (Day 2-5):
+    Day+1 (2026-02-13): O:1534.00 H:1534.00 L:1510.20 C:1525.40 ΓÇö Red candle
+      ΓåÆ Skip (never enter Day+1)
+    Day+2 (2026-02-16): O:1530.00 H:1539.80 L:1517.40 C:1530.60 ΓÇö Green candle
+      ΓåÆ ENTRY TRIGGERED on Day+2 (2026-02-16) at OPEN: 1530.00
+    Pullback low used: 1510.20 (from Day+1 to Day+2)
+    Raw risk: 1.29% ΓåÆ Bounded: 1.50%
+    Structure stop: 1507.05
+    Result: ENTRY Γ£ô
+
+  POSITION:
+    Entry: 1530.00 | Stop: 1507.05 | Risk: 22.95/share
+    Qty: floor(1000 / 22.95) = 43 shares
+    Capital deployed: 65790 | Max risk: 987 INR
+
+  TRAIL SIMULATION (Target: 1640.46, ATR: 55.23):
+    Day 1: Close 1529.70 | High 1540.00 | Stop 1507.05 (Phase 1 ΓÇö hold)
+    Day 2: Close 1543.40 | High 1552.80 | Stop 1507.05 (Phase 1 ΓÇö hold)
+    Day 3: Low 1504.00 <= Stop 1507.05 ΓåÆ EXIT at 1507.05 (Phase 1)
+
+  RESULT: LOSS | P&L: (1507.05-1530.00) * 43 = -986.85 INR | -1.50% | Days: 3 | Exit: STOP
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: PETRONET | Signal Date: 2026-02-18
+Expected: IMPROVED (Most recent, verify data freshness)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for PETRONET (2025-02-18 to 2026-03-15)
+[Delta] Cached until 2026-03-05, fetching from 2026-03-06
+[PriceService] Γ£ô Fetched 0 candles
+[Cache] Γ£ô Saved PETRONET (2025-02-18 to 2026-03-15), expires: Wed Feb 25 2026 08:36:02 GMT+0530 (India Standard Time)
+  Candles fetched: 292 (from 2024-12-23 to 2026-02-23)
+  History up to signal: 289 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 304.00
+    SMA50: 284.93
+    SMA200: 288.06
+    Stage: STAGE_1
+    Result: FAIL Γ£ù ΓÇö SKIPPED (STAGE_1)
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: INDUSINDBK | Signal Date: 2026-02-03
+Expected: IMPROVED (Was 0 PnL, should improve with trail fix)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for INDUSINDBK (2025-02-03 to 2026-02-28)
+[Delta] Cached until 2026-02-06, fetching from 2026-02-07
+[PriceService] Γ£ô Fetched 12 candles
+[Cache] Γ£ô Saved INDUSINDBK (2025-02-03 to 2026-02-28), expires: Wed Feb 25 2026 08:36:03 GMT+0530 (India Standard Time)
+  Candles fetched: 313 (from 2024-11-25 to 2026-02-24)
+  History up to signal: 298 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 922.40
+    SMA50: 874.83
+    SMA200: 818.40
+    Stage: STAGE_2 (Price > SMA50 > SMA200)
+    Result: PASS Γ£ô
+
+  GATE 2 ΓÇö RSI CHECK:
+    RSI(14): 60.55
+    Range: 60-70
+    Result: PASS Γ£ô
+
+  GATE 3 ΓÇö NIFTY CHECK:
+    NIFTY Close on 2026-02-03: 25728
+    NIFTY 20 EMA: 25467
+    Market: BULLISH (close 25728 > EMA 25467)
+    Result: PASS Γ£ô
+
+  GATE 4 ΓÇö PULLBACK ENTRY (Day 2-5):
+    Day+1 (2026-02-04): O:922.00 H:932.00 L:915.80 C:921.30 ΓÇö Red candle
+      ΓåÆ Skip (never enter Day+1)
+    Day+2 (2026-02-05): O:918.10 H:922.15 L:902.30 C:914.40 ΓÇö Red candle
+      ΓåÆ Skip (low 902.30 broke below signal low 916.35)
+    Day+3 (2026-02-06): O:909.10 H:917.05 L:895.00 C:903.60 ΓÇö Red candle
+      ΓåÆ Skip (low 895.00 broke below signal low 916.35)
+    Day+4 (2026-02-09): O:910.00 H:936.95 L:900.35 C:927.90 ΓÇö Green candle
+      ΓåÆ Skip (low 900.35 broke below signal low 916.35)
+    Day+5 (2026-02-10): O:927.90 H:933.00 L:920.00 C:927.60 ΓÇö Red candle
+      ΓåÆ ENTRY TRIGGERED on Day+5 (2026-02-10) at OPEN: 927.90
+    Pullback low used: 895.00 (from Day+1 to Day+5)
+    Raw risk: 3.55% ΓåÆ Bounded: 3.55%
+    Structure stop: 895.00
+    Result: ENTRY Γ£ô
+
+  POSITION:
+    Entry: 927.90 | Stop: 895.00 | Risk: 32.90/share
+    Qty: floor(1000 / 32.90) = 30 shares
+    Capital deployed: 27837 | Max risk: 987 INR
+
+  TRAIL SIMULATION (Target: 990.24, ATR: 31.17):
+    Day 1: Close 925.00 | High 928.30 | Stop 895.00 (Phase 1 ΓÇö hold)
+    Day 2: Close 922.70 | High 937.00 | Stop 895.00 (Phase 1 ΓÇö hold)
+    Day 3: Close 926.05 | High 929.95 | Stop 895.00 (Phase 1 ΓÇö hold)
+    Day 4: Close 931.90 | High 933.70 | Stop 895.00 (Phase 2 ΓÇö hold (profit only 0.4%))
+    Day 5: Close 943.80 | High 952.20 | Stop 918.62 Γåæ (Phase 2 ΓÇö entry-1% (profit 1.7%))
+    Day 6: Close 944.65 | High 950.00 | Stop 928.20 Γåæ (Phase 3 ΓÇö trail to prev low 928.20)
+    Day 7: Low 923.20 <= Stop 928.20 ΓåÆ EXIT at 928.20 (Phase 3)
+
+  RESULT: WIN | P&L: (928.20-927.90) * 30 = +9.00 INR | 0.03% | Days: 7 | Exit: STOP
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: TVSMOTOR | Signal Date: 2025-08-04
+Expected: IMPROVED (Was 0 PnL, should improve with trail fix)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for TVSMOTOR (2024-08-04 to 2025-08-29)
+[Delta] Cached until 2025-08-23, fetching from 2025-08-24
+[PriceService] Γ£ô Fetched 4 candles
+[Cache] Γ£ô Saved TVSMOTOR (2024-08-04 to 2025-08-29), expires: never
+  Candles fetched: 275 (from 2024-07-24 to 2025-08-29)
+  History up to signal: 258 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 2942.50
+    SMA50: 2818.86
+    SMA200: 2570.10
+    Stage: STAGE_2 (Price > SMA50 > SMA200)
+    Result: PASS Γ£ô
+
+  GATE 2 ΓÇö RSI CHECK:
+    RSI(14): 65.10
+    Range: 60-70
+    Result: PASS Γ£ô
+
+  GATE 3 ΓÇö NIFTY CHECK:
+    NIFTY Close on 2025-08-04: 24723
+    NIFTY 20 EMA: 24956
+    Market: BEARISH (close 24723 < EMA 24956)
+    Result: FAIL Γ£ù ΓÇö SKIPPED (BEARISH market)
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: AUROPHARMA | Signal Date: 2025-07-31
+Expected: BLOCKED_STAGE (Stage 4 downtrend ΓÇö filter must reject)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for AUROPHARMA (2024-07-31 to 2025-08-25)
+[Delta] Cached until 2025-08-01, fetching from 2025-08-02
+[PriceService] Γ£ô Fetched 15 candles
+[Cache] Γ£ô Saved AUROPHARMA (2024-07-31 to 2025-08-25), expires: never
+  Candles fetched: 267 (from 2024-07-31 to 2025-08-25)
+  History up to signal: 251 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 1139.80
+    SMA50: 1142.03
+    SMA200: 1203.05
+    Stage: STAGE_4
+    Result: FAIL Γ£ù ΓÇö SKIPPED (STAGE_4)
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: BOSCHLTD | Signal Date: 2025-07-29
+Expected: BLOCKED_RSI (RSI > 70 ΓÇö filter must reject)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for BOSCHLTD (2024-07-29 to 2025-08-23)
+[Delta] Cached until 2025-07-30, fetching from 2025-07-31
+[PriceService] Γ£ô Fetched 16 candles
+[Cache] Γ£ô Saved BOSCHLTD (2024-07-29 to 2025-08-23), expires: never
+  Candles fetched: 268 (from 2024-07-29 to 2025-08-22)
+  History up to signal: 251 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 39915.00
+    SMA50: 33964.90
+    SMA200: 32035.66
+    Stage: STAGE_2 (Price > SMA50 > SMA200)
+    Result: PASS Γ£ô
+
+  GATE 2 ΓÇö RSI CHECK:
+    RSI(14): 80.06
+    Range: 60-70
+    Result: FAIL Γ£ù ΓÇö SKIPPED (RSI 80.1 outside 60-70)
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: PNB | Signal Date: 2025-10-23
+Expected: UNKNOWN (Fresh test, no prior expectation)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for PNB (2024-10-23 to 2025-11-17)
+[Delta] Cached until 2025-10-24, fetching from 2025-10-25
+[PriceService] Γ£ô Fetched 15 candles
+[Cache] Γ£ô Saved PNB (2024-10-23 to 2025-11-17), expires: never
+  Candles fetched: 303 (from 2024-08-29 to 2025-11-17)
+  History up to signal: 287 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 118.22
+    SMA50: 109.66
+    SMA200: 102.99
+    Stage: STAGE_2 (Price > SMA50 > SMA200)
+    Result: PASS Γ£ô
+
+  GATE 2 ΓÇö RSI CHECK:
+    RSI(14): 63.08
+    Range: 60-70
+    Result: PASS Γ£ô
+
+  GATE 3 ΓÇö NIFTY CHECK:
+    NIFTY Close on 2025-10-23: 25891
+    NIFTY 20 EMA: 25353
+    Market: BULLISH (close 25891 > EMA 25353)
+    Result: PASS Γ£ô
+
+  GATE 4 ΓÇö PULLBACK ENTRY (Day 2-5):
+    Day+1 (2025-10-24): O:118.22 H:118.69 L:116.27 C:116.94 ΓÇö Red candle
+      ΓåÆ Skip (never enter Day+1)
+    Day+2 (2025-10-27): O:117.45 H:120.40 L:116.99 C:119.63 ΓÇö Green candle
+      ΓåÆ ENTRY TRIGGERED on Day+2 (2025-10-27) at OPEN: 117.45
+    Pullback low used: 116.27 (from Day+1 to Day+2)
+    Raw risk: 1.00% ΓåÆ Bounded: 1.50%
+    Structure stop: 115.69
+    Result: ENTRY Γ£ô
+
+  POSITION:
+    Entry: 117.45 | Stop: 115.69 | Risk: 1.76/share
+    Qty: floor(1000 / 1.76) = 567 shares
+    Capital deployed: 66594 | Max risk: 999 INR
+
+  TRAIL SIMULATION (Target: 122.44, ATR: 2.49):
+    Day 1: Close 121.13 | High 121.50 | Stop 115.69 (Phase 1 ΓÇö hold)
+    Day 2: Close 121.10 | High 122.35 | Stop 115.69 (Phase 1 ΓÇö hold)
+    Day 3: Close 120.09 | High 121.89 | Stop 115.69 (Phase 1 ΓÇö hold)
+    Day 4: High 124.05 >= Target 122.44 ΓåÆ EXIT at 122.44
+
+  RESULT: WIN | P&L: (122.44-117.45) * 567 = +2826.90 INR | 4.24% | Days: 4 | Exit: TARGET
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: ASTRAL | Signal Date: 2025-10-27
+Expected: WIN (Verify large win stays large)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for ASTRAL (2024-10-27 to 2025-11-21)
+[Delta] Cached until 2025-10-24, fetching from 2025-10-25
+[PriceService] Attempt 1 failed (ECONNRESET). Retrying in 1000ms...
+[PriceService] Γ£ô Fetched 19 candles
+[Cache] Γ£ô Saved ASTRAL (2024-10-27 to 2025-11-21), expires: never
+  Candles fetched: 269 (from 2024-10-23 to 2025-11-21)
+  History up to signal: 251 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 1435.20
+    SMA50: 1414.54
+    SMA200: 1417.29
+    Stage: STAGE_1
+    Result: FAIL Γ£ù ΓÇö SKIPPED (STAGE_1)
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: KEI | Signal Date: 2026-02-03
+Expected: WIN (Verify recent win)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for KEI (2025-02-03 to 2026-02-28)
+[Delta] Cached until 2026-02-08, fetching from 2026-02-09
+[PriceService] Attempt 1 failed (ECONNRESET). Retrying in 1000ms...
+[PriceService] Γ£ô Fetched 12 candles
+[Cache] Γ£ô Saved KEI (2025-02-03 to 2026-02-28), expires: Wed Feb 25 2026 08:36:11 GMT+0530 (India Standard Time)
+  Candles fetched: 315 (from 2024-11-21 to 2026-02-24)
+  History up to signal: 300 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 4367.00
+    SMA50: 4203.80
+    SMA200: 3911.99
+    Stage: STAGE_2 (Price > SMA50 > SMA200)
+    Result: PASS Γ£ô
+
+  GATE 2 ΓÇö RSI CHECK:
+    RSI(14): 60.03
+    Range: 60-70
+    Result: PASS Γ£ô
+
+  GATE 3 ΓÇö NIFTY CHECK:
+    NIFTY Close on 2026-02-03: 25728
+    NIFTY 20 EMA: 25467
+    Market: BULLISH (close 25728 > EMA 25467)
+    Result: PASS Γ£ô
+
+  GATE 4 ΓÇö PULLBACK ENTRY (Day 2-5):
+    Day+1 (2026-02-04): O:4353.20 H:4477.10 L:4301.00 C:4423.30 ΓÇö Green candle
+      ΓåÆ Skip (never enter Day+1)
+    Day+2 (2026-02-05): O:4423.30 H:4467.70 L:4342.60 C:4443.00 ΓÇö Green candle
+      ΓåÆ ENTRY TRIGGERED on Day+2 (2026-02-05) at OPEN: 4423.30
+    Pullback low used: 4301.00 (from Day+1 to Day+2)
+    Raw risk: 2.76% ΓåÆ Bounded: 2.76%
+    Structure stop: 4301.00
+    Result: ENTRY Γ£ô
+
+  POSITION:
+    Entry: 4423.30 | Stop: 4301.00 | Risk: 122.30/share
+    Qty: floor(1000 / 122.30) = 8 shares
+    Capital deployed: 35386 | Max risk: 978 INR
+
+  TRAIL SIMULATION (Target: 4791.97, ATR: 184.34):
+    Day 1: Close 4462.60 | High 4485.30 | Stop 4301.00 (Phase 1 ΓÇö hold)
+    Day 2: Close 4599.10 | High 4610.00 | Stop 4301.00 (Phase 1 ΓÇö hold)
+    Day 3: Close 4590.60 | High 4628.80 | Stop 4301.00 (Phase 1 ΓÇö hold)
+    Day 4: Close 4605.90 | High 4646.00 | Stop 4379.07 Γåæ (Phase 2 ΓÇö entry-1% (profit 4.1%))
+    Day 5: Close 4591.30 | High 4628.90 | Stop 4379.07 (Phase 2 ΓÇö already higher (profit 3.8%))
+    Day 6: Close 4566.80 | High 4618.90 | Stop 4555.00 Γåæ (Phase 3 ΓÇö trail to prev low 4555.00)
+    Day 7: Low 4456.60 <= Stop 4555.00 ΓåÆ EXIT at 4555.00 (Phase 3)
+
+  RESULT: WIN | P&L: (4555.00-4423.30) * 8 = +1053.60 INR | 2.98% | Days: 7 | Exit: STOP
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+STOCK: SAIL | Signal Date: 2025-09-03
+Expected: WIN (Large qty, verify position sizing)
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+[Cache] Miss for SAIL (2024-09-03 to 2025-09-28)
+[Delta] Cached until 2025-09-27, fetching from 2025-09-28
+[PriceService] Attempt 1 failed (ECONNRESET). Retrying in 1000ms...
+[PriceService] Attempt 2 failed (ECONNRESET). Retrying in 2000ms...
+[PriceService] Γ£ô Fetched 0 candles
+[Cache] Γ£ô Saved SAIL (2024-09-03 to 2025-09-28), expires: never
+  Candles fetched: 271 (from 2024-08-28 to 2025-09-26)
+  History up to signal: 254 candles
+
+  GATE 1 ΓÇö STAGE CHECK:
+    Price on signal date: 129.68
+    SMA50: 128.26
+    SMA200: 118.55
+    Stage: STAGE_2 (Price > SMA50 > SMA200)
+    Result: PASS Γ£ô
+
+  GATE 2 ΓÇö RSI CHECK:
+    RSI(14): 60.64
+    Range: 60-70
+    Result: PASS Γ£ô
+
+  GATE 3 ΓÇö NIFTY CHECK:
+    NIFTY Close on 2025-09-03: 24715
+    NIFTY 20 EMA: 24734
+    Market: BEARISH (close 24715 < EMA 24734)
+    Result: FAIL Γ£ù ΓÇö SKIPPED (BEARISH market)
+
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+  PIPELINE FUNNEL SUMMARY
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+  Total signals:                25
+  Skipped (no data):            0
+  Passed Stage 2:               17
+  Passed Stage 2 + RSI 60-70:   16
+  Passed NIFTY filter:          9
+  Valid pullback entry:          9
+  No valid pullback:             0
+  FINAL TRADES:                 9
+
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+  TRADE RESULTS
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+  symbol, signal_date, entry_date, entry_price, pullback_low, stop, stop_pct, qty, risk_inr, exit_price, exit_date, pnl_inr, outcome, exit_reason, days_held
+  YESBANK, 2025-09-04, 2025-09-08, 20.51, 20.03, 20.03, 2.34%, 2083, 1000, 20.87, 2025-09-17, +750, WIN, STOP, 7
+  TATASTEEL, 2026-02-09, 2026-02-12, 208.00, 201.08, 201.08, 3.33%, 144, 996, 201.08, 2026-02-16, -996, LOSS, STOP, 2
+  CAMS, 2025-11-20, 2025-11-24, 792.00, 778.20, 778.20, 1.74%, 72, 994, 778.20, 2025-11-25, -994, LOSS, STOP, 1
+  IDFCFIRSTB, 2025-12-19, 2025-12-23, 85.71, 84.27, 84.27, 1.68%, 694, 999, 84.27, 2025-12-24, -999, LOSS, STOP, 1
+  JINDALSTEL, 2025-12-31, 2026-01-02, 1068.80, 1046.60, 1046.60, 2.08%, 45, 999, 1046.60, 2026-01-08, -999, LOSS, STOP, 4
+  VOLTAS, 2026-02-12, 2026-02-16, 1530.00, 1510.20, 1507.05, 1.50%, 43, 987, 1507.05, 2026-02-19, -987, LOSS, STOP, 3
+  INDUSINDBK, 2026-02-03, 2026-02-10, 927.90, 895.00, 895.00, 3.55%, 30, 987, 928.20, 2026-02-19, +9, WIN, STOP, 7
+  PNB, 2025-10-23, 2025-10-27, 117.45, 116.27, 115.69, 1.50%, 567, 999, 122.44, 2025-10-31, +2827, WIN, TARGET, 4
+  KEI, 2026-02-03, 2026-02-05, 4423.30, 4301.00, 4301.00, 2.76%, 8, 978, 4555.00, 2026-02-16, +1054, WIN, STOP, 7
+
+  ΓöÇΓöÇ STATS ΓöÇΓöÇ
+  Total trades: 9
+  Wins: 4 | Losses: 5
+  Win Rate: 44.4%
+  Total P&L: Γé╣-336
+  Avg P&L: Γé╣-37
+  Zero-PnL exits: 1
+  Unique stop distances: 8 (2.34%, 3.33%, 1.74%, 1.68%, 2.08%, 1.50%, 3.55%, 2.76%)
+  Day+1 entries (should be 0): 0
+  Avg win: Γé╣1160
+  Avg loss: Γé╣-995
+
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+  VALIDATION CHECKS
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+  Γ£à HEROMOTOCO passes Stage 2
+     ΓåÆ Got: BLOCKED_NIFTY
+  Γ£à AUROPHARMA blocked by Stage filter
+     ΓåÆ Got: BLOCKED_STAGE (STAGE_4)
+  Γ£à BOSCHLTD blocked by RSI filter
+     ΓåÆ Got: BLOCKED_RSI (STAGE_2) RSI=80.1
+  Γ¥î CAMS blocked by NIFTY filter (Nov 2025)
+     ΓåÆ Got: TRADED (STAGE_2) RSI=60.2
+  Γ£à Stop distances vary (not all same)
+     ΓåÆ 8 unique values
+  Γ£à No Day+1 entries
+     ΓåÆ 0 Day+1 entries found
+  Γ£à Zero-PnL exits Γëñ 2
+     ΓåÆ 1 zero-PnL exits
+  Γ£à Funnel decreasing at each stage
+     ΓåÆ Stage=17 ΓåÆ RSI=16 ΓåÆ NIFTY=9 ΓåÆ Trades=9
+
+  Result: 7/8 checks passed
+
+  ΓÜá∩╕Å  Some checks failed ΓÇö Review and fix before proceeding to full backtest.
+
+
+  ΓöÇΓöÇ BLOCKED STOCKS ΓöÇΓöÇ
+  HEROMOTOCO (2025-08-04): BLOCKED_NIFTY NIFTY=24723 vs EMA=24956
+  TATASTEEL (2025-09-03): BLOCKED_NIFTY NIFTY=24715 vs EMA=24734
+  NMDC (2025-09-03): BLOCKED_NIFTY NIFTY=24715 vs EMA=24734
+  INDUSTOWER (2026-01-30): BLOCKED_NIFTY NIFTY=25321 vs EMA=25545
+  EXIDEIND (2025-09-01): BLOCKED_STAGE Stage=STAGE_1
+  DMART (2025-07-30): BLOCKED_NIFTY NIFTY=24855 vs EMA=25051
+  DMART (2026-02-05): BLOCKED_STAGE Stage=STAGE_1
+  HAVELLS (2025-09-02): BLOCKED_STAGE Stage=STAGE_1
+  PGEL (2025-11-21): BLOCKED_STAGE Stage=STAGE_1
+  CROMPTON (2026-02-10): BLOCKED_STAGE Stage=STAGE_1
+  PETRONET (2026-02-18): BLOCKED_STAGE Stage=STAGE_1
+  TVSMOTOR (2025-08-04): BLOCKED_NIFTY NIFTY=24723 vs EMA=24956
+  AUROPHARMA (2025-07-31): BLOCKED_STAGE Stage=STAGE_4
+  BOSCHLTD (2025-07-29): BLOCKED_RSI Stage=STAGE_2 RSI=80.1
+  ASTRAL (2025-10-27): BLOCKED_STAGE Stage=STAGE_1
+  SAIL (2025-09-03): BLOCKED_NIFTY NIFTY=24715 vs EMA=24734
+
+

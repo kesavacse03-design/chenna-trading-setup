@@ -5,139 +5,130 @@
 
 const { PrismaClient } = require('@prisma/client');
 const TechnicalAnalysis = require('../strategy/comprehensiveTA.cjs');
-const { getMarketRegime } = require('./regimeService.cjs');
+const { getMarketRegime, shouldAllowEntry } = require('./regimeService.cjs');
 const { getCategoryConfig, isWithinTrackingWindow } = require('../config/categoryConfig.cjs');
 const trackingService = require('./trackingService.cjs');
+const eventReconstructor = require('./eventReconstructor.cjs');
+const categorySignatureBuilder = require('./categorySignatureBuilder.cjs');
+const positionSizing = require('./positionSizingService.cjs');
+const livePriceService = require('./livePriceService.cjs');
+const entryValidator = require('./entryValidator.cjs');
+const priceService = require('./priceService.cjs'); // NEW IMPORT
 
 const prisma = new PrismaClient();
 
 class SignalScanner {
-    constructor() {
-        this.lastScanTime = null;
-        this.activeSignals = [];
-    }
+    // ... (constructor/loadLastScan logic unchanged)
+
+    // ... (loadV1Strategy/getStocksForCategory logic unchanged)
 
     /**
-     * Load V1 strategy from database for a category
-     * Queries StrategyVersion table where strategies are stored
+     * Fetch latest candles for a stock from cache or fetch fresh if missing
+     * @param {Object} stock - Stock object (symbol, instrument_key)
+     * @param {string} interval - 'day', 'week', '15minute'
      */
-    async loadV1Strategy(categoryKey) {
+    async getLatestCandles(stock, interval = 'day') {
         try {
-            // Query StrategyVersion table (where seed_strategies.cjs saves)
-            const strategy = await prisma.strategyVersion.findFirst({
-                where: {
-                    categoryKey: categoryKey,
-                    version: 'V1',
-                    isActive: true
-                },
-                orderBy: { updatedAt: 'desc' }
-            });
+            const symbol = stock.symbol || stock; // Handle extensive usage
 
-            if (!strategy) {
-                console.warn(`[Scanner] No V1 strategy for ${categoryKey}, using default`);
-                return this.getDefaultStrategy(categoryKey);
-            }
-
-            console.log(`[Scanner] Loaded V1 strategy for ${categoryKey}`);
-            return {
-                id: strategy.id,
-                description: strategy.description,
-                rules: strategy.rules,
-                params: strategy.params,
-                metrics: { winRate: strategy.accuracy || 50 },
-                categoryKey
-            };
-        } catch (error) {
-            console.error(`[Scanner] Error loading V1 for ${categoryKey}:`, error.message);
-            return this.getDefaultStrategy(categoryKey);
-        }
-    }
-
-
-    /**
-     * Default strategy fallback (RSI oversold < 30)
-     */
-    getDefaultStrategy(categoryKey) {
-        return {
-            id: 'default',
-            description: 'Default RSI Oversold Strategy',
-            rules: {
-                entry: { logic: 'RSI Oversold 30', description: 'RSI < 30' },
-                exit: { target: 2.5, stop: 1.5 }
-            },
-            metrics: { winRate: 50 },
-            categoryKey,
-            isDefault: true
-        };
-    }
-
-    /**
-     * Get stocks for a category
-     */
-    async getStocksForCategory(categoryKey) {
-        const categoryStocks = await prisma.stockCategory.findMany({
-            where: { category: { key: categoryKey } },
-            include: { stock: true }
-        });
-
-        return categoryStocks.map(sc => sc.stock);
-    }
-
-    /**
-     * Fetch latest candles for a stock from cache
-     * @param {string} symbol - Stock symbol
-     * @param {string} interval - 'day' for swing, '15minute' for intraday
-     */
-    async getLatestCandles(symbol, interval = 'day') {
-        try {
+            // 1. Try Cache First
             const cached = await prisma.ohlcvCache.findFirst({
                 where: { symbol, interval },
                 orderBy: { createdAt: 'desc' }
             });
 
-            if (!cached || !cached.data) {
-                // Fallback: if 15minute not found, try day
-                if (interval !== 'day') {
-                    return this.getLatestCandles(symbol, 'day');
+            if (cached && cached.data) {
+                let candles = cached.data;
+                if (typeof candles === 'string') candles = JSON.parse(candles);
+                if (Array.isArray(candles) && candles.length > 0) {
+                    // Check staleness?
+                    // If 'week', is it updated? usually fine.
+                    // Flatten/Normalize
+                    return candles.map(c => {
+                        if (Array.isArray(c)) {
+                            return {
+                                timestamp: c[0],
+                                open: parseFloat(c[1]) || 0,
+                                high: parseFloat(c[2]) || 0,
+                                low: parseFloat(c[3]) || 0,
+                                close: parseFloat(c[4]) || 0,
+                                volume: parseInt(c[5]) || 0
+                            };
+                        }
+                        return c;
+                    }).filter(c => c.close > 0);
                 }
-                return null;
             }
 
-            let candles = cached.data;
-            if (typeof candles === 'string') {
-                candles = JSON.parse(candles);
-            }
+            // 2. Fallback: Fetch Fresh from Upstox (if instrument_key available)
+            // Only if stock is an object with key
+            if (typeof stock === 'object' && stock.instrument_key) {
+                console.log(`[Scanner] Cache miss for ${symbol} (${interval}). Fetching fresh...`);
+                // Calculate range based on interval
+                const endDate = new Date();
+                const startDate = new Date();
 
-            // Normalize candles (handle both array and object formats)
-            if (Array.isArray(candles)) {
-                return candles.map(c => {
-                    // Handle Upstox format: [timestamp, open, high, low, close, volume, oi]
-                    if (Array.isArray(c)) {
-                        return {
-                            timestamp: c[0],
-                            open: parseFloat(c[1]) || 0,
-                            high: parseFloat(c[2]) || 0,
-                            low: parseFloat(c[3]) || 0,
-                            close: parseFloat(c[4]) || 0,
-                            volume: parseInt(c[5]) || 0
-                        };
-                    }
-                    return {
-                        timestamp: c.timestamp || c.date,
-                        open: parseFloat(c.open) || 0,
-                        high: parseFloat(c.high) || 0,
-                        low: parseFloat(c.low) || 0,
-                        close: parseFloat(c.close) || 0,
-                        volume: parseInt(c.volume) || 0
-                    };
-                }).filter(c => c.close > 0);
+                if (interval === 'week') startDate.setMonth(startDate.getMonth() - 12); // 1 year
+                else if (interval === 'day') startDate.setMonth(startDate.getMonth() - 6);
+                else startDate.setDate(startDate.getDate() - 5); // 5 days for intraday
+
+                const freshData = await priceService.fetchPrice(
+                    symbol,
+                    stock.instrument_key,
+                    startDate.toISOString().split('T')[0],
+                    endDate.toISOString().split('T')[0],
+                    interval
+                );
+
+                if (freshData && freshData.length > 0) {
+                    return freshData;
+                }
             }
 
             return null;
         } catch (error) {
-            console.error(`[Scanner] Error loading candles for ${symbol}:`, error.message);
+            console.error(`[Scanner] Error loading/fetching candles for ${stock.symbol || stock}:`, error.message);
             return null;
         }
+    }
+
+    /**
+     * Append live price as today's candle
+     * Creates a synthetic candle with LTP as OHLC
+     */
+    appendLiveCandle(candles, symbol) {
+        const liveData = livePriceService.getPrice(symbol);
+
+        if (!liveData || !liveData.ltp) {
+            return candles; // Return original if no live price
+        }
+
+        const lastCandle = candles[candles.length - 1];
+        const lastCandleDate = new Date(lastCandle.timestamp).toDateString();
+        const todayDate = new Date().toDateString();
+
+        // If last candle is already today, update its close with LTP
+        if (lastCandleDate === todayDate) {
+            candles[candles.length - 1] = {
+                ...lastCandle,
+                high: Math.max(lastCandle.high, liveData.ltp),
+                low: Math.min(lastCandle.low, liveData.ltp),
+                close: liveData.ltp // Update close to live price
+            };
+            return candles;
+        }
+
+        // Otherwise, append a new synthetic today's candle
+        const todayCandle = {
+            timestamp: new Date().toISOString(),
+            open: lastCandle.close, // Open at yesterday's close
+            high: Math.max(lastCandle.close, liveData.ltp),
+            low: Math.min(lastCandle.close, liveData.ltp),
+            close: liveData.ltp,
+            volume: 0 // No volume data from LTP
+        };
+
+        return [...candles, todayCandle];
     }
 
     /**
@@ -237,7 +228,21 @@ class SignalScanner {
 
         // 2. Get market regime
         const regime = await getMarketRegime(new Date());
-        console.log(`   Market Regime: ${regime.niftyTrend} (Breadth: ${(regime.breadth * 100).toFixed(0)}%)`);
+        console.log(`   Market Regime: ${regime.niftyTrend} (Breadth: ${(regime.breadth * 100).toFixed(0)}%, Score: ${regime.regimeScore})`);
+
+        // 2b. MARKET CONTEXT GATE - Block signals if market hostile
+        const entryType = config.type === 'INTRADAY' ? 'intraday' : 'swing';
+        if (!shouldAllowEntry(regime, entryType)) {
+            console.log(`   ⛔ BLOCKED: Market context hostile (Score: ${regime.regimeScore}, ${regime.niftyTrend}/${regime.volatilityState})`);
+            return {
+                categoryKey,
+                signals: [],
+                scannedAt: new Date(),
+                blocked: true,
+                blockReason: `hostile_market: ${regime.niftyTrend}/${regime.volatilityState}, score ${regime.regimeScore}`
+            };
+        }
+        console.log(`   ✅ Market context: ALLOWED (Score: ${regime.regimeScore})`);
 
         // 3. Get ELIGIBLE stocks only (within tracking window)
         const eligibleStocks = await trackingService.getEligibleStocks(categoryKey);
@@ -252,45 +257,108 @@ class SignalScanner {
 
         for (const eligibleStock of eligibleStocks) {
             try {
-                const candles = await this.getLatestCandles(eligibleStock.symbol, interval);
+                let candles = await this.getLatestCandles(eligibleStock, interval);
                 if (!candles || candles.length < 50) continue;
 
+                // === LIVE PRICE INTEGRATION ===
+                // Append today's live price as a synthetic candle
+                candles = this.appendLiveCandle(candles, eligibleStock.symbol);
+
+                // === SIGNAL QUALITY GATE LAYER 1: Event Validation ===
+                // Verify something meaningful happened on the stock's addedDate
+                const eventResult = await eventReconstructor.reconstructEvent(
+                    eligibleStock.symbol,
+                    eligibleStock.addedDate,
+                    categoryKey
+                );
+
+                if (!eventResult.valid || eventResult.eventScore < 25) {
+                    // Skip stocks with no meaningful event
+                    continue;
+                }
+
+                // === SIGNAL QUALITY GATE LAYER 2: Category Similarity ===
+                // Check if stock matches what this category typically looks like
+                const similarity = await categorySignatureBuilder.scoreSimilarity(
+                    eligibleStock.symbol,
+                    eligibleStock.addedDate,
+                    categoryKey
+                );
+
+                if (similarity.similarity < 40) {
+                    // Skip stocks that don't match category signature
+                    continue;
+                }
+
+                // === SIGNAL QUALITY GATE LAYER 3: Indicator Analysis ===
                 // Get indicators
                 const indicators = TechnicalAnalysis.getMarketContext(candles);
                 if (!indicators) continue;
 
                 indicators.currentPrice = candles[candles.length - 1].close;
 
-                // Check V1 entry
-                const { triggered, reason } = this.checkV1Entry(v1, indicators, candles);
+                // === PROFESSIONAL ENTRY VALIDATION (5-Layer) ===
+                const validation = entryValidator.validateEntry({
+                    candles,
+                    indicators,
+                    eventResult,
+                    similarity,
+                    categoryKey,
+                    v1Strategy: v1
+                });
 
-                if (triggered) {
-                    const exitRules = v1.rules?.exit || { target: 2.5, stop: 1.5 };
-                    const targetPrice = indicators.currentPrice * (1 + exitRules.target / 100);
-                    const stopPrice = indicators.currentPrice * (1 - exitRules.stop / 100);
-                    const confidence = this.calculateConfidence(indicators, regime, v1.metrics);
-
-                    signals.push({
-                        symbol: eligibleStock.symbol,
-                        name: eligibleStock.name,
-                        price: indicators.currentPrice,
-                        target: targetPrice,
-                        stop: stopPrice,
-                        targetPercent: exitRules.target,
-                        stopPercent: exitRules.stop,
-                        confidence,
-                        reason,
-                        daysRemaining: eligibleStock.daysRemaining,
-                        indicators: {
-                            rsi14: indicators.rsi14?.toFixed(1),
-                            macdBullish: indicators.macdBullish,
-                            aboveSMA50: indicators.aboveSMA50
-                        },
-                        timestamp: new Date().toISOString()
-                    });
-
-                    console.log(`   ✅ SIGNAL: ${eligibleStock.symbol} @ ₹${indicators.currentPrice.toFixed(2)} (${confidence}% confidence)`);
+                // Skip if validation failed
+                if (!validation.valid) {
+                    console.log(`   ⛔ ${eligibleStock.symbol}: ${validation.rejections[0] || 'Failed validation'}`);
+                    continue;
                 }
+
+                // Use ATR-based dynamic stops from validator
+                const { entryPrice, stopLoss, targetPrice, confidence } = validation.entry;
+
+                // === POSITION SIZING: Calculate risk-based quantity ===
+                const sizing = positionSizing.calculatePositionSize({
+                    price: entryPrice,
+                    stop: stopLoss,
+                    target: targetPrice
+                });
+
+                signals.push({
+                    symbol: eligibleStock.symbol,
+                    name: eligibleStock.name,
+                    categoryKey,
+                    instrument_key: eligibleStock.instrument_key, // For fallback data fetching
+                    price: entryPrice,
+                    target: targetPrice,
+                    stop: stopLoss,
+                    targetPercent: validation.entry.targetPercent,
+                    stopPercent: validation.entry.stopLossPercent,
+                    confidence,
+                    reason: validation.signals.join(' + '),
+                    daysRemaining: eligibleStock.daysRemaining,
+                    // Position Sizing (1% risk rule)
+                    quantity: sizing.quantity,
+                    positionValue: sizing.positionValue,
+                    riskAmount: sizing.riskAmount,
+                    riskPercent: sizing.riskPercent,
+                    rewardRiskRatio: sizing.rewardRiskRatio,
+                    sizingSummary: sizing.summary,
+                    // Validation metrics
+                    validationScore: validation.score,
+                    passedChecks: validation.signals,
+                    atr: validation.entry.atr,
+                    eventScore: eventResult?.eventScore,
+                    similarityScore: similarity?.similarity,
+                    indicators: {
+                        rsi14: indicators.rsi14?.toFixed(1),
+                        macdBullish: indicators.macdBullish,
+                        aboveSMA50: indicators.aboveSMA50
+                    },
+                    timestamp: new Date().toISOString()
+                });
+
+                console.log(`   ✅ SIGNAL: ${eligibleStock.symbol} @ ₹${entryPrice.toFixed(2)} | Score: ${validation.score} | ${validation.signals.join(', ')}`);
+
 
                 scanned++;
             } catch (error) {
@@ -304,6 +372,9 @@ class SignalScanner {
         // Store results
         this.lastScanTime = new Date().toISOString();
         this.activeSignals = signals;
+
+        // Enrich Signals (Strategy Specific)
+        await this.enrichSwingSignals(categoryKey, signals);
 
         return {
             categoryKey,
@@ -323,6 +394,72 @@ class SignalScanner {
             scannedAt: this.lastScanTime
         };
     }
+
+    /**
+     * Helper to Enrich Swing Signals with Strat Logic
+     */
+    async enrichSwingSignals(categoryKey, signals) {
+        // Map Category to Strategy File
+        const strategyMap = {
+            'SHORT_TERM_SWING_BO_DOWN': './strategies/swingBoDownLongStrategy.cjs',
+            'SHORT_TERM_SWING_BO_UP': './strategies/swingBoUpLongStrategy.cjs'
+        };
+
+        const strategyPath = strategyMap[categoryKey];
+        if (!strategyPath) return signals;
+
+        try {
+            const strategy = require(strategyPath);
+            console.log(`   [Enrich] Applying V2 Logic to ${signals.length} signals...`);
+
+            // Fetch Nifty Data once (for context)
+            const niftyCandles = await this.getLatestCandles('NIFTY 50', 'day'); // Context
+
+            for (const signal of signals) {
+                // Fetch Daily & Weekly Candles
+                const dailyCandles = await this.getLatestCandles(signal, 'day');
+                const weeklyCandles = await this.getLatestCandles(signal, 'week');
+
+                if (!dailyCandles || dailyCandles.length < 50) continue;
+
+                // Call V2 Logic
+                const details = await strategy.checkSignal(signal.symbol, dailyCandles, weeklyCandles, niftyCandles);
+
+                if (details && details.signal === 'BUY') {
+                    signal.tier = details.tier;
+                    signal.tierName = `TIER ${details.tier}`;
+                    signal.reason += ` | ${details.reason}`;
+
+                    // Update Targets/Stops based on Strategy
+                    if (details.target) {
+                        signal.targetPercent = details.target;
+                        signal.target = Number((signal.price * (1 + details.target / 100)).toFixed(2));
+                    }
+                    if (details.stopLoss) {
+                        signal.stopPercent = details.stopLoss;
+                        signal.stop = Number((signal.price * (1 - details.stopLoss / 100)).toFixed(2));
+                    }
+
+                    console.log(`   [Enrich] ${signal.symbol} -> TIER ${details.tier} (${details.reason})`);
+                } else if (details && details.signal === 'SKIP') {
+                    // Mark as invalid/blocked? 
+                    // Or just downgrade confidence?
+                    // User wants to SKIP.
+                    signal.blocked = true;
+                    signal.blockReason = details.reason;
+                    console.log(`   [Enrich] ${signal.symbol} -> SKIP (${details.reason})`);
+                }
+            }
+
+            // Filter out BLOCKED signals
+            return signals.filter(s => !s.blocked);
+
+        } catch (e) {
+            console.error(`   [Enrich] Failed: ${e.message}`);
+        }
+        return signals;
+    }
+
 
     /**
      * Scan all enabled categories

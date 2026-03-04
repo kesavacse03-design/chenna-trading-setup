@@ -49,28 +49,33 @@ model Instrument {
 }
 
 model Category {
-  id                Int             @id @default(autoincrement())
-  key               String          @unique @db.VarChar(100)
-  name              String          @db.VarChar(255)
-  description       String?         @db.Text
-  livePriceEnabled  Boolean         @default(true) @map("live_price_enabled")
-  createdAt         DateTime        @default(now()) @map("created_at")
-  stocks            StockCategory[]
-  strategies        Strategy[]
-  backtests         BacktestResult[]
+  id                      Int              @id @default(autoincrement())
+  key                     String           @unique @db.VarChar(100)
+  name                    String           @db.VarChar(255)
+  description             String?          @db.Text
+  livePriceEnabled        Boolean          @default(true) @map("live_price_enabled")
+  enabled                 Boolean          @default(true)
+  scanningEnabled         Boolean          @default(true) @map("scanning_enabled")
+  signalGenerationEnabled Boolean          @default(true) @map("signal_generation_enabled")
+  lastAuditDate           DateTime?        @map("last_audit_date")
+  createdAt               DateTime         @default(now()) @map("created_at")
+  stocks                  StockCategory[]
+  strategies              Strategy[]
+  backtests               BacktestResult[]
 
   @@map("categories")
 }
 
 model StockCategory {
-  id         Int      @id @default(autoincrement())
-  stockId    Int      @map("stock_id")
-  categoryId Int      @map("category_id")
+  id         Int       @id @default(autoincrement())
+  stockId    Int       @map("stock_id")
+  categoryId Int       @map("category_id")
   addedDate  DateTime? @map("added_date") @db.Date
-  sector     String?  @db.VarChar(50)  // Sector from tredcode (e.g., "Healthcare", "I.t", "Auto")
-  createdAt  DateTime @default(now()) @map("created_at")
-  stock      Stock    @relation(fields: [stockId], references: [id], onDelete: Cascade)
-  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  sector     String?   @db.VarChar(50) // Sector from tredcode (e.g., "Healthcare", "I.t", "Auto")
+  meta       Json?     @map("meta") // Stores analysis data (e.g., Tier, Trend10d)
+  createdAt  DateTime  @default(now()) @map("created_at")
+  stock      Stock     @relation(fields: [stockId], references: [id], onDelete: Cascade)
+  category   Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 
   // CRITICAL: Allow same stock in same category on different dates
   @@unique([stockId, categoryId, addedDate])
@@ -78,14 +83,13 @@ model StockCategory {
   @@map("stock_categories")
 }
 
-
 model Strategy {
   id          Int              @id @default(autoincrement())
   categoryId  Int?             @map("category_id")
   description String?          @db.Text
-  rules       Json?            // Array of rule strings
-  params      Json?            // Strategy parameters
-  metrics     Json?            // Performance metrics
+  rules       Json? // Array of rule strings
+  params      Json? // Strategy parameters
+  metrics     Json? // Performance metrics
   version     String?          @default("V1") @db.VarChar(20)
   promoted    Boolean          @default(false)
   createdAt   DateTime         @default(now()) @map("created_at")
@@ -121,36 +125,36 @@ model BacktestResult {
 // Labs Time-Travel Research Results
 // ============================================
 model LabsRun {
-  id                    String    @id @default(uuid())
-  categoryKey           String    @map("category_key") @db.VarChar(100)
-  ttVersion             String    @map("tt_version") @db.VarChar(50)
-  
+  id          String @id @default(uuid())
+  categoryKey String @map("category_key") @db.VarChar(100)
+  ttVersion   String @map("tt_version") @db.VarChar(50)
+
   // Research Results
-  accuracy              Float
-  tradesTested          Int       @default(0) @map("trades_tested")
-  
+  accuracy     Float
+  tradesTested Int   @default(0) @map("trades_tested")
+
   // Strategy Logic (JSON)
-  recommendedLogic      Json?     @map("recommended_logic")
-  entryConditions       Json?     @map("entry_conditions")
-  exitConditions        Json?     @map("exit_conditions")
-  trapRules             Json?     @map("trap_rules")
-  
+  recommendedLogic Json? @map("recommended_logic")
+  entryConditions  Json? @map("entry_conditions")
+  exitConditions   Json? @map("exit_conditions")
+  trapRules        Json? @map("trap_rules")
+
   // Strategy Parameters for Backtest
-  strategyParams        Json?     @map("strategy_params")
-  
+  strategyParams Json? @map("strategy_params")
+
   // Performance Metrics
-  performanceMetrics    Json?     @map("performance_metrics")
-  
+  performanceMetrics Json? @map("performance_metrics")
+
   // Cache Status
-  cacheStatus           Json?     @map("cache_status")
-  
+  cacheStatus Json? @map("cache_status")
+
   // Promotion Status
-  promotedToVersionId   Int?      @map("promoted_to_version_id")
-  
+  promotedToVersionId Int? @map("promoted_to_version_id")
+
   // Timestamps
-  createdAt             DateTime  @default(now()) @map("created_at")
-  updatedAt             DateTime  @default(now()) @updatedAt @map("updated_at")
-  
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
   @@index([categoryKey])
   @@index([categoryKey, ttVersion])
   @@map("labs_runs")
@@ -159,33 +163,33 @@ model LabsRun {
 // Research Evolution Runs (V.bX versions)
 // Created by Research Backtest - evolves Labs TT logic
 model ResearchRun {
-  id                String   @id @default(uuid())
-  categoryKey       String   @map("category_key")
-  
+  id          String @id @default(uuid())
+  categoryKey String @map("category_key")
+
   // Parent Labs Run (which TT version this evolved from)
-  baseLabsRunId     String   @map("base_labs_run_id")
-  baseTTVersion     String   @map("base_tt_version")  // e.g., "TT_v1"
-  
+  baseLabsRunId String @map("base_labs_run_id")
+  baseTTVersion String @map("base_tt_version") // e.g., "TT_v1"
+
   // Research Version (V1.b1, V1.b2, ...)
-  researchVersion   String   @map("research_version")
-  
+  researchVersion String @map("research_version")
+
   // Evolved Logic (after shadow learning)
-  entryConditions   Json?    @map("entry_conditions")
-  exitConditions    Json?    @map("exit_conditions")
-  refinements       Json?    // What shadow learner changed
-  
+  entryConditions Json? @map("entry_conditions")
+  exitConditions  Json? @map("exit_conditions")
+  refinements     Json? // What shadow learner changed
+
   // Before vs After Metrics
-  beforeMetrics     Json?    @map("before_metrics")
-  afterMetrics      Json?    @map("after_metrics")
-  
+  beforeMetrics Json? @map("before_metrics")
+  afterMetrics  Json? @map("after_metrics")
+
   // Shadow Report Data
-  shadowReport      Json?    @map("shadow_report")
-  
+  shadowReport Json? @map("shadow_report")
+
   // Promotion Status
-  promotedToStrategyId Int?  @map("promoted_to_strategy_id")
-  
-  createdAt         DateTime @default(now()) @map("created_at")
-  
+  promotedToStrategyId Int? @map("promoted_to_strategy_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
   @@index([categoryKey])
   @@index([categoryKey, researchVersion])
   @@map("research_runs")
@@ -193,25 +197,25 @@ model ResearchRun {
 
 // Strategy - Promoted strategies from Labs or Research
 model PromotedStrategy {
-  id                  Int       @id @default(autoincrement())
-  categoryKey         String    @map("category_key")
-  version             String    // V1, V2, V3...
-  name                String?
-  
+  id          Int     @id @default(autoincrement())
+  categoryKey String  @map("category_key")
+  version     String // V1, V2, V3...
+  name        String?
+
   // Entry/Exit Rules
-  entryRules          Json?     @map("entry_rules")
-  exitRules           Json?     @map("exit_rules")
-  
+  entryRules Json? @map("entry_rules")
+  exitRules  Json? @map("exit_rules")
+
   // Promotion Source
-  promotedFromLabs    String?   @map("promoted_from_labs")    // TT-V1, TT-V2...
-  promotedFromResearch String?  @map("promoted_from_research") // V1.b1, V2.b1...
-  
+  promotedFromLabs     String? @map("promoted_from_labs") // TT-V1, TT-V2...
+  promotedFromResearch String? @map("promoted_from_research") // V1.b1, V2.b1...
+
   // Status
-  status              String?   @default("ACTIVE") // ACTIVE, INACTIVE
-  
-  createdAt           DateTime  @default(now()) @map("created_at")
-  updatedAt           DateTime  @updatedAt @map("updated_at")
-  
+  status String? @default("ACTIVE") // ACTIVE, INACTIVE
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
   @@unique([categoryKey, version])
   @@index([categoryKey])
   @@map("promoted_strategies")
@@ -219,33 +223,30 @@ model PromotedStrategy {
 
 // LiveSnapshot - Stock data fetched from tredcode source
 model LiveSnapshot {
-  id          Int       @id @default(autoincrement())
-  symbol      String
-  category    String    // e.g., "50_DAY_HIGH_BREAKOUT", "DOWNSIDE_LOM_SWING"
-  ltp         Float     // Last Traded Price
-  prevClose   Float?    // Previous Close
-  pctChange   Float?    // Percentage Change
-  sector      String?
-  sourceDate  DateTime? @map("source_date") // Date from source
-  fetchedAt   DateTime  @default(now()) @map("fetched_at")
-  
+  id         Int       @id @default(autoincrement())
+  symbol     String
+  category   String // e.g., "50_DAY_HIGH_BREAKOUT", "DOWNSIDE_LOM_SWING"
+  ltp        Float // Last Traded Price
+  prevClose  Float? // Previous Close
+  pctChange  Float? // Percentage Change
+  sector     String?
+  sourceDate DateTime? @map("source_date") // Date from source
+  fetchedAt  DateTime  @default(now()) @map("fetched_at")
+
   @@unique([symbol, category, fetchedAt])
   @@index([category])
   @@index([symbol])
   @@map("live_snapshots")
 }
 
-
 model OhlcvCache {
-
-
-  id        Int       @id @default(autoincrement())
-  symbol    String    @db.VarChar(50)
+  id     Int    @id @default(autoincrement())
+  symbol String @db.VarChar(50)
 
   interval  String    @db.VarChar(10) // day, 1hour, 30minute
   fromDate  DateTime  @map("from_date") @db.Date
   toDate    DateTime  @map("to_date") @db.Date
-  data      Json      // Array of candles
+  data      Json // Array of candles
   source    String?   @db.VarChar(20) // upstox, mock
   createdAt DateTime  @default(now()) @map("created_at")
   expiresAt DateTime? @map("expires_at")
@@ -256,27 +257,27 @@ model OhlcvCache {
 }
 
 model Trade {
-  id                Int       @id @default(autoincrement())
-  stockSymbol       String    @map("stock_symbol") @db.VarChar(50)
-  category          String    @db.VarChar(100)
-  strategyVersion   String    @default("V1") @map("strategy_version") @db.VarChar(20)
-  direction         String    @db.VarChar(10) // BUY, SELL
-  entryPrice        Decimal?  @map("entry_price") @db.Decimal(10, 2)
-  targetPrice       Decimal   @map("target_price") @db.Decimal(10, 2)
-  stopLoss          Decimal   @map("stop_loss") @db.Decimal(10, 2)
-  trailingStop      Decimal   @map("trailing_stop") @db.Decimal(10, 2)
-  currentTrail      Decimal?  @map("current_trail") @db.Decimal(10, 2)
-  status            String    @db.VarChar(20) // WAITING, ACTIVE, TARGET_HIT, SL_HIT, SIDEWAYS, EXPIRED
-  entryDate         DateTime? @map("entry_date")
-  exitDate          DateTime? @map("exit_date")
-  exitPrice         Decimal?  @map("exit_price") @db.Decimal(10, 2)
-  pnl               Decimal?  @db.Decimal(10, 2)
-  pnlPercent        Decimal?  @map("pnl_percent") @db.Decimal(10, 4)
-  trackingDays      Int       @default(0) @map("tracking_days")
-  maxTrackingDays   Int       @default(10) @map("max_tracking_days")
-  signalData        Json?     @map("signal_data") // Technical indicators at signal time
-  createdAt         DateTime  @default(now()) @map("created_at")
-  updatedAt         DateTime  @default(now()) @updatedAt @map("updated_at")
+  id              Int       @id @default(autoincrement())
+  stockSymbol     String    @map("stock_symbol") @db.VarChar(50)
+  category        String    @db.VarChar(100)
+  strategyVersion String    @default("V1") @map("strategy_version") @db.VarChar(20)
+  direction       String    @db.VarChar(10) // BUY, SELL
+  entryPrice      Decimal?  @map("entry_price") @db.Decimal(10, 2)
+  targetPrice     Decimal   @map("target_price") @db.Decimal(10, 2)
+  stopLoss        Decimal   @map("stop_loss") @db.Decimal(10, 2)
+  trailingStop    Decimal   @map("trailing_stop") @db.Decimal(10, 2)
+  currentTrail    Decimal?  @map("current_trail") @db.Decimal(10, 2)
+  status          String    @db.VarChar(20) // WAITING, ACTIVE, TARGET_HIT, SL_HIT, SIDEWAYS, EXPIRED
+  entryDate       DateTime? @map("entry_date")
+  exitDate        DateTime? @map("exit_date")
+  exitPrice       Decimal?  @map("exit_price") @db.Decimal(10, 2)
+  pnl             Decimal?  @db.Decimal(10, 2)
+  pnlPercent      Decimal?  @map("pnl_percent") @db.Decimal(10, 4)
+  trackingDays    Int       @default(0) @map("tracking_days")
+  maxTrackingDays Int       @default(10) @map("max_tracking_days")
+  signalData      Json?     @map("signal_data") // Technical indicators at signal time
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @default(now()) @updatedAt @map("updated_at")
 
   @@index([status, category])
   @@index([stockSymbol, status])
@@ -288,46 +289,46 @@ model Trade {
 // ============================================
 
 model Signal {
-  id                   Int       @id @default(autoincrement())
-  signalId             String    @unique @map("signal_id") @db.VarChar(100)
-  categoryKey          String    @map("category_key") @db.VarChar(100)
-  symbol               String    @db.VarChar(50)
-  direction            String    @db.VarChar(10)
-  
-  entryPrice           Decimal   @map("entry_price") @db.Decimal(10, 2)
-  entryConditions      Json      @map("entry_conditions")
-  bufferMinutes        Int       @default(15) @map("buffer_minutes")
-  aiConfidence         Decimal?  @map("ai_confidence") @db.Decimal(5, 2)
-  aiValidation         Json?     @map("ai_validation")
-  
-  targetPrice          Decimal   @map("target_price") @db.Decimal(10, 2)
-  stopLoss             Decimal   @map("stop_loss") @db.Decimal(10, 2)
-  trailingStopPercent  Decimal   @map("trailing_stop_percent") @db.Decimal(5, 2)
-  currentTrailingStop  Decimal?  @map("current_trailing_stop") @db.Decimal(10, 2)
-  
-  trackingDays         Int       @map("tracking_days")
-  trackingStatus       String    @default("ACTIVE") @map("tracking_status") @db.VarChar(20)
-  
-  generatedAt          DateTime  @default(now()) @map("generated_at")
-  expiresAt            DateTime? @map("expires_at")
-  exitedAt             DateTime? @map("exited_at")
-  
-  currentPrice         Decimal?  @map("current_price") @db.Decimal(10, 2)
-  exitPrice            Decimal?  @map("exit_price") @db.Decimal(10, 2)
-  unrealizedPnL        Decimal?  @map("unrealized_pnl") @db.Decimal(10, 2)
-  realizedPnL          Decimal?  @map("realized_pnl") @db.Decimal(10, 2)
-  daysInTrade          Int       @default(0) @map("days_in_trade")
-  
-  strategyVersion      String    @default("v1") @map("strategy_version") @db.VarChar(20)
-  failureReason        String?   @map("failure_reason") @db.Text
-  marketContext        Json?     @map("market_context")
-  telegramSent         Boolean   @default(false) @map("telegram_sent")
-  
-  createdAt            DateTime  @default(now()) @map("created_at")
-  updatedAt            DateTime  @default(now()) @updatedAt @map("updated_at")
-  
-  shadowLearnings      ShadowLearning[]
-  
+  id          Int    @id @default(autoincrement())
+  signalId    String @unique @map("signal_id") @db.VarChar(100)
+  categoryKey String @map("category_key") @db.VarChar(100)
+  symbol      String @db.VarChar(50)
+  direction   String @db.VarChar(10)
+
+  entryPrice      Decimal  @map("entry_price") @db.Decimal(10, 2)
+  entryConditions Json     @map("entry_conditions")
+  bufferMinutes   Int      @default(15) @map("buffer_minutes")
+  aiConfidence    Decimal? @map("ai_confidence") @db.Decimal(5, 2)
+  aiValidation    Json?    @map("ai_validation")
+
+  targetPrice         Decimal  @map("target_price") @db.Decimal(10, 2)
+  stopLoss            Decimal  @map("stop_loss") @db.Decimal(10, 2)
+  trailingStopPercent Decimal  @map("trailing_stop_percent") @db.Decimal(5, 2)
+  currentTrailingStop Decimal? @map("current_trailing_stop") @db.Decimal(10, 2)
+
+  trackingDays   Int    @map("tracking_days")
+  trackingStatus String @default("ACTIVE") @map("tracking_status") @db.VarChar(20)
+
+  generatedAt DateTime  @default(now()) @map("generated_at")
+  expiresAt   DateTime? @map("expires_at")
+  exitedAt    DateTime? @map("exited_at")
+
+  currentPrice  Decimal? @map("current_price") @db.Decimal(10, 2)
+  exitPrice     Decimal? @map("exit_price") @db.Decimal(10, 2)
+  unrealizedPnL Decimal? @map("unrealized_pnl") @db.Decimal(10, 2)
+  realizedPnL   Decimal? @map("realized_pnl") @db.Decimal(10, 2)
+  daysInTrade   Int      @default(0) @map("days_in_trade")
+
+  strategyVersion String  @default("v1") @map("strategy_version") @db.VarChar(20)
+  failureReason   String? @map("failure_reason") @db.Text
+  marketContext   Json?   @map("market_context")
+  telegramSent    Boolean @default(false) @map("telegram_sent")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  shadowLearnings ShadowLearning[]
+
   @@index([categoryKey, trackingStatus])
   @@index([symbol, trackingStatus])
   @@index([trackingStatus])
@@ -335,102 +336,585 @@ model Signal {
 }
 
 model ShadowLearning {
-  id                   Int      @id @default(autoincrement())
-  categoryKey          String   @map("category_key") @db.VarChar(100)
-  signalId             String?  @map("signal_id") @db.VarChar(100)
-  signal               Signal?  @relation(fields: [signalId], references: [signalId], onDelete: SetNull)
-  
-  failureType          String   @map("failure_type") @db.VarChar(50)
-  aiAnalysis           Json     @map("ai_analysis")
-  rootCause            String?  @map("root_cause") @db.Text
-  suggestedImprovement Json     @map("suggested_improvement")
-  
-  priceHistory         Json?    @map("price_history")
-  volumeProfile        Json?    @map("volume_profile")
-  marketSentiment      String?  @map("market_sentiment") @db.VarChar(20)
-  newsEvents           Json?    @map("news_events")
-  
-  appliedToShadow      Boolean  @default(false) @map("applied_to_shadow")
-  confidence           Decimal? @db.Decimal(5, 2)
-  
-  createdAt            DateTime @default(now()) @map("created_at")
-  
+  id          Int     @id @default(autoincrement())
+  categoryKey String  @map("category_key") @db.VarChar(100)
+  signalId    String? @map("signal_id") @db.VarChar(100)
+  signal      Signal? @relation(fields: [signalId], references: [signalId], onDelete: SetNull)
+
+  failureType          String  @map("failure_type") @db.VarChar(50)
+  aiAnalysis           Json    @map("ai_analysis")
+  rootCause            String? @map("root_cause") @db.Text
+  suggestedImprovement Json    @map("suggested_improvement")
+
+  priceHistory    Json?   @map("price_history")
+  volumeProfile   Json?   @map("volume_profile")
+  marketSentiment String? @map("market_sentiment") @db.VarChar(20)
+  newsEvents      Json?   @map("news_events")
+
+  appliedToShadow Boolean  @default(false) @map("applied_to_shadow")
+  confidence      Decimal? @db.Decimal(5, 2)
+
+  createdAt DateTime @default(now()) @map("created_at")
+
   @@index([categoryKey])
   @@index([failureType])
   @@map("shadow_learnings")
 }
 
 model StrategyVersion {
-  id                   Int       @id @default(autoincrement())
-  categoryKey          String    @map("category_key") @db.VarChar(100)
-  version              String    @db.VarChar(20)
-  
-  description          String    @db.Text
-  rules                Json
-  params               Json
-  
-  accuracy             Decimal?  @db.Decimal(5, 2)
-  totalSignals         Int       @default(0) @map("total_signals")
-  successfulSignals    Int       @default(0) @map("successful_signals")
-  failedSignals        Int       @default(0) @map("failed_signals")
-  avgPnL               Decimal?  @map("avg_pnl") @db.Decimal(10, 2)
-  maxDrawdown          Decimal?  @map("max_drawdown") @db.Decimal(10, 2)
-  expectancy           Decimal?  @db.Decimal(10, 4)
-  
-  isActive             Boolean   @default(false) @map("is_active")
-  isShadow             Boolean   @default(false) @map("is_shadow")
-  promotedAt           DateTime? @map("promoted_at")
-  promotedFrom         String?   @map("promoted_from") @db.VarChar(20)
-  
-  aiGenerated          Boolean   @default(false) @map("ai_generated")
-  learningSource       Json?     @map("learning_source")
-  
-  createdAt            DateTime  @default(now()) @map("created_at")
-  updatedAt            DateTime  @default(now()) @updatedAt @map("updated_at")
-  
+  id          Int    @id @default(autoincrement())
+  categoryKey String @map("category_key") @db.VarChar(100)
+  version     String @db.VarChar(20)
+
+  description String @db.Text
+  rules       Json
+  params      Json
+
+  accuracy          Decimal? @db.Decimal(5, 2)
+  totalSignals      Int      @default(0) @map("total_signals")
+  successfulSignals Int      @default(0) @map("successful_signals")
+  failedSignals     Int      @default(0) @map("failed_signals")
+  avgPnL            Decimal? @map("avg_pnl") @db.Decimal(10, 2)
+  maxDrawdown       Decimal? @map("max_drawdown") @db.Decimal(10, 2)
+  expectancy        Decimal? @db.Decimal(10, 4)
+
+  isActive     Boolean   @default(false) @map("is_active")
+  isShadow     Boolean   @default(false) @map("is_shadow")
+  promotedAt   DateTime? @map("promoted_at")
+  promotedFrom String?   @map("promoted_from") @db.VarChar(20)
+
+  aiGenerated    Boolean @default(false) @map("ai_generated")
+  learningSource Json?   @map("learning_source")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
   @@unique([categoryKey, version])
   @@index([categoryKey, isActive])
   @@map("strategy_versions")
 }
 
 model TelegramConfig {
-  id                   Int      @id @default(autoincrement())
-  botToken             String   @map("bot_token") @db.VarChar(500)
-  chatId               String   @map("chat_id") @db.VarChar(100)
-  enabled              Boolean  @default(false)
-  
-  notifySignals        Boolean  @default(true) @map("notify_signals")
-  notifyUpdates        Boolean  @default(true) @map("notify_updates")
-  notifyExits          Boolean  @default(true) @map("notify_exits")
-  notifyAIInsights     Boolean  @default(true) @map("notify_ai_insights")
-  
-  dailyUpdateTime      String?  @map("daily_update_time") @db.VarChar(10)
-  
-  createdAt            DateTime @default(now()) @map("created_at")
-  updatedAt            DateTime @default(now()) @updatedAt @map("updated_at")
-  
+  id       Int     @id @default(autoincrement())
+  botToken String  @map("bot_token") @db.VarChar(500)
+  chatId   String  @map("chat_id") @db.VarChar(100)
+  enabled  Boolean @default(false)
+
+  notifySignals    Boolean @default(true) @map("notify_signals")
+  notifyUpdates    Boolean @default(true) @map("notify_updates")
+  notifyExits      Boolean @default(true) @map("notify_exits")
+  notifyAIInsights Boolean @default(true) @map("notify_ai_insights")
+
+  dailyUpdateTime String? @map("daily_update_time") @db.VarChar(10)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
   @@map("telegram_config")
 }
 
 model MarketSentimentLog {
-  id                   Int       @id @default(autoincrement())
-  symbol               String    @db.VarChar(50)
-  date                 DateTime  @db.Date
-  
-  sentiment            String    @db.VarChar(20)
-  score                Decimal   @db.Decimal(5, 2)
-  
-  aiAnalysis           Json      @map("ai_analysis")
-  keyEvents            Json?     @map("key_events")
-  recommendation       String?   @db.VarChar(20)
-  
-  newsSources          Json?     @map("news_sources")
-  socialMediaData      Json?     @map("social_media_data")
-  marketIndicators     Json?     @map("market_indicators")
-  
-  createdAt            DateTime  @default(now()) @map("created_at")
-  
+  id     Int      @id @default(autoincrement())
+  symbol String   @db.VarChar(50)
+  date   DateTime @db.Date
+
+  sentiment String  @db.VarChar(20)
+  score     Decimal @db.Decimal(5, 2)
+
+  aiAnalysis     Json    @map("ai_analysis")
+  keyEvents      Json?   @map("key_events")
+  recommendation String? @db.VarChar(20)
+
+  newsSources      Json? @map("news_sources")
+  socialMediaData  Json? @map("social_media_data")
+  marketIndicators Json? @map("market_indicators")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
   @@unique([symbol, date])
   @@index([symbol])
   @@map("market_sentiment_log")
+}
+
+// ============================================
+// Position Tracking (Exit Monitoring)
+// ============================================
+
+model Position {
+  id          String  @id @default(uuid())
+  symbol      String  @db.VarChar(50)
+  name        String? @db.VarChar(255)
+  categoryKey String? @map("category_key") @db.VarChar(100)
+
+  // Entry details
+  entryPrice    Float    @map("entry_price")
+  entryDate     DateTime @map("entry_date")
+  quantity      Int
+  positionValue Float    @map("position_value")
+
+  // Targets and stops
+  targetPrice   Float  @map("target_price")
+  targetPercent Float? @map("target_percent")
+  stopPrice     Float  @map("stop_price")
+  stopPercent   Float? @map("stop_percent")
+
+  // Risk metrics
+  riskAmount      Float  @map("risk_amount")
+  rewardRiskRatio Float? @map("reward_risk_ratio")
+
+  // Status
+  status String @default("OPEN") @db.VarChar(20) // OPEN, CLOSED
+
+  // Exit details (populated when closed)
+  exitPrice          Float?    @map("exit_price")
+  exitDate           DateTime? @map("exit_date")
+  exitReason         String?   @map("exit_reason") @db.VarChar(50) // TARGET_HIT, STOP_HIT, TIME_EXPIRED, MANUAL
+  realizedPnL        Float?    @map("realized_pnl")
+  realizedPnLPercent Float?    @map("realized_pnl_percent")
+  holdingDays        Int?      @map("holding_days")
+
+  // Tracking
+  daysRemaining Int?      @map("days_remaining")
+  expiryDate    DateTime? @map("expiry_date")
+
+  // Original signal data
+  signalData Json? @map("signal_data")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([symbol, status])
+  @@index([categoryKey, status])
+  @@index([status])
+  @@map("positions")
+}
+
+model TradeJournal {
+  id         String  @id @default(uuid())
+  positionId String? @map("position_id")
+
+  symbol      String  @db.VarChar(50)
+  categoryKey String? @map("category_key") @db.VarChar(100)
+
+  // Entry
+  entryPrice Float    @map("entry_price")
+  entryDate  DateTime @map("entry_date")
+
+  // Exit
+  exitPrice  Float    @map("exit_price")
+  exitDate   DateTime @map("exit_date")
+  exitReason String   @map("exit_reason") @db.VarChar(50)
+
+  // Outcome
+  quantity    Int
+  pnl         Float
+  pnlPercent  Float   @map("pnl_percent")
+  holdingDays Int     @map("holding_days")
+  isWinner    Boolean @map("is_winner")
+
+  // Original targets
+  targetPrice Float? @map("target_price")
+  stopPrice   Float? @map("stop_price")
+
+  // Signal quality (for learning)
+  eventScore      Float? @map("event_score")
+  similarityScore Float? @map("similarity_score")
+  confidence      Float?
+
+  // Extended fields for Manual Journaling
+  notes           String? @db.Text
+  slippagePercent Float?  @map("slippage_percent")
+  rMultiple       Float?  @map("r_multiple")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@index([symbol])
+  @@index([categoryKey])
+  @@index([isWinner])
+  @@index([exitDate])
+  @@map("trade_journal")
+}
+
+// ============================================
+// Category Trading Configurations (Labs V1.0)
+// ============================================
+
+model CategoryConfig {
+  id           String @id @default(uuid())
+  categoryKey  String @unique @map("category_key") @db.VarChar(100)
+  categoryName String @map("category_name") @db.VarChar(255)
+  type         String @db.VarChar(20) // SWING or INTRADAY
+  version      String @default("V1.0") @db.VarChar(20)
+
+  // Entry Rules
+  targetPercent Float   @map("target_percent") // e.g., 2.0
+  stopPercent   Float   @map("stop_percent") // e.g., -1.5
+  maxHoldDays   Int?    @map("max_hold_days") // NULL for intraday
+  forceExitDay3 Boolean @default(true) @map("force_exit_day3")
+
+  // Day Filters
+  validDays   Json? @map("valid_days") // [4, 5] = Thu, Fri
+  avoidMonths Json? @map("avoid_months") // [11] = November
+  primeMonths Json? @map("prime_months") // [8, 9] = Aug, Sep
+
+  // Price Tiers (JSON structure)
+  priceTiers Json? @map("price_tiers")
+  // Example: { "tier1": { "maxPrice": 200, "candlePattern": "ANY", "expectedSuccess": 0.929, "positionMultiplier": 1.5 }, ... }
+
+  // Monitoring
+  monitorInterval Int @default(60) @map("monitor_interval") // Minutes: 60 for swing, 5 for intraday
+
+  // Success Tracking
+  expectedSuccessRate Float? @map("expected_success_rate")
+  actualSuccessRate   Float? @map("actual_success_rate")
+  totalTrades         Int    @default(0) @map("total_trades")
+  winningTrades       Int    @default(0) @map("winning_trades")
+
+  // Status
+  active   Boolean @default(true)
+  analyzed Boolean @default(false) // Has completed Phase 1-7?
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([categoryKey])
+  @@index([type, active])
+  @@map("category_configs")
+}
+
+// ============================================
+// Daily Performance Tracking
+// ============================================
+
+model PerformanceLog {
+  id      Int      @id @default(autoincrement())
+  logDate DateTime @unique @map("log_date") @db.Date
+
+  // Signal Statistics
+  signalsGenerated Int @default(0) @map("signals_generated")
+  signalsTaken     Int @default(0) @map("signals_taken")
+  signalsSkipped   Int @default(0) @map("signals_skipped")
+  signalsMissed    Int @default(0) @map("signals_missed")
+
+  // Position Statistics
+  positionsOpened Int @default(0) @map("positions_opened")
+  positionsClosed Int @default(0) @map("positions_closed")
+  positionsActive Int @default(0) @map("positions_active")
+
+  // Exit Breakdown
+  targetHits     Int @default(0) @map("target_hits")
+  stopHits       Int @default(0) @map("stop_hits")
+  day3Exits      Int @default(0) @map("day3_exits")
+  manualExits    Int @default(0) @map("manual_exits")
+  intradayCloses Int @default(0) @map("intraday_closes")
+
+  // P&L Metrics
+  dailyPnL      Float  @default(0) @map("daily_pnl")
+  winRate       Float? @map("win_rate")
+  avgReturn     Float? @map("avg_return")
+  totalExposure Float? @map("total_exposure")
+
+  // Category Breakdown (JSON)
+  categoryBreakdown Json? @map("category_breakdown")
+  // Example: { "SHORT_TERM_SWING_BO_DOWN": { signals: 3, taken: 2, pnl: 1500 } }
+
+  // Market Context
+  marketState String? @map("market_state") @db.VarChar(50) // PRIME, NORMAL, AVOID
+  niftyChange Float?  @map("nifty_change")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([logDate])
+  @@map("performance_logs")
+}
+
+// ============================================
+// Trading Signals (Enhanced for Signal Generator)
+// ============================================
+
+model TradingSignal {
+  id       Int    @id @default(autoincrement())
+  signalId String @unique @map("signal_id") @db.VarChar(100)
+
+  // Core Signal Data
+  categoryKey String @map("category_key") @db.VarChar(100)
+  type        String @db.VarChar(20) // SWING or INTRADAY
+  symbol      String @db.VarChar(50)
+
+  // Signal Timing
+  signalDate DateTime  @map("signal_date") @db.Date
+  signalTime DateTime? @map("signal_time") @db.Time
+
+  // Prices
+  entryPrice  Float @map("entry_price")
+  targetPrice Float @map("target_price")
+  stopPrice   Float @map("stop_price")
+
+  // Quality Metrics
+  confidenceScore Float   @map("confidence_score") // 0.929, 0.689, etc
+  tier            Int // 1, 2, or 3
+  tierName        String? @map("tier_name") @db.VarChar(50) // "Low-Price Premium"
+
+  // Suggested Position
+  suggestedPositionSize Float @map("suggested_position_size")
+  suggestedQuantity     Int   @map("suggested_quantity")
+
+  // Entry Checklist (all conditions met?)
+  entryChecklist Json? @map("entry_checklist")
+  // Example: { "dayValid": true, "monthValid": true, "candleColor": "RED", "priceInRange": true }
+
+  // User Action
+  userAction     String?   @map("user_action") @db.VarChar(20) // TAKEN, SKIPPED, MISSED
+  userActionTime DateTime? @map("user_action_time")
+  skipReason     String?   @map("skip_reason") @db.Text
+
+  // Link to Position (if taken)
+  positionId String? @map("position_id")
+
+  // Expiry
+  expiresAt DateTime? @map("expires_at")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([categoryKey, signalDate])
+  @@index([symbol, signalDate])
+  @@index([userAction])
+  @@index([signalDate])
+  @@map("trading_signals")
+}
+
+// ================================================================
+// PHASE 7: TIME-TRAVEL BACKTEST TABLES
+// ================================================================
+
+model BacktestRun {
+  id String @id @default(uuid())
+
+  // Category being tested
+  categoryKey     String @map("category_key") @db.VarChar(100)
+  strategyVersion String @map("strategy_version") @db.VarChar(20) // "V1.0", "V2.0"
+
+  // Configuration
+  startDate       DateTime @map("start_date") @db.Date
+  endDate         DateTime @map("end_date") @db.Date
+  startingCapital Float    @map("starting_capital")
+  positionSizing  Json     @map("position_sizing") // { type: "fixed", amount: 10000 }
+  executionMode   String   @map("execution_mode") @db.VarChar(30) // "perfect", "realistic", etc
+  config          Json? // Additional configuration
+
+  // Progress & Status
+  status       String    @default("pending") @db.VarChar(20) // pending, running, complete, failed
+  progress     Float     @default(0) // 0-100
+  currentDate  DateTime? @map("current_date") @db.Date
+  errorMessage String?   @map("error_message") @db.Text
+
+  // Summary Results (populated on completion)
+  totalDays     Int?   @map("total_days")
+  totalSignals  Int?   @map("total_signals")
+  totalTrades   Int?   @map("total_trades")
+  winningTrades Int?   @map("winning_trades")
+  losingTrades  Int?   @map("losing_trades")
+  winRate       Float? @map("win_rate")
+  totalReturn   Float? @map("total_return") // Ending capital - Starting capital
+  returnPercent Float? @map("return_percent")
+  maxDrawdown   Float? @map("max_drawdown")
+  sharpeRatio   Float? @map("sharpe_ratio")
+
+  // Full results JSON (for detailed analysis)
+  results Json? // { monthlyReturns: [], issues: [], etc }
+
+  // Timestamps
+  startedAt   DateTime? @map("started_at")
+  completedAt DateTime? @map("completed_at")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  // Relations
+  trades BacktestTrade[]
+
+  @@index([categoryKey, strategyVersion])
+  @@index([status])
+  @@index([createdAt])
+  @@map("backtest_runs")
+}
+
+model BacktestTrade {
+  id String @id @default(uuid())
+
+  // Link to backtest run
+  backtestRunId String      @map("backtest_run_id")
+  backtestRun   BacktestRun @relation(fields: [backtestRunId], references: [id], onDelete: Cascade)
+
+  // Trade identification
+  tradeNumber Int     @map("trade_number") // Sequential number in backtest
+  symbol      String  @db.VarChar(50)
+  tier        Int // 1, 2, or 3
+  tierName    String? @map("tier_name") @db.VarChar(50)
+
+  // Trade details
+  signalDate    DateTime @map("signal_date") @db.Date
+  entryDate     DateTime @map("entry_date") @db.Date
+  entryPrice    Float    @map("entry_price")
+  targetPrice   Float    @map("target_price")
+  stopPrice     Float    @map("stop_price")
+  quantity      Int
+  positionValue Float    @map("position_value")
+
+  // Exit details
+  exitDate   DateTime? @map("exit_date") @db.Date
+  exitPrice  Float?    @map("exit_price")
+  exitReason String?   @map("exit_reason") @db.VarChar(30) // TARGET, STOP, DAY3, SKIPPED
+  daysHeld   Int?      @map("days_held")
+
+  // P&L
+  pnl        Float? // Realized P&L in rupees
+  pnlPercent Float?  @map("pnl_percent")
+  outcome    String? @db.VarChar(10) // WIN, LOSS, SKIPPED
+
+  // Market conditions at signal time
+  marketConditions Json? @map("market_conditions")
+  // { nifty: 18500, niftyChange: -0.5, vix: 14.2, sectorStrength: "Banking" }
+
+  // Technical validation at signal time
+  technicalChecks Json? @map("technical_checks")
+  // { atSupport: true, belowMA: true, breakdown: true, normalVolume: true }
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([backtestRunId])
+  @@index([symbol])
+  @@index([signalDate])
+  @@index([outcome])
+  @@map("backtest_trades")
+}
+
+// ============================================
+// V5 Engine Models (Brand New Architecture)
+// ============================================
+
+model V5Signal {
+  id               Int      @id @default(autoincrement())
+  category         String   @default("SHORT_TERM_SWING_BO_UP") @db.VarChar(50)
+  symbol           String   @db.VarChar(50)
+  instrumentKey    String   @map("instrument_key") @db.VarChar(100)
+  signalDate       DateTime @map("signal_date") @db.Date
+  signalClose      Decimal  @map("signal_close") @db.Decimal(10, 2)
+  breakoutLevel    Decimal  @map("breakout_level") @db.Decimal(10, 2)
+  rsi14            Decimal  @map("rsi_14") @db.Decimal(5, 2)
+  adx14            Decimal  @map("adx_14") @db.Decimal(5, 2)
+  volumeRatio      Decimal  @map("volume_ratio") @db.Decimal(5, 2)
+  candleQuality    Int      @map("candle_quality")
+  macd1hState      String   @map("macd_1h_state") @db.VarChar(20)
+  niftyClose       Decimal  @map("nifty_close") @db.Decimal(10, 2)
+  niftyEma20       Decimal  @map("nifty_ema20") @db.Decimal(10, 2)
+  niftyContext     String   @map("nifty_context") @db.VarChar(10)
+  confidenceScore  Int      @map("confidence_score")
+  confidenceTier   String   @map("confidence_tier") @db.VarChar(10)
+  atr14            Decimal  @map("atr_14") @db.Decimal(10, 2)
+  suggestedStop    Decimal  @map("suggested_stop") @db.Decimal(10, 2)
+  suggestedQty     Int      @map("suggested_qty")
+  status           String   @default("PENDING_CONFIRMATION") @db.VarChar(30)
+  direction        String?  @db.VarChar(10) // LONG or SHORT
+  entryPrice       Decimal? @map("entry_price") @db.Decimal(10, 2)
+  stopPrice        Decimal? @map("stop_price") @db.Decimal(10, 2)
+  t1Price          Decimal? @map("t1_price") @db.Decimal(10, 2)
+  t2Price          Decimal? @map("t2_price") @db.Decimal(10, 2)
+  tier             String?  @db.VarChar(10) // TIER_1, TIER_2, TIER_3
+  entryType        String?  @map("entry_type") @db.VarChar(20) // RUNNER, RETEST
+  meta             Json?    @map("meta")
+  confirmedAt      DateTime? @map("confirmed_at")
+  expiredAt        DateTime? @map("expired_at")
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  position         V5Position?
+
+  @@unique([symbol, signalDate, category])
+  @@index([signalDate, status])
+  @@index([category, status])
+  @@map("v5_signals")
+}
+
+model V5Position {
+  id               Int      @id @default(autoincrement())
+  signalId         Int      @unique @map("signal_id")
+  signal           V5Signal @relation(fields: [signalId], references: [id])
+  symbol           String   @db.VarChar(50)
+  direction        String   @map("direction") @db.VarChar(10) // LONG or SHORT
+  
+  // Execution Pricing
+  entryDate        DateTime @map("entry_date") @db.Date
+  entryPrice       Decimal  @map("entry_price") @db.Decimal(10, 2)
+  stopPrice        Decimal  @map("stop_price") @db.Decimal(10, 2)
+  t1Price          Decimal? @map("t1_price") @db.Decimal(10, 2)
+  t2Price          Decimal? @map("t2_price") @db.Decimal(10, 2)
+  
+  // Sizing
+  quantity         Int
+  riskInr          Decimal  @default(1000) @map("risk_inr") @db.Decimal(10, 2)
+  
+  // Live State
+  status           String   @default("OPEN") @db.VarChar(20) // OPEN, CLOSED
+  currentPrice     Decimal? @map("current_price") @db.Decimal(10, 2)
+  unrealizedPnl    Decimal? @map("unrealized_pnl") @db.Decimal(10, 2)
+  holdingDays      Int      @default(0) @map("holding_days")
+  
+  // Meta
+  confidenceScore  Int      @map("confidence_score")
+  confidenceTier   String   @map("confidence_tier") @db.VarChar(10)
+
+  // Exit Execution
+  exitDate         DateTime? @map("exit_date") @db.Date
+  exitPrice        Decimal?  @map("exit_price") @db.Decimal(10, 2)
+  exitReason       String?   @map("exit_reason") @db.VarChar(50) // T1_HIT, T2_HIT, STOP_HIT, DAY3, EOD
+  realizedPnL      Decimal?  @map("realized_pnl") @db.Decimal(10, 2)
+  rMultiple        Decimal?  @map("r_multiple") @db.Decimal(10, 4)
+  outcome          String?   @db.VarChar(10) // WIN, LOSS, BREAKEVEN
+  notes            String?   @db.Text
+  slippagePercent  Decimal?  @map("slippage_percent") @db.Decimal(5, 2)
+
+  createdAt        DateTime  @default(now()) @map("created_at")
+  updatedAt        DateTime  @default(now()) @updatedAt @map("updated_at")
+
+  @@index([status])
+  @@index([symbol, status])
+  @@map("v5_positions")
+}
+
+model V5Alert {
+  id          Int      @id @default(autoincrement())
+  symbol      String   @db.VarChar(50)
+  alertType   String   @map("alert_type") @db.VarChar(50) // SETUP_FORMING, BREAKOUT, ENTRY
+  category    String   @db.VarChar(50) // INTRADAY_BOOST
+  direction   String?  @db.VarChar(10) // LONG, SHORT
+  price       Decimal  @db.Decimal(10, 2)
+  metadata    Json?    @map("metadata")
+  isRead      Boolean  @default(false) @map("is_read")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([createdAt])
+  @@index([alertType])
+  @@index([isRead])
+  @@map("v5_alerts")
+}
+
+model V5DailyReport {
+  id           Int      @id @default(autoincrement())
+  date         DateTime @unique @db.Date
+  totalSignals Int      @map("total_signals")
+  confirmed    Int
+  wins         Int
+  losses       Int
+  netR         Decimal  @map("net_r") @db.Decimal(10, 2)
+  winRate      Decimal  @map("win_rate") @db.Decimal(5, 2)
+  
+  topNWins     Int      @map("top_n_wins")
+  topNLosses   Int      @map("top_n_losses")
+  topNNetR     Decimal  @map("top_n_net_r") @db.Decimal(10, 2)
+
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@map("v5_daily_reports")
 }

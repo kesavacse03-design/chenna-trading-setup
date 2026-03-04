@@ -77,6 +77,8 @@ const WatchlistDashboard: React.FC = () => {
               <th>Name</th>
               <th>Date</th>
               <th>Category</th>
+              <th>Tier</th>
+              <th>Trend (10D)</th>
               <th>Price</th>
               <th>Exchange</th>
             </tr>
@@ -89,6 +91,27 @@ const WatchlistDashboard: React.FC = () => {
                 <td>{row.date}</td>
                 <td>
                   <span className="px-2 py-1 rounded bg-slate-700 text-xs">{row.category}</span>
+                </td>
+                <td>
+                  {row.meta?.tier && (
+                    <span
+                      className={`px-2 py-1 rounded text-xs ${row.meta.tier.includes('TIER 1')
+                          ? 'bg-red-900 text-red-200'
+                          : row.meta.tier.includes('TIER 2')
+                            ? 'bg-green-900 text-green-200'
+                            : 'bg-blue-900 text-blue-200'
+                        }`}
+                    >
+                      {row.meta.tier.split('(')[0].replace('TIER ', 'T').trim()}
+                    </span>
+                  )}
+                </td>
+                <td>
+                  {row.meta?.trend10d !== undefined && (
+                    <span className={`text-xs ${row.meta.trend10d > 0 ? 'text-green-400' : 'text-red-400'}`}>
+                      {row.meta.trend10d}%
+                    </span>
+                  )}
                 </td>
                 <td>{(row as any).price ?? '—'}</td>
                 <td>{(row as any).exchange}</td>

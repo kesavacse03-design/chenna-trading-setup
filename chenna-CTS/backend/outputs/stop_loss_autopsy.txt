@@ -1,0 +1,44 @@
+═══════════════════════════════════════════════════════════════════════════════════════
+ METHOD E STOP LOSS AUTOPSY (26 Trades)
+═══════════════════════════════════════════════════════════════════════════════════════
+
+--- DETAILED TRADE LOG FOR E1 (Current 1.5-4% Structure Stop) ---
+Symbol       | Entry   | Stop    | Dist% | Hit? | HitDay | Day10Prc  | U.Win? | Outcome
+───────────────────────────────────────────────────────────────────────────────────────
+DELHIVERY    |   460.4 |   442.0 |  4.0% | NO   |      6 |     471.1 |  YES    | Trail Hit        (Win: Y)
+VOLTAS       |  1418.9 |  1367.1 |  3.7% | NO   |      6 |    1414.6 |  NO     | Trail Hit        (Win: N)
+MANAPPURAM   |   276.0 |   265.0 |  4.0% | NO   |      7 |     296.1 |  YES    | Trail Hit (Gap)  (Win: Y)
+COLPAL       |  2410.0 |  2355.1 |  2.3% | NO   |      6 |    2347.8 |  NO     | Trail Hit        (Win: N)
+NATIONALUM   |   201.5 |   193.4 |  4.0% | NO   |      9 |     213.3 |  YES    | Trail Hit        (Win: Y)
+SAIL         |   130.0 |   124.8 |  4.0% | NO   |      9 |     133.2 |  YES    | Trail Hit        (Win: Y)
+TATASTEEL    |   169.0 |   162.2 |  4.0% | NO   |      6 |     172.0 |  YES    | Trail Hit        (Win: N)
+PPLPHARMA    |   203.4 |   195.3 |  4.0% | NO   |      7 |     203.3 |  NO     | Trail Hit        (Win: N)
+IDEA         |     9.5 |     9.1 |  4.0% | YES  |      4 |       9.5 |  NO     | Stop Hit         (Win: N)
+IOC          |   163.1 |   156.6 |  4.0% | NO   |      7 |     171.3 |  YES    | Trail Hit        (Win: Y)
+NTPC         |   349.0 |   339.1 |  2.8% | YES  |      1 |     328.4 |  NO     | Stop Hit         (Win: N)
+ADANIGREEN   |  1112.6 |  1068.1 |  4.0% | YES  |      4 |    1068.8 |  NO     | Stop Hit         (Win: N)
+ADANIENSOL   |   971.9 |   933.0 |  4.0% | NO   |      6 |    1023.9 |  YES    | Trail Hit        (Win: N)
+LTIM         |  6000.0 |  5789.0 |  3.5% | NO   |     -- |    6266.0 |  YES    | Timeout          (Win: Y)
+MCX          |  1973.0 |  1930.0 |  2.2% | YES  |      1 |    2024.0 |  YES    | Stop Hit         (Win: N)
+BAJAJ-AUTO   |  9054.0 |  8918.2 |  1.5% | NO   |      6 |    8991.0 |  NO     | Trail Hit        (Win: N)
+SHRIRAMFIN   |   842.0 |   827.2 |  1.8% | YES  |      5 |     837.3 |  NO     | Stop Hit         (Win: N)
+IDFCFIRSTB   |    85.0 |    83.7 |  1.6% | YES  |      5 |      84.7 |  NO     | Stop Hit         (Win: N)
+IIFL         |   605.8 |   581.6 |  4.0% | NO   |      9 |     649.3 |  YES    | Trail Hit        (Win: Y)
+JINDALSTEL   |  1053.8 |  1038.0 |  1.5% | NO   |      5 |    1042.9 |  NO     | Trail Hit        (Win: N)
+BANKINDIA    |   144.1 |   141.2 |  2.0% | NO   |      6 |     157.3 |  YES    | Trail Hit (Gap)  (Win: Y)
+HINDALCO     |  1010.3 |   969.8 |  4.0% | YES  |      1 |     966.0 |  NO     | Stop Hit         (Win: N)
+SBIN         |  1063.0 |  1044.2 |  1.8% | YES  |      2 |    1182.9 |  YES    | Stop Hit         (Win: N)
+INDIANB      |   907.0 |   893.4 |  1.5% | YES  |      1 |     880.7 |  NO     | Stop Hit         (Win: N)
+FEDERALBNK   |   286.6 |   282.4 |  1.5% | YES  |      1 |     287.1 |  YES    | Stop Hit         (Win: N)
+
+--- E1 AUTOPSY METRICS ---
+Trades where stop hit BUT Day 10 > entry (Whipsaws): 3 out of 26
+Trades where stop hit AND Day 10 < entry (Saved):    7 out of 26
+Trades that survived to Day 10 timeout:              1 out of 26
+Trades exited via trailing stop with profit:         7 out of 26
+
+--- FOUR STOP COMPARISONS ON 26 TRADES ---
+E1: Current structure stop (1.5-4%):    25 trades | 32.0% WR | P&L ₹-5326
+E2: Strict Signal Day Low as stop:      25 trades | 32.0% WR | P&L ₹-6691
+E3: Volatility-based ATR Stop (1.5x):   25 trades | 32.0% WR | P&L ₹-2317
+E4: NO stop, Day 10 timeout (Theory):   25 trades | 52.0% WR | P&L +1.68% Avg Ret

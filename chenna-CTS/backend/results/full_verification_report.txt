@@ -1,0 +1,719 @@
+﻿══════════════════════════════════════════════════════════════════════
+  PRODUCTION-GRADE V2 STRATEGY VERIFICATION
+  3-Way Comparison: Fixed | ATR-Based | ATR + Trailing
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+  TESTING: ST_SWING_BO_DOWN
+──────────────────────────────────────────────────────────────────────
+  ❌ NYKAA        | Entry: ₹   254 | Stop: 2.0% (STRUC) | Exit: BREAKEVEN      | P&L: +0.00% | Days: 5
+  ✅ BEL          | Entry: ₹   407 | Stop: 2.0% (STRUC) | Exit: BREAKEVEN      | P&L: +0.03% | Days: 7
+  ❌ POLYCAB      | Entry: ₹  7420 | Stop: 2.0% (STRUC) | Exit: BREAKEVEN      | P&L: +0.00% | Days: 5
+  ✅ APLAPOLLO    | Entry: ₹  1700 | Stop: 2.0% (STRUC) | Exit: TARGET         | P&L: +4.00% | Days: 7
+  ✅ PHOENIXLTD   | Entry: ₹  1690 | Stop: 2.1% (STRUC) | Exit: TARGET         | P&L: +4.14% | Days: 2
+  ❌ TITAN        | Entry: ₹  4273 | Stop: 3.0% (ATR_B) | Exit: INITIAL_STOP   | P&L: -2.96% | Days: 3
+  ✅ TORNTPHARM   | Entry: ₹  3980 | Stop: 5.4% (ATR_B) | Exit: BREAKEVEN      | P&L: +0.02% | Days: 5
+  ❌ MOTHERSON    | Entry: ₹   118 | Stop: 2.0% (STRUC) | Exit: INITIAL_STOP   | P&L: -2.00% | Days: 1
+  ❌ CANBK        | Entry: ₹   146 | Stop: 2.0% (STRUC) | Exit: INITIAL_STOP   | P&L: -2.00% | Days: 1
+
+──────────────────────────────────────────────────────────────────────
+  TESTING: ST_SWING_BO_UP
+──────────────────────────────────────────────────────────────────────
+  ❌ MOTHERSON    | Entry: ₹   107 | Stop: 3.7% (STRUC) | Exit: INITIAL_STOP   | P&L: -3.73% | Days: 9
+  ❌ MARUTI       | Entry: ₹ 14859 | Stop: 4.1% (ATR_B) | Exit: BREAKEVEN      | P&L: +0.00% | Days: 4
+  ❌ IOC          | Entry: ₹   163 | Stop: 4.3% (ATR_B) | Exit: BREAKEVEN      | P&L: +0.00% | Days: 2
+  ✅ SAIL         | Entry: ₹   130 | Stop: 4.7% (ATR_B) | Exit: BREAKEVEN      | P&L: +0.58% | Days: 4
+  ✅ YESBANK      | Entry: ₹    20 | Stop: 4.5% (ATR_B) | Exit: TIME_EXIT      | P&L: +3.22% | Days: 10
+  ✅ GODREJPROP   | Entry: ₹  2280 | Stop: 5.2% (ATR_B) | Exit: BREAKEVEN      | P&L: +0.06% | Days: 3
+  ✅ LTF          | Entry: ₹   228 | Stop: 5.1% (ATR_B) | Exit: TIME_EXIT      | P&L: +6.52% | Days: 10
+  ❌ PERSISTENT   | Entry: ₹  6422 | Stop: 4.0% (ATR_B) | Exit: TRAILING_STOP  | P&L: -1.34% | Days: 10
+  ❌ NAUKRI       | Entry: ₹  1365 | Stop: 3.5% (STRUC) | Exit: TRAILING_STOP  | P&L: -1.28% | Days: 10
+  ✅ ICICIPRULI   | Entry: ₹   638 | Stop: 3.4% (STRUC) | Exit: TIME_EXIT      | P&L: +4.74% | Days: 10
+  ✅ IRFC         | Entry: ₹   118 | Stop: 4.4% (ATR_B) | Exit: BREAKEVEN      | P&L: +2.50% | Days: 2
+  ❌ SRF          | Entry: ₹  3060 | Stop: 3.7% (ATR_B) | Exit: BREAKEVEN      | P&L: +0.00% | Days: 3
+  ✅ PNBHOUSING   | Entry: ₹   969 | Stop: 6.2% (ATR_B) | Exit: BREAKEVEN      | P&L: +1.63% | Days: 9
+  ✅ JSWSTEEL     | Entry: ₹  1228 | Stop: 4.7% (ATR_B) | Exit: TIME_EXIT      | P&L: +1.73% | Days: 10
+  ✅ DELHIVERY    | Entry: ₹   411 | Stop: 6.9% (ATR_B) | Exit: BREAKEVEN      | P&L: +6.15% | Days: 3
+  ❌ APLAPOLLO    | Entry: ₹  2095 | Stop: 5.1% (ATR_B) | Exit: BREAKEVEN      | P&L: +0.00% | Days: 2
+  ✅ FEDERALBNK   | Entry: ₹   287 | Stop: 3.8% (STRUC) | Exit: BREAKEVEN      | P&L: +0.92% | Days: 5
+
+══════════════════════════════════════════════════════════════════════
+  COMPARISON: ST_SWING_BO_DOWN
+══════════════════════════════════════════════════════════════════════
+
+  Method             | Trades |  Win % |  Avg P&L |  Max Loss |    PF | Avg Days
+  ──────────────────-+-──────-+-──────-+-────────-+-─────────-+-─────-+-────────
+  Fixed 3.5%         |      9 | 33.33% | -1.59% | -3.5% |  0.32 |     7.78
+  ATR-Based (2x)     |      9 | 33.33% | -0.26% | -2.96% |  0.82 |     5.22
+  ATR + Trailing     |      9 | 44.44% | +0.14% | -2.96% |  1.18 |        4
+
+  Exit Breakdown (ATR + Trailing):
+    BREAKEVEN       :   4 trades | Avg P&L: +0.01%
+    TARGET          :   2 trades | Avg P&L: +4.07%
+    INITIAL_STOP    :   3 trades | Avg P&L: -2.32%
+
+  🎯 Trades SAVED by Trailing Stop: 1 (turned losses into avg +0.03% profit)
+
+══════════════════════════════════════════════════════════════════════
+  COMPARISON: ST_SWING_BO_UP
+══════════════════════════════════════════════════════════════════════
+
+  Method             | Trades |  Win % |  Avg P&L |  Max Loss |    PF | Avg Days
+  ──────────────────-+-──────-+-──────-+-────────-+-─────────-+-─────-+-────────
+  Fixed 3.5%         |     17 | 52.94% | +1.3% | -3.5% |  2.07 |     7.47
+  ATR-Based (2x)     |     17 | 70.59% | +2.32% | -5.23% |  4.25 |     9.53
+  ATR + Trailing     |     17 | 58.82% | +1.28% | -3.73% |  4.42 |     6.24
+
+  Exit Breakdown (ATR + Trailing):
+    INITIAL_STOP    :   1 trades | Avg P&L: -3.73%
+    BREAKEVEN       :  10 trades | Avg P&L: +1.18%
+    TIME_EXIT       :   4 trades | Avg P&L: +4.05%
+    TRAILING_STOP   :   2 trades | Avg P&L: -1.31%
+
+  🎯 Trades SAVED by Trailing Stop: 1 (turned losses into avg +0.06% profit)
+
+══════════════════════════════════════════════════════════════════════
+  DETAILED MANUAL VERIFICATION REPORT: ST_SWING_BO_DOWN
+  Total Trades: 9
+══════════════════════════════════════════════════════════════════════
+
+  ── TRADE #1: NYKAA ──
+  Strategy: ST_SWING_BO_DOWN | Tier: 2 | Reason: Dip in Uptrend (RSI 51.5)
+  Entry: ₹254.1 on 2025-10-24 (Next Day Open)
+  Initial Stop: ₹249.02 | Stop Method: STRUCTURE_BASED_CLAMPED_MIN
+  Target: ₹264.26 | ATR: ₹8.04
+  Stop %: 2% | Target %: 4%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-10-24   |    255.3 |    249.7 |   250.59 |   249.02 | NO_CHANGE
+     2 | 2025-10-27   |   255.97 |   251.31 |   255.14 |   249.02 | NO_CHANGE
+     3 | 2025-10-28   |    259.5 |   253.72 |   256.86 |    254.1 | BREAKEVEN
+     4 | 2025-10-29   |    260.9 |   256.75 |   258.06 |    254.1 | NO_CHANGE
+     5 | 2025-10-30   |   258.26 |      254 |   256.77 |    254.1 | BREAKEVEN
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: BREAKEVEN        at ₹254.1 on 2025-10-30
+  │  P&L: +0%
+  │  Days Held: 5
+  │  Highest Price: ₹260.9 (+2.68%)
+  │  Max Adverse: -1.73%
+  │  Final Stop: ₹254.1 (Initial: ₹249.02)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #2: BEL ──
+  Strategy: ST_SWING_BO_DOWN | Tier: 2 | Reason: Dip in Uptrend (RSI 41.5)
+  Entry: ₹406.5 on 2025-11-25 (Next Day Open)
+  Initial Stop: ₹398.37 | Stop Method: STRUCTURE_BASED_CLAMPED_MIN
+  Target: ₹422.76 | ATR: ₹8.66
+  Stop %: 2% | Target %: 4%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-11-25   |    412.4 |      406 |   410.25 |   398.37 | NO_CHANGE
+     2 | 2025-11-26   |    416.5 |    408.5 |    415.3 |    406.5 | BREAKEVEN
+     3 | 2025-11-27   |    417.3 |      412 |   413.05 |    406.5 | NO_CHANGE
+     4 | 2025-11-28   |   415.25 |   408.65 |   411.75 |    406.5 | NO_CHANGE
+     5 | 2025-12-01   |    419.2 |    413.5 |   417.25 |   406.62 | TRAIL_UPDATE
+     6 | 2025-12-02   |   418.65 |      411 |   413.05 |   406.62 | NO_CHANGE
+     7 | 2025-12-03   |    412.7 |    403.4 |   403.95 |   406.62 | BREAKEVEN
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: BREAKEVEN        at ₹406.62 on 2025-12-03
+  │  P&L: +0.03%
+  │  Days Held: 7
+  │  Highest Price: ₹419.2 (+3.12%)
+  │  Max Adverse: -0.76%
+  │  Final Stop: ₹406.62 (Initial: ₹398.37)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #3: POLYCAB ──
+  Strategy: ST_SWING_BO_DOWN | Tier: 2 | Reason: Dip in Uptrend (RSI 40.4)
+  Entry: ₹7420 on 2025-11-25 (Next Day Open)
+  Initial Stop: ₹7271.6 | Stop Method: STRUCTURE_BASED_CLAMPED_MIN
+  Target: ₹7716.8 | ATR: ₹127.79
+  Stop %: 2% | Target %: 4%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-11-25   |     7520 |     7384 |     7439 |   7271.6 | NO_CHANGE
+     2 | 2025-11-26   |   7568.5 |     7416 |     7539 |     7420 | BREAKEVEN
+     3 | 2025-11-27   |     7560 |     7425 |     7479 |     7420 | NO_CHANGE
+     4 | 2025-11-28   |     7520 |   7451.5 |     7470 |     7420 | NO_CHANGE
+     5 | 2025-12-01   |     7530 |   7382.5 |     7401 |     7420 | BREAKEVEN
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: BREAKEVEN        at ₹7420 on 2025-12-01
+  │  P&L: +0%
+  │  Days Held: 5
+  │  Highest Price: ₹7568.5 (+2%)
+  │  Max Adverse: -0.51%
+  │  Final Stop: ₹7420 (Initial: ₹7271.6)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #4: APLAPOLLO ──
+  Strategy: ST_SWING_BO_DOWN | Tier: 2 | Reason: Dip in Uptrend (RSI 37.1)
+  Entry: ₹1699.9 on 2025-11-26 (Next Day Open)
+  Initial Stop: ₹1665.9 | Stop Method: STRUCTURE_BASED_CLAMPED_MIN
+  Target: ₹1767.9 | ATR: ₹31.1
+  Stop %: 2% | Target %: 4%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-11-26   |   1736.4 |   1692.9 |   1732.8 |   1699.9 | BREAKEVEN
+     2 | 2025-11-27   |     1743 |     1710 |   1734.9 |   1699.9 | NO_CHANGE
+     3 | 2025-11-28   |   1742.8 |   1709.3 |   1718.9 |   1699.9 | NO_CHANGE
+     4 | 2025-12-01   |   1738.1 |   1718.6 |   1734.3 |   1699.9 | NO_CHANGE
+     5 | 2025-12-02   |   1737.3 |     1712 |   1734.6 |   1699.9 | NO_CHANGE
+     6 | 2025-12-03   |   1757.4 |   1715.6 |   1752.1 |  1704.68 | TRAIL_UPDATE
+     7 | 2025-12-04   |     1776 |   1752.7 |   1772.9 |  1704.68 | TARGET
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: TARGET           at ₹1767.9 on 2025-12-04
+  │  P&L: +4%
+  │  Days Held: 7
+  │  Highest Price: ₹1776 (+4.48%)
+  │  Max Adverse: -0.41%
+  │  Final Stop: ₹1704.68 (Initial: ₹1665.9)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #5: PHOENIXLTD ──
+  Strategy: ST_SWING_BO_DOWN | Tier: 2 | Reason: Dip in Uptrend (RSI 44.0)
+  Entry: ₹1690 on 2025-11-25 (Next Day Open)
+  Initial Stop: ₹1655.02 | Stop Method: STRUCTURE_BASED
+  Target: ₹1759.95 | ATR: ₹38.89
+  Stop %: 2.07% | Target %: 4.14%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-11-25   |     1737 |     1679 |   1731.7 |     1690 | BREAKEVEN
+     2 | 2025-11-26   |     1762 |   1729.1 |   1751.7 |     1690 | TARGET
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: TARGET           at ₹1759.95 on 2025-11-26
+  │  P&L: +4.14%
+  │  Days Held: 2
+  │  Highest Price: ₹1762 (+4.26%)
+  │  Max Adverse: -0.65%
+  │  Final Stop: ₹1690 (Initial: ₹1655.02)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #6: TITAN ──
+  Strategy: ST_SWING_BO_DOWN | Tier: 2 | Reason: Dip in Uptrend (RSI 80.2)
+  Entry: ₹4273.2 on 2026-01-08 (Next Day Open)
+  Initial Stop: ₹4146.69 | Stop Method: ATR_BASED
+  Target: ₹4526.23 | ATR: ₹63.26
+  Stop %: 2.96% | Target %: 5.92%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2026-01-08   |   4303.2 |     4239 |     4249 |  4146.69 | NO_CHANGE
+     2 | 2026-01-09   |     4279 |   4183.1 |   4201.8 |  4146.69 | NO_CHANGE
+     3 | 2026-01-12   |     4242 |     4145 |   4231.6 |  4146.69 | INITIAL_STOP
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: INITIAL_STOP     at ₹4146.69 on 2026-01-12
+  │  P&L: -2.96%
+  │  Days Held: 3
+  │  Highest Price: ₹4303.2 (+0.7%)
+  │  Max Adverse: -3%
+  │  Final Stop: ₹4146.69 (Initial: ₹4146.69)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #7: TORNTPHARM ──
+  Strategy: ST_SWING_BO_DOWN | Tier: 2 | Reason: Dip in Uptrend (RSI 54.0)
+  Entry: ₹3980 on 2026-02-01 (Next Day Open)
+  Initial Stop: ₹3765.1 | Stop Method: ATR_BASED
+  Target: ₹4409.8 | ATR: ₹107.45
+  Stop %: 5.4% | Target %: 10.8%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2026-02-01   |   4018.3 |   3926.5 |   3997.1 |   3765.1 | NO_CHANGE
+     2 | 2026-02-02   |   4018.5 |   3903.9 |   3987.2 |   3765.1 | NO_CHANGE
+     3 | 2026-02-03   |   4104.1 |   4010.2 |   4045.6 |  3980.98 | TRAIL_UPDATE
+     4 | 2026-02-04   |   4068.1 |   3986.7 |   4023.5 |  3980.98 | NO_CHANGE
+     5 | 2026-02-05   |   4029.9 |   3931.8 |   3976.4 |  3980.98 | BREAKEVEN
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: BREAKEVEN        at ₹3980.98 on 2026-02-05
+  │  P&L: +0.02%
+  │  Days Held: 5
+  │  Highest Price: ₹4104.1 (+3.12%)
+  │  Max Adverse: -1.91%
+  │  Final Stop: ₹3980.98 (Initial: ₹3765.1)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #8: MOTHERSON ──
+  Strategy: ST_SWING_BO_DOWN | Tier: 2 | Reason: Dip in Uptrend (RSI 47.1)
+  Entry: ₹118 on 2026-01-09 (Next Day Open)
+  Initial Stop: ₹115.64 | Stop Method: STRUCTURE_BASED_CLAMPED_MIN
+  Target: ₹122.72 | ATR: ₹2.44
+  Stop %: 2% | Target %: 4%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2026-01-09   |   118.09 |   114.85 |   115.64 |   115.64 | INITIAL_STOP
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: INITIAL_STOP     at ₹115.64 on 2026-01-09
+  │  P&L: -2%
+  │  Days Held: 1
+  │  Highest Price: ₹118.09 (+0.08%)
+  │  Max Adverse: -2.67%
+  │  Final Stop: ₹115.64 (Initial: ₹115.64)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #9: CANBK ──
+  Strategy: ST_SWING_BO_DOWN | Tier: 2 | Reason: Dip in Uptrend (RSI 42.4)
+  Entry: ₹145.98 on 2026-02-01 (Next Day Open)
+  Initial Stop: ₹143.06 | Stop Method: STRUCTURE_BASED_CLAMPED_MIN
+  Target: ₹151.82 | ATR: ₹4.95
+  Stop %: 2% | Target %: 4%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2026-02-01   |   148.92 |   138.01 |   141.05 |   143.06 | INITIAL_STOP
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: INITIAL_STOP     at ₹143.06 on 2026-02-01
+  │  P&L: -2%
+  │  Days Held: 1
+  │  Highest Price: ₹148.92 (+2.01%)
+  │  Max Adverse: -5.46%
+  │  Final Stop: ₹143.06 (Initial: ₹143.06)
+  └─────────────────────────────────────────────────┘
+
+══════════════════════════════════════════════════════════════════════
+  DETAILED MANUAL VERIFICATION REPORT: ST_SWING_BO_UP
+  Total Trades: 17
+══════════════════════════════════════════════════════════════════════
+
+  ── TRADE #1: MOTHERSON ──
+  Strategy: ST_SWING_BO_UP | Tier: 1 | Reason: Fresh Breakout (RSI 53.4) + Uptrend
+  Entry: ₹107.31 on 2025-10-24 (Next Day Open)
+  Initial Stop: ₹103.31 | Stop Method: STRUCTURE_BASED
+  Target: ₹117.31 | ATR: ₹2.6
+  Stop %: 3.73% | Target %: 9.32%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-10-24   |   107.47 |   104.93 |   106.25 |   103.31 | NO_CHANGE
+     2 | 2025-10-27   |   107.27 |    106.1 |   106.93 |   103.31 | NO_CHANGE
+     3 | 2025-10-28   |   107.72 |   106.11 |   106.98 |   103.31 | NO_CHANGE
+     4 | 2025-10-29   |   108.25 |   105.15 |   107.73 |   103.31 | NO_CHANGE
+     5 | 2025-10-30   |    108.8 |   106.16 |   106.88 |   103.31 | NO_CHANGE
+     6 | 2025-10-31   |    107.7 |   105.17 |   105.39 |   103.31 | NO_CHANGE
+     7 | 2025-11-03   |    106.1 |   103.82 |   105.57 |   103.31 | NO_CHANGE
+     8 | 2025-11-04   |    106.1 |   103.75 |   104.49 |   103.31 | NO_CHANGE
+     9 | 2025-11-06   |   105.07 |   102.08 |   103.92 |   103.31 | INITIAL_STOP
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: INITIAL_STOP     at ₹103.31 on 2025-11-06
+  │  P&L: -3.73%
+  │  Days Held: 9
+  │  Highest Price: ₹108.8 (+1.39%)
+  │  Max Adverse: -4.87%
+  │  Final Stop: ₹103.31 (Initial: ₹103.31)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #2: MARUTI ──
+  Strategy: ST_SWING_BO_UP | Tier: 2 | Reason: Extended Momentum (RSI 84.8)
+  Entry: ₹14859 on 2025-09-02 (Next Day Open)
+  Initial Stop: ₹14246.29 | Stop Method: ATR_BASED
+  Target: ₹16390.79 | ATR: ₹306.36
+  Stop %: 4.12% | Target %: 10.31%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-09-02   |    14934 |    14783 |    14842 | 14246.29 | NO_CHANGE
+     2 | 2025-09-03   |    14991 |    14750 |    14927 | 14246.29 | NO_CHANGE
+     3 | 2025-09-04   |    15240 |    14630 |    14662 |    14859 | BREAKEVEN
+     4 | 2025-09-05   |    14957 |    14701 |    14895 |    14859 | BREAKEVEN
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: BREAKEVEN        at ₹14859 on 2025-09-05
+  │  P&L: +0%
+  │  Days Held: 4
+  │  Highest Price: ₹15240 (+2.56%)
+  │  Max Adverse: -1.54%
+  │  Final Stop: ₹14859 (Initial: ₹14246.29)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #3: IOC ──
+  Strategy: ST_SWING_BO_UP | Tier: 2 | Reason: Extended Momentum (RSI 71.7)
+  Entry: ₹163.09 on 2025-10-30 (Next Day Open)
+  Initial Stop: ₹155.99 | Stop Method: ATR_BASED
+  Target: ₹180.83 | ATR: ₹3.55
+  Stop %: 4.35% | Target %: 10.88%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-10-30   |    167.1 |   162.15 |   163.51 |   163.09 | BREAKEVEN
+     2 | 2025-10-31   |   166.91 |   163.09 |    165.9 |   163.09 | BREAKEVEN
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: BREAKEVEN        at ₹163.09 on 2025-10-31
+  │  P&L: +0%
+  │  Days Held: 2
+  │  Highest Price: ₹167.1 (+2.46%)
+  │  Max Adverse: -0.58%
+  │  Final Stop: ₹163.09 (Initial: ₹155.99)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #4: SAIL ──
+  Strategy: ST_SWING_BO_UP | Tier: 1 | Reason: Fresh Breakout (RSI 57.7) + Uptrend
+  Entry: ₹130 on 2025-09-04 (Next Day Open)
+  Initial Stop: ₹123.87 | Stop Method: ATR_BASED
+  Target: ₹145.31 | ATR: ₹3.06
+  Stop %: 4.72% | Target %: 11.78%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-09-04   |   130.21 |   127.22 |   127.57 |   123.87 | NO_CHANGE
+     2 | 2025-09-05   |    129.6 |   126.71 |   129.26 |   123.87 | NO_CHANGE
+     3 | 2025-09-08   |   134.79 |   130.16 |   131.45 |   130.75 | TRAIL_UPDATE
+     4 | 2025-09-09   |    131.6 |   129.11 |   129.45 |   130.75 | BREAKEVEN
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: BREAKEVEN        at ₹130.75 on 2025-09-09
+  │  P&L: +0.58%
+  │  Days Held: 4
+  │  Highest Price: ₹134.79 (+3.68%)
+  │  Max Adverse: -2.53%
+  │  Final Stop: ₹130.75 (Initial: ₹123.87)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #5: YESBANK ──
+  Strategy: ST_SWING_BO_UP | Tier: 1 | Reason: Fresh Breakout (RSI 63.2) + Uptrend
+  Entry: ₹20.49 on 2025-09-04 (Next Day Open)
+  Initial Stop: ₹19.56 | Stop Method: ATR_BASED
+  Target: ₹22.8 | ATR: ₹0.46
+  Stop %: 4.54% | Target %: 11.27%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-09-04   |    20.54 |    20.25 |    20.29 |    19.56 | NO_CHANGE
+     2 | 2025-09-05   |    20.61 |    20.03 |    20.44 |    19.56 | NO_CHANGE
+     3 | 2025-09-08   |    20.53 |    20.14 |    20.18 |    19.56 | NO_CHANGE
+     4 | 2025-09-09   |    20.48 |     20.2 |    20.34 |    19.56 | NO_CHANGE
+     5 | 2025-09-10   |    20.93 |    20.42 |    20.77 |    20.49 | BREAKEVEN
+     6 | 2025-09-11   |    21.14 |    20.75 |    20.98 |    20.51 | TRAIL_UPDATE
+     7 | 2025-09-12   |    21.08 |    20.75 |    20.86 |    20.51 | NO_CHANGE
+     8 | 2025-09-15   |    21.28 |    20.87 |    21.01 |    20.64 | TRAIL_UPDATE
+     9 | 2025-09-16   |    21.09 |    20.84 |    21.01 |    20.64 | NO_CHANGE
+    10 | 2025-09-17   |    21.24 |    20.87 |    21.15 |    20.64 | TIME_EXIT
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: TIME_EXIT        at ₹21.15 on 2025-09-17
+  │  P&L: +3.22%
+  │  Days Held: 10
+  │  Highest Price: ₹21.28 (+3.86%)
+  │  Max Adverse: -2.24%
+  │  Final Stop: ₹20.64 (Initial: ₹19.56)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #6: GODREJPROP ──
+  Strategy: ST_SWING_BO_UP | Tier: 1 | Reason: Fresh Breakout (RSI 68.3) + Uptrend
+  Entry: ₹2280 on 2025-10-24 (Next Day Open)
+  Initial Stop: ₹2160.66 | Stop Method: ATR_BASED
+  Target: ₹2578.36 | ATR: ₹59.67
+  Stop %: 5.23% | Target %: 13.09%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-10-24   |     2310 |   2263.5 |   2287.8 |  2160.66 | NO_CHANGE
+     2 | 2025-10-27   |     2352 |   2306.7 |   2320.3 |  2281.44 | TRAIL_UPDATE
+     3 | 2025-10-28   |     2330 |   2275.3 |   2296.6 |  2281.44 | BREAKEVEN
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: BREAKEVEN        at ₹2281.44 on 2025-10-28
+  │  P&L: +0.06%
+  │  Days Held: 3
+  │  Highest Price: ₹2352 (+3.16%)
+  │  Max Adverse: -0.72%
+  │  Final Stop: ₹2281.44 (Initial: ₹2160.66)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #7: LTF ──
+  Strategy: ST_SWING_BO_UP | Tier: 1 | Reason: Fresh Breakout (RSI 67.4) + Uptrend
+  Entry: ₹228.03 on 2025-09-04 (Next Day Open)
+  Initial Stop: ₹216.48 | Stop Method: ATR_BASED
+  Target: ₹256.91 | ATR: ₹5.78
+  Stop %: 5.07% | Target %: 12.67%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-09-04   |    230.2 |      226 |   227.85 |   216.48 | NO_CHANGE
+     2 | 2025-09-05   |   232.87 |    228.8 |   230.51 |   228.03 | BREAKEVEN
+     3 | 2025-09-08   |   236.45 |   230.71 |   233.57 |   229.36 | TRAIL_UPDATE
+     4 | 2025-09-09   |   235.15 |   232.31 |   233.97 |   229.36 | NO_CHANGE
+     5 | 2025-09-10   |   235.71 |    231.6 |   232.72 |   229.36 | NO_CHANGE
+     6 | 2025-09-11   |   235.19 |   232.25 |   233.51 |   229.36 | NO_CHANGE
+     7 | 2025-09-12   |    236.5 |   233.51 |   234.96 |   229.41 | TRAIL_UPDATE
+     8 | 2025-09-15   |   238.35 |    233.8 |    237.1 |    231.2 | TRAIL_UPDATE
+     9 | 2025-09-16   |   241.28 |   237.17 |   241.03 |   234.04 | TRAIL_UPDATE
+    10 | 2025-09-17   |    243.7 |   238.93 |   242.89 |   236.39 | TIME_EXIT
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: TIME_EXIT        at ₹242.89 on 2025-09-17
+  │  P&L: +6.52%
+  │  Days Held: 10
+  │  Highest Price: ₹243.7 (+6.87%)
+  │  Max Adverse: -0.89%
+  │  Final Stop: ₹236.39 (Initial: ₹216.48)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #8: PERSISTENT ──
+  Strategy: ST_SWING_BO_UP | Tier: 2 | Reason: Extended Momentum (RSI 72.0)
+  Entry: ₹6421.5 on 2025-11-25 (Next Day Open)
+  Initial Stop: ₹6164.93 | Stop Method: ATR_BASED
+  Target: ₹7062.93 | ATR: ₹128.29
+  Stop %: 4% | Target %: 9.99%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-11-25   |   6421.5 |     6324 |   6370.5 |  6164.93 | NO_CHANGE
+     2 | 2025-11-26   |   6421.5 |     6360 |     6415 |  6164.93 | NO_CHANGE
+     3 | 2025-11-27   |     6478 |   6383.5 |     6432 |  6164.93 | NO_CHANGE
+     4 | 2025-11-28   |     6455 |   6318.5 |     6353 |  6164.93 | NO_CHANGE
+     5 | 2025-12-01   |     6425 |     6331 |     6406 |  6164.93 | NO_CHANGE
+     6 | 2025-12-02   |     6447 |   6337.5 |   6393.5 |  6164.93 | NO_CHANGE
+     7 | 2025-12-03   |     6408 |     6295 |     6331 |  6164.93 | NO_CHANGE
+     8 | 2025-12-04   |   6528.5 |     6334 |     6452 |  6332.65 | TRAIL_UPDATE
+     9 | 2025-12-05   |   6531.5 |     6428 |   6520.5 |  6335.55 | TRAIL_UPDATE
+    10 | 2025-12-08   |     6553 |     6311 |     6347 |  6335.55 | TRAILING_STOP
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: TRAILING_STOP    at ₹6335.55 on 2025-12-08
+  │  P&L: -1.34%
+  │  Days Held: 10
+  │  Highest Price: ₹6553 (+2.05%)
+  │  Max Adverse: -1.97%
+  │  Final Stop: ₹6335.55 (Initial: ₹6164.93)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #9: NAUKRI ──
+  Strategy: ST_SWING_BO_UP | Tier: 1 | Reason: Fresh Breakout (RSI 56.3) + Uptrend
+  Entry: ₹1364.5 on 2025-12-26 (Next Day Open)
+  Initial Stop: ₹1316.83 | Stop Method: STRUCTURE_BASED
+  Target: ₹1483.68 | ATR: ₹28.86
+  Stop %: 3.49% | Target %: 8.73%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-12-26   |     1374 |   1359.5 |   1365.8 |  1316.83 | NO_CHANGE
+     2 | 2025-12-29   |   1377.5 |     1350 |   1359.5 |  1316.83 | NO_CHANGE
+     3 | 2025-12-30   |   1359.1 |     1330 |     1335 |  1316.83 | NO_CHANGE
+     4 | 2025-12-31   |   1347.3 |   1331.3 |   1333.6 |  1316.83 | NO_CHANGE
+     5 | 2026-01-01   |     1348 |   1329.1 |   1340.9 |  1316.83 | NO_CHANGE
+     6 | 2026-01-02   |   1373.5 |   1335.4 |   1367.7 |  1316.83 | NO_CHANGE
+     7 | 2026-01-05   |   1370.9 |   1333.7 |   1343.2 |  1316.83 | NO_CHANGE
+     8 | 2026-01-06   |     1357 |   1325.8 |   1335.8 |  1316.83 | NO_CHANGE
+     9 | 2026-01-07   |   1388.7 |     1339 |   1359.4 |  1347.04 | TRAIL_UPDATE
+    10 | 2026-01-08   |     1368 |     1333 |   1337.4 |  1347.04 | TRAILING_STOP
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: TRAILING_STOP    at ₹1347.04 on 2026-01-08
+  │  P&L: -1.28%
+  │  Days Held: 10
+  │  Highest Price: ₹1388.7 (+1.77%)
+  │  Max Adverse: -2.84%
+  │  Final Stop: ₹1347.04 (Initial: ₹1316.83)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #10: ICICIPRULI ──
+  Strategy: ST_SWING_BO_UP | Tier: 1 | Reason: Fresh Breakout (RSI 58.9) + Uptrend
+  Entry: ₹638 on 2025-12-17 (Next Day Open)
+  Initial Stop: ₹616.21 | Stop Method: STRUCTURE_BASED
+  Target: ₹692.46 | ATR: ₹13.93
+  Stop %: 3.42% | Target %: 8.54%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-12-17   |    639.6 |      627 |    630.5 |   616.21 | NO_CHANGE
+     2 | 2025-12-18   |   647.45 |   625.95 |   645.65 |   616.21 | NO_CHANGE
+     3 | 2025-12-19   |      653 |   647.65 |    650.4 |      638 | BREAKEVEN
+     4 | 2025-12-22   |    652.1 |   645.05 |    650.5 |      638 | NO_CHANGE
+     5 | 2025-12-23   |    656.2 |      646 |    650.9 |      638 | NO_CHANGE
+     6 | 2025-12-24   |      654 |   648.75 |   652.05 |      638 | NO_CHANGE
+     7 | 2025-12-26   |    654.6 |   645.95 |   649.95 |      638 | NO_CHANGE
+     8 | 2025-12-29   |   653.95 |   647.75 |    651.2 |      638 | NO_CHANGE
+     9 | 2025-12-30   |      658 |   648.35 |   654.85 |   638.26 | TRAIL_UPDATE
+    10 | 2025-12-31   |    669.5 |    654.8 |   668.25 |   649.42 | TIME_EXIT
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: TIME_EXIT        at ₹668.25 on 2025-12-31
+  │  P&L: +4.74%
+  │  Days Held: 10
+  │  Highest Price: ₹669.5 (+4.94%)
+  │  Max Adverse: -1.89%
+  │  Final Stop: ₹649.42 (Initial: ₹616.21)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #11: IRFC ──
+  Strategy: ST_SWING_BO_UP | Tier: 1 | Reason: Fresh Breakout (RSI 52.7) + Uptrend
+  Entry: ₹117.8 on 2025-12-23 (Next Day Open)
+  Initial Stop: ₹112.62 | Stop Method: ATR_BASED
+  Target: ₹130.75 | ATR: ₹2.59
+  Stop %: 4.4% | Target %: 10.99%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-12-23   |   124.48 |   116.81 |    121.4 |   120.75 | TRAIL_UPDATE
+     2 | 2025-12-24   |   123.84 |   120.54 |   121.49 |   120.75 | BREAKEVEN
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: BREAKEVEN        at ₹120.75 on 2025-12-24
+  │  P&L: +2.5%
+  │  Days Held: 2
+  │  Highest Price: ₹124.48 (+5.67%)
+  │  Max Adverse: -0.84%
+  │  Final Stop: ₹120.75 (Initial: ₹112.62)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #12: SRF ──
+  Strategy: ST_SWING_BO_UP | Tier: 1 | Reason: Fresh Breakout (RSI 63.6) + Uptrend
+  Entry: ₹3059.9 on 2025-12-19 (Next Day Open)
+  Initial Stop: ₹2946.8 | Stop Method: ATR_BASED
+  Target: ₹3342.65 | ATR: ₹56.55
+  Stop %: 3.7% | Target %: 9.24%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-12-19   |     3094 |     3030 |   3090.3 |   2946.8 | NO_CHANGE
+     2 | 2025-12-22   |   3140.5 |   3075.7 |   3091.6 |   3059.9 | BREAKEVEN
+     3 | 2025-12-23   |   3141.7 |   3055.8 |   3111.7 |   3059.9 | BREAKEVEN
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: BREAKEVEN        at ₹3059.9 on 2025-12-23
+  │  P&L: +0%
+  │  Days Held: 3
+  │  Highest Price: ₹3141.7 (+2.67%)
+  │  Max Adverse: -0.98%
+  │  Final Stop: ₹3059.9 (Initial: ₹2946.8)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #13: PNBHOUSING ──
+  Strategy: ST_SWING_BO_UP | Tier: 1 | Reason: Fresh Breakout (RSI 63.3) + Uptrend
+  Entry: ₹969.45 on 2025-12-26 (Next Day Open)
+  Initial Stop: ₹909.74 | Stop Method: ATR_BASED
+  Target: ₹1118.74 | ATR: ₹29.86
+  Stop %: 6.16% | Target %: 15.4%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-12-26   |   970.85 |    941.4 |    943.8 |   909.74 | NO_CHANGE
+     2 | 2025-12-29   |   946.85 |    928.8 |    932.8 |   909.74 | NO_CHANGE
+     3 | 2025-12-30   |   950.25 |    936.1 |    944.9 |   909.74 | NO_CHANGE
+     4 | 2025-12-31   |      957 |   942.05 |    951.5 |   909.74 | NO_CHANGE
+     5 | 2026-01-01   |      998 |   951.55 |    986.6 |   969.45 | BREAKEVEN
+     6 | 2026-01-02   |   1002.9 |   980.45 |      998 |   972.81 | TRAIL_UPDATE
+     7 | 2026-01-05   |  1015.75 |    995.6 |   1003.9 |   985.28 | TRAIL_UPDATE
+     8 | 2026-01-06   |     1014 |    995.8 |  1007.85 |   985.28 | NO_CHANGE
+     9 | 2026-01-07   |  1010.65 |   985.25 |   1004.4 |   985.28 | BREAKEVEN
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: BREAKEVEN        at ₹985.28 on 2026-01-07
+  │  P&L: +1.63%
+  │  Days Held: 9
+  │  Highest Price: ₹1015.75 (+4.78%)
+  │  Max Adverse: -4.19%
+  │  Final Stop: ₹985.28 (Initial: ₹909.74)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #14: JSWSTEEL ──
+  Strategy: ST_SWING_BO_UP | Tier: 2 | Reason: Extended Momentum (RSI 72.2)
+  Entry: ₹1228 on 2026-01-30 (Next Day Open)
+  Initial Stop: ₹1170.36 | Stop Method: ATR_BASED
+  Target: ₹1372.11 | ATR: ₹28.82
+  Stop %: 4.69% | Target %: 11.74%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2026-01-30   |     1228 |   1194.5 |   1214.4 |  1170.36 | NO_CHANGE
+     2 | 2026-02-01   |   1219.9 |   1172.9 |   1191.5 |  1170.36 | NO_CHANGE
+     3 | 2026-02-02   |   1203.8 |     1174 |   1199.2 |  1170.36 | NO_CHANGE
+     4 | 2026-02-03   |   1244.7 |   1212.8 |   1229.4 |  1170.36 | NO_CHANGE
+     5 | 2026-02-04   |   1240.1 |   1223.9 |   1228.2 |  1170.36 | NO_CHANGE
+     6 | 2026-02-05   |   1241.8 |   1214.2 |   1239.8 |  1170.36 | NO_CHANGE
+     7 | 2026-02-06   |   1238.6 |   1222.4 |   1236.2 |  1170.36 | NO_CHANGE
+     8 | 2026-02-09   |   1254.7 |   1235.1 |     1245 |     1228 | BREAKEVEN
+     9 | 2026-02-10   |   1261.9 |   1236.7 |   1244.1 |     1228 | NO_CHANGE
+    10 | 2026-02-11   |   1254.8 |     1238 |   1249.2 |     1228 | TIME_EXIT
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: TIME_EXIT        at ₹1249.2 on 2026-02-11
+  │  P&L: +1.73%
+  │  Days Held: 10
+  │  Highest Price: ₹1261.9 (+2.76%)
+  │  Max Adverse: -4.49%
+  │  Final Stop: ₹1228 (Initial: ₹1170.36)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #15: DELHIVERY ──
+  Strategy: ST_SWING_BO_UP | Tier: 1 | Reason: Fresh Breakout (RSI 56.2) + Uptrend
+  Entry: ₹411 on 2026-01-30 (Next Day Open)
+  Initial Stop: ₹382.56 | Stop Method: ATR_BASED
+  Target: ₹482.09 | ATR: ₹14.22
+  Stop %: 6.92% | Target %: 17.3%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2026-01-30   |    426.5 |      405 |   422.95 |   413.71 | TRAIL_UPDATE
+     2 | 2026-02-01   |   449.75 |   414.45 |    436.8 |   436.26 | TRAIL_UPDATE
+     3 | 2026-02-02   |   450.45 |    432.8 |    439.9 |   436.26 | BREAKEVEN
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: BREAKEVEN        at ₹436.26 on 2026-02-02
+  │  P&L: +6.15%
+  │  Days Held: 3
+  │  Highest Price: ₹450.45 (+9.6%)
+  │  Max Adverse: -1.46%
+  │  Final Stop: ₹436.26 (Initial: ₹382.56)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #16: APLAPOLLO ──
+  Strategy: ST_SWING_BO_UP | Tier: 2 | Reason: Extended Momentum (RSI 73.9)
+  Entry: ₹2095 on 2026-01-29 (Next Day Open)
+  Initial Stop: ₹1988.37 | Stop Method: ATR_BASED
+  Target: ₹2361.57 | ATR: ₹53.31
+  Stop %: 5.09% | Target %: 12.72%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2026-01-29   |   2151.1 |   2032.1 |   2053.4 |     2095 | BREAKEVEN
+     2 | 2026-01-30   |   2070.7 |   2032.1 |   2045.7 |     2095 | BREAKEVEN
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: BREAKEVEN        at ₹2095 on 2026-01-30
+  │  P&L: +0%
+  │  Days Held: 2
+  │  Highest Price: ₹2151.1 (+2.68%)
+  │  Max Adverse: -3%
+  │  Final Stop: ₹2095 (Initial: ₹1988.37)
+  └─────────────────────────────────────────────────┘
+
+  ── TRADE #17: FEDERALBNK ──
+  Strategy: ST_SWING_BO_UP | Tier: 1 | Reason: Fresh Breakout (RSI 63.6) + Uptrend
+  Entry: ₹286.65 on 2026-01-30 (Next Day Open)
+  Initial Stop: ₹275.76 | Stop Method: STRUCTURE_BASED
+  Target: ₹313.87 | ATR: ₹8.94
+  Stop %: 3.8% | Target %: 9.5%
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2026-01-30   |   288.65 |    282.5 |   287.75 |   275.76 | NO_CHANGE
+     2 | 2026-02-01   |    288.8 |   281.25 |    285.1 |   275.76 | NO_CHANGE
+     3 | 2026-02-02   |    284.8 |      276 |    281.3 |   275.76 | NO_CHANGE
+     4 | 2026-02-03   |   298.25 |   283.35 |    285.5 |    289.3 | TRAIL_UPDATE
+     5 | 2026-02-04   |    288.3 |    282.7 |    287.4 |    289.3 | BREAKEVEN
+
+  ┌─ RESULT ─────────────────────────────────────────┐
+  │  EXIT: BREAKEVEN        at ₹289.3 on 2026-02-04
+  │  P&L: +0.92%
+  │  Days Held: 5
+  │  Highest Price: ₹298.25 (+4.05%)
+  │  Max Adverse: -3.72%
+  │  Final Stop: ₹289.3 (Initial: ₹275.76)
+  └─────────────────────────────────────────────────┘

@@ -1,0 +1,91 @@
+═══════════════════════════════════════════════════════
+ RED CANDLE RETEST: COMPREHENSIVE VALIDATION
+═══════════════════════════════════════════════════════
+
+--- VALIDATION 1: EXPANDED LOOKBACK WINDOW ---
+Retest within 5 trading days:   43 signals | 53.5% WR | Avg P&L 1.61%
+Retest within 7 trading days:   49 signals | 55.1% WR | Avg P&L 1.43%
+Retest within 10 trading days:  53 signals | 54.7% WR | Avg P&L 1.45%
+
+--- VALIDATION 2: DAY+1 CONFIRMATION PATTERN (for <=10 day retests) ---
+Retest + Day+1 Bullish Engulf/Marubozu: 5 signals | 100.0% WR | Avg P&L 7.96%
+Retest + Day+1 Doji:                    9 signals | 33.3% WR | Avg P&L -0.82%
+Retest + Day+1 Normal Green:            14 signals | 42.9% WR | Avg P&L 0.85%
+Retest + Day+1 Any Red:                 25 signals | 60.0% WR | Avg P&L 1.30%
+
+--- VALIDATION 3: PULLBACK SHAPE ANALYSIS ---
+How deep was the pullback from first breakout close?
+  Average pullback: -3.64%
+  Smallest pullback: -0.41%
+  Deepest pullback: -11.70%
+
+How many red candles in the pullback?
+  1 red candle:   32 signals | 56.3% WR | Avg P&L 2.05%
+  2 red candles:  14 signals | 42.9% WR | Avg P&L 0.55%
+  3+ red candles: 7 signals | 71.4% WR | Avg P&L 0.50%
+
+Did pullback hold above SMA20?
+  YES (held support): 25 signals | 64.0% WR | Avg P&L 2.98%
+  NO (broke SMA20):   28 signals | 46.4% WR | Avg P&L 0.08%
+
+--- VALIDATION 4: V5 CORE FILTERS COMBINATION ---
+All 53 retests raw:                        53 signals | 54.7% WR | Avg P&L 1.45%
+Retests + Stage 2:                        21 signals | 61.9% WR | Avg P&L 1.73%
+Retests + Stage 2 + RSI 60-70:            8 signals | 75.0% WR | Avg P&L 3.14%
+Retests + Stage 2 + RSI 60-70 + NIFTY:    0 signals
+
+--- VALIDATION 5: RAW TRADES (FOR VISUAL INSPECTION) ---
+Format: Symbol | FirstBO | PullbackDays | DaysRed | DepthPct | SMA20 | RetestDate | 10dReturn | Outcome
+DIXON        | 2026-02-03 |  4d |  1d |  -1.0% | HELD  | 2026-02-09 |  -9.8% | LOSS
+DELHIVERY    | 2026-01-29 |  4d |  1d |  -1.7% | BROKE | 2026-02-03 |  -1.9% | LOSS
+CGPOWER      | 2026-02-03 |  4d |  1d |  -0.8% | HELD  | 2026-02-09 |   4.4% | WIN
+VOLTAS       | 2026-02-04 |  2d |  1d |  -1.0% | HELD  | 2026-02-06 |   7.8% | WIN
+CROMPTON     | 2026-02-04 |  3d |  1d |  -1.0% | HELD  | 2026-02-09 |   1.0% | WIN
+NMDC         | 2026-01-29 |  5d |  2d |  -7.3% | BROKE | 2026-02-04 |  -6.7% | LOSS
+TORNTPOWER   | 2026-01-29 |  5d |  2d |  -7.6% | BROKE | 2026-02-04 |   8.6% | WIN
+APLAPOLLO    | 2026-01-28 |  8d |  2d |  -2.8% | HELD  | 2026-02-06 |  -0.5% | LOSS
+POLYCAB      | 2026-02-03 |  4d |  1d |  -1.1% | HELD  | 2026-02-09 |   2.4% | WIN
+SAIL         | 2026-01-29 |  7d |  2d | -10.1% | BROKE | 2026-02-06 |  -1.1% | LOSS
+ABB          | 2026-01-29 |  4d |  2d |  -4.0% | HELD  | 2026-02-03 |   3.0% | WIN
+TITAN        | 2026-02-04 |  3d |  1d |  -2.0% | BROKE | 2026-02-09 |   0.3% | WIN
+BANDHANBNK   | 2026-01-28 |  2d |  1d |  -1.9% | HELD  | 2026-01-30 |   9.6% | WIN
+IDEA         | 2026-01-30 |  3d |  1d |  -7.8% | BROKE | 2026-02-03 |  -0.3% | LOSS
+ASTRAL       | 2026-02-03 |  2d |  1d |  -1.2% | HELD  | 2026-02-05 |   7.8% | WIN
+SBIN         | 2026-01-28 |  9d |  3d |  -7.1% | BROKE | 2026-02-09 |   7.1% | WIN
+INDHOTEL     | 2026-02-03 |  4d |  2d |  -1.5% | HELD  | 2026-02-09 |  -2.9% | LOSS
+PRESTIGE     | 2026-02-03 |  4d |  1d |  -3.6% | HELD  | 2026-02-09 |  -6.3% | LOSS
+IOC          | 2026-01-28 |  4d |  1d |  -3.2% | BROKE | 2026-02-02 |   6.4% | WIN
+BHEL         | 2026-02-04 |  3d |  2d |  -3.5% | HELD  | 2026-02-09 |  -6.0% | LOSS
+INOXWIND     | 2026-02-04 |  3d |  1d |  -6.2% | BROKE | 2026-02-09 | -13.5% | LOSS
+NTPC         | 2026-01-29 |  5d |  3d |  -5.8% | BROKE | 2026-02-04 |   0.3% | WIN
+UNITDSPR     | 2026-01-30 |  6d |  3d |  -3.7% | BROKE | 2026-02-06 |   0.2% | WIN
+POWERGRID    | 2026-01-29 |  3d |  2d |  -4.0% | BROKE | 2026-02-02 |  11.1% | WIN
+RECLTD       | 2026-01-28 |  7d |  4d |  -7.1% | BROKE | 2026-02-05 |  -7.5% | LOSS
+POWERINDIA   | 2026-01-29 |  3d |  1d |  -2.6% | HELD  | 2026-02-02 |  20.3% | WIN
+POWERINDIA   | 2026-02-03 |  3d |  1d |  -5.2% | HELD  | 2026-02-06 |   9.1% | WIN
+SHRIRAMFIN   | 2026-01-29 |  8d |  6d |  -8.2% | BROKE | 2026-02-09 |   0.2% | WIN
+INDUSTOWER   | 2026-01-30 |  7d |  3d |  -5.9% | BROKE | 2026-02-09 |   3.5% | WIN
+BLUESTARCO   | 2026-02-02 |  5d |  2d |  -1.9% | HELD  | 2026-02-09 |   1.3% | WIN
+ASHOKLEY     | 2026-02-03 |  4d |  1d |  -0.4% | HELD  | 2026-02-09 |   2.4% | WIN
+OBEROIRLTY   | 2026-02-05 |  2d |  1d |  -2.8% | BROKE | 2026-02-09 |  -2.7% | LOSS
+PETRONET     | 2026-01-28 |  5d |  2d |  -3.6% | BROKE | 2026-02-03 |  -0.3% | LOSS
+TRENT        | 2026-02-04 |  3d |  1d |  -3.7% | BROKE | 2026-02-09 |  -2.8% | LOSS
+PFC          | 2026-01-28 |  6d |  2d |  -3.4% | BROKE | 2026-02-04 |   1.4% | WIN
+JINDALSTEL   | 2026-01-28 |  6d |  2d |  -3.3% | HELD  | 2026-02-04 |   4.7% | WIN
+SIEMENS      | 2026-01-29 |  4d |  1d |  -6.6% | BROKE | 2026-02-03 |  -0.8% | LOSS
+BAJAJHLDNG   | 2026-01-30 |  3d |  1d |  -3.7% | BROKE | 2026-02-03 |   2.8% | WIN
+WAAREEENER   | 2026-01-28 |  2d |  1d |  -1.0% | HELD  | 2026-01-30 |  13.8% | WIN
+JSWSTEEL     | 2026-01-29 |  8d |  4d |  -5.2% | BROKE | 2026-02-09 |  -0.4% | LOSS
+AUROPHARMA   | 2026-01-30 |  3d |  2d |  -4.6% | BROKE | 2026-02-03 |  -3.2% | LOSS
+CUMMINSIND   | 2026-01-30 |  3d |  1d |  -3.3% | BROKE | 2026-02-03 |  10.4% | WIN
+CHOLAFIN     | 2026-02-03 |  3d |  1d |  -1.6% | BROKE | 2026-02-06 |  -4.2% | LOSS
+PREMIERENE   | 2026-02-03 |  4d |  1d |  -3.3% | HELD  | 2026-02-09 |  -3.7% | LOSS
+AMBER        | 2026-02-03 |  3d |  1d |  -0.6% | HELD  | 2026-02-06 |  15.2% | WIN
+KAYNES       | 2026-02-04 |  3d |  1d | -11.7% | BROKE | 2026-02-09 |  -3.7% | LOSS
+ZYDUSLIFE    | 2026-02-03 |  4d |  2d |  -2.1% | BROKE | 2026-02-09 |  -1.7% | LOSS
+LT           | 2026-02-03 |  4d |  1d |  -0.5% | HELD  | 2026-02-09 |   7.4% | WIN
+MFSL         | 2026-02-03 |  4d |  1d |  -1.0% | HELD  | 2026-02-09 |   6.7% | WIN
+LICI         | 2026-02-03 |  3d |  1d |  -0.9% | HELD  | 2026-02-06 |  -3.2% | LOSS
+LUPIN        | 2026-02-03 |  2d |  1d |  -1.2% | BROKE | 2026-02-05 |   0.5% | WIN
+ANGELONE     | 2026-02-04 |  3d |  1d |  -4.5% | HELD  | 2026-02-09 |  -8.3% | LOSS
+LODHA        | 2026-02-04 |  3d |  1d |  -2.8% | HELD  | 2026-02-09 |  -1.6% | LOSS

@@ -802,14 +802,16 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                                 )}
 
                                 {/* ✅ Confirmation Rules */}
-                                {(result as any).confirmations && (result as any).confirmations.length > 0 && (
+                                {(result as any).confirmations && Array.isArray((result as any).confirmations) && (result as any).confirmations.length > 0 && (
                                     <div className="mb-4">
                                         <h4 className="text-green-300 font-semibold mb-2">✅ Confirmation Rules (Top 5)</h4>
                                         <div className="bg-green-900/30 rounded-lg p-3 border border-green-500/30">
                                             {(result as any).confirmations.map((conf: any, i: number) => (
                                                 <div key={i} className="flex items-start gap-2 text-sm py-1">
-                                                    <span className="text-green-400 font-bold">#{conf.rank}</span>
-                                                    <span className="text-green-200">{conf.description || conf.rule}</span>
+                                                    <span className="text-green-400 font-bold">#{typeof conf === 'object' ? (conf.rank || i + 1) : i + 1}</span>
+                                                    <span className="text-green-200">
+                                                        {typeof conf === 'string' ? conf : (conf?.description || conf?.rule || JSON.stringify(conf))}
+                                                    </span>
                                                 </div>
                                             ))}
                                         </div>
@@ -817,26 +819,28 @@ export const TimeTravelLabsWindow: React.FC<TimeTravelLabsWindowProps> = ({
                                 )}
 
                                 {/* ✅ Invalidation Rules */}
-                                {(result as any).invalidations && (result as any).invalidations.length > 0 && (
+                                {(result as any).invalidations && Array.isArray((result as any).invalidations) && (result as any).invalidations.length > 0 && (
                                     <div className="mb-4">
                                         <h4 className="text-red-300 font-semibold mb-2">❌ Invalidation Rules</h4>
                                         <div className="bg-red-900/30 rounded-lg p-3 border border-red-500/30">
                                             {(result as any).invalidations.map((inv: any, i: number) => (
-                                                <div key={i} className="text-sm text-red-200 py-1">• {inv.rule}</div>
+                                                <div key={i} className="text-sm text-red-200 py-1">
+                                                    • {typeof inv === 'string' ? inv : (inv?.rule || JSON.stringify(inv))}
+                                                </div>
                                             ))}
                                         </div>
                                     </div>
                                 )}
 
                                 {/* ✅ Expected Behavior */}
-                                {(result as any).expectedBehavior && (
+                                {(result as any).expectedBehavior && typeof (result as any).expectedBehavior === 'object' && (
                                     <div className="mb-4">
                                         <h4 className="text-amber-300 font-semibold mb-2">📊 Expected Behavior</h4>
                                         <div className="bg-amber-900/30 rounded-lg p-3 border border-amber-500/30 grid grid-cols-2 gap-2 text-sm">
-                                            <div><span className="text-amber-400">Holding:</span> <span className="text-amber-200">{(result as any).expectedBehavior.avgHoldingTime}</span></div>
-                                            <div><span className="text-amber-400">Move:</span> <span className="text-amber-200">{(result as any).expectedBehavior.avgMove}</span></div>
-                                            <div><span className="text-amber-400">Win Rate:</span> <span className="text-amber-200">{(result as any).expectedBehavior.winRate}</span></div>
-                                            <div><span className="text-amber-400">Drawdown:</span> <span className="text-amber-200">{(result as any).expectedBehavior.avgDrawdown}</span></div>
+                                            <div><span className="text-amber-400">Holding:</span> <span className="text-amber-200">{String((result as any).expectedBehavior?.avgHoldingTime || 'N/A')}</span></div>
+                                            <div><span className="text-amber-400">Move:</span> <span className="text-amber-200">{String((result as any).expectedBehavior?.avgMove || 'N/A')}</span></div>
+                                            <div><span className="text-amber-400">Win Rate:</span> <span className="text-amber-200">{String((result as any).expectedBehavior?.winRate || 'N/A')}</span></div>
+                                            <div><span className="text-amber-400">Drawdown:</span> <span className="text-amber-200">{String((result as any).expectedBehavior?.avgDrawdown || 'N/A')}</span></div>
                                         </div>
                                     </div>
                                 )}

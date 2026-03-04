@@ -1,0 +1,240 @@
+// ═══════════════════════════════════════════════════════════════
+//  CTS V5 INTRADAY ORB  —  Final Pro
+// ═══════════════════════════════════════════════════════════════
+
+//@version=5
+indicator("CTS V5 ORB", overlay=true, max_labels_count=500)
+
+// ─── INPUTS ───────────────────────────────────────────────────
+cutoffHr = input.int(12, "No entries after", minval=10, maxval=14)
+rr1      = input.float(1.0, "T1 R:R", minval=0.5, step=0.5)
+rr2      = input.float(2.0, "T2 R:R", minval=1.0, step=0.5)
+minStp   = input.float(0.5, "Min Stop %", minval=0.1, step=0.1)
+
+// ─── TIME ─────────────────────────────────────────────────────
+isOR()  => hour==9 and minute>=15 and minute<45
+aftOR() => (hour==9 and minute>=45) or hour>=10
+bfCut() => hour<cutoffHr
+newD()  => ta.change(time("D"))!=0
+
+// ─── DATA ─────────────────────────────────────────────────────
+[dC,dO,dH,dL] = request.security(syminfo.tickerid,"D",[close[1],open[1],high[1],low[1]])
+pRng = dC>0?(dH-dL)/dC*100:0.0
+pGrn = dC>dO
+
+nNow=request.security("NSE:NIFTY","15",close)
+nPrv=request.security("NSE:NIFTY","D",close[1])
+nChg=nPrv>0?(nNow-nPrv)/nPrv*100:0.0
+
+// ─── STATE ────────────────────────────────────────────────────
+var float orH=na, var float orL=na, var bool lk=false
+var bool bU=false, var bool bD=false
+var float bcH=na, var float bcL=na, var int bkB=na
+var int dir=0, var bool dn=false
+var bool rt=false, var bool rn=false
+var float ep=na, var float sp=na, var float t1=na, var float t2=na
+var bool t1x=false, var bool t2x=false, var bool sx=false
+var int eB=na
+
+if newD()
+    orH:=na,orL:=na,lk:=false
+    bU:=false,bD:=false,bcH:=na,bcL:=na,bkB:=na
+    dir:=0,dn:=false,rt:=false,rn:=false
+    ep:=na,sp:=na,t1:=na,t2:=na
+    t1x:=false,t2x:=false,sx:=false
+    eB:=na
+
+// ─── BUILD OR ─────────────────────────────────────────────────
+if isOR()
+    if na(orH)
+        orH:=high, orL:=low
+    else
+        orH:=math.max(orH,high), orL:=math.min(orL,low)
+if aftOR() and not lk and not na(orH)
+    lk:=true
+
+// ─── BREAKOUT ─────────────────────────────────────────────────
+if lk and aftOR() and bfCut() and not bU and not bD and barstate.isconfirmed
+    if close>orH
+        bU:=true,bcH:=high,bcL:=low,bkB:=bar_index
+    else if close<orL
+        bD:=true,bcH:=high,bcL:=low,bkB:=bar_index
+
+
+
+// ─── ENTRY ────────────────────────────────────────────────────
+if (bU or bD) and not dn and not na(bkB) and barstate.isconfirmed
+    ba=bar_index-bkB, isL=bU, rs=isL?bcL:bcH
+    if ba>=1 and ba<=3 and not dn
+        dr=false
+        if isL and low<=orH*1.002 and close>orH
+            dr:=true
+        if not isL and high>=orL*0.998 and close<orL
+            dr:=true
+        if dr
+            dn:=true,rt:=true,dir:=isL?1:-1
+            ep:=isL?orH:orL, sp:=rs
+            if isL and (ep-sp)/ep*100<minStp
+                sp:=ep*(1-minStp/100)
+            if not isL and (sp-ep)/ep*100<minStp
+                sp:=ep*(1+minStp/100)
+            rk=math.abs(ep-sp)
+            t1:=isL?ep+rk*rr1:ep-rk*rr1
+            t2:=isL?ep+rk*rr2:ep-rk*rr2
+            eB:=bar_index
+    if ba>=2 and not dn
+        ir=false
+        if isL and low>orH
+            ir:=true
+        if not isL and high<orL
+            ir:=true
+        if ir
+            dn:=true,rn:=true,dir:=isL?1:-1
+            ep:=open, sp:=rs
+            if isL and (ep-sp)/ep*100<minStp
+                sp:=ep*(1-minStp/100)
+            if not isL and (sp-ep)/ep*100<minStp
+                sp:=ep*(1+minStp/100)
+            rk=math.abs(ep-sp)
+            t1:=isL?ep+rk*rr1:ep-rk*rr1
+            t2:=isL?ep+rk*rr2:ep-rk*rr2
+            eB:=bar_index
+
+// ─── TRACK ────────────────────────────────────────────────────
+if dir==1 and not sx
+    if not t1x and high>=t1
+        t1x:=true
+    if not t2x and high>=t2
+        t2x:=true
+    if low<=sp
+        sx:=true
+if dir==-1 and not sx
+    if not t1x and low<=t1
+        t1x:=true
+    if not t2x and low<=t2
+        t2x:=true
+    if high>=sp
+        sx:=true
+
+// ═══════════════════════════════════════════════════════════════
+//  PLOT LEVELS — Distinct colors for each level
+// ═══════════════════════════════════════════════════════════════
+
+// ── OR ZONE: BLUE/PURPLE (distinct from trade levels) ────────
+orHp = plot(lk?orH:na, "OR High", #5C6BC0, 2, plot.style_linebr)
+orLp = plot(lk?orL:na, "OR Low",  #5C6BC0, 2, plot.style_linebr)
+fill(orHp, orLp, color.new(#5C6BC0, 90), "OR Zone")
+
+// ── ENTRY: BRIGHT WHITE ──────────────────────────────────────
+plot(dn?ep:na, "Entry", color.new(#FFFFFF, 20), 2, plot.style_linebr)
+
+// ── STOP LOSS: BRIGHT RED ────────────────────────────────────
+plot(dn and not sx and not t2x ? sp:na, "Stop", #FF1744, 3, plot.style_linebr)
+
+// ── T1 TARGET: BRIGHT GREEN ─────────────────────────────────
+plot(dn and not t1x and not sx ? t1:na, "T1", #00E676, 3, plot.style_linebr)
+
+// ── T2 TARGET: CYAN (after T1 hit) ──────────────────────────
+plot(dn and t1x and not t2x and not sx ? t2:na, "T2", #00BCD4, 2, plot.style_linebr)
+
+// ── RISK SHADING: light red between entry and stop ───────────
+pE1=plot(dn and not sx?ep:na,"",color.new(na,100),display=display.none)
+pS1=plot(dn and not sx?sp:na,"",color.new(na,100),display=display.none)
+fill(pE1,pS1,color.new(#FF1744,93),"Risk Zone")
+
+// ── TARGET SHADING: light green between entry and T1 ─────────
+pE2=plot(dn and not t1x and not sx?ep:na,"",color.new(na,100),display=display.none)
+pT1=plot(dn and not t1x and not sx?t1:na,"",color.new(na,100),display=display.none)
+fill(pE2,pT1,color.new(#00E676,93),"Target Zone")
+
+// ═══════════════════════════════════════════════════════════════
+//  MARKERS
+// ═══════════════════════════════════════════════════════════════
+
+// ── BREAKOUT CANDLE: cyan arrow ──────────────────────────────
+plotshape(bU and bar_index==bkB, "BO", shape.arrowup,   location.belowbar, #00BCD4, size=size.small, text="BO")
+plotshape(bD and bar_index==bkB, "BD", shape.arrowdown, location.abovebar, #00BCD4, size=size.small, text="BD")
+
+// ── ENTRY CANDLE: THICK colored bar + triangle ───────────────
+barcolor(dn and bar_index==eB ? (dir==1 ? #00E676 : #FF5252) : na)
+
+// Big triangle on entry candle
+plotshape(dn and not dn[1] and dir==1,  "▲ENTRY", shape.triangleup,   location.belowbar, #00E676, size=size.normal, text="ENTER\nLONG")
+plotshape(dn and not dn[1] and dir==-1, "▼ENTRY", shape.triangledown, location.abovebar, #FF5252, size=size.normal, text="ENTER\nSHORT")
+
+// ── T1 HIT: green circle ────────────────────────────────────
+plotshape(t1x and not t1x[1] and dir==1,  "T1L", shape.circle, location.belowbar, #00E676, size=size.normal, text="T1 ✓\n+1R")
+plotshape(t1x and not t1x[1] and dir==-1, "T1S", shape.circle, location.abovebar, #00E676, size=size.normal, text="T1 ✓\n+1R")
+
+// ── T2 HIT: cyan diamond ────────────────────────────────────
+plotshape(t2x and not t2x[1] and dir==1,  "T2L", shape.diamond, location.belowbar, #00BCD4, size=size.normal, text="T2 ✓✓\n+2R")
+plotshape(t2x and not t2x[1] and dir==-1, "T2S", shape.diamond, location.abovebar, #00BCD4, size=size.normal, text="T2 ✓✓\n+2R")
+
+// ── STOP HIT: red X ─────────────────────────────────────────
+plotshape(sx and not sx[1] and dir==1,  "SxL", shape.xcross, location.belowbar, #FF1744, size=size.normal, text="STOP ✗\n−1R")
+plotshape(sx and not sx[1] and dir==-1, "SxS", shape.xcross, location.abovebar, #FF1744, size=size.normal, text="STOP ✗\n−1R")
+
+// ── EARLY WARNING ────────────────────────────────────────────
+plotshape(lk and not bU and not bD and bfCut() and high>=orH*0.997 and close<orH, "ew", shape.diamond, location.belowbar, #FFEB3B, size=size.tiny, text="⚡")
+plotshape(lk and not bU and not bD and bfCut() and low<=orL*1.003 and close>orL,  "ew", shape.diamond, location.abovebar, #FFEB3B, size=size.tiny, text="⚡")
+
+// ═══════════════════════════════════════════════════════════════
+//  ENTRY INFO LABEL — Compact, readable, follows candle
+// ═══════════════════════════════════════════════════════════════
+if dn and not dn[1]
+    tC = dir==1 ? color.new(#00C853,0) : color.new(#F44336,0)
+    eT = rt ? "RETEST" : "RUNNER"
+    eD = dir==1 ? "LONG" : "SHORT"
+    rP = math.abs(ep-sp) / ep * 100
+    
+    txt = eT + "  " + eD + "\n" +
+         "Entry  ₹" + str.tostring(ep, "#.##") + "\n" +
+         "Stop   ₹" + str.tostring(sp, "#.##") + "\n" +
+         "T1      ₹" + str.tostring(t1, "#.##") + "\n" +
+         "T2      ₹" + str.tostring(t2, "#.##") + "\n" +
+         "Risk    " + str.tostring(rP, "#.#") + "%"
+    
+    label.new(eB - 3, na, txt,
+         color=tC, textcolor=color.white,
+         yloc=dir==1 ? yloc.belowbar : yloc.abovebar,
+         style=dir==1 ? label.style_label_up : label.style_label_down,
+         size=size.normal, textalign=text.align_left)
+
+// ═══════════════════════════════════════════════════════════════
+//  DASHBOARD
+// ═══════════════════════════════════════════════════════════════
+var table d = table.new(position.top_right, 2, 9,
+     bgcolor=color.new(#0d1117,0), border_color=color.new(#21262d,0),
+     border_width=1, frame_width=2, frame_color=color.new(#30363d,0))
+
+if barstate.islast and lk
+    oP = (orH-orL)/((orH+orL)*0.5)*100
+    
+    table.cell(d,0,0," CTS V5 ", bgcolor=#1a237e, text_color=#FFD700, text_size=size.small)
+    table.cell(d,1,0," "+syminfo.ticker+" ", bgcolor=#1a237e, text_color=color.white, text_size=size.small)
+    
+    table.cell(d,0,1,"OR HIGH", text_color=#8b949e, text_size=size.tiny)
+    table.cell(d,1,1,"₹"+str.tostring(orH,"#.##"), text_color=#5C6BC0, text_size=size.tiny)
+    
+    table.cell(d,0,2,"OR LOW", text_color=#8b949e, text_size=size.tiny)
+    table.cell(d,1,2,"₹"+str.tostring(orL,"#.##"), text_color=#5C6BC0, text_size=size.tiny)
+    
+    table.cell(d,0,3,"RANGE", text_color=#8b949e, text_size=size.tiny)
+    table.cell(d,1,3,str.tostring(oP,"#.##")+"%", text_color=oP>1.0?#00C853:oP>0.5?#FF9800:#F44336, text_size=size.tiny)
+    
+    table.cell(d,0,4,"NIFTY", text_color=#8b949e, text_size=size.tiny)
+    table.cell(d,1,4,(nChg>0?"▲ ":"▼ ")+str.tostring(math.abs(nChg),"#.##")+"%", text_color=nChg>0?#00C853:#F44336, text_size=size.tiny)
+    
+    st=dir==0?"⏸ WATCHING":dir==1?"🟢 LONG":"🔴 SHORT"
+    table.cell(d,0,5,"TRADE", text_color=#8b949e, text_size=size.tiny)
+    table.cell(d,1,5,st, text_color=dir==0?#8b949e:dir==1?#00E676:#FF5252, text_size=size.tiny)
+    
+    table.cell(d,0,6,"TYPE", text_color=#8b949e, text_size=size.tiny)
+    table.cell(d,1,6,rt?"RETEST":rn?"RUNNER":"—", text_color=#64B5F6, text_size=size.tiny)
+    
+    table.cell(d,0,7,"PREV", text_color=#8b949e, text_size=size.tiny)
+    table.cell(d,1,7,(pGrn?"▲ ":"▼ ")+str.tostring(pRng,"#.#")+"%", text_color=pGrn?#00C853:#F44336, text_size=size.tiny)
+    
+    rs=t2x?"T2 ✓✓  +2R":t1x?"T1 ✓  +1R":sx?"STOP ✗  −1R":dir!=0?"⏳ ACTIVE":"—"
+    table.cell(d,0,8,"RESULT", text_color=#8b949e, text_size=size.tiny)
+    table.cell(d,1,8,rs, text_color=t1x?#00E676:sx?#FF5252:#FFD740, text_size=size.tiny)

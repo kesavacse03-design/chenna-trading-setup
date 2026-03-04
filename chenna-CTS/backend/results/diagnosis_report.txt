@@ -1,0 +1,60 @@
+====================================================
+  STEP 1: CATEGORY INVENTORY (No API Needed)
+====================================================
+
+SHORT_TERM_SWING_BO_UP
+  Total: 543 | Unique: 212 | Range: 2025-07-29 to 2026-02-18
+SHORT_TERM_SWING_BO_DOWN
+  Total: 378 | Unique: 216 | Range: 2025-08-28 to 2026-02-18
+LONG_TERM_SWING_BO_DOWN
+  Total: 307 | Unique: 192 | Range: 2025-07-29 to 2026-02-16
+LONG_TERM_SWING_BO_UP
+  Total: 269 | Unique: 158 | Range: 2025-07-29 to 2026-02-18
+MULTI_RESISTANCE_BO
+  Total: 126 | Unique: 108 | Range: 2025-07-23 to 2026-02-18
+MULTI_SUPPORT_BO
+  Total: 113 | Unique: 103 | Range: 2025-07-23 to 2026-02-12
+
+====================================================
+  STEP 2: OHLC CACHE AVAILABILITY
+====================================================
+
+Total Cache Entries: 238
+Symbols with Data: 158
+Date Range: 2026-01-19 to 2026-02-18
+
+====================================================
+  STEP 3: CROSS-CHECK (Categories vs OHLC Cache)
+====================================================
+
+SHORT_TERM_SWING_BO_DOWN: 156/216 symbols have cache (72%)
+SHORT_TERM_SWING_BO_UP: 157/212 symbols have cache (74%)
+LONG_TERM_SWING_BO_DOWN: 134/192 symbols have cache (70%)
+LONG_TERM_SWING_BO_UP: 121/158 symbols have cache (77%)
+MULTI_RESISTANCE_BO: 81/108 symbols have cache (75%)
+MULTI_SUPPORT_BO: 77/103 symbols have cache (75%)
+
+====================================================
+  STEP 4: SAMPLE CACHED DATA FORMAT
+====================================================
+
+Sample Symbol: KFINTECH
+  Range: 2026-02-17 to 2026-02-18
+  Candles stored: 1
+  Keys: oi, low, high, open, close, volume, timestamp
+  First: {"oi":0,"low":1005.9,"high":1061.4,"open":1010,"close":1020.6,"volume":2964027,"timestamp":"2026-02-17T00:00:00+05:30"}
+  Last:  {"oi":0,"low":1005.9,"high":1061.4,"open":1010,"close":1020.6,"volume":2964027,"timestamp":"2026-02-17T00:00:00+05:30"}
+
+====================================================
+  STEP 5: OHLC COVERAGE DEPTH PER CATEGORY (>7 days ago)
+====================================================
+
+SHORT_TERM_SWING_BO_UP: 157/212 symbols have cache (518 entries)
+LONG_TERM_SWING_BO_DOWN: 132/190 symbols have cache (320 entries)
+LONG_TERM_SWING_BO_UP: 119/155 symbols have cache (285 entries)
+MULTI_RESISTANCE_BO: 79/106 symbols have cache (126 entries)
+MULTI_SUPPORT_BO: 77/103 symbols have cache (132 entries)
+
+====================================================
+  DIAGNOSIS COMPLETE
+====================================================

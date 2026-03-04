@@ -1,0 +1,120 @@
+{
+    "strategyName": "SHORT_TERM_SWING_BO_DOWN_V1",
+    "version": "1.0.0",
+    "createdDate": "2026-01-08",
+    "category": "SHORT_TERM_SWING_BO_DOWN",
+    "expectedSuccessRate": 0.75,
+    "backtestPeriod": "2025-07-01 to 2026-01-08",
+    "entryRules": {
+        "dayOfWeek": {
+            "allowed": [
+                4,
+                5
+            ],
+            "names": [
+                "Thursday",
+                "Friday"
+            ]
+        },
+        "priceFilter": {
+            "lowPrice": {
+                "maxPrice": 200,
+                "candlePattern": "ANY",
+                "expectedSuccessRate": 0.929
+            },
+            "midPrice": {
+                "minPrice": 200,
+                "maxPrice": 1000,
+                "candlePattern": "RED_ONLY",
+                "expectedSuccessRate": 0.689
+            },
+            "highPrice": {
+                "minPrice": 1000,
+                "candlePattern": "RED_ONLY",
+                "expectedSuccessRate": 0.65
+            }
+        },
+        "entryPrice": "CLOSE",
+        "entryTiming": "AT_CLOSE_ON_SIGNAL_DAY"
+    },
+    "exitRules": {
+        "targetPercent": 2.0,
+        "stopPercent": -1.5,
+        "maxHoldDays": 3,
+        "forceExitDay3": true,
+        "exitAtClose": true
+    },
+    "seasonality": {
+        "primeMonths": {
+            "months": [
+                8,
+                9
+            ],
+            "names": [
+                "August",
+                "September"
+            ],
+            "positionSizeMultiplier": 1.25,
+            "expectedSuccessRate": 0.842
+        },
+        "normalMonths": {
+            "months": [
+                7,
+                10,
+                12,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "positionSizeMultiplier": 1.0
+        },
+        "avoidMonths": {
+            "months": [
+                11
+            ],
+            "names": [
+                "November"
+            ],
+            "positionSizeMultiplier": 0,
+            "reason": "Diwali volatility, 14.3% historical success"
+        }
+    },
+    "riskManagement": {
+        "maxPositionsOpen": 5,
+        "maxCapitalPerTrade": 0.10,
+        "maxDailyExposure": 0.30,
+        "maxMonthlyDrawdown": -0.08,
+        "stopTradingAfterDrawdown": true
+    },
+    "avoidCriteria": {
+        "months": [
+            11
+        ],
+        "vixAbove": 22,
+        "gapMovePercent": 3,
+        "marketBreadthNegative": true
+    },
+    "tiers": {
+        "tier1": {
+            "name": "Low-Price Premium",
+            "priceRange": "< ₹200",
+            "expectedSuccess": "92.9%",
+            "positionSize": "1.5x base"
+        },
+        "tier2": {
+            "name": "Mid-Price Standard",
+            "priceRange": "₹200 - ₹1000",
+            "expectedSuccess": "68.9%",
+            "positionSize": "1x base"
+        },
+        "tier3": {
+            "name": "High-Price Caution",
+            "priceRange": "> ₹1000",
+            "expectedSuccess": "65%",
+            "positionSize": "0.75x base"
+        }
+    }
+}

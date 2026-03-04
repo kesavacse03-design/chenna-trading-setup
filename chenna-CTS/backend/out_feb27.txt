@@ -1,0 +1,58 @@
+══════════════════════════════════════════════════════════════════════
+  INTRADAY BOOST BACKTEST — confirmIntradaySignals()
+  Range: 2026-02-27 → 2026-02-27
+══════════════════════════════════════════════════════════════════════
+
+Trading days found: 1: 2026-02-27
+
+──────────────────────────────────────────────────────────────────────
+  2026-02-27
+──────────────────────────────────────────────────────────────────────
+  Cleaned 18 existing signals
+[ConfirmationService] Processing REAL-TIME INTRADAY signals for 2026-02-27...
+[ConfirmationService] IB stocks for 2026-02-27: Total in category: 774, Matched today: 64, Names: LTF, IRCTC, FORTIS, NBCC, DIXON, BANDHANBNK, PETRONET, EICHERMOT, ETERNAL, IRFC, KPITTECH, ABCAPITAL, CAMS, TATAELXSI, TATATECH, MPHASIS, INFY, MANKIND, SAIL, JIOFIN, IOC, OFSS, POLYCAB, GLENMARK, TECHM, COFORGE, BANKBARODA, IREDA, TMPV, TCS, LAURUSLABS, BHARTIARTL, ABB, MOTHERSON, BOSCHLTD, TATACONSUM, AXISBANK, BPCL, SUNPHARMA, POWERINDIA, GAIL, WAAREEENER, NHPC, VOLTAS, PERSISTENT, BAJAJHLDNG, NMDC, COLPAL, BEL, DALBHARAT, APOLLOHOSP, HDFCAMC, MANAPPURAM, OIL, TORNTPOWER, UNIONBANK, UNITDSPR, PREMIERENE, HCLTECH, NESTLEIND, DRREDDY, CDSL, BIOCON, 360ONE
+[ConfirmationService] EICHERMOT [INTRADAY] - CREATED & CONFIRMED RETEST (SHORT) | Score: 30 [TIER_3]
+[ConfirmationService] INFY [INTRADAY] - CREATED & CONFIRMED RETEST (SHORT) | Score: 40 [TIER_3]
+[ConfirmationService] TMPV [INTRADAY] - CREATED & CONFIRMED RETEST (SHORT) | Score: 85 [TIER_2]
+[ConfirmationService] TATACONSUM [INTRADAY] - CREATED & CONFIRMED RETEST (SHORT) | Score: 60 [TIER_3]
+[ConfirmationService] BPCL [INTRADAY] - CREATED & CONFIRMED RETEST (SHORT) | Score: 10 [TIER_3]
+[ConfirmationService] WAAREEENER [INTRADAY] - CREATED & CONFIRMED RETEST (LONG) | Score: 40 [TIER_3]
+[ConfirmationService] NHPC [INTRADAY] - CREATED & CONFIRMED RETEST (SHORT) | Score: 25 [TIER_3]
+[ConfirmationService] VOLTAS [INTRADAY] - CREATED & CONFIRMED RETEST (LONG) | Score: 15 [TIER_3]
+[ConfirmationService] COLPAL [INTRADAY] - CREATED & CONFIRMED RUNNER (SHORT) | Score: 70 [TIER_2]
+[ConfirmationService] TORNTPOWER [INTRADAY] - CREATED & CONFIRMED RETEST (LONG) | Score: 70 [TIER_2]
+[ConfirmationService] UNIONBANK [INTRADAY] - CREATED & CONFIRMED RETEST (LONG) | Score: 55 [TIER_3]
+[ConfirmationService] PREMIERENE [INTRADAY] - CREATED & CONFIRMED RUNNER (LONG) | Score: 25 [TIER_3]
+  Generated: {"triggered":12,"expired":6,"scanLog":[{"symbol":"LTF","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"IRCTC","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"FORTIS","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"NBCC","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"DIXON","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"BANDHANBNK","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"PETRONET","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"EICHERMOT","passed":true,"reason":"SIGNAL_GENERATED — RETEST (SHORT)","score":30,"tier":"TIER_3","entryPrice":8094.5,"stop":8112,"t1":8054.0275,"t2":8013.555,"orHigh":8230,"orLow":8094.5,"orRangePct":"1.65%"},{"symbol":"IRFC","passed":false,"reason":"NO_BREAKOUT — price stayed within OR range","orHigh":103.6,"orLow":101.73,"orRangePct":"1.82%"},{"symbol":"ABCAPITAL","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"CAMS","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"TATATECH","passed":false,"reason":"NO_BREAKOUT — price stayed within OR range","orHigh":596.05,"orLow":583.45,"orRangePct":"2.15%"},{"symbol":"MPHASIS","passed":false,"reason":"NO_BREAKOUT — price stayed within OR range","orHigh":2358.3,"orLow":2293.6,"orRangePct":"2.79%"},{"symbol":"INFY","passed":true,"reason":"SIGNAL_GENERATED — RETEST (SHORT)","score":40,"tier":"TIER_3","entryPrice":1304.3,"stop":1309,"t1":1297.7785,"t2":1291.257,"orHigh":1335,"orLow":1304.3,"orRangePct":"2.31%"},{"symbol":"MANKIND","passed":false,"reason":"NO_BREAKOUT — price stayed within OR range","orHigh":2275,"orLow":2240,"orRangePct":"1.55%"},{"symbol":"SAIL","passed":false,"reason":"NO_BREAKOUT — price stayed within OR range","orHigh":167.84,"orLow":164,"orRangePct":"2.33%"},{"symbol":"JIOFIN","passed":false,"reason":"NO_BREAKOUT — price stayed within OR range","orHigh":259.2,"orLow":255.25,"orRangePct":"1.54%"},{"symbol":"OFSS","passed":false,"reason":"NO_BREAKOUT — price stayed within OR range","orHigh":6970,"orLow":6845,"orRangePct":"1.81%"},{"symbol":"POLYCAB","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"GLENMARK","passed":false,"reason":"NO_BREAKOUT — price stayed within OR range","orHigh":2146.9,"orLow":2116.4,"orRangePct":"1.43%"},{"symbol":"TECHM","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"COFORGE","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"BANKBARODA","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"IREDA","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"TMPV","passed":true,"reason":"SIGNAL_GENERATED — RETEST (SHORT)","score":85,"tier":"TIER_2","entryPrice":388.85,"stop":390.4,"t1":386.90575,"t2":384.9615,"orHigh":394.05,"orLow":388.85,"orRangePct":"1.32%"},{"symbol":"TCS","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"LAURUSLABS","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"BHARTIARTL","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"ABB","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"BOSCHLTD","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"TATACONSUM","passed":true,"reason":"SIGNAL_GENERATED — RETEST (SHORT)","score":60,"tier":"TIER_3","entryPrice":1145.1,"stop":1146,"t1":1139.3745,"t2":1133.649,"orHigh":1159.5,"orLow":1145.1,"orRangePct":"1.25%"},{"symbol":"AXISBANK","passed":false,"reason":"NO_BREAKOUT — price stayed within OR range","orHigh":1395.5,"orLow":1383.3,"orRangePct":"0.88%"},{"symbol":"BPCL","passed":true,"reason":"SIGNAL_GENERATED — RETEST (SHORT)","score":10,"tier":"TIER_3","entryPrice":384.8,"stop":387.5,"t1":382.1,"t2":379.40000000000003,"orHigh":388.55,"orLow":384.8,"orRangePct":"0.97%"},{"symbol":"SUNPHARMA","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"POWERINDIA","passed":false,"reason":"NO_BREAKOUT — price stayed within OR range","orHigh":25727,"orLow":25300,"orRangePct":"1.69%"},{"symbol":"GAIL","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"WAAREEENER","passed":true,"reason":"SIGNAL_GENERATED — RETEST (LONG)","score":40,"tier":"TIER_3","entryPrice":2724.5,"stop":2694.3,"t1":2754.7,"t2":2784.8999999999996,"orHigh":2724.5,"orLow":2687,"orRangePct":"1.38%"},{"symbol":"NHPC","passed":true,"reason":"SIGNAL_GENERATED — RETEST (SHORT)","score":25,"tier":"TIER_3","entryPrice":75.55,"stop":75.76,"t1":75.17224999999999,"t2":74.7945,"orHigh":76.48,"orLow":75.55,"orRangePct":"1.23%"},{"symbol":"VOLTAS","passed":true,"reason":"SIGNAL_GENERATED — RETEST (LONG)","score":15,"tier":"TIER_3","entryPrice":1555.5,"stop":1539.5,"t1":1571.5,"t2":1587.5,"orHigh":1555.5,"orLow":1534.2,"orRangePct":"1.37%"},{"symbol":"PERSISTENT","passed":false,"reason":"NO_BREAKOUT — price stayed within OR range","orHigh":4925,"orLow":4768.5,"orRangePct":"3.24%"},{"symbol":"BAJAJHLDNG","passed":false,"reason":"NO_BREAKOUT — price stayed within OR range","orHigh":11060,"orLow":10821,"orRangePct":"2.18%"},{"symbol":"NMDC","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"COLPAL","passed":true,"reason":"SIGNAL_GENERATED — RUNNER (SHORT)","score":70,"tier":"TIER_2","entryPrice":2263.6,"stop":2279.1,"t1":2248.1,"t2":2232.6,"orHigh":2301.6,"orLow":2277.2,"orRangePct":"1.06%"},{"symbol":"BEL","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"DALBHARAT","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"APOLLOHOSP","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"HDFCAMC","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"MANAPPURAM","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"OIL","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"TORNTPOWER","passed":true,"reason":"SIGNAL_GENERATED — RETEST (LONG)","score":70,"tier":"TIER_2","entryPrice":1580,"stop":1569.4,"t1":1590.6,"t2":1601.1999999999998,"orHigh":1580,"orLow":1561.3,"orRangePct":"1.19%"},{"symbol":"UNIONBANK","passed":true,"reason":"SIGNAL_GENERATED — RETEST (LONG)","score":55,"tier":"TIER_3","entryPrice":202.78,"stop":200.95,"t1":204.61,"t2":206.44000000000003,"orHigh":202.78,"orLow":200.03,"orRangePct":"1.36%"},{"symbol":"UNITDSPR","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"PREMIERENE","passed":true,"reason":"SIGNAL_GENERATED — RUNNER (LONG)","score":25,"tier":"TIER_3","entryPrice":734.45,"stop":724.4,"t1":744.5000000000001,"t2":754.5500000000002,"orHigh":729.4,"orLow":720.5,"orRangePct":"1.23%"},{"symbol":"HCLTECH","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"DRREDDY","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"CDSL","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"BIOCON","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"},{"symbol":"360ONE","passed":false,"reason":"NO_DAY_MATCH — target date not found in daily data"}]}
+  Signals: 18
+  EICHERMOT: No 1-min candles for evaluation
+  INFY: No 1-min candles for evaluation
+  TMPV: No 1-min candles for evaluation
+  TATACONSUM: No 1-min candles for evaluation
+  BPCL: No 1-min candles for evaluation
+  WAAREEENER: No 1-min candles for evaluation
+  NHPC: No 1-min candles for evaluation
+  VOLTAS: No 1-min candles for evaluation
+  COLPAL: No 1-min candles for evaluation
+  TORNTPOWER: No 1-min candles for evaluation
+  UNIONBANK: No 1-min candles for evaluation
+  PREMIERENE: No 1-min candles for evaluation
+
+══════════════════════════════════════════════════════════════════════
+  BACKTEST SUMMARY
+══════════════════════════════════════════════════════════════════════
+  Days:        1
+  Total Sigs:  18
+  Wins:        0
+  Losses:      0
+  EOD/Other:   0
+  Not Filled:  0
+  Win Rate:    N/A%
+  Total R:     0.00
+
+  LONG:  0W / 0 trades (N/A%)
+  SHORT: 0W / 0 trades (N/A%)
+
+  RETEST:  0W / 0 trades (N/A%)
+  RUNNER:  0W / 0 trades (N/A%)
+══════════════════════════════════════════════════════════════════════

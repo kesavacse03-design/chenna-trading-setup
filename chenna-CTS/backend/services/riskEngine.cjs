@@ -5,6 +5,7 @@
 
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
+const { todayIST, startOfDayUTC } = require('../utils/istUtils.cjs');
 
 //=====================================
 // DEFAULT RISK LIMITS
@@ -191,13 +192,12 @@ async function updateRiskConfig(categoryKey, newConfig) {
  */
 async function getDailyLoss(categoryKey) {
     try {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+        const todayStart = startOfDayUTC(todayIST());
 
         const outcomes = await prisma.learningOutcome.findMany({
             where: {
                 categoryKey,
-                timestamp: { gte: today },
+                timestamp: { gte: todayStart },
                 result: 'LOSS'
             }
         });

@@ -2,33 +2,30 @@ import { GroupedWatchlist, StrategyState, Trade, Notification } from '../types';
 import { PREPOPULATED_WATCHLIST, FLAGS } from '../constants';
 
 // --- Watchlist Functions ---
+// CRITICAL: Database is the ONLY source of truth for watchlist/stock data
+// localStorage is NOT used for watchlist persistence anymore
+// All stock data comes from backend API (/api/stocks, /api/watchlist)
 
 export const getWatchlist = (): GroupedWatchlist => {
-    try {
-        const stored = localStorage.getItem(FLAGS.PERSIST_KEY_WATCHLIST);
-        if (stored) {
-            const parsed = JSON.parse(stored) || {};
-            // Always rebuild from canonical structure, copying only known categories
-            const base: GroupedWatchlist = JSON.parse(JSON.stringify(PREPOPULATED_WATCHLIST));
-            for (const page of Object.keys(base)) {
-                const srcPage = (parsed as any)[page] || {};
-                for (const cat of Object.keys((base as any)[page] || {})) {
-                    if (Array.isArray(srcPage[cat])) {
-                        (base as any)[page][cat] = srcPage[cat];
-                    }
-                }
-            }
-            return base;
-        }
-    } catch (error) { console.error("Failed to parse watchlist from localStorage", error); }
+    // DEPRECATED: Return empty structure - database is source of truth
+    // This function is kept for backwards compatibility but should not be used
+    console.warn('[storage] getWatchlist() called - this is deprecated. Use API instead.');
     return PREPOPULATED_WATCHLIST;
 };
 
-export const setWatchlist = (watchlist: GroupedWatchlist): void => {
-    try {
-        localStorage.setItem(FLAGS.PERSIST_KEY_WATCHLIST, JSON.stringify(watchlist));
-    } catch (error) { console.error("Failed to save watchlist to localStorage", error); }
+export const setWatchlist = (_watchlist: GroupedWatchlist): void => {
+    // DEPRECATED: No-op - database is source of truth
+    // Stock data is persisted via backend API, not localStorage
+    console.warn('[storage] setWatchlist() called - this is deprecated. Use API instead.');
+    // Do nothing - don't persist to localStorage
 };
+
+// Clear any stale localStorage watchlist data on module load
+try {
+    localStorage.removeItem(FLAGS.PERSIST_KEY_WATCHLIST);
+    console.log('[storage] Cleared stale localStorage watchlist data');
+} catch (_) { }
+
 
 // --- Strategy Functions ---
 

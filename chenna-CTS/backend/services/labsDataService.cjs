@@ -71,14 +71,15 @@ class LabsDataService {
                     }
                 }
 
-                // Tier 3: Fall back to mock data
-                data[stock.symbol] = this.generateMockCandles(stock.symbol, days);
-                console.log(`[LabsData] ⚠ ${stock.symbol}: Mock data (fallback)`);
+                // CRITICAL FIX: Do NOT fall back to mock data
+                // Skip this stock entirely if we can't get real data
+                console.log(`[LabsData] ⚠ ${stock.symbol}: SKIPPED (no real data available)`);
+                // DO NOT generate mock data - leave stock out of results
 
             } catch (error) {
                 console.error(`[LabsData] Error fetching ${stock.symbol}:`, error.message);
-                // Use mock as last resort
-                data[stock.symbol] = this.generateMockCandles(stock.symbol, days);
+                // CRITICAL FIX: Do NOT fall back to mock data on error
+                // Skip this stock entirely
             }
         }
 
@@ -114,9 +115,41 @@ class LabsDataService {
                 };
             });
 
+            // CRITICAL: Sort by date ASCENDING (oldest first) to prevent future data leak
+            candles.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
             return candles.length > 0 ? candles : null;
         } catch (error) {
             return null;
+        }
+    }
+    /**
+     * Save data to CSV cache for future use
+     * Historical data doesn't change - cache once, use forever
+     * CRITICAL: Sort by date ASCENDING (oldest first) for proper backtest
+     */
+    async saveToCSV(symbol, candles) {
+        try {
+            await this.ensureCacheDir();
+            const csvPath = path.join(this.cacheDir, `${symbol}.csv`);
+
+            // CRITICAL FIX: Sort by date ASCENDING (oldest first)
+            // Without this, backtest walks backward in time causing exit before entry!
+            const sortedCandles = [...candles].sort((a, b) =>
+                new Date(a.date).getTime() - new Date(b.date).getTime()
+            );
+
+            // Create CSV content with sorted dates
+            const header = 'date,open,high,low,close,volume';
+            const rows = sortedCandles.map(c =>
+                `${c.date},${c.open},${c.high},${c.low},${c.close},${c.volume || 0}`
+            );
+            const csvContent = [header, ...rows].join('\n');
+
+            await fs.writeFile(csvPath, csvContent, 'utf8');
+            console.log(`[LabsData] 💾 Cached ${symbol}: ${sortedCandles.length} candles saved (sorted ASC)`);
+        } catch (error) {
+            console.log(`[LabsData] ⚠ Failed to cache ${symbol}:`, error.message);
         }
     }
 
@@ -128,33 +161,46 @@ class LabsDataService {
         try {
             const toDate = new Date();
             const fromDate = new Date();
-            fromDate.setDate(fromDate.getDate() - 300); // Get more data
+            // Increased from 300 to 500 days to cover older addedDates (July 2025)
+            fromDate.setDate(fromDate.getDate() - Math.max(days + 50, 500));
 
             const fromStr = fromDate.toISOString().split('T')[0];
             const toStr = toDate.toISOString().split('T')[0];
 
-            // GUNSHOT FIX: Use the SAME logic as backtestEngine (which works!)
-            const { PrismaClient } = require('@prisma/client');
-            const prisma = new PrismaClient();
+            // GUNSHOT FIX: Use shared prisma to avoid connection pool exhaustion
+            const prisma = require('../lib/prisma.cjs');
 
-            const instrument = await prisma.instrument.findFirst({
+            // Try to find instrument by symbol OR tradingSymbol
+            let instrument = await prisma.instrument.findFirst({
                 where: {
-                    tradingsymbol: symbol,
+                    symbol: symbol,
                     exchange: 'NSE'
                 }
             });
 
-            await prisma.$disconnect();
-
+            // If not found by symbol, try tradingSymbol
             if (!instrument) {
+                instrument = await prisma.instrument.findFirst({
+                    where: {
+                        tradingSymbol: symbol,
+                        exchange: 'NSE'
+                    }
+                });
+            }
+
+            // Don't disconnect shared client
+
+            if (!instrument || !instrument.instrumentKey) {
                 console.log(`[LabsData] ❌ No instrument for ${symbol}`);
                 return null;
             }
 
+            console.log(`[LabsData] 🔑 ${symbol} → ${instrument.instrumentKey}`);
+
             // Use fetchBulk like backtestEngine does
             const result = await priceService.fetchBulk([{
                 symbol: symbol,
-                instrumentKey: instrument.instrument_key,
+                instrumentKey: instrument.instrumentKey,  // Fixed: camelCase!
                 fromDate: fromStr,
                 toDate: toStr
             }]);
@@ -169,14 +215,24 @@ class LabsDataService {
             console.log(`[LabsData] ✅ ${symbol}: Got ${candles.data.length} candles`);
 
             // Transform to our format
-            return candles.data.map(c => ({
-                date: new Date(c.timestamp).toISOString().split('T')[0],
-                open: c.open,
-                high: c.high,
-                low: c.low,
-                close: c.close,
-                volume: c.volume
-            }));
+            // CRITICAL FIX: Extract date directly from ISO string, don't convert via Date
+            // Upstox returns: "2025-07-28T00:00:00+05:30" (IST)
+            // Using new Date().toISOString() would convert to UTC, shifting back 1 day
+            return candles.data.map(c => {
+                // Extract YYYY-MM-DD from timestamp string (before the 'T')
+                const dateStr = typeof c.timestamp === 'string'
+                    ? c.timestamp.split('T')[0]
+                    : new Date(c.timestamp).toISOString().split('T')[0];
+                return {
+                    date: dateStr,
+                    timestamp: c.timestamp, // Keep original for reference
+                    open: c.open,
+                    high: c.high,
+                    low: c.low,
+                    close: c.close,
+                    volume: c.volume
+                };
+            });
 
         } catch (error) {
             console.error(`[LabsData] ❌ Error for ${symbol}:`, error.message);

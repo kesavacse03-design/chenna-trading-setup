@@ -1,0 +1,65 @@
+═══════════════════════════════════════════════════════════════════════════════════════
+ DATA-DRIVEN PRE-ENTRY CONFIDENCE SCORE: FACTOR ANALYSIS
+ (296 Clean Unmanaged Signals, Win = Day10 Close > Entry)
+═══════════════════════════════════════════════════════════════════════════════════════
+
+--- FACTOR 1: NIFTY CONTEXT ON SIGNAL DAY ---
+  NIFTY Flat (-0.5% to +0.5%)                         196 signals |  56.6% WR |   1.04% Avg P&L
+  NIFTY Up (> +0.5%)                                   25 signals |  68.0% WR |   2.97% Avg P&L
+  NIFTY Down (< -0.5%)                                 75 signals |  58.7% WR |   0.69% Avg P&L
+
+--- FACTOR 2: ADX(14) LEVEL ---
+  ADX >= 25 (Strong Trend)                            165 signals |  58.2% WR |   1.27% Avg P&L
+  ADX 20-25 (Emerging Trend)                           36 signals |  63.9% WR |   0.66% Avg P&L
+  ADX < 20 (No Trend / Choppy)                         95 signals |  55.8% WR |   1.00% Avg P&L
+
+--- FACTOR 3: 1H MACD STATE (INVERTED HYPOTHESIS) ---
+  1H MACD Flat/Crossing (Fresh Move)                  186 signals |  55.4% WR |   0.85% Avg P&L
+  1H MACD Bullish (Momentum Running)                  110 signals |  62.7% WR |   1.56% Avg P&L
+  1H MACD Unknown (No Intraday Data)                    0 signals |   0.0% WR |   0.00% Avg P&L
+
+--- FACTOR 4: SIGNAL DAY VOLUME vs 20-DAY AVG ---
+  Volume < 1.0× (Below Avg)                            80 signals |  52.5% WR |   1.07% Avg P&L
+  Volume 1.0× - 1.8× (Moderate)                       116 signals |  59.5% WR |   0.57% Avg P&L
+  Volume 1.8× - 2.5× (High)                            43 signals |  58.1% WR |   1.07% Avg P&L
+  Volume > 2.5× (Extreme/Blow-off)                     57 signals |  63.2% WR |   2.29% Avg P&L
+
+--- FACTOR 5: CANDLE QUALITY (Close Position + Upper Wick) ---
+  Close Top 33% + Wick < 20% (Strong)                 148 signals |  60.1% WR |   1.10% Avg P&L
+  Close Middle 33% (Neutral)                           61 signals |  55.7% WR |   1.14% Avg P&L
+  Close Bottom 33% OR Wick > 30% (Weak)                95 signals |  51.6% WR |   0.65% Avg P&L
+  Other (Top Close but Wick 20-30%)                    44 signals |  61.4% WR |   1.86% Avg P&L
+
+--- FACTOR 6: 1H CONSOLIDATION AT RESISTANCE ---
+  >= 60% of 30m bars near resistance (Acc.)           259 signals |  57.9% WR |   1.13% Avg P&L
+  < 60% near resistance (Quick spike)                  37 signals |  59.5% WR |   1.00% Avg P&L
+  No Intraday Data                                      0 signals |   0.0% WR |   0.00% Avg P&L
+
+
+═══════════════════════════════════════════════════════════════════════════════════════
+ FINAL CONFIDENCE SCORE TIER VALIDATION (Data-Driven Weights)
+═══════════════════════════════════════════════════════════════════════════════════════
+
+  Score 70-100 (HIGH Confidence)                       59 signals |  67.8% WR |   2.43% Avg P&L
+  Score 45-69  (MEDIUM Confidence)                    184 signals |  58.7% WR |   0.84% Avg P&L
+  Score 0-44   (LOW Confidence)                        53 signals |  45.3% WR |   0.58% Avg P&L
+
+Monotonic Check: High 67.8% > Medium 58.7% > Low 45.3% → ✅ MONOTONIC — VALID!
+
+
+═══════════════════════════════════════════════════════════════════════════════════════
+ POST-ENTRY HEALTH CHECK: Day+1 Candle Pattern Win Rates
+═══════════════════════════════════════════════════════════════════════════════════════
+
+  Day+1: Marubozu Green                                10 signals |  90.0% WR |   9.68% Avg P&L
+  Day+1: Bullish Engulfing                             20 signals |  70.0% WR |   2.10% Avg P&L
+  Day+1: Doji                                          53 signals |  71.7% WR |   2.24% Avg P&L
+  Day+1: Normal Green                                  80 signals |  60.0% WR |   1.95% Avg P&L
+  Day+1: Normal Red                                   104 signals |  51.0% WR |  -0.31% Avg P&L
+  Day+1: Bearish Engulfing                             11 signals |  36.4% WR |  -0.65% Avg P&L
+  Day+1: Marubozu Red                                  18 signals |  33.3% WR |  -2.52% Avg P&L
+
+--- POST-ENTRY: 5-Day Green/Red Volume Ratio ---
+  Green/Red Volume >= 2.0× (Accumulation)              76 signals |  88.2% WR |   4.46% Avg P&L
+  Green/Red Volume 0.8× - 2.0× (Mixed)                 89 signals |  67.4% WR |   2.43% Avg P&L
+  Green/Red Volume < 0.8× (Distribution)              131 signals |  34.4% WR |  -1.72% Avg P&L

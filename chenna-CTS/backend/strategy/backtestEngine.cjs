@@ -4,13 +4,18 @@
 const priceService = require('../services/priceService.cjs');
 const { PrismaClient } = require('@prisma/client');
 const DownsideLomSwingStrategy = require('./downsideLomSwingStrategy.cjs');
+const DailyContractionStrategy = require('./dailyContractionStrategy.cjs');
 
 const prisma = new PrismaClient();
 
 class BacktestEngine {
     constructor(category) {
         this.category = category;
-        this.strategy = new DownsideLomSwingStrategy();
+        if (category === 'DAILY_CONTRACTION') {
+            this.strategy = new DailyContractionStrategy();
+        } else {
+            this.strategy = new DownsideLomSwingStrategy();
+        }
     }
 
     // Main entry point for running backtest
@@ -45,7 +50,7 @@ class BacktestEngine {
                 symbol: s.stock.symbol,
                 instrumentKey: s.stock.instrumentKey,
                 fromDate: s.addedDate,
-                toDate: new Date().toISOString().split('T')[0]
+                toDate: new Date().toISOString().split('T')[0] // To today
             })),
             progressCallback
         );
@@ -65,6 +70,12 @@ class BacktestEngine {
                 console.log(`⚠️ Skipping ${symbol}: ${prices?.error || 'No price data'}`);
                 continue;
             }
+
+            // Sanity Check: If requesting DAILY data (implied), check for excessive candles
+            // Typical year = 252 candles. If we have > 1000 for < 2 years, it's likely 1-min data.
+            // Rough check: > 500 candles for a stock added recently is suspicious if we expect daily.
+            // For now, let's just log a warning if it looks huge, but for DAILY_CONTRACTION we know we want daily.
+            // Better check: simulateTrade will check it.
 
             // Time-travel simulation
             const tradeResult = this.simulateTrade(
@@ -116,6 +127,22 @@ class BacktestEngine {
     simulateTrade(symbol, candles, addedDate) {
         if (!candles || candles.length < 50) {
             return null; // Not enough data
+        }
+
+        // CORRUPTION CHECK for Daily Strategies
+        // If strategy is DAILY_CONTRACTION, we expect roughly 1 candle per day.
+        // If we have 375 candles per day (1 min), then 50 days = 18,000 candles.
+        // Let's say if we have > 2000 candles, it's suspicious for a swing strategy on recent stocks.
+        if (this.category === 'DAILY_CONTRACTION' && candles.length > 1000) {
+            // Check time difference between first two candles
+            const t1 = new Date(candles[0].timestamp).getTime();
+            const t2 = new Date(candles[1].timestamp).getTime();
+            const diff = Math.abs(t2 - t1);
+            // 1 day = 86400000 ms. 1 minute = 60000 ms.
+            if (diff < 3600000) { // Less than 1 hour diff -> Intraday data
+                console.log(`⚠️ Skipping ${symbol}: Detected Intraday data in cache (${candles.length} candles, diff ${diff / 1000}s)`);
+                return null;
+            }
         }
 
         let entrySignal = null;
@@ -218,7 +245,19 @@ class BacktestEngine {
             throw new Error(`Category "${categoryKey}" not found`);
         }
 
-        return category.stocks;
+        // Deduplicate by symbol — keep earliest addedDate per symbol
+        const seen = new Map();
+        for (const entry of category.stocks) {
+            const sym = entry.stock.symbol;
+            if (!seen.has(sym) || new Date(entry.addedDate) < new Date(seen.get(sym).addedDate)) {
+                seen.set(sym, entry);
+            }
+        }
+        const deduped = Array.from(seen.values());
+        if (deduped.length < category.stocks.length) {
+            console.log(`[Engine] Deduplicated: ${category.stocks.length} → ${deduped.length} unique stocks`);
+        }
+        return deduped;
     }
 
     // Save backtest results to database

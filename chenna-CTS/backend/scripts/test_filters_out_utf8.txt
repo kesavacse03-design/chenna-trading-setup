@@ -1,0 +1,76 @@
+﻿Testing signal generation for MULTI_SUPPORT_BO on 2026-01-07...
+[SignalGenV2] ====== Generating signals for MULTI_SUPPORT_BO ======
+[SignalGenV2] Date: 2026-01-07
+[SignalGenV2] Mode: BACKTEST
+[SignalGenV2] Γ£à Valid trading day
+[SignalGenV2] SWING backtest: 14 stocks added on 2026-01-07
+[SignalGenV2] Sample Stock: TITAN Key: NSE_EQ|INE280A01028
+[Cache] Γ£ô Hit for TITAN (2025-06-21 to 2026-01-07)
+[SignalGen] TITAN on 2026-01-07: O=4225 C=4273.2 GREEN | Vol: 3496340 (4.5x) | RSI: 83.3 | EMA50: 3887.2
+[SignalGen] SKIP TITAN: RSI 83.3 > 40
+[Cache] Γ£ô Hit for WIPRO (2025-06-21 to 2026-01-07)
+[SignalGen] WIPRO on 2026-01-07: O=265 C=270.8 GREEN | Vol: 10242615 (1.6x) | RSI: 63.1 | EMA50: 257.6
+[SignalGen] SKIP WIPRO: RSI 63.1 > 40
+[Cache] Γ£ô Hit for JSWSTEEL (2025-06-21 to 2026-01-07)
+[SignalGen] JSWSTEEL on 2026-01-07: O=1174.9 C=1189.8 GREEN | Vol: 1161485 (0.7x) | RSI: 65.9 | EMA50: 1136.2
+[SignalGen] SKIP JSWSTEEL: Low volume 1161485 < 1.2x avg 1549852
+[Cache] Γ£ô Hit for SUNPHARMA (2025-06-21 to 2026-01-07)
+[SignalGen] SUNPHARMA on 2026-01-07: O=1755 C=1782.6 GREEN | Vol: 3059500 (1.7x) | RSI: 59.0 | EMA50: 1743.5
+[SignalGen] SKIP SUNPHARMA: RSI 59.0 > 40
+[Cache] Γ£ô Hit for RELIANCE (2025-06-21 to 2026-01-07)
+[SignalGen] RELIANCE on 2026-01-07: O=1510 C=1504.2 RED | Vol: 11199340 (1.3x) | RSI: 38.7 | EMA50: 1526.3
+[SignalGen] Using specific strategy for MULTI_SUPPORT_BO
+[SignalGen] Γ£à Strategy Signal: RELIANCE (Tier 1)
+[Cache] Γ£ô Hit for AXISBANK (2025-06-21 to 2026-01-07)
+[SignalGen] AXISBANK on 2026-01-07: O=1293 C=1295.5 GREEN | Vol: 5440002 (1.3x) | RSI: 65.2 | EMA50: 1245.6
+[SignalGen] SKIP AXISBANK: RSI 65.2 > 40
+[Cache] Γ£ô Hit for ULTRACEMCO (2025-06-21 to 2026-01-07)
+[SignalGen] ULTRACEMCO on 2026-01-07: O=12230 C=12184 RED | Vol: 246825 (1.2x) | RSI: 68.4 | EMA50: 11824.1
+[SignalGen] SKIP ULTRACEMCO: RSI 68.4 > 40
+[Cache] Γ£ô Hit for ASIANPAINT (2025-06-21 to 2026-01-07)
+[SignalGen] ASIANPAINT on 2026-01-07: O=2845.8 C=2809.4 RED | Vol: 636748 (0.6x) | RSI: 52.6 | EMA50: 2751.1
+[SignalGen] SKIP ASIANPAINT: Low volume 636748 < 1.2x avg 1138900
+[Cache] Γ£ô Hit for HINDUNILVR (2025-06-21 to 2026-01-07)
+[SignalGen] HINDUNILVR on 2026-01-07: O=2416 C=2399.4 RED | Vol: 892690 (0.7x) | RSI: 59.7 | EMA50: 2380.4
+[SignalGen] SKIP HINDUNILVR: Low volume 892690 < 1.2x avg 1293701
+[Cache] Γ£ô Hit for NTPC (2025-06-21 to 2026-01-07)
+[SignalGen] NTPC on 2026-01-07: O=349.55 C=348.85 RED | Vol: 7165806 (0.8x) | RSI: 73.8 | EMA50: 330.8
+[SignalGen] SKIP NTPC: Low volume 7165806 < 1.2x avg 8793247
+[Cache] Γ£ô Hit for BHARTIARTL (2025-06-21 to 2026-01-07)
+[SignalGen] BHARTIARTL on 2026-01-07: O=2095.6 C=2084.2 RED | Vol: 4171371 (0.9x) | RSI: 46.1 | EMA50: 2081.2
+[SignalGen] SKIP BHARTIARTL: Low volume 4171371 < 1.2x avg 4486808
+[Cache] Γ£ô Hit for BAJFINANCE (2025-06-21 to 2026-01-07)
+[SignalGen] BAJFINANCE on 2026-01-07: O=973.05 C=968.8 RED | Vol: 7048491 (1.2x) | RSI: 36.2 | EMA50: 1005.5
+[SignalGen] Using specific strategy for MULTI_SUPPORT_BO
+[SignalGen] Γ£à Strategy Signal: BAJFINANCE (Tier 1)
+[Cache] Γ£ô Hit for POWERGRID (2025-06-21 to 2026-01-07)
+[SignalGen] POWERGRID on 2026-01-07: O=268.5 C=264.1 RED | Vol: 14877056 (1.6x) | RSI: 45.2 | EMA50: 270.6
+[SignalGen] SKIP POWERGRID: RSI 45.2 > 40
+[Cache] Γ£ô Hit for TMPV (2025-06-21 to 2026-01-07)
+[SignalGen] TMPV on 2026-01-07: O=367.05 C=363.35 RED | Vol: 10682229 (0.8x) | RSI: 46.6 | EMA50: 396.1
+[SignalGen] SKIP TMPV: Low volume 10682229 < 1.2x avg 13054147
+
+=== RESULTS ===
+Stocks checked: 14
+Signals generated: 2 (Max allowed: 3)
+Signals skipped: 12
+
+=== GENERATED SIGNALS ===
+  BAJFINANCE   Tier:1 RSI:36.2 Vol:1.2x EMA50:1005.5 PrcVsEma:-3.65% Reason:undefined
+  RELIANCE     Tier:1 RSI:38.7 Vol:1.3x EMA50:1526.3 PrcVsEma:-1.44% Reason:undefined
+
+=== SKIP REASONS SUMMARY ===
+  RSI 83.3 > 40 (not oversold enough): 1 stocks
+  RSI 63.1 > 40 (not oversold enough): 1 stocks
+  Low volume: 6 stocks
+  RSI 59.0 > 40 (not oversold enough): 1 stocks
+  RSI 65.2 > 40 (not oversold enough): 1 stocks
+  RSI 68.4 > 40 (not oversold enough): 1 stocks
+  RSI 45.2 > 40 (not oversold enough): 1 stocks
+
+=== TOP 5 SKIPS ===
+  TITAN: RSI 83.3 > 40 (not oversold enough)
+  WIPRO: RSI 63.1 > 40 (not oversold enough)
+  JSWSTEEL: Low volume: 11,61,485 < 1.2x avg 15,49,852
+  SUNPHARMA: RSI 59.0 > 40 (not oversold enough)
+  AXISBANK: RSI 65.2 > 40 (not oversold enough)

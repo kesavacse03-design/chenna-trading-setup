@@ -1,0 +1,218 @@
+
+================================================================
+  DEEP ANALYSIS: MULTI_SUPPORT_BO
+================================================================
+Total trades: 43
+Closed: 27 | Open/Pending: 16
+Wins: 6 | Losses: 21
+Win Rate: 22.2%
+
+--- EXIT REASON BREAKDOWN ---
+  DAY3                      Count:  19 | WinRate: 21% | AvgPnL: -0.75%
+  STOP                      Count:   5 | WinRate: 0% | AvgPnL: 0.00%
+  TARGET                    Count:   2 | WinRate: 50% | AvgPnL: -1.01%
+  TRAILING_STOP_PROFIT      Count:   1 | WinRate: 100% | AvgPnL: 1.56%
+
+--- DAYS HELD ANALYSIS ---
+  1-2 days     Count:   8 | WinRate: 25% | AvgPnL: -0.06%
+  11-20 days   Count:  19 | WinRate: 21% | AvgPnL: -0.75%
+
+--- STOP DISTANCE FROM ENTRY ---
+  0-3%         Count:  14 | WinRate: 36% | AvgPnl: 0.04%
+  3-5%         Count:  10 | WinRate: 0% | AvgPnl: -1.11%
+  5-8%         Count:   2 | WinRate: 50% | AvgPnl: -0.78%
+  8-12%        Count:   1 | WinRate: 0% | AvgPnl: -2.65%
+
+--- ENTRY PRICE LEVEL ---
+  Rs 200-500      Count:   6 | WinRate: 0% | AvgPnl: -0.94%
+  Rs 500-1000     Count:   4 | WinRate: 0% | AvgPnl: -1.46%
+  Rs 1000-2000    Count:   8 | WinRate: 50% | AvgPnl: 0.41%
+  Rs 2000-5000    Count:   7 | WinRate: 14% | AvgPnl: -0.89%
+  Rs 5000+        Count:   2 | WinRate: 50% | AvgPnl: -0.17%
+
+--- WIN vs LOSS SIZE ---
+  Avg Win:  +0.74% | Max Win: +1.56%
+  Avg Loss: -0.91% | Max Loss: -2.65%
+  Expectancy per trade: -0.545%
+
+--- STOP LOSS PATTERN ---
+  Pure stop losses: 5
+  Trailing stop losses: 0
+  Avg stop distance: 2.51%
+  Avg stop loss PnL: 0.00%
+
+--- PER-TRADE DETAIL (CLOSED, sorted by PnL) ---
+  Symbol         Entry     Exit      Stop      Target    PnL%     Days  Reason
+  ------------------------------------------------------------------------------------------
+  MPHASIS          2817.2   2742.5   2526.5   2742.5  -2.65%   1  TARGET LOSS
+  CGPOWER           575.5    561.7    550.5    589.8  -2.39%  20  DAY3 LOSS
+  PGEL              622.0    608.4    573.4    696.0  -2.19%  20  DAY3 LOSS
+  MUTHOOTFIN       3932.0   3861.9   3735.4   4178.0  -1.78%  20  DAY3 LOSS
+  JIOFIN            267.0    262.6    257.4    275.7  -1.65%  20  DAY3 LOSS
+  POWERGRID         268.5    264.1    258.8    277.3  -1.64%  20  DAY3 LOSS
+  ASIANPAINT       2845.8   2809.4   2736.8   2990.8  -1.28%  20  DAY3 LOSS
+  ONGC              243.1    240.4    234.6    254.9  -1.12%  20  DAY3 LOSS
+  TMPV              367.1    363.4    356.1    381.5  -1.01%  20  DAY3 LOSS
+  SBICARD           846.6    839.6    822.9    881.6  -0.82%  20  DAY3 LOSS
+  HINDUNILVR       2416.0   2399.4   2323.5   2589.1  -0.69%  20  DAY3 LOSS
+  BHARTIARTL       2095.6   2084.2   2042.5   2188.4  -0.54%  20  DAY3 LOSS
+  BAJFINANCE        973.0    968.8    949.4   1017.2  -0.44%  20  DAY3 LOSS
+  RELIANCE         1510.0   1504.2   1474.1   1579.4  -0.38%  20  DAY3 LOSS
+  ULTRACEMCO      12230.0  12184.0  11820.4  13092.9  -0.38%  20  DAY3 LOSS
+  NTPC              349.6    348.9    334.7    384.3  -0.20%  20  DAY3 LOSS
+  TITAN            4225.0   4225.0   4115.1   4668.6   0.00%   1  STOP LOSS
+  WIPRO             265.0    265.0    260.8    295.9   0.00%   1  STOP LOSS
+  SUNPHARMA        1755.0   1755.0   1713.2   1956.0   0.00%   1  STOP LOSS
+  VOLTAS           1297.4   1297.4   1259.7   1494.5   0.00%   1  STOP LOSS
+  BDL              1532.2   1532.2   1484.8   1609.8   0.00%   1  STOP LOSS
+  OFSS             7594.0   7597.5   7445.6   7977.4   0.05%  20  DAY3 WIN
+  AXISBANK         1293.0   1295.5   1260.6   1382.8   0.19%  20  DAY3 WIN
+  CIPLA            1372.2   1380.8   1288.7   1380.8   0.62%   1  TARGET WIN
+  MPHASIS          2817.2   2838.2   2749.0   3061.2   0.75%  20  DAY3 WIN
+  JSWSTEEL         1174.9   1189.8   1156.7   1272.5   1.27%  20  DAY3 WIN
+  AXISBANK         1293.0   1313.2   1313.2   1407.0   1.56%   1  TRAILING_STOP_PROFIT WIN
+
+--- TOP 5 LOSERS: Candle Analysis ---
+
+  MPHASIS (PnL: -2.65%, Days: 1)
+    Entry: 2817.2 | Stop: 2526.5 | Target: 2742.46
+    Stop Dist: 10.32%
+
+  CGPOWER (PnL: -2.39%, Days: 20)
+    Entry: 575.45 | Stop: 550.47 | Target: 589.79
+    Stop Dist: 4.34%
+    Signal (2026-01-16): RED O=575.45 H=581.4 L=560.25 C=561.7
+
+  PGEL (PnL: -2.19%, Days: 20)
+    Entry: 622 | Stop: 573.38 | Target: 695.96
+    Stop Dist: 7.82%
+    Signal (2026-01-08): RED O=622 H=626.35 L=605.35 C=608.4
+
+  MUTHOOTFIN (PnL: -1.78%, Days: 20)
+    Entry: 3932 | Stop: 3735.44 | Target: 4178.04
+    Stop Dist: 5.00%
+    Signal (2026-01-22): RED O=3932 H=3945 L=3754.3 C=3861.9
+
+  JIOFIN (PnL: -1.65%, Days: 20)
+    Entry: 267 | Stop: 257.35 | Target: 275.73
+    Stop Dist: 3.61%
+    Signal (2026-01-22): RED O=267 H=268.15 L=259.75 C=262.6
+
+--- SIGNAL DAY CANDLE COLOR ---
+  RED signal:   Wins=1 Losses=16 WinRate=6%
+  GREEN signal: Wins=4 Losses=4 WinRate=50%
+
+================================================================
+  DEEP ANALYSIS: MULTI_RESISTANCE_BO
+================================================================
+Total trades: 36
+Closed: 20 | Open/Pending: 16
+Wins: 7 | Losses: 13
+Win Rate: 35.0%
+
+--- EXIT REASON BREAKDOWN ---
+  STOP                      Count:   6 | WinRate: 0% | AvgPnL: -0.78%
+  DAY3                      Count:  12 | WinRate: 42% | AvgPnL: 0.03%
+  TRAILING_STOP_PROFIT      Count:   2 | WinRate: 100% | AvgPnL: 1.43%
+
+--- DAYS HELD ANALYSIS ---
+  1-2 days     Count:   6 | WinRate: 17% | AvgPnL: 0.37%
+  11-20 days   Count:  14 | WinRate: 43% | AvgPnL: -0.26%
+
+--- STOP DISTANCE FROM ENTRY ---
+  0-3%         Count:  10 | WinRate: 50% | AvgPnl: 0.53%
+  3-5%         Count:  10 | WinRate: 20% | AvgPnl: -0.67%
+
+--- ENTRY PRICE LEVEL ---
+  Rs <200         Count:   1 | WinRate: 0% | AvgPnl: 0.00%
+  Rs 200-500      Count:   4 | WinRate: 0% | AvgPnl: -0.66%
+  Rs 1000-2000    Count:   5 | WinRate: 40% | AvgPnl: 0.41%
+  Rs 2000-5000    Count:   8 | WinRate: 50% | AvgPnl: 0.20%
+  Rs 5000+        Count:   2 | WinRate: 50% | AvgPnl: -1.23%
+
+--- WIN vs LOSS SIZE ---
+  Avg Win:  +1.31% | Max Win: +2.26%
+  Avg Loss: -0.81% | Max Loss: -4.65%
+  Expectancy per trade: -0.071%
+
+--- STOP LOSS PATTERN ---
+  Pure stop losses: 6
+  Trailing stop losses: 0
+  Avg stop distance: 2.93%
+  Avg stop loss PnL: -0.78%
+
+--- PER-TRADE DETAIL (CLOSED, sorted by PnL) ---
+  Symbol         Entry     Exit      Stop      Target    PnL%     Days  Reason
+  ------------------------------------------------------------------------------------------
+  MARUTI          17230.0  16428.3  16428.3  17951.1  -4.65%  12  STOP LOSS
+  POWERGRID         268.5    264.1    257.9    282.6  -1.64%  20  DAY3 LOSS
+  ASIANPAINT       2845.8   2809.4   2725.7   3060.4  -1.28%  20  DAY3 LOSS
+  TMPV              367.1    363.4    352.3    381.0  -1.01%  20  DAY3 LOSS
+  HINDUNILVR       2416.0   2399.4   2338.7   2581.5  -0.69%  20  DAY3 LOSS
+  BHARTIARTL       2095.6   2084.2   2042.5   2209.3  -0.54%  20  DAY3 LOSS
+  BAJAJFINSV       2040.0   2031.9   1974.3   2204.6  -0.40%  20  DAY3 LOSS
+  RELIANCE         1510.0   1504.2   1474.1   1594.5  -0.38%  20  DAY3 LOSS
+  WIPRO             265.0    265.0    257.0    277.9   0.00%   1  STOP LOSS
+  IDFCFIRSTB         82.5     82.5     79.3     96.3   0.00%   1  STOP LOSS
+  SUNPHARMA        1755.0   1755.0   1727.1   1949.1   0.00%   1  STOP LOSS
+  TECHM            1599.0   1599.0   1571.5   1786.2   0.00%   1  STOP LOSS
+  RBLBANK           309.4    309.4    300.9    365.4   0.00%   1  STOP LOSS
+  AXISBANK         1293.0   1295.5   1263.2   1392.5   0.19%  20  DAY3 WIN
+  MUTHOOTFIN       3801.5   3826.7   3681.6   4311.3   0.66%  15  TRAILING_STOP_PROFIT WIN
+  PIIND            3255.0   3287.6   3161.7   3665.3   1.00%  20  DAY3 WIN
+  LT               4106.0   4157.0   4058.6   4452.1   1.24%  20  DAY3 WIN
+  TCS              3242.9   3295.6   3202.2   3575.8   1.63%  20  DAY3 WIN
+  PAGEIND         34450.0  35206.2  33454.3  42197.1   2.19%   1  TRAILING_STOP_PROFIT WIN
+  JSWSTEEL         1163.5   1189.8   1127.1   1304.6   2.26%  20  DAY3 WIN
+
+--- TOP 5 LOSERS: Candle Analysis ---
+
+  MARUTI (PnL: -4.65%, Days: 12)
+    Entry: 17230 | Stop: 16428.29 | Target: 17951.14
+    Stop Dist: 4.65%
+    Signal (2026-01-07): RED O=17230 H=17249 L=16524 C=16809
+
+  POWERGRID (PnL: -1.64%, Days: 20)
+    Entry: 268.5 | Stop: 257.93 | Target: 282.62
+    Stop Dist: 3.94%
+    Signal (2026-01-07): RED O=268.5 H=268.95 L=263.45 C=264.1
+
+  ASIANPAINT (PnL: -1.28%, Days: 20)
+    Entry: 2845.8 | Stop: 2725.73 | Target: 3060.42
+    Stop Dist: 4.22%
+    Signal (2026-01-07): RED O=2845.8 H=2854.7 L=2801.1 C=2809.4
+
+  TMPV (PnL: -1.01%, Days: 20)
+    Entry: 367.05 | Stop: 352.26 | Target: 381.02
+    Stop Dist: 4.03%
+
+  HINDUNILVR (PnL: -0.69%, Days: 20)
+    Entry: 2416 | Stop: 2338.69 | Target: 2581.54
+    Stop Dist: 3.20%
+    Signal (2026-01-07): RED O=2416 H=2421.9 L=2382 C=2399.4
+
+--- SIGNAL DAY CANDLE COLOR ---
+  RED signal:   Wins=0 Losses=7 WinRate=0%
+  GREEN signal: Wins=7 Losses=4 WinRate=64%
+
+================================================================
+  CROSS-CATEGORY PATTERNS
+================================================================
+
+  Avg days held - Winners: 15.2 vs Losers: 13.6
+  Avg stop distance - Winners: 2.53% vs Losers: 3.54%
+  Avg entry price - Winners: Rs 5143 vs Losers: Rs 2183
+
+  Stocks in BOTH categories: MUTHOOTFIN, POWERGRID, ASIANPAINT, TMPV, HINDUNILVR, BHARTIARTL, RELIANCE, WIPRO, SUNPHARMA, AXISBANK, JSWSTEEL
+
+  CONSISTENT LOSERS (0 wins):
+    MARUTI          Losses: 1 | Total PnL: -4.65%
+    POWERGRID       Losses: 2 | Total PnL: -3.28%
+    ASIANPAINT      Losses: 2 | Total PnL: -2.56%
+    CGPOWER         Losses: 1 | Total PnL: -2.39%
+    PGEL            Losses: 1 | Total PnL: -2.19%
+    TMPV            Losses: 2 | Total PnL: -2.02%
+    JIOFIN          Losses: 1 | Total PnL: -1.65%
+    HINDUNILVR      Losses: 2 | Total PnL: -1.37%
+    ONGC            Losses: 1 | Total PnL: -1.12%
+    BHARTIARTL      Losses: 2 | Total PnL: -1.09%

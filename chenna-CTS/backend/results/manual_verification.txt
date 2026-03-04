@@ -1,0 +1,283 @@
+﻿══════════════════════════════════════════════════════════════════════
+  PRODUCTION-GRADE V2 STRATEGY VERIFICATION
+  3-Way Comparison: Fixed | ATR-Based | ATR + Trailing
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+  TESTING: ST_SWING_BO_DOWN
+──────────────────────────────────────────────────────────────────────
+  ❌ NYKAA        | Entry: ₹   254 | Stop: 2.0% (STRUC) | Exit: BREAKEVEN      | P&L: +0.00% | Days: 5
+  ✅ BEL          | Entry: ₹   407 | Stop: 2.0% (STRUC) | Exit: BREAKEVEN      | P&L: +0.03% | Days: 7
+  ❌ POLYCAB      | Entry: ₹  7420 | Stop: 2.0% (STRUC) | Exit: BREAKEVEN      | P&L: +0.00% | Days: 5
+  ✅ APLAPOLLO    | Entry: ₹  1700 | Stop: 2.0% (STRUC) | Exit: TARGET         | P&L: +4.00% | Days: 7
+  ✅ PHOENIXLTD   | Entry: ₹  1690 | Stop: 2.1% (STRUC) | Exit: TARGET         | P&L: +4.14% | Days: 2
+  ❌ TITAN        | Entry: ₹  4273 | Stop: 3.0% (ATR_B) | Exit: INITIAL_STOP   | P&L: -2.96% | Days: 3
+  ✅ TORNTPHARM   | Entry: ₹  3980 | Stop: 5.4% (ATR_B) | Exit: BREAKEVEN      | P&L: +0.02% | Days: 5
+  ❌ MOTHERSON    | Entry: ₹   118 | Stop: 2.0% (STRUC) | Exit: INITIAL_STOP   | P&L: -2.00% | Days: 1
+  ❌ CANBK        | Entry: ₹   146 | Stop: 2.0% (STRUC) | Exit: INITIAL_STOP   | P&L: -2.00% | Days: 1
+
+──────────────────────────────────────────────────────────────────────
+  TESTING: ST_SWING_BO_UP
+──────────────────────────────────────────────────────────────────────
+  ❌ MOTHERSON    | Entry: ₹   107 | Stop: 3.7% (STRUC) | Exit: INITIAL_STOP   | P&L: -3.73% | Days: 9
+  ❌ MARUTI       | Entry: ₹ 14859 | Stop: 4.1% (ATR_B) | Exit: BREAKEVEN      | P&L: +0.00% | Days: 4
+  ❌ IOC          | Entry: ₹   163 | Stop: 4.3% (ATR_B) | Exit: BREAKEVEN      | P&L: +0.00% | Days: 2
+  ✅ SAIL         | Entry: ₹   130 | Stop: 4.7% (ATR_B) | Exit: BREAKEVEN      | P&L: +0.58% | Days: 4
+  ✅ YESBANK      | Entry: ₹    20 | Stop: 4.5% (ATR_B) | Exit: TIME_EXIT      | P&L: +3.22% | Days: 10
+  ✅ GODREJPROP   | Entry: ₹  2280 | Stop: 5.2% (ATR_B) | Exit: BREAKEVEN      | P&L: +0.06% | Days: 3
+  ✅ LTF          | Entry: ₹   228 | Stop: 5.1% (ATR_B) | Exit: TIME_EXIT      | P&L: +6.52% | Days: 10
+  ❌ PERSISTENT   | Entry: ₹  6422 | Stop: 4.0% (ATR_B) | Exit: TRAILING_STOP  | P&L: -1.34% | Days: 10
+  ❌ NAUKRI       | Entry: ₹  1365 | Stop: 3.5% (STRUC) | Exit: TRAILING_STOP  | P&L: -1.28% | Days: 10
+  ✅ ICICIPRULI   | Entry: ₹   638 | Stop: 3.4% (STRUC) | Exit: TIME_EXIT      | P&L: +4.74% | Days: 10
+  ✅ IRFC         | Entry: ₹   118 | Stop: 4.4% (ATR_B) | Exit: BREAKEVEN      | P&L: +2.50% | Days: 2
+  ❌ SRF          | Entry: ₹  3060 | Stop: 3.7% (ATR_B) | Exit: BREAKEVEN      | P&L: +0.00% | Days: 3
+  ✅ PNBHOUSING   | Entry: ₹   969 | Stop: 6.2% (ATR_B) | Exit: BREAKEVEN      | P&L: +1.63% | Days: 9
+  ✅ JSWSTEEL     | Entry: ₹  1228 | Stop: 4.7% (ATR_B) | Exit: TIME_EXIT      | P&L: +1.73% | Days: 10
+  ✅ DELHIVERY    | Entry: ₹   411 | Stop: 6.9% (ATR_B) | Exit: BREAKEVEN      | P&L: +6.15% | Days: 3
+  ❌ APLAPOLLO    | Entry: ₹  2095 | Stop: 5.1% (ATR_B) | Exit: BREAKEVEN      | P&L: +0.00% | Days: 2
+  ✅ FEDERALBNK   | Entry: ₹   287 | Stop: 3.8% (STRUC) | Exit: BREAKEVEN      | P&L: +0.92% | Days: 5
+
+══════════════════════════════════════════════════════════════════════
+  COMPARISON: ST_SWING_BO_DOWN
+══════════════════════════════════════════════════════════════════════
+
+  Method             | Trades |  Win % |  Avg P&L |  Max Loss |    PF | Avg Days
+  ──────────────────-+-──────-+-──────-+-────────-+-─────────-+-─────-+-────────
+  Fixed 3.5%         |      9 | 33.33% | -1.59% | -3.5% |  0.32 |     7.78
+  ATR-Based (2x)     |      9 | 33.33% | -0.26% | -2.96% |  0.82 |     5.22
+  ATR + Trailing     |      9 | 44.44% | +0.14% | -2.96% |  1.18 |        4
+
+  Exit Breakdown (ATR + Trailing):
+    BREAKEVEN       :   4 trades | Avg P&L: +0.01%
+    TARGET          :   2 trades | Avg P&L: +4.07%
+    INITIAL_STOP    :   3 trades | Avg P&L: -2.32%
+
+  🎯 Trades SAVED by Trailing Stop: 1 (turned losses into avg +0.03% profit)
+
+══════════════════════════════════════════════════════════════════════
+  COMPARISON: ST_SWING_BO_UP
+══════════════════════════════════════════════════════════════════════
+
+  Method             | Trades |  Win % |  Avg P&L |  Max Loss |    PF | Avg Days
+  ──────────────────-+-──────-+-──────-+-────────-+-─────────-+-─────-+-────────
+  Fixed 3.5%         |     17 | 52.94% | +1.3% | -3.5% |  2.07 |     7.47
+  ATR-Based (2x)     |     17 | 70.59% | +2.32% | -5.23% |  4.25 |     9.53
+  ATR + Trailing     |     17 | 58.82% | +1.28% | -3.73% |  4.42 |     6.24
+
+  Exit Breakdown (ATR + Trailing):
+    INITIAL_STOP    :   1 trades | Avg P&L: -3.73%
+    BREAKEVEN       :  10 trades | Avg P&L: +1.18%
+    TIME_EXIT       :   4 trades | Avg P&L: +4.05%
+    TRAILING_STOP   :   2 trades | Avg P&L: -1.31%
+
+  🎯 Trades SAVED by Trailing Stop: 1 (turned losses into avg +0.06% profit)
+
+══════════════════════════════════════════════════════════════════════
+  DETAILED MANUAL VERIFICATION REPORT: ST_SWING_BO_UP
+══════════════════════════════════════════════════════════════════════
+
+  ── TRADE: MOTHERSON ──
+  Entry: ₹107.31 on 2025-10-24 | Tier 1
+  Initial Stop: ₹103.31 (STRUCTURE_BASED)
+  Target: ₹117.31 | ATR: ₹2.6
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-10-24   |   107.47 |   104.93 |   106.25 |   103.31 | NO_CHANGE
+     2 | 2025-10-27   |   107.27 |    106.1 |   106.93 |   103.31 | NO_CHANGE
+     3 | 2025-10-28   |   107.72 |   106.11 |   106.98 |   103.31 | NO_CHANGE
+     4 | 2025-10-29   |   108.25 |   105.15 |   107.73 |   103.31 | NO_CHANGE
+     5 | 2025-10-30   |    108.8 |   106.16 |   106.88 |   103.31 | NO_CHANGE
+     6 | 2025-10-31   |    107.7 |   105.17 |   105.39 |   103.31 | NO_CHANGE
+     7 | 2025-11-03   |    106.1 |   103.82 |   105.57 |   103.31 | NO_CHANGE
+     8 | 2025-11-04   |    106.1 |   103.75 |   104.49 |   103.31 | NO_CHANGE
+     9 | 2025-11-06   |   105.07 |   102.08 |   103.92 |   103.31 | INITIAL_STOP
+
+  EXIT: INITIAL_STOP at ₹103.31 on 2025-11-06
+  P&L: -3.73% | Days: 9
+  Max Favorable: +1.39% | Max Adverse: -4.87%
+
+  ── TRADE: MARUTI ──
+  Entry: ₹14859 on 2025-09-02 | Tier 2
+  Initial Stop: ₹14246.29 (ATR_BASED)
+  Target: ₹16390.79 | ATR: ₹306.36
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-09-02   |    14934 |    14783 |    14842 | 14246.29 | NO_CHANGE
+     2 | 2025-09-03   |    14991 |    14750 |    14927 | 14246.29 | NO_CHANGE
+     3 | 2025-09-04   |    15240 |    14630 |    14662 |    14859 | BREAKEVEN
+     4 | 2025-09-05   |    14957 |    14701 |    14895 |    14859 | BREAKEVEN
+
+  EXIT: BREAKEVEN at ₹14859 on 2025-09-05
+  P&L: +0% | Days: 4
+  Max Favorable: +2.56% | Max Adverse: -1.54%
+
+  ── TRADE: IOC ──
+  Entry: ₹163.09 on 2025-10-30 | Tier 2
+  Initial Stop: ₹155.99 (ATR_BASED)
+  Target: ₹180.83 | ATR: ₹3.55
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-10-30   |    167.1 |   162.15 |   163.51 |   163.09 | BREAKEVEN
+     2 | 2025-10-31   |   166.91 |   163.09 |    165.9 |   163.09 | BREAKEVEN
+
+  EXIT: BREAKEVEN at ₹163.09 on 2025-10-31
+  P&L: +0% | Days: 2
+  Max Favorable: +2.46% | Max Adverse: -0.58%
+
+  ── TRADE: SAIL ──
+  Entry: ₹130 on 2025-09-04 | Tier 1
+  Initial Stop: ₹123.87 (ATR_BASED)
+  Target: ₹145.31 | ATR: ₹3.06
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-09-04   |   130.21 |   127.22 |   127.57 |   123.87 | NO_CHANGE
+     2 | 2025-09-05   |    129.6 |   126.71 |   129.26 |   123.87 | NO_CHANGE
+     3 | 2025-09-08   |   134.79 |   130.16 |   131.45 |   130.75 | TRAIL_UPDATE
+     4 | 2025-09-09   |    131.6 |   129.11 |   129.45 |   130.75 | BREAKEVEN
+
+  EXIT: BREAKEVEN at ₹130.75 on 2025-09-09
+  P&L: +0.58% | Days: 4
+  Max Favorable: +3.68% | Max Adverse: -2.53%
+
+  ── TRADE: YESBANK ──
+  Entry: ₹20.49 on 2025-09-04 | Tier 1
+  Initial Stop: ₹19.56 (ATR_BASED)
+  Target: ₹22.8 | ATR: ₹0.46
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-09-04   |    20.54 |    20.25 |    20.29 |    19.56 | NO_CHANGE
+     2 | 2025-09-05   |    20.61 |    20.03 |    20.44 |    19.56 | NO_CHANGE
+     3 | 2025-09-08   |    20.53 |    20.14 |    20.18 |    19.56 | NO_CHANGE
+     4 | 2025-09-09   |    20.48 |     20.2 |    20.34 |    19.56 | NO_CHANGE
+     5 | 2025-09-10   |    20.93 |    20.42 |    20.77 |    20.49 | BREAKEVEN
+     6 | 2025-09-11   |    21.14 |    20.75 |    20.98 |    20.51 | TRAIL_UPDATE
+     7 | 2025-09-12   |    21.08 |    20.75 |    20.86 |    20.51 | NO_CHANGE
+     8 | 2025-09-15   |    21.28 |    20.87 |    21.01 |    20.64 | TRAIL_UPDATE
+     9 | 2025-09-16   |    21.09 |    20.84 |    21.01 |    20.64 | NO_CHANGE
+    10 | 2025-09-17   |    21.24 |    20.87 |    21.15 |    20.64 | TIME_EXIT
+
+  EXIT: TIME_EXIT at ₹21.15 on 2025-09-17
+  P&L: +3.22% | Days: 10
+  Max Favorable: +3.86% | Max Adverse: -2.24%
+
+  ── TRADE: GODREJPROP ──
+  Entry: ₹2280 on 2025-10-24 | Tier 1
+  Initial Stop: ₹2160.66 (ATR_BASED)
+  Target: ₹2578.36 | ATR: ₹59.67
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-10-24   |     2310 |   2263.5 |   2287.8 |  2160.66 | NO_CHANGE
+     2 | 2025-10-27   |     2352 |   2306.7 |   2320.3 |  2281.44 | TRAIL_UPDATE
+     3 | 2025-10-28   |     2330 |   2275.3 |   2296.6 |  2281.44 | BREAKEVEN
+
+  EXIT: BREAKEVEN at ₹2281.44 on 2025-10-28
+  P&L: +0.06% | Days: 3
+  Max Favorable: +3.16% | Max Adverse: -0.72%
+
+  ── TRADE: LTF ──
+  Entry: ₹228.03 on 2025-09-04 | Tier 1
+  Initial Stop: ₹216.48 (ATR_BASED)
+  Target: ₹256.91 | ATR: ₹5.78
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-09-04   |    230.2 |      226 |   227.85 |   216.48 | NO_CHANGE
+     2 | 2025-09-05   |   232.87 |    228.8 |   230.51 |   228.03 | BREAKEVEN
+     3 | 2025-09-08   |   236.45 |   230.71 |   233.57 |   229.36 | TRAIL_UPDATE
+     4 | 2025-09-09   |   235.15 |   232.31 |   233.97 |   229.36 | NO_CHANGE
+     5 | 2025-09-10   |   235.71 |    231.6 |   232.72 |   229.36 | NO_CHANGE
+     6 | 2025-09-11   |   235.19 |   232.25 |   233.51 |   229.36 | NO_CHANGE
+     7 | 2025-09-12   |    236.5 |   233.51 |   234.96 |   229.41 | TRAIL_UPDATE
+     8 | 2025-09-15   |   238.35 |    233.8 |    237.1 |    231.2 | TRAIL_UPDATE
+     9 | 2025-09-16   |   241.28 |   237.17 |   241.03 |   234.04 | TRAIL_UPDATE
+    10 | 2025-09-17   |    243.7 |   238.93 |   242.89 |   236.39 | TIME_EXIT
+
+  EXIT: TIME_EXIT at ₹242.89 on 2025-09-17
+  P&L: +6.52% | Days: 10
+  Max Favorable: +6.87% | Max Adverse: -0.89%
+
+  ── TRADE: PERSISTENT ──
+  Entry: ₹6421.5 on 2025-11-25 | Tier 2
+  Initial Stop: ₹6164.93 (ATR_BASED)
+  Target: ₹7062.93 | ATR: ₹128.29
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-11-25   |   6421.5 |     6324 |   6370.5 |  6164.93 | NO_CHANGE
+     2 | 2025-11-26   |   6421.5 |     6360 |     6415 |  6164.93 | NO_CHANGE
+     3 | 2025-11-27   |     6478 |   6383.5 |     6432 |  6164.93 | NO_CHANGE
+     4 | 2025-11-28   |     6455 |   6318.5 |     6353 |  6164.93 | NO_CHANGE
+     5 | 2025-12-01   |     6425 |     6331 |     6406 |  6164.93 | NO_CHANGE
+     6 | 2025-12-02   |     6447 |   6337.5 |   6393.5 |  6164.93 | NO_CHANGE
+     7 | 2025-12-03   |     6408 |     6295 |     6331 |  6164.93 | NO_CHANGE
+     8 | 2025-12-04   |   6528.5 |     6334 |     6452 |  6332.65 | TRAIL_UPDATE
+     9 | 2025-12-05   |   6531.5 |     6428 |   6520.5 |  6335.55 | TRAIL_UPDATE
+    10 | 2025-12-08   |     6553 |     6311 |     6347 |  6335.55 | TRAILING_STOP
+
+  EXIT: TRAILING_STOP at ₹6335.55 on 2025-12-08
+  P&L: -1.34% | Days: 10
+  Max Favorable: +2.05% | Max Adverse: -1.97%
+
+  ── TRADE: NAUKRI ──
+  Entry: ₹1364.5 on 2025-12-26 | Tier 1
+  Initial Stop: ₹1316.83 (STRUCTURE_BASED)
+  Target: ₹1483.68 | ATR: ₹28.86
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-12-26   |     1374 |   1359.5 |   1365.8 |  1316.83 | NO_CHANGE
+     2 | 2025-12-29   |   1377.5 |     1350 |   1359.5 |  1316.83 | NO_CHANGE
+     3 | 2025-12-30   |   1359.1 |     1330 |     1335 |  1316.83 | NO_CHANGE
+     4 | 2025-12-31   |   1347.3 |   1331.3 |   1333.6 |  1316.83 | NO_CHANGE
+     5 | 2026-01-01   |     1348 |   1329.1 |   1340.9 |  1316.83 | NO_CHANGE
+     6 | 2026-01-02   |   1373.5 |   1335.4 |   1367.7 |  1316.83 | NO_CHANGE
+     7 | 2026-01-05   |   1370.9 |   1333.7 |   1343.2 |  1316.83 | NO_CHANGE
+     8 | 2026-01-06   |     1357 |   1325.8 |   1335.8 |  1316.83 | NO_CHANGE
+     9 | 2026-01-07   |   1388.7 |     1339 |   1359.4 |  1347.04 | TRAIL_UPDATE
+    10 | 2026-01-08   |     1368 |     1333 |   1337.4 |  1347.04 | TRAILING_STOP
+
+  EXIT: TRAILING_STOP at ₹1347.04 on 2026-01-08
+  P&L: -1.28% | Days: 10
+  Max Favorable: +1.77% | Max Adverse: -2.84%
+
+  ── TRADE: ICICIPRULI ──
+  Entry: ₹638 on 2025-12-17 | Tier 1
+  Initial Stop: ₹616.21 (STRUCTURE_BASED)
+  Target: ₹692.46 | ATR: ₹13.93
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-12-17   |    639.6 |      627 |    630.5 |   616.21 | NO_CHANGE
+     2 | 2025-12-18   |   647.45 |   625.95 |   645.65 |   616.21 | NO_CHANGE
+     3 | 2025-12-19   |      653 |   647.65 |    650.4 |      638 | BREAKEVEN
+     4 | 2025-12-22   |    652.1 |   645.05 |    650.5 |      638 | NO_CHANGE
+     5 | 2025-12-23   |    656.2 |      646 |    650.9 |      638 | NO_CHANGE
+     6 | 2025-12-24   |      654 |   648.75 |   652.05 |      638 | NO_CHANGE
+     7 | 2025-12-26   |    654.6 |   645.95 |   649.95 |      638 | NO_CHANGE
+     8 | 2025-12-29   |   653.95 |   647.75 |    651.2 |      638 | NO_CHANGE
+     9 | 2025-12-30   |      658 |   648.35 |   654.85 |   638.26 | TRAIL_UPDATE
+    10 | 2025-12-31   |    669.5 |    654.8 |   668.25 |   649.42 | TIME_EXIT
+
+  EXIT: TIME_EXIT at ₹668.25 on 2025-12-31
+  P&L: +4.74% | Days: 10
+  Max Favorable: +4.94% | Max Adverse: -1.89%
+
+  ── TRADE: IRFC ──
+  Entry: ₹117.8 on 2025-12-23 | Tier 1
+  Initial Stop: ₹112.62 (ATR_BASED)
+  Target: ₹130.75 | ATR: ₹2.59
+
+   Day | Date         |     High |      Low |    Close |     Stop | Action
+  ────-+-────────────-+-────────-+-────────-+-────────-+-────────-+-────────────────
+     1 | 2025-12-23   |   124.48 |   116.81 |    121.4 |   120.75 | TRAIL_UPDATE
+     2 | 2025-12-24   |   123.84 |   120.54 |   121.49 |   120.75 | BREAKEVEN
+
+  EXIT: BREAKEVEN at ₹120.75 on 2025-12-24
+  P&L: +2.5% | Days: 2
+  Max Favorable: +5.67% | Max Adverse: -0.84%

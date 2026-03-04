@@ -346,6 +346,42 @@ const StrategyWorkbenchSimple: React.FC<StrategyWorkbenchSimpleProps> = ({
                                     </span>
                                 </div>
 
+                                {/* EXPERIMENTAL WARNING */}
+                                {(v1Strategy.isExperimental || v1Strategy.id?.includes('daily_contraction')) && (
+                                    <div className="mb-4 bg-amber-900/20 border border-amber-500/50 rounded-lg p-3">
+                                        <div className="flex items-start gap-3">
+                                            <div className="text-2xl">⚠️</div>
+                                            <div>
+                                                <h4 className="text-amber-400 font-bold text-sm">EXPERIMENTAL STRATEGY</h4>
+                                                <div className="text-amber-200/80 text-xs mt-1 space-y-1">
+                                                    <p>Status: <span className="text-white">Data-Verified but Small Sample (8 trades)</span></p>
+                                                    <p>Verified WR: <span className="font-mono text-white">37.5% (Pessimistic) - 50.0% (Optimistic)</span></p>
+                                                    <p className="mt-2 font-semibold text-amber-300">Recommendation: Use HALF position size until 20+ trades confirm the edge.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* Strategy Metadata Badges */}
+                                <div className="flex flex-wrap gap-2 mb-4">
+                                    {(v1Strategy.bias === 'SHORT') && (
+                                        <span className="px-2 py-1 rounded bg-red-900/40 border border-red-700/50 text-red-300 text-xs font-bold border-l-2 border-l-red-500">
+                                            ⬇️ SHORT ONLY
+                                        </span>
+                                    )}
+                                    {(v1Strategy.holdingPeriod === 'OVERNIGHT') && (
+                                        <span className="px-2 py-1 rounded bg-indigo-900/40 border border-indigo-700/50 text-indigo-300 text-xs font-bold border-l-2 border-l-indigo-500">
+                                            🌙 OVERNIGHT SWING
+                                        </span>
+                                    )}
+                                    {v1Strategy.expectedDuration && (
+                                        <span className="px-2 py-1 rounded bg-slate-800 border border-slate-700 text-slate-400 text-xs flex items-center gap-1">
+                                            ⏱️ {v1Strategy.expectedDuration}
+                                        </span>
+                                    )}
+                                </div>
+
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                                     <div className="bg-slate-900/60 rounded-lg p-3 border border-emerald-500/20">
                                         <div className="text-xs text-emerald-400 font-semibold mb-2">📈 ENTRY RULES</div>

@@ -1,0 +1,134 @@
+[
+  {
+    "sampleNo": 1,
+    "symbol": "ADANIENT",
+    "date": "2025-10-29",
+    "direction": "LONG",
+    "previousDay": {
+      "close": "2494.40"
+    },
+    "tradeDay": {
+      "open": "2500.00",
+      "high": "2600.00",
+      "low": "2495.50",
+      "close": "2537.40"
+    },
+    "calculations": {
+      "gapPercent": "+0.22%",
+      "entryPrice": "2500.00",
+      "targetPrice": "2494.40",
+      "stopPrice": "2450.00"
+    },
+    "verification": {
+      "gapCheck": "Gap ≥±3%? NO (+0.22%)",
+      "direction": "Gap DOWN → LONG",
+      "targetCheck": "Did High (2600.00) reach PrevClose (2494.40)? YES",
+      "stopCheck": "Did Low (2495.50) reach Stop (2450.00)? NO"
+    },
+    "result": {
+      "exitReason": "TARGET_HIT",
+      "outcome": "WIN",
+      "pnl": "+3.00%"
+    },
+    "verifyOn": "https://www.tradingview.com/chart/?symbol=NSE:ADANIENT"
+  },
+  {
+    "sampleNo": 2,
+    "symbol": "ULTRACEMCO",
+    "date": "2025-10-29",
+    "direction": "LONG",
+    "previousDay": {
+      "close": "11999.00"
+    },
+    "tradeDay": {
+      "open": "12040.00",
+      "high": "12084.00",
+      "low": "11950.00",
+      "close": "12053.00"
+    },
+    "calculations": {
+      "gapPercent": "+0.34%",
+      "entryPrice": "12040.00",
+      "targetPrice": "11999.00",
+      "stopPrice": "11799.20"
+    },
+    "verification": {
+      "gapCheck": "Gap ≥±3%? NO (+0.34%)",
+      "direction": "Gap DOWN → LONG",
+      "targetCheck": "Did High (12084.00) reach PrevClose (11999.00)? YES",
+      "stopCheck": "Did Low (11950.00) reach Stop (11799.20)? NO"
+    },
+    "result": {
+      "exitReason": "STOP_HIT",
+      "outcome": "LOSS",
+      "pnl": "-0.34%"
+    },
+    "verifyOn": "https://www.tradingview.com/chart/?symbol=NSE:ULTRACEMCO"
+  },
+  {
+    "sampleNo": 3,
+    "symbol": "TATACONSUM",
+    "date": "2025-10-29",
+    "direction": "LONG",
+    "previousDay": {
+      "close": "1168.90"
+    },
+    "tradeDay": {
+      "open": "1169.00",
+      "high": "1188.00",
+      "low": "1167.30",
+      "close": "1177.10"
+    },
+    "calculations": {
+      "gapPercent": "+0.01%",
+      "entryPrice": "1169.00",
+      "targetPrice": "1168.90",
+      "stopPrice": "1145.62"
+    },
+    "verification": {
+      "gapCheck": "Gap ≥±3%? NO (+0.01%)",
+      "direction": "Gap DOWN → LONG",
+      "targetCheck": "Did High (1188.00) reach PrevClose (1168.90)? YES",
+      "stopCheck": "Did Low (1167.30) reach Stop (1145.62)? NO"
+    },
+    "result": {
+      "exitReason": "STOP_HIT",
+      "outcome": "LOSS",
+      "pnl": "-0.01%"
+    },
+    "verifyOn": "https://www.tradingview.com/chart/?symbol=NSE:TATACONSUM"
+  },
+  {
+    "sampleNo": 4,
+    "symbol": "LT",
+    "date": "2025-10-29",
+    "direction": "LONG",
+    "previousDay": {
+      "close": "3958.10"
+    },
+    "tradeDay": {
+      "open": "3980.00",
+      "high": "4062.60",
+      "low": "3975.60",
+      "close": "3987.50"
+    },
+    "calculations": {
+      "gapPercent": "+0.55%",
+      "entryPrice": "3980.00",
+      "targetPrice": "3958.10",
+      "stopPrice": "3900.40"
+    },
+    "verification": {
+      "gapCheck": "Gap ≥±3%? NO (+0.55%)",
+      "direction": "Gap DOWN → LONG",
+      "targetCheck": "Did High (4062.60) reach PrevClose (3958.10)? YES",
+      "stopCheck": "Did Low (3975.60) reach Stop (3900.40)? NO"
+    },
+    "result": {
+      "exitReason": "EOD",
+      "outcome": "WIN",
+      "pnl": "+0.19%"
+    },
+    "verifyOn": "https://www.tradingview.com/chart/?symbol=NSE:LT"
+  }
+]

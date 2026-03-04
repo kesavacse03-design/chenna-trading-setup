@@ -1,0 +1,32 @@
+﻿=== Testing Gate 1: Market Regime ===
+
+Feb 17 Regime: {
+  "date": "2026-02-16",
+  "niftyTrend": "bullish",
+  "niftyPrice": 0,
+  "niftySMA50": 0,
+  "breadth": 0.7619047619047619,
+  "breadthStocksAbove": 16,
+  "breadthTotal": 21,
+  "volatilityState": "medium",
+  "regimeScore": 90,
+  "recommendation": "aggressive_long"
+}
+Allow Entry (swing): true
+
+Feb 23 Regime: {
+  "date": "2026-02-22",
+  "niftyTrend": "bullish",
+  "niftyPrice": 0,
+  "niftySMA50": 0,
+  "breadth": 0.7619047619047619,
+  "breadthStocksAbove": 16,
+  "breadthTotal": 21,
+  "volatilityState": "medium",
+  "regimeScore": 90,
+  "recommendation": "aggressive_long"
+}
+Allow Entry (swing): true
+
+=== Testing Gate 2: Minervini Classifier ===
+signalGeneratorV2 loaded successfully (Minervini classifier embedded)

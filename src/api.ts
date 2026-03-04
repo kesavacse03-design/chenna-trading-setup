@@ -2,7 +2,7 @@
 import * as mock from './utils/mockApi';
 import { attachCategoryMetaToItem, mapToCanonical } from './utils/categoryMap';
 import fetchWithTimeout from './utils/fetchWithTimeout';
-import { StrategyLogic, SystemHealthState, GroupedWatchlist, ImportWatchlistPayload, StrategyState, Trade, Notification } from './types';
+import { StrategyLogic, SystemHealthState, GroupedWatchlist, ImportWatchlistPayload, StrategyState, Trade, Notification, Category } from './types';
 import type { CompositeOptimizationResponse } from './types';
 
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
@@ -147,37 +147,45 @@ export async function getPrices(symbols: string[]): Promise<Record<string, { pri
 export async function createStock(payload: { symbol: string; date: string; category: string; sector?: string }): Promise<any> {
     const imeta4: any = (globalThis as any).import?.meta || {};
     const base = (window as any).__CTS_API_BASE || imeta4.env?.VITE_API_BASE || '';
-    if (base) {
-        // Gun-shot mode: Direct backend call, no silent fallback
-        const url = `${base.replace(/\/$/, '')}/api/stocks`;
-        const body = { symbol: payload.symbol, date: payload.date, category: payload.category, sector: payload.sector };
-        const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-        if (r.ok) return r.json();
-        if (r.status === 409) { const err: any = new Error('Duplicate'); err.code = 'DUPLICATE'; throw err; }
-        // For other errors, throw with message
-        const errBody = await r.json().catch(() => ({}));
-        throw new Error(errBody.error || `Backend error: ${r.status}`);
+
+    // CRITICAL: Do NOT silently fallback to mock - this caused data loss!
+    // If backend is not configured, throw an error immediately
+    if (!base) {
+        console.error('[CRITICAL] createStock called but VITE_API_BASE is not set!');
+        console.error('Stocks will NOT be saved to database. Backend URL must be configured.');
+        throw new Error('Backend not configured - VITE_API_BASE missing. Cannot save stock to database.');
     }
-    await sleep(8);
-    return mock.createStock(payload);
+
+    // Gun-shot mode: Direct backend call, no silent fallback
+    const url = `${base.replace(/\/$/, '')}/api/stocks`;
+    const body = { symbol: payload.symbol, date: payload.date, category: payload.category, sector: payload.sector };
+    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    if (r.ok) return r.json();
+    if (r.status === 409) { const err: any = new Error('Duplicate'); err.code = 'DUPLICATE'; throw err; }
+    // For other errors, throw with message
+    const errBody = await r.json().catch(() => ({}));
+    throw new Error(errBody.error || `Backend error: ${r.status}`);
 }
+
 
 export async function deleteStock(id: number): Promise<{ success: boolean }> {
     const imeta5: any = (globalThis as any).import?.meta || {};
     const base = (window as any).__CTS_API_BASE || imeta5.env?.VITE_API_BASE || '';
-    if (base) {
-        try {
-            const url = `${base.replace(/\/$/, '')}/api/stocks/${encodeURIComponent(String(id))}`;
-            const r = await fetch(url, { method: 'DELETE' });
-            if (r.ok) return r.json();
-            if (r.status === 404) { const err: any = new Error('Not found'); err.code = 'NOT_FOUND'; throw err; }
-        } catch (e) {
-            if (localStorage.getItem('cts_debug')) console.warn('[CTS-DEBUG] deleteStock backend failed, falling back', e);
-        }
+
+    // CRITICAL: Do NOT silently fallback to mock - this caused data inconsistency!
+    if (!base) {
+        console.error('[CRITICAL] deleteStock called but VITE_API_BASE is not set!');
+        throw new Error('Backend not configured - VITE_API_BASE missing. Cannot delete stock from database.');
     }
-    await sleep(8);
-    return mock.deleteStock(id);
+
+    const url = `${base.replace(/\/$/, '')}/api/stocks/${encodeURIComponent(String(id))}`;
+    const r = await fetch(url, { method: 'DELETE' });
+    if (r.ok) return r.json();
+    if (r.status === 404) { const err: any = new Error('Not found'); err.code = 'NOT_FOUND'; throw err; }
+    const errBody = await r.json().catch(() => ({}));
+    throw new Error(errBody.error || `Backend error: ${r.status}`);
 }
+
 
 // Get stocks for a specific category
 export async function getCategoryStocks(categoryKey: string): Promise<any[]> {
@@ -469,3 +477,38 @@ export async function resetAITokenUsage(): Promise<boolean> {
     }
 }
 
+
+export async function getCategories(): Promise<Category[]> {
+    const base = apiBase();
+    if (!base) return [];
+    try {
+        const r = await fetch(`${base}/api/categories`);
+        if (r.ok) {
+            const json = await r.json();
+            // Handle { success: true, data: [...] } structure
+            if (json.data && Array.isArray(json.data)) return json.data;
+            if (Array.isArray(json)) return json;
+        }
+    } catch (e) { console.error(e); }
+    return [];
+}
+
+export async function updateCategoryStatus(key: string, updates: Partial<Category>): Promise<Category | null> {
+    const base = apiBase();
+    if (!base) return null;
+    try {
+        const r = await fetch(`${base}/api/categories/${encodeURIComponent(key)}/status`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updates)
+        });
+        if (r.ok) {
+            const json = await r.json();
+            return json.data || json;
+        }
+    } catch (e) {
+        console.error(e);
+        throw e;
+    }
+    return null;
+}

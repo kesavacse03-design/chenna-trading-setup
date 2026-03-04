@@ -6,7 +6,6 @@ import ManualImport from './ManualImport';
 import TredcodeSync from './TredcodeSync';
 import SmartPasteImport from './SmartPasteImport';
 import { SearchIcon } from './icons/SearchIcon';
-import { WrenchScrewdriverIcon } from './icons/WrenchScrewdriverIcon';
 import { TrashIcon } from './icons/TrashIcon';
 import * as storage from '../utils/storage';
 import { useWatchlistStore } from '../store/watchlistStore';
@@ -17,19 +16,27 @@ import priceService, { getCachedPrice } from '../utils/priceService';
 import { readLocks, writeLock, isLocked } from '../utils/categoryLocks';
 // simple per-category time filter persistence
 const TIME_FILTERS_KEY = 'cts_timeFilters';
-type TimeRange = '1_DAY' | '10_DAYS' | '15_DAYS' | '30_DAYS' | 'ALL';
+type TimeRange = '1_DAY' | '7_DAYS' | '10_DAYS' | '15_DAYS' | '30_DAYS' | 'ALL';
 function readTimeFilters(): Record<string, TimeRange> {
     try { const raw = localStorage.getItem(TIME_FILTERS_KEY); return raw ? JSON.parse(raw) : {}; } catch (_) { return {}; }
 }
 function writeTimeFilter(categoryKey: string, value: TimeRange) {
     try { const cur = readTimeFilters(); cur[categoryKey] = value; localStorage.setItem(TIME_FILTERS_KEY, JSON.stringify(cur)); } catch (_) { }
 }
-function getTimeFilterFor(categoryKey: string): TimeRange { try { const cur = readTimeFilters(); return (cur[categoryKey] as TimeRange) || '10_DAYS'; } catch (_) { return '10_DAYS'; } }
+function getTimeFilterFor(categoryKey: string, isIntraday: boolean): TimeRange {
+    try {
+        const cur = readTimeFilters();
+        if (cur[categoryKey]) return cur[categoryKey] as TimeRange;
+        return isIntraday ? '1_DAY' : '7_DAYS';
+    } catch (_) {
+        return isIntraday ? '1_DAY' : '7_DAYS';
+    }
+}
 
 interface AnalysisHubProps {
     watchlist: GroupedWatchlist;
     onWatchlistUpdate: (payload: ImportWatchlistPayload) => void;
-    onManageStrategy: (categoryKey: string) => void;
+    onManageStrategy?: (categoryKey: string) => void;
     onOpenLabs?: (categoryKey: string) => void;
 }
 
@@ -42,7 +49,7 @@ const isStockExpired = (stock: StockData): boolean => {
 
 // per-stock rows rendered inline inside subcategory blocks
 
-const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate, onManageStrategy, onOpenLabs }) => {
+const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate }) => {
     const [isImportModalOpen, setIsImportModalOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [filter, setFilter] = useState<'ALL' | 'SWING' | 'INTRADAY'>('ALL');
@@ -58,31 +65,34 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
     const [livePrices, setLivePrices] = useState<Record<string, { ltp: number; updatedAt: string }>>({});
     const [lastPriceUpdate, setLastPriceUpdate] = useState<string | null>(null);
     const [marketStatus, setMarketStatus] = useState<any>(null);
+    const [isLiveSyncOn, setIsLiveSyncOn] = useState<boolean>(false);
 
     // Fetch live prices from backend API
     const fetchLivePrices = React.useCallback(async () => {
+        if (!isLiveSyncOn) return; // Only fetch if toggle is ON
         try {
             const response = await fetch('http://localhost:3001/api/live-prices');
             if (!response.ok) return;
             const data = await response.json();
             if (data.ok && data.prices) {
-                setLivePrices(data.prices);
+                // Merge with existing prices so we never show 0/empty if a batch drops
+                setLivePrices(prev => ({ ...prev, ...data.prices }));
                 setLastPriceUpdate(data.lastUpdate);
                 setMarketStatus(data.marketStatus);
-                console.log('[LivePrices] Updated:', Object.keys(data.prices).length, 'prices');
-                if (data.marketStatus) console.log('[Market]', data.marketStatus.message);
             }
         } catch (error) {
             console.error('[LivePrices] Fetch failed:', error);
         }
-    }, []);
+    }, [isLiveSyncOn]);
 
-    // Fetch prices on mount and every 5 minutes
+    // Fetch prices on mount and every 30 seconds if ON
     useEffect(() => {
-        fetchLivePrices(); // Initial fetch
-        const interval = setInterval(fetchLivePrices, 5 * 60 * 1000); // Every 5 minutes
-        return () => clearInterval(interval);
-    }, [fetchLivePrices]);
+        if (isLiveSyncOn) {
+            fetchLivePrices(); // Initial fetch
+            const interval = setInterval(fetchLivePrices, 30 * 1000); // UI Requirement: 30 seconds
+            return () => clearInterval(interval);
+        }
+    }, [fetchLivePrices, isLiveSyncOn]);
 
     // helper to build an empty canonical watchlist merged with any persisted content
     const getBaseWatchlist = () => {
@@ -107,9 +117,18 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
         try {
             const serverStocks = await api.getStocks();
             if (!mounted) return;
-            // Build a complete category structure and then populate from serverStocks
-            const base = getBaseWatchlist();
+
+            // CRITICAL FIX: Start with EMPTY category structure, NOT localStorage
+            // Previously getBaseWatchlist() loaded stale localStorage data causing count mismatch
+            const base = JSON.parse(JSON.stringify(PREPOPULATED_WATCHLIST));
+            // Clear all arrays - we only want database data
+            for (const page of Object.keys(base)) {
+                for (const cat of Object.keys(base[page] || {})) {
+                    base[page][cat] = []; // Empty array - will be filled from API only
+                }
+            }
             const copy = base;
+
             for (const s of serverStocks) {
                 const s2 = attachCategoryMetaToItem(s);
                 const incomingCatNorm = s2.categoryKey || (s2.category || s2.categoryRaw || '');
@@ -163,7 +182,7 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
                 }
             }
             setLocalWatchlist(copy);
-            storage.setWatchlist(copy);
+            // NOTE: storage.setWatchlist removed - database is only source of truth
             try {
                 // Flatten grouped watchlist into rows for the Active Watchlist store
                 const flattened: any[] = [];
@@ -274,7 +293,8 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
             }
 
             // apply time-range filter per category
-            const timeFilter = getTimeFilterFor(category);
+            const isCategoryIntraday = intradayList.includes(category);
+            const timeFilter = getTimeFilterFor(category, isCategoryIntraday);
             const now = new Date();
             const inTimeRange = (s: any) => {
                 // Use date field (the actual import date) if addedDate is missing
@@ -286,6 +306,7 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
                 const diffMs = now.getTime() - dt.getTime();
                 const days = diffMs / (1000 * 60 * 60 * 24);
                 if (timeFilter === '1_DAY') return days <= 1;
+                if (timeFilter === '7_DAYS') return days <= 7;
                 if (timeFilter === '10_DAYS') return days <= 10;
                 if (timeFilter === '15_DAYS') return days <= 15;
                 if (timeFilter === '30_DAYS') return days <= 30;
@@ -341,13 +362,7 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
         if (idx >= 0) arr.splice(idx, 1);
         if (copy[page]) copy[page][category] = arr;
         setLocalWatchlist(copy);
-
-        // persist to storage immediately
-        try {
-            storage.setWatchlist(copy);
-        } catch (e) {
-            console.warn('Failed to persist watchlist delete', e);
-        }
+        // NOTE: localStorage persistence removed - database is only source of truth
 
         // Delete from backend via category-specific API
         try {
@@ -378,12 +393,9 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
 
         // Optimistic UI update: clear the category
         const copy: GroupedWatchlist = JSON.parse(JSON.stringify(localWatchlist));
-        const beforeCount = (copy[page] && copy[page][category]) ? copy[page][category].length : 0;
         if (copy[page]) copy[page][category] = [];
         setLocalWatchlist(copy);
-
-        // Persist watchlist
-        try { storage.setWatchlist(copy); } catch (_) { }
+        // NOTE: localStorage persistence removed - database is only source of truth
 
 
         // Delete all stocks from category via backend API
@@ -424,7 +436,8 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
 
     const toggleSelectAllInCategory = (page: string, category: string) => {
         const allStocks = (localWatchlist[page]?.[category] || []);
-        const timeFilter = getTimeFilterFor(category);
+        const isCategoryIntraday = ['HIGH_POWERED_STOCKS', 'INTRADAY_BOOST', 'DOWNSIDE_LOM_INTRA', 'UPSIDE_LOM_INTRA', 'DAILY_CONTRACTION', 'PRE_MARKET'].includes(category);
+        const timeFilter = getTimeFilterFor(category, isCategoryIntraday);
         const now = new Date();
 
         // Filter stocks by time range (same logic as display)
@@ -441,6 +454,8 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
             const diffMs = now.getTime() - dt.getTime();
             const days = diffMs / (1000 * 60 * 60 * 24);
             if (timeFilter === '1_DAY') return days <= 1;
+            if (timeFilter === '7_DAYS') return days <= 7;
+            if (timeFilter === '10_DAYS') return days <= 10;
             if (timeFilter === '15_DAYS') return days <= 15;
             if (timeFilter === '30_DAYS') return days <= 30;
             return true;
@@ -459,7 +474,8 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
     // Helper: get stocks filtered by current time range and search
     const getFilteredStocksInCategory = (page: string, category: string) => {
         const allStocks = (localWatchlist[page]?.[category] || []);
-        const timeFilter = getTimeFilterFor(category);
+        const isCategoryIntraday = ['HIGH_POWERED_STOCKS', 'INTRADAY_BOOST', 'DOWNSIDE_LOM_INTRA', 'UPSIDE_LOM_INTRA', 'DAILY_CONTRACTION', 'PRE_MARKET'].includes(category);
+        const timeFilter = getTimeFilterFor(category, isCategoryIntraday);
         const now = new Date();
 
         return allStocks.filter((s: any) => {
@@ -475,6 +491,8 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
             const diffMs = now.getTime() - dt.getTime();
             const days = diffMs / (1000 * 60 * 60 * 24);
             if (timeFilter === '1_DAY') return days <= 1;
+            if (timeFilter === '7_DAYS') return days <= 7;
+            if (timeFilter === '10_DAYS') return days <= 10;
             if (timeFilter === '15_DAYS') return days <= 15;
             if (timeFilter === '30_DAYS') return days <= 30;
             return true;
@@ -515,9 +533,8 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
         const filtered = arr.filter((s: any) => !toDelete.some(d => d.stockName === s.stockName && (d.date || '') === (s.date || '')));
         if (copy[page]) copy[page][category] = filtered;
         setLocalWatchlist(copy);
+        // NOTE: localStorage persistence removed - database is only source of truth
 
-        // Persist to storage
-        try { storage.setWatchlist(copy); } catch (_) { }
 
         // Delete from backend
         let deletedCount = 0;
@@ -553,10 +570,30 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-2 mb-3">
-                        <button onClick={() => setFilter('ALL')} className={`px-3 py-1 rounded ${filter === 'ALL' ? 'bg-slate-700' : ''}`}>ALL</button>
-                        <button onClick={() => setFilter('SWING')} className={`px-3 py-1 rounded ${filter === 'SWING' ? 'bg-slate-700' : ''}`}>SWING CENTER</button>
-                        <button onClick={() => setFilter('INTRADAY')} className={`px-3 py-1 rounded ${filter === 'INTRADAY' ? 'bg-slate-700' : ''}`}>INTRADAY</button>
+                    <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-2">
+                            <button onClick={() => setFilter('ALL')} className={`px-3 py-1 rounded ${filter === 'ALL' ? 'bg-slate-700' : ''}`}>ALL</button>
+                            <button onClick={() => setFilter('SWING')} className={`px-3 py-1 rounded ${filter === 'SWING' ? 'bg-slate-700' : ''}`}>SWING CENTER</button>
+                            <button onClick={() => setFilter('INTRADAY')} className={`px-3 py-1 rounded ${filter === 'INTRADAY' ? 'bg-slate-700' : ''}`}>INTRADAY</button>
+                        </div>
+
+                        <div className="flex items-center gap-3">
+                            {isLiveSyncOn && lastPriceUpdate && (
+                                <span className="text-xs text-slate-400">
+                                    Last sync: {new Date(lastPriceUpdate).toLocaleTimeString()}
+                                </span>
+                            )}
+                            <button
+                                onClick={() => {
+                                    if (!isLiveSyncOn) fetchLivePrices(); // fetch immediately when turning on
+                                    setIsLiveSyncOn(!isLiveSyncOn);
+                                }}
+                                className={`text-xs px-3 py-1.5 rounded-full flex items-center gap-2 border transition-colors ${isLiveSyncOn ? 'bg-green-900/30 text-green-400 border-green-800' : 'bg-slate-800 text-slate-400 border-slate-700'}`}
+                            >
+                                <span className={`w-2 h-2 rounded-full ${isLiveSyncOn ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`}></span>
+                                {isLiveSyncOn ? 'Live Sync ON' : 'Live Sync OFF'}
+                            </button>
+                        </div>
                     </div>
 
                     <div className="flex-grow overflow-y-auto pr-1">
@@ -570,39 +607,15 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
                                             <div className="flex items-center gap-2">
                                                 <div className="flex items-center gap-2">
                                                     <label className="text-slate-300 text-xs">Time</label>
-                                                    <select aria-label={`Time filter for ${category}`} value={getTimeFilterFor(category)} onChange={(e) => { writeTimeFilter(category, e.target.value as any); setLocalWatchlist(s => JSON.parse(JSON.stringify(s))); }} className="manual-import-select text-xs bg-slate-700/50 border border-slate-600 rounded px-2 py-1">
-                                                        <option value="10_DAYS">10 Days (Default)</option>
-                                                        <option value="1_DAY">1 Day</option>
+                                                    <select aria-label={`Time filter for ${category}`} value={getTimeFilterFor(category, ['HIGH_POWERED_STOCKS', 'INTRADAY_BOOST', 'DOWNSIDE_LOM_INTRA', 'UPSIDE_LOM_INTRA', 'DAILY_CONTRACTION', 'PRE_MARKET'].includes(category))} onChange={(e) => { writeTimeFilter(category, e.target.value as any); setLocalWatchlist(s => JSON.parse(JSON.stringify(s))); }} className="manual-import-select text-xs bg-slate-700/50 border border-slate-600 rounded px-2 py-1">
+                                                        <option value="1_DAY">Today Only (Default Intra)</option>
+                                                        <option value="7_DAYS">7 Days (Default Swing)</option>
+                                                        <option value="10_DAYS">10 Days</option>
                                                         <option value="15_DAYS">15 Days</option>
                                                         <option value="30_DAYS">30 Days</option>
                                                         <option value="ALL">📂 Show All Data</option>
                                                     </select>
                                                 </div>
-                                                {/* Live price controls: interval, refresh, toggle */}
-                                                <div className="flex items-center gap-2">
-                                                    <select aria-label={`price-interval-${category}`} defaultValue="5" onChange={(e) => { const ms = parseInt(e.target.value, 10) * 60 * 1000; priceService.setGroupInterval(category, ms); }} className="text-xs bg-slate-700/40 border border-slate-600 rounded px-2 py-1">
-                                                        <option value="1">1m</option>
-                                                        <option value="5">5m</option>
-                                                        <option value="30">30m</option>
-                                                        <option value="60">1h</option>
-                                                        <option value="180">3h</option>
-                                                    </select>
-                                                    <button onClick={() => priceService.refreshGroupNow(category)} className="text-xs px-2 py-1 rounded bg-slate-700/40">Refresh now</button>
-                                                    <label className="text-xs flex items-center gap-1"><input type="checkbox" defaultChecked onChange={(e) => priceService.setGroupEnabled(category, e.target.checked)} /> Live</label>
-                                                </div>
-                                                {onOpenLabs && (
-                                                    <button
-                                                        onClick={() => onOpenLabs(category)}
-                                                        className="text-white hover:text-white transition-colors text-xs flex items-center px-2 py-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 rounded-md border border-purple-500 font-semibold shadow-lg hover:shadow-purple-500/50"
-                                                    >
-                                                        <WrenchScrewdriverIcon className="w-3 h-3 mr-1.5" />
-                                                        Run Labs
-                                                    </button>
-                                                )}
-                                                <button onClick={() => onManageStrategy(category)} className="text-slate-400 hover:text-cyan-300 transition-colors text-xs flex items-center p-1 bg-slate-700/50 rounded-md border border-slate-600">
-                                                    <WrenchScrewdriverIcon className="w-3 h-3 mr-1.5" />
-                                                    Manage Strategy
-                                                </button>
                                                 {/* Delete Selected button */}
                                                 {getSelectedInCategory(category).length > 0 && (
                                                     <button title={`Delete ${getSelectedInCategory(category).length} selected`} disabled={!!readLocks()[category]} onClick={() => handleDeleteSelected(page, category)} className={`text-xs px-2 py-1 rounded-md border ${readLocks()[category] ? 'opacity-50 cursor-not-allowed bg-slate-700/30' : 'bg-amber-600 text-white border-amber-500 hover:bg-amber-500'}`}>
@@ -658,7 +671,8 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
                                                 )}
                                                 {stocks.length > 0 && (() => {
                                                     // compute filtered view for this rendered block using same rules as useMemo
-                                                    const timeFilter = getTimeFilterFor(category);
+                                                    const isCategoryIntraday = ['HIGH_POWERED_STOCKS', 'INTRADAY_BOOST', 'DOWNSIDE_LOM_INTRA', 'UPSIDE_LOM_INTRA', 'DAILY_CONTRACTION', 'PRE_MARKET'].includes(category);
+                                                    const timeFilter = getTimeFilterFor(category, isCategoryIntraday);
                                                     const now = new Date();
                                                     const inTimeRange = (s: any) => {
                                                         const dtStr = s.addedDate || s.date || null;
@@ -669,6 +683,8 @@ const AnalysisHub: React.FC<AnalysisHubProps> = ({ watchlist, onWatchlistUpdate,
                                                         const diffMs = now.getTime() - dt.getTime();
                                                         const days = diffMs / (1000 * 60 * 60 * 24);
                                                         if (timeFilter === '1_DAY') return days <= 1;
+                                                        if (timeFilter === '7_DAYS') return days <= 7;
+                                                        if (timeFilter === '10_DAYS') return days <= 10;
                                                         if (timeFilter === '15_DAYS') return days <= 15;
                                                         if (timeFilter === '30_DAYS') return days <= 30;
                                                         return true;

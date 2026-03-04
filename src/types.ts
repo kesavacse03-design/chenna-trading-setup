@@ -13,7 +13,7 @@ export enum TradeStatus {
 export interface Trade {
   id: number;
   ticker: string;
-  type: string; 
+  type: string;
   entry: number;
   target: number;
   stopLoss: number;
@@ -31,11 +31,11 @@ export interface Trade {
 }
 
 export interface BacktestEntry {
-    ticker: string;
-    entryDate: string;
-    outcome: 'Win' | 'Loss';
-    pnl: number;
-    reason: string;
+  ticker: string;
+  entryDate: string;
+  outcome: 'Win' | 'Loss';
+  pnl: number;
+  reason: string;
 }
 
 
@@ -53,7 +53,7 @@ export interface HealthItem {
 export interface StockData {
   stockName: string;
   date: string; // The date it was identified/added
-  price?: number; 
+  price?: number;
   isNew?: boolean;
   isUpdated?: boolean;
   addedDate: string; // ISO string of when it was added to the list
@@ -68,7 +68,7 @@ export interface ParsedStockFile {
 }
 
 export interface GroupedWatchlist {
-    [page: string]: ParsedStockFile;
+  [page: string]: ParsedStockFile;
 }
 
 // FIX: Added and exported the ImportWatchlistPayload type for global use.
@@ -88,7 +88,7 @@ export interface TradeSetup {
 export interface AnalysisResult {
   analysis: {
     strength: string;
-    traps:string;
+    traps: string;
     psychology: string;
   };
   tradeSetup: TradeSetup;
@@ -103,44 +103,44 @@ export interface Notification {
 }
 
 export interface SystemLearning {
-    tradeId: number;
-    ticker: string;
-    analysis: {
-        failurePattern: string;
-        v2Improvement: string;
-    }
+  tradeId: number;
+  ticker: string;
+  analysis: {
+    failurePattern: string;
+    v2Improvement: string;
+  }
 }
 
 export interface StrategyPerformance {
-    winRate: number;
-    totalTrades: number;
-    netPL: number;
+  winRate: number;
+  totalTrades: number;
+  netPL: number;
 }
 
 export interface BacktestReport {
-    id: string;
-    categoryKey: string;
-    versionId: number;
-    generatedAt: Date;
-    status: 'candidate' | 'live';
-    summary: {
-        accuracy: number;
-        totalTrades: number;
-        wins: number;
-        losses: number;
-        averagePL: number;
-        confidenceRating: number;
-        maxDrawdown: number;
-        // Enriched metrics (event simulation layer)
-        totalNetPnl?: number; // absolute aggregate PnL across events
-        avgNetPnlPerEvent?: number; // average net PnL per event
-        avgRMultiple?: number; // average R multiple across trades/events
-        expectancy?: number; // expectancy per trade/event (R terms)
-    };
-    tradeLog: BacktestEntry[];
-    suggestions: string[];
-    tickersUsed: string[];
-    backtestPeriod: string;
+  id: string;
+  categoryKey: string;
+  versionId: number;
+  generatedAt: Date;
+  status: 'candidate' | 'live';
+  summary: {
+    accuracy: number;
+    totalTrades: number;
+    wins: number;
+    losses: number;
+    averagePL: number;
+    confidenceRating: number;
+    maxDrawdown: number;
+    // Enriched metrics (event simulation layer)
+    totalNetPnl?: number; // absolute aggregate PnL across events
+    avgNetPnlPerEvent?: number; // average net PnL per event
+    avgRMultiple?: number; // average R multiple across trades/events
+    expectancy?: number; // expectancy per trade/event (R terms)
+  };
+  tradeLog: BacktestEntry[];
+  suggestions: string[];
+  tickersUsed: string[];
+  backtestPeriod: string;
 }
 
 // Category event simulation aggregate (run-events-<CATEGORY>.report.json)
@@ -280,17 +280,17 @@ export interface AuditTrailEntry {
 }
 
 export interface StrategyVersion {
-    id: number;
-    categoryKey: string;
-    status: 'live' | 'shadow' | 'archived';
-    performance: StrategyPerformance;
-    learnings: SystemLearning[];
-    logic: StrategyLogic; 
-    backtestReportId?: string;
+  id: number;
+  categoryKey: string;
+  status: 'live' | 'shadow' | 'archived';
+  performance: StrategyPerformance;
+  learnings: SystemLearning[];
+  logic: StrategyLogic;
+  backtestReportId?: string;
 }
 
 export interface StrategyState {
-    [categoryKey: string]: StrategyVersion[];
+  [categoryKey: string]: StrategyVersion[];
 }
 
 export interface HealthStatusAPI {
@@ -299,8 +299,18 @@ export interface HealthStatusAPI {
   message: string;
 }
 
+export interface Category {
+  id: number;
+  key: string;
+  description: string | null;
+  enabled: boolean;
+  scanningEnabled: boolean;
+  signalGenerationEnabled: boolean;
+  stocks?: any[];
+}
+
 export interface SystemHealthState {
-    status: 'ok' | 'warning' | 'error';
-    components: HealthStatusAPI[];
-    timestamp: string;
+  status: 'ok' | 'warning' | 'error';
+  components: HealthStatusAPI[];
+  timestamp: string;
 }

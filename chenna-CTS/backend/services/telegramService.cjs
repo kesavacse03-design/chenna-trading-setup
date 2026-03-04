@@ -1,206 +1,83 @@
-/**
- * Telegram Alert Service
- * Phase 13: Telegram Integration
- */
+const fetch = require('node-fetch');
 
-const axios = require('axios');
-
-let telegramConfig = {
-    enabled: false,
-    botToken: null,
-    chatId: null
-};
+const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
 /**
- * Configure Telegram bot
+ * Sends a message via Telegram bot
+ * @param {string} message Markdown formatted message
  */
-function configureTelegram(botToken, chatId) {
-    telegramConfig = {
-        enabled: true,
-        botToken,
-        chatId
-    };
-    return { ok: true, message: 'Telegram configured' };
-}
-
-/**
- * Send Telegram message
- */
-async function sendTelegramMessage(message, parseMode = 'Markdown') {
-    if (!telegramConfig.enabled || !telegramConfig.botToken || !telegramConfig.chatId) {
-        console.log('[Telegram] Not configured, skipping message');
-        return { ok: false, error: 'Telegram not configured' };
+async function sendMessage(message) {
+    if (!BOT_TOKEN || !CHAT_ID) {
+        console.debug('[Telegram] Bot token or chat ID not configured in .env. Skipping alert.');
+        return false;
     }
+
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
     try {
-        const url = `https://api.telegram.org/bot${telegramConfig.botToken}/sendMessage`;
-        const response = await axios.post(url, {
-            chat_id: telegramConfig.chatId,
-            text: message,
-            parse_mode: parseMode
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: message,
+                parse_mode: 'Markdown'
+            })
         });
 
-        return { ok: true, messageId: response.data.result.message_id };
-    } catch (error) {
-        console.error('[Telegram] Send error:', error.message);
-        return { ok: false, error: error.message };
+        const data = await response.json();
+        if (!data.ok) {
+            console.error('[Telegram] Failed to send message:', data.description);
+            return false;
+        }
+        return true;
+    } catch (err) {
+        console.error('[Telegram] Error sending message:', err.message);
+        return false;
     }
 }
 
-/**
- * Send trade entry alert
- */
-async function sendTradeEntryAlert(trade) {
-    const message = `
-🟢 *TRADE ENTRY*
-
-Symbol: \`${trade.symbol}\`
-Category: ${trade.categoryKey}
-Entry: ₹${trade.entryPrice}
-Target: ₹${trade.targetPrice} (+${trade.targetPercent}%)
-Stop Loss: ₹${trade.stopLossPrice} (-${trade.stopLossPercent}%)
-Position Size: ₹${trade.positionSize}
-Version: ${trade.strategyVersion || 'V1'}
-
-${trade.reason || 'Strategy entry signal'}
-`;
-
-    return sendTelegramMessage(message);
+// Specific Alert formatters
+function alertSetupForming(symbol, category) {
+    const cat = (category || '').replace(/_/g, '\\_');
+    return sendMessage(`⏳ *SETUP FORMING*\nSymbol: *${symbol}*\nCategory: ${cat}\nPrepare for possible entry.`);
 }
 
-/**
- * Send target hit alert
- */
-async function sendTargetHitAlert(trade) {
-    const message = `
-🎯 *TARGET HIT!*
-
-Symbol: \`${trade.symbol}\`
-Entry: ₹${trade.entryPrice}
-Exit: ₹${trade.exitPrice}
-Profit: ${trade.pnlPercent.toFixed(2)}% (₹${trade.pnlAmount})
-Duration: ${trade.daysHeld} days
-
-Great trade! ✅
-`;
-
-    return sendTelegramMessage(message);
+function alertNewSignal(signal) {
+    const dir = signal.direction || signal.type;
+    const dirIcon = dir === 'LONG' ? '🟢 LONG' : '🔴 SHORT';
+    const cat = (signal.categoryKey || signal.category || '').replace(/_/g, '\\_');
+    const entry = typeof signal.entryPrice === 'number' ? signal.entryPrice.toFixed(2) : signal.entryPrice;
+    const stop = typeof signal.stopPrice === 'number' ? signal.stopPrice.toFixed(2) : signal.stopPrice;
+    const t1val = signal.t1Price || signal.targetPrice;
+    const t1 = typeof t1val === 'number' ? t1val.toFixed(2) : t1val;
+    return sendMessage(`🔔 *NEW SIGNAL*\n\n*${signal.symbol}* ${dirIcon}\nCategory: ${cat}\n\nEntry: ₹${entry}\nStop: ₹${stop}\nT1: ₹${t1}\n\n[Dashboard](http://localhost:5173/)`);
 }
 
-/**
- * Send stop loss hit alert
- */
-async function sendStopLossAlert(trade) {
-    const message = `
-🛑 *STOP LOSS HIT*
-
-Symbol: \`${trade.symbol}\`
-Entry: ₹${trade.entryPrice}
-Exit: ₹${trade.exitPrice}
-Loss: ${trade.pnlPercent.toFixed(2)}% (₹${trade.pnlAmount})
-Duration: ${trade.daysHeld} days
-
-Risk managed. Moving on. 💪
-`;
-
-    return sendTelegramMessage(message);
+function alertTargetHit(signal, targetName, exitPrice) {
+    return sendMessage(`🎯 *${targetName} HIT!*\n\nSymbol: *${signal.symbol}*\nExit Price: ₹${exitPrice.toFixed(2)}\n\nGreat trade!`);
 }
 
-/**
- * Send trailing stop update alert
- */
-async function sendTrailingStopAlert(trade) {
-    const message = `
-📊 *TRAILING STOP UPDATED*
-
-Symbol: \`${trade.symbol}\`
-New Stop Loss: ₹${trade.newStopLoss}
-Current Price: ₹${trade.currentPrice}
-Unrealized P&L: ${trade.unrealizedPnl.toFixed(2)}%
-
-Locking in profits! 🔒
-`;
-
-    return sendTelegramMessage(message);
+function alertStopHit(signal, exitPrice) {
+    return sendMessage(`🛑 *STOP LOSS HIT*\n\nSymbol: *${signal.symbol}*\nExit Price: ₹${exitPrice.toFixed(2)}\n\nRisk managed.`);
 }
 
-/**
- * Send time exit alert
- */
-async function sendTimeExitAlert(trade) {
-    const message = `
-⏰ *TIME EXIT*
-
-Symbol: \`${trade.symbol}\`
-Entry: ₹${trade.entryPrice}
-Exit: ₹${trade.exitPrice}
-P&L: ${trade.pnlPercent.toFixed(2)}% (₹${trade.pnlAmount})
-Duration: ${trade.daysHeld}/${trade.maxDays} days
-
-Trade closed at time limit.
-`;
-
-    return sendTelegramMessage(message);
+function alertExpired(signal) {
+    const cat = (signal.categoryKey || signal.category || '').replace(/_/g, '\\_');
+    return sendMessage(`⏰ *SIGNAL EXPIRED*\n\nSymbol: *${signal.symbol}*\nCategory: ${cat}\n\nTime elapsed, signal is no longer valid.`);
 }
 
-/**
- * Send version change alert
- */
-async function sendVersionChangeAlert(categoryKey, oldVersion, newVersion, reason) {
-    const message = `
-🔄 *STRATEGY VERSION UPDATED*
-
-Category: ${categoryKey}
-${oldVersion} → ${newVersion}
-
-Reason: ${reason}
-
-New logic active for future trades.
-`;
-
-    return sendTelegramMessage(message);
-}
-
-/**
- * Send daily summary
- */
-async function sendDailySummary(summary) {
-    const message = `
-📈 *DAILY SUMMARY*
-
-Date: ${new Date().toDateString()}
-
-Trades Today: ${summary.totalTrades}
-Wins: ${summary.wins} | Losses: ${summary.losses}
-Win Rate: ${summary.winRate.toFixed(1)}%
-
-Total P&L: ${summary.totalPnl >= 0 ? '+' : ''}${summary.totalPnl.toFixed(2)}%
-Best Trade: ${summary.bestTrade}
-Worst Trade: ${summary.worstTrade}
-
-Active Trades: ${summary.activeTrades}
-`;
-
-    return sendTelegramMessage(message);
-}
-
-/**
- * Test Telegram connection
- */
-async function testTelegram() {
-    return sendTelegramMessage('✅ Telegram connection test successful!\n\nChenna Trading System is ready to send alerts.');
+function alertEodSummary(summary) {
+    return sendMessage(`📊 *EOD SUMMARY*\n\nTotal Signals: ${summary.totalSignals}\nTrades Executed: ${summary.totalTrades}\nWin Rate: ${summary.winRate}%\nGross P&L: ₹${summary.pnl.toFixed(2)}`);
 }
 
 module.exports = {
-    configureTelegram,
-    sendTelegramMessage,
-    sendTradeEntryAlert,
-    sendTargetHitAlert,
-    sendStopLossAlert,
-    sendTrailingStopAlert,
-    sendTimeExitAlert,
-    sendVersionChangeAlert,
-    sendDailySummary,
-    testTelegram,
-    getConfig: () => telegramConfig
+    sendMessage,
+    alertSetupForming,
+    alertNewSignal,
+    alertTargetHit,
+    alertStopHit,
+    alertExpired,
+    alertEodSummary
 };

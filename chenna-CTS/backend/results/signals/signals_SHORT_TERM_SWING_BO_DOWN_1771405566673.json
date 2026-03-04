@@ -1,0 +1,45 @@
+{
+  "categoryKey": "SHORT_TERM_SWING_BO_DOWN",
+  "signals": [
+    {
+      "symbol": "MOCKSTOCK",
+      "name": "Mock Company Ltd",
+      "categoryKey": "SHORT_TERM_SWING_BO_DOWN",
+      "price": 1500,
+      "target": 1560,
+      "stop": 1470,
+      "targetPercent": 4,
+      "stopPercent": 2,
+      "confidence": 85,
+      "reason": "Manual Injection for UI Verification | TIER 2 (FRESH) (33%)",
+      "daysRemaining": 5,
+      "quantity": 10,
+      "positionValue": 15000,
+      "riskAmount": 150,
+      "riskPercent": 1,
+      "rewardRiskRatio": 2,
+      "sizingSummary": "Safe sizing",
+      "validationScore": 85,
+      "passedChecks": [
+        "Trend Aligned",
+        "Volume Spike"
+      ],
+      "atr": 25,
+      "eventScore": 80,
+      "similarityScore": 90,
+      "indicators": {
+        "rsi14": "28.5",
+        "macdBullish": true,
+        "aboveSMA50": false
+      },
+      "timestamp": "2026-02-18T09:06:06.671Z",
+      "tier": 2,
+      "tierName": "TIER 2 (FRESH)",
+      "trend10d": -2.5
+    }
+  ],
+  "scannedAt": "2026-02-18T09:06:06.673Z",
+  "stats": {
+    "signalsFound": 1
+  }
+}

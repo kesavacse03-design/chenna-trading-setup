@@ -1,0 +1,36 @@
+﻿=== IOC addedDate Investigation ===
+
+IOC entries in SHORT_TERM_SWING_BO_UP: 4
+  Raw addedDate: 2025-10-29T00:00:00.000Z
+  IST addedDate: 2025-10-29
+  UTC date part: 2025-10-29
+  Raw addedDate: 2026-01-28T00:00:00.000Z
+  IST addedDate: 2026-01-28
+  UTC date part: 2026-01-28
+  Raw addedDate: 2026-02-02T00:00:00.000Z
+  IST addedDate: 2026-02-02
+  UTC date part: 2026-02-02
+  Raw addedDate: 2026-02-03T00:00:00.000Z
+  IST addedDate: 2026-02-03
+  UTC date part: 2026-02-03
+
+=== Date Query Simulation ===
+
+Simulated Date Input: 2026-02-02T00:00:00.000+05:30
+As UTC: 2026-02-01T18:30:00.000Z
+dayStart (setHours 0,0,0,0): 2026-02-01T18:30:00.000Z
+dayEnd (setHours 23,59,59): 2026-02-02T18:29:59.999Z
+
+Stocks returned by query for Feb 2:
+  POWERGRID       addedDate: 2026-02-02T00:00:00.000Z (IST: 2026-02-02)
+  SUPREMEIND      addedDate: 2026-02-02T00:00:00.000Z (IST: 2026-02-02)
+  TMPV            addedDate: 2026-02-02T00:00:00.000Z (IST: 2026-02-02)
+  BLUESTARCO      addedDate: 2026-02-02T00:00:00.000Z (IST: 2026-02-02)
+  POWERINDIA      addedDate: 2026-02-02T00:00:00.000Z (IST: 2026-02-02)
+  IOC             addedDate: 2026-02-02T00:00:00.000Z (IST: 2026-02-02)
+  MOTHERSON       addedDate: 2026-02-02T00:00:00.000Z (IST: 2026-02-02)
+
+Feb 3 query range: 2026-02-02T18:30:00.000Z to 2026-02-03T18:29:59.999Z
+Stocks returned for Feb 3: 78
+  Γ£à IOC IS in Feb 3 query (addedDate: 2026-02-03T00:00:00.000Z)
+  ≡ƒÜ¿ IOC IS in Feb 2 query (addedDate: 2026-02-02T00:00:00.000Z) ΓÇö SHOULD NOT BE!

@@ -1,0 +1,146 @@
+{
+  "categories": [
+    {
+      "category": "SHORT_TERM_SWING_BO_UP",
+      "total": 543,
+      "unique_symbols": 212,
+      "earliest": "2025-07-29",
+      "latest": "2026-02-18"
+    },
+    {
+      "category": "SHORT_TERM_SWING_BO_DOWN",
+      "total": 378,
+      "unique_symbols": 216,
+      "earliest": "2025-08-28",
+      "latest": "2026-02-18"
+    },
+    {
+      "category": "LONG_TERM_SWING_BO_DOWN",
+      "total": 307,
+      "unique_symbols": 192,
+      "earliest": "2025-07-29",
+      "latest": "2026-02-16"
+    },
+    {
+      "category": "LONG_TERM_SWING_BO_UP",
+      "total": 269,
+      "unique_symbols": 158,
+      "earliest": "2025-07-29",
+      "latest": "2026-02-18"
+    },
+    {
+      "category": "MULTI_RESISTANCE_BO",
+      "total": 126,
+      "unique_symbols": 108,
+      "earliest": "2025-07-23",
+      "latest": "2026-02-18"
+    },
+    {
+      "category": "MULTI_SUPPORT_BO",
+      "total": 113,
+      "unique_symbols": 103,
+      "earliest": "2025-07-23",
+      "latest": "2026-02-12"
+    }
+  ],
+  "ohlc": [
+    {
+      "entries": 238,
+      "symbols": 158,
+      "earliest": "2026-01-19",
+      "latest": "2026-02-18"
+    }
+  ],
+  "crosscheck": [
+    {
+      "category": "SHORT_TERM_SWING_BO_DOWN",
+      "cat_symbols": 216,
+      "has_ohlc": 156
+    },
+    {
+      "category": "SHORT_TERM_SWING_BO_UP",
+      "cat_symbols": 212,
+      "has_ohlc": 157
+    },
+    {
+      "category": "LONG_TERM_SWING_BO_DOWN",
+      "cat_symbols": 192,
+      "has_ohlc": 134
+    },
+    {
+      "category": "LONG_TERM_SWING_BO_UP",
+      "cat_symbols": 158,
+      "has_ohlc": 121
+    },
+    {
+      "category": "MULTI_RESISTANCE_BO",
+      "cat_symbols": 108,
+      "has_ohlc": 81
+    },
+    {
+      "category": "MULTI_SUPPORT_BO",
+      "cat_symbols": 103,
+      "has_ohlc": 77
+    }
+  ],
+  "sample": {
+    "symbol": "KFINTECH",
+    "from": "2026-02-17T00:00:00.000Z",
+    "to": "2026-02-18T00:00:00.000Z",
+    "candleCount": 1,
+    "keys": [
+      "oi",
+      "low",
+      "high",
+      "open",
+      "close",
+      "volume",
+      "timestamp"
+    ],
+    "first": {
+      "oi": 0,
+      "low": 1005.9,
+      "high": 1061.4,
+      "open": 1010,
+      "close": 1020.6,
+      "volume": 2964027,
+      "timestamp": "2026-02-17T00:00:00+05:30"
+    },
+    "last": {
+      "oi": 0,
+      "low": 1005.9,
+      "high": 1061.4,
+      "open": 1010,
+      "close": 1020.6,
+      "volume": 2964027,
+      "timestamp": "2026-02-17T00:00:00+05:30"
+    }
+  },
+  "coverage": [
+    {
+      "category": "SHORT_TERM_SWING_BO_UP",
+      "total": 212,
+      "with_cache": 157
+    },
+    {
+      "category": "LONG_TERM_SWING_BO_DOWN",
+      "total": 190,
+      "with_cache": 132
+    },
+    {
+      "category": "LONG_TERM_SWING_BO_UP",
+      "total": 155,
+      "with_cache": 119
+    },
+    {
+      "category": "MULTI_RESISTANCE_BO",
+      "total": 106,
+      "with_cache": 79
+    },
+    {
+      "category": "MULTI_SUPPORT_BO",
+      "total": 103,
+      "with_cache": 77
+    }
+  ]
+}

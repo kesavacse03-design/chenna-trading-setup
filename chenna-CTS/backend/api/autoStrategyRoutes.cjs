@@ -8,10 +8,43 @@ const AutoStrategyGenerator = require('../strategy/autoGenerator.cjs');
 const TimeTravelEngine = require('../strategy/timeTravelEngine.cjs');
 const V1BacktestEngine = require('../strategy/v1BacktestEngine.cjs');
 const backtestResultsService = require('../services/backtestResultsService.cjs');
+const strategyManager = require('../services/labs/strategyManager.cjs');
 
 const prisma = new PrismaClient();
 
 function registerAutoStrategyRoutes(app) {
+    /**
+     * GET /api/strategy/info/:categoryKey
+     * Get strategy configuration for Time-Travel Backtest UI
+     */
+    app.get('/api/strategy/info/:categoryKey', async (req, res) => {
+        try {
+            const { categoryKey } = req.params;
+
+            console.log(`[GET /api/strategy/info] Fetching strategy for: ${categoryKey}`);
+
+            const strategyInfo = strategyManager.getStrategyInfo(categoryKey);
+
+            if (!strategyInfo) {
+                return res.json({
+                    ok: true,
+                    hasStrategy: false,
+                    message: `No strategy configured for ${categoryKey}. Backtest will use default rules.`
+                });
+            }
+
+            res.json({
+                ok: true,
+                hasStrategy: true,
+                strategy: strategyInfo
+            });
+
+        } catch (error) {
+            console.error('[GET /api/strategy/info] Error:', error);
+            res.status(500).json({ ok: false, error: error.message });
+        }
+    });
+
     /**
      * POST /api/strategy/auto-generate
      * Auto-generate optimized trading strategy for a category

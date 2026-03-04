@@ -1,0 +1,30 @@
+
+
+═══════════════════════════════════════════════════════
+ FILTERED LIMIT ORDER STUDY RESULTS
+═══════════════════════════════════════════════════════
+Signals evaluated after Stage 2, RSI (60-70), NIFTY gates: 103
+
+[STUDY E] Filtered Limit Order Performance
+Option 1 (Limit @ -1.0%)       => Fills:  82 (79.6%) | Win: 69.5% | Avg PnL: 2.42%
+Option 2 (Limit @ -2.0%)       => Fills:  61 (59.2%) | Win: 68.9% | Avg PnL: 2.71%
+Option 3 (Limit @ Day+1 Low)   => Fills:  66 (64.1%) | Win: 66.7% | Avg PnL: 1.96%
+Option 4 (Limit @ Min D1,D2)   => Fills:  55 (53.4%) | Win: 69.1% | Avg PnL: 2.74%
+
+[STUDY F] Risk/Reward with Limit Entry (Filtered Only)
+
+>> Option 2 (Signal Close - 2.0%)
+Avg stop distance (bounded 1.5%): 2.17%
+Avg max gain (by Day 10):         5.70%
+Avg R:R ratio:                    3.25
+Trades where R:R > 2.0:           39 out of 61 (63.9%)
+Trades where R:R > 3.0:           28 out of 61 (45.9%)
+
+>> Option 4 (Min of Day 1 & Day 2 Lows)
+Avg stop distance (bounded 1.5%): 1.50%
+Avg max gain (by Day 10):         5.49%
+Avg R:R ratio:                    3.66
+Trades where R:R > 2.0:           33 out of 55 (60.0%)
+Trades where R:R > 3.0:           27 out of 55 (49.1%)
+
+═══════════════════════════════════════════════════════

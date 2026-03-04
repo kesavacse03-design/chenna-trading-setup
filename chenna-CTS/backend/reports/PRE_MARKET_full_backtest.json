@@ -1,0 +1,176 @@
+{
+  "generatedAt": "2026-02-04T03:47:18.914Z",
+  "strategy": {
+    "name": "PRE_MARKET_OR_BREAKOUT",
+    "displayName": "Opening Range Breakout (TradeCode)",
+    "category": "PRE_MARKET",
+    "directions": [
+      "LONG",
+      "SHORT"
+    ],
+    "entryRules": [
+      "Gap UP ≥3% → SHORT entry (expect gap fill DOWN)",
+      "Gap DOWN ≤-3% → LONG entry (expect gap fill UP)",
+      "Gap must be between 3% and 10% (extreme gaps are risky)"
+    ],
+    "exitRules": {
+      "target": "Gap Fill to Previous Close",
+      "stop": "2% from entry price (opposite direction)",
+      "timeExit": "EOD if neither target nor stop hit"
+    },
+    "parameters": {
+      "stopPercent": 2
+    }
+  },
+  "summary": {
+    "period": "Aug 2024 - Jan 2026",
+    "tradingDays": 342,
+    "stocksTested": 96,
+    "totalTrades": 9,
+    "winners": 3,
+    "losers": 6,
+    "winRate": 33.33333333333333,
+    "avgWin": 1.5566666666666666,
+    "avgLoss": -0.3983333333333334,
+    "totalPnl": 2.2800000000000002,
+    "expectancy": 0.25333333333333313,
+    "exitBreakdown": {
+      "targetHit": 1,
+      "stopHit": 6,
+      "eod": 2
+    }
+  },
+  "exitBreakdown": {
+    "targetHit": 1,
+    "stopHit": 6,
+    "eod": 2
+  },
+  "trades": [
+    {
+      "tradeNo": 1,
+      "date": "2025-10-29",
+      "symbol": "ADANIENT",
+      "direction": "LONG",
+      "gapPercent": "+0.22%",
+      "entryPrice": 2500,
+      "targetPrice": 2575,
+      "stopPrice": 2494.4,
+      "exitPrice": 2575,
+      "exitReason": "TARGET_HIT",
+      "pnl": "+3.00%",
+      "outcome": "WIN"
+    },
+    {
+      "tradeNo": 2,
+      "date": "2025-10-29",
+      "symbol": "LT",
+      "direction": "LONG",
+      "gapPercent": "+0.55%",
+      "entryPrice": 3980,
+      "targetPrice": 4099.4,
+      "stopPrice": 3958.1,
+      "exitPrice": 3987.5,
+      "exitReason": "EOD",
+      "pnl": "+0.19%",
+      "outcome": "WIN"
+    },
+    {
+      "tradeNo": 3,
+      "date": "2025-10-29",
+      "symbol": "ULTRACEMCO",
+      "direction": "LONG",
+      "gapPercent": "+0.34%",
+      "entryPrice": 12040,
+      "targetPrice": 12401.2,
+      "stopPrice": 11999,
+      "exitPrice": 11999,
+      "exitReason": "STOP_HIT",
+      "pnl": "-0.34%",
+      "outcome": "LOSS"
+    },
+    {
+      "tradeNo": 4,
+      "date": "2025-10-29",
+      "symbol": "TATACONSUM",
+      "direction": "LONG",
+      "gapPercent": "+0.01%",
+      "entryPrice": 1169,
+      "targetPrice": 1204.07,
+      "stopPrice": 1168.9,
+      "exitPrice": 1168.9,
+      "exitReason": "STOP_HIT",
+      "pnl": "-0.01%",
+      "outcome": "LOSS"
+    },
+    {
+      "tradeNo": 5,
+      "date": "2025-10-29",
+      "symbol": "HDFCLIFE",
+      "direction": "LONG",
+      "gapPercent": "+0.43%",
+      "entryPrice": 750.2,
+      "targetPrice": 772.71,
+      "stopPrice": 747,
+      "exitPrice": 761.3,
+      "exitReason": "EOD",
+      "pnl": "+1.48%",
+      "outcome": "WIN"
+    },
+    {
+      "tradeNo": 6,
+      "date": "2025-10-29",
+      "symbol": "HINDALCO",
+      "direction": "LONG",
+      "gapPercent": "-0.48%",
+      "entryPrice": 856.25,
+      "targetPrice": 881.94,
+      "stopPrice": 848.1,
+      "exitPrice": 848.1,
+      "exitReason": "STOP_HIT",
+      "pnl": "-0.95%",
+      "outcome": "LOSS"
+    },
+    {
+      "tradeNo": 7,
+      "date": "2025-11-25",
+      "symbol": "BAJAJ-AUTO",
+      "direction": "LONG",
+      "gapPercent": "+0.19%",
+      "entryPrice": 9025,
+      "targetPrice": 9295.75,
+      "stopPrice": 9007.5,
+      "exitPrice": 9007.5,
+      "exitReason": "STOP_HIT",
+      "pnl": "-0.19%",
+      "outcome": "LOSS"
+    },
+    {
+      "tradeNo": 8,
+      "date": "2025-10-29",
+      "symbol": "TITAN",
+      "direction": "LONG",
+      "gapPercent": "-0.09%",
+      "entryPrice": 3748.3,
+      "targetPrice": 3860.75,
+      "stopPrice": 3720.1,
+      "exitPrice": 3720.1,
+      "exitReason": "STOP_HIT",
+      "pnl": "-0.75%",
+      "outcome": "LOSS"
+    },
+    {
+      "tradeNo": 9,
+      "date": "2025-10-29",
+      "symbol": "BEL",
+      "direction": "LONG",
+      "gapPercent": "+0.15%",
+      "entryPrice": 407.8,
+      "targetPrice": 420.03,
+      "stopPrice": 407.2,
+      "exitPrice": 407.2,
+      "exitReason": "STOP_HIT",
+      "pnl": "-0.15%",
+      "outcome": "LOSS"
+    }
+  ]
+}

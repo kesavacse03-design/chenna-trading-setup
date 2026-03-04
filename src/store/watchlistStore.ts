@@ -10,6 +10,7 @@ export type WatchlistRow = {
   category: string;
   price: number | null;
   priceSource: string;
+  meta?: any; // Tier, Trend10d, etc.
 };
 
 type WatchlistState = {
@@ -36,7 +37,8 @@ const flattenGrouped = (grouped: any): WatchlistRow[] => {
             date: it.date || '',
             category: cat,
             price: it.price ?? null,
-            priceSource: it.priceSource || ''
+            priceSource: it.priceSource || '',
+            meta: it.meta
           });
         }
       }
